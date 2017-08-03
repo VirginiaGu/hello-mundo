@@ -1,0 +1,995 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="google-site-verification" content="3xIl6rwvbZFMPw2Os_ecSGlPPwrQuE11U5J9Ko2bbas"/>
+<meta property="fb:pages" content="411445362304338"/>
+<title>Tutorial de Django: Cómo usar Git y Bootstrap con Django. | OpenWebinars.net</title>
+<meta name="description" content="Veremos cómo usar el control de versiones para poder recuperar el proyecto en un estado anterior. Además, implementamos Bootstrap para mejorar el aspecto del proyecto."/>
+<!-- Google Authorship and Publisher Markup -->
+<link rel="author" href="https://plus.google.com/108274303526255360051"/>
+<link rel="publisher" href="https://plus.google.com/117887442418848921469/"/>
+<link rel="alternate" type="application/rss+xml" title="OpenWebinars.net &raquo; Feed" href="/feed"/>
+<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content="Tutorial de Django: Cómo usar Git y Bootstrap con Django.">
+<meta itemprop="description" content="Veremos cómo usar el control de versiones para poder recuperar el proyecto en un estado anterior. Además, implementamos Bootstrap para mejorar el aspecto del proyecto.">
+<meta itemprop="image" content="https://static-media-ow.s3.amazonaws.com/media/featured_images/tutorial-django-02_41FRCV2.jpg">
+<!-- Twitter Card data -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@openwebinarsnet">
+<meta name="twitter:title" content="Tutorial de Django: Cómo usar Git y Bootstrap con Django.">
+<meta name="twitter:description" content="Veremos cómo usar el control de versiones para poder recuperar el proyecto en un estado anterior. Además, implementamos Bootstrap para mejorar el aspecto del proyecto.">
+<meta name="twitter:creator" content="@openwebinarsnet">
+<!-- Twitter summary card with large image must be at least 280x150px -->
+<meta name="twitter:image:src" content="https://static-media-ow.s3.amazonaws.com/media/featured_images/tutorial-django-02_41FRCV2.jpg">
+<!-- Open Graph data -->
+<meta property="og:title" content="Tutorial de Django: Cómo usar Git y Bootstrap con Django."/>
+<meta property="og:locale" content="es_ES"/>
+<meta property="og:type" content="article"/>
+<meta property="og:url" content="https://openwebinars.net/blog/tutorial-de-django-como-usar-git-bootstrap-con-django/"/>
+<meta property="og:image" content="https://static-media-ow.s3.amazonaws.com/media/featured_images/tutorial-django-02_41FRCV2.jpg"/>
+<meta property="og:description" content="Veremos cómo usar el control de versiones para poder recuperar el proyecto en un estado anterior. Además, implementamos Bootstrap para mejorar el aspecto del proyecto."/>
+<meta property="og:site_name" content="OpenWebinars.net"/>
+<meta property="article:published_time" content="2015-01-22T13:00:00+01:00"/>
+<meta property="article:modified_time" content="2017-06-02T14:25:22+02:00"/>
+<meta property="fb:admins" content="100001483111976"/>
+<meta property="fb:app_id" content="618927021547911"/>
+<link rel="shortcut icon" href="https://dc722jrlp2zu8.cloudfront.net/static/img/favicon/favicon.ico"/>
+<link rel="manifest" href="https://dc722jrlp2zu8.cloudfront.net/static/manifest.json">
+<link rel="apple-touch-icon-precomposed" type="image/png" href="https://dc722jrlp2zu8.cloudfront.net/static/img/favicon/favicon-apple.png"/>
+<link rel="apple-touch-icon-precomposed" sizes="72x72" type="image/png" href="https://dc722jrlp2zu8.cloudfront.net/static/img/favicon/favicon-72p.png"/>
+<link rel="apple-touch-icon-precomposed" sizes="114x114" type="image/png" href="https://dc722jrlp2zu8.cloudfront.net/static/img/favicon/favicon-114p.png"/>
+<link rel="apple-touch-icon" sizes="57x57" href="https://dc722jrlp2zu8.cloudfront.net/static/img/favicon/apple-icon-57x57.png"/>
+<link rel="apple-touch-icon" sizes="60x60" href="https://dc722jrlp2zu8.cloudfront.net/static/img/favicon/apple-icon-60x60.png"/>
+<link rel="apple-touch-icon" sizes="72x72" href="https://dc722jrlp2zu8.cloudfront.net/static/img/favicon/apple-icon-72x72.png"/>
+<link rel="apple-touch-icon" sizes="76x76" href="https://dc722jrlp2zu8.cloudfront.net/static/img/favicon/apple-icon-76x76.png"/>
+<link rel="apple-touch-icon" sizes="114x114" href="https://dc722jrlp2zu8.cloudfront.net/static/img/favicon/apple-icon-114x114.png"/>
+<link rel="apple-touch-icon" sizes="120x120" href="https://dc722jrlp2zu8.cloudfront.net/static/img/favicon/apple-icon-120x120.png"/>
+<link rel="apple-touch-icon" sizes="144x144" href="https://dc722jrlp2zu8.cloudfront.net/static/img/favicon/apple-icon-144x144.png"/>
+<link rel="apple-touch-icon" sizes="152x152" href="https://dc722jrlp2zu8.cloudfront.net/static/img/favicon/apple-icon-152x152.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="https://dc722jrlp2zu8.cloudfront.net/static/img/favicon/apple-icon-180x180.png"/>
+<link rel="icon" type="image/png" sizes="192x192" href="https://dc722jrlp2zu8.cloudfront.net/static/img/favicon/android-icon-192x192.png"/>
+<link rel="icon" type="image/png" sizes="32x32" href="https://dc722jrlp2zu8.cloudfront.net/static/img/favicon/favicon-32x32.png"/>
+<link rel="icon" type="image/png" sizes="96x96" href="https://dc722jrlp2zu8.cloudfront.net/static/img/favicon/favicon-96x96.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="https://dc722jrlp2zu8.cloudfront.net/static/img/favicon/favicon-16x16.png"/>
+<link rel="manifest" href="https://dc722jrlp2zu8.cloudfront.net/static/img/favicon/manifest.json"/>
+<meta name="msapplication-TileColor" content="#f33784"/>
+<meta name="msapplication-TileImage" content="https://dc722jrlp2zu8.cloudfront.net/static/img/favicon/ms-icon-144x144.png"/>
+<meta name="theme-color" content="#f33784"/>
+<link rel="amphtml" href="https://openwebinars.net/amp/blog/tutorial-de-django-como-usar-git-bootstrap-con-django/"/>
+<style>#main-header{background-image:linear-gradient(291deg,rgba(17,23,103,.9),rgba(36,44,155,.85))!important;height:60vh!important;min-height:400px!important;max-height:500px!important}</style>
+<!-- Bootstrap core CSS -->
+<!-- Latest compiled and minified CSS -->
+<!-- Custom styles for this template -->
+<link rel="stylesheet" href="https://dc722jrlp2zu8.cloudfront.net/static/toastr/toastr.min.css" type="text/css" charset="utf-8"/>
+<link rel="stylesheet" href="https://dc722jrlp2zu8.cloudfront.net/static/font-awesome/css/font-awesome.min.css" type="text/css" charset="utf-8"/>
+<link rel="stylesheet" href="https://dc722jrlp2zu8.cloudfront.net/static/sweetalert2/dist/sweetalert2.min.css" type="text/css" charset="utf-8"/>
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://dc722jrlp2zu8.cloudfront.net/static/bootstrap/dist/css/bootstrap.min.css" type="text/css" charset="utf-8"/>
+<link rel="stylesheet" href="https://dc722jrlp2zu8.cloudfront.net/static/css/style.css?rev=b8f6db2" type="text/css" charset="utf-8"/>
+<!-- SpinKit -->
+<link rel="stylesheet" href="https://dc722jrlp2zu8.cloudfront.net/static/css/spinkit.css" type="text/css" charset="utf-8"/>
+<!-- Animate -->
+<link rel="stylesheet" href="https://dc722jrlp2zu8.cloudfront.net/static/animate.css/animate.min.css" type="text/css" charset="utf-8"/>
+<link type="text/css" rel="stylesheet" href="https://dc722jrlp2zu8.cloudfront.net/static/css/jquery.onp.sociallocker.1.7.6.min.css"/>
+<link rel="stylesheet" href="https://dc722jrlp2zu8.cloudfront.net/static/jquery.gifplayer/dist/gifplayer.css">
+<link rel="stylesheet" href="https://dc722jrlp2zu8.cloudfront.net/static/bootstrap-markdown/css/bootstrap-markdown.min.css"/>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/atelier-dune-dark.min.css">
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+<!-- GTM Variables -->
+<script>var dataLayer=[{'environment':'Live'}];var user_is_authenticated=false;if(user_is_authenticated==true){dataLayer.push({'userId':None});dataLayer.push({'userEmail':''});dataLayer.push({'trialing':false});}dataLayer.push({'user-role':user_is_authenticated?'UsuarioRegistrado':''});dataLayer.push({'active_subscription':false});dataLayer.push({'active_plan':''});</script>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NP7728" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NP7728');</script>
+<!-- End Google Tag Manager -->
+<!-- start Mixpanel -->
+<script>(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.update people.track_charge people.clear_charges people.delete_user".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);mixpanel.init("1d98652e12b1b5146d8cb9957c395b68",{'loaded':function(){var UTM_SOURCE_VARIABLE=mixpanel.get_property("utm_source");}});function getQueryParam(url,param){param=param.replace(/[[]/,"\[").replace(/[]]/,"\]");var regexS="[\?&]"+param+"=([^&#]*)",regex=new RegExp(regexS),results=regex.exec(url);if(results===null||(results&&typeof(results[1])!=='string'&&results[1].length)){return'';}else{return decodeURIComponent(results[1]).replace(/\W/gi,' ');}};function campaignParams(){var campaign_keywords='utm_source utm_medium utm_campaign utm_content utm_term'.split(' '),kw='',params={},first_params={};var index;for(index=0;index<campaign_keywords.length;++index){kw=getQueryParam(document.URL,campaign_keywords[index]);if(kw.length){params[campaign_keywords[index]+' [last touch]']=kw;}}for(index=0;index<campaign_keywords.length;++index){kw=getQueryParam(document.URL,campaign_keywords[index]);if(kw.length){first_params[campaign_keywords[index]+' [first touch]']=kw;}}mixpanel.people.set(params);mixpanel.people.set_once(first_params);mixpanel.register(params);}campaignParams();</script>
+<!-- end Mixpanel -->
+<link rel="dns-prefetch" href="//platform.twitter.com"></head>
+<body class="post">
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NP7728" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="CookielawBanner">
+<div class="container">
+<p>
+<a class="btn btn-primary pull-right" href="javascript:Cookielaw.createCookielawCookie();">Aceptar</a>
+Las cookies nos permiten ofrecer nuestros servicios. Al utilizar nuestros servicios, aceptas el uso que hacemos de las cookies. <a href="/aviso-legal-cookies/" title="Aviso de Cookies">Más Información</a>.
+</p>
+</div>
+</div>
+<script>window.setTimeout(function(){$('#CookielawBanner').hide()},10000);</script>
+<nav class="navbar navbar-fixed-top">
+<div class="container">
+<div class="navbar-header">
+<button type="button btn btn-primary" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="/"><img src="https://dc722jrlp2zu8.cloudfront.net/static/img/logos/logo-openwebinars-monocromo.svg" width="170" height="27" layout="fixed" alt="Cursos Online de Programación y Sistemas con OpenWebinars" class="logo"></a>
+</div>
+<div id="navbar" class="navbar-collapse collapse">
+<ul class="nav navbar-nav">
+<li><a href="/empresas/">Empresas</a></li>
+<li><a href="/precios/">Precios</a></li>
+<li><a href="/cursos/">Cursos</a></li>
+<li><a href="/blog/">Blog</a></li>
+<li><a href="/contacto/">Contactar</a></li>
+<li><a href="/accounts/login/">Iniciar sesión</a></li>
+<li class="hidden-xs hidden-sm"><a class="btn btn-inverted" href="/precios/">Comenzar 7 días gratis</a></li>
+</ul>
+</div>
+<!--/.nav-collapse -->
+</div>
+</nav>
+<header id="main-header" class="" style="">
+<div class="claim">
+<h2></h2>
+<h1>Tutorial de Django: Cómo usar Git y Bootstrap con Django.</h1>
+<p>
+<a class="btn btn-warning btn-md text-uppercase" href="/blog/categoria/backend/" role="button">Backend</a></p>
+</div>
+<img src="https://dc722jrlp2zu8.cloudfront.net/media/featured_images/tutorial-django-02_41FRCV2.jpg" alt="cover" class="webfeedsFeaturedVisual">
+</header><!-- /.big-header -->
+<script>header=document.getElementById('main-header');if(!header.className){if(header.getElementsByClassName("btn-rosa").length){header.className='regular-header';}else{header.className+=' simple-header';}}</script>
+<main>
+<div class="extra-header">
+<div class="container center-flex">
+<a class="back-link" href="/blog/?ref=post">
+<img src="https://dc722jrlp2zu8.cloudfront.net/static/img/shape.svg" alt="back-arrow"/>
+Blog
+</a>
+<div class="user">
+<img src="https://dc722jrlp2zu8.cloudfront.net/media/avatars/jose56/resized/40/image_ue0qEuU.jpg" class="img-circle img-responsive user-photo" alt="Autor">
+<div>
+<span class="author">José Plana</span>
+<br>
+<span class="published-at">22 January 2015</span>
+</div>
+</div>
+<div class="share">
+<ul class="social">
+<li class="hidden-xs"><a target="_blank" href="https://www.facebook.com/dialog/feed?app_id=618927021547911&display=popup&caption=Tutorial%20de%20Django%3A%20C%C3%B3mo%20usar%20Git%20y%20Bootstrap%20con%20Django.&link=https%3A//openwebinars.net/blog/tutorial-de-django-como-usar-git-bootstrap-con-django/&redirect_uri=https%3A//openwebinars.net/blog/tutorial-de-django-como-usar-git-bootstrap-con-django/" class="btn btn-warning btn-outline btn-circle"><i class="fa fa-facebook"></i></a></li>
+<li class="hidden-xs"><a target="_blank" href="https://twitter.com/intent/tweet?text=Tutorial%20de%20Django%3A%20C%C3%B3mo%20usar%20Git%20y%20Bootstrap%20con%20Django.&url=https%3A//openwebinars.net/blog/tutorial-de-django-como-usar-git-bootstrap-con-django/&via=openwebinarsnet" class="btn btn-warning btn-outline btn-circle"><i class="fa fa-twitter"></i></a></li>
+<li class="hidden-xs"><a target="_blank" href="https://www.linkedin.com/shareArticle?url=https%3A//openwebinars.net/blog/tutorial-de-django-como-usar-git-bootstrap-con-django/&mini=true&title=Tutorial%20de%20Django%3A%20C%C3%B3mo%20usar%20Git%20y%20Bootstrap%20con%20Django.&source=OpenWebinars.net&summary=Veremos%20c%C3%B3mo%20usar%20el%20control%20de%20versiones%20para%20poder%20recuperar%20el%20proyecto%20en%20un%20estado%20anterior.%20Adem%C3%A1s%2C%20implementamos%20Bootstrap%20para%20mejorar%20el%20aspecto%20del%20proyecto." class="btn btn-warning btn-outline btn-circle"><i class="fa fa-linkedin"></i></a></li>
+<li class="hidden-xs"><a target="_blank" href="mailto:?subject=Tutorial%20de%20Django%3A%20C%C3%B3mo%20usar%20Git%20y%20Bootstrap%20con%20Django.&body=https%3A//openwebinars.net/blog/tutorial-de-django-como-usar-git-bootstrap-con-django/" class="btn btn-warning btn-outline btn-circle"><i class="fa fa-envelope"></i></a></li>
+<li class="visible-xs-inline-block">
+<button class="btn btn-warning btn-outline btn-circle dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-share-alt"></i></button>
+<ul class="dropdown-menu">
+<li><a target="_blank" href="https://www.facebook.com/dialog/feed?app_id=618927021547911&display=popup&caption=Tutorial%20de%20Django%3A%20C%C3%B3mo%20usar%20Git%20y%20Bootstrap%20con%20Django.&link=https%3A//openwebinars.net/blog/tutorial-de-django-como-usar-git-bootstrap-con-django/&redirect_uri=https%3A//openwebinars.net/blog/tutorial-de-django-como-usar-git-bootstrap-con-django/" class="btn btn-default"><i class="fa fa-facebook"></i> facebook</a></li>
+<li><a target="_blank" href="https://twitter.com/intent/tweet?text=Tutorial%20de%20Django%3A%20C%C3%B3mo%20usar%20Git%20y%20Bootstrap%20con%20Django.&url=https%3A//openwebinars.net/blog/tutorial-de-django-como-usar-git-bootstrap-con-django/&via=openwebinarsnet" class="btn btn-default"><i class="fa fa-twitter"></i> twitter</a></li>
+<li><a target="_blank" href="https://www.linkedin.com/shareArticle?url=https%3A//openwebinars.net/blog/tutorial-de-django-como-usar-git-bootstrap-con-django/&mini=true&title=Tutorial%20de%20Django%3A%20C%C3%B3mo%20usar%20Git%20y%20Bootstrap%20con%20Django.&source=OpenWebinars.net&summary=Veremos%20c%C3%B3mo%20usar%20el%20control%20de%20versiones%20para%20poder%20recuperar%20el%20proyecto%20en%20un%20estado%20anterior.%20Adem%C3%A1s%2C%20implementamos%20Bootstrap%20para%20mejorar%20el%20aspecto%20del%20proyecto." class="btn btn-default"><i class="fa fa-linkedin"></i> linkedin</a></li>
+<li><a target="_blank" href="mailto:?subject=Tutorial%20de%20Django%3A%20C%C3%B3mo%20usar%20Git%20y%20Bootstrap%20con%20Django.&body=https%3A//openwebinars.net/blog/tutorial-de-django-como-usar-git-bootstrap-con-django/" class="btn btn-default"><i class="fa fa-envelope"></i> correo</a></li>
+</ul>
+</li>
+<li><a href="#disqussion" class="btn btn-warning btn-outline btn-md"><i class="fa fa-comments-o"></i> 1</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="container">
+<section class="row post">
+<div class="col-xl-8 col-xl-offset-2 col-lg-10 col-lg-offset-1 col-md-12">
+<article class="post-content" data-tags='["bootstrap","python","tutorial","programacion"]'>
+<html>
+<body>
+<p>
+Continuando con nuestro álbum de fotos, y ahora que el proyecto va tomando forma, es buena idea empezar a usar un
+<strong>
+control de versiones
+</strong>
+de forma que queden reflejados los cambios que vamos haciendo, así podremos recuperar el proyecto en un estado anterior y tendremos control sobre las
+fechas en que se hicieron modificaciones, entre otras cosas. Además, aunque en nuestro caso sólo trabajamos nosotros en el álbum, en caso de formar
+parte de un equipo de desarrollo tendríamos la posibilidad de trabajar de forma independiente sobre los mismos ficheros sin pisar el trabajo de
+nuestros compañeros.
+</p>
+<p>
+Tenemos a nuestra disposición distintas herramientas que nos permiten trabajar de esta forma, en nuestro caso usaremos
+<strong>
+<a href="http://git-scm.com/book/es/v1/Empezando-Instalando-Git" target="_blank">
+Git
+</a>
+</strong>
+, así podemos trabajar en un repositorio propio y
+una vez tengamos los cambios hechos, hacer push de nuestro repositorio a un repositorio compartido.
+</p>
+<p>
+Lo primero que vamos a hacer es
+<strong>
+crear un repositorio local
+</strong>
+, en el que incluiremos nuestro proyecto con el comando
+<strong>
+git init
+</strong>
+.
+</p>
+<pre class="”prettyprint”">(tutorial)openwebinars@~/aplicaciones/myapps: git init
+Initialized empty Git repository in /home/jose/aplicaciones/myapps/.git/
+(tutorial)openwebinars@~/aplicaciones/myapps:
+</pre>
+<p>
+Vemos que se ha creado un nuevo directorio
+<strong>
+.git
+</strong>
+.
+</p>
+<p>
+Para ver el estado actual de nuestro repositorio usaremos
+<strong>
+git status
+</strong>
+; es conveniente revisar el estado de nuestro proyecto para tener identificados qué ficheros se han añadido para la siguiente subida al repositorio común.
+</p>
+<pre class="”prettyprint”">(tutorial)openwebinars@~/aplicaciones/myapps: git status
+En la rama master
+
+Commit inicial
+
+Archivos sin seguimiento:
+  (use «git add &lt;archivo&gt;...» para incluir lo que se ha de ejecutar)
+
+	.idea/
+	album/
+	db.sqlite3
+	manage.py
+	media/
+	myapps/
+	templates/
+
+no se ha agregado nada al commit pero existen archivos sin seguimiento (use «git add» para darle seguimiento)
+(tutorial)openwebinars@~/aplicaciones/myapps:
+</pre>
+<p>
+Se ha creado una
+<strong>
+rama de trabajo llamada master
+</strong>
+, además git ha identificado todos los archivos que forman nuestro proyecto y nos
+informa de que no se han incluido para el siguiente commit. Para
+<strong>
+incluir los archivos
+</strong>
+usaremos el comando
+<strong>
+git add &lt;nombre&gt; o git add
+</strong>
+. Para incluir todo, pero antes vamos a ver si queremos compartir todo lo que hay en el directorio,
+por ejemplo en nuestro proyecto tenemos muchos ficheros del tipo *.pyc que no queremos subir, tampoco queremos subir las
+fotos ni la base de datos, de esta forma al repositorio llegarán copias limpias de nuestro proyecto. Para
+<strong>
+descartar
+</strong>
+este tipo de ficheros usamos un archivo
+<strong>
+.gitignore
+</strong>
+en el que podemos decir qué debe dejar sin seguimiento.
+</p>
+<pre class="”prettyprint”">(tutorial)openwebinars@~/aplicaciones/myapps: cat .gitignore
+*.jpg
+*.pyc
+.idea
+db.sqlite3
+(tutorial)openwebinars@~/aplicaciones/myapps:
+</pre>
+<p>
+Si volvemos a consultar el estado
+</p>
+<pre class="”prettyprint”">(tutorial)openwebinars@~/aplicaciones/myapps: git status
+En la rama master
+
+Commit inicial
+
+Archivos sin seguimiento:
+  (use «git add &lt;archivo&gt;...» para incluir lo que se ha de ejecutar)
+
+	.gitignore
+	album/
+	manage.py
+	myapps/
+	templates/
+
+no se ha agregado nada al commit pero existen archivos sin seguimiento (use «git add» para darle seguimiento)
+(tutorial)openwebinars@~/aplicaciones/myapps: 
+</pre>
+<p>
+Vemos que ya no está incluido el archivo db.sqlite3, tampoco estarán dentro de los directorios los ficheros .pyc y .jpg.
+</p>
+<p>
+Ahora ya podemos decir a Git que inicie el seguimiento de los ficheros de nuestro proyecto.
+</p>
+<pre class="”prettyprint”">(tutorial)openwebinars@~/aplicaciones/myapps: git add .
+(tutorial)openwebinars@~/aplicaciones/myapps: git status
+En la rama master
+
+Commit inicial
+
+Cambios para hacer commit:
+  (use «git rm --cached &lt;archivo&gt;...« para eliminar stage)
+
+	new file:   .gitignore
+	new file:   album/__init__.py
+	new file:   album/admin.py
+	new file:   album/migrations/0001_initial.py
+	new file:   album/migrations/__init__.py
+	new file:   album/models.py
+	new file:   album/templates/album/category_detail.html
+	new file:   album/templates/album/category_list.html
+	new file:   album/templates/album/photo_confirm_delete.html
+	new file:   album/templates/album/photo_detail.html
+	new file:   album/templates/album/photo_form.html
+	new file:   album/templates/album/photo_list.html
+	new file:   album/tests.py
+	new file:   album/urls.py
+	new file:   album/views.py
+	new file:   manage.py
+	new file:   myapps/__init__.py
+	new file:   myapps/settings.py
+	new file:   myapps/urls.py
+	new file:   myapps/wsgi.py
+	new file:   templates/base.html
+
+(tutorial)openwebinars@~/aplicaciones/myapps:
+</pre>
+<p>
+Aquí podemos ver qué ficheros se han incluido en el
+<strong>
+primer commit
+</strong>
+que podemos ejecutar con el comando
+<strong>
+git commit -m "Initial commit"
+</strong>
+.
+</p>
+<pre class="”prettyprint”">(tutorial)openwebinars@~/aplicaciones/myapps: git commit -m "Initial commit"
+[master (root-commit) e300e4a] Initial commit
+ 21 files changed, 439 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 album/__init__.py
+ create mode 100644 album/admin.py
+ create mode 100644 album/migrations/0001_initial.py
+ create mode 100644 album/migrations/__init__.py
+ create mode 100644 album/models.py
+ create mode 100644 album/templates/album/category_detail.html
+ create mode 100644 album/templates/album/category_list.html
+ create mode 100644 album/templates/album/photo_confirm_delete.html
+ create mode 100644 album/templates/album/photo_detail.html
+ create mode 100644 album/templates/album/photo_form.html
+ create mode 100644 album/templates/album/photo_list.html
+ create mode 100644 album/tests.py
+ create mode 100644 album/urls.py
+ create mode 100644 album/views.py
+ create mode 100755 manage.py
+ create mode 100644 myapps/__init__.py
+ create mode 100644 myapps/settings.py
+ create mode 100644 myapps/urls.py
+ create mode 100644 myapps/wsgi.py
+ create mode 100644 templates/base.html
+(tutorial)openwebinars@~/aplicaciones/myapps:
+</pre>
+<p>
+Ahora que hemos hecho el primer commit en nuestro repositorio local podemos pasar nuestro proyecto a un
+<strong>
+repositorio compartido
+</strong>
+.
+En este capítulo usaremos
+<strong>
+<a href="https://github.com/" target="_blank">
+GitHub
+</a>
+</strong>
+para gestionar nuestro repositorio remoto. Una vez hayamos creado nuestra cuenta en GitHub veremos la opción
+<strong>
+Create Repository
+</strong>
+, nosotros lo hemos nombrado como
+<strong>
+my_album
+</strong>
+por lo que GitHub asigna la dirección https://github.com/
+<strong>
+usuario
+</strong>
+/my_album.git, donde usuario será el nombre de usuario de nuestra cuenta GitHub. Con el siguiente comando podemos
+<strong>
+crear un repositorio remoto
+</strong>
+, que normalmente se llama
+<strong>
+origin
+</strong>
+, asociado a esta dirección.
+</p>
+<pre class="”prettyprint”">(tutorial)openwebinars@~/aplicaciones/myapps: git remote add origin https://github.com/usuario/my_album.git
+(tutorial)openwebinars@~/aplicaciones/myapps:
+</pre>
+<p>
+Ya podemos
+<strong>
+enviar nuestro repositorio local al repositorio remoto
+</strong>
+, origin, que acabamos de crear.
+</p>
+<pre class="”prettyprint”">(tutorial)openwebinars@~/aplicaciones/myapps: git push -u origin master
+Username for 'https://github.com': usuario
+Password for 'https://usuario@github.com': *******
+Counting objects: 27, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (23/23), done.
+Writing objects: 100% (27/27), 6.03 KiB | 0 bytes/s, done.
+Total 27 (delta 1), reused 0 (delta 0)
+To https://github.com/usuario/my_album.git
+ * [new branch]      master -&gt; master
+Branch master set up to track remote branch master from origin.
+(tutorial)openwebinars@~/aplicaciones/myapps: 
+</pre>
+<p>
+Con este comando estamos diciendo que pase el contenido de la rama local, que por defecto Git llama máster al repositorio origin que hemos creado,
+el parámetro -u le dice a Git que recuerde estos dos nombres, por lo que la próxima vez sólo tendremos que usar
+<strong>
+git push
+</strong>
+y ya sabrá que tiene que pasar el contenido de master a origin. Si volvemos a la dirección https://github.com/usuario/my_album.git veremos el contenido de nuestro proyecto.
+</p>
+<p>
+Ahora que ya tenemos nuestro repositorio remoto, volvamos a trabajar sobre la copia local que tenemos.
+</p>
+<p>
+Aunque en el capítulo anterior vimos cómo mejorar el aspecto de nuestra aplicación, en esta ocasión vamos a ir un paso más allá y vamos a usar
+<strong>
+<a href="http://getbootstrap.com/getting-started/" target="_blank">
+Bootstrap
+</a>
+</strong>
+, que aparte de ofrecernos un diseño preestablecido es
+<strong>
+web responsive
+</strong>
+, es decir veremos cómo podemos
+hacer que nuestra aplicación mantenga un buen aspecto independientemente del dispositivo que estemos usando para verla. Lo primero que tenemos que
+hacer es indicar a nuestra aplicación que tiene que cargar Bootstrap, para hacerlo podemos descargarlo e incluirlo en nuestro proyecto o simplemente
+<strong>
+referenciar al CDN
+</strong>
+, esto último es lo que haremos nosotros. Editamos el fichero
+<strong>
+./templates/base.html
+</strong>
+para dejarlo
+de la siguiente forma.
+</p>
+<pre class="”prettyprint”">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head lang="en"&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Album&lt;/title&gt;
+    &lt;!-- CDN Bootstrap --&gt;
+    &lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"&gt;
+    &lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"&gt;
+    &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"&gt;&lt;/script&gt;
+    &lt;script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- NavBar --&gt;
+    &lt;nav class="navbar navbar-default"&gt;
+        &lt;div class="container-fluid"&gt;
+
+            &lt;div class="navbar-header"&gt;
+                &lt;button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"&gt;
+                    &lt;span class="sr-only"&gt;Toggle navigation&lt;/span&gt;
+                    &lt;span class="icon-bar"&gt;&lt;/span&gt;
+                    &lt;span class="icon-bar"&gt;&lt;/span&gt;
+                    &lt;span class="icon-bar"&gt;&lt;/span&gt;
+                &lt;/button&gt;
+                &lt;a class="navbar-brand" href="{% url "base" %}"&gt;Album&lt;/a&gt;
+            &lt;/div&gt;
+
+            &lt;div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"&gt;
+                &lt;ul class="nav navbar-nav"&gt;
+                    &lt;li&gt;&lt;a href="{% url "category-list" %}"&gt;Category&lt;span class="sr-only"&gt;(current)&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="{% url "photo-list" %}"&gt;Photo&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;ul class="nav navbar-nav navbar-right"&gt;
+                    &lt;li class="dropdown"&gt;
+                        &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"&gt;Action
+                            &lt;span class="caret"&gt;&lt;/span&gt;
+                        &lt;/a&gt;
+                        &lt;ul class="dropdown-menu" role="menu"&gt;
+                            &lt;li&gt;&lt;a href="{% url "photo-create" %}"&gt;Upload&lt;/a&gt;&lt;/li&gt;
+                            &lt;li class="divider"&gt;&lt;/li&gt;
+                            &lt;li&gt;&lt;a href="#"&gt;Log In&lt;/a&gt;&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/nav&gt;
+
+    &lt;div class="container"&gt;
+        {% block section %}
+        {% endblock section %}
+    &lt;/div&gt;
+    &lt;div class="container"&gt;
+        {% block maincontent %}
+        {% endblock maincontent %}
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>
+También hemos añadido una
+<strong>
+<a href="http://getbootstrap.com/components/#navbar" target="_blank">
+barra de navegación
+</a>
+</strong>
+como menú
+principal, que está bajo el comentario
+<strong>
+&lt;!-- NavBar --&gt;
+</strong>
+. Vemos que las etiquetas que estábamos usando hasta ahora tienen
+<strong>
+clases
+</strong>
+del tipo
+<strong>
+collapse o navbar-header
+</strong>
+, éstas son clases
+<strong>
+propias de Bootstrap
+</strong>
+. Si refrescamos
+nuestra aplicación en el navegador veremos que ha cambiado la fuente, el color del texto y nuestro menú principal.
+</p>
+<span>
+<img alt="Imagen 0 en Tutorial de Django: Cómo usar Git y Bootstrap con Django." height="317" src="/media/django-summernote/2015-01-22/2bc89233-ecff-44b4-bc94-b560dd4a4e84.png.pagespeed.ce.CBgrRxLbSI.png" style="width: 1198px;" width="1215"/>
+</span>
+<p>
+Para ver con más detalle lo que nos ofrece Bootstrap vamos a
+<strong>
+construir nuestra plantilla de fotos
+./album/templates/photo_list.html
+</strong>
+. Partimos de esta plantilla
+</p>
+<pre class="”prettyprint”">{% extends 'base.html' %}
+
+{% load static %}
+
+{% block section %}
+    &lt;h2&gt;Photo&lt;/h2&gt;
+    &lt;hr&gt;
+{% endblock section %}
+
+{% block maincontent %}
+    {{ object_list }}
+{% endblock maincontent %}
+</pre>
+<p>
+y sobre ella vamos a incluir el
+<strong>
+sistema de
+<a href="http://getbootstrap.com/css/#grid" target="_blank">
+grid
+</a>
+de Bootstrap
+</strong>
+para dejarla así.
+</p>
+<pre class="”prettyprint”">{% extends 'base.html' %}
+
+{% load static %}
+
+{% block section %}
+    &lt;h2&gt;Photo&lt;/h2&gt;
+    &lt;hr&gt;
+{% endblock section %}
+
+{% block maincontent %}
+    &lt;div class="row well"&gt;
+        &lt;div class="col-md-6 well"&gt;
+            {{ object_list }}
+        &lt;/div&gt;
+    &lt;/div&gt;
+{% endblock maincontent %}
+</pre>
+<p>
+Aquí lo
+<strong>
+importante
+</strong>
+está en las etiquetas div, vemos
+<strong>
+tres tipos de clases
+</strong>
+, row, col-md-6 y well.
+</p>
+<p>
+</p>
+<li>
+<strong>
+row:
+</strong>
+Siempre tiene que estar incluida en una
+<strong>
+clase container
+</strong>
+, en nuestro caso en ./templates/base.html. Se usa
+para
+<strong>
+organizar grupos de columnas
+</strong>
+.
+</li>
+<li>
+<strong>
+col-md-6:
+</strong>
+Con esta clase creamos una
+<strong>
+columna (col-)
+</strong>
+, adaptada a terminales
+<strong>
+medianos (col-md-)
+</strong>
+,
+de
+<strong>
+tamaño 6 (col-md-6)
+</strong>
+; debemos saber que Bootstrap divide el terminal en
+<strong>
+doce unidades
+</strong>
+, por tanto nuestra columna
+ocupará la mitad del terminal siempre que este sea mediano o grande, en terminales pequeños como tablets o móviles ocupará el total del terminal. De
+igual forma podríamos incluir una columna de dos unidades, adaptada a terminales pequeños y separada una unidad del margen izquierdo agrupando las
+clases .col-xs-2 y .col-xs-offset-1 o usar columnas de tamaño 3 para terminales medianos y tamaño 7 para terminales pequeños agrupando
+.col-sm-7 .col-md-3
+</li>
+<li>
+<strong>
+well:
+</strong>
+Simplemente pone el fondo de nuestras etiquetas div en un tono más oscuro.
+</li>
+<p>
+</p>
+<p>
+Para verlo en acción solo tenemos que refrescar la pantalla y veremos esto en nuestro portátil.
+</p>
+<span>
+<img alt="Imagen 1 en Tutorial de Django: Cómo usar Git y Bootstrap con Django." height="383" src="/media/django-summernote/2015-01-22/a8c86fe2-7bd3-4640-a17d-3fe9ae87e563.png.pagespeed.ce.Vwq8HKVPc-.png" style="width: 1198px;" width="1215"/>
+</span>
+<p>
+Vemos que la columna ocupa la mitad del espacio de la fila que la contiene, y nuestro menú aparece tal y como lo dejamos.
+</p>
+<p>
+Esto sería lo que veríamos en un
+<strong>
+móvil
+</strong>
+</p>
+<span>
+<img alt="Imagen 2 en Tutorial de Django: Cómo usar Git y Bootstrap con Django." height="649" src="/media/django-summernote/2015-01-22/9353cf63-efe7-42b9-979d-32c3688b2820.png" style="width: 649px;" width="649"/>
+</span>
+<p>
+Ahora vemos que la columna ocupa
+<strong>
+todo el espacio dentro de la fila
+</strong>
+, además el menú ha cambiado, como no hay espacio suficiente
+para mostrar todas las opciones con claridad ahora aparece un
+<strong>
+desplegable a la derecha
+</strong>
+.
+</p>
+<p>
+Con esto podemos dejar la lista de fotos de nuestro álbum de la siguiente forma.
+</p>
+<pre class="”prettyprint”">{% extends 'base.html' %}
+
+{% load static %}
+
+{% block section %}
+    &lt;h2&gt;Photo&lt;/h2&gt;
+    &lt;hr&gt;
+{% endblock section %}
+
+{% block maincontent %}
+    &lt;div class="row well"&gt;
+        {% for p in object_list.all %}
+            &lt;div class="col-md-4 well"&gt;
+                &lt;div class="panel panel-primary"&gt;
+                    &lt;div class="panel-heading"&gt;
+                        &lt;h3 class="panel-title"&gt;{{ p.title }}&lt;/h3&gt;
+                    &lt;/div&gt;
+                    &lt;div class="panel-body"&gt;
+                        &lt;a href="{% url "photo-detail" p.id %}"&gt;
+                            &lt;img src="{% static p.photo.url %}" style="width:200px;height:200px;"/&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                    &lt;div class="panel-footer"&gt;
+                        {% if p.comment %}
+                            {{ p.comment }}
+                        {% else %}
+                            &lt;a href="{% url "photo-update" p.id %}"&gt;edit comments&lt;/a&gt;
+                        {% endif %}
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        {% endfor %}
+    &lt;/div&gt;
+{% endblock maincontent %}
+</pre>
+<p>
+Donde también hemos usado
+<strong>
+<a href="http://getbootstrap.com/components/#panels" target="_blank">
+Panels
+</a>
+</strong>
+, uno de los componentes de Bootstrap.
+</p>
+<span>
+<img alt="Imagen 3 en Tutorial de Django: Cómo usar Git y Bootstrap con Django." height="747" src="/media/django-summernote/2015-01-22/f6202ab6-a703-4721-906a-a5e25b9dca08.png" style="width: 1195px;" width="1195"/>
+</span>
+<p>
+Como habéis podido ver, este framework nos está facilitando mucho las cosas y hay que tener en cuenta que lo que hemos visto es una mínima parte
+de lo que nos ofrece, os animo a que lo exploréis a fondo.
+</p>
+<p>
+Con esto podemos ver los cambios que tiene Git identificados respecto a la última versión que tenemos en el repositorio local.
+</p>
+<pre class="”prettyprint”">(tutorial)openwebinars@~/aplicaciones/myapps: git status
+En la rama master
+Your branch is up-to-date with 'origin/master'.
+
+Cambios no preparados para el commit:
+  (use «git add &lt;archivo&gt;...» para actualizar lo que se ejecutará)
+  (use «git checkout -- &lt;archivo&gt;...« para descartar cambios en le directorio de trabajo)
+
+	modificado: album/templates/album/photo_list.html
+	modificado: templates/base.html
+
+no hay cambios agregados al commit (use «git add» o «git commit -a»)
+(tutorial)openwebinars@~/aplicaciones/myapps: 
+</pre>
+<p>
+Los añadimos para el
+<strong>
+siguiente commit
+</strong>
+, hacemos commit y lo volcamos al repositorio remoto.
+</p>
+<pre class="”prettyprint”">(tutorial)openwebinars@~/aplicaciones/myapps: git add .
+(tutorial)openwebinars@~/aplicaciones/myapps: git commit -m "Bootstrap"
+[master 77dadc0] Bootstrap
+ 2 files changed, 75 insertions(+), 44 deletions(-)
+ rewrite album/templates/album/photo_list.html (79%)
+(tutorial)openwebinars@~/aplicaciones/myapps: git push -u origin master
+Username for 'https://github.com': usuario
+Password for 'https://usuario@github.com': 
+Counting objects: 15, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (8/8), 1.45 KiB | 0 bytes/s, done.
+Total 8 (delta 4), reused 0 (delta 0)
+To https://github.com/usuario/my_album.git
+   e300e4a..77dadc0  master -&gt; master
+Branch master set up to track remote branch master from origin.
+(tutorial)openwebinars@~/aplicaciones/myapps:
+</pre>
+<p>
+y podemos ver los cambios incluidos en el repositorio remoto.
+</p>
+<span>
+<img alt="Imagen 4 en Tutorial de Django: Cómo usar Git y Bootstrap con Django." height="642" src="/media/django-summernote/2015-01-22/369291b7-0b69-4996-9c84-a7737d9f979a.png" style="width: 1197px;" width="1197"/>
+</span>
+<p>
+Hasta aquí hemos dado una vuelta por lo más básico de Bootstrap y Git, pero queda mucho para investigar y mejorar vuestro álbum experimentando.
+</p>
+<p>
+En el siguiente post veremos cómo mejorarlo aun más usando el trabajo de la comunidad Django.
+</p>
+<h2 style="text-align: center;">
+<br/>
+</h2>
+<h2 style="text-align: center;">
+Descargar Tutorial en PDF de Django
+</h2>
+<div style="text-align: center;">
+Compártelo con los botones sociales que aparecen a continuación y podrás descargar el tutorial de Django
+</div>
+<div style="text-align: center;">
+<br/>
+</div>
+<div class="to-lock" style="background-color: rgb(35, 25, 87); padding: 1em; border: 3px dashed white; color: white;">
+<h3 style="text-align: center;">
+¡Gracias! Ya tienes tu tutorial, déjanos tu email para enviártelo.
+</h3>
+<form action="/suscribe/mailchimp" id="form-pdf" method="post" style="text-align: center; ">
+<input class="form-control" name="email" placeholder="dirección de email" required style="width:60%; margin-right:12px; display:inline;" type="email"/>
+<input name="pdf" type="hidden" value="django"/>
+<input class="btn btn-lg btn-warning" type="submit" value="Recibir tutorial Django"/>
+</form>
+</div>
+<h3>
+<br/>
+</h3>
+</body>
+</html>
+</article>
+<div class="row">
+<div class="jumbotron text-dark col-lg-10 col-lg-offset-1 text-center">
+<h2 class=''>Descargar Tutorial de Django 1.7 en formato PDF</h2>
+<h4 class='m-t-md m-b-sm'>Déjanos tu nombre y tu correo electrónico para enviártelo</h4>
+<form id="form-pdf" action="/blog/suscribe/newsletter" method="post">
+<input type='hidden' name='csrfmiddlewaretoken' value='lJLzXnsiWIqXkC02LLAauVmTZdVlv1XX75NybqcY5d7WlTQbehUbDg7nGpBnNuR0'/>
+<input type='text' name='first_name' id='id_first_name' class='form-control' style='width:20%; display: inline' placeholder='Tu nombre' required />
+<input class="form-control" style="width:40%; margin-right:12px; display:inline;" type="email" name="email" placeholder="Dirección de email" required>
+<input type="hidden" name="pdf" value="tutorial-de-django-como-usar-git-bootstrap-con-django">
+<input class="btn btn-warning text-uppercase font-bold" type="submit" value="Recibir PDF">
+</form>
+</div>
+</div>
+<div class="hr-separator"></div>
+<div id="disqussion" class="ibox-content forum-post-container">
+<div class="forum-post-info lead">
+1 Comentarios - <span class="text-muted">Únete a la conversación</span>
+</div>
+<div class="text-center">
+<a href="/accounts/login/?next=/blog/tutorial-de-django-como-usar-git-bootstrap-con-django/" class="btn btn-lg btn-warning">Inicia sesión para comentar</a>
+</div>
+<div class="dynamic">
+<div class="middle-box h-200 loading">
+<div class="sk-three-bounce">
+<div class="sk-child sk-bounce1"></div>
+<div class="sk-child sk-bounce2"></div>
+<div class="sk-child sk-bounce3"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<section class="row final banner">
+<div class="col-md-6 col-md-offset-1 col-lg-5 col-lg-offset-2 col-xl-4 col-xl-offset-3">
+<h2>Prueba 7 días gratis</h2>
+<h3>acceso completo y sin compromisos</h3>
+</div>
+<div class="col-md-4 col-md-offset-1">
+<a class="btn btn-primary btn-rosa btn-lg btn-trial" href="/precios/" role="button">Comenzar 7 días gratis</a>
+</div>
+</section>
+</main>
+<button id="notification-button" class="btn btn-warning"><i class="fa fa-bell animated infinite swing"></i></button>
+<footer class="container">
+<div class="row">
+<div class="col-md-5 col-sm-7 logos">
+<img src="https://dc722jrlp2zu8.cloudfront.net/static/img/logos/logo.svg" width="124" height="20" layout="fixed" alt="Cursos Online de Programación y Sistemas con OpenWebinars" class="logo svg">
+<a href="https://mixpanel.com/f/partner" rel="nofollow"><img src="https://dc722jrlp2zu8.cloudfront.net/static/img/logos/mixpanel.png" width="114" height="36" layout="fixed" alt="Mobile Analytics"></a>
+<a href="https://www.enisa.es" rel="nofollow"><img src="https://dc722jrlp2zu8.cloudfront.net/static/img/logos/enisa.png" width="76" height="60" layout="fixed" alt="Impulso financiero a la PYME"></a>
+</div>
+<div class="col-md-7 col-sm-5 sections">
+<ul class="links">
+<li><a href="/empresas/">Empresas</a></li>
+<li><a href="/precios/">Precios</a></li>
+<li><a href="/cursos/">Cursos</a></li>
+<li><a href="/profesores/">Profesores</a></li>
+<li><a href="/blog/">Blog</a></li>
+<li><a href="/contacto/">Contactar</a></li>
+<li><a href="/aviso-legal-terminos-condiciones/">Aviso legal y condiciones</a></li>
+<li><a href="/aviso-legal-cookies/">Cookies</a></li>
+</ul>
+</div>
+</div>
+<div class="row">
+<div class="col-xs-8">
+<p>
+<i class="glyphicon glyphicon-map-marker"></i> Avenida República Argentina, 26. 41011 Sevilla. +34 954 002 382 &copy; 2017.
+</p>
+</div>
+<div class="col-xs-4 text-right">
+<ul class="social">
+<li><a href="https://www.facebook.com/openwebinars" target="_blank" class="btn btn-default btn-circle"><i class="fa fa-facebook"></i></a></li>
+<li><a href="https://twitter.com/openwebinarsnet" target="_blank" class="btn btn-default btn-circle"><i class="fa fa-twitter"></i></a></li>
+<li><a href="https://www.instagram.com/openwebinarsnet" target="_blank" class="btn btn-default btn-circle"><i class="fa fa-instagram"></i></a></li>
+<li><a href="https://es.linkedin.com/company/openwebinars-net" target="_blank" class="btn btn-default btn-circle"><i class="fa fa-linkedin"></i></a></li>
+</ul>
+</div>
+</div>
+</footer>
+<!-- Bootstrap core JavaScript
+  ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script defer src="https://dc722jrlp2zu8.cloudfront.net/static/jquery/dist/jquery.min.js"></script>
+<script defer src="https://dc722jrlp2zu8.cloudfront.net/static/bootstrap/dist/js/bootstrap.min.js"></script>
+<script defer src="https://dc722jrlp2zu8.cloudfront.net/static/sweetalert2/dist/sweetalert2.min.js"></script>
+<script defer src="https://dc722jrlp2zu8.cloudfront.net/static/cookielaw/js/cookielaw.js"></script>
+<script defer src="https://dc722jrlp2zu8.cloudfront.net/static/toastr/toastr.min.js"></script>
+<!-- Notifications System -->
+<script src="https://dc722jrlp2zu8.cloudfront.net/static/js/notify.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/es6-promise/4.1.0/es6-promise.auto.min.js" charset="utf-8"></script>
+<script id="twitter-wjs" async src="//platform.twitter.com/widgets.js"></script>
+<script src="//platform.twitter.com/oct.js" defer></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment-with-locales.min.js" defer></script>
+<script defer src="https://dc722jrlp2zu8.cloudfront.net/static/js/jquery.countdown.min.js"></script>
+<script src="//openwebinars.net/static/js/devicepush.js,qv1.pagespeed.jm.EzVUacRnUr.js" defer></script>
+<script>var additionaldata={version:"b8f6db2",userid:"",name:"",userlanguage:navigator.language||'',purchases:"0",role:'visitor',active_subscription:false,active_plan:'',};</script>
+<!-- Facebook Pixel Events -->
+<script>window.setTimeout(function(){fbq('track','ViewContent',{content_name:'Tutorial de Django: Cómo usar Git y Bootstrap con Django.',content_category:'Post'});},5000)</script>
+<!-- End Facebook Pixel Events -->
+<script>function localStorageSupport(){return(('localStorage'in window)&&window['localStorage']!==null)}function sessionStorageSupport(){return(('sessionStorage'in window)&&window['sessionStorage']!==null)}</script>
+<script>var unread=0;var lnb=document.getElementById('live_notify_badge');if(lnb){lnb.style.display='hidden';}function process_notification_callback(data){rcvd=data.unread_list.length;if(rcvd){$('#live_notify_badge').addClass('badge-primary');}else{$('#live_notify_badge').removeClass('badge-primary animated flash').hide();}if(unread){if(rcvd>unread){$('#live_notify_badge').addClass('animated flash').show();if((rcvd-unread)>1){toastr['warning']('Tienes '+(rcvd-unread)+' mensajes nuevos')}else{toastr['warning']('Tienes '+(rcvd-unread)+' mensaje nuevo')}}else{$('#live_notify_badge').removeClass('animated flash');}}unread=data.unread_list.length;}function render_notification_list(data){}</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@type": "BlogPost",
+  "name": "Tutorial de Django: Cómo usar Git y Bootstrap con Django.",
+  "headline": "Tutorial de Django: Cómo usar Git y Bootstrap con Django.",
+  "author": {
+    "@type": "Person",
+    "name": "José Plana"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "OpenWebinars",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://dc722jrlp2zu8.cloudfront.net/static/img/logos/logo-openwebinars@60px.png",
+      "height": "27px",
+      "width": "170px"
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://static-media-ow.s3.amazonaws.com/media/featured_images/tutorial-django-02_41FRCV2.jpg",
+    "height": "600px",
+    "width": "1200px"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://openwebinars.net/blog/tutorial-de-django-como-usar-git-bootstrap-con-django/"
+  },
+  "datePublished": "2015-01-22T13:00:00+01:00",
+  "dateModified": "2017-06-02T14:25:22+02:00"
+}
+</script>
+<script src="https://dc722jrlp2zu8.cloudfront.net/static/js/push.js" defer></script>
+<script defer src="https://dc722jrlp2zu8.cloudfront.net/static/js/jquery.gifplayer.js"></script>
+<script defer src="https://dc722jrlp2zu8.cloudfront.net/static/js/bootstrap-markdown.js"></script>
+<script defer src="https://dc722jrlp2zu8.cloudfront.net/static/js/bootstrap-markdown.es.js"></script>
+<script defer src="//cdnjs.cloudflare.com/ajax/libs/showdown/1.5.0/showdown.min.js"></script>
+<script defer src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+<script>mixpanel.track_links(".button-post-free-course","Clicked Link: Button Post - Acceso Curso Gratis");mixpanel.track_links(".download-pdf-tutorial","Click Download PDF Link",function(ele){return{pdf:$(ele).data('pdf')}});</script>
+<script>if(window.ga){ga('send','event','view-post','category','backend');ga('send','event','view-post','category','programacion');ga('send','event','view-post','category','tutorial');ga('send','event','view-post','category','python');};</script>
+<script>var idx=window.location.href.indexOf("#")
+var hash=idx!=-1?window.location.href.substring(idx):"";function load_forum(){var converter=new showdown.Converter();$('.new-message button[data-provide="markdown-editable"]').on('click',function(){$(this).html('');var obj=$(this).parent().parent();setTimeout(function(){$(obj.find('.md-header')).prependTo(obj.find('.md-footer'));$(obj.find('.md-input')).attr('required','required');$('<h5>Escribe tu comentario</h5>').insertBefore(obj.find('textarea'));},50)});$('.new-message button[data-provide="markdown-editable"]').click();$("#disqussion .dynamic").load('/forum/discussion/930/',function(){$('template.markdown').each(function(){text=$(this).html();html=converter.makeHtml(text);$(this).after(html);$(this).parent().find('img').addClass('img-responsive center-block');});if(hash&&hash.length>1){var st=$(hash).offset().top;window.setTimeout(function(){$('html, body').animate({scrollTop:st-90},400);},1000);$(hash+'> .media-body > form> .forum-message').addClass('alert alert-info');}$('button[data-provide="markdown-editable"]').on('click',function(){$(this).html('');var obj=$(this).parent().parent();setTimeout(function(){$(obj.find('.md-header')).prependTo(obj.find('.md-footer'));$(obj.find('.md-input')).attr('required','required');$('<h5>Respuesta</h5>').insertBefore(obj.find('textarea'));},50)})
+$('.forum-post-container').on('click','button[data-handler="cmdSave"]',function(){form=$(this).parentsUntil('form','.md-editor').parent();if(form.find('textarea').val()){$(this).attr('disabled','disabled');form.find('textarea').attr('name','content');form.find('input[name="action"]').val('comment');form.submit();}else{return false;}});$('.forum-post-container a.btn-white').click(function(ev){ev.preventDefault();var obj=$(this);form=obj.parent();form.find('input[name="action"]').val(obj.attr('data-action'));$.ajax({type:'POST',url:form.attr('action'),data:form.serialize(),dataType:'json',success:function(response){if(response.action=='reload'){load_forum();}else if(response.action=='up'){obj.find('i').toggleClass('text-primary2 fa-thumbs-o-up fa-thumbs-up');obj.siblings('[data-action="down"]').find('i.text-danger').toggleClass('text-danger fa-thumbs-down fa-thumbs-o-down');}else if(response.action=='down'){obj.find('i').toggleClass('text-danger fa-thumbs-down fa-thumbs-o-down');obj.siblings('[data-action="up"]').find('i.text-primary2').toggleClass('text-primary2 fa-thumbs-o-up fa-thumbs-up');}else if(response.action=='favorite'){obj.find('i').toggleClass('text-primary fa-heart fa-heart-o');}else{swal(response.result,response.action,'success');}},});});$('.forum-post-container select').change(function(ev){var obj=$(this);form=obj.parent().parent();form.find('input[name="action"]').val(obj.val());$.ajax({type:'POST',url:form.attr('action'),data:form.serialize(),dataType:'json',success:function(response){swal(response.result,'Mensaje cambiado a '+response.action,'success');},});});})}</script>
+<script>function csrfSafeMethod(method){return(/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));}function nav_bg(force){jumbotron_outher_height=$('header').outerHeight()/3;nav_outher_height=$('.navbar-fixed-top').outerHeight();var bottom_of_object=$('header').position().top+Math.max(jumbotron_outher_height,100);var top_of_window=$(window).scrollTop();if(force||top_of_window+nav_outher_height>bottom_of_object){header_bg=$('header').css('background-image');$('.navbar-fixed-top').css('background-image',header_bg.slice(0,header_bg.indexOf(', url'))).addClass('openwebinars-nav');}else{$('.navbar-fixed-top').css('background-image','').removeClass('openwebinars-nav');}}document.addEventListener("DOMContentLoaded",function(event){$.ajaxSetup({crossDomain:false,beforeSend:function(xhr,settings){if(!csrfSafeMethod(settings.type)){xhr.setRequestHeader("X-CSRFToken",'lJLzXnsiWIqXkC02LLAauVmTZdVlv1XX75NybqcY5d7WlTQbehUbDg7nGpBnNuR0');}}});toastr.options={"closeButton":true,"debug":false,"preventDuplicates":true,"newestOnTop":true,"progressBar":false,"positionClass":"toast-bottom-right","onclick":null,"showDuration":"400","hideDuration":"1000","timeOut":"8000","extendedTimeOut":"4000","showEasing":"swing","hideEasing":"linear","showMethod":"fadeIn","hideMethod":"fadeOut"}
+$(window).scroll(function(){nav_bg();setTimeout(nav_bg,250)});nav_bg();$('#navbar').on('show.bs.collapse',function(){if(!$('.navbar-fixed-top').hasClass('openwebinars-nav')){header_bg=$('header').css('background-image');$('.navbar-fixed-top').css('background-image',header_bg.slice(0,header_bg.indexOf(', url')));}});$('#navbar').on('hidden.bs.collapse',function(){if(!$('.navbar-fixed-top').hasClass('openwebinars-nav')){$('.navbar-fixed-top').css('background-image','');}});$('pre').each(function(i,block){hljs.highlightBlock(block);});$('div[data-provide="markdown-editable"]').on('click',function(){$(this).html('');var obj=$(this).parent();setTimeout(function(){$(obj.find('.md-header')).prependTo(obj.find('.md-footer'));$('<h5>Deja un comentario</h5>').insertBefore(obj.find('textarea'));},50)});$('.forum-post-container').on('click','button[data-handler="cmdSave"]',function(){form=$(this).parentsUntil('form','.md-editor').parent();if(form.find('textarea').val()){$(this).attr('disabled','disabled');form.find('textarea').attr('name','content');form.find('input[name="action"]').val('comment');form.submit();}else{return false;}});$('.forum-post-container a.btn-white').click(function(ev){ev.preventDefault();var obj=$(this);form=obj.parent();form.find('input[name="action"]').val(obj.attr('data-action'));$.ajax({type:'POST',url:form.attr('action'),data:form.serialize(),dataType:'json',success:function(response){if(response.action=='reload'){load_forum();}else if(response.action=='up'){obj.find('i').toggleClass('text-primary2 fa-thumbs-o-up fa-thumbs-up');obj.siblings('[data-action="down"]').find('i.text-danger').toggleClass('text-danger fa-thumbs-down fa-thumbs-o-down');}else if(response.action=='down'){obj.find('i').toggleClass('text-danger fa-thumbs-down fa-thumbs-o-down');obj.siblings('[data-action="up"]').find('i.text-primary2').toggleClass('text-primary2 fa-thumbs-o-up fa-thumbs-up');}else if(response.action=='favorite'){obj.find('i').toggleClass('text-primary fa-heart fa-heart-o');}else{swal(response.result,response.action,'success');}},});});$('.gif-player').each(function(){var self=$(this);this.gp=new gifPlayer(self);});load_forum();})</script>
+<script data-pagespeed-no-defer>(function(){function f(b){var a=window;if(a.addEventListener)a.addEventListener("load",b,!1);else if(a.attachEvent)a.attachEvent("onload",b);else{var c=a.onload;a.onload=function(){b.call(this);c&&c.call(this)}}};window.pagespeed=window.pagespeed||{};var k=window.pagespeed;function l(b,a,c,g,h){this.h=b;this.i=a;this.l=c;this.j=g;this.b=h;this.c=[];this.a=0}l.prototype.f=function(b){for(var a=0;250>a&&this.a<this.b.length;++a,++this.a)try{null!=document.querySelector(this.b[this.a])&&this.c.push(this.b[this.a])}catch(c){}this.a<this.b.length?window.setTimeout(this.f.bind(this),0,b):b()};
+k.g=function(b,a,c,g,h){if(document.querySelector&&Function.prototype.bind){var d=new l(b,a,c,g,h);f(function(){window.setTimeout(function(){d.f(function(){for(var a="oh="+d.l+"&n="+d.j,a=a+"&cs=",b=0;b<d.c.length;++b){var c=0<b?",":"",c=c+encodeURIComponent(d.c[b]);if(131072<a.length+c.length)break;a+=c}k.criticalCssBeaconData=a;var b=d.h,c=d.i,e;if(window.XMLHttpRequest)e=new XMLHttpRequest;else if(window.ActiveXObject)try{e=new ActiveXObject("Msxml2.XMLHTTP")}catch(g){try{e=new ActiveXObject("Microsoft.XMLHTTP")}catch(h){}}e&&
+(e.open("POST",b+(-1==b.indexOf("?")?"?":"&")+"url="+encodeURIComponent(c)),e.setRequestHeader("Content-Type","application/x-www-form-urlencoded"),e.send(a))})},0)})}};k.criticalCssBeaconInit=k.g;})();
+pagespeed.selectors=["#main-header"];pagespeed.criticalCssBeaconInit('/ngx_pagespeed_beacon','https://openwebinars.net/blog/tutorial-de-django-como-usar-git-bootstrap-con-django/','FBRhDA_LF6','7F2F2NXRY9k',pagespeed.selectors);</script><noscript class="psa_add_styles"><style>#main-header{background-image:linear-gradient(291deg,rgba(17,23,103,.9),rgba(36,44,155,.85))!important;height:60vh!important;min-height:400px!important;max-height:500px!important}</style><link rel="stylesheet" href="https://dc722jrlp2zu8.cloudfront.net/static/toastr/toastr.min.css" type="text/css" charset="utf-8"/><link rel="stylesheet" href="https://dc722jrlp2zu8.cloudfront.net/static/font-awesome/css/font-awesome.min.css" type="text/css" charset="utf-8"/><link rel="stylesheet" href="https://dc722jrlp2zu8.cloudfront.net/static/sweetalert2/dist/sweetalert2.min.css" type="text/css" charset="utf-8"/><link rel="stylesheet" href="https://dc722jrlp2zu8.cloudfront.net/static/bootstrap/dist/css/bootstrap.min.css" type="text/css" charset="utf-8"/><link rel="stylesheet" href="https://dc722jrlp2zu8.cloudfront.net/static/css/style.css?rev=b8f6db2" type="text/css" charset="utf-8"/><link rel="stylesheet" href="https://dc722jrlp2zu8.cloudfront.net/static/css/spinkit.css" type="text/css" charset="utf-8"/><link rel="stylesheet" href="https://dc722jrlp2zu8.cloudfront.net/static/animate.css/animate.min.css" type="text/css" charset="utf-8"/><link type="text/css" rel="stylesheet" href="https://dc722jrlp2zu8.cloudfront.net/static/css/jquery.onp.sociallocker.1.7.6.min.css"/><link rel="stylesheet" href="https://dc722jrlp2zu8.cloudfront.net/static/jquery.gifplayer/dist/gifplayer.css"><link rel="stylesheet" href="https://dc722jrlp2zu8.cloudfront.net/static/bootstrap-markdown/css/bootstrap-markdown.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/atelier-dune-dark.min.css"></noscript><script data-pagespeed-no-defer>(function(){function b(){var a=window,c=e;if(a.addEventListener)a.addEventListener("load",c,!1);else if(a.attachEvent)a.attachEvent("onload",c);else{var d=a.onload;a.onload=function(){c.call(this);d&&d.call(this)}}};var f=!1;function e(){if(!f){f=!0;for(var a=document.getElementsByClassName("psa_add_styles"),c=0,d;d=a[c];++c)if("NOSCRIPT"==d.nodeName){var k=document.createElement("div");k.innerHTML=d.textContent;document.body.appendChild(k)}}}function g(){var a=window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame||null;a?a(function(){window.setTimeout(e,0)}):b()}
+var h=["pagespeed","CriticalCssLoader","Run"],l=this;h[0]in l||!l.execScript||l.execScript("var "+h[0]);for(var m;h.length&&(m=h.shift());)h.length||void 0===g?l[m]?l=l[m]:l=l[m]={}:l[m]=g;})();
+pagespeed.CriticalCssLoader.Run();</script></body>
+</html>

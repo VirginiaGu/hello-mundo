@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>How To Install the Django Web Framework on Ubuntu 14.04 | DigitalOcean</title>
+
+<meta name="description" content="Django is a full-featured Python web framework for developing dynamic websites and applications. Using Django, you can quickly create Python web applications and rely on the framework to do a good deal of the heavy lifting. In this guide, we will show">
+<meta name="keywords" content="Python Frameworks Django Python">
+
+<meta name="og:title" content="How To Install the Django Web Framework on Ubuntu 14.04 | DigitalOcean">
+<meta name="og:description" content="Django is a full-featured Python web framework for developing dynamic websites and applications. Using Django, you can quickly create Python web applications and rely on the framework to do a good deal of the heavy lifting. In this guide, we will show">
+<meta name="og:site_name" content="DigitalOcean">
+<meta name="og:type" content="article">
+
+<meta name="twitter:site" content="DigitalOcean">
+<meta name="twitter:title" content="How To Install the Django Web Framework on Ubuntu 14.04 | DigitalOcean">
+<meta name="twitter:description" content="Django is a full-featured Python web framework for developing dynamic websites and applications. Using Django, you can quickly create Python web applications and rely on the framework to do a good deal of the heavy lifting. In this guide, we will show">
+<meta name="twitter:creator" content="DigitalOcean">
+<meta name="twitter:card" content="photo" />
+<meta name="twitter:url" content="https://www.digitalocean.com/community/tutorials/how-to-install-the-django-web-framework-on-ubuntu-14-04"/>
+
+<meta property='og:image' content="https://community-cdn-digitalocean-com.global.ssl.fastly.net/assets/tutorials/images/large/B_rnHp0UwAAPoo1-1.jpg?1426699828">
+<meta name="twitter:image" content="https://community-cdn-digitalocean-com.global.ssl.fastly.net/assets/tutorials/images/large/B_rnHp0UwAAPoo1-1.jpg?1426699828">
+
+  <link rel='canonical' href='https://www.digitalocean.com/community/tutorials/how-to-install-the-django-web-framework-on-ubuntu-14-04'>
+
+
+    <link rel="stylesheet" media="all" href="/assets/community/application-bdfc2d8fb85ad3fae4a82273144bb2f0.css" />
+
+    
+    <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="lrnlANRscW4SE/5cPN/rSTXVLbeI4Xcugyw5fX40WPhpaY48W8VbyBdvEqCkGoPqV+ZB4qH7df0Vl2ax+7yfBg==" />
+      <script src="https://use.typekit.net/izu1uqu.js"></script>
+      <script>try{Typekit.load({ async: true });}catch(e){}</script>
+    <script
+      src="https://d2wy8f7a9ursnm.cloudfront.net/bugsnag-2.min.js"
+      data-apikey="9ffc01bc3e1fa7891bfd20909d1bfb0e">
+    </script>
+    <!--<script src="//cdn.optimizely.com/js/701281621.js"></script>-->
+    <script type="text/javascript">
+      if(window.analytics=window.analytics||[],window.analytics.included)window.console&&console.error&&console.error("analytics.js included twice");else{window.analytics.included=!0,window.analytics.methods=["identify","group","track","page","pageview","alias","ready","on","once","off","trackLink","trackForm","trackClick","trackSubmit"],window.analytics.factory=function(a){return function(){var n=Array.prototype.slice.call(arguments);return n.unshift(a),window.analytics.push(n),window.analytics}};for(var i=0;i<window.analytics.methods.length;i++){var key=window.analytics.methods[i];window.analytics[key]=window.analytics.factory(key)}window.analytics.load=function(a){var n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+a+"/analytics.min.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(n,t)},window.analytics.SNIPPET_VERSION="2.0.9",
+      window.analytics.load("puo3uv968t")}
+      window.analytics.page();
+    </script>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/community/tutorials/feed">
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+    <script>
+      window.comApp = {
+        prefix: '/community',
+        svgIconPath: 'https://www.digitalocean.com/assets/community/icon-sprite-d76eb75d70ccf8ffb4c0b47b7dbc88ca.svg',
+        railsEnv: 'production',
+        rootUrl: 'https://www.digitalocean.com/community'
+      };
+    </script>
+      <script src="https://go.digitalocean.com/js/forms2/js/forms2.min.js"></script>
+
+    <script src="/assets/community/application-b0e192c1fa514f14157a544ef4930bf3.js"></script>
+  </head>
+  <body class="feature-filter-bar feature-upvotes tutorials-controller tutorial-single" data-env="production" data-prefix="/community" data-user-id="" data-facebook-app-id="694818843983011"   data-completed-tutorial-id="" data-tutorial-id="1507" data-js="tutorial"
+>
+    <script>
+//<![CDATA[
+
+//]]>
+</script>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KHWBBT"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KHWBBT');</script>
+<!-- End Google Tag Manager -->
+
+    
+
+    <div class='outside_viewport'>
+        <div id="contents-modal" class="modal fade mini-modal" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>Contents</h1>
+          <button class="close-button icon icon-close-light" data-dismiss="modal" aria-label="close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="table-of-contents-modal"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="share-modal" class="modal fade mini-modal" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1>Share</h1>
+        <button type="button" class="close-button icon icon-close-light" aria-label="close" data-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="social-sharing social-sharing-container">
+          <ul class="top ">
+            <li class="shareBtn" id="sbTwitter">
+              <a href="http://twitter.com/share?text=How To Install the Django Web Framework on Ubuntu 14.04&amp;url=https://www.digitalocean.com/community/tutorials/how-to-install-the-django-web-framework-on-ubuntu-14-04?utm_content=how-to-install-the-django-web-framework-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=twshare" class="share-icon share-popup" title="Share on Twitter" >
+                <span class="sIcon icon-bird"></span>
+              </a>
+              <a href="http://twitter.com/share?text=How To Install the Django Web Framework on Ubuntu 14.04&amp;url=https://www.digitalocean.com/community/tutorials/how-to-install-the-django-web-framework-on-ubuntu-14-04?utm_content=how-to-install-the-django-web-framework-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=twshare" class="share-link share-popup" title="Share on Twitter" >
+                Twitter
+              </a>
+            </li>
+            <li class="shareBtn" id="sbFacebook">
+              <a class="share-icon facebook-share" href="https://www.digitalocean.com/community/tutorials/how-to-install-the-django-web-framework-on-ubuntu-14-04?utm_content=how-to-install-the-django-web-framework-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=fbshare" onclick="" title="Share on Facebook">
+                <span class="sIcon icon-facebook-B"></span>
+              </a>
+
+              <a class="share-link facebook-share" href="https://www.digitalocean.com/community/tutorials/how-to-install-the-django-web-framework-on-ubuntu-14-04?utm_content=how-to-install-the-django-web-framework-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=fbshare" onclick="" title="Share on Facebook">
+                Facebook
+              </a>
+            </li>
+            <li class="shareBtn" id="sbGoogle">
+              <a href="https://plus.google.com/share?url=https://www.digitalocean.com/community/tutorials/how-to-install-the-django-web-framework-on-ubuntu-14-04?utm_content=how-to-install-the-django-web-framework-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=gpshare" class="share-icon share-popup" title="Share on Google+">
+                <span class="sIcon icon-google-plus-B"></span>
+              </a>
+              <a href="https://plus.google.com/share?url=https://www.digitalocean.com/community/tutorials/how-to-install-the-django-web-framework-on-ubuntu-14-04?utm_content=how-to-install-the-django-web-framework-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=gpshare" class="share-link share-popup" title="Share on Google+">
+                Google+
+              </a>
+            </li>
+            <li class="shareBtn" id="sbYC">
+              <a href="https://news.ycombinator.com/submitlink?t=How To Install the Django Web Framework on Ubuntu 14.04&amp;u=https://www.digitalocean.com/community/tutorials/how-to-install-the-django-web-framework-on-ubuntu-14-04?utm_content=how-to-install-the-django-web-framework-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=hnshare" class="share-icon share-popup" target="_blank" title="Submit to Hacker News">
+                <span class="sIcon icon-hacker-news"></span>
+              </a>
+              <a href="https://news.ycombinator.com/submitlink?t=How To Install the Django Web Framework on Ubuntu 14.04&amp;u=https://www.digitalocean.com/community/tutorials/how-to-install-the-django-web-framework-on-ubuntu-14-04?utm_content=how-to-install-the-django-web-framework-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=hnshare" class="share-link share-popup" target="_blank" title="Submit to Hacker News">
+                Hacker News
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="table-of-contents">
+    <div data-js="tableOfContentsDesktop"></div>
+    <button type="button" class="Button--reset Tutorial-button " data-js="markAsComplete" data-tutorialInteraction data-tutorialSingle><svg class='svg-icon svg-icon-completed'><use xlink:href='https://www.digitalocean.com/assets/community/icon-sprite-d76eb75d70ccf8ffb4c0b47b7dbc88ca.svg#icon-completed'></use></svg><span>Mark as Complete</span></button>
+  </div>
+  
+  <div id="share-modal" class="modal fade mini-modal" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1>Share</h1>
+        <button type="button" class="close-button icon icon-close-light" aria-label="close" data-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="social-sharing social-sharing-container">
+          <ul class="bottom ">
+            <li class="shareBtn" id="sbTwitter">
+              <a href="http://twitter.com/share?text=How To Install the Django Web Framework on Ubuntu 14.04&amp;url=https://www.digitalocean.com/community/tutorials/how-to-install-the-django-web-framework-on-ubuntu-14-04?utm_content=how-to-install-the-django-web-framework-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=twshare" class="share-icon share-popup" title="Share on Twitter" >
+                <span class="sIcon icon-bird"></span>
+              </a>
+              <a href="http://twitter.com/share?text=How To Install the Django Web Framework on Ubuntu 14.04&amp;url=https://www.digitalocean.com/community/tutorials/how-to-install-the-django-web-framework-on-ubuntu-14-04?utm_content=how-to-install-the-django-web-framework-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=twshare" class="share-link share-popup" title="Share on Twitter" >
+                Twitter
+              </a>
+            </li>
+            <li class="shareBtn" id="sbFacebook">
+              <a class="share-icon facebook-share" href="https://www.digitalocean.com/community/tutorials/how-to-install-the-django-web-framework-on-ubuntu-14-04?utm_content=how-to-install-the-django-web-framework-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=fbshare" onclick="" title="Share on Facebook">
+                <span class="sIcon icon-facebook-B"></span>
+              </a>
+
+              <a class="share-link facebook-share" href="https://www.digitalocean.com/community/tutorials/how-to-install-the-django-web-framework-on-ubuntu-14-04?utm_content=how-to-install-the-django-web-framework-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=fbshare" onclick="" title="Share on Facebook">
+                Facebook
+              </a>
+            </li>
+            <li class="shareBtn" id="sbGoogle">
+              <a href="https://plus.google.com/share?url=https://www.digitalocean.com/community/tutorials/how-to-install-the-django-web-framework-on-ubuntu-14-04?utm_content=how-to-install-the-django-web-framework-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=gpshare" class="share-icon share-popup" title="Share on Google+">
+                <span class="sIcon icon-google-plus-B"></span>
+              </a>
+              <a href="https://plus.google.com/share?url=https://www.digitalocean.com/community/tutorials/how-to-install-the-django-web-framework-on-ubuntu-14-04?utm_content=how-to-install-the-django-web-framework-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=gpshare" class="share-link share-popup" title="Share on Google+">
+                Google+
+              </a>
+            </li>
+            <li class="shareBtn" id="sbYC">
+              <a href="https://news.ycombinator.com/submitlink?t=How To Install the Django Web Framework on Ubuntu 14.04&amp;u=https://www.digitalocean.com/community/tutorials/how-to-install-the-django-web-framework-on-ubuntu-14-04?utm_content=how-to-install-the-django-web-framework-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=hnshare" class="share-icon share-popup" target="_blank" title="Submit to Hacker News">
+                <span class="sIcon icon-hacker-news"></span>
+              </a>
+              <a href="https://news.ycombinator.com/submitlink?t=How To Install the Django Web Framework on Ubuntu 14.04&amp;u=https://www.digitalocean.com/community/tutorials/how-to-install-the-django-web-framework-on-ubuntu-14-04?utm_content=how-to-install-the-django-web-framework-on-ubuntu-14-04&amp;utm_medium=community&amp;utm_source=hnshare" class="share-link share-popup" target="_blank" title="Submit to Hacker News">
+                Hacker News
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div id="newsletter-signup-dialog" class="newsletter-signups-dialog" data-newsletter-signup-dialog data-article-target=".content-body">
+  <div class="form-message">
+  <div class="pull-right">
+    <a href="javascript:;" class="newsletter-signups-dialog-dismiss" data-newsletter-signup-dismiss>&times;</a>
+
+  </div>
+  <h4 class="newsletter-signups-dialog-title">
+    Sign up for our newsletter.
+  </h4>
+  <p class="newsletter-signups-dialog-description">
+    Get the latest tutorials on SysAdmin and open source topics.
+  </p>
+  <form class="newsletter-signup" id="new_newsletter_signup" data-newsletter-signup="true" action="/community/newsletter" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" />
+
+  <input data-newsletter-signup-field="url" type="hidden" name="newsletter_signup[url]" id="newsletter_signup_url" />
+  <input data-newsletter-signup-field="title" type="hidden" name="newsletter_signup[title]" id="newsletter_signup_title" />
+
+  <div class="newsletter-signup-ajax-error" data-newsletter-signup-ajax-error></div>
+
+
+  <div class="form-group">
+    <input placeholder="Enter your email address" required="required" class="field" type="email" name="newsletter_signup[email]" id="newsletter_signup_email" />
+  </div>
+
+  <button data-disable-with="Sign Up" class="button blue-button">
+    Sign Up
+  </button>
+
+</form>
+
+</div>
+
+<div class="thanks-message hidden" data-newsletter-signup-successful> 
+  <div class='pull-right'> 
+    <a href='javascript:;' class='newsletter-signups-dialog-dismiss icon icon-close-light' data-newsletter-signup-dismiss></a> 
+  </div> 
+
+  <span class='newsletter-signups-dialog-success'> 
+    Thanks for signing up! 
+  </span> 
+</div>
+
+</div>
+
+
+      
+    </div>
+
+      <div class="mobile-nav">
+  
+<div class="account-buttons">
+    <div id="entrance">
+      <a id="sign-up" class="button" href="/community/auth/digitalocean?display=sessionless+register">Sign Up</a>
+      <a id="log-in" class="button" href="/community/auth/digitalocean">Log In</a>
+    </div>
+</div>
+
+  <button type="button" aria-label="close" class="close-panel icon-close"></button>
+
+  <form class="mobile-search" role="search" action="/community/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+    <span class='icon icon-search-thin'></span>
+    <input type="text" name="q" id="q" title="Search" placeholder="Search" />
+    <button name="button" type="submit" class="icon-btn">submit</button>
+</form>
+  
+<nav>
+
+  <ul>
+    <li><a class="active" href="/community/tutorials">Tutorials</a></li>
+    <li><a href="/community/questions">Questions</a></li>
+    <li><a href="/community/projects">Projects</a></li>
+    <li><a href="https://www.meetup.com/pro/digitalocean/?utm_source=do_community" target="_blank">Meetups</a></li>
+    <li class="mobile-nav-only"><a href="https://www.digitalocean.com/">Main Site</a></li>
+  </ul>
+</nav>
+
+  
+</div>
+
+      
+      <header>
+  <div class="flash-container"></div>
+
+  <div class='main-menu-container'>
+    <div class='wrapper'>
+      <div class='logo'>
+        <a class="logo-icon" href="https://www.digitalocean.com/">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 32" class="do-icon">
+<title>DigitalOcean</title>
+<path class="path1" d="M16.016 32v-6.204c6.584 0 11.648-6.52 9.147-13.42-0.95-2.564-2.975-4.59-5.539-5.539-6.9-2.501-13.42 2.564-13.42 9.147 0 0 0 0 0 0l-6.204 0.032c0-10.477 10.129-18.643 21.112-15.225 4.811 1.488 8.609 5.317 10.097 10.097 3.418 10.983-4.716 21.112-15.193 21.112z"></path>
+<path class="path2" d="M16.016 25.828h-6.172v-6.172h6.172z"></path>
+<path class="path3" d="M9.844 30.576h-4.748v-4.748h4.748v4.748z"></path>
+<path class="path4" d="M5.096 25.828h-3.988v-3.988h3.988z"></path>
+<path class="path5" d="M56.973 9.242c-1.836-1.266-4.115-1.931-6.773-1.931h-5.792v18.39h5.792c2.659 0 4.938-0.665 6.773-2.026 1.013-0.696 1.804-1.709 2.342-2.944s0.823-2.69 0.823-4.336c0-1.614-0.285-3.070-0.823-4.305-0.538-1.203-1.329-2.152-2.342-2.849zM47.794 10.445h1.836c2.026 0 3.703 0.411 4.969 1.171 1.393 0.855 2.121 2.469 2.121 4.779 0 2.406-0.728 4.083-2.121 5.001v0c-1.203 0.791-2.88 1.203-4.938 1.203h-1.867v-12.154z"></path>
+<path class="path6" d="M64.19 7.122c-0.57 0-1.044 0.19-1.424 0.57s-0.601 0.855-0.601 1.393c0 0.57 0.19 1.044 0.601 1.424 0.38 0.38 0.855 0.601 1.424 0.601s1.044-0.19 1.424-0.601c0.38-0.38 0.601-0.886 0.601-1.424 0-0.57-0.19-1.044-0.601-1.393-0.38-0.38-0.886-0.57-1.424-0.57z"></path>
+<path class="path7" d="M62.512 12.787h3.26v12.977h-3.26v-12.977z"></path>
+<path class="path8" d="M77.642 13.864c-0.981-0.886-2.089-1.393-3.26-1.393-1.804 0-3.292 0.633-4.463 1.836s-1.741 2.785-1.741 4.653c0 1.836 0.57 3.387 1.741 4.653 1.171 1.203 2.659 1.836 4.463 1.836 1.266 0 2.342-0.348 3.228-1.044v0.285c0 1.076-0.285 1.899-0.855 2.5-0.57 0.57-1.361 0.855-2.342 0.855-1.519 0-2.437-0.601-3.608-2.152l-2.216 2.121 0.063 0.095c0.475 0.665 1.203 1.329 2.184 1.962s2.184 0.95 3.64 0.95c1.931 0 3.513-0.601 4.653-1.773 1.171-1.171 1.741-2.754 1.741-4.716v-11.743h-3.197v1.076zM76.787 21.523c-0.57 0.633-1.298 0.95-2.247 0.95s-1.678-0.317-2.216-0.95c-0.57-0.633-0.855-1.488-0.855-2.532s0.285-1.931 0.855-2.564c0.57-0.633 1.298-0.981 2.216-0.981 0.95 0 1.678 0.317 2.247 0.981 0.57 0.633 0.855 1.519 0.855 2.564s-0.317 1.899-0.855 2.532z"></path>
+<path class="path9" d="M83.624 12.787h3.26v12.977h-3.26v-12.977z"></path>
+<path class="path10" d="M85.302 7.122c-0.57 0-1.044 0.19-1.424 0.57s-0.601 0.855-0.601 1.393c0 0.57 0.19 1.044 0.601 1.424 0.38 0.38 0.855 0.601 1.424 0.601s1.044-0.19 1.424-0.601c0.38-0.38 0.601-0.886 0.601-1.424 0-0.57-0.19-1.044-0.601-1.393-0.38-0.38-0.886-0.57-1.424-0.57z"></path>
+<path class="path11" d="M94.038 9.274h-3.197v3.513h-1.867v2.975h1.867v5.381c0 1.678 0.348 2.88 1.013 3.577s1.836 1.044 3.513 1.044c0.538 0 1.076-0.032 1.583-0.063h0.158v-2.975l-1.108 0.063c-0.791 0-1.298-0.127-1.551-0.411s-0.38-0.855-0.38-1.709v-4.906h3.039v-2.975h-3.039v-3.513z"></path>
+<path class="path12" d="M112.364 7.343h3.26v18.39h-3.26v-18.39z"></path>
+<path class="path13" d="M148.574 21.112c-0.57 0.665-1.171 1.234-1.646 1.519v0c-0.443 0.285-1.013 0.443-1.678 0.443-0.95 0-1.741-0.348-2.374-1.076s-0.95-1.646-0.95-2.754 0.317-2.026 0.918-2.722c0.633-0.728 1.393-1.076 2.342-1.076 1.044 0 2.152 0.665 3.102 1.773l2.152-2.057c-1.393-1.836-3.197-2.69-5.349-2.69-1.804 0-3.355 0.665-4.621 1.931s-1.899 2.912-1.899 4.843 0.633 3.545 1.899 4.843c1.266 1.298 2.817 1.931 4.621 1.931 2.374 0 4.273-1.013 5.539-2.88l-2.057-2.026z"></path>
+<path class="path14" d="M161.962 14.591c-0.475-0.633-1.108-1.171-1.867-1.551-0.791-0.38-1.678-0.57-2.69-0.57-1.836 0-3.323 0.665-4.431 1.994-1.076 1.329-1.646 2.944-1.646 4.874 0 1.962 0.601 3.577 1.804 4.843 1.171 1.234 2.785 1.867 4.716 1.867 2.184 0 4.020-0.886 5.349-2.659l0.063-0.095-2.121-2.057c-0.19 0.253-0.475 0.506-0.728 0.76-0.317 0.317-0.633 0.538-0.95 0.696-0.475 0.253-1.044 0.348-1.646 0.348-0.918 0-1.646-0.253-2.216-0.791-0.538-0.475-0.855-1.139-0.918-1.962h8.641l0.032-1.203c0-0.855-0.127-1.646-0.348-2.406-0.222-0.728-0.57-1.456-1.044-2.089zM154.841 17.63c0.158-0.633 0.443-1.139 0.855-1.551 0.443-0.443 1.013-0.665 1.709-0.665 0.791 0 1.393 0.222 1.804 0.665 0.38 0.411 0.601 0.918 0.665 1.519h-5.033z"></path>
+<path class="path15" d="M174.497 13.737v0c-0.981-0.855-2.342-1.266-4.051-1.266-1.076 0-2.089 0.253-3.007 0.696-0.855 0.443-1.678 1.139-2.216 2.089l0.032 0.032 2.089 1.994c0.855-1.361 1.804-1.836 3.070-1.836 0.696 0 1.234 0.19 1.678 0.538s0.633 0.823 0.633 1.393v0.633c-0.823-0.253-1.614-0.38-2.406-0.38-1.614 0-2.944 0.38-3.925 1.139s-1.488 1.867-1.488 3.229c0 1.203 0.411 2.216 1.266 2.944 0.855 0.696 1.899 1.076 3.134 1.076s2.406-0.506 3.45-1.361v1.076h3.197v-8.324c0.063-1.583-0.443-2.817-1.456-3.672zM168.704 20.795c0.38-0.253 0.886-0.38 1.551-0.38 0.791 0 1.614 0.158 2.469 0.475v1.266c-0.696 0.665-1.646 0.981-2.817 0.981-0.57 0-1.013-0.127-1.298-0.38s-0.443-0.538-0.443-0.95c0-0.443 0.19-0.76 0.538-1.013z"></path>
+<path class="path16" d="M188.55 13.99c-0.918-1.013-2.184-1.519-3.798-1.519-1.298 0-2.342 0.38-3.134 1.108v-0.791h-3.197v12.977h3.26v-7.185c0-0.981 0.222-1.773 0.696-2.311 0.475-0.57 1.076-0.823 1.931-0.823 0.728 0 1.298 0.253 1.709 0.728 0.411 0.506 0.633 1.171 0.633 2.026v7.501h3.26v-7.47c0-1.804-0.443-3.229-1.361-4.241z"></path>
+<path class="path17" d="M108.281 13.737v0c-0.981-0.855-2.342-1.266-4.051-1.266-1.076 0-2.089 0.253-3.007 0.696-0.855 0.443-1.678 1.139-2.216 2.089l0.032 0.032 2.089 1.994c0.855-1.361 1.804-1.836 3.070-1.836 0.696 0 1.234 0.19 1.678 0.538s0.633 0.823 0.633 1.393v0.633c-0.823-0.253-1.614-0.38-2.406-0.38-1.614 0-2.944 0.38-3.925 1.139s-1.488 1.867-1.488 3.229c0 1.203 0.411 2.216 1.266 2.944 0.855 0.696 1.899 1.076 3.134 1.076s2.406-0.506 3.45-1.361v1.076h3.197v-8.324c0.032-1.583-0.475-2.817-1.456-3.672zM102.489 20.795c0.38-0.253 0.886-0.38 1.551-0.38 0.791 0 1.614 0.158 2.469 0.475v1.266c-0.696 0.665-1.646 0.981-2.817 0.981-0.57 0-1.013-0.127-1.298-0.38s-0.443-0.538-0.443-0.95c0-0.443 0.158-0.76 0.538-1.013z"></path>
+<path class="path18" d="M127.462 26.018c-5.223 0-9.496-4.241-9.496-9.496s4.241-9.496 9.496-9.496 9.496 4.241 9.496 9.496-4.273 9.496-9.496 9.496zM127.462 10.382c-3.387 0-6.14 2.754-6.14 6.14s2.754 6.14 6.14 6.14 6.14-2.754 6.14-6.14-2.754-6.14-6.14-6.14z"></path>
+</svg>
+
+          <span class="sr-only">DigitalOcean</span>
+</a>
+        <span class="logo-separator"></span>
+
+        <a class="home-link" href="/community">
+          <span class='logo-community-text'>Community</span>
+</a>      </div>
+
+      <a class="mobile-nav-toggle icon-menu-thin" data-role="left">
+        <span>Menu</span>
+      </a>
+
+      
+<nav>
+
+  <ul>
+    <li><a class="active" href="/community/tutorials">Tutorials</a></li>
+    <li><a href="/community/questions">Questions</a></li>
+    <li><a href="/community/projects">Projects</a></li>
+    <li><a href="https://www.meetup.com/pro/digitalocean/?utm_source=do_community" target="_blank">Meetups</a></li>
+    <li class="mobile-nav-only"><a href="https://www.digitalocean.com/">Main Site</a></li>
+  </ul>
+</nav>
+
+
+      
+<div class="account-buttons">
+    <div id="entrance">
+      <a id="sign-up" class="button" href="/community/auth/digitalocean?display=sessionless+register">Sign Up</a>
+      <a id="log-in" class="button" href="/community/auth/digitalocean">Log In</a>
+    </div>
+</div>
+      <div class='header-search open'>
+  <form action="/community/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+    <span class='icon icon-search-thin'></span>
+    <input type="text" name="q" id="q" title="Search" placeholder="Search" autocomplete="off" spellcheck="false" class="header-search-input" data-algolia-application-id="6ZHEUVKJ88" data-algolia-api-key="c5470567eae7fa1177d43222e18ba086" />
+    <button name="button" type="submit" class="icon-btn">submit</button>
+</form></div>
+
+<div class="search-results-dropdown dropdown" data-root-path="https://www.digitalocean.com/community">
+  <div class="container">
+    <div class='header-search-results-list'></div>
+
+    <div id="btn-wrap">
+      <a class="more-search-results" data-search-path="/community/search" href="/community/search">
+        <span class='icon-mag'></span>
+        View All Results
+</a>    </div>
+  </div>
+</div>
+
+<script type='text/template' id='autocomplete-hits-template'>
+  <div class="inner-search">
+    <ul>
+        {{#hits}}
+          <li>
+            <span class='icon icon-{{type}}'></span>
+            <a href='{{url}}'>{{title}}</a>
+          </li>
+        {{/hits}}
+    </ul>
+  </div>
+</script>
+
+
+      <div class='clearfix'></div>
+    </div>
+  </div>
+
+  <div class='wrapper'>
+    
+  </div>
+</header>
+
+
+      
+
+      <div class='wrapper layout-wrapper'>
+
+        
+
+
+
+
+
+
+
+
+
+<div class="section-content section-content-growable content Tutorial-content content-has-mobile-image">
+  <div class='postable-info-bar-container'>
+  <div class='postable-info-bar'>
+    <div class='left-section'>
+        <div class='tutorial-author-avatar'>
+    <a href="/community/users/jellingwood"><div class="mod-avatar mod-avatar-small"><img alt="jellingwood" class="avatar avatar-small" src="https://secure.gravatar.com/avatar/60d901f61a6146e14a3e989bc1f4ef11?secure=true&d=identicon" width="80" height="80" /><span class="mod-star" title="MOD" data-toggle="tooltip" data-container="body"><span class="mod-star-icon" /></span></div></a>
+  </div>
+  <div class='author-and-date'>
+    <div class='tutorial-author'>
+      <div class='by'>By: </div>
+      <a href="/community/users/jellingwood">Justin Ellingwood</a>
+    </div>
+  </div>
+
+      
+    </div>
+
+    <div class='right-section'>
+      
+
+
+      <div class="section-item section-item-subscribe">
+  <span class="opt-in-switch off signed-out-subscribe">
+    <span class="subscribe-label">
+      <span class="icon icon-subscribe"></span>
+      <span class="subscription-label subscribe">Subscribe</span>
+      <span class="icon icon-subscribed"></span>
+      <span class="subscription-label subscribed">Subscribed</span>
+    </span>
+    <a data-toggle="modal" data-target="#sign-in-modal" class="mini-switch-container" href="javascript:void(0);"><div class="mini-switch off signed-out-subscribe"><div class="switch-handle"></div></div></a>
+  </span>
+</div>
+
+<div class='section-item social-sharing-item'>
+  <div class="sharing">
+  <a class="share-button" href="#" data-toggle="modal" data-target="#share-modal">
+    <span class="icon icon-share-square"></span>
+    <span class="share-button-text">Share</span>
+  </a>
+</div>
+
+</div>
+
+        <div class='section-item table-of-contents-triggers'><div class="toc-trigger-mobile" data-toggle="modal" data-target="#contents-modal">
+  <a href="javascript:void(0);">
+    <span class="icon icon-contents"></span>
+    <span class="title">Contents</span>
+    <span class="icon icon-arrow-down"></span>
+  </a>
+</div>
+
+</div>
+
+    </div>
+  </div>
+</div>
+
+
+    <img alt="How To Install the Django Web Framework on Ubuntu 14.04" title="How To Install the Django Web Framework on Ubuntu 14.04" class="tutorial-image-mobile" src="https://community-cdn-digitalocean-com.global.ssl.fastly.net/assets/tutorials/images/large/B_rnHp0UwAAPoo1-1.jpg?1426699828" />
+
+  <div class="container tutorial-header">
+      <img alt="How To Install the Django Web Framework on Ubuntu 14.04" title="How To Install the Django Web Framework on Ubuntu 14.04" class="tutorial-image" src="https://community-cdn-digitalocean-com.global.ssl.fastly.net/assets/tutorials/images/large/B_rnHp0UwAAPoo1-1.jpg?1426699828" />
+
+      <div class='info-cta'>
+    <a class="icon-close-light" href="javascript:void();"></a>
+    We hope you find this tutorial helpful. In addition to guides like this one, we provide simple cloud infrastructure for developers. <a href="https://www.digitalocean.com/?utm_medium=community&amp;utm_source=community_gencta&amp;utm_campaign=needaserver&amp;utm_content=how-to-install-the-django-web-framework-on-ubuntu-14-04">
+        Learn more &rarr;
+</a>  </div>
+
+
+    <button name="button" type="button" class="new-upvote-button" data-upvotable-id="1507" data-upvotable-type="Tutorial" data-include-caret="true"><span class="icon new-upvote-icon"><svg class='svg-icon svg-icon-upvote-empty'><use xlink:href='https://www.digitalocean.com/assets/community/icon-sprite-d76eb75d70ccf8ffb4c0b47b7dbc88ca.svg#icon-upvote-empty'></use></svg></span><span class="new-upvote-count">28</span></button>
+
+    <h1 class="content-title Tutorial-header">
+      <button type="button" class="Button--reset Tutorial-headerButton " data-toggle="tooltip" title="Mark as Complete" data-js="markAsComplete" data-tutorialInteraction data-tutorialSingle>
+        <svg class='svg-icon svg-icon-completed'><use xlink:href='https://www.digitalocean.com/assets/community/icon-sprite-d76eb75d70ccf8ffb4c0b47b7dbc88ca.svg#icon-completed'></use></svg>
+      </button> How To Install the Django Web Framework on Ubuntu 14.04
+    </h1>
+
+    <span class="meta-section timestamp"><span class="tutorial-date-text">Posted</span><span class="tutorial-date">March  5, 2015</span></span>
+
+    <span class="meta-section pageviews"><span class="icon icon-eye v-mid"></span><span class="views-count v-mid">204.8k</span><span class="sr-only"> views</span></span>
+
+    <span class="meta-section tags">
+      <a class="tag" href="/community/tags/django?type=tutorials">Django</a> <a class="tag" href="/community/tags/python-frameworks?type=tutorials">Python Frameworks</a> <a class="tag" href="/community/tags/python?type=tutorials">Python</a>
+      <a class="tag" href="/community/tags/ubuntu?type=tutorials">Ubuntu</a>
+    </span>
+  </div>
+    <div class="content-body tutorial-content" data-growable-markdown>
+      <h3 id="introduction">Introduction</h3>
+
+<p>Django is a full-featured Python web framework for developing dynamic websites and applications.  Using Django, you can quickly create Python web applications and rely on the framework to do a good deal of the heavy lifting.</p>
+
+<p>In this guide, we will show you how to get Django up and running on an Ubuntu 14.04 server.  After installation, we'll show you how to start a new project to use as the basis for your site.</p>
+
+<h2 id="different-methods">Different Methods</h2>
+
+<p>There are a number of different ways in which you can install Django depending upon your needs and how you want to configure your development environment.  These have different advantages and one method may lend itself better to your specific situation than others.</p>
+
+<p>Some of the different methods are below:</p>
+
+<ul>
+<li><strong>Global Install from Packages</strong>:  The official Ubuntu repositories contain Django packages that can be installed easily with the conventional <code>apt</code> package manager.  This is very simple, but not as flexible as some other methods.  Also, the version contained in the repositories may lag behind the official versions available from the project.</li>
+<li><strong>Global Install through pip</strong>: The <code>pip</code> tool is a package manager for Python packages.  If you install <code>pip</code>, you can easily install Django on the system level for use by any user.  This should always contain the latest stable release.  Even so, global installations are inherently less flexible.</li>
+<li><strong>Install through pip in a Virtualenv</strong>: The Python <code>virtualenv</code> package allows you to create self-contained environments for various projects.  Using this technology, you can install Django in a project directory without affecting the greater system.  This allows you to provide per-project customizations and packages easily.  Virtual environments add some slight mental and process overhead in comparison to globally accessible installation, but provide the most flexibility.</li>
+<li><strong>Development Version Install through git</strong>: If you wish to install the latest development version instead of the stable release, you will have to acquire the code from the <code>git</code> repo.  This is necessary to get the latest features/fixes and can be done globally or locally.  Development versions do not have the same stability guarantees, however.</li>
+</ul>
+
+<p>With the above caveats and qualities in mind, select the installation method that best suites your needs out of the below instructions.</p>
+
+<h2 id="global-install-from-packages">Global Install from Packages</h2>
+
+<p>If you wish to install Django using the Ubuntu repositories, the process is very straight forward.</p>
+
+<p>First, update your local package index with <code>apt</code>, and then install the <code>python-django</code> package:</p>
+<pre class="code-pre "><code langs="">sudo apt-get update
+sudo apt-get install python-django
+</code></pre>
+<p>You can test that the installation was successful by typing:</p>
+<pre class="code-pre "><code langs="">django-admin --version
+</code></pre><pre class="code-pre "><code langs="">1.6.1
+</code></pre>
+<p>This means that the software was successfully installed.  You may also notice that the Django version is not the latest stable.  To learn a bit about how to use the software, skip ahead to learn <a href="https://www.digitalocean.com/community/tutorials/how-to-install-the-django-web-framework-on-ubuntu-14-04#creating-a-sample-project">how to create sample project</a>.</p>
+
+<h2 id="global-install-through-pip">Global Install through pip</h2>
+
+<p>If you wish to install the latest version of Django globally, a better option is to use <code>pip</code>, the Python package manager.  First, we need to install the <code>pip</code> package manager.  Refresh your <code>apt</code> package index:</p>
+<pre class="code-pre "><code langs="">sudo apt-get update
+</code></pre>
+<p>Now you can install <code>pip</code>.  If you plan on using Python version 2, install using the following commands:</p>
+<pre class="code-pre "><code langs="">sudo apt-get install python-pip
+</code></pre>
+<p>If, instead, you plan on using Python 3, use this command:</p>
+<pre class="code-pre "><code langs="">sudo apt-get install python3-pip
+</code></pre>
+<p>Now that you have <code>pip</code>, we can easily install Django.  If you are using Python 2, you can type:</p>
+<pre class="code-pre "><code langs="">sudo pip install django
+</code></pre>
+<p>If you are using Python 3, use the <code>pip3</code> command instead:</p>
+<pre class="code-pre "><code langs="">sudo pip3 install django
+</code></pre>
+<p>You can verify that the installation was successful by typing:</p>
+<pre class="code-pre "><code langs="">django-admin --version
+</code></pre><pre class="code-pre "><code langs="">1.7.5
+</code></pre>
+<p>As you can see, the version available through <code>pip</code> is more up-to-date than the one from the Ubuntu repositories (yours will likely be different from the above).</p>
+
+<h2 id="install-through-pip-in-a-virtualenv">Install through pip in a Virtualenv</h2>
+
+<p>Perhaps the most flexible way to install Django on your system is with the <code>virtualenv</code> tool.  This tool allows you to create virtual Python environments where you can install any Python packages you want without affecting the rest of the system.  This allows you to select Python packages on a per-project basis regardless of conflicts with other project's requirements.</p>
+
+<p>We will begin by installing <code>pip</code> from the Ubuntu repositories.  Refresh your local package index before starting:</p>
+<pre class="code-pre "><code langs="">sudo apt-get update
+</code></pre>
+<p>If you plan on using version 2 of Python, you can install <code>pip</code> by typing:</p>
+<pre class="code-pre "><code langs="">sudo apt-get install python-pip
+</code></pre>
+<p>If, instead, you plan on using version 3 of Python, you can install <code>pip</code> by typing:</p>
+<pre class="code-pre "><code langs="">sudo apt-get install python3-pip
+</code></pre>
+<p>Once <code>pip</code> is installed, you can use it to install the <code>virtualenv</code> package.  If you installed the Python 2 <code>pip</code>, you can type:</p>
+<pre class="code-pre "><code langs="">sudo pip install virtualenv
+</code></pre>
+<p>If you installed the Python 3 version of <code>pip</code>, you should type this instead:</p>
+<pre class="code-pre "><code langs="">sudo pip3 install virtualenv
+</code></pre>
+<p>Now, whenever you start a new project, you can create a virtual environment for it.  Start by creating and moving into a new project directory:</p>
+<pre class="code-pre "><code langs="">mkdir ~/<span class="highlight">newproject</span>
+cd ~/<span class="highlight">newproject</span>
+</code></pre>
+<p>Now, create a virtual environment within the project directory by typing:</p>
+<pre class="code-pre "><code langs="">virtualenv <span class="highlight">newenv</span>
+</code></pre>
+<p>This will install a standalone version of Python, as well as <code>pip</code>, into an isolated directory structure within your project directory.  We chose to call our virtual environment <code><span class="highlight">newenv</span></code>, but you should name it something descriptive.  A directory will be created with the name you select, which will hold the file hierarchy where your packages will be installed.</p>
+
+<p>To install packages into the isolated environment, you must activate it by typing:</p>
+<pre class="code-pre "><code langs="">source <span class="highlight">newenv</span>/bin/activate
+</code></pre>
+<p>Your prompt should change to reflect that you are now in your virtual environment.  It will look something like <code>(<span class="highlight">newenv</span>)username@hostname:~/newproject$</code>.</p>
+
+<p>In your new environment, you can use <code>pip</code> to install Django.  Regardless of whether you are using version 2 or 3 of Python, it should be called just <code>pip</code> when you are in your virtual environment.  Also note that you <em>do not</em> need to use <code>sudo</code> since you are installing locally:</p>
+<pre class="code-pre "><code langs="">pip install django
+</code></pre>
+<p>You can verify the installation by typing:</p>
+<pre class="code-pre "><code langs="">django-admin --version
+</code></pre><pre class="code-pre "><code langs="">1.7.5
+</code></pre>
+<p>To leave your virtual environment, you need to issue the <code>deactivate</code> command from anywhere on the system:</p>
+<pre class="code-pre "><code langs="">deactivate
+</code></pre>
+<p>Your prompt should revert to the conventional display.  When you wish to work on your project again, you should re-activate your virtual environment by moving back into your project directory and activating:</p>
+<pre class="code-pre "><code langs="">cd ~/<span class="highlight">newproject</span>
+source <span class="highlight">newenv</span>/bin/activate
+</code></pre>
+<h2 id="development-version-install-through-git">Development Version Install through git</h2>
+
+<p>If you need a development version of Django, you will have to download and install Django from its <code>git</code> repository.</p>
+
+<p>To do so, you will need to install <code>git</code> on your system with <code>apt</code>.  Refresh your local package index by typing:</p>
+<pre class="code-pre "><code langs="">sudo apt-get update
+</code></pre>
+<p>Now, we can install <code>git</code>.  We will also install the <code>pip</code> Python package manager.  We will use this to handle the installation of Django after it has been downloaded.  If you are using Python 2, you can type:</p>
+<pre class="code-pre "><code langs="">sudo apt-get install git python-pip
+</code></pre>
+<p>If you are using Python 3 instead, you should type this:</p>
+<pre class="code-pre "><code langs="">sudo apt-get install git python3-pip
+</code></pre>
+<p>Once you have <code>git</code>, you can clone the Django repository.  Between releases, this repository will have more up-to-date features and bug fixes at the possible expense of stability.  You can clone the repository to a directory called <code>django-dev</code> within your home directory by typing:</p>
+<pre class="code-pre "><code langs="">git clone git://github.com/django/django ~/django-dev
+</code></pre>
+<p>Once the repository is cloned, you can install it using <code>pip</code>.  We will use the <code>-e</code> option to install in "editable" mode, which is needed when installing from version control.  If you are using version 2 of Python, type:</p>
+<pre class="code-pre "><code langs="">sudo pip install -e ~/django-dev
+</code></pre>
+<p>If you are using Python 3, type:</p>
+<pre class="code-pre "><code langs="">sudo pip3 install -e ~/django-dev
+</code></pre>
+<p>You can verify that the installation was successful by typing:</p>
+<pre class="code-pre "><code langs="">django-admin --version
+</code></pre><pre class="code-pre "><code langs="">1.9.dev20150305171756
+</code></pre>
+<p>Note that you can also combine this strategy with the use of <code>virtualenv</code> above if you wish to install a development version of Django in a single environment.</p>
+
+<h2 id="creating-a-sample-project">Creating a Sample Project</h2>
+
+<p>Now that you have Django installed, we can show you briefly how to get started on a project.</p>
+
+<p>You can use the <code>django-admin</code> command to create a project:</p>
+<pre class="code-pre "><code langs="">django-admin startproject <span class="highlight">projectname</span>
+cd <span class="highlight">projectname</span>
+</code></pre>
+<p>This will create a directory called <code><span class="highlight">projectname</span></code> within your current directory.  Within this, a management script will be created and another directory called <code><span class="highlight">projectname</span></code> will be created with the actual code.</p>
+
+<p><strong>Note</strong>: If you were already in a project directory that you created for use with the <code>virtualenv</code> command, you can tell Django to place the management script and inner directory into the current directory without the extra layer by typing this (notice the ending dot):</p>
+<pre class="code-pre "><code langs="">django-admin startproject <span class="highlight">projectname</span> .
+</code></pre>
+<p>To bootstrap the database (this uses SQLite by default) on more recent versions of Django, you can type:</p>
+<pre class="code-pre "><code langs="">python manage.py migrate
+</code></pre>
+<p>If the <code>migrate</code> command doesn't work, you likely are using an older version of Django.  Instead, you can type:</p>
+<pre class="code-pre "><code langs="">python manage.py syncdb
+</code></pre>
+<p>You will be asked to create an administrative user as part of this process.  Select a username, email address, and password for the user.</p>
+
+<p>If you used the <code>migrate</code> command above, you'll need to create the administrative user manually.  You can create an administrative user by typing:</p>
+<pre class="code-pre "><code langs="">python manage.py createsuperuser
+</code></pre>
+<p>You will be prompted for a username, an email address, and a password for the user.</p>
+
+<p>Once you have a user, you can start up the Django development server to see what a fresh Django project looks like.  You should only use this for development purposes.  Run:</p>
+<pre class="code-pre "><code langs="">python manage.py runserver 0.0.0.0:8000
+</code></pre>
+<p>Visit your server's IP address followed by <code>:8000</code> in your web browser</p>
+<pre class="code-pre "><code langs=""><span class="highlight">server_ip_address</span>:8000
+</code></pre>
+<p>You should see something that looks like this:</p>
+
+<p><img src="https://assets.digitalocean.com/articles/django_1404/django_default.png" alt="Django public page"></p>
+
+<p>Now, append <code>/admin</code> to the end of your URL to get to the admin login page:</p>
+<pre class="code-pre "><code langs=""><span class="highlight">server_ip_address</span>:8000/admin
+</code></pre>
+<p><img src="https://assets.digitalocean.com/articles/django_1404/django_admin_login.png" alt="Django admin login"></p>
+
+<p>If you enter the admin username and password that you just created, you should be taken to the admin section of the site:</p>
+
+<p><img src="https://assets.digitalocean.com/articles/django_1404/django_admin_page.png" alt="Django admin page"></p>
+
+<p>When you are finished looking through the default site, you can stop the development server by typing <code>CTRL-C</code> in your terminal.</p>
+
+<p>The Django project you've created provides the structural basis for designing a more complete site.  Check out the Django documentation for more information about how to build your applications and customize your site.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>You should now have Django installed on your Ubuntu 14.04 server, providing the main tools you need to create powerful web applications.  You should also know how to start a new project and launch the developer server.  Leveraging a complete web framework like Django can help make development faster, allowing you to concentrate only on the unique aspects of your applications.</p>
+
+    </div>
+</div>
+
+<div class="tutorial-footer">
+  <div class='tutorial-footer-details'>
+
+  <div class='postable-info-bar-container'>
+  <div class='postable-info-bar'>
+    <div class='left-section'>
+        <div class='tutorial-author-avatar'>
+    <a href="/community/users/jellingwood"><div class="mod-avatar mod-avatar-small"><img alt="jellingwood" class="avatar avatar-small" src="https://secure.gravatar.com/avatar/60d901f61a6146e14a3e989bc1f4ef11?secure=true&d=identicon" width="80" height="80" /><span class="mod-star" title="MOD" data-toggle="tooltip" data-container="body"><span class="mod-star-icon" /></span></div></a>
+  </div>
+  <div class='author-and-date'>
+    <div class='tutorial-author'>
+      <div class='by'>By: </div>
+      <a href="/community/users/jellingwood">Justin Ellingwood</a>
+    </div>
+  </div>
+
+    </div>
+    <div class='right-section'>
+      <div class="upvote-container">
+        <button name="button" type="button" class="new-upvote-button" data-upvotable-id="1507" data-upvotable-type="Tutorial" data-include-caret="false"><span class="icon new-upvote-icon"><svg class='svg-icon svg-icon-heart'><use xlink:href='https://www.digitalocean.com/assets/community/icon-sprite-d76eb75d70ccf8ffb4c0b47b7dbc88ca.svg#icon-heart'></use></svg></span><span class="new-upvote-text">Upvote</span><span class="new-upvote-count">28</span></button>
+      </div>
+      <div class="section-item section-item-subscribe">
+  <span class="opt-in-switch off signed-out-subscribe">
+    <span class="subscribe-label">
+      <span class="icon icon-subscribe"></span>
+      <span class="subscription-label subscribe">Subscribe</span>
+      <span class="icon icon-subscribed"></span>
+      <span class="subscription-label subscribed">Subscribed</span>
+    </span>
+    <a data-toggle="modal" data-target="#sign-in-modal" class="mini-switch-container" href="javascript:void(0);"><div class="mini-switch off signed-out-subscribe"><div class="switch-handle"></div></div></a>
+  </span>
+</div>
+
+<div class='section-item social-sharing-item'>
+  <div class="sharing">
+  <a class="share-button" href="#" data-toggle="modal" data-target="#share-modal">
+    <span class="icon icon-share-square"></span>
+    <span class="share-button-text">Share</span>
+  </a>
+</div>
+
+</div>
+
+    </div>
+  </div>
+</div>
+
+
+  <div class='section-content tutorial-contributors one'>
+
+
+  </div>
+</div>
+
+
+  
+    <div class='tutorial-ctas'>
+  <div class='section-content'>
+    <div class='cta-description'>
+      <h2>Spin up an SSD cloud server in under a minute.</h2>
+
+      <p>Simple setup. Full root access. Straightforward pricing.</p>
+
+      <a class="cloud-tutorial-cta" href="https://www.digitalocean.com/?utm_medium=community&amp;utm_source=community_gencta&amp;utm_campaign=needaserver&amp;utm_content=how-to-install-the-django-web-framework-on-ubuntu-14-04">Deploy Server</a>
+    </div>
+  </div>
+</div>
+    <div class='related-tutorials'>
+    <div class='section-content'>
+      <h2>Related Tutorials</h2>
+
+      <ul>
+        <li><a class="related-link" href="/community/tutorials/how-to-install-and-get-started-with-feincms">How To Install And Get Started With FeinCMS</a></li>
+<li><a class="related-link" href="/community/tutorials/how-to-install-django-2">How To Install Django</a></li>
+<li><a class="related-link" href="/community/tutorials/how-to-use-the-django-one-click-install-image-for-ubuntu-16-04">How To Use the Django One-Click Install Image for Ubuntu 16.04</a></li>
+<li><a class="related-link" href="/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-debian-8">How To Set Up Django with Postgres, Nginx, and Gunicorn on Debian 8</a></li>
+<li><a class="related-link" href="/community/tutorials/how-to-use-postgresql-with-your-django-application-on-debian-8">How To Use Postgresql with your Django Application on Debian 8</a></li>
+
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div class="content-comments">
+  <div class="section-content">
+    <div class="tutorial commentable" id="tutorial_1507">
+
+  <div class="comments-header">
+    <h4 class="comments-count"><span>13 Comments</span></h4>
+  </div>
+
+  <div class="response response-form no-avatar">
+  <div class="js-display-on-error flash error hidden"></div>
+
+
+  <form class="content-form disabled-form" id="new_comment" action="/community/tutorials/how-to-install-the-django-web-framework-on-ubuntu-14-04/comments" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" />
+
+    <textarea name="comment[content]" id="comment_content" placeholder="Leave a comment..." class="js-comment-content tutorial-comment-field" data-markdown="true">
+</textarea>
+
+      <div class="log-in-notice "><a href="/community/auth/digitalocean">Log In to Comment</a></div>
+
+    <div class='clearfix'></div>
+</form>
+</div>
+
+
+  <div class="comments">
+    <ul class="response-list">
+          <a class="js-click-on-load hidden" rel="nofollow" data-remote="true" href="/community/tutorials/how-to-install-the-django-web-framework-on-ubuntu-14-04/comments">Load</a>
+    </ul>
+
+      <div class='comments-spinner'><div class="spinner spinner-large">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+  
+</div>
+</div>
+  </div>
+
+  <div class='load-more-container'></div>
+</div>
+
+
+  </div>
+</div>
+
+<div class="creative-commons">
+  <a class="creative-commons-image" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img rel="license" alt="Creative Commons License" src="/assets/community/creativecommons-08b32a9279fcd47fcd78ac6a26331389.png" /></a>
+    <div class="license-text">This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</div>
+</div>
+
+
+
+
+
+        <div class="clearfix"></div>
+      </div>
+
+      <footer class='Footer'>
+  <span class="Footer-logo icon-sammy"></span>
+
+  <div>Copyright &copy; 2017 DigitalOcean&trade; Inc.</div>
+
+  <ul class="Footer-nav">
+    <li><a href="/community">Community</a></li>
+    <li><a href="/community/tutorials">Tutorials</a></li>
+    <li><a href="/community/questions">Questions</a></li>
+    <li><a href="/community/projects">Projects</a></li>
+    <li><a href="/community/tags">Tags</a></li>
+    <li><a href="/community/newsletter">Newsletter</a></li>
+    <li>
+      <a href="/community/tutorials/feed">
+        RSS <span class="icon-rss"></span>
+</a>    </li>
+  </ul>
+
+  <br />
+
+  <ul class="Footer-nav Footer-nav--secondary">
+    <li><a href="https://www.digitalocean.com/features/one-click-apps/">Distros &amp; One-Click Apps</a></li>
+    <li><a href="https://www.digitalocean.com/legal/terms/">Terms, Privacy, &amp; Copyright</a></li>
+    <li><a href="https://www.digitalocean.com/security/">Security</a></li>
+      <li><a data-toggle="modal" data-target="#sign-in-modal" href="#">Report a Bug</a></li>
+    <li><a href="/community/get-paid-to-write">Get Paid to Write</a></li>
+    <li><a href="http://store.digitalocean.com/">Shop</a></li>
+  </ul>
+</footer>
+
+
+
+
+
+      <div id='sign-in-modal' class='modal fade mini-modal' style="display: none;">
+  <div class='modal-dialog'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h1>Almost there!</h1>
+        <a class='close-button' data-dismiss='modal' aria-label="close"  href=''><span class='icon icon-close-light'></span></a>
+      </div>
+      <div class='modal-body'>
+        <div class='sign-in-message'>Sign into your account, or create a new one, to start interacting.</div>
+
+        <div class='sign-in-modal-actions'>
+          <a class="sign-in-link button blue-button" data-default-url="/community/auth/digitalocean" href="/community/auth/digitalocean">Log In</a>
+          <a class="sign-up-link button green-button" data-default-url="/community/auth/digitalocean?display=sessionless+register" href="/community/auth/digitalocean?display=sessionless+register">Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    
+  <script>
+    $(function() {
+      if (!!window.init_sharing) {
+        window.init_sharing();
+      }
+      new window.NewsletterSignup();
+      new window.GrowableMarkdown({ target: '[data-growable-markdown]' });
+
+      window.Bugsnag.beforeNotify = function(payload, metaData) {
+        // custom logic to determine groupingHash
+        metaData.groupingHash = "tutorialShow";
+      }
+    });
+  </script>
+
+  <div id='report-a-bug-modal' class='modal fade mini-modal' style="display: none;">
+    <div class='modal-dialog'>
+      <div class='modal-content'>
+        <div class='modal-header'>
+          <h1>Report a Bug</h1>
+          <a class='close-button' data-dismiss='modal' aria-label="close" href=''><span class='icon icon-close-light'></span></a>
+        </div>
+        <div class='modal-body'>
+          <div class='report-a-bug-message text-center'>Use this form to report bugs related to the Community</div>
+          <div class='report-a-bug-actions do-form'>
+            <div class='form-wrap'>
+              <form class="new_bug_report" id="new_bug_report" action="/community/bug_reports" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="5Gx4tnA9ioMPbndXtpAmy/yLCQ1+ruZ45LZg8FYJ0HsbvBOK/5SgJQoSm6suVU5onrhlWFe05KtyDT8804EXhQ==" />
+                <fieldset name="report-a-bug-info">
+                <legend class="sr-only">Report a bug:</legend>
+                  <div class="field">
+                    <label for="bug_reporter_name" class="sr-only">Name</label>
+                    <input placeholder="Name" id="bug_reporter_name" type="text" name="bug_report[name]" />
+                  </div>
+                  <div class="field">
+                    <label for="bug_reporter_email" class="sr-only">Email</label>
+                    <input name="Email" placeholder="Email" id="bug_reporter_email" required="required" type="text" />
+                  </div>
+                  <div class="field">
+                    <label for="bug_reporter_message" class="sr-only">Message</label>
+                    <textarea name="Message" placeholder="Message" id="bug_reporter_message" required="required">
+</textarea>
+                  </div>
+
+                  <div class="field actions">
+                    <input type="submit" name="commit" value="Submit" class="button" />
+                  </div>
+                </fieldset>
+</form>            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    
+  </body>
+</html>

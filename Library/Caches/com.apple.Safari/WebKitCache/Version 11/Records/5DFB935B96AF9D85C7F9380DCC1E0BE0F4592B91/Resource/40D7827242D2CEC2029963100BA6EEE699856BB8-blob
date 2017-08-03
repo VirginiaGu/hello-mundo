@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="es-ES" prefix="og: http://ogp.me/ns#"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="es-ES" prefix="og: http://ogp.me/ns#"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="es-ES" prefix="og: http://ogp.me/ns#"> <![endif]-->
+<!--[if IE 9 ]><html class="ie ie9" lang="es-ES" prefix="og: http://ogp.me/ns#"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="es-ES" prefix="og: http://ogp.me/ns#"> <!--<![endif]-->
+<head>
+	
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="profile" href="http://gmpg.org/xfn/11" />
+		<link rel="icon" href="http://www.josemanuelgilperez.com/favicon.ico" type="image/x-icon" />
+		<link rel="pingback" href="http://www.josemanuelgilperez.com/xmlrpc.php" />
+	<link rel="alternate" type="application/rss+xml" title="José Manuel Gilpérez" href="http://www.josemanuelgilperez.com/feed/" />
+	<link rel="alternate" type="application/atom+xml" title="José Manuel Gilpérez" href="http://www.josemanuelgilperez.com/feed/atom/" />
+
+<!-- This site is optimized with the Yoast SEO plugin v3.9 - https://yoast.com/wordpress/plugins/seo/ -->
+<title>Django en Mac OS X. Primeros pasos - José Manuel Gilpérez</title>
+<meta name="description" content="Primeros pasos a seguir para instalar Django en Mac OS X y realizar las primeras interacciones con la plataforma y su base de datos a través de la consola."/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="http://www.josemanuelgilperez.com/programacion/python/django-en-mac-os-x-primeros-pasos/" />
+<meta property="og:locale" content="es_ES" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Django en Mac OS X. Primeros pasos - José Manuel Gilpérez" />
+<meta property="og:description" content="Primeros pasos a seguir para instalar Django en Mac OS X y realizar las primeras interacciones con la plataforma y su base de datos a través de la consola." />
+<meta property="og:url" content="http://www.josemanuelgilperez.com/programacion/python/django-en-mac-os-x-primeros-pasos/" />
+<meta property="og:site_name" content="José Manuel Gilpérez" />
+<meta property="article:section" content="Python" />
+<meta property="article:published_time" content="2015-09-21T15:08:52+00:00" />
+<meta property="article:modified_time" content="2015-09-21T15:16:06+00:00" />
+<meta property="og:updated_time" content="2015-09-21T15:16:06+00:00" />
+<!-- / Yoast SEO plugin. -->
+
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="José Manuel Gilpérez &raquo; Feed" href="http://www.josemanuelgilperez.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="José Manuel Gilpérez &raquo; RSS de los comentarios" href="http://www.josemanuelgilperez.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="José Manuel Gilpérez &raquo; Django en Mac OS X. Primeros pasos RSS de los comentarios" href="http://www.josemanuelgilperez.com/programacion/python/django-en-mac-os-x-primeros-pasos/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.josemanuelgilperez.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='contact-form-7-css'  href='http://www.josemanuelgilperez.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=4.6' type='text/css' media='all' />
+<link rel='stylesheet' id='zilla-likes-css'  href='http://www.josemanuelgilperez.com/wp-content/plugins/zilla-likes/styles/zilla-likes.css?ver=4.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css'  href='http://www.josemanuelgilperez.com/wp-content/themes/BUZZBLOG-theme/bootstrap.css?ver=2.3' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-css'  href='http://www.josemanuelgilperez.com/wp-content/themes/BUZZBLOG-theme/responsive.css?ver=2.3' type='text/css' media='all' />
+<link rel='stylesheet' id='magnificpopup-css'  href='http://www.josemanuelgilperez.com/wp-content/themes/BUZZBLOG-theme/css/magnificpopup.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='mainstyle-css'  href='http://www.josemanuelgilperez.com/wp-content/themes/BUZZBLOG-theme/style.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='owl-css'  href='http://www.josemanuelgilperez.com/wp-content/themes/BUZZBLOG-theme/css/owl.carousel.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='hs_options_stylesheets_alt_style-css'  href='http://www.josemanuelgilperez.com/wp-content/themes/BUZZBLOG-theme/css/style1.css' type='text/css' media='all' />
+<link rel='stylesheet' id='github-profile-octicons-css'  href='http://www.josemanuelgilperez.com/wp-content/plugins/github-profile-widget/css/octicons/octicons.css?ver=4.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='github-profile-widget-styles-css'  href='http://www.josemanuelgilperez.com/wp-content/plugins/github-profile-widget/css/widget.css?ver=4.7.5' type='text/css' media='all' />
+<link rel='stylesheet' id='options_typography_Lato:100,300,400,700,900-css'  href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900&#038;subset=latin' type='text/css' media='all' />
+<script type='text/javascript' src='http://www.josemanuelgilperez.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://www.josemanuelgilperez.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='http://www.josemanuelgilperez.com/wp-content/themes/BUZZBLOG-theme/js/modernizr.js?ver=2.0.6'></script>
+<script type='text/javascript' src='http://www.josemanuelgilperez.com/wp-content/themes/BUZZBLOG-theme/js/jquery.nicescroll.js?ver=3.5'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var zilla_likes = {"ajaxurl":"http:\/\/www.josemanuelgilperez.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.josemanuelgilperez.com/wp-content/plugins/zilla-likes/scripts/zilla-likes.js?ver=4.7.5'></script>
+<link rel='https://api.w.org/' href='http://www.josemanuelgilperez.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.josemanuelgilperez.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.josemanuelgilperez.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.7.5" />
+<link rel='shortlink' href='http://www.josemanuelgilperez.com/?p=1004' />
+<link rel="alternate" type="application/json+oembed" href="http://www.josemanuelgilperez.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.josemanuelgilperez.com%2Fprogramacion%2Fpython%2Fdjango-en-mac-os-x-primeros-pasos%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.josemanuelgilperez.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.josemanuelgilperez.com%2Fprogramacion%2Fpython%2Fdjango-en-mac-os-x-primeros-pasos%2F&#038;format=xml" />
+<style type="text/css">.logo {
+    margin: 50px auto;
+}.top-panel-button .toggle-button {color:#e1e1e1}.top-panel-button {border-color:#eeeeee}.nav__primary {background:#ffffff}@media all and (min-width: 800px) {.flexnav > li > a:after {color:#d6d6d6}}.nav__primary {border-color:#eeeeee}.logo_tagline {color:#444444}.header-overlay {background:#ffffff}.header-overlay {-moz-opacity: 0.85; -khtml-opacity: 0.85; opacity: 0.85;}body { background-image:url(http://www.josemanuelgilperez.com/wp-content/themes/BUZZBLOG-theme/images/patterns/pattern1.png); background-repeat:repeat; background-position:top center;  background-attachment:scroll; }body { background-color:#ffffff;}.headerstyler { background-color:#ffffff;}.googleadds {
+margin-bottom: 30px;
+padding: 14px;
+background: #fff;
+border: 0px solid #dedede;
+position: relative;
+z-index: 0;
+-webkit-box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.05);
+-moz-box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.05);
+box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.05);
+}
+
+</style>
+    <script type="text/javascript">
+	(function ($) {
+    'use strict';
+		$(document).ready(function() {
+	$("html").niceScroll({cursorwidth:8});
+  });
+}(jQuery));
+    </script>
+    
+<style type='text/css'>
+h1 { font-weight: 400; font-style: normal; font-size: 60px; line-height: 70px; font-family: Lato;  color:#222222; }
+h2 { font-weight: 400; font-style: normal; font-size: 34px; line-height: 40px; font-family: Lato;  color:#222222; }
+h3 { font-weight: 400; font-style: normal; font-size: 22px; line-height: 30px; font-family: Lato;  color:#222222; }
+h4 { font-weight: 400; font-style: normal; font-size: 24px; line-height: 28px; font-family: Lato;  color:#222222; }
+h5 { font-weight: 400; font-style: normal; font-size: 21px; line-height: 32px; font-family: Lato;  color:#222222; }
+h6 { font-weight: 400; font-style: normal; font-size: 18px; line-height: 24px; font-family: Lato;  color:#222222; }
+.main-holder, .mfp-wrap { font-weight: 400; font-style: normal; font-size: 16px; line-height: 30px; font-family: Lato;  color:#525252; }
+.logo_h__txt, .logo_link { font-weight: 400; font-style: normal; font-size: 73px; line-height: 45px; font-family: playfair_displayregular;  color:#222222; }
+.flexnav > li > a { font-weight: 400; font-style: normal; font-size: 18px; line-height: 21px; font-family: playfair_displayregular;  color:#222222; }
+.nav.footer-nav a { font-weight: 400; font-style: normal; font-size: 13px; line-height: 22px; font-family: playfair_displayregular;  color:#667078; }
+</style>
+	
+<!--[if IE 8 ]>
+<link rel="stylesheet" id="stylesheet-ie8" type="text/css" href="http://www.josemanuelgilperez.com/wp-content/themes/BUZZBLOG-theme/ie8.css" />
+	<script src="http://www.josemanuelgilperez.com/wp-content/themes/BUZZBLOG-theme/js/respond.js"></script>
+<![endif]-->
+</head>
+
+<body class="post-template-default single single-post postid-1004 single-format-standard cat-75-id">
+	
+			<div id="main-holdercon" class="main-holder" style="">
+<header id="headerfix" class="headerstyler headerphoto header" style="">
+<div class="header-overlay"></div>
+<div class="top-panel22 hidden-phone"> 
+    <div class="top-panel-button">
+	<a class="popup-with-zoom-anim toggle-button md-trigger" href="#small-dialog"><i class="icon-search-2 icon-2x"></i></a>
+    </div>
+	<div id="small-dialog" class="zoom-anim-dialog mfp-hide">
+	<!-- BEGIN SEARCH FORM -->  
+	<div class="sb-search">
+						<form class="navbar-form" method="get" action="http://www.josemanuelgilperez.com/" accept-charset="utf-8">
+							<input class="sb-search-input" placeholder="Search term..." type="text" value="" name="s">
+						</form>
+					</div>
+<!-- END SEARCH FORM -->	</div> 
+</div>
+	<div class="container">
+		<div class="row-fluid">
+			<div class="span12">
+				
+<div class="row-fluid">
+
+    <div class="span12">
+    	<!-- BEGIN LOGO -->                     
+<div class="logo">                            
+												<h1 class="logo_h logo_h__txt"><a href="http://www.josemanuelgilperez.com/" title="Para Saber hay que Comprender" class="logo_link">José Manuel Gilpérez</a></h1>
+				<!-- Site Tagline -->
+				<p class="logo_tagline">Para Saber hay que Comprender</p>
+								
+</div>
+<!-- END LOGO -->    </div>
+	</div>
+	<div class="row-fluid post-header">
+	<div class="span12">
+    			<!-- BEGIN MAIN NAVIGATION  -->
+		<div class="menu-button"><i class="icon-menu"></i>
+					<a style="position:relative;z-index:100;color:#222222; margin-left:12px;display:inline-block;" class="popup-with-zoom-anim toggle-button md-trigger" href="#small-dialog"><i class="icon-search-1"></i></a>
+	<div id="small-dialogs" class="zoom-anim-dialog mfp-hide">
+	<!-- BEGIN SEARCH FORM -->  
+	<div class="sb-search">
+						<form class="navbar-form" method="get" action="http://www.josemanuelgilperez.com/" accept-charset="utf-8">
+							<input class="sb-search-input" placeholder="Search term..." type="text" value="" name="s">
+						</form>
+					</div>
+<!-- END SEARCH FORM -->	</div> 
+			</div>
+		<nav class="nav nav__primary clearfix"> 
+			<ul data-breakpoint="800" id="menu-main-menu" class="flexnav"><li id="menu-item-474" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home"><a href="http://www.josemanuelgilperez.com/">Inicio</a></li>
+<li id="menu-item-726" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="http://www.josemanuelgilperez.com/salud/">Salud</a></li>
+<li id="menu-item-553" class="menu-item menu-item-type-taxonomy menu-item-object-category"><a href="http://www.josemanuelgilperez.com/sociedad/">Sociedad</a></li>
+<li id="menu-item-845" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor menu-item-has-children"><a href="http://www.josemanuelgilperez.com/programacion/">Programación</a>
+<ul class="sub-menu">
+	<li id="menu-item-965" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent"><a href="http://www.josemanuelgilperez.com/programacion/python/">Python</a></li>
+</ul>
+</li>
+<li id="menu-item-1035" class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.josemanuelgilperez.com/contacto/">Contacto</a></li>
+</ul>			
+		 </nav>
+		<!-- END MAIN NAVIGATION -->
+
+
+    </div>
+	
+
+</div>
+<!--<div class="row"> -->
+    
+<!-- </div> -->			</div>
+		</div>
+	</div>
+
+</header><div class="content-holder clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <div class="row">
+                <div class="span12" id="title-header">
+                <div class="page-header">
+                <section class="title-section">
+                				                				          </section>
+            </div> 
+                </div>
+                   </div>
+                 <div class="row">
+                                   <div class="span8 right" id="content">
+                        <article id="post-1004" class="post__holder post-1004 post type-post status-publish format-standard hentry category-python cat-75-id">
+<div class="post-formats hidden-phone"><i class="icon-doc-text-1 icon-2x"></i></div>	<div class="row-fluid">
+	<div class="span12">
+		<header class="post-header">	
+					<h2 class="post-title">Django en Mac OS X. Primeros pasos</h2>
+			</header>
+		<!-- Post Meta -->
+	<div class="meta-space">
+				<span>por <a href="http://www.josemanuelgilperez.com/author/jmgilperez/" title="Entradas de Jose Manuel Gilpérez Aguilar" rel="author">Jose Manuel Gilpérez Aguilar</a></span>
+			<span><i class="icon-calendar-2"></i> Lunes, Septiembre 21, 2015</span>
+	
+	
+	
+						<span><i class="icon-comment-2"></i> <a href="http://www.josemanuelgilperez.com/programacion/python/django-en-mac-os-x-primeros-pasos/#respond" class="comments-link" >0</a></span>
+						<span class="post_category"><i class="icon-cloud-2"></i><a href="http://www.josemanuelgilperez.com/programacion/python/" >Python</a></span>
+														
+									<span><i class="icon-tag-2"></i>
+									No tags								</span>
+								
+		
+				<span class="post_permalink"><i class="icon-attach-2"></i><a href="http://www.josemanuelgilperez.com/programacion/python/django-en-mac-os-x-primeros-pasos/" title="Permalink Django en Mac OS X. Primeros pasos">Permalink</a></span>
+				
+	<span><a href="#" class="zilla-likes" id="zilla-likes-1004" title="Like this">0</a></span>	</div>
+	<!--// Post Meta -->
+			
+	<!-- Post Content -->
+	<div class="post_content">	
+	
+	
+		<h3>Instalación de Django</h3>
+<p>Debemos tener instalado <em>pip</em> en Mac OS X, el cual <a href="http://www.josemanuelgilperez.com/programacion/instalar-python-en-mac-os-x-10-10-yosemite/">se instala junto con <em>Homebrew</em></a>. En ese caso, instalar Django es tan sencillo como escribir la siguiente sentencia en el terminal:</p>
+<pre>$ sudo pip install Django</pre>
+<p>Después de introducir la <em>password,</em> se realizará la instalación que terminara con el mensaje siguiente:</p>
+<pre>Successfully installed Django-1.8.4</pre>
+<p>Otra posibilidad es emplear la siguiente expresión en la línea de comandos:</p>
+<pre>$ sudo easy_install django</pre>
+<p>tras la que aparece el siguiente mensaje al finalizar la instalación:</p>
+<pre>Finished processing dependencies for django</pre>
+<p>En cualquier caso, podemos comprobar la versión instalada mediante la siguiente sentencia en el terminal:</p>
+<pre>$ python -c "import django; print(django.get_version())"</pre>
+<h3>Creación del proyecto</h3>
+<p>Para inicializar el proyecto <em>mysite</em> con los elementos necesarios, nos situamos en el directorio donde queremos crear el proyecto y escribimos la siguiente sentencia:</p>
+<pre>$ django-admin startproject mysite</pre>
+<p>Para los que se inician en Python a partir de PHP se debe considerar una diferencia importante respecto al lugar donde ubicaremos el código. En PHP normalmente se coloca en la carpeta raiz el servidor <em>/public_html/</em> o similar. En <em>Django</em> se mejora la seguridad guardando el código fuera de la raíz pública.</p>
+<p>La sentencia anterior crea una carpeta <em>mysite</em> con el siguiente contenido:</p>
+<pre>mysite/
+    manage.py
+    mysite/
+        __init__.py
+        settings.py
+        urls.py
+        wsgi.py</pre>
+<p>Veamos que es cada uno de estos archivos:</p>
+<ul>
+<li><em>manage.py</em>: incluye las funciones para administrar el proyecto desde la línea de comandos (<a href="https://docs.djangoproject.com/en/1.8/ref/django-admin/" target="_blank">referencia completa</a>).</li>
+<li><em>mysite/</em> : es el directorio donde se encuentra el proyecto y su nombre será el empleado para realizar cualquier importación al mismo (ej. <em>mysite.urls</em>).</li>
+<li><em>mysite/__init__.py</em>: este archivo no tiene contenido y cumple la función de indicar a Python que el directorio donde se encuentra es un <a href="https://docs.python.org/2/tutorial/modules.html#packages" target="_blank">paquete Python</a>.</li>
+<li><em>mysite/settings.py</em>: contiene la <a href="https://docs.djangoproject.com/en/1.8/topics/settings/" target="_blank">configuración</a> del proyecto y tiene todas las características de un módulo Python.</li>
+<li><em>mysite/urls.py</em>: en este módulo se declaran todas las <a href="https://docs.djangoproject.com/en/1.8/topics/http/urls/" target="_blank">URLs</a> del proyecto y viene a ser un mapa de contenidos del sitio.</li>
+<li><em>mysite/wsgi.py</em>: es el punto de entrada para los <a href="https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface" target="_blank">servidores WSGI</a>, el <a href="https://docs.djangoproject.com/en/1.8/howto/deployment/wsgi/" target="_blank">estándar para Python</a>.</li>
+</ul>
+<h3>Configuración de la base de datos</h3>
+<p>La configuración de la base de datos se encuentra en el módulo <em>settings.py</em>. Por defecto, contiene la configuración de una base de datos SQLite, incluida en Python, adecuada para el aprendizaje pero no para proyectos reales. En este caso, los datos se guardaran en un simple fichero en el directorio del proyecto. Los parámetros que definen la base de datos se encuentran en el siguiente diccionario:</p>
+<pre>DATABASES = {
+	'default': {
+		'ENGINE': 'django.db.backends.sqlite3',
+		'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+	}
+}
+</pre>
+<p>Para SQLite, ENGINE es <em>django.db.backends.sqlite3. </em>Si usamos una base de datos MySQL este parámetro será <em>django.db.backends.mysql</em>. Podemos encontrar parámetros análogos para PostgreSQL u Oracle.</p>
+<p>NAME indica el nombre de la base de datos. En el caso de SQLite será el nombre del archivo, incluyendo la ruta completa en caso de que no se encuentre en el mismo directorio del proyecto.</p>
+<p>En el caso de una base de datos MySQL en un servidor remoto debemos facilitar otra información dentro del diccionario como USER, PASSWORD, HOST y PORT.</p>
+<pre>DATABASES = {
+	'default': {
+		'ENGINE': 'django.db.backends.mysql',
+		'NAME': 'mydatabase',
+		'USER': 'mydatabaseuser',
+		'PASSWORD': 'mypassword',
+		'HOST': '127.0.0.1',
+		'PORT': '5432',
+	}
+}
+</pre>
+<p>En <em>settings.py</em> podemos también encontrar la lista INSTALLED_APPS con todas las aplicaciones activas en el proyecto. Por defecto cualquier proyecto Django tiene las siguientes aplicaciones:</p>
+<ul>
+<li>django.contrib.admin – El administrador.</li>
+<li>django.contrib.auth – Sistema de autenticación.</li>
+<li>django.contrib.contenttypes – Esquema de los tipos de contenido</li>
+<li>django.contrib.sessions – Sistema de sesiones.</li>
+<li>django.contrib.messages – Sistema de mensajes.</li>
+<li>django.contrib.staticfiles – Sistema de manejo de archivos estáticos.</li>
+</ul>
+<p>Cada una de estas aplicaciones requiere al menos una tabla en la base de datos, que deben crearse mediante el siguiente comando:</p>
+<pre>$ python manage.py migrate
+</pre>
+<h3>El servidor de desarrollo</h3>
+<p>Django contiene un servidor web básico escrito en Python adecuado para las etapas de desarrollo previas a un trabajo en producción en un servidor Apache. Para verificar que dicho servidor funciona, debemos ejecutar el siguinte comandodesde el directorio <em>mysite</em>:</p>
+<pre>$ python manage.py runserver
+</pre>
+<p>Si todo funciona correctamente veremos la siguiente respuesta en la línea de comandos:</p>
+<pre>Performing system checks...
+
+0 errors found
+September 15, 2015 - 15:50:53
+Django version 1.8, using settings 'mysite.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+</pre>
+<p>Así mismo, abriendo en el navegador la URL http://127.0.0.1:8000/ veremos el resultado.</p>
+<h3>Creación de una aplicación</h3>
+<p>Dentro de un proyecto podemos encontrar diferentes aplicaciones (<em>app</em>) que realizan diferentes funciones dentro del mismo. Cada aplicación está contenida en una carpeta que Django crea al efecto. Las aplicaciones son exportables a otros proyectos.</p>
+<p>Al crear una nueva aplicación, Django creará una nueva carpeta donde se encontrarán todos los archivos de la misma. En este ejemplo se creará una aplicación denominada <em>polls</em> (encuestas) en el directorio principal (cualquiera hubiese sido válido) mediante la siguiente sentencia:</p>
+<pre>$ python manage.py startapp polls
+</pre>
+<p>El contenido de la carpeta <em>polls</em> será el siguiente:</p>
+<pre>polls/
+    __init__.py
+    admin.py
+    migrations/
+        __init__.py
+    models.py
+    tests.py
+    views.py
+</pre>
+<p>El primer paso es definir los <em>modelos</em> que se guardarán en el archivo <em>models.py</em>. Dichos modelos contienen la estructura de la base de datos y algunos metadatos.</p>
+<p>En nuestra aplicación para realizar encuestas crearemos dos modelos: <em>Question</em> (pregunta) y <em>Choice</em> (selección). Cada modelo equivale a una tabla que está representada por una clase que a su vez es una subclase de <em>django.db.models.Model</em>. La clase (tabla) <em>Question</em> tendrá dos variables (campos), la pregunta y la fecha de publicación, que equivalen a campos de la tabla. La clase (tabla) <em>Choice</em> tendrá tres variables (campos): un índice que le relaciona con la pregunta, un texto y los votos que ha recibido. El archivo <em>models.py</em> que contiene los modelos contendrá lo siguiente:</p>
+<pre>from django.db import models
+
+class Question(models.Model):
+        question_text = models.CharField(max_length=200)
+        pub_date = models.DateTimeField('date published')
+
+class Choice(models.Model):
+        question = models.ForeignKey(Question)
+        choice_text = models.CharField(max_length=200)
+        votes = models.IntegerField(default=0)
+</pre>
+<p>Vemos que cada campo se representa por una instancia de la clase <em>Field</em>, como son <em>CharField</em> para campos de caracteres o  <em>DateTimeField</em> para fechas. De este modo Django conoce el tipo de dato que se aloja en cada campo.</p>
+<p>Algunas clases precisan argumentos obligatorios, como es el caso de <em>CharField</em> en el ejemplo, que requiere el argumento <em>max_length</em>, y pueden tener también argumentos opcionales.</p>
+<h3>Activación de la aplicación</h3>
+<p>El primer paso es editar el fichero <em>settings.py</em> para incluir la nueva aplicación dentro de la lista INSTALLED_APPS :</p>
+<pre>INSTALLED_APPS = (
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'polls',
+)
+</pre>
+<p>A continuación debe ejecutarse el comando <em>makemigrations</em> para crear una <em>migración</em>, informando a Django de que se han realizado cambios en los modelos, en este caso añadiendo la aplicación <em>poll</em>. La línea de comandos sería la siguiente:</p>
+<pre>$ python manage.py makemigrations polls</pre>
+<p>El resultado será el siguiente:</p>
+<pre>Migrations for 'polls':
+  0001_initial.py:
+    - Create model Question
+    - Create model Choice
+    - Add field question to choice
+</pre>
+<p>Las migraciones son archivos donde se guardan los cambios a realizar. Con el comando <em>makemigrations</em> hemos creado la migración, pero no la hemos realizado. Para ello debe ejecutarse el comando <em>migrate</em> propiamente dicho:</p>
+<pre>$ python manage.py migrate
+</pre>
+<p>En la consola veremos las operaciones que se van realizando, que serán todas las migraciones que no se hayan realizado hasta el momento, de acuerdo a la información almacenada por Django en la tabla <em>django_migrations</em>.</p>
+<h3>Primeras pruebas con la API</h3>
+<p>Django proporciona una API gratuito al que podemos acceder desde el Python <em>shell.</em> El primer paso es invocar el <em>shell</em>:</p>
+<pre>$ python manage.py shell
+</pre>
+<p>Se incluye  <em>manage.py</em> para indicar a Django la ruta al archivo <em>mysite/settings.py</em>.</p>
+<p>Una vez en el  shell , importamos las clases Question, Choice:</p>
+<pre>&gt;&gt;&gt; from polls.models import Question, Choice</pre>
+<p>Podemos comprobar que todavía no se ha creado ningún objeto de la clase <em>Question</em>:</p>
+<pre>&gt;&gt;&gt; Question.objects.all()</pre>
+<p>El resultado será vacío:</p>
+<pre>[]</pre>
+<p>A continuación creamos un nuevo elemento de la tabla y lo salvamos. Dado que la variable <em>pub_date</em> requiere la fecha y hora  actual, vamos a escribir dicho valor de acuerdo a la zona horaria. Para ello primeramente importamos la clase preinstalada <em> timezone</em> incluida en <em>utils:</em></p>
+<pre>&gt;&gt;&gt; from django.utils import timezone
+&gt;&gt;&gt; q = Question(question_text="What's new?", pub_date=timezone.now())
+&gt;&gt;&gt; q.save()</pre>
+<p>Automáticamente se le ha asignado un ID que podemos visualizar:</p>
+<pre>&gt;&gt;&gt; q.id
+1
+</pre>
+<p>Puede accederse a los campos:</p>
+<pre>&gt;&gt;&gt; q.question_text
+"What's new?"
+&gt;&gt;&gt; q.pub_date
+datetime.datetime(2012, 2, 26, 13, 0, 0, 775217, tzinfo=&lt;UTC&gt;)
+</pre>
+<p>Ahora que ya tenemos un registro en Question podemos volver a probar <em>Question.objects.all()</em>. El resultado ahora es:</p>
+<pre>&gt;&gt;&gt; Question.objects.all()
+[]
+</pre>
+<p>el cual indica que no está vacío pero nos da muy poca información acerca del registro. Para ello añadimos __str__() (Python 3) o __unicode__ (Python 2) a los modelos Question y Choice:</p>
+<pre>from django.db import models
+
+class Question(models.Model):
+    # ...
+    def __unicode__(self):
+        return self.question_text
+
+class Choice(models.Model):
+    # ...
+    def __unicode__(self):
+        return self.choice_text
+</pre>
+<p>Después de guardar este cambio, volvemos a inicializar el <em>shell</em>:</p>
+<pre>$ python manage.py shell
+</pre>
+<p>Y cargamos de nuevo los modelos:</p>
+<pre>&gt;&gt;&gt; from polls.models import Question, Choice
+</pre>
+<p>Ahora encontramos:</p>
+<pre>&gt;&gt;&gt; Question.objects.all()</pre>
+<pre><span class="go">[&lt;Question: What's new?&gt;]</span></pre>
+<p>Para modificar la variable:</p>
+<pre>&gt;&gt;&gt; q.question_text = "What's up?"
+&gt;&gt;&gt; q.save()
+</pre>
+<p>La API de Django permite obtener información de la base de datos mediante una serie de funciones a partir de argumentos:</p>
+<pre>&gt;&gt;&gt; Question.objects.filter(id=1)
+[&lt;Question: What's up?&gt;]
+&gt;&gt;&gt; Question.objects.filter(question_text__startswith='What')
+[&lt;Question: What's up?&gt;]
+
+&gt;&gt;&gt; from django.utils import timezone
+&gt;&gt;&gt; current_year = timezone.now().year
+&gt;&gt;&gt; Question.objects.get(pub_date__year=current_year)
+&lt;Question: What's up?&gt;
+</pre>
+<p>La <a href="https://docs.djangoproject.com/en/1.8/topics/db/">referencia</a> completa de todas las funciones de la API para acceso a la base de datos puede encontrarse en la <a href="https://docs.djangoproject.com/en/1.8/">documentación de Django</a>.</p>
+<p>Esta guía nos da una pequeña muestra de las posibilidades de Django a través de la consola.</p>
+				<div class="clear"></div>
+	</div>
+	<!-- //Post Content -->	
+		
+</div></div>
+<!-- .share-buttons -->
+<div class="share-buttons">
+	
+<!-- <a class="facebook" target="_blank" onclick="return !window.open(this.href, 'Facebook', 'width=640,height=300')" href="http://www.facebook.com/sharer/sharer.php?u=">Facebook</a> -->
+<a class="hs-icon icon-facebook-1" onClick="window.open('http://www.facebook.com/sharer.php?u=http://www.josemanuelgilperez.com/programacion/python/django-en-mac-os-x-primeros-pasos/','Facebook','width=600,height=300,left='+(screen.availWidth/2-300)+',top='+(screen.availHeight/2-150)+''); return false;" href="http://www.facebook.com/sharer.php?u=http://www.josemanuelgilperez.com/programacion/python/django-en-mac-os-x-primeros-pasos/"></a>
+<a class="hs-icon icon-twitter" onClick="window.open('http://twitter.com/share?url=http://www.josemanuelgilperez.com/programacion/python/django-en-mac-os-x-primeros-pasos/&amp;text=Django%20en%20Mac%20OS%20X.%20Primeros%20pasos','Twitter share','width=600,height=300,left='+(screen.availWidth/2-300)+',top='+(screen.availHeight/2-150)+''); return false;" href="http://twitter.com/share?url=http://www.josemanuelgilperez.com/programacion/python/django-en-mac-os-x-primeros-pasos/&amp;text=Django%20en%20Mac%20OS%20X.%20Primeros%20pasos"></a>
+<a class="hs-icon icon-gplus" onClick="window.open('https://plus.google.com/share?url=http://www.josemanuelgilperez.com/programacion/python/django-en-mac-os-x-primeros-pasos/','Google plus','width=585,height=666,left='+(screen.availWidth/2-292)+',top='+(screen.availHeight/2-333)+''); return false;" href="https://plus.google.com/share?url=http://www.josemanuelgilperez.com/programacion/python/django-en-mac-os-x-primeros-pasos/"></a>
+<a class="hs-icon icon-digg" onClick="window.open('http://www.digg.com/submit?url=http://www.josemanuelgilperez.com/programacion/python/django-en-mac-os-x-primeros-pasos/','Digg','width=715,height=330,left='+(screen.availWidth/2-357)+',top='+(screen.availHeight/2-165)+''); return false;" href="http://www.digg.com/submit?url=http://www.josemanuelgilperez.com/programacion/python/django-en-mac-os-x-primeros-pasos/"></a>
+<a class="hs-icon icon-reddit" onClick="window.open('http://reddit.com/submit?url=http://www.josemanuelgilperez.com/programacion/python/django-en-mac-os-x-primeros-pasos/&amp;title=Django%20en%20Mac%20OS%20X.%20Primeros%20pasos','Reddit','width=617,height=514,left='+(screen.availWidth/2-308)+',top='+(screen.availHeight/2-257)+''); return false;" href="http://reddit.com/submit?url=http://www.josemanuelgilperez.com/programacion/python/django-en-mac-os-x-primeros-pasos/&amp;title=Django%20en%20Mac%20OS%20X.%20Primeros%20pasos"></a>
+<a class="hs-icon icon-linkedin" onClick="window.open('http://www.linkedin.com/shareArticle?mini=true&amp;url=http://www.josemanuelgilperez.com/programacion/python/django-en-mac-os-x-primeros-pasos/','Linkedin','width=863,height=500,left='+(screen.availWidth/2-431)+',top='+(screen.availHeight/2-250)+''); return false;" href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://www.josemanuelgilperez.com/programacion/python/django-en-mac-os-x-primeros-pasos/"></a>
+<a class="hs-icon icon-pinterest" href='javascript:void((function()%7Bvar%20e=document.createElement(&apos;script&apos;);e.setAttribute(&apos;type&apos;,&apos;text/javascript&apos;);e.setAttribute(&apos;charset&apos;,&apos;UTF-8&apos;);e.setAttribute(&apos;src&apos;,&apos;http://assets.pinterest.com/js/pinmarklet.js?r=&apos;+Math.random()*99999999);document.body.appendChild(e)%7D)());'></a>
+<a class="hs-icon icon-stumbleupon" onClick="window.open('http://www.stumbleupon.com/submit?url=http://www.josemanuelgilperez.com/programacion/python/django-en-mac-os-x-primeros-pasos/&amp;title=Django%20en%20Mac%20OS%20X.%20Primeros%20pasos','Stumbleupon','width=600,height=300,left='+(screen.availWidth/2-300)+',top='+(screen.availHeight/2-150)+''); return false;" href="http://www.stumbleupon.com/submit?url=http://www.josemanuelgilperez.com/programacion/python/django-en-mac-os-x-primeros-pasos/&amp;title=Django%20en%20Mac%20OS%20X.%20Primeros%20pasos"></a>
+<a class="hs-icon icon-tumblr" onClick="window.open('http://www.tumblr.com/share/link?url=www.josemanuelgilperez.com/programacion/python/django-en-mac-os-x-primeros-pasos/&amp;name=Django%20en%20Mac%20OS%20X.%20Primeros%20pasos','Tumblr','width=600,height=300,left='+(screen.availWidth/2-300)+',top='+(screen.availHeight/2-150)+''); return false;" href="http://www.tumblr.com/share/link?url=www.josemanuelgilperez.com/programacion/python/django-en-mac-os-x-primeros-pasos/&amp;name=Django%20en%20Mac%20OS%20X.%20Primeros%20pasos"></a>
+<a class="hs-icon icon-mail" href="mailto:?Subject=Django%20en%20Mac%20OS%20X.%20Primeros%20pasos&amp;Body=http://www.josemanuelgilperez.com/programacion/python/django-en-mac-os-x-primeros-pasos/"></a>
+</div><!-- //.share-buttons -->
+</article>					<!--BEGIN .pager .single-pager -->
+				<ul class="paging">
+	<li style="float:left;">
+		<a class="btn-pagination" href="http://www.josemanuelgilperez.com/programacion/jquery/obtener-datos-de-google-spreadsheets-en-formato-json-mediante-jquery/" rel="prev">&laquo; Previous post</a>		</li><!--.previous-->
+	<li style="float:right;">
+		<a class="btn-pagination" href="http://www.josemanuelgilperez.com/programacion/python/el-administrador-de-django/" rel="next">Next Post &raquo;</a>	</li><!--.next-->
+	<div class="clear"></div>
+</ul><!--.pager-->
+
+			<!-- BEGIN Comments -->	
+	
+				<!-- If comments are closed. -->
+	   <p class="nocomments">Comments are closed.</p>
+			
+		
+
+	                    </div>
+                    <div class="span4 sidebar" id="sidebar">
+								<!-- GOOGLE ADDS -->
+							<div class="googleadds">
+								<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+								<ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-6794153742586418" data-ad-slot="3765490480"></ins>
+								<script> (adsbygoogle = window.adsbygoogle || []).push({});</script>
+							</div>
+								<!-- FIN GOOGLE ADDS -->
+                        <div id="search-2" class="widget"><div class="search-form">
+	<form id="custom-search-form" method="get" action="http://www.josemanuelgilperez.com" accept-charset="utf-8" class="form-search form-horizontal">
+	<div class="input-append">
+		<input type="text" value="" name="s" id="s" class="search-query" placeholder="Search">
+		<button type="submit" value="" id="search-submit" class="btn"><i class="icon-search"></i></button>
+		</div>
+	</form>
+</div></div><div id="social_networks-3" class="widget"><h5>Social</h5>			<!-- BEGIN SOCIAL NETWORKS -->
+						
+			<div class="social social__list unstyled">
+				
+				    						
+																<a target="_blank" class="icon-facebook icon-2x social_link social_link__facebook" data-rel="tooltip" data-original-title="facebook" href="https://www.facebook.com/JoseManuelGilperez">
+							</a>
+																				
+								    						
+																<a target="_blank" class="icon-twitter icon-2x social_link social_link__twitter" data-rel="tooltip" data-original-title="twitter" href="https://twitter.com/JoseManuelXXI">
+							</a>
+																				
+								    						    						
+																<a target="_blank" class="icon-linkedin icon-2x social_link social_link__linkedin" data-rel="tooltip" data-original-title="linkedin" href="es.linkedin.com/in/josemanuelgilperez/">
+							</a>
+																				
+								    						    						    						
+																<a target="_blank" class="icon-pinterest icon-2x social_link social_link__pinterest" data-rel="tooltip" data-original-title="pinterest" href="http://www.pinterest.com/josemanuelxxi/">
+							</a>
+																				
+								    						    						
+																<a target="_blank" class="icon-gplus icon-2x social_link social_link__gplus" data-rel="tooltip" data-original-title="gplus" href="https://plus.google.com/+josemanuelgilperez">
+							</a>
+																				
+								    						
+																<a target="_blank" class="icon-instagram icon-2x social_link social_link__instagram" data-rel="tooltip" data-original-title="instagram" href="http://instagram.com/josemanuelxxi">
+							</a>
+																				
+								    						    						    						
+																<a target="_blank" class="icon-rss icon-2x social_link social_link__rss" data-rel="tooltip" data-original-title="rss" href="http://feeds.feedburner.com/josemanuelxxi">
+							</a>
+																				
+								    							      
+   		</div>
+   		<!-- END SOCIAL NETWORKS -->
+      
+		</div><div id="twitter-widget-2" class="widget"><h5>Latest Tweets</h5><div class="twitter"><i class="icon-twitter icon-3x"></i><script type="text/javascript">
+jQuery(document).ready(function() {
+
+  jQuery("#owl-demo_orgziijeqn").owlCarousel({
+    autoPlay : 5000,
+    stopOnHover : true,
+    navigation:false,
+    singleItem : true,
+    autoHeight : true,
+	touchDrag: true,
+	scrollPerPage: true
+  });
+
+});		
+	</script><div id="owl-demo_orgziijeqn" class="owl-carousel"><div><div class="tweet_item"><div class="tweet_content"><div class="stream-item-header"></div><div class="tweet_txt">Empezamos el año cogiendo olas en el norte de Tenerife con #<a target="_blank" href="http://twitter.com/search?q=%23greenwave">greenwave</a> #<a target="_blank" href="http://twitter.com/search?q=%23surf">surf</a> #<a target="_blank" href="http://twitter.com/search?q=%23tenerife">tenerife</a> <a  target="_blank" href="https://t.co/CyseCojam9">https://t.co/CyseCojam9</a></div><div class="clearfix"><div class="twitter_intents">
+<span><a onClick="window.open('https://twitter.com/intent/tweet?in_reply_to=815677827441954816','Twitter','width=600,height=300,left='+(screen.availWidth/2-300)+',top='+(screen.availHeight/2-150)+''); return false;" class="reply-tweet" href="https://twitter.com/intent/tweet?in_reply_to=815677827441954816">Reply</a></span>
+
+<span><a onClick="window.open('https://twitter.com/intent/retweet?tweet_id=815677827441954816','Twitter','width=600,height=300,left='+(screen.availWidth/2-300)+',top='+(screen.availHeight/2-150)+''); return false;" class="retweet" href="https://twitter.com/intent/retweet?tweet_id=815677827441954816">Retweet</a></span>
+
+<span><a onClick="window.open('https://twitter.com/intent/favorite?tweet_id=815677827441954816','Twitter','width=600,height=300,left='+(screen.availWidth/2-300)+',top='+(screen.availHeight/2-150)+''); return false;" class="favorite-tweet" href="https://twitter.com/intent/favorite?tweet_id=815677827441954816">Favorite</a></span>
+
+</div>
+</div>
+        <p class="timestamp">
+            <a href="https://twitter.com/JoseManuelXXI/status/815677827441954816" target="_blank">
+                01 Jan 2017
+            </a>
+        </p></div></div></div><div><div class="tweet_item"><div class="tweet_content"><div class="stream-item-header"></div><div class="tweet_txt">RT @<a  target="_blank" href="http://twitter.com/sciam">sciam</a>: How to raise a genius: lessons from a 45-year study of super-smart children <a  target="_blank" href="https://t.co/V3EDgD1zuT">https://t.co/V3EDgD1zuT</a> <a  target="_blank" href="https://t.co/ZscHiYlr4y">https://t.co/ZscHiYlr4y</a></div><div class="clearfix"><div class="twitter_intents">
+<span><a onClick="window.open('https://twitter.com/intent/tweet?in_reply_to=774720747835187200','Twitter','width=600,height=300,left='+(screen.availWidth/2-300)+',top='+(screen.availHeight/2-150)+''); return false;" class="reply-tweet" href="https://twitter.com/intent/tweet?in_reply_to=774720747835187200">Reply</a></span>
+
+<span><a onClick="window.open('https://twitter.com/intent/retweet?tweet_id=774720747835187200','Twitter','width=600,height=300,left='+(screen.availWidth/2-300)+',top='+(screen.availHeight/2-150)+''); return false;" class="retweet" href="https://twitter.com/intent/retweet?tweet_id=774720747835187200">Retweet</a></span>
+
+<span><a onClick="window.open('https://twitter.com/intent/favorite?tweet_id=774720747835187200','Twitter','width=600,height=300,left='+(screen.availWidth/2-300)+',top='+(screen.availHeight/2-150)+''); return false;" class="favorite-tweet" href="https://twitter.com/intent/favorite?tweet_id=774720747835187200">Favorite</a></span>
+
+</div>
+</div>
+        <p class="timestamp">
+            <a href="https://twitter.com/JoseManuelXXI/status/774720747835187200" target="_blank">
+                10 Sep 2016
+            </a>
+        </p></div></div></div><div><div class="tweet_item"><div class="tweet_content"><div class="stream-item-header"></div><div class="tweet_txt">@<a  target="_blank" href="http://twitter.com/ArnoCandel">ArnoCandel</a> Neural networks become not so artificial at the end</div><div class="clearfix"><div class="twitter_intents">
+<span><a onClick="window.open('https://twitter.com/intent/tweet?in_reply_to=774718624431009792','Twitter','width=600,height=300,left='+(screen.availWidth/2-300)+',top='+(screen.availHeight/2-150)+''); return false;" class="reply-tweet" href="https://twitter.com/intent/tweet?in_reply_to=774718624431009792">Reply</a></span>
+
+<span><a onClick="window.open('https://twitter.com/intent/retweet?tweet_id=774718624431009792','Twitter','width=600,height=300,left='+(screen.availWidth/2-300)+',top='+(screen.availHeight/2-150)+''); return false;" class="retweet" href="https://twitter.com/intent/retweet?tweet_id=774718624431009792">Retweet</a></span>
+
+<span><a onClick="window.open('https://twitter.com/intent/favorite?tweet_id=774718624431009792','Twitter','width=600,height=300,left='+(screen.availWidth/2-300)+',top='+(screen.availHeight/2-150)+''); return false;" class="favorite-tweet" href="https://twitter.com/intent/favorite?tweet_id=774718624431009792">Favorite</a></span>
+
+</div>
+</div>
+        <p class="timestamp">
+            <a href="https://twitter.com/JoseManuelXXI/status/774718624431009792" target="_blank">
+                10 Sep 2016
+            </a>
+        </p></div></div></div></div></div></div><div id="categories-2" class="widget"><h5>Categorias</h5>		<ul>
+	<li class="cat-item cat-item-46"><a href="http://www.josemanuelgilperez.com/ciencia/" >Ciencia</a> (1)
+</li>
+	<li class="cat-item cat-item-80"><a href="http://www.josemanuelgilperez.com/salud/entrenamiento/" >Entrenamiento</a> (1)
+</li>
+	<li class="cat-item cat-item-76"><a href="http://www.josemanuelgilperez.com/programacion/jquery/" >JQuery</a> (1)
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.josemanuelgilperez.com/negocios/marca-personal/" >Marca Personal</a> (3)
+</li>
+	<li class="cat-item cat-item-73"><a href="http://www.josemanuelgilperez.com/salud/meditacion/" >Meditación</a> (1)
+</li>
+	<li class="cat-item cat-item-45"><a href="http://www.josemanuelgilperez.com/negocios/" >Negocios</a> (3)
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.josemanuelgilperez.com/negocios/negocios-en-internet/" >Negocios en Internet</a> (5)
+</li>
+	<li class="cat-item cat-item-68"><a href="http://www.josemanuelgilperez.com/programacion/" >Programación</a> (5)
+</li>
+	<li class="cat-item cat-item-75"><a href="http://www.josemanuelgilperez.com/programacion/python/" >Python</a> (13)
+</li>
+	<li class="cat-item cat-item-34"><a href="http://www.josemanuelgilperez.com/internet/redes-sociales/" >Redes Sociales</a> (3)
+</li>
+	<li class="cat-item cat-item-66"><a href="http://www.josemanuelgilperez.com/salud/" >Salud</a> (4)
+</li>
+	<li class="cat-item cat-item-14"><a href="http://www.josemanuelgilperez.com/internet/seo/" >SEO</a> (18)
+</li>
+	<li class="cat-item cat-item-28"><a href="http://www.josemanuelgilperez.com/sociedad/" >Sociedad</a> (2)
+</li>
+	<li class="cat-item cat-item-49"><a href="http://www.josemanuelgilperez.com/video/" >Video</a> (1)
+</li>
+	<li class="cat-item cat-item-67"><a href="http://www.josemanuelgilperez.com/internet/wordpress/" >Wordpress</a> (2)
+</li>
+		</ul>
+</div><div id="archives-2" class="widget"><h5>Archivos</h5>		<ul>
+			<li><a href='http://www.josemanuelgilperez.com/2016/05/'>Mayo 2016</a></li>
+	<li><a href='http://www.josemanuelgilperez.com/2015/10/'>Octubre 2015</a></li>
+	<li><a href='http://www.josemanuelgilperez.com/2015/09/'>Septiembre 2015</a></li>
+	<li><a href='http://www.josemanuelgilperez.com/2015/08/'>Agosto 2015</a></li>
+	<li><a href='http://www.josemanuelgilperez.com/2015/06/'>Junio 2015</a></li>
+	<li><a href='http://www.josemanuelgilperez.com/2015/05/'>Mayo 2015</a></li>
+	<li><a href='http://www.josemanuelgilperez.com/2015/03/'>Marzo 2015</a></li>
+	<li><a href='http://www.josemanuelgilperez.com/2015/01/'>Enero 2015</a></li>
+	<li><a href='http://www.josemanuelgilperez.com/2014/12/'>Diciembre 2014</a></li>
+	<li><a href='http://www.josemanuelgilperez.com/2014/11/'>Noviembre 2014</a></li>
+	<li><a href='http://www.josemanuelgilperez.com/2014/07/'>Julio 2014</a></li>
+	<li><a href='http://www.josemanuelgilperez.com/2014/05/'>Mayo 2014</a></li>
+	<li><a href='http://www.josemanuelgilperez.com/2013/11/'>Noviembre 2013</a></li>
+	<li><a href='http://www.josemanuelgilperez.com/2013/10/'>Octubre 2013</a></li>
+	<li><a href='http://www.josemanuelgilperez.com/2013/05/'>Mayo 2013</a></li>
+	<li><a href='http://www.josemanuelgilperez.com/2013/02/'>Febrero 2013</a></li>
+	<li><a href='http://www.josemanuelgilperez.com/2013/01/'>Enero 2013</a></li>
+	<li><a href='http://www.josemanuelgilperez.com/2012/11/'>Noviembre 2012</a></li>
+	<li><a href='http://www.josemanuelgilperez.com/2012/10/'>Octubre 2012</a></li>
+	<li><a href='http://www.josemanuelgilperez.com/2012/01/'>Enero 2012</a></li>
+	<li><a href='http://www.josemanuelgilperez.com/2011/08/'>Agosto 2011</a></li>
+	<li><a href='http://www.josemanuelgilperez.com/2011/06/'>Junio 2011</a></li>
+		</ul>
+		</div><div id="calendar-3" class="widget"><div id="calendar_wrap" class="calendar_wrap"><table id="wp-calendar">
+	<caption>Agosto 2017</caption>
+	<thead>
+	<tr>
+		<th scope="col" title="Lunes">L</th>
+		<th scope="col" title="Martes">M</th>
+		<th scope="col" title="Miércoles">X</th>
+		<th scope="col" title="Jueves">J</th>
+		<th scope="col" title="Viernes">V</th>
+		<th scope="col" title="Sábado">S</th>
+		<th scope="col" title="Domingo">D</th>
+	</tr>
+	</thead>
+
+	<tfoot>
+	<tr>
+		<td colspan="3" id="prev"><a href="http://www.josemanuelgilperez.com/2016/05/">&laquo; May</a></td>
+		<td class="pad">&nbsp;</td>
+		<td colspan="3" id="next" class="pad">&nbsp;</td>
+	</tr>
+	</tfoot>
+
+	<tbody>
+	<tr>
+		<td colspan="1" class="pad">&nbsp;</td><td>1</td><td>2</td><td id="today">3</td><td>4</td><td>5</td><td>6</td>
+	</tr>
+	<tr>
+		<td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td>
+	</tr>
+	<tr>
+		<td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td>
+	</tr>
+	<tr>
+		<td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td>
+	</tr>
+	<tr>
+		<td>28</td><td>29</td><td>30</td><td>31</td>
+		<td class="pad" colspan="3">&nbsp;</td>
+	</tr>
+	</tbody>
+	</table></div></div><div id="github-profile-2" class="widget"><aside><h5>GitHub Profile</h5><div class="github-widget" id="github-profile-2"><header class="github-widget-header"><img class="github-widget-company-logo" title="GitHub" src="https://assets-cdn.github.com/favicon.ico"/><div class="github-widget-header-text"><a class="github-widget-header-link" target="_blank" href="https://github.com/josemanuelgilperez" title="View profile">josemanuelgilperez ()</a></div></header><div class="github-widget-content"><a target="_blank" href="https://github.com/josemanuelgilperez" title="View profile"><img class="github-profile-pic" src="https://avatars1.githubusercontent.com/u/7669228?v=4" style="border-radius: 5px"> <span class="github-names"> <p class="github-name"></p> <span class="github-username">josemanuelgilperez</span> </span></a><div class="github-block with-icons"><div><span class="octicon octicon-clock"></span>Joined on May 22, 2014</div></div><div class="github-block with-icons"><div><span class="octicon octicon-repo"></span><a href="https://github.com/josemanuelgilperez/repositories" target="_blank">2 Public Repositories</a><input type="checkbox" id="gh-repo-t" class="github-repos-toggle"><label for="gh-repo-t" class="github-repos-toggle-la octicon octicon-chevron-down"></label><div class="github-repos"><div class="github-repo-name"><a target="_blank" href="https://github.com/josemanuelgilperez/hello-world" title="josemanuelgilperez/hello-world">hello-world</a></div><div class="github-repo-name"><a target="_blank" href="https://github.com/josemanuelgilperez/Spoon-Knife" title="josemanuelgilperez/Spoon-Knife">Spoon-Knife</a></div></div></div><div><span class="octicon octicon-gist"></span><a href="https://gist.github.com/josemanuelgilperez" target="_blank">1 Public Gists</a></div></div> </div></div></aside></div>                    </div>
+					                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+
+
+  
+<div class="footer-logo">
+<div class="container">
+<div class="row-fluid">
+<div class="span12">
+    	<!-- BEGIN LOGO -->                     
+<div class="logo">                            
+												<h1 class="logo_h logo_h__txt"><a href="http://www.josemanuelgilperez.com/" title="Para Saber hay que Comprender" class="logo_link">José Manuel Gilpérez</a></h1>
+				<!-- Site Tagline -->
+				<p class="logo_tagline">Para Saber hay que Comprender</p>
+								
+</div>
+<!-- END LOGO -->    </div>
+</div>
+</div>
+</div>
+<div class="lowestfooter">
+	<div class="container">
+<div class="row-fluid copyright">
+    <div class="span6">
+	  
+		<nav class="nav footer-nav">
+			<ul id="menu-footer-menu" class="menu"><li id="menu-item-305" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-305"><a href="http://www.josemanuelgilperez.com/contacto/">Contacto</a></li>
+</ul>		</nav>
+	    </div>
+    <div class="span6">
+    	<div id="footer-text" class="footer-text">
+		
+			Textos originales José Manuel Gilpérez &copy; 2015		</div>    </div>
+</div>
+</div>
+</div>
+</footer>
+</div><!--#main-->	
+	
+	<div id="back-top-wrapper" class="visible-desktop">
+	    <p id="back-top">
+	        <a href="#top"><span></span></a>
+	    </p>
+	</div>
+<script type='text/javascript' src='http://www.josemanuelgilperez.com/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpcf7 = {"recaptcha":{"messages":{"empty":"Por favor, prueba que no eres un robot."}}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.josemanuelgilperez.com/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.6'></script>
+<script type='text/javascript' src='http://www.josemanuelgilperez.com/wp-includes/js/wp-embed.min.js?ver=4.7.5'></script>
+<script type='text/javascript' src='http://www.josemanuelgilperez.com/wp-content/themes/BUZZBLOG-theme/js/jquery.easing.1.3.js?ver=1.3'></script>
+<script type='text/javascript' src='http://www.josemanuelgilperez.com/wp-content/themes/BUZZBLOG-theme/js/jquery.flexnav.min.js?ver=3.1.5'></script>
+<script type='text/javascript' src='http://www.josemanuelgilperez.com/wp-content/themes/BUZZBLOG-theme/js/jquery.magnificpopup.js?ver=0.9.9'></script>
+<script type='text/javascript' src='http://www.josemanuelgilperez.com/wp-content/themes/BUZZBLOG-theme/js/jquery.plugins.js?ver=3.1.5'></script>
+<script type='text/javascript' src='http://www.josemanuelgilperez.com/wp-content/themes/BUZZBLOG-theme/js/custom.js?ver=1.0'></script>
+<script type='text/javascript' src='http://www.josemanuelgilperez.com/wp-content/themes/BUZZBLOG-theme/js/jquery.appear.js?ver=1.0.0'></script>
+<script type='text/javascript' src='http://www.josemanuelgilperez.com/wp-content/themes/BUZZBLOG-theme/bootstrap/js/bootstrap.min.js?ver=2.3.0'></script>
+<script type='text/javascript' src='http://www.josemanuelgilperez.com/wp-content/themes/BUZZBLOG-theme/js/AnimatedHeader.js?ver=1.0.0'></script>
+<script type='text/javascript' src='http://www.josemanuelgilperez.com/wp-content/themes/BUZZBLOG-theme/js/classie.js?ver=1.0.0'></script>
+<script type='text/javascript' src='http://www.josemanuelgilperez.com/wp-content/themes/BUZZBLOG-theme/js/owl.carousel.min.js?ver=2.1'></script>
+ <!-- this is used by many Wordpress features and for plugins to work properly -->
+
+
+</body>
+</html>

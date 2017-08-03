@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="es_ES">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Internacionalización en Django</title>
+<style>.body-integrate{display:none;}</style>
+<link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/devcode/css/vendor/prism.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="icon" href="https://s3-us-west-2.amazonaws.com/devcode/img/favicon.ico" type="image/png"/>
+<meta name="title" content="Internacionalización en Django"/>
+<meta name="description" itemprop="description" content="En este artículo aprenderás a colocar internacionalización en tus páginas estáticas."/>
+<meta property="image" content="https://s3.amazonaws.com/devcodela/blog/internacionalizacion.png"/>
+<link rel="canonical" href="https://devcode.la/tutoriales/internacionalizacion-en-django/"/>
+<link rel="publisher" href="https://plus.google.com/+DevCodela/"/>
+<meta property="fb:app_id" content="653827401318644">
+<meta property="og:site_name" content="DevCode Tutoriales"/>
+<meta property="og:url" content="https://devcode.la/tutoriales/internacionalizacion-en-django/"/>
+<meta property="og:title" itemprop="name" content="Internacionalización en Django"/>
+<meta property="og:description" content="En este artículo aprenderás a colocar internacionalización en tus páginas estáticas."/>
+<meta property="og:image" itemprop="image" content="https://s3-us-west-2.amazonaws.com/devcode/media/tutorials/internacionalizacion_op.png"/>
+<meta property="og:locale" content="es_ES"/>
+<meta property="og:type" content="article"/>
+<meta property="article:publisher" content="https://www.facebook.com/DevCodela"/>
+<meta property="article:section" content="DevCode"/>
+<meta property="article:published_time" content="Mon Jan 19 2015 23:13:38 GMT+0000 (UTC)"/>
+<meta property="article:modified_time" content="Tue Oct 25 2016 14:01:30 GMT+0000 (UTC)"/>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@devcodela">
+<meta name="twitter:title" content="Internacionalización en Django">
+<meta name="twitter:description" content="En este artículo aprenderás a colocar internacionalización en tus páginas estáticas.">
+<meta name="twitter:image:src" content="https://s3-us-west-2.amazonaws.com/devcode/media/tutorials/internacionalizacion_op.png">
+<meta name="twitter:creator" content="@DJeanCar"/>
+ 
+<script src="https://apis.google.com/js/platform.js" async defer>
+	  {lang: 'es'}
+	</script>
+ 
+<script>
+			!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+			n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+			n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+			t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+			document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+			fbq('init', '1188440254510070');
+			fbq('track', "PageView");
+			/* Pixel de Seguimiento Pago */
+			
+			
+			/* End Pixel Pago */
+			/* Pixel de Registrado usuario curso */
+			
+			
+			/* End Registrado usuario curso */
+			/* Usuario registrado */
+			
+			/* end usuario registrado */
+		</script>
+<noscript>
+<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1188440254510070&ev=PageView&noscript=1"/>
+</noscript>
+ 
+ 
+<script type="text/javascript">
+			var url = window.location.pathname;
+			(function(e,t){var n=e.amplitude||{_q:[],_iq:{}};var r=t.createElement("script");r.type="text/javascript";
+			r.async=true;r.src="https://d24n15hnbwhuhn.cloudfront.net/libs/amplitude-3.0.1-min.gz.js";
+			r.onload=function(){e.amplitude.runQueuedFunctions()};var i=t.getElementsByTagName("script")[0];
+			i.parentNode.insertBefore(r,i);function s(e,t){e.prototype[t]=function(){this._q.push([t].concat(Array.prototype.slice.call(arguments,0)));
+			return this}}var o=function(){this._q=[];return this};var a=["add","append","clearAll","prepend","set","setOnce","unset"];
+			for(var u=0;u<a.length;u++){s(o,a[u])}n.Identify=o;var c=function(){this._q=[];return this;
+			};var p=["setProductId","setQuantity","setPrice","setRevenueType","setEventProperties"];
+			for(var l=0;l<p.length;l++){s(c,p[l])}n.Revenue=c;var d=["init","logEvent","logRevenue","setUserId","setUserProperties","setOptOut","setVersionName","setDomain","setDeviceId","setGlobalUserProperties","identify","clearUserProperties","setGroup","logRevenueV2","regenerateDeviceId"];
+			function v(e){function t(t){e[t]=function(){e._q.push([t].concat(Array.prototype.slice.call(arguments,0)));
+			}}for(var n=0;n<d.length;n++){t(d[n])}}v(n);n.getInstance=function(e){e=(!e||e.length===0?"$default_instance":e).toLowerCase();
+			if(!n._iq.hasOwnProperty(e)){n._iq[e]={_q:[]};v(n._iq[e])}return n._iq[e]};e.amplitude=n;
+			})(window,document);
+
+			amplitude.getInstance().init("0b1d52a0480b88160408fed8f2309d16",  null, {
+				saveEvents: true,
+				includeUtm: true,
+				includeReferrer: true,
+				batchEvents: true,
+			});
+			var eventProperties = {
+				'slug': '/tutoriales/internacionalizacion-en-django/'
+			};
+			amplitude.getInstance().logEvent('PageView', eventProperties);
+		</script>
+ 
+</head>
+<body class="background__gray">
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-N8F2KR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	    })(window,document,'script','dataLayer','GTM-N8F2KR');</script>
+ 
+<div id="myModale" class="modale">
+ 
+<div class="container">
+<div class="modal-contente">
+<img class="modale__image" src="https://s3-us-west-2.amazonaws.com/devcode/img/modale__promo.png" alt="">
+<div class="modale__background"></div>
+<div class="modale-contente-section">
+<span id="js-close-modal" class="modale-contente-section__close">x</span>
+<div class="row nowrap">
+<div class="modale-contente-section-half modale-contente-section--left">
+<img class="modale-contente-section-half__image" src="https://s3-us-west-2.amazonaws.com/devcode/img/pop-up-promo.png" alt="">
+</div>
+<div class="modale-contente-section-half modale-contente-section--right">
+<div class="modale-contente-section-half-content">
+<h1 class="modale-contente-section-half__title">Estudia 9 cursos gratis</h1>
+<p class="modale-contente-section-half__slogan">Aprende diseño y desarrollo web y móvil. Solo para usuarios registrados en el plan gratuito.</p>
+<form action="POST" class="profile-complete-form">
+<div class="profile-complete-form__section profile-complete-form__section--paddingTop--form">
+<div class="profile-complete-form-full">
+<a href="/auth/facebook/" class="profile__form_facebook">Regístrate con Facebook</a>
+</div>
+</div>
+<div class="profile-complete-form__section profile-complete-form__section--paddingTop--form">
+<div class="profile-complete-form-full">
+<a href="/auth/twitter/" class="profile__form_twitter">Regístrate con Twitter</a>
+</div>
+</div>
+</form>
+<div class="subscription-pricing-items--form-item-content subscription-pricing-items--form-item-content--paddingTop row column left">
+<p class="subscription-pricing-items--form-item-content__description subscription-pricing-items--form-item-content__description--modale">
+O también puedes registrate con tu email:
+</p>
+</div>
+<form method="POST" class="subscription-pricing-items--form-item-content profile-complete-form" action="/registrar/">
+<div class="profile-complete-form__section profile-complete-form__section--paddingTop--form">
+<div class="profile-complete-form-full">
+<input type="text" class="input" name="userName" placeholder="Nombres">
+</div>
+</div>
+<div class="profile-complete-form__section profile-complete-form__section--paddingTop--form">
+<div class="profile-complete-form-full">
+<input type="email" class="input" name="email" placeholder="Correo Electrónico">
+</div>
+</div>
+<div class="profile-complete-form__section profile-complete-form__section--paddingTop--form">
+<div class="profile-complete-form-full">
+<input type="submit" class="input profile-complete-form__active profile-complete-form__button--form" name="email" placeholder="Regístrate" value="Regístrate">
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<header class="header header--notshadow">
+<div class="container-1260">
+<div class="header-container row nowrap middle between">
+<ul class="header-list-left-one">
+<li class="header__item">
+<a class="row middle" href="/">
+<svg class="header__item-image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 162 200">
+<path fill="#5393fb" d="M161.38,97.24a31,31,0,0,0-48.7-22.8h0l-0.09.07c-0.49.34-1,.7-1.42,1.07L12,150.07a27.14,27.14,0,0,0,31,44.52l103.55-68c0.52-.32,1-0.66,1.53-1l0.1-.07h0a31.19,31.19,0,0,0,13.11-28.23"/>
+<path fill="#7dd179" d="M148.27,74.52h0l-0.12-.08c-0.49-.34-1-0.67-1.49-1L43.08,5.42A27.14,27.14,0,0,0,12,49.93l99.12,74.48q0.7,0.56,1.44,1.08l0.09,0.07h0a31,31,0,0,0,48.7-22.8,31.18,31.18,0,0,0-13.11-28.23"/><path fill="#7dd179" d="M13.79,109.07a10,10,0,1,1,9.92-10,9.95,9.95,0,0,1-9.92,10"/>
+</svg>
+<h3 class="header__item-logo">DevCode</h3>
+</a>
+</li>
+</ul>
+<ul class="row middle header-list-left-two">
+<li class="header__item">
+<a class="row middle" href="/">
+<svg class="header__item-image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 162 200">
+<path fill="#5393fb" d="M161.38,97.24a31,31,0,0,0-48.7-22.8h0l-0.09.07c-0.49.34-1,.7-1.42,1.07L12,150.07a27.14,27.14,0,0,0,31,44.52l103.55-68c0.52-.32,1-0.66,1.53-1l0.1-.07h0a31.19,31.19,0,0,0,13.11-28.23"/>
+<path fill="#7dd179" d="M148.27,74.52h0l-0.12-.08c-0.49-.34-1-0.67-1.49-1L43.08,5.42A27.14,27.14,0,0,0,12,49.93l99.12,74.48q0.7,0.56,1.44,1.08l0.09,0.07h0a31,31,0,0,0,48.7-22.8,31.18,31.18,0,0,0-13.11-28.23"/><path fill="#7dd179" d="M13.79,109.07a10,10,0,1,1,9.92-10,9.95,9.95,0,0,1-9.92,10"/>
+</svg>
+<h3 class="header__item-logo">DevCode</h3>
+</a>
+</li>
+<li class="header__item">
+<a class="header__item-menu header__item-menu--new header__item-margin" href="/cursos/">Cursos</a>
+</li>
+<li class="header__item">
+<a class="header__item-menu header__item-menu--new header__item-menu--row header__item-margin" href="">
+<span class="header__item-name header__item-name--new">Comunidad</span>
+<span class="header__item-icon-down icon-circle-down"></span>
+</a>
+<ul class="header-list-left__comunity">
+<a href="/tutoriales/" class="header-list-left__comunity-item">
+Tutoriales
+</a>
+<a href="/blog/" class="header-list-left__comunity-item">
+Blog
+</a>
+<a href="/tv/" class="header-list-left__comunity-item">
+Tv
+</a>
+ 
+</ul>
+</li>
+<li class="header__item">
+<a class="header__item-menu header__item-menu--new header__item-margin" href="/precios/">Planes</a>
+</li>
+</ul>
+<ul class="header-list-center">
+</ul>
+<ul class="header-list-rigth-one">
+<li class="header__item">
+<a class="row middle">
+<span class="header__item-icon-menu icon-menu" id="header-visible_no-log"></span>
+</a>
+<ul class="header-list-rigth__menu">
+ 
+<span class="icon-cross header-list-rigth-no-log__menu-info__close"></span>
+ 
+<a href="/ingresar/" class="header-list-rigth__menu-item">
+Ingresar
+</a>
+<a href="/cursos/" class="header-list-rigth__menu-item">
+Cursos
+</a>
+<a href="/precios/" class="header-list-rigth__menu-item">
+Planes
+</a>
+<a href="/tutoriales/" class="header-list-rigth__menu-item">
+Tutoriales
+</a>
+<a href="/blog/" class="header-list-rigth__menu-item">
+Blog
+</a>
+<a href="/tv/" class="header-list-rigth__menu-item">
+Tv
+</a>
+ 
+<a data-toggle="modal" data-target="#registroModal" href="#" class="header-list-rigth__menu-item">
+Registrate Gratis
+</a>
+</ul>
+</li>
+</ul>
+<ul class="header-list-rigth-two row middle">
+<li class="header__item">
+<a class="header__item-menu header__item-menu--new header__item-margin" data-toggle="modal" data-target="#loginModal" href="#" role="button">Ingresar</a>
+</li>
+<li class="header__item">
+<a data-toggle="modal" data-target="#registroModal" href="#" class="header-button" role="button">Registrate Gratis</a>
+</li>
+</ul>
+</div>
+</div>
+</header>
+<article class="tutorial container">
+<header class="text-center">
+<h1>Internacionalización en Django</h1>
+<div class="row middle center nowrap">
+<span>Por </span>
+<figure class="user_photo">
+<img src="https://pbs.twimg.com/profile_images/578584405389750272/qSWfgRQG.jpeg">
+</figure>
+<span>Jean Carlos Mariños Urquiaga</span>
+</div>
+</header>
+<main class="tutorial__wrap row between top">
+<div class="tutorial__left">
+<figure class="tutorial__img_primary">
+<img src="https://s3.amazonaws.com/devcodela/blog/internacionalizacion.png" alt="Internacionalización en Django">
+</figure>
+<div class="tutorial__content">
+<p>En este artículo aprenderás a colocar internacionalización en tus páginas estáticas.</p>
+<p>Hola amigos en este artículo, aprenderás a utilizar internacionalización en tu sistema web con la finalidad que una persona elija el idioma a traducir y de esta manera llegar a más público, para ello veamos algunos conceptos:</p><h3>¿<u>Qué es internacionalización</u>?</h3><p>Internacionalización se refiere al proceso de diseño de programas para el uso potencial de cualquier *locale* , con la finalidad de ser traducidas según el usuario se sienta más cómodo de interactuar con ella. Asimismo se puede encontrar como "IN18".</p><div><p>Nota:</p><p>Definase "locale" como un conjunto de parámetros que define el idioma, país y cualquier otra preferencia especial que el usuario desee ver en su interfaz de usuario.</p></div><p>Localización se refiere al proceso específico de traducir un programa internacionalizado para su uso en un *locale* particular. Asimismo se puede encontrar como L10N.</p><div><p>Nota:</p><p>Para mayor información visita a la documentación de django: http://www.djangobook.com/en/2.0/chapter19.html</p></div><p>Bueno antes de empezar con un pequeño ejemplo, activamos nuestro entorno virtual:</p><pre>(mi_entorno) ~/Escritorio $
+</pre><p>Y dentro de ella creamos nuestro proyecto en django en el directorio Escritorio:</p><pre>(mi_entorno) ~/Escritorio $ django-admin.py startproject Internacionalizacion
+</pre><p>Asimismo creamos nuestra app:</p><pre>(mi_entorno) ~/Escritorio/Internacionalizacion $ django-admin.py startapp principal
+</pre><h3><u>SETTINGS</u></h3><p>Luego de ello, configuramos nuestro archivo settings.py, con los siguientes variables :</p><p>Instalamos 'django.middleware.locale.LocaleMiddleware' en nuestro entorno MIDDLEWARE_CLASSES. Para ello tenemos que seguir las siguientes pautas:</p><p>- Debe ser estar entre las primeras middleware instaladas.</p><p>- Debe ir despues de SessionMiddleware, porque LocaleMiddleware hace uso de los datos de sesión.</p><p>- Si se utiliza CacheMiddleware, poner LocaleMiddleware después de ella.</p><pre>MIDDLEWARE_CLASSES = (
+&nbsp;'django.middleware.common.CommonMiddleware',
+&nbsp;'django.contrib.sessions.middleware.SessionMiddleware',
+&nbsp;'django.middleware.csrf.CsrfViewMiddleware',
+&nbsp;'django.middleware.locale.LocaleMiddleware',
+&nbsp;'django.contrib.auth.middleware.AuthenticationMiddleware',
+&nbsp;'django.contrib.messages.middleware.MessageMiddleware',
+&nbsp;'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+</pre><p>Especificamos las siguientes variables y el conjunto de traducciones.</p><pre>LANGUAGE_CODE = 'es'
+_ = lambda s: s
+
+LANGUAGES = (
+&nbsp;('es', _('Espanish')),
+&nbsp;('zh', _('Chinese')),
+&nbsp;('en', _('English')),
+)
+</pre><p>También verificamos que estas variables esten con el valor True para hacer uso de la internacionalización :</p><pre>USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = True
+</pre><p>Asimismo colocamos la variable LOCALE_PATHS y defenimos la ruta de la carpeta "locale", el cual contendrá las carpetas de cada idioma a traducir.</p><pre>LOCALE_PATHS = (
+&nbsp;os.path.join(BASE_DIR, "locale"),
+)
+</pre><p>Y finalmente en nuestro settings definimos el procesador de contexto del i18n:</p><pre>from django.conf import global_settings
+TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + ('django.core.context_processors.i18n',)
+</pre><div><p>Nota:</p><p>Cabe recalcar que la &nbsp;"carpeta locale" se debe crear y debe estar al mismo nivel del manage.py</p></div><h3><u>URLS</u></h3><p>Definimos nuestra url de inicio el cual vamos a aplicar internacionalización, asi mismo definimos una url del i18n que viene por defecto en django:</p><pre>from django.conf.urls import patterns, include, url
+from django.contrib import admin
+from principal.views import Inicio
+admin.autodiscover()
+
+urlpatterns = patterns('',
+&nbsp;url(r'^i18n/', include('django.conf.urls.i18n')),
+&nbsp;url(r'^admin/', include(admin.site.urls)),
+&nbsp;url(r'^$',Inicio.as_view()),
+)
+</pre><h3><u>VIEWS</u></h3><p>Definimos nuestra VBC llamado "Inicio".</p><pre>from django.views.generic import TemplateView
+
+class Inicio(TemplateView):
+template_name = 'inicio.html'
+</pre><h3><u>TEMPLATES</u></h3><p>Creamos nuestro archivo inicio.html y en el inicio de cada template donde se realizara traducciones cargamos "i18n"; luego, definiremos un select el cual nos permitirá seleccionar un idioma. Asimismo, definimos mediante la siguiente linea los mensajes que queramos traducir {% trans mensaje %}, aqui el template inicio.html realizará la traducción del contenido de las etiquetas h1 y p.</p><pre>{% load i18n %}
+
+
+
+&nbsp;
+&nbsp;Pagina de Inicio
+
+
+&nbsp;{% csrf_token %}
+&nbsp;<input name="next" type="hidden" value="/">
+&nbsp;<select name="language">&nbsp; &nbsp; &nbsp; &nbsp; {% for lang in LANGUAGES %} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<option value="{{ lang.0 }}">{{ lang.1 }}</option>&nbsp; &nbsp; &nbsp; &nbsp; {% endfor %} &nbsp; &nbsp; &nbsp;</select>
+&nbsp;<input type="submit" value="Go">
+&nbsp;
+<h1>{% trans "Bienvenido a nuestro sitio" %}</h1>
+<p>{% trans "Hola amigos, este es un interesante sitio" %}</p>
+
+
+</pre><h3><u>SHELL</u></h3><p>Una vez creado nuestro pequeño ejemplo, pasaremos a crear nuestra carpeta de cada idioma. para ello en nuestra shell colocamos:</p><pre>(mi_entorno) ~/Escritorio/Internacionalizacion $ django-admin.py makemessages -l zh
+</pre><p>Este comando nos creara una carpeta llamado zh el cual contendra una carpeta LC_MESSAGES y en ella tendremos el archivo llamado django.po. Aqui encontraremos las palabras que vamos a traducir abrimos este archivo y nos mostrará algo parecido como este:</p><pre># SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR , YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-05-07 13:05-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME \n"
+"Language-Team: LANGUAGE \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ejemplo1/settings.py:81
+msgid "Espanish"
+msgstr ""
+
+#: ejemplo1/settings.py:82
+msgid "Chinese"
+msgstr ""
+
+#: ejemplo1/settings.py:83
+msgid "English"
+msgstr ""
+
+#: templates/inicio.html:20
+msgid "Bienvenido a nuestro sitio"
+msgstr ""
+
+#: templates/inicio.html:23
+msgid "Hola amigos, este es un interesante sitio"
+msgstr ""
+
+</pre><p>Aquí encontramos dos variables de las cuales cada una cumple una función:</p><p>msgid : Contiene la cadena de traducción, la cual aparece en el código fuente.</p><p>msgstr : Contiene la traducción específica a un idioma.</p><p>Ademas cada mensaje de traducción nos muestra el nombre del archivo y el número de línea desde el cual la cadena de traducción fue extraída.</p><p>Luego de realizar la traducción en chino, también debemos de seguir los pasos para la traducción en inglés.Y una vez completado los archivos django.po de cada carpeta de idiomas, compilamos los mensajes para que estén disponibles. Cada compilación tiene que llevar aparejada un reinicio del servidor web.</p><pre>(mi_entorno) ~/Escritorio/Internacionalizacion $ django-admin.py compilemessages
+</pre><p>Y bueno eso es todo lo necesario para correr nuestro proyecto.</p><div><p>Nota:</p><p>Hay que recordar que el uso de internacionalización en sus sitios web son para aquellas páginas estáticas y no para las dinámicas.</p></div>
+</div>
+<div class="tutorial__social">
+<h4>¿Te gustó el tutorial?</h4>
+<span>Ayúdanos a llegar a más personas</span>
+<div class="tutorial__social_btn row center middle">
+<a href="https://twitter.com/share" class="twitter-share-button" data-url="https://devcode.la/tutoriales/internacionalizacion-en-django/" data-via="devcodela">Tweet</a>&nbsp;
+<div class="fb-like" data-href="https://devcode.la/tutoriales/internacionalizacion-en-django/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>&nbsp;
+<div class="g-plus" data-action="share" data-annotation="bubble" href="https://devcode.la/tutoriales/internacionalizacion-en-django/"></div>
+</div>
+</div>
+<div class="tutorial__author">
+<div class="row nowrap middle">
+<figure class="tutorial__author_photo">
+<img src="https://pbs.twimg.com/profile_images/578584405389750272/qSWfgRQG.jpeg" alt="Jean Carlos Mariños Urquiaga">
+</figure>
+<div class="blog__user_text">
+<h4>Jean Carlos Mariños Urquiaga</h4>
+<p>Backend Developer | Python / Django - Javascript / Node.js</p>
+<a target="_blank" class="tutorial__author_twitter" href="https://twitter.com/DJeanCar">
+<span class="icon-twitter2"> @DJeanCar</span>
+</a>
+</div>
+</div>
+</div>
+<div class="blog__comment">
+<div id="disqus_thread"></div>
+</div>
+</div>
+<aside class="tutorial__sidebar">
+<div class="tutorial__youtube">
+<h4>Siguenos en YouTube</h4>
+<div>
+<div class="g-ytsubscribe" data-channel="DevCodela" data-layout="default" data-count="default"></div>
+</div>
+</div>
+<div class="tutorial__facebook">
+<h4>Siguenos en Facebook</h4>
+<div class="fb-like" data-href="https://www.facebook.com/DevCode.la" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
+</div>
+<div class="tutorial__twitter">
+<h4>Siguenos en Twitter</h4>
+<a target="_blank" class="twitter-follow-button" href="https://twitter.com/devcodela">
+Follow @devcodela</a>
+</div>
+<div class="tutorial__recommend">
+<h4>Ultimos</h4>
+<ul>
+<li>
+<h3>
+<a href="/tutoriales/web-starter-kit-de-google/">Web Starter Kit de Google</a>
+</h3>
+<span>26/07/2017</span>
+</li>
+<li>
+<h3>
+<a href="/tutoriales/vincular-eventos-a-elementos-con-jquery/">Vincular eventos a elementos con jQuery</a>
+</h3>
+<span>17/07/2017</span>
+</li>
+<li>
+<h3>
+<a href="/tutoriales/operador-ternario-javascript/">Operador condicional ternario en JavaScript</a>
+</h3>
+<span>03/07/2017</span>
+</li>
+</ul>
+</div>
+<div id="js-tutorial__fixed"></div>
+<div class="tutorial-related">
+<h3 class="tutorial-related__title">Cursos relacionados</h3>
+<ul class="tutorial-related-list">
+<a href="javascript:trackClickCourseRelated('django-fundamentos');" class="tutorial-related-list-course row top nowrap">
+<img class="tutorial-related-list-course__image" src="https://s3-us-west-2.amazonaws.com/devcode/media/courses/django_2-01.png" alt="">
+<div class="tutorial-related-list-course__name row column">
+<h4 class="tutorial-related-list-course__title">Fundamentos de Django 1.10</h4>
+<span class="tutorial-related-list-course__plan tutorial-related-list-course__plan--premium">Premium</span>
+</div>
+</a>
+<a href="javascript:trackClickCourseRelated('django');" class="tutorial-related-list-course row top nowrap">
+<img class="tutorial-related-list-course__image" src="https://s3.amazonaws.com/devcodela/cursos/icon-django.png" alt="">
+<div class="tutorial-related-list-course__name row column">
+<h4 class="tutorial-related-list-course__title">Curso de Django</h4>
+<span class="tutorial-related-list-course__plan tutorial-related-list-course__plan--premium">Premium</span>
+</div>
+</a>
+</ul>
+<a class="row middle tutorial-related__pluss" href="/cursos/">
+<span class="tutorial-related__pluss--arrow">&rarr;</span>
+Ver más cursos relacionados
+</a>
+</div>
+</aside>
+</main>
+</article>
+<aside class="blog__relational">
+</aside>
+<style type="text/css">.body-integrate{display:block;}@font-face{font-family:'icomoon';src:url('https://s3-us-west-2.amazonaws.com/devcode/fonts/icomoon.eot?-1hf7z8');src:url('https://s3-us-west-2.amazonaws.com/devcode/fonts/icomoon.eot?#iefix-1hf7z8') format('embedded-opentype'),url('https://s3-us-west-2.amazonaws.com/devcode/fonts/icomoon.ttf?-1hf7z8') format('truetype'),url('https://s3-us-west-2.amazonaws.com/devcode/fonts/icomoon.woff?-1hf7z8') format('woff'),url('https://s3-us-west-2.amazonaws.com/devcode/fonts/icomoon.svg?-1hf7z8#icomoon') format('svg');font-weight:normal;font-style:normal;}</style>
+<link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/devcode/css/main.css">
+<script src="https://s3-us-west-2.amazonaws.com/devcode/js/vendor/jquery.js"></script>
+<script type="text/javascript">
+			
+				
+					// window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+					// d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+					// _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+					// $.src="https://v2.zopim.com/?4gDjuJ2Fx8ZPWmD00b6eWgyEeoVwMjcC";z.t=+new Date;$.
+					// type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+					
+					// window.$zopim(function() {
+					// 	$zopim.livechat.badge.setImage('https://s3-us-west-2.amazonaws.com/devcode/img/widget-zopim-99.png');
+					// 	$zopim.livechat.badge.show();
+					// });
+					window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+					d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+					_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+					$.src="https://v2.zopim.com/?4gDjuJ2Fx8ZPWmD00b6eWgyEeoVwMjcC";z.t=+new Date;$.
+					type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+					
+					window.$zopim(function() {
+						$zopim.livechat.badge.setImage('https://s3-us-west-2.amazonaws.com/devcode/img/widget-zopim-15.png');
+						$zopim.livechat.badge.show();
+					});
+				
+			
+		</script>
+<script>
+			var urlActivate = true;
+			var trackClickCourseRelated = function(related) {
+				amplitude.getInstance().logEvent('Click cursos relacionados', null, function() {
+					console.log(related);
+					window.location='https://devcode.la/cursos/'+ related +'/?utm_medium=tutoriales&utm_campaign=cursos-relacionados';
+				});
+			};
+		</script>
+ 
+<script type="text/javascript">
+		window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+		d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+		_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+		$.src="https://v2.zopim.com/?4gDjuJ2Fx8ZPWmD00b6eWgyEeoVwMjcC";z.t=+new Date;$.
+		type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+		</script>
+ 
+<script src="https://s3-us-west-2.amazonaws.com/devcode/js/vendor/prism.js"></script>
+ 
+<script src="https://apis.google.com/js/platform.js"></script>
+<script type="text/javascript" src="https://s3-us-west-2.amazonaws.com/devcode/js/vendor/jquery.js"></script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&appId=653827401318644&version=v2.0";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+<script type="text/javascript">
+	window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
+	</script>
+<script src="https://apis.google.com/js/platform.js" async defer>
+	  {lang: 'es-419'}
+	</script>
+<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: es_ES</script>
+<script type="text/javascript">
+		window.id = ""
+	    /* * * CONFIGURATION VARIABLES * * */
+	    var disqus_shortname = 'devcodetv';
+
+	    /* * * DON'T EDIT BELOW THIS LINE * * */
+	    (function() {
+	        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	    })();
+	</script>
+<script type="text/javascript">
+		var $nav = $('#js-tutorial__fixed');
+		var $navTop = $nav.offset().top + 100;
+
+		var pegarNav = function () {
+			
+			var $scrollTop = $(window).scrollTop();
+
+			if ( $scrollTop > $navTop ) {
+				$('.tutorial-related').css({
+					'position': 'fixed',
+					'top': 0
+				});
+			} else {
+				$('.tutorial-related').css('position', 'relative');
+			}
+		}
+		$(window).on('scroll', pegarNav);
+   	</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+ 
+<section id="loginModal" class="modal fade col middle" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-body">
+<h1 class="modal-title">Ingresar a DevCode</h1>
+<div class="login__socials">
+<a href="/auth/facebook" class="login__facebook text-center">
+<span class="icon-facebook2"></span>
+<span>Ingresar con Facebook</span>
+</a>
+<a href="/auth/twitter" class="login__twitter text-center">
+<span class="icon-twitter2"></span>
+<span>Ingresar con Twitter</span>
+</a>
+</div>
+<span>También puedes ingresar con tu email</span>
+<form class="login__form" method="POST" action='/login'>
+<div class="login__row">
+<input class="input login__input" type="email" placeholder="Email" name="email" autocorrect="off" autocapitalize="off" required>
+</div>
+<div class="login__row">
+<input class="input" type="password" placeholder="Password" name="password" autocorrect="off" autocapitalize="off" required>
+</div>
+<a href="/recuperar/" class="login__recovery">
+<small>Olvidé mi contraseña</small>
+</a>
+<input class="btn btn--primary btn--big login__btn" type="submit" value="Ingresar">
+<a id="linkModalRegistro" href="/registrar/" class="row center login__recovery">
+<small>¿No tienes cuenta? <b>Regístrate</b></small>
+</a>
+</form>
+</div>
+<div class="modal-footer">
+<span class="modal__close row center middle">Cerrar ventana</span>
+</div>
+</div>
+</div>
+</section>
+<section id="registroModal" class="modal fade col middle" tabindex="-1" role="dialog" aria-labelledby="registroModal">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-body">
+<h1 class="modal-title">Regístrate a DevCode</h1>
+<div class="login__socials">
+<a href="/auth/facebook" class="login__facebook text-center">
+<span class="icon-facebook2"></span>
+<span>Regístrate con Facebook</span>
+</a>
+<a href="/auth/twitter" class="login__twitter text-center">
+<span class="icon-twitter2"></span>
+<span>Regístrate con Twitter</span>
+</a>
+</div>
+<span>También puedes registrarte con tu email</span>
+<form class="login__form" method="POST" action="/registrar/">
+ 
+<div class="login__row">
+<input class="input login__input" type="email" placeholder="Email" name="email" value="">
+<small class="login__error"></small>
+</div>
+ 
+<input class="btn btn--primary btn--big login__btn" type="submit" value="Regístrate con email">
+<a id="linkModalLogin" href="/ingresar/" class="row center login__recovery">
+<small>¿Ya tienes cuenta? <b>Ingresar</b></small>
+</a>
+</form>
+</div>
+<div class="modal-footer">
+<span class="modal__close row center middle">Cerrar ventana</span>
+</div>
+</div>
+</div>
+</section>
+<script src="https://s3-us-west-2.amazonaws.com/devcode/js/vendor/bootstrap.min.js"></script>
+<script src="//use.typekit.net/czi3lht.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+<script>
+		
+		
+			// modale
+			window.onload = function () {
+				var openModal = false;
+
+				function getCookie(name) {
+					var cArr = document.cookie.split(';');
+					for(var i=0;i < cArr.length;i++) {
+						var cookie = cArr[i].split("=",2);
+						cookie[0] = cookie[0].replace(/^\s+/,"");
+						if (cookie[0] == name){ return cookie; }
+					}
+				}
+				function addEvent(obj, evt, fn) {
+				    if (obj.addEventListener) {
+				        obj.addEventListener(evt, fn, false);
+				    }
+				    else if (obj.attachEvent) {
+				        obj.attachEvent("on" + evt, fn);
+				    }
+				}
+				addEvent(document, "mouseout", function(e) {
+				    e = e ? e : window.event;
+				    var from = e.relatedTarget || e.toElement;
+				    if (!from || from.nodeName == "HTML") {
+				    	
+				    	if ( typeof(getCookie('modale')) == 'undefined' && (urlActivate) ) { 
+			    			document.cookie = "modale=true; path=/";
+			    		}
+				    	var modaleValue = getCookie('modale');
+					    if ( openModal === false && modaleValue[1] == 'true' ) {
+				    		openModal = true;
+							$('#myModale').css('display', 'block');
+							$('body').css('overflow', 'hidden');
+				    	}
+				    }
+				});
+
+				function addEvent(obj, evt, fn) {
+				    if (obj.addEventListener) {
+				        obj.addEventListener(evt, fn, false);
+				    }
+				    else if (obj.attachEvent) {
+				        obj.attachEvent("on" + evt, fn);
+				    }
+				}
+				addEvent(window,"load",function(e) {
+				    addEvent(document, "mouseout", function(e) {
+				        e = e ? e : window.event;
+				        var from = e.relatedTarget || e.toElement;
+				        if (!from || from.nodeName == "HTML") {
+				        	if ( typeof(getCookie('modale')) == 'undefined' ) { 
+				    			document.cookie = "modale=true; path=/";
+				    		}
+				    		var modaleValue = getCookie('modale');
+					    	if ( openModal === false && modaleValue[1] == 'true' && (urlActivate) ) {
+					    		openModal = true;
+								$('#myModale').css('display', 'block');
+								$('body').css('overflow', 'hidden');
+					    	}
+				        }
+				    });
+				});
+
+				$( '#js-close-modal' ).click( function (event){
+					openModal = false;
+					$('#myModale').css('display', 'none');
+					document.cookie = "modale=false; path=/";
+					$('body').css('overflow', 'initial');
+				});
+			}
+		
+	</script>
+<script>
+		$("#linkModalLogin").on("click", function(e){
+			e.preventDefault();
+			$('#registroModal').modal("hide");
+			$('#loginModal').modal({
+				keyboard: true,
+				show: true,
+			});
+		});
+		$("#linkModalRegistro").on("click", function(e){
+			e.preventDefault();
+			$('#loginModal').modal("hide");
+			$('#registroModal').modal({
+				keyboard: true,
+				show: true,
+			});
+		});
+		$(".modal__close").on('click', function(e){
+			e.preventDefault();
+			$('#loginModal').modal("hide");
+			$('#registroModal').modal("hide");
+		});
+	</script>
+<script>
+			var trackClickMisCursos = function() {
+				amplitude.getInstance().logEvent('Click mis cursos', null, function() {
+					window.location='https://devcode.la/mis-cursos/';
+				});
+			};
+		</script>
+<script>
+
+		/* Agregar Clase CSS para el País del Usuario --- Jhonazsh */
+
+		function cadenaExceptuada(str) {
+	        var from = "ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç", 
+	        to   = "AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc",
+	        mapping = {};
+
+	        for(var i = 0, j = from.length; i < j; i++ )
+	            mapping[ from.charAt( i ) ] = to.charAt( i );
+
+	        var ret = [];
+	        for( var i = 0, j = str.length; i < j; i++ ) {
+	            var c = str.charAt( i );
+	            if( mapping.hasOwnProperty( str.charAt( i ) ) )
+	                ret.push( mapping[ c ] );
+	            else
+	            ret.push( c );
+	        }
+	        return ret.join( '' ).replace( /[^-A-Za-z0-9]+/g, '-' ).toLowerCase();
+	    }
+
+		function AgregarClase(userCountry){
+			if(userCountry.length>0){
+				var cadeExceptuada = cadenaExceptuada(userCountry);
+				$('.header-list-rigth__menu-info__image__border').addClass(''+cadeExceptuada);
+			}
+		}
+
+		var userCountry = "";
+		AgregarClase(userCountry);
+
+		/* ------------------------- END ---------------------------- */
+
+
+
+		
+		/* Click close en personal_info del Usuario (header) ---Jhonazsh */
+		
+		$('#header-list-left-one_visible').on('click', function(){
+			$('.header-list-left-one li>ul').show();
+			$('.header-list-rigth-one li>ul').hide();
+		});
+		$('.header-list-left__menu-info__close').on('click', function(){
+			$('.header-list-left-one li>ul').hide();
+		});
+		// ---
+		$('#header-list-rigth-one_visible').on('click', function(){
+			$('.header-list-rigth-one li>ul').show();
+			$('.header-list-left-one li>ul').hide();
+		});
+		$('.header-list-rigth__menu-info__close').on('click', function(){
+			$('.header-list-rigth-one li>ul').hide();
+		});
+		// ---
+		$('#header-visible_no-log').on('click', function(){
+			$('.header-list-rigth-one li>ul').show();
+		});
+		$('.header-list-rigth-no-log__menu-info__close').on('click', function(){
+			$('.header-list-rigth-one li>ul').hide();
+		});
+		// ---
+		$('#header-visible_log').on('click', function(){
+			$('.header-list-rigth-two li>ul').show();
+		});
+		$('.header-list-rigth__menu-info__close').on('click', function(){
+			$('.header-list-rigth-two li>ul').hide();
+		});
+
+		/* ----------------------- END ---------------------------*/
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,993 @@
+<!DOCTYPE html> 
+<html class="no-js" lang="en-US" prefix="og: http://ogp.me/ns#">
+
+<head>
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+	<script>
+  	(adsbygoogle = window.adsbygoogle || []).push({
+    		google_ad_client: "ca-pub-7477930862359747",
+    		enable_page_level_ads: true
+  	});
+	</script>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	
+
+	<link rel="pingback" href="https://www.slothparadise.com/xmlrpc.php">
+
+	<script>document.documentElement.className = document.documentElement.className.replace("no-js","js");</script>
+
+<!-- This site is optimized with the Yoast SEO plugin v5.0.2 - https://yoast.com/wordpress/plugins/seo/ -->
+<title>How to Install Django on Mac - slothparadise</title>
+<meta name="description" content="Django requires Python to work. Django can work with different versions of Python. Make sure that your Python version is one of 2.7 and 3.2, 3.3, 3.4, 3.5. Depending on the version of Django, you&#039;ll need to make sure that you have a verified working Python version."/>
+<link rel="canonical" href="https://www.slothparadise.com/how-to-install-django-on-mac/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="How to Install Django on Mac - slothparadise" />
+<meta property="og:description" content="Django requires Python to work. Django can work with different versions of Python. Make sure that your Python version is one of 2.7 and 3.2, 3.3, 3.4, 3.5. Depending on the version of Django, you&#039;ll need to make sure that you have a verified working Python version." />
+<meta property="og:url" content="https://www.slothparadise.com/how-to-install-django-on-mac/" />
+<meta property="og:site_name" content="slothparadise" />
+<meta property="article:publisher" content="https://www.facebook.com/slothparadisecom" />
+<meta property="article:tag" content="Django" />
+<meta property="article:tag" content="Installation" />
+<meta property="article:section" content="Django" />
+<meta property="article:published_time" content="2014-11-12T23:17:39-04:00" />
+<meta property="article:modified_time" content="2015-08-20T19:02:06-04:00" />
+<meta property="og:updated_time" content="2015-08-20T19:02:06-04:00" />
+<meta property="og:image" content="https://www.slothparadise.com/wp-content/uploads/2014/11/django.png" />
+<meta property="og:image:width" content="960" />
+<meta property="og:image:height" content="436" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:description" content="Django requires Python to work. Django can work with different versions of Python. Make sure that your Python version is one of 2.7 and 3.2, 3.3, 3.4, 3.5. Depending on the version of Django, you&#039;ll need to make sure that you have a verified working Python version." />
+<meta name="twitter:title" content="How to Install Django on Mac - slothparadise" />
+<meta name="twitter:site" content="@microwavesam" />
+<meta name="twitter:image" content="https://www.slothparadise.com/wp-content/uploads/2014/11/django.png" />
+<meta name="twitter:creator" content="@microwavesam" />
+<!-- / Yoast SEO plugin. -->
+
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="slothparadise &raquo; Feed" href="http://feeds.feedburner.com/slothparadise" />
+<link rel="alternate" type="application/rss+xml" title="slothparadise &raquo; Comments Feed" href="https://www.slothparadise.com/comments/feed/" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,300italic,300,600&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="slothparadise &raquo; How to Install Django on Mac Comments Feed" href="https://www.slothparadise.com/how-to-install-django-on-mac/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.slothparadise.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8.1"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b===c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='crayon-css'  href='https://www.slothparadise.com/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=_2.7.2_beta' type='text/css' media='all' />
+<link rel='stylesheet' id='contact-form-7-css'  href='https://www.slothparadise.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=4.7' type='text/css' media='all' />
+<link rel='stylesheet' id='fancybox-style-css'  href='https://www.slothparadise.com/wp-content/plugins/light/css/jquery.fancybox.css?ver=4.8.1' type='text/css' media='all' />
+<link rel='stylesheet' id='quads-styles-css'  href='https://www.slothparadise.com/wp-content/plugins/quick-adsense-reloaded/assets/css/quads.css?ver=1.5.6' type='text/css' media='all' />
+<link rel='stylesheet' id='style-css'  href='https://www.slothparadise.com/wp-content/themes/anew/style.css?ver=4.8.1' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-css'  href='https://www.slothparadise.com/wp-content/themes/anew/responsive.css?ver=4.8.1' type='text/css' media='all' />
+<link rel='stylesheet' id='custom-css'  href='https://www.slothparadise.com/wp-content/themes/anew/custom.css?ver=4.8.1' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='https://www.slothparadise.com/wp-content/themes/anew/fonts/font-awesome.min.css?ver=4.8.1' type='text/css' media='all' />
+<script type='text/javascript' src='https://www.slothparadise.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='https://www.slothparadise.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"https:\/\/www.slothparadise.com\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Press %s to Copy, %s to Paste","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.slothparadise.com/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js?ver=_2.7.2_beta'></script>
+<script type='text/javascript' src='https://www.slothparadise.com/wp-content/themes/anew/js/jquery.flexslider.min.js?ver=4.8.1'></script>
+<link rel='https://api.w.org/' href='https://www.slothparadise.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.slothparadise.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.slothparadise.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.8.1" />
+<link rel='shortlink' href='https://www.slothparadise.com/?p=87' />
+<link rel="alternate" type="application/json+oembed" href="https://www.slothparadise.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.slothparadise.com%2Fhow-to-install-django-on-mac%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.slothparadise.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.slothparadise.com%2Fhow-to-install-django-on-mac%2F&#038;format=xml" />
+<link rel="shortcut icon" href="https://www.slothparadise.com/wp-content/uploads/2014/07/favicon.png" />
+<!--[if lt IE 9]>
+<script src="https://www.slothparadise.com/wp-content/themes/anew/js/ie/html5.js"></script>
+<script src="https://www.slothparadise.com/wp-content/themes/anew/js/ie/selectivizr.js"></script>
+<![endif]-->
+<style type="text/css">
+/* Dynamic CSS: For no styles in head, copy and put the css below in your custom.css or child theme's style.css, disable dynamic styles */
+body { font-family: "Open Sans", Arial, sans-serif; }
+.boxed #wrapper, .container { max-width: 1080px; }
+
+::selection { background-color: #1e73be; }
+::-moz-selection { background-color: #1e73be; }
+
+a,
+.themeform label .required,
+.post-title a:hover,
+.post-meta a:hover,
+.author-bio .bio-name a:hover,
+.post-nav li a:hover span,
+.post-nav li a:hover i,
+.widget_rss ul li a,
+.widget_calendar a,
+.alx-tab .tab-item-category a,
+.alx-posts .post-item-category a,
+.alx-tab li:hover .tab-item-title a,
+.alx-tab li:hover .tab-item-comment a,
+.alx-posts li:hover .post-item-title a,
+#footer .widget_rss ul li a,
+#footer .widget_calendar a,
+#footer .alx-tab .tab-item-category a,
+#footer .alx-posts .post-item-category a,
+.comment-tabs li.active a,
+.comment-awaiting-moderation,
+.child-menu a:hover,
+.child-menu .current_page_item > a,
+.wp-pagenavi a { color: #1e73be; }
+
+.themeform input[type="submit"],
+.themeform button[type="submit"],
+.s1 .sidebar-toggle,
+.more-link,
+.post-tags a:hover,
+.author-bio .bio-avatar:after,
+.widget_calendar caption,
+.commentlist li.bypostauthor > .comment-body:after,
+.commentlist li.comment-author-admin > .comment-body:after { background-color: #1e73be; }
+
+.alx-tabs-nav li.active a,
+.wp-pagenavi a:hover,
+.wp-pagenavi a:active,
+.wp-pagenavi span.current { border-bottom-color: #1e73be!important; }
+
+.themeform input[type="text"]:focus, 
+.themeform input[type="password"]:focus, 
+.themeform input[type="email"]:focus, 
+.themeform textarea:focus,
+.comment-tabs li.active a { border-color: #1e73be; }		
+				
+#header, .boxed #header { background-color: #1e73be; }
+</style>
+</head>
+
+<body class="post-template-default single single-post postid-87 single-format-standard col-2cl full-width topbar-enabled light-header-text safari">
+
+<div id="wrapper">
+
+	<header id="header">
+	
+					<nav class="nav-container group" id="nav-topbar">
+				<div class="nav-toggle"><i class="fa fa-bars"></i></div>
+				<div class="nav-text"><!-- put your mobile menu text here --></div>
+				<div class="nav-wrap container"><ul id="menu-navigation-bar" class="nav container-inner group"><li id="menu-item-618" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-618"><a title="Home" href="http://www.slothparadise.com/">Home</a></li>
+<li id="menu-item-2058" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-2058"><a href="https://www.slothparadise.com/blog/">Blog</a></li>
+<li id="menu-item-2123" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2123"><a href="https://www.slothparadise.com/about/">About</a></li>
+</ul></div>
+				
+				<div class="container">	
+					<div class="toggle-search"><i class="fa fa-search"></i></div>
+					<div class="search-expand">
+						<div class="search-expand-inner">
+							<form method="get" class="searchform themeform" action="https://www.slothparadise.com/">
+	<div>
+		<input type="text" class="search" name="s" onblur="if(this.value=='')this.value='To search type and hit enter';" onfocus="if(this.value=='To search type and hit enter')this.value='';" value="To search type and hit enter" />
+	</div>
+</form>						</div>
+					</div>
+				</div><!--/.container-->
+				
+			</nav><!--/#nav-topbar-->
+				
+		<div class="container">
+						<div class="pad group">
+				<p class="site-title"><a href="https://www.slothparadise.com/" rel="home"><img src="https://www.slothparadise.com/wp-content/uploads/2014/07/sloth-header.png" alt="slothparadise"></a></p>
+				<p class="site-description">feeling philoslothical</p>				<ul class="social-links"><li><a rel="nofollow" class="social-tooltip" title="Facebook" href="https://www.facebook.com/slothparadisecom" target="Array"><i class="fa fa-facebook" style="color: #ffffff;"></i></a></li><li><a rel="nofollow" class="social-tooltip" title="Patreon" href="https://www.patreon.com/microwavesam" target="Array"><i class="fa fa-heart-o" style="color: #ffffff;"></i></a></li></ul>			</div>
+								</div><!--/.container-->
+		
+	</header><!--/#header-->
+	
+	<div id="page" class="container">
+		<div class="main group">
+<section class="content">
+	
+	<div class="pad group">			
+	
+		
+		<article class="post-87 post type-post status-publish format-standard has-post-thumbnail hentry category-django category-documentation tag-django tag-installation">
+		
+			<h1 class="post-title pad">How to Install Django on Mac</a></h1>
+			
+			<ul class="post-meta pad group">
+				<li><a href="https://www.slothparadise.com/category/django/" rel="category tag">Django</a> / <a href="https://www.slothparadise.com/category/documentation/" rel="category tag">Documentation</a></li>
+				<li><i class="fa fa-clock-o"></i>12 Nov, 2014</li>
+				<li><a href="https://www.slothparadise.com/how-to-install-django-on-mac/#comments"><i class="fa fa-comment"></i><span class="dsq-postid" data-dsqidentifier="87 http://tangodown.org/?p=87">40</span></a></li>			</ul>
+			
+			<div class="post-inner">
+				
+								
+				<div class="post-deco">
+					<div class="hex hex-small">
+						<div class="hex-inner"><i class="fa"></i></div>
+												<div class="corner-1"></div>
+						<div class="corner-2"></div>
+					</div>
+				</div><!--/.post-deco-->
+				
+				<div class="post-content pad">
+				
+					<div class="entry">
+						<h3><strong>Section 1: Install Django on your local machine and run a simple page</strong></h3>
+<p>If you have already installed Django, please jump to the next section.</p>
+<p>If you are not sure if you have Django on your computer, please open terminal and enter:</p>
+<pre crayon="false">python -c "import django; print(django.get_version())"</pre>
+<p>If you already have Django installed, it should show something like this:</p>
+<p><a href="http://slothparadise.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-12-at-5.56.59-PM.png"><img class="  wp-image-88 aligncenter" src="http://slothparadise.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-12-at-5.56.59-PM.png" alt="Screen Shot 2014-11-12 at 5.56.59 PM" width="655" height="438" srcset="https://www.slothparadise.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-12-at-5.56.59-PM.png 868w, https://www.slothparadise.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-12-at-5.56.59-PM-300x200.png 300w" sizes="(max-width: 655px) 100vw, 655px" /></a></p>
+<p>If you don’t have Django, please follow the rest of these steps.</p>
+<h4><strong>Step 1: Verify that you have Python on your computer</strong></h4>
+<p>Django requires Python to work.  Django can work with different versions of Python.</p>
+<p>Make sure that your Python version is one of <strong><code>2.7</code></strong> or <strong><code>3.2, 3.3, 3.4, 3.5 versions</code></strong>. Depending on the version of Django, you&#8217;ll need to make sure that you have a verified working Python version. As of May 20, 2015, version 1.8.2 is the stable release of Django.</p>
+<p>Since Django comes along with a light SQLite database, you don&#8217;t need to worry about the database at this point.</p>
+<p>Open your terminal and type:</p>
+<pre crayon="false">python --version</pre>
+<p>If you already installed Python, something line this should show up:</p>
+<p><a href="http://slothparadise.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-12-at-6.00.01-PM.png"><img class=" size-full wp-image-89 aligncenter" src="http://slothparadise.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-12-at-6.00.01-PM.png" alt="Screen Shot 2014-11-12 at 6.00.01 PM" width="570" height="184" srcset="https://www.slothparadise.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-12-at-6.00.01-PM.png 570w, https://www.slothparadise.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-12-at-6.00.01-PM-300x97.png 300w" sizes="(max-width: 570px) 100vw, 570px" /></a></p>
+<p>&nbsp;</p>
+<p>If your computer doesn&#8217;t have Python, you should download it from:</p>
+<p><a href="https://www.python.org/downloads/" target="_blank">https://www.python.org/downloads/</a></p>
+<p>You should either download the 2.7 version or 3.4 version. Since I am using 3.4 in this tutorial, 3.4 is recommended.</p>
+<p>&nbsp;</p>
+<h4><strong>Step 2: Install pip</strong></h4>
+<p>After you have made sure that you have Python, it is time to install pip.</p>
+<p><code>pip</code> is a tool that enable us to easily install Django.</p>
+<p>If you are not sure if you have pip on you computer, you can open your terminal and enter:</p>
+<pre crayon="false">pip --version</pre>
+<p><a href="http://slothparadise.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-12-at-6.02.47-PM.png"><img class="  wp-image-90 aligncenter" src="http://slothparadise.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-12-at-6.02.47-PM.png" alt="Screen Shot 2014-11-12 at 6.02.47 PM" width="768" height="174" srcset="https://www.slothparadise.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-12-at-6.02.47-PM.png 821w, https://www.slothparadise.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-12-at-6.02.47-PM-300x68.png 300w" sizes="(max-width: 768px) 100vw, 768px" /></a></p>
+<p>If you don’t have <code>pip</code> on your computer, you have to get the <code>get-pip.py</code> installation file. Download the following:</p>
+<p><a href="https://bootstrap.pypa.io/get-pip.py" target="_blank">https://bootstrap.pypa.io/get-pip.py</a></p>
+<pre crayon="false">curl -O https://bootstrap.pypa.io/get-pip.py</pre>
+<p>Afterwards, change directory to the location get-pip.py, go to your terminal, and enter:</p>
+<pre crayon="false">python get-pip.py</pre>
+<p>&nbsp;</p>
+<h4><strong>Step 3: Using pip to install Django</strong></h4>
+<p>After you make sure you have <code>pip</code> installed on your computer, go to the terminal and enter:</p>
+<pre crayon="false">sudo pip install Django</pre>
+<p>You will need to enter the password of your computer. You can also specify a specific version of Django to install. Since the stable release at the time of writing is 1.8.2, I&#8217;ll show the command to install that version:</p>
+<pre crayon="false">sudo pip install Django==1.8.2</pre>
+<p>&nbsp;</p>
+<h3><strong>Section 2 : Start a project</strong></h3>
+<h4><strong>Step 1: Create a project</strong></h4>
+<p>Open your terminal, cd to your Desktop or the place where you want to put your project and enter the following command:</p>
+<pre crayon="false">django-admin.py startproject blog</pre>
+<p><a href="http://slothparadise.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-12-at-6.13.19-PM.png"><img class="  wp-image-91 aligncenter" src="http://slothparadise.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-12-at-6.13.19-PM.png" alt="Screen Shot 2014-11-12 at 6.13.19 PM" width="682" height="301" srcset="https://www.slothparadise.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-12-at-6.13.19-PM.png 766w, https://www.slothparadise.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-12-at-6.13.19-PM-300x132.png 300w" sizes="(max-width: 682px) 100vw, 682px" /></a></p>
+<p>You will see a directory called <code>blog</code> appear on the Desktop. It contains all the framework file to help you generate your website.</p>
+<p><a href="http://slothparadise.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-12-at-7.07.10-PM.png"><img class=" size-full wp-image-95 aligncenter" src="http://slothparadise.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-12-at-7.07.10-PM.png" alt="Screen Shot 2014-11-12 at 7.07.10 PM" width="280" height="304" srcset="https://www.slothparadise.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-12-at-7.07.10-PM.png 280w, https://www.slothparadise.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-12-at-7.07.10-PM-276x300.png 276w" sizes="(max-width: 280px) 100vw, 280px" /></a></p>
+<p>&nbsp;</p>
+<h4><strong>Step 2:</strong></h4>
+<p>In your terminal, cd to into the <code>blog</code> folder and enter:</p>
+<pre crayon="false">python manage.py runserver</pre>
+<p>You will probably see:</p>
+<p><a href="http://slothparadise.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-12-at-7.10.05-PM.png"><img class="  wp-image-96 aligncenter" src="http://slothparadise.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-12-at-7.10.05-PM.png" alt="Screen Shot 2014-11-12 at 7.10.05 PM" width="617" height="254" srcset="https://www.slothparadise.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-12-at-7.10.05-PM.png 651w, https://www.slothparadise.com/wp-content/uploads/2014/11/Screen-Shot-2014-11-12-at-7.10.05-PM-300x124.png 300w" sizes="(max-width: 617px) 100vw, 617px" /></a></p>
+<p>Now, open a web browser. In the address file, enter the address that is showing in your terminal.</p>
+<p>On the terminal and yours, by default, it will say <a href="http: //127.0.0.1: 8000" target="_blank">http: //127.0.0.1: 8000</a></p>
+<p><code>127.0.0.1</code> means <code>localhost</code> on every computer.</p>
+<p>So I enter: <a href="http://localhost:8000/">http://localhost:8000</a> or <a href="http: //127.0.0.1: 8000" target="_blank">http: //127.0.0.1: 8000</a> inside the web address of my browser, and it takes me to the default view of a Django site! You did it!</p>
+
+<!-- WP QUADS Content Ad Plugin v. 1.5.6 -->
+<div class="quads-location quads-ad1" id="quads-ad1" style="float:none;margin:60px 0 60px 0;text-align:center;">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- SlothparadiseResponsiveAd01 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7477930862359747"
+     data-ad-slot="3531636205"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<div style="font-size:0px;height:0px;line-height:0px;margin:0;padding:0;clear:both"></div>											</div><!--/.entry-->
+					
+					<p class="post-tags"><span>Tags:</span> <a href="https://www.slothparadise.com/tag/django/" rel="tag">Django</a><a href="https://www.slothparadise.com/tag/installation/" rel="tag">Installation</a></p>					
+				</div><!--/.post-content-->
+				<div class="post-sharrre group">
+	<div id="twitter" data-url="https://www.slothparadise.com/how-to-install-django-on-mac/" data-text="How to Install Django on Mac" data-title="Tweet"></div>
+	<div id="facebook" data-url="https://www.slothparadise.com/how-to-install-django-on-mac/" data-text="How to Install Django on Mac" data-title="Like"></div>
+	<div id="googleplus" data-url="https://www.slothparadise.com/how-to-install-django-on-mac/" data-text="How to Install Django on Mac" data-title="+1"></div>
+	<div id="pinterest" data-url="https://www.slothparadise.com/how-to-install-django-on-mac/" data-text="How to Install Django on Mac" data-title="Pin It"></div>
+</div><!--/.post-sharrre-->
+
+<script type="text/javascript">
+	// Sharrre
+	jQuery(document).ready(function(){
+		jQuery('#twitter').sharrre({
+			share: {
+				twitter: true
+			},
+			template: '<a class="box group" href="#"><div class="count" href="#"><i class="fa fa-plus"></i></div><div class="share"><i class="fa fa-twitter"></i></div></a>',
+			enableHover: false,
+			enableTracking: true,
+			buttons: { twitter: {via: 'microwavesam'}},
+			click: function(api, options){
+				api.simulateClick();
+				api.openPopup('twitter');
+			}
+		});
+		jQuery('#facebook').sharrre({
+			share: {
+				facebook: true
+			},
+			template: '<a class="box group" href="#"><div class="count" href="#">{total}</div><div class="share"><i class="fa fa-facebook-square"></i></div></a>',
+			enableHover: false,
+			enableTracking: true,
+			click: function(api, options){
+				api.simulateClick();
+				api.openPopup('facebook');
+			}
+		});
+		jQuery('#googleplus').sharrre({
+			share: {
+				googlePlus: true
+			},
+			template: '<a class="box group" href="#"><div class="count" href="#">{total}</div><div class="share"><i class="fa fa-google-plus-square"></i></div></a>',
+			enableHover: false,
+			enableTracking: true,
+			urlCurl: 'https://www.slothparadise.com/wp-content/themes/anew/js/sharrre.php',
+			click: function(api, options){
+				api.simulateClick();
+				api.openPopup('googlePlus');
+			}
+		});
+		jQuery('#pinterest').sharrre({
+			share: {
+				pinterest: true
+			},
+			template: '<a class="box group" href="#" rel="nofollow"><div class="count" href="#">{total}</div><div class="share"><i class="fa fa-pinterest"></i></div></a>',
+			enableHover: false,
+			enableTracking: true,
+			buttons: {
+			pinterest: {
+				description: 'How to Install Django on Mac',media: 'https://www.slothparadise.com/wp-content/uploads/2014/11/django.png'				}
+			},
+			click: function(api, options){
+				api.simulateClick();
+				api.openPopup('pinterest');
+			}
+		});
+	});
+</script>
+				
+			</div><!--/.post-inner-->
+			
+		</article><!--/.post-->			
+			
+			<div class="author-bio">
+			<div class="bio-avatar"><img alt='' src='https://secure.gravatar.com/avatar/babbe392ddea8600aca6d4ef0af39d42?s=128&#038;d=mm&#038;r=pg' srcset='https://secure.gravatar.com/avatar/babbe392ddea8600aca6d4ef0af39d42?s=256&amp;d=mm&amp;r=pg 2x' class='avatar avatar-128 photo' height='128' width='128' /></div>
+			<p class="bio-name"><a href="https://www.slothparadise.com/author/naghceuz/" title="Posts by Owen Zhang" rel="author">Owen Zhang</a></p>
+			<p class="bio-desc">www.owenzhangblog.com</p>
+			<div class="clear"></div>
+		</div>
+		
+		<ul class="post-nav group">
+		<li class="next"><a href="https://www.slothparadise.com/how-to-use-jquery-to-grab-json-files/" rel="next"><i class="fa fa-chevron-right"></i><strong>Next</strong> <span>How to use jQuery to Grab Data from JSON files</span></a></li>
+		<li class="previous"><a href="https://www.slothparadise.com/how-to-install-cygwin-on-windows/" rel="prev"><i class="fa fa-chevron-left"></i><strong>Previous</strong> <span>8 Steps to Install Cygwin on Windows</span></a></li>
+	</ul>
+	
+	
+<div id="disqus_thread">
+            <div id="dsq-content">
+
+
+            <ul id="dsq-comments">
+                    <li class="comment even thread-even depth-1" id="dsq-comment-120">
+        <div id="dsq-comment-header-120" class="dsq-comment-header">
+            <cite id="dsq-cite-120">
+                <a id="dsq-author-user-120" href="http://www.CocoMocoKids.com" target="_blank" rel="nofollow">Shitij, CocoMocoKids.com</a>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-120" class="dsq-comment-body">
+            <div id="dsq-comment-message-120" class="dsq-comment-message"><p>thanks ..this worked smooth</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-133">
+        <div id="dsq-comment-header-133" class="dsq-comment-header">
+            <cite id="dsq-cite-133">
+                <span id="dsq-author-user-133">Ricky Mohanty</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-133" class="dsq-comment-body">
+            <div id="dsq-comment-message-133" class="dsq-comment-message"><p>In case python get-pip.py does not work for you, then do try<br />
+sudo easy_install pip</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-153">
+        <div id="dsq-comment-header-153" class="dsq-comment-header">
+            <cite id="dsq-cite-153">
+                <span id="dsq-author-user-153">Jayesh</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-153" class="dsq-comment-body">
+            <div id="dsq-comment-message-153" class="dsq-comment-message"><p>Awesome tutorial &#8230;.rally helpled me.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-174">
+        <div id="dsq-comment-header-174" class="dsq-comment-header">
+            <cite id="dsq-cite-174">
+                <span id="dsq-author-user-174">arrowhigh</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-174" class="dsq-comment-body">
+            <div id="dsq-comment-message-174" class="dsq-comment-message"><p>Very good tutorial.  I agree with RMohanty about get-pip.py.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='http://www.x78bn5t37bc45rtb3x45ctbwxds.com/' rel='external nofollow' class='url'>x78bn5t37bc45rtb3x45ctbwxds</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='http://withinfp.sakura.ne.jp/eso/index.php/5180586-get-a-grip-on-your-panic-indicators-tip-num-3-of-669/0' rel='external nofollow' class='url'>alcoholism test</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='http://www.bedanto.ir/?option=com_k2&#038;view=itemlist&#038;task=user&#038;id=68615' rel='external nofollow' class='url'>&#x62F;&#x627;&#x646;&#x644;&#x648;&#x62F; &#x642;&#x633;&#x645;&#x62A; &#x647;&#x634;&#x62A;&#x645; &#x634;&#x647;&#x631;&#x632;&#x627;&#x62F; &#x62F;&#x648;&#x645;</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='https://goo.gl/Es1bDY' rel='external nofollow' class='url'>&#x62F;&#x627;&#x646;&#x644;&#x648;&#x62F; &#x634;&#x647;&#x631;&#x632;&#x627;&#x62F; &#x642;&#x633;&#x645;&#x62A; &#x62F;&#x648;&#x627;&#x632;&#x62F;&#x647;&#x645; &#x641;&#x635;&#x644; &#x62F;&#x648;&#x645;</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='https://goo.gl/FqVxvQ' rel='external nofollow' class='url'>&#x62F;&#x627;&#x646;&#x644;&#x648;&#x62F; &#x634;&#x647;&#x631;&#x632;&#x627;&#x62F; &#x642;&#x633;&#x645;&#x62A; &#x647;&#x641;&#x62A;&#x645; &#x641;&#x635;&#x644; &#x62F;&#x648;&#x645;</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='https://www.facebook.com/cooldownload.ir/posts/813221652170394' rel='external nofollow' class='url'>&#x62F;&#x627;&#x646;&#x644;&#x648;&#x62F; &#x634;&#x647;&#x631;&#x632;&#x627;&#x62F; &#x642;&#x633;&#x645;&#x62A; &#x646;&#x647;&#x645; &#x641;&#x635;&#x644; &#x62F;&#x648;&#x645;</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='https://goo.gl/rBSVZX' rel='external nofollow' class='url'>&#x62F;&#x627;&#x646;&#x644;&#x648;&#x62F; &#x634;&#x647;&#x631;&#x632;&#x627;&#x62F; &#x642;&#x633;&#x645;&#x62A; &#x647;&#x634;&#x62A;&#x645; &#x641;&#x635;&#x644; &#x62F;&#x648;&#x645;</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='https://goo.gl/NBRtKF' rel='external nofollow' class='url'>&#x642;&#x6CC;&#x645;&#x62A; &#x67E;&#x646;&#x62C;&#x631;&#x647;</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='https://glam-seamless.pissedconsumer.com/' rel='external nofollow' class='url'>big dick</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='http://www.pressking.com/press-releases/-2--096075' rel='external nofollow' class='url'>&#x62F;&#x627;&#x646;&#x644;&#x648;&#x62F; &#x642;&#x633;&#x645;&#x62A; &#x62F;&#x647;&#x645; &#x641;&#x635;&#x644; &#x62F;&#x648;&#x645; &#x634;&#x647;&#x631;&#x632;&#x627;&#x62F;</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='https://goo.gl/8UPLg3' rel='external nofollow' class='url'>&#x62F;&#x627;&#x646;&#x644;&#x648;&#x62F; &#x642;&#x633;&#x645;&#x62A; &#x634;&#x634;&#x645; &#x641;&#x635;&#x644; &#x62F;&#x648;&#x645; &#x634;&#x647;&#x631;&#x632;&#x627;&#x62F;</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='https://goo.gl/QvBWpk' rel='external nofollow' class='url'>&#x62F;&#x627;&#x646;&#x644;&#x648;&#x62F; &#x642;&#x633;&#x645;&#x62A; 17 &#x639;&#x627;&#x634;&#x642;&#x627;&#x646;&#x647;</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='http://idia19.weebly.com/' rel='external nofollow' class='url'>&#x62F;&#x627;&#x646;&#x644;&#x648;&#x62F; &#x642;&#x633;&#x645;&#x62A; 13 &#x639;&#x627;&#x634;&#x642;&#x627;&#x646;&#x647;</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='http://www.javstore.com' rel='external nofollow' class='url'>April O'Neil</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='http://www.greerweb.com' rel='external nofollow' class='url'>Elena Koshka</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='https://plus.google.com/u/0/102662633153907574877/posts/6VZP8RuXK5B' rel='external nofollow' class='url'>&#x62F;&#x627;&#x646;&#x644;&#x648;&#x62F; &#x642;&#x633;&#x645;&#x62A; &#x686;&#x647;&#x627;&#x631;&#x62F;&#x647; &#x639;&#x627;&#x634;&#x642;&#x627;&#x646;&#x647;</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='http://www.canlisekshatti.org' rel='external nofollow' class='url'>Peta Jensen</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='http://filimons.com' rel='external nofollow' class='url'>Brittney White</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='http://www.airtele.com' rel='external nofollow' class='url'>Angela White</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='http://www.esmerado.com' rel='external nofollow' class='url'>August Ames</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='http://www.arcarol.com' rel='external nofollow' class='url'>Bobbi Dylan</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='http://www.wowsarap.com' rel='external nofollow' class='url'>Ana Foxxx</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='http://sosyalmarketim.com/' rel='external nofollow' class='url'>dolandirici sosyalmarketim</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='http://www.jimsboat.com' rel='external nofollow' class='url'>Cherry Hilson</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='https://goo.gl/Hd7TPd' rel='external nofollow' class='url'>&#x62F;&#x627;&#x646;&#x644;&#x648;&#x62F; &#x634;&#x647;&#x631;&#x632;&#x627;&#x62F; &#x642;&#x633;&#x645;&#x62A; &#x647;&#x641;&#x62A;&#x645; &#x641;&#x635;&#x644; &#x62F;&#x648;&#x645;</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='http://www.download-best-movies.loxblog.com/post/874/' rel='external nofollow' class='url'>&#x62F;&#x627;&#x646;&#x644;&#x648;&#x62F; &#x641;&#x635;&#x644; &#x62F;&#x648;&#x645; &#x634;&#x647;&#x631;&#x632;&#x627;&#x62F;</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='https://hamptonbayceilingfanblog.yolasite.com' rel='external nofollow' class='url'>hampton bay ceiling fan blog</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='https://paleodieteasy.blogspot.mx/' rel='external nofollow' class='url'>Paleo Diet</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='https://twitter.com/lesbianpornnow' rel='external nofollow' class='url'>lesbian porn xxx</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='http://www.freestuffworldwide.club' rel='external nofollow' class='url'>Free Stuff Worldwide</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='http://www.salcoequipment.com' rel='external nofollow' class='url'>Boom lift service</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='http://onlinemoovie.com/online-tvshows/' rel='external nofollow' class='url'>online series</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='http://www.casinoswing.com' rel='external nofollow' class='url'>casinos online usa</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='http://www.pressking.com/press-releases/-11--095177' rel='external nofollow' class='url'>&#x633;&#x631;&#x6CC;&#x627;&#x644; &#x639;&#x627;&#x634;&#x642;&#x627;&#x646;&#x647;</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='https://vk.com/ufclivestreaming?w=wall318737625_25' rel='external nofollow' class='url'>&#x67E;&#x646;&#x62C;&#x631;&#x647;</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href='http://hundetshirts.angelfire.com/' rel='external nofollow' class='url'>t-shirts med hunde motiver</a>()</p>
+    </li>
+    </li><!-- #comment-## -->
+            </ul>
+
+
+        </div>
+
+    </div>
+
+	
+	</div><!--/.pad-->
+	
+</section><!--/.content-->
+
+
+	<div class="sidebar s1">
+		
+		<a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+		
+		<div class="sidebar-content">
+				
+						
+					<div id="recent-posts-4" class="widget widget_recent_entries">		<h3>Recent Posts</h3>		<ul>
+					<li>
+				<a href="https://www.slothparadise.com/making-yu-gi-oh-real-life-demo-hololens/">The making of Yu-Gi-Oh! in Real Life Demo for HoloLens</a>
+						</li>
+					<li>
+				<a href="https://www.slothparadise.com/creating-ar-rpg-hololens/">Creating an AR RPG for HoloLens &#8211; Concept Trailer</a>
+						</li>
+					<li>
+				<a href="https://www.slothparadise.com/setup-https-free-terminal/">How to Setup HTTPS for Free With Terminal</a>
+						</li>
+					<li>
+				<a href="https://www.slothparadise.com/setup-bash-windows-10-developers-ultimate-setup/">How to Setup Bash on Windows 10 for Developers &#8211; Ultimate Setup</a>
+						</li>
+					<li>
+				<a href="https://www.slothparadise.com/introduction-python-computer-science-chapter-9-dictionaries-sets/">Introduction to Python and Computer Science &#8211; Chapter 9 &#8211; Dictionaries and Sets</a>
+						</li>
+				</ul>
+		</div>		<div id="alxposts-3" class="widget widget_alx_posts">
+<h3>What Others Are Reading</h3>
+			
+	<ul class="alx-posts group thumbs-enabled">
+				<li>
+			
+						<div class="post-item-thumbnail">
+				<a href="https://www.slothparadise.com/get-users-email-address-github/" title="How to Get a User&#8217;s Email Address on Github">
+											<img width="520" height="245" src="https://www.slothparadise.com/wp-content/uploads/2016/10/find-a-github-project-520x245.png" class="attachment-thumb-medium size-thumb-medium wp-post-image" alt="" srcset="https://www.slothparadise.com/wp-content/uploads/2016/10/find-a-github-project-520x245.png 520w, https://www.slothparadise.com/wp-content/uploads/2016/10/find-a-github-project-700x329.png 700w" sizes="(max-width: 520px) 100vw, 520px" />																								</a>
+			</div>
+						
+			<div class="post-item-inner group">
+				<p class="post-item-category"><a href="https://www.slothparadise.com/category/documentation/" rel="category tag">Documentation</a> / <a href="https://www.slothparadise.com/category/github/" rel="category tag">Github</a></p>				<p class="post-item-title"><a href="https://www.slothparadise.com/get-users-email-address-github/" rel="bookmark" title="How to Get a User&#8217;s Email Address on Github">How to Get a User&#8217;s Email Address on Github</a></p>
+				<p class="post-item-date">23 Oct, 2016</p>			</div>
+			
+		</li>
+				<li>
+			
+						<div class="post-item-thumbnail">
+				<a href="https://www.slothparadise.com/introduction-python-computer-science-chapter-9-dictionaries-sets/" title="Introduction to Python and Computer Science &#8211; Chapter 9 &#8211; Dictionaries and Sets">
+											<img width="520" height="245" src="https://www.slothparadise.com/wp-content/uploads/2017/02/python-wallpaper-520x245.png" class="attachment-thumb-medium size-thumb-medium wp-post-image" alt="" srcset="https://www.slothparadise.com/wp-content/uploads/2017/02/python-wallpaper-520x245.png 520w, https://www.slothparadise.com/wp-content/uploads/2017/02/python-wallpaper-700x329.png 700w" sizes="(max-width: 520px) 100vw, 520px" />																								</a>
+			</div>
+						
+			<div class="post-item-inner group">
+				<p class="post-item-category"><a href="https://www.slothparadise.com/category/python/" rel="category tag">Python</a></p>				<p class="post-item-title"><a href="https://www.slothparadise.com/introduction-python-computer-science-chapter-9-dictionaries-sets/" rel="bookmark" title="Introduction to Python and Computer Science &#8211; Chapter 9 &#8211; Dictionaries and Sets">Introduction to Python and Computer Science &#8211; Chapter 9 &#8211; Dictionaries and Sets</a></p>
+				<p class="post-item-date">20 Feb, 2017</p>			</div>
+			
+		</li>
+				<li>
+			
+						<div class="post-item-thumbnail">
+				<a href="https://www.slothparadise.com/introduction-python-computer-science-chapter-2-types-functions/" title="Introduction to Python and Computer Science &#8211; Chapter 2 &#8211; Types and Functions">
+											<img width="520" height="245" src="https://www.slothparadise.com/wp-content/uploads/2017/02/python-wallpaper-520x245.png" class="attachment-thumb-medium size-thumb-medium wp-post-image" alt="" srcset="https://www.slothparadise.com/wp-content/uploads/2017/02/python-wallpaper-520x245.png 520w, https://www.slothparadise.com/wp-content/uploads/2017/02/python-wallpaper-700x329.png 700w" sizes="(max-width: 520px) 100vw, 520px" />																								</a>
+			</div>
+						
+			<div class="post-item-inner group">
+				<p class="post-item-category"><a href="https://www.slothparadise.com/category/python/" rel="category tag">Python</a></p>				<p class="post-item-title"><a href="https://www.slothparadise.com/introduction-python-computer-science-chapter-2-types-functions/" rel="bookmark" title="Introduction to Python and Computer Science &#8211; Chapter 2 &#8211; Types and Functions">Introduction to Python and Computer Science &#8211; Chapter 2 &#8211; Types and Functions</a></p>
+				<p class="post-item-date">9 Feb, 2017</p>			</div>
+			
+		</li>
+				<li>
+			
+						<div class="post-item-thumbnail">
+				<a href="https://www.slothparadise.com/how-to-install-and-use-cassandra-on-django/" title="How to Install and Use Cassandra on Django">
+											<img width="520" height="245" src="https://www.slothparadise.com/wp-content/uploads/2014/11/django-520x245.png" class="attachment-thumb-medium size-thumb-medium wp-post-image" alt="" srcset="https://www.slothparadise.com/wp-content/uploads/2014/11/django-520x245.png 520w, https://www.slothparadise.com/wp-content/uploads/2014/11/django-700x329.png 700w" sizes="(max-width: 520px) 100vw, 520px" />																								</a>
+			</div>
+						
+			<div class="post-item-inner group">
+				<p class="post-item-category"><a href="https://www.slothparadise.com/category/cassandra/" rel="category tag">Cassandra</a> / <a href="https://www.slothparadise.com/category/django/" rel="category tag">Django</a> / <a href="https://www.slothparadise.com/category/documentation/" rel="category tag">Documentation</a></p>				<p class="post-item-title"><a href="https://www.slothparadise.com/how-to-install-and-use-cassandra-on-django/" rel="bookmark" title="How to Install and Use Cassandra on Django">How to Install and Use Cassandra on Django</a></p>
+				<p class="post-item-date">13 Jun, 2015</p>			</div>
+			
+		</li>
+				<li>
+			
+						<div class="post-item-thumbnail">
+				<a href="https://www.slothparadise.com/how-to-root-nvidia-android-tv-shield/" title="How to Root Nvidia Android TV Shield">
+											<img width="520" height="245" src="https://www.slothparadise.com/wp-content/uploads/2015/07/IMG_1544-520x245.jpg" class="attachment-thumb-medium size-thumb-medium wp-post-image" alt="" srcset="https://www.slothparadise.com/wp-content/uploads/2015/07/IMG_1544-520x245.jpg 520w, https://www.slothparadise.com/wp-content/uploads/2015/07/IMG_1544-700x329.jpg 700w" sizes="(max-width: 520px) 100vw, 520px" />																								</a>
+			</div>
+						
+			<div class="post-item-inner group">
+				<p class="post-item-category"><a href="https://www.slothparadise.com/category/documentation/" rel="category tag">Documentation</a> / <a href="https://www.slothparadise.com/category/nvidia/" rel="category tag">Nvidia</a></p>				<p class="post-item-title"><a href="https://www.slothparadise.com/how-to-root-nvidia-android-tv-shield/" rel="bookmark" title="How to Root Nvidia Android TV Shield">How to Root Nvidia Android TV Shield</a></p>
+				<p class="post-item-date">10 Jul, 2015</p>			</div>
+			
+		</li>
+				<li>
+			
+						<div class="post-item-thumbnail">
+				<a href="https://www.slothparadise.com/get-multiple-terminals-ubuntu-server/" title="How to Get Multiple Terminals on Ubuntu Server">
+											<img width="520" height="245" src="https://www.slothparadise.com/wp-content/uploads/2016/07/ubuntu-wallpaper-520x245.png" class="attachment-thumb-medium size-thumb-medium wp-post-image" alt="" srcset="https://www.slothparadise.com/wp-content/uploads/2016/07/ubuntu-wallpaper-520x245.png 520w, https://www.slothparadise.com/wp-content/uploads/2016/07/ubuntu-wallpaper-700x329.png 700w" sizes="(max-width: 520px) 100vw, 520px" />																								</a>
+			</div>
+						
+			<div class="post-item-inner group">
+				<p class="post-item-category"><a href="https://www.slothparadise.com/category/ubuntu/" rel="category tag">Ubuntu</a></p>				<p class="post-item-title"><a href="https://www.slothparadise.com/get-multiple-terminals-ubuntu-server/" rel="bookmark" title="How to Get Multiple Terminals on Ubuntu Server">How to Get Multiple Terminals on Ubuntu Server</a></p>
+				<p class="post-item-date">3 Jul, 2016</p>			</div>
+			
+		</li>
+			</ul><!--/.alx-posts-->
+
+</div>
+<div id="aio_facebook_like_widget-3" class="widget aio_facebook_like_widget">Like us on Facebook	
+			<div class="fb-like-box"
+				data-href="http://www.facebook.com/slothparadisecom"
+				data-width="282"
+								data-show-faces="false"
+				data-stream="false"
+				data-header="true"
+				data-show-border="false"
+                data-colorscheme="light"
+				>
+			</div>
+
+		</div>
+<!-- Quick Adsense Reloaded -->
+<div id="adswidget1-quick-adsense-reloaded-3" class="widget quads-ad1_widget"><div id="quads-ad1_widget"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- SlothparadiseSideBar01 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7477930862359747"
+     data-ad-slot="8971981401"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div></div>			
+		</div><!--/.sidebar-content-->
+		
+	</div><!--/.sidebar-->
+	
+
+		</div><!--/.main-->
+	</div><!--/.container-inner-->
+	
+	<footer id="footer">	
+				
+		<section id="footer-widgets" class="container">
+			<div class="pad group">
+											
+				<div class="footer-widget-1 grid one-third ">
+					<div id="alxtabs-3" class="widget widget_alx_tabs">
+<h3>Popular</h3><ul class="alx-tabs-nav group tab-count-3"><li class="alx-tab tab-popular"><a href="#tab-popular" title="Popular Posts"><i class="fa fa-star"></i><span>Popular Posts</span></a></li><li class="alx-tab tab-recent"><a href="#tab-recent" title="Recent Posts"><i class="fa fa-clock-o"></i><span>Recent Posts</span></a></li><li class="alx-tab tab-comments"><a href="#tab-comments" title="Recent Comments"><i class="fa fa-comments-o"></i><span>Recent Comments</span></a></li></ul>
+	<div class="alx-tabs-container">
+
+	
+					
+									
+			<ul id="tab-recent" class="alx-tab group thumbs-enabled">
+								<li>
+					
+										<div class="tab-item-thumbnail">
+						<a href="https://www.slothparadise.com/making-yu-gi-oh-real-life-demo-hololens/" title="The making of Yu-Gi-Oh! in Real Life Demo for HoloLens">
+															<img width="160" height="160" src="https://www.slothparadise.com/wp-content/uploads/2017/08/andrew-yugioh-mask-160x160.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="" srcset="https://www.slothparadise.com/wp-content/uploads/2017/08/andrew-yugioh-mask-160x160.jpg 160w, https://www.slothparadise.com/wp-content/uploads/2017/08/andrew-yugioh-mask-150x150.jpg 150w" sizes="(max-width: 160px) 100vw, 160px" />																																		</a>
+					</div>
+										
+					<div class="tab-item-inner group">
+						<p class="tab-item-category"><a href="https://www.slothparadise.com/category/hololens/" rel="category tag">HoloLens</a> / <a href="https://www.slothparadise.com/category/news/" rel="category tag">News</a> / <a href="https://www.slothparadise.com/category/yugioh/" rel="category tag">Yugioh</a></p>						<p class="tab-item-title"><a href="https://www.slothparadise.com/making-yu-gi-oh-real-life-demo-hololens/" rel="bookmark" title="The making of Yu-Gi-Oh! in Real Life Demo for HoloLens">The making of Yu-Gi-Oh! in Real Life Demo for HoloLens</a></p>
+						<p class="tab-item-date">1 Aug, 2017</p>					</div>
+					
+				</li>
+								<li>
+					
+										<div class="tab-item-thumbnail">
+						<a href="https://www.slothparadise.com/creating-ar-rpg-hololens/" title="Creating an AR RPG for HoloLens &#8211; Concept Trailer">
+															<img width="160" height="160" src="https://www.slothparadise.com/wp-content/uploads/2017/06/sao-trailer-160x160.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="" srcset="https://www.slothparadise.com/wp-content/uploads/2017/06/sao-trailer-160x160.png 160w, https://www.slothparadise.com/wp-content/uploads/2017/06/sao-trailer-150x150.png 150w" sizes="(max-width: 160px) 100vw, 160px" />																																		</a>
+					</div>
+										
+					<div class="tab-item-inner group">
+						<p class="tab-item-category"><a href="https://www.slothparadise.com/category/news/" rel="category tag">News</a></p>						<p class="tab-item-title"><a href="https://www.slothparadise.com/creating-ar-rpg-hololens/" rel="bookmark" title="Creating an AR RPG for HoloLens &#8211; Concept Trailer">Creating an AR RPG for HoloLens &#8211; Concept Trailer</a></p>
+						<p class="tab-item-date">11 Jun, 2017</p>					</div>
+					
+				</li>
+							</ul><!--/.alx-tab-->
+
+		
+
+						
+						<ul id="tab-popular" class="alx-tab group thumbs-enabled">
+				
+								<li>
+				
+										<div class="tab-item-thumbnail">
+						<a href="https://www.slothparadise.com/access-ubuntu-bash-files-windows/" title="How to Access Ubuntu Bash Files from Windows">
+															<img width="160" height="160" src="https://www.slothparadise.com/wp-content/uploads/2016/07/ubuntu-wallpaper-160x160.png" class="attachment-thumb-small size-thumb-small wp-post-image" alt="" srcset="https://www.slothparadise.com/wp-content/uploads/2016/07/ubuntu-wallpaper-160x160.png 160w, https://www.slothparadise.com/wp-content/uploads/2016/07/ubuntu-wallpaper-150x150.png 150w" sizes="(max-width: 160px) 100vw, 160px" />																																		</a>
+					</div>
+										
+					<div class="tab-item-inner group">
+						<p class="tab-item-category"><a href="https://www.slothparadise.com/category/ubuntu/" rel="category tag">Ubuntu</a> / <a href="https://www.slothparadise.com/category/windows/" rel="category tag">Windows</a></p>						<p class="tab-item-title"><a href="https://www.slothparadise.com/access-ubuntu-bash-files-windows/" rel="bookmark" title="How to Access Ubuntu Bash Files from Windows">How to Access Ubuntu Bash Files from Windows</a></p>
+						<p class="tab-item-date">29 Dec, 2016</p>					</div>
+					
+				</li>
+								<li>
+				
+										<div class="tab-item-thumbnail">
+						<a href="https://www.slothparadise.com/google-testing-example-and-cmake-integration/" title="Google Testing: Example and CMake Integration">
+															<img width="160" height="160" src="https://www.slothparadise.com/wp-content/uploads/2016/08/google-testing-test-tubes-160x160.jpg" class="attachment-thumb-small size-thumb-small wp-post-image" alt="" srcset="https://www.slothparadise.com/wp-content/uploads/2016/08/google-testing-test-tubes-160x160.jpg 160w, https://www.slothparadise.com/wp-content/uploads/2016/08/google-testing-test-tubes-150x150.jpg 150w" sizes="(max-width: 160px) 100vw, 160px" />																																		</a>
+					</div>
+										
+					<div class="tab-item-inner group">
+						<p class="tab-item-category"><a href="https://www.slothparadise.com/category/c/" rel="category tag">C++</a> / <a href="https://www.slothparadise.com/category/documentation/" rel="category tag">Documentation</a> / <a href="https://www.slothparadise.com/category/google/" rel="category tag">Google</a></p>						<p class="tab-item-title"><a href="https://www.slothparadise.com/google-testing-example-and-cmake-integration/" rel="bookmark" title="Google Testing: Example and CMake Integration">Google Testing: Example and CMake Integration</a></p>
+						<p class="tab-item-date">31 Aug, 2016</p>					</div>
+					
+				</li>
+							</ul><!--/.alx-tab-->
+			
+			
+
+		
+						
+			<ul id="tab-comments" class="alx-tab group ">
+								<li>
+					
+												
+						<div class="tab-item-inner group">
+												
+							<div class="tab-item-name">Huy Le says:</div>
+							<div class="tab-item-comment"><a href="https://www.slothparadise.com/get-users-email-address-github/#comment-4403">It is possible. You could write script that would perform these...</a></div>
+							
+						</div>
+
+				</li>
+								<li>
+					
+												
+						<div class="tab-item-inner group">
+												
+							<div class="tab-item-name">Shivansh Malik says:</div>
+							<div class="tab-item-comment"><a href="https://www.slothparadise.com/get-users-email-address-github/#comment-4103">Hi! I have a list of user names and ids of...</a></div>
+							
+						</div>
+
+				</li>
+								<li>
+					
+												
+						<div class="tab-item-inner group">
+												
+							<div class="tab-item-name">Nanshall Selman says:</div>
+							<div class="tab-item-comment"><a href="https://www.slothparadise.com/mount-usb-flash-drive-centos-7/#comment-3024">I found it very straight foward .if you feel its that...</a></div>
+							
+						</div>
+
+				</li>
+							</ul><!--/.alx-tab-->
+
+		
+			</div>
+
+</div>
+				</div>
+		
+																
+				<div class="footer-widget-2 grid one-third ">
+					<div id="wp_subscribe-5" class="widget wp_subscribe">            
+            <div class="wp-subscribe no-name-field" id="wp-subscribe">
+                <h4 class="title"></h4>
+                <p class="text">Subscribe to our newsletter for all the latest news on slothparadise!</p>
+
+                                
+                                        <form action="/how-to-install-django-on-mac/?mailchimp_signup=1" method="post">
+                                                <input class="email-field" type="text" value="" placeholder="Enter your email here" name="mailchimp_email">
+                        <input class="submit" name="submit" type="submit" value="Sign Up Today">
+                        <input type="hidden" name="widget_id" value="wp_subscribe-5" />
+                    </form>
+                                    <div class="clear"></div>
+                
+                <p class="footer-text">You can opt out at anytime.</p>
+                
+            </div><!--subscribe_widget-->
+        
+        </div>				</div>
+		
+																
+				<div class="footer-widget-3 grid one-third last">
+					<div id="alxposts-6" class="widget widget_alx_posts">
+<h3>Featured</h3>
+			
+	<ul class="alx-posts group thumbs-enabled">
+				<li>
+			
+						<div class="post-item-thumbnail">
+				<a href="https://www.slothparadise.com/recover-nvidia-android-tv-shield/" title="Recover Nvidia Android TV Shield Manually">
+											<img width="520" height="245" src="https://www.slothparadise.com/wp-content/uploads/2015/07/IMG_1548-520x245.jpg" class="attachment-thumb-medium size-thumb-medium wp-post-image" alt="" srcset="https://www.slothparadise.com/wp-content/uploads/2015/07/IMG_1548-520x245.jpg 520w, https://www.slothparadise.com/wp-content/uploads/2015/07/IMG_1548-700x329.jpg 700w" sizes="(max-width: 520px) 100vw, 520px" />																								</a>
+			</div>
+						
+			<div class="post-item-inner group">
+				<p class="post-item-category"><a href="https://www.slothparadise.com/category/nvidia/" rel="category tag">Nvidia</a></p>				<p class="post-item-title"><a href="https://www.slothparadise.com/recover-nvidia-android-tv-shield/" rel="bookmark" title="Recover Nvidia Android TV Shield Manually">Recover Nvidia Android TV Shield Manually</a></p>
+				<p class="post-item-date">11 Jul, 2015</p>			</div>
+			
+		</li>
+			</ul><!--/.alx-posts-->
+
+</div>
+				</div>
+		
+												</div><!--/.pad-->
+		</section><!--/#footer-widgets-->	
+				
+					<nav class="nav-container group" id="nav-footer">
+				<div class="nav-toggle"><i class="fa fa-bars"></i></div>
+				<div class="nav-text"><!-- put your mobile menu text here --></div>
+				<div class="nav-wrap"><ul id="menu-footer-menu" class="nav container group"><li id="menu-item-1944" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1944"><a href="http://www.slothparadise.com">Home</a></li>
+<li id="menu-item-2057" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-2057"><a href="https://www.slothparadise.com/blog/">Blog</a></li>
+<li id="menu-item-2124" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2124"><a href="https://www.slothparadise.com/about/">About</a></li>
+<li id="menu-item-2132" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2132"><a href="https://www.amazon.com/s/ref=w_bl_sl_s_ap_web_7141123011?ie=UTF8&#038;node=7141123011&#038;field-brandtextbin=MicrowaveSam">Apparel</a></li>
+<li id="menu-item-1954" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1954"><a title="Contact" href="https://www.slothparadise.com/contact-us/">Contact Us</a></li>
+<li id="menu-item-1946" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1946"><a href="https://www.slothparadise.com/privacy-policy/">Privacy Policy</a></li>
+</ul></div>
+			</nav><!--/#nav-footer-->
+				
+		<section id="footer-bottom">
+			<div class="container">
+			
+				<a id="back-to-top" href="#"><i class="fa fa-angle-up"></i></a>
+				
+				<div class="pad group">				
+					<div class="grid one-half">
+					
+													<img id="footer-logo" src="https://www.slothparadise.com/wp-content/uploads/2014/07/slothlogo.png" alt="">
+												
+						<div id="copyright">
+															<p>slothparadise © 2014 - 2017. All Rights Reserved.</p>
+													</div><!--/#copyright-->
+						
+												
+					</div>		
+					<div class="grid one-half last">	
+						<ul class="social-links"><li><a rel="nofollow" class="social-tooltip" title="Facebook" href="https://www.facebook.com/slothparadisecom" target="Array"><i class="fa fa-facebook" style="color: #ffffff;"></i></a></li><li><a rel="nofollow" class="social-tooltip" title="Patreon" href="https://www.patreon.com/microwavesam" target="Array"><i class="fa fa-heart-o" style="color: #ffffff;"></i></a></li></ul>					</div>		
+				</div><!--/.pad-->
+				
+			</div><!--/.container-->
+		</section><!--/#footer-bottom-->
+		
+	</footer><!--/#footer-->
+
+</div><!--/#wrapper-->
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46691413-4', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script><link rel='stylesheet' id='wp-subscribe-css'  href='https://www.slothparadise.com/wp-content/plugins/wp-subscribe/css/wp-subscribe.css?ver=4.8.1' type='text/css' media='all' />
+<script type='text/javascript' src='https://www.slothparadise.com/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var _wpcf7 = {"recaptcha":{"messages":{"empty":"Please verify that you are not a robot."}},"cached":"1"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.slothparadise.com/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.7'></script>
+<script type='text/javascript' src='https://www.slothparadise.com/wp-content/plugins/light/js/jquery.fancybox.pack.js?ver=4.8.1'></script>
+<script type='text/javascript' src='https://www.slothparadise.com/wp-content/plugins/light/js/light.js?ver=4.8.1'></script>
+<script type='text/javascript' src='https://www.slothparadise.com/wp-content/plugins/ad-invalid-click-protector/assets/js/js.cookie.min.js?ver=2.1.3'></script>
+<script type='text/javascript' src='https://www.slothparadise.com/wp-content/plugins/ad-invalid-click-protector/assets/js/jquery.iframetracker.min.js?ver=1.1.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var AICP = {"ajaxurl":"https:\/\/www.slothparadise.com\/wp-admin\/admin-ajax.php","nonce":"c1002f6718","ip":"212.203.74.22","clickLimit":"3","clickCounterCookieExp":"3","banDuration":"7","countryBlockCheck":"No","banCountryList":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.slothparadise.com/wp-content/plugins/ad-invalid-click-protector/assets/js/aicp.min.js?ver=1.0'></script>
+<script type='text/javascript' src='https://www.slothparadise.com/wp-content/themes/anew/js/jquery.jplayer.min.js?ver=4.8.1'></script>
+<script type='text/javascript' src='https://www.slothparadise.com/wp-content/themes/anew/js/scripts.js?ver=4.8.1'></script>
+<script type='text/javascript' src='https://www.slothparadise.com/wp-content/themes/anew/js/jquery.sharrre.min.js?ver=4.8.1'></script>
+<script type='text/javascript' src='https://www.slothparadise.com/wp-includes/js/comment-reply.min.js?ver=4.8.1'></script>
+<script type='text/javascript' src='https://www.slothparadise.com/wp-includes/js/wp-embed.min.js?ver=4.8.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var embedVars = {"disqusConfig":{"platform":"wordpress@4.8.1","language":""},"disqusIdentifier":"87 http:\/\/tangodown.org\/?p=87","disqusShortname":"tangodownorg","disqusTitle":"How to Install Django on Mac","disqusUrl":"https:\/\/www.slothparadise.com\/how-to-install-django-on-mac\/","options":{"manualSync":false},"postId":"87"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.slothparadise.com/wp-content/plugins/disqus-comment-system/media/js/disqus.js?ver=4.8.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"tangodownorg"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://www.slothparadise.com/wp-content/plugins/disqus-comment-system/media/js/count.js?ver=4.8.1'></script>
+<!--[if lt IE 9]>
+<script src="https://www.slothparadise.com/wp-content/themes/anew/js/ie/respond.js"></script>
+<![endif]-->
+</body>
+</html>
+<!-- Performance optimized by W3 Total Cache. Learn more: https://www.w3-edge.com/products/
+
+ Served from: www.slothparadise.com @ 2017-08-03 09:36:28 by W3 Total Cache -->

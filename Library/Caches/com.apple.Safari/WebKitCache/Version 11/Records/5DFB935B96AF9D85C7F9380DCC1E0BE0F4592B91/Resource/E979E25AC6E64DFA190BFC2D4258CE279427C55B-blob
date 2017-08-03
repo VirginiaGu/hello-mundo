@@ -1,0 +1,1567 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+<title>Curso Django: Instalación y primera aplicación</title>
+<script src="/cdn-cgi/apps/head/siSLvjfSw3Nx0AEPDY6O_DoqooQ.js"></script><link href='//fonts.googleapis.com/css?family=Quicksand|Montserrat' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Crimson+Text:400,700,400italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="//www.maestrosdelweb.com/wp-content/themes/mdw5/style.css"/>
+<link rel="apple-touch-icon" href="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/ipad-icon.png"/>
+<link rel="icon" type="image/png" href="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/favicon.png"/>
+<script data-main="http://www.maestrosdelweb.com/wp-content/themes/mdw5/js/main.js" src="//www.maestrosdelweb.com/wp-content/themes/mdw5/js/require.js"></script>
+<meta property="fb:app_id" content="189109253508"/>
+ 
+<link rel="canonical" href="//www.maestrosdelweb.com/curso-django-instalacion-y-primera-aplicacion/"/>
+<link rel="publisher" href="//plus.google.com/112142655562359332904"/>
+<meta property="og:locale" content="es_ES"/>
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="Curso Django: Instalación y primera aplicación"/>
+<meta property="og:description" content="Requisitos para su instalación [tipexperto titulo = &#8220;Nota: Django y Python 3.0&#8221;] Django no funciona con Python 3.0 actualmente, debido a incompatibilidades con el intérprete de Python.[/tipexperto] Al estar hecho en Python, sería bueno tener en cuenta la sintaxis y fundamentos de este lenguaje, así que si aún no lo sabes y quieres reforzar tus &hellip;"/>
+<meta property="og:url" content="http://www.maestrosdelweb.com/curso-django-instalacion-y-primera-aplicacion/"/>
+<meta property="og:site_name" content="Maestros del Web"/>
+<meta property="article:publisher" content="https://www.facebook.com/maestrosdelweb"/>
+<meta property="article:tag" content="curso django"/>
+<meta property="article:tag" content="descarga django"/>
+<meta property="article:tag" content="Django"/>
+<meta property="article:tag" content="instalación django"/>
+<meta property="article:section" content="django"/>
+<meta property="article:published_time" content="2012-04-23T01:00:50+00:00"/>
+<meta property="article:modified_time" content="2012-04-23T08:30:24+00:00"/>
+<meta property="og:updated_time" content="2012-04-23T08:30:24+00:00"/>
+<meta property="og:image" content="http://www.maestrosdelweb.com/images/2012/04/django-runserver-450x113.png"/>
+<meta property="og:image" content="http://www.maestrosdelweb.com/images/2012/04/django-primer-web-450x226.png"/>
+<meta property="og:image" content="http://www.maestrosdelweb.com/images/2012/04/django-error-port-450x108.png"/>
+<meta property="og:image" content="http://www.maestrosdelweb.com/images/2012/04/django-8888-450x116.png"/>
+<meta property="og:image" content="http://www.maestrosdelweb.com/images/2012/04/django-primer-syncdb-450x135.png"/>
+<meta property="og:image" content="http://www.maestrosdelweb.com/images/2012/04/django-superuser-450x94.png"/>
+<meta property="og:image" content="http://www.maestrosdelweb.com/images/2012/04/django-first-web-450x226.png"/>
+<meta property="og:image" content="http://www.maestrosdelweb.com/images/2012/04/django-admin-login-450x249.png"/>
+<meta property="og:image" content="http://www.maestrosdelweb.com/images/2012/04/django-admin-dashboard-450x255.png"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:description" content="Requisitos para su instalación [tipexperto titulo = &#8220;Nota: Django y Python 3.0&#8221;] Django no funciona con Python 3.0 actualmente, debido a incompatibilidades con el intérprete de Python.[/tipexperto] Al estar hecho en Python, sería bueno tener en cuenta la sintaxis y fundamentos de este lenguaje, así que si aún no lo sabes y quieres reforzar tus [&hellip;]"/>
+<meta name="twitter:title" content="Curso Django: Instalación y primera aplicación"/>
+<meta name="twitter:site" content="@maestros"/>
+<meta name="twitter:domain" content="Maestros del Web"/>
+<meta name="twitter:image:src" content="http://www.maestrosdelweb.com/images/2012/04/django-runserver-450x113.png"/>
+<meta name="twitter:creator" content="@neosergio"/>
+ 
+<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"http:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/www.maestrosdelweb.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.3.1"}};
+			!function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56812,55356,56807),0,0),c.toDataURL().length>3e3):(d.fillText(String.fromCharCode(55357,56835),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+<style type="text/css">img.wp-smiley,img.emoji{display:inline!important;border:none!important;box-shadow:none!important;height:1em!important;width:1em!important;margin:0 .07em!important;vertical-align:-0.1em!important;background:none!important;padding:0!important;}</style>
+<link rel='stylesheet' id='simple-pagination-css-css' href='//www.maestrosdelweb.com/wp-content/plugins/simple-pagination/css/default.css?ver=2.1.7' type='text/css' media='screen'/>
+<link rel='stylesheet' id='wp-paginate-css' href='//www.maestrosdelweb.com/wp-content/plugins/wp-paginate/wp-paginate.css?ver=1.3.1' type='text/css' media='screen'/>
+<script type='text/javascript' src='//www.maestrosdelweb.com/wp-includes/js/jquery/jquery.js?ver=1.11.3'></script>
+<script type='text/javascript' src='//www.maestrosdelweb.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<meta name="generator" content="WordPress 4.3.1"/>
+<meta name="description" content="Requisitos para su instalaci&oacute;n Django es un framework hecho en Python, por lo tanto se necesita que hayas previamente instalado ..."/>
+<style type="text/css" id="syntaxhighlighteranchor"></style>
+<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	  ga('create', 'UA-309831-1', 'auto');
+	  ga('send', 'pageview');
+	</script>
+</head>
+<body class="single single-post postid-24036 single-format-standard">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.0";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+<div class="content">
+<header class="header">
+<div class="wrapper clearfix header-wrapper">
+<figure class="logo-container logo sprite">
+<a href="http://www.maestrosdelweb.com" title="Maestros del Web">Maestros del Web</a>
+</figure>
+<nav class="menu right">
+<ul>
+<div class="menu-mobile">
+<li class="menu-item only-mobile logo">
+<figure class="logo-container sprite">
+</figure>
+</li>
+<li id="menu-item-39614" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-39614"><a href="http://www.maestrosdelweb.com/editorial/">Editoriales</a></li>
+<li id="menu-item-39615" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor menu-item-39615"><a href="http://www.maestrosdelweb.com/guias/">Guías</a></li>
+<li id="menu-item-39616" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-39616"><a href="https://platzi.com/cursos/">Cursos</a></li>
+</div>
+<li class="menu-item mobile only-mobile"></li>
+<li class="menu-item search search-open"></li>
+</ul>
+</nav>
+</div>
+</header>
+<div class="search-section">
+<div class="wrapper">
+<div class="search-container">
+<form class="search-form" method="get" id="searchform" action="//www.maestrosdelweb.com/">
+<input type="text" name="s" id="s" class="search-box" placeholder="Buscar"/>
+<button type="submit" class="search-button"><i class="fa fa-search"></i></button>
+<a class="search-close"></a>
+</form>
+</div>
+</div>
+</div>
+<section class="post-container">
+<article class="post">
+<div class="post-header">
+<div class="wrapper">
+<span class="post-type">
+<a href="http://www.maestrosdelweb.com/guias/guias-django/">django</a> </span>
+<figure class="post-image-container">
+<img width="563" height="146" src="//www.maestrosdelweb.com/images/2012/04/django-8888.png" class="attachment-top" alt="Django en un puerto 8888"/> </figure>
+<div class="post-wrapper">
+<h1 class="post-title">Curso Django: Instalación y primera aplicación</h1>
+</div>
+</div>
+</div>
+<div class="wrapper">
+<div class="post-wrapper">
+<p class="post-summary">Requisitos para su instalación
+Django es un framework hecho en Python, por lo tanto se necesita que hayas previamente instalado Python (2.6 o 2.7) y tengas a la mano tu editor de texto favorito. Si no sabes que editores de texto usar, o como instalar Python lee la primera parte de la Guia Python, con esto es suficiente para empezar a trabajar.</p>
+<div class="post-meta clearfix">
+<figure class="author-picture-container">
+<img alt='' src='//1.gravatar.com/avatar/3ca2b43e8aedb28a82fdca67e28281a1?s=40&amp;d=monsterid&amp;r=G' class='avatar avatar-40 photo' height='40' width='40'/> </figure>
+<strong class="author-name">Sergio Infante Montero</strong>
+<span class="post-date">abril 23 2012</span>
+</div>
+<div class="social-top">
+<div class="fb-share-button" data-href="http://www.maestrosdelweb.com/curso-django-instalacion-y-primera-aplicacion/" data-layout="box_count"></div>
+<a class="twitter-share-button" href="http://www.maestrosdelweb.com/curso-django-instalacion-y-primera-aplicacion/" data-via="maestros" data-count="vertical" data-lang="es">
+Twittear
+</a>
+<script type="text/javascript">
+	window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
+	</script>
+<script src="//apis.google.com/js/platform.js" async defer>
+		{lang: 'es'}
+	</script>
+<div class="g-plusone" data-size="tall"></div>
+<script src="//platform.linkedin.com/in.js" type="text/javascript">
+	  lang: es_ES
+	</script>
+<script type="IN/Share" data-counter="top"></script>
+</div>
+<div class="social-top-mobile">
+<div class="fb-share-button" data-href="http://www.maestrosdelweb.com/curso-django-instalacion-y-primera-aplicacion/" data-layout="button_count"></div>
+<a class="twitter-share-button" href="http://www.maestrosdelweb.com/curso-django-instalacion-y-primera-aplicacion/" data-via="maestros" data-lang="es">
+Twittear
+</a>
+<script type="text/javascript">
+	window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
+	</script>
+<script src="//apis.google.com/js/platform.js" async defer>
+	  {lang: 'es'}
+	</script>
+<div class="g-plusone" data-size="medium"></div>
+<script src="//platform.linkedin.com/in.js" type="text/javascript">
+	  lang: es_ES
+	</script>
+<script type="IN/Share" data-counter="right"></script>
+</div>
+<div class="post-content clearfix">
+<h2>Requisitos para su instalación</h2>
+<p>[tipexperto titulo = &#8220;Nota: Django y Python 3.0&#8221;] Django no funciona con Python 3.0 actualmente, debido a incompatibilidades con el intérprete de Python.[/tipexperto]</p>
+<p>Al estar hecho en Python, sería bueno tener en cuenta la sintaxis y fundamentos de este lenguaje, así que si aún no lo sabes y quieres reforzar tus conocimientos, revisa <a href="http://www.maestrosdelweb.com/guias/#guia-python" title="Guía de Python en Maestros del Web">la guía de Python</a> primero antes de continuar con esta, o da un vistazo a este video de <a href="http://mejorando.la/" title="Mejorando la Web">mejorando.la</a></p>
+<p>[youtube http://www.youtube.com/watch?v=wp4DgNbGAUI]</p>
+<h2>Obtener Django</h2>
+<p>Para obtener Django se puede:</p>
+<ul>
+<li><strong>Descargar la versión estable oficial más reciente</strong>, desde el <a href="https://www.djangoproject.com/download/">sitio oficial de Django</a> y descomprimir el archivo, debe aparecer una carpeta con el nombre de Django seguido del número de la versión bajada. (Para esta guía usaremos la versión 1.4)</li>
+<li><strong>Obtener la versión de desarrollo desde el repositorio de Django</strong>, para ello se debe usar Subversión, de esta manera:
+<div class="codigo">
+<pre>
+svn co http://code.djangoproject.com/svn/django/trunk/</pre>
+</div>
+<p>Una vez que se ha obtenido Django, es momento de instalarlo.</li>
+</ul>
+<h3>Python y las variables de entorno en Windows</h3>
+<p>Los usuarios de Windows deben asegurarse de tener Python dentro de las variables de entorno, esto servirá para poder instalar Django y usarlo fácilmente. Si no sabes como hacerlo, mira el siguiente vídeo:</p>
+<p>[youtube http://www.youtube.com/watch?v=ciYoJPw9ORg&amp;version=3&amp;hl=es_MX]</p>
+<h2>Instalar Django</h2>
+<p>Una vez que se descomprime el archivo descargado, debemos acceder a la carpeta desde una terminal o ventana de comandos (en caso de los usuarios de Windows). Suponiendo que la versión que elegimos es la 1.4, se tendría que digitar:</p>
+<div class="codigo">
+<pre> cd Django-1.4</pre>
+</div>
+<p>Ya en la carpeta de instalación de Django, se debe digitar la siguiente instrucción: (Debes de tener permisos de administrador)</p>
+<div class="codigo">
+<pre> python setup.py install</pre>
+</div>
+<p>Si usas Ubuntu GNU/Linux, sería algo así:</p>
+<div class="codigo">
+<pre>sudo python setup.py install</pre>
+</div>
+<p>Listo eso es todo, ya tienes Django instalado. Si se desea mayor información de como instalarlo o quizás algunas otras opciones, siempre está la documentación del mismo proyecto para guiarnos. Aquí pueden encontrar la<a href="https://docs.djangoproject.com/en/1.4/topics/install/"> Guía completa de instalación de Django</a>.</p>
+<p>Si usas OS X Lion, quizás lo más recomendado sería instalar Django usando pip:<br/>
+Primero, debemos tener Setup Tools para instalarlo, lo descargamos, lo descomprimimos y dentro del directorio (via el terminal)</p>
+<div class='codigo'>
+<pre> sudo python setup.py install </pre>
+</div>
+<p>Una vez con Setup Tools instalado usamos pip:</p>
+<div class='codigo'>
+<pre> sudo pip install Django </pre>
+</div>
+<h2>Primer proyecto</h2>
+<p>Antes de empezar es bueno aclarar que la versión que vamos a utilizar en esta guía es la más reciente (1.4), y varias cosas han cambiado, la información que podrían encontrar en Internet probablemente se encuentre desactualizada.</p>
+<p>Para crear nuestro primer proyecto, abrimos una terminal (o ventana de comandos si asi lo conoces en windows), nos ubicamos en la carpeta en donde queremos crear nuestro proyecto y digitamos:</p>
+<div class="codigo">
+<pre>django-admin.py startproject recetario</pre>
+</div>
+<p>Esta instrucción creará dos directorios con el nombre del proyecto (en este caso: recetario) y 5 archivos distribuidos de la siguiente manera:</p>
+<ul>
+<li>manage.py</li>
+<li>recetario
+<ul>
+<li>__init__.py</li>
+<li>settings.py</li>
+<li>urls.py</li>
+<li>wsgi.py</li>
+</ul>
+</li>
+</ul>
+<p>Para ver que el proyecto está funcionando en la terminal debemos escribir:</p>
+<div class="codigo">
+<pre>python manage.py runserver</pre>
+</div>
+<p>Al ejecutar esa instrucción debemos visualizar un resultado como el siguiente:</p>
+<div id="attachment_24070" style="width: 460px" class="wp-caption aligncenter"><a href="http://www.maestrosdelweb.com/images/2012/04/django-runserver.png"><img src="//www.maestrosdelweb.com/images/2012/04/django-runserver-450x113.png" alt="python manage.py runserver" width="450" height="113" class="size-medium wp-image-24070"/></a><p class="wp-caption-text">python manage.py runserver</p></div>
+<p>Abrimos el navegador web la dirección <strong>http://127.0.0.1:8000/</strong> y debemos ver lo siguiente:</p>
+<div id="attachment_24069" style="width: 460px" class="wp-caption aligncenter"><a href="http://www.maestrosdelweb.com/images/2012/04/django-primer-web.png"><img src="//www.maestrosdelweb.com/images/2012/04/django-primer-web-450x226.png" alt="Django http://127.0.0.1:8000" width="450" height="226" class="size-medium wp-image-24069"/></a><p class="wp-caption-text">Django http://127.0.0.1:8000</p></div>
+<p>Ya tenemos nuestro proyecto creado. <img src="//www.maestrosdelweb.com/wp-includes/images/smilies/simple-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;"/></p>
+<p>En el caso de que nos salga un error porque el puerto asignado esta en uso como la siguiente imagen:</p>
+<div id="attachment_24066" style="width: 460px" class="wp-caption aligncenter"><a href="http://www.maestrosdelweb.com/images/2012/04/django-error-port.png"><img src="//www.maestrosdelweb.com/images/2012/04/django-error-port-450x108.png" alt="Django en puertos en uso" width="450" height="108" class="size-medium wp-image-24066"/></a><p class="wp-caption-text">Django en puertos en uso</p></div>
+<p>sólo debemos indicar que puerto usaremos para lanzar el servicio, por ejemplo si se desea usar el puerto 8888 entonces se tendría que digitar:</p>
+<div class="codigo">
+<pre>python manage.py runserver 8888</pre>
+</div>
+<p>Usaríamos la dirección <strong>http://127.0.0.1:8888/</strong> y tendríamos como resultado lo siguiente: </p>
+<div id="attachment_24062" style="width: 460px" class="wp-caption aligncenter"><a href="http://www.maestrosdelweb.com/images/2012/04/django-8888.png"><img src="//www.maestrosdelweb.com/images/2012/04/django-8888-450x116.png" alt="Django en un puerto 8888" width="450" height="116" class="size-medium wp-image-24062"/></a><p class="wp-caption-text">Django en un puerto 8888</p></div>
+<p>Cada proyecto necesita de aplicaciones donde se puedan gestionar los modelos y las vistas. Un proyecto puede tener muchas aplicaciones:</p>
+<h2>Primera aplicación</h2>
+<p>Para crear nuestra primer aplicación, desde la terminal y en la carpeta del proyecto, debemos digitar:</p>
+<div class="codigo">
+<pre>python manage.py startapp principal</pre>
+</div>
+<p>Esto creará un directorio y cuatro archivos más, lo que nos dejaría con una estructura de archivos como esta:</p>
+<ul>
+<li>manage.py</li>
+<li>recetario
+<ul>
+<li>__init__.py</li>
+<li>settings.py</li>
+<li>urls.py</li>
+<li>wsgi.py</li>
+</ul>
+</li>
+<li>principal
+<ul>
+<li>__init__.py</li>
+<li>models.py</li>
+<li>test.py</li>
+<li>views.py</li>
+</ul>
+</li>
+</ul>
+<h2>El poderoso settings.py</h2>
+<p>Una parte muy importante del proyecto es el archivo <strong>settings.py</strong>, este archivo permite configurar la conexión a la base de datos, la zona horaria, el idioma, los directorios principales del proyecto, las aplicaciones del proyecto, entre otras cosas.</p>
+<p>Aprender a configurar este archivo permite optimizar el funcionamiento del proyecto, veremos las instrucciones principales a configurar:</p>
+<h4>Codificación de caracteres</h4>
+<p>Nuestro idioma esta lleno de caracteres especiales como las tildes y las eñes que son las más comunes, la primera sugerencia para manejar esto eficientemente en django debemos agregar la siguiente línea al archivo settings.py</p>
+<div class="codigo">
+<pre>#encoding:utf-8</pre>
+</div>
+<h4>Ruta del proyecto</h4>
+<p>Una configuración importante es configurar la ruta del proyecto, esto permitirá lanzar la aplicación desde cualquier directorio y mover el proyecto a cualquier computador con Django instalado. Para ello debemos escribir las siguientes líneas en el archivo settings.py:</p>
+<div class="codigo">
+<pre>
+# Identificando la ruta del proyecto
+import os
+RUTA_PROYECTO = os.path.dirname(os.path.realpath(__file__))
+</pre>
+</div>
+<div class='tipexperto'>
+<h3>Ruta del proyecto</h3>
+<div class='tipcont'>Si no se configura la ruta del proyecto, cada vez que se cambia de directorio o de PC, se tendrá que cambiar las rutas de las plantillas, archivos estáticos y directorio de subida de contenido de los usuarios.</div>
+</div>
+<h4>Administradores</h4>
+<p>Cuando Django tiene la opción de DEBUG=False, las notificaciones de error de código deben ser enviadas vía correo electrónico a los administradores, junto con<br/>
+los detalles completos del error. Para poner los datos de los administradores debemos buscar la siguiente porción:</p>
+<div class="codigo">
+<pre>
+ADMINS = (
+    # ('Your Name', <a class="__cf_email__" href="/cdn-cgi/l/email-protection" data-cfemail="81a6f8eef4f3dee4ece0e8edc1e4f9e0ecf1ede4afe2eeec">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>'),
+)
+</pre>
+</div>
+<p>Y modificarla para que quede con los nombres de los administradores en forma de tupla, en mi caso lo dejaré así:</p>
+<div class="codigo">
+<pre>ADMINS = (
+    ('Sergio Infante Montero', <a class="__cf_email__" href="/cdn-cgi/l/email-protection" data-cfemail="9bbce9faeef7e8fee9fcf2f4a2dbfcf6faf2f7b5f8f4f6">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>'),
+)
+</pre>
+</div>
+<h4>Configuración de la base de datos</h4>
+<p>También podemos configurar la conexión a la base de datos según nuestras necesidades, Django soporta de manera predeterminada la conexión con postgresql, mysql, sqlite3 y oracle. En nuestro proyecto usaremos sqlite3.</p>
+<p>Debemos buscar la siguiente sección del archivo:</p>
+<div class="codigo">
+<pre>
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': '',                      # Or path to database file if using sqlite3.
+        'USER': '',                      # Not used with sqlite3.
+        'PASSWORD': '',                  # Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+    }
+}
+</pre>
+</div>
+<p>Y dejarla de la siguiente manera:</p>
+<div class="codigo">
+<pre>
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'recetario.db',          # Or path to database file if using sqlite3.
+        'USER': '',                      # Not used with sqlite3.
+        'PASSWORD': '',                  # Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+    }
+}
+</pre>
+</div>
+<h4>Zona Horaria</h4>
+<p>Django permite configurar la zona horaria del proyecto, <a href="http://en.wikipedia.org/wiki/List_of_tz_zones_by_name" title="Lista de zonas horarias">la lista de zonas horarias disponibles</a> se pueden encontrar en la wikipedia. Para configurar debemos buscar lo siguiente:</p>
+<div class="codigo">
+<pre>TIME_ZONE = 'America/Chicago'</pre>
+</div>
+<p>Yo lo configurare en la zona horaria de Lima/Perú, así que lo modificare de esta forma:</p>
+<div class="codigo">
+<pre>TIME_ZONE = 'America/Lima'</pre>
+</div>
+<h4>Configuración del idioma</h4>
+<p>Django también permite configurar el idioma que usará de manera predeterminada para su funcionamiento, para configurar esto debemos buscar lo siguiente:</p>
+<div class="codigo">
+<pre>LANGUAGE_CODE = 'en-us'</pre>
+</div>
+<p>Se puede consultar la <a href="http://www.i18nguy.com/unicode/language-identifiers.html" title="Lista de idiomas disponibles">lista de idiomas disponibles</a> para adecuarlo a nuestras necesidades, yo lo configurare como español de Perú:</p>
+<div class="codigo">
+<pre>LANGUAGE_CODE = 'es-PE'</pre>
+</div>
+<h3>Aplicaciones instaladas</h3>
+<p>Un proyecto en Django necesita de aplicaciones, algunas ya vienen configuradas de manera predeterminada. En nuestro proyecto usaremos la aplicación de administración y su documentación, estas ya vienen construidas, y también nuestra primera aplicación creada líneas arriba, llamada principal. Para habilitar estas aplicaciones debemos buscar la siguiente sección que se encuentra casi al final del archivo <strong>settings.py</strong></p>
+<div class="codigo">
+<pre>
+INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    # Uncomment the next line to enable the admin:
+    # 'django.contrib.admin',
+    # Uncomment the next line to enable admin documentation:
+    # 'django.contrib.admindocs',
+)
+</pre>
+</div>
+<p>Y modificarlas de la siguiente manera:</p>
+<div class="codigo">
+<pre>
+INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django.contrib.admin',
+    'django.contrib.admindocs',
+    'principal',
+)
+</pre>
+</div>
+<h3>Otras opciones de settings.py</h3>
+<p>Existen otras configuraciones que iremos modificando durante el desarrollo del curso, como el directorio de plantillas, el contenido estático, los archivos cargados por los usuarios, entre otras. Por ahora con estas instrucciones tenemos lo básico para continuar con nuestro proyecto.</p>
+<h2>Creación de la base de datos</h2>
+<p>Hasta el momento no se ha creado la base de datos o las tablas predeterminadas del proyecto, solo se ha configurado los parametros de conexión. Para crear la base de datos, debemos digitar desde la terminal o ventana de comandos, la siguiente instrucción (recordar que debemos estar en la carpeta de proyecto para que todo se realice correctamente):</p>
+<div class="codigo">
+<pre>python manage.py syncdb</pre>
+</div>
+<p>Esta instrucción deberá mostrar el siguiente resultado:</p>
+<div id="attachment_24068" style="width: 460px" class="wp-caption aligncenter"><a href="http://www.maestrosdelweb.com/images/2012/04/django-primer-syncdb.png"><img src="//www.maestrosdelweb.com/images/2012/04/django-primer-syncdb-450x135.png" alt="python manage.py syncdb" width="450" height="135" class="size-medium wp-image-24068"/></a><p class="wp-caption-text">python manage.py syncdb</p></div>
+<p>Hay una pregunta que debemos responder, se refiere a la creación de un superusuario (un administrador del proyecto), para lo cual respondemos: yes (en caso de responder negativamente, no podremos usar inmediatamente el administrador predeterminado de Django). Luego de ello completamos la información que nos solicita.</p>
+<div id="attachment_24071" style="width: 460px" class="wp-caption aligncenter"><a href="http://www.maestrosdelweb.com/images/2012/04/django-superuser.png"><img src="//www.maestrosdelweb.com/images/2012/04/django-superuser-450x94.png" alt="Django creación del super usuario" width="450" height="94" class="size-medium wp-image-24071"/></a><p class="wp-caption-text">Django creación del super usuario</p></div>
+<p>Al finalizar ya estará creada la base de datos, como en este proyecto se usara sqlite3, debera aparecer un archivo nuevo llamado recetario.db, este contiene las tablas y los datos iniciales del proyecto.</p>
+<h2>Las direcciones URL del proyecto</h2>
+<p>Para poder visualizar los cambios que hicimos y la interfaz administrativa de Django, aún falta modificar un archivo mas, este es: urls.py (recordar que este archivo se encuentra dentro del directorio recetario). Este archivo contiene lo siguiente:</p>
+<div class="codigo">
+<pre>
+from django.conf.urls import patterns, include, url
+
+# Uncomment the next two lines to enable the admin:
+# from django.contrib import admin
+# admin.autodiscover()
+
+urlpatterns = patterns('',
+    # Examples:
+    # url(r'^$', 'recetario.views.home', name='home'),
+    # url(r'^recetario/', include('recetario.foo.urls')),
+
+    # Uncomment the admin/doc line below to enable admin documentation:
+    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+
+    # Uncomment the next line to enable the admin:
+    # url(r'^admin/', include(admin.site.urls)),
+)
+</pre>
+</div>
+<p>Debemos dejarlo de esta manera:</p>
+<div class="codigo">
+<pre>
+from django.conf.urls import patterns, include, url
+from django.contrib import admin
+
+admin.autodiscover()
+
+urlpatterns = patterns('',
+    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    url(r'^admin/', include(admin.site.urls)),
+)
+</pre>
+</div>
+<h2>Ejecución del proyecto</h2>
+<p>Una vez que tenemos todo listo y configurado, debemos nuevamente iniciar el servidor de desarrollo que tiene el proyecto. Ya hicimos esto al principio, solo debemos digitar desde la terminal nuevamente (dentro del directorio del proyecto):</p>
+<div class="codigo">
+<pre>python manage.py runserver</pre>
+</div>
+<p>Lucirá de esta manera:</p>
+<div id="attachment_24067" style="width: 460px" class="wp-caption aligncenter"><a href="http://www.maestrosdelweb.com/images/2012/04/django-first-web.png"><img src="//www.maestrosdelweb.com/images/2012/04/django-first-web-450x226.png" alt="Django 404 predeterminado" width="450" height="226" class="size-medium wp-image-24067"/></a><p class="wp-caption-text">Django 404 predeterminado</p></div>
+<p>Nos muestra un error 404, luego veremos el por qué. Para ingresar a la interfaz administrativa que ya viene construida con Django, ingresaremos a la dirección: <strong>http://127.0.0.1:8000/admin</strong>, en donde debemos poner el nombre del superusuario y su respectiva contraseña, creados anteriormente (líneas arriba) con la opción syncdb.</p>
+<div id="attachment_24064" style="width: 460px" class="wp-caption aligncenter"><a href="http://www.maestrosdelweb.com/images/2012/04/django-admin-login.png"><img src="//www.maestrosdelweb.com/images/2012/04/django-admin-login-450x249.png" alt="Django admin login" width="450" height="249" class="size-medium wp-image-24064"/></a><p class="wp-caption-text">Django admin login</p></div>
+<p>Si todo fue correcto debemos visualizar la interfaz administrativa:</p>
+<div id="attachment_24063" style="width: 460px" class="wp-caption aligncenter"><a href="http://www.maestrosdelweb.com/images/2012/04/django-admin-dashboard.png"><img src="//www.maestrosdelweb.com/images/2012/04/django-admin-dashboard-450x255.png" alt="Interfaz administrativa predeterminada de Django" width="450" height="255" class="size-medium wp-image-24063"/></a><p class="wp-caption-text">Interfaz administrativa predeterminada de Django</p></div>
+<p>Nuestro primer proyecto ya se encuentra configurado para continuar con la construcción de los modelos. Sin embargo antes de ello debemos entender como funciona Django, ese será nuestro próximo capítulo: <strong>Entendiendo como trabaja Django.</strong></p>
+<div class='tipexperto'>
+<h3>Repositorio del proyecto</h3>
+<div class='tipcont'><a href="http://neosergio.github.com/recetario_mdw" title="Recetario para Maestros del Web en Github">El proyecto se encuentra en github</a> por si te perdiste de algo y deseas ver algún archivo del mismo.</div>
+</div>
+<p>Hasta la próxima semana <img src="//www.maestrosdelweb.com/wp-includes/images/smilies/simple-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;"/></p>
+</div>
+<div class="social-bottom">
+<div class="fb-share-button" data-href="http://www.maestrosdelweb.com/curso-django-instalacion-y-primera-aplicacion/" data-layout="box_count"></div>
+<a class="twitter-share-button" href="http://www.maestrosdelweb.com/curso-django-instalacion-y-primera-aplicacion/" data-via="maestros" data-count="vertical" data-lang="es">
+Twittear
+</a>
+<script type="text/javascript">
+	window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
+	</script>
+<script src="//apis.google.com/js/platform.js" async defer>
+		{lang: 'es'}
+	</script>
+<div class="g-plusone" data-size="tall"></div>
+<script src="//platform.linkedin.com/in.js" type="text/javascript">
+	  lang: es_ES
+	</script>
+<script type="IN/Share" data-counter="top"></script>
+</div>
+<div class="author-extend">
+<figure class="author-picture-container only-l-640">
+<img alt='' src='//1.gravatar.com/avatar/3ca2b43e8aedb28a82fdca67e28281a1?s=100&amp;d=monsterid&amp;r=G' class='avatar avatar-100 photo' height='100' width='100'/> </figure>
+<div class="author-data">
+<strong class="author-name">Sergio Infante Montero</strong>
+<a class="twitter_author_link" href="https://twitter.com/neosergio/"><span class="author-twitter">neosergio</span></a><p class="author-description">Programador, difusor, traductor, contribuidor, activista y entusiasta de Software Libre y Código Abierto. Es consultor tecnológico de varias organizaciones dedicadas al comercio, educación e industria. En los últimos años ha dedicado mayor tiempo al desarrollo de aplicaciones web.</p><a title="Sitio web de Sergio Infante Montero" href="http://neosergio.net/" class="author-website">http://neosergio.net/</a> </div>
+</div>
+</div>
+</div>
+</article>
+</section>
+<section class="recomended-posts">
+<div class="post-wrapper inline-space">
+<h2 class="recomended-title">Otros artículos que podrían interesarte</h2> <article class="post">
+<figure class="post-picture-container">
+<a href="http://www.maestrosdelweb.com/derechos-digitales/" title="Derechos digitales en América Latina, los gobiernos te están observando (y espiando)"><img width="150" height="150" src="//www.maestrosdelweb.com/images/2014/06/infografía-150x150.jpg" class="attachment-thumbnail" alt="infografía"/></a>
+</figure>
+<h3 class="post-title"><a href="http://www.maestrosdelweb.com/derechos-digitales/" title="Derechos digitales en América Latina, los gobiernos te están observando (y espiando)">Derechos digitales en América Latina, los gobiernos te están observando (y espiando)</a></h3>
+</article>
+<article class="post">
+<figure class="post-picture-container">
+<a href="http://www.maestrosdelweb.com/neutralidad-de-la-red/" title="¿Odias el internet lento? Lucha por la Neutralidad de la Red"><img width="150" height="150" src="//www.maestrosdelweb.com/images/2014/09/Captura-de-pantalla-2014-09-10-a-las-15.17.22-150x150.png" class="attachment-thumbnail wp-post-image" alt="slowdown internet"/></a>
+</figure>
+<h3 class="post-title"><a href="http://www.maestrosdelweb.com/neutralidad-de-la-red/" title="¿Odias el internet lento? Lucha por la Neutralidad de la Red">¿Odias el internet lento? Lucha por la Neutralidad de la Red</a></h3>
+</article>
+<article class="post">
+<figure class="post-picture-container">
+<a href="http://www.maestrosdelweb.com/fedora-contributor-conference-2014/" title="Fedora Conference 2014: software libre para la administración pública, cervezas y un paseo por Praga"><img width="150" height="150" src="//www.maestrosdelweb.com/images/2014/08/flock2014-150x150.jpg" class="attachment-thumbnail wp-post-image" alt="flock2014"/></a>
+</figure>
+<h3 class="post-title"><a href="http://www.maestrosdelweb.com/fedora-contributor-conference-2014/" title="Fedora Conference 2014: software libre para la administración pública, cervezas y un paseo por Praga">Fedora Conference 2014: software libre para la administración pública, cervezas y un paseo por Praga</a></h3>
+</article>
+<article class="post">
+<figure class="post-picture-container">
+<a href="http://www.maestrosdelweb.com/mas-trafico-y-mas-ventas/" title="Cómo convertir el tráfico de tu sitio web en ventas. Cinco estrategias"><img width="150" height="150" src="//www.maestrosdelweb.com/images/2014/07/Captura-de-pantalla-2014-07-15-a-las-15.54.17-150x150.png" class="attachment-thumbnail wp-post-image" alt="Captura de pantalla 2014-07-15 a la(s) 15.54.17"/></a>
+</figure>
+<h3 class="post-title"><a href="http://www.maestrosdelweb.com/mas-trafico-y-mas-ventas/" title="Cómo convertir el tráfico de tu sitio web en ventas. Cinco estrategias">Cómo convertir el tráfico de tu sitio web en ventas. Cinco estrategias</a></h3>
+</article>
+</div>
+</section>
+<section class="comments">
+<div class="post-wrapper">
+<div class="fb-comments" data-href="http://www.maestrosdelweb.com/guias-django/curso-django-instalacion-y-primera-aplicacion/" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
+<ul class="commentlist">
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Gumer"/>
+<cite><a href='http://www.gumer.com.mx' rel='external nofollow' class='url'>Gumer</a></cite>
+<p>Muy explicado&#8230;.andaba esperando este magnifico curso&#8230;&#8230;.seguiré al pie de la letra para entender perfectamente&#8230;&#8230;.gracias&#8212;</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de lV"/>
+<cite>lV</cite>
+<p>gracias por empezar este curso &#8230; lo estaba esperando &#8230;<br/>
+para los que usan ArchLinux se instala fácilmente con &#8220;sudo pacman -S django&#8221; &#8230;</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Segundo Acosta Delgado"/>
+<cite><a href='http://www.segundoacosta.com' rel='external nofollow' class='url'>Segundo Acosta Delgado</a></cite>
+<p>Muy cool , lo seguiré al detalle!!!</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Aurora Medina"/>
+<cite>Aurora Medina</cite>
+<p>Muy interesante y útil sobre todo porque ayuda no solo a personas del medio si no a los que somos de otras áreas que nos gusta la programación como en mi caso <img src="//www.maestrosdelweb.com/wp-includes/images/smilies/simple-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;"/></p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Arturo"/>
+<cite>Arturo</cite>
+<p>Muchas gracias por compartir conocimiento, justo lo que un novato busca mucha claridad y simpleza en esta guía y voy a seguirla.<br/>
+Saludos.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Gustavo SANTIAGO"/>
+<cite>Gustavo SANTIAGO</cite>
+<p>mmm muy bien, pero no deja de ser complejo elaborar soluciones de este modo, me gusta mucho más web2py ! Saludos</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Joel"/>
+<cite>Joel</cite>
+<p>Muy bueno y detallado ta chebre el curso estare esperandola proxima clase</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Josias"/>
+<cite>Josias</cite>
+<p>Hola que tal, tengo este error a la hora de configurar la base de datos:</p>
+<p>~/trunk/recetario $ python manage.py syncdb<br/>
+Traceback (most recent call last):<br/>
+File &#8220;manage.py&#8221;, line 10, in<br/>
+execute_from_command_line(sys.argv)<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py&#8221;, line 442, in execute_from_command_line<br/>
+utility.execute()<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py&#8221;, line 381, in execute<br/>
+self.fetch_command(subcommand).run_from_argv(self.argv)<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/base.py&#8221;, line 195, in run_from_argv<br/>
+self.execute(*args, **options.__dict__)<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/base.py&#8221;, line 231, in execute<br/>
+output = self.handle(*args, **options)<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/base.py&#8221;, line 371, in handle<br/>
+return self.handle_noargs(**options)<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/commands/syncdb.py&#8221;, line 57, in handle_noargs<br/>
+cursor = connection.cursor()<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/db/backends/dummy/base.py&#8221;, line 15, in complain<br/>
+raise ImproperlyConfigured(&#8220;settings.DATABASES is improperly configured. &#8221;<br/>
+django.core.exceptions.ImproperlyConfigured: settings.DATABASES is improperly configured. Please supply the ENGINE value. Check settings documentation for more details.</p>
+<p>la configuracion de la base de datos esta de la siguiente forma:</p>
+<p>DATABASES = {<br/>
+&#8216;default&#8217;: {<br/>
+&#8216;ENGINE&#8217;: &#8216;django.db.backends.mysql&#8217;,<br/>
+&#8216;NAME&#8217;: &#8216;recetario.db&#8217;,<br/>
+&#8216;USER&#8217;: &#8216;root&#8217;,<br/>
+&#8216;PASSWORD&#8217;: &#8221;,<br/>
+&#8216;HOST&#8217;: &#8221;,<br/>
+&#8216;PORT&#8217;: &#8221;,<br/>
+}<br/>
+}</p>
+<p>De antemano, gracias por la ayuda.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de glisandro"/>
+<cite>glisandro</cite>
+<p>Tenia ganas de ver Django así que me pareció una buena oportunidad para no tener que andar dando vueltas por distinos.</p>
+<p>En media hora hice los pasos sin problemas <img src="//www.maestrosdelweb.com/wp-includes/images/smilies/simple-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;"/></p>
+<p>Gracias y hasta la semana q viene !</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Erledie Salazar"/>
+<cite><a href='http://www.dered.com.co' rel='external nofollow' class='url'>Erledie Salazar</a></cite>
+<p>Primero que todo, Gracias por compartir su conocimiento, contribuyes con el mejoramiento de internet, lei partes del capitulo, lo leeré en la noche con mas detenimiento, tengo una pregunta, yo trabajo con wamp, utilizando php y mysql, la instalación me podría generar algún conflicto?</p>
+<p>Gracias por su colaboración</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Felipe"/>
+<cite>Felipe</cite>
+<p>El error que tienes es en el nombre de la base de datos, sino me equivoco creaste una llamada &#8220;recetario&#8221; y no &#8220;recetario.db&#8221;, la extension &#8220;.db&#8221; solo debes añadirla si estas usando sqlite3 quitale el .db al nombre y todo debería funcionar bien</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Roberto"/>
+<cite>Roberto</cite>
+<p>Esta madre es orgasmico&#8230;. solo hacer esto y el administrador, el panel de usuarios, grupos y sitios. Ver que ya esta hecho y cambiar la contraseña, y que funciones&#8230;. Esto realmente es excelente&#8230;.. ya estoy ansioso por ver el próximo capitulo y todos los que siguen.</p>
+<p>Saludos</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Felipe"/>
+<cite>Felipe</cite>
+<p>Muy buen capitulo, tengo poco tiempo utilizando django y algo que he encontrado tremendamente util es crear entornos de trabajo con virtualenv y en ellos instalar django y aplicaciones de terceros lo que permite un mejor control sobre el projecto, una de estas aplicaciones que recomiento es south que permite crear migraciones como en rails ojala en los siguiente capitulos puedas explicar algo de esta aplicacion que definitivamente te facilita el trabajar con la base de datos</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Roberto Urita"/>
+<cite>Roberto Urita</cite>
+<p>Pues tu configuración esta mal en estas dos lineas<br/>
+‘ENGINE’: ‘django.db.backends.mysql’,<br/>
+‘NAME’: ‘recetario.db’,</p>
+<p>debes cambiarlas por estas&#8230;.</p>
+<p>&#8216;ENGINE&#8217;: &#8216;django.db.backends.sqlite3&#8217;, # Add &#8216;postgresql_psycopg2&#8217;, &#8216;mysql&#8217;, &#8216;sqlite3&#8217; or &#8216;oracle&#8217;.<br/>
+&#8216;NAME&#8217;: &#8216;recetario.db&#8217;, # Or path to database file if us</p>
+<p>En ningun lugar del capitulo dice que utilizaremos mysql. Claramente nos comenta @neosergio que estaremos trabajando con sqlite3 en esta guía.<br/>
+Esto pasa por no leer bien.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Marcelo Portillo"/>
+<cite><a href='http://www.devgets.com' rel='external nofollow' class='url'>Marcelo Portillo</a></cite>
+<p>No deberia causare ningun problema, ya que al correr python manage.py runserver estas corriendo un mini servidor de pruebas (ajeno al apache que tienes en tu wamp).<br/>
+En el peor de los casos si tu apache usa el puerto 8000 como django&#8230;.solo cambia el puerto de django por eje python manage.py runserver 7000 (o el nro que se ocurra) y ya&#8230; <img src="//www.maestrosdelweb.com/wp-includes/images/smilies/simple-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;"/></p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Marcelo Portillo"/>
+<cite><a href='http://www.devgets.com' rel='external nofollow' class='url'>Marcelo Portillo</a></cite>
+<p>Yo pienso seguir la guia con mysql, ya que los cambios en el settings son minimos, y el tipo de DB no va a impactar en como se armen los Modelos mas adelante&#8230;es lo bonito de django &#8220;le es indiferente la base de datos&#8221; <img src="//www.maestrosdelweb.com/wp-includes/images/smilies/simple-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;"/> . Sqlite3 esta bueno pero me resulta lento <img src="//www.maestrosdelweb.com/wp-includes/images/smilies/frownie.png" alt=":(" class="wp-smiley" style="height: 1em; max-height: 1em;"/></p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de ivan"/>
+<cite>ivan</cite>
+<p>Una duda porque tengo los archivos urls.py, settings.py y __init__.py en el directorio recetario (donde estan los archivos recetario.db y manage.py)</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de ricardo"/>
+<cite><a href='http://www.guinet.cl' rel='external nofollow' class='url'>ricardo</a></cite>
+<p>Excelente todo esta funcionando ok esperando con ansias proximo capitulo</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Manuel Zambrano"/>
+<cite>Manuel Zambrano</cite>
+<p>Muy cool, voy a estar al pendiente del curso&#8230;</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de elav"/>
+<cite><a href='http://blog.desdelinux.net' rel='external nofollow' class='url'>elav</a></cite>
+<p>Genial!!!!!</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Sergio Infante Montero"/>
+<cite><a href='http://neosergio.net/' rel='external nofollow' class='url'>Sergio Infante Montero</a></cite>
+<p>Están en la carpeta superior, fijate como debería quedar: <a href="https://github.com/neosergio/recetario_mdw/tree/master/recetario" rel="nofollow">https://github.com/neosergio/recetario_mdw/tree/master/recetario</a></p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Sergio Infante Montero"/>
+<cite><a href='http://neosergio.net/' rel='external nofollow' class='url'>Sergio Infante Montero</a></cite>
+<p>Estimado Josias, verifica bien que hayas guardo el archivo, porqué ese error sale por sintaxis mal escrita, si fuera base de datos, te daría otro tipo de error (sin permisos o que no existe la base de datos), si sigues teniendo problemas, podemos usar teamviewer para solucionarlo, mandame un DM por Twitter.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de hugo castañeda"/>
+<cite>hugo castañeda</cite>
+<p>excelente tutorial ya lo realice pero intente correr los archivos del repositorio <a href="http://neosergio.github.com/recetario_mdw/" rel="nofollow">http://neosergio.github.com/recetario_mdw/</a> y me sale error cuando ejecuto en el manager.py</p>
+<p>C:\recetario&gt;python manage.py runserver<br/>
+Traceback (most recent call last):<br/>
+File &#8220;manage.py&#8221;, line 10, in<br/>
+execute_from_command_line(sys.argv)<br/>
+File &#8220;C:\Python27\lib\site-packages\django\core\management\__init__.py&#8221;, line<br/>
+429, in execute_from_command_line<br/>
+utility.execute()<br/>
+File &#8220;C:\Python27\lib\site-packages\django\core\management\__init__.py&#8221;, line<br/>
+379, in execute<br/>
+self.fetch_command(subcommand).run_from_argv(self.argv)<br/>
+File &#8220;C:\Python27\lib\site-packages\django\core\management\__init__.py&#8221;, line<br/>
+252, in fetch_command<br/>
+app_name = get_commands()[subcommand]<br/>
+File &#8220;C:\Python27\lib\site-packages\django\core\management\__init__.py&#8221;, line<br/>
+101, in get_commands<br/>
+apps = settings.INSTALLED_APPS<br/>
+File &#8220;C:\Python27\lib\site-packages\django\utils\functional.py&#8221;, line 276, in<br/>
+__getattr__<br/>
+self._setup()<br/>
+File &#8220;C:\Python27\lib\site-packages\django\conf\__init__.py&#8221;, line 42, in _set<br/>
+up<br/>
+self._wrapped = Settings(settings_module)<br/>
+File &#8220;C:\Python27\lib\site-packages\django\conf\__init__.py&#8221;, line 139, in __i<br/>
+nit__<br/>
+logging_config_func(self.LOGGING)<br/>
+File &#8220;C:\Python27\lib\logging\config.py&#8221;, line 777, in dictConfig<br/>
+dictConfigClass(config).configure()<br/>
+File &#8220;C:\Python27\lib\logging\config.py&#8221;, line 562, in configure<br/>
+&#8216;filter %r: %s&#8217; % (name, e))<br/>
+ValueError: Unable to configure filter &#8216;require_debug_false&#8217;: Cannot resolve &#8216;dj<br/>
+ango.utils.log.RequireDebugFalse&#8217;: No module named RequireDebugFalse</p>
+<p>C:\recetario&gt;</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Jurasec"/>
+<cite><a href='http://rm-rf-root.blogspot.mx/' rel='external nofollow' class='url'>Jurasec</a></cite>
+<p>Gracias!, muy bueno.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Jorge Armando"/>
+<cite>Jorge Armando</cite>
+<p>excelente todo muy claro y detallado, tengo una duda es pero me colaboren es que yo tengo instalado en ubuntu la versión 1.3.1 de Django, y deseo tener la versión mas actual en la cual estará basa este curso, por lo que pregunto si no habrá algún conflicto si instalo la version 1.4 de django como lo explican en este capitulo, soy novato en ubuntu aclaro..</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Sergio Infante Montero"/>
+<cite><a href='http://neosergio.net/' rel='external nofollow' class='url'>Sergio Infante Montero</a></cite>
+<p>Asegurate de tener instaladas las variables de entorno para Windows, o de tener la versión 1.4 de Django. Ese error es por la falta de un modulo, o porqué no encuentra el enlace correcto.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Sergio Infante Montero"/>
+<cite><a href='http://neosergio.net/' rel='external nofollow' class='url'>Sergio Infante Montero</a></cite>
+<p>Debes de desinstalar primero la versión anterior para no causar conflictos con las bibliotecas</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Ricky"/>
+<cite>Ricky</cite>
+<p>Hola Sergio,<br/>
+Instalé y probé correctamente Python pero tengo un problema con Django (al parecer tampoco tuve problemas con la instalacion de este Framework). Lo que ocurre es cuando quiero crear el proyecto me aparece el siguiente error y quisiera saber como solventarlo:<br/>
+&#8221; &#8220;django-admin.py&#8221; no se reconoce como un programa o archivo por lotes ejecutable.&#8221;</p>
+<p>Qué estóy haciendo mal?<br/>
+Pd. Las variables de entorno las configuré bien.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de alejandro"/>
+<cite>alejandro</cite>
+<p>me sale un error en al momento de correr la base de datos que estará mal? </p>
+<p><a class="__cf_email__" href="/cdn-cgi/l/email-protection" data-cfemail="b2c2dddededbc6ddf2e1d7c0c4dbd1dbddf3def1dedbd7dcc6d7">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>:~/django_d/recetario$ python manage.py syncdb<br/>
+Traceback (most recent call last):<br/>
+File &#8220;manage.py&#8221;, line 10, in<br/>
+execute_from_command_line(sys.argv)<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py&#8221;, line 443, in execute_from_command_line<br/>
+utility.execute()<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py&#8221;, line 382, in execute<br/>
+self.fetch_command(subcommand).run_from_argv(self.argv)<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/base.py&#8221;, line 196, in run_from_argv<br/>
+self.execute(*args, **options.__dict__)<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/base.py&#8221;, line 232, in execute<br/>
+output = self.handle(*args, **options)<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/base.py&#8221;, line 371, in handle<br/>
+return self.handle_noargs(**options)<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/commands/syncdb.py&#8221;, line 57, in handle_noargs<br/>
+cursor = connection.cursor()<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/db/backends/dummy/base.py&#8221;, line 15, in complain<br/>
+raise ImproperlyConfigured(&#8220;settings.DATABASES is improperly configured. &#8221;<br/>
+django.core.exceptions.ImproperlyConfigured: settings.DATABASES is improperly configured. Please supply the ENGINE value. Check settings documentation for more details.</p>
+<p>my settings lo tengo así</p>
+<p>DATABASES = {<br/>
+&#8216;default&#8217;: {<br/>
+&#8216;ENGINE&#8217;: &#8216;django.db.backends.sqlite3&#8217;, # Add &#8216;postgresql_psycopg2&#8217;, &#8216;mysql&#8217;, &#8216;sqlite3&#8217; or &#8216;oracle&#8217;.<br/>
+&#8216;NAME&#8217;: &#8216;recetario.db&#8217;, # Or path to database file if using sqlite3.<br/>
+&#8216;USER&#8217;: &#8221;, # Not used with sqlite3.<br/>
+&#8216;PASSWORD&#8217;: &#8221;, # Not used with sqlite3.<br/>
+&#8216;HOST&#8217;: &#8221;, # Set to empty string for localhost. Not used with sqlite3.<br/>
+&#8216;PORT&#8217;: &#8221;, # Set to empty string for default. Not used with sqlite3.<br/>
+}<br/>
+}</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Ricky"/>
+<cite>Ricky</cite>
+<p>Me respondo yo mismo, busqué como loco en la documentación de Django y encontré que tambien era necesario definir como variable de entorno la ruta al archivo django-admin.py que en mi caso estaba en C:\Python27\Scripts. Creé entonces la variable de entorno y funcionó!!! 😀</p>
+<p>Seguimos (brb)</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Claudia"/>
+<cite>Claudia</cite>
+<p>excelente curso!! justo para personas como yo que recién se inician en django!! esperando con ansias el próximo capítulo</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Alex Neyra"/>
+<cite>Alex Neyra</cite>
+<p>Les recomiendo leer djangobook aunque no esta actualizado a mi me ha ayudado mucho xD <a href="http://www.djangobook.com/en/2.0/" rel="nofollow">http://www.djangobook.com/en/2.0/</a></p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de FSANZV"/>
+<cite><a href='http://www.formaos.es' rel='external nofollow' class='url'>FSANZV</a></cite>
+<p>Gracias por el curso, muy sencillo y práctico. Está muy bien que lo hayáis basado en la nueva versión de Django, de este modo los que ya hemos tocado un poquito Django podemos ver las diferencias con la 1.3.</p>
+<p>Como sugerencia, una de las partes que pueden resultar más interesantes para el uso a nivel profesional de Django es lo referente a la depuración. ¿Vais a incluir contenido al respecto en el curso?.</p>
+<p>Por favor Felipe, ¿podrías poner un ejemplo de utilización de Virtualenv para crear un entorno de trabajo o poner algún vínculo con información básica de inicio de esta herramienta?.</p>
+<p>Totalmente de acuerdo respecto al uso de South, es indispensable utilizarlo en los proyectos de Django. El comando python manage.py syncdb sólo crea las tablas, cuando modificas los modelos no actualiza la BD. South aunque en determinados escenarios tiene sus detalles es muy útil para realizar modificaciones posteriores a la creación inicial de los modelos.</p>
+<p>Gracias y un saludo.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Ramón"/>
+<cite><a href='http://ramondevesa.com' rel='external nofollow' class='url'>Ramón</a></cite>
+<p>Tengo el mismo problema que Alejandro (31) pero yo en mi caso tengo el archivo &#8220;settings.py&#8221; de esta forma:</p>
+<p>DATABASES = {<br/>
+&#8216;default&#8217;: {<br/>
+&#8216;ENGINE&#8217;: &#8216;django.db.backends.&#8217;, # Add &#8216;postgresql_psycopg2&#8217;, &#8216;mysql&#8217;, &#8216;sqlite3&#8217; or &#8216;oracle&#8217;.<br/>
+&#8216;NAME&#8217;: &#8216;recetario.db&#8217;, # Or path to database file if using sqlite3.<br/>
+&#8216;USER&#8217;: &#8221;, # Not used with sqlite3.<br/>
+&#8216;PASSWORD&#8217;: &#8221;, # Not used with sqlite3.<br/>
+&#8216;HOST&#8217;: &#8221;, # Set to empty string for localhost. Not used with sqlite3.<br/>
+&#8216;PORT&#8217;: &#8221;, # Set to empty string for default. Not used with sqlite3.<br/>
+}<br/>
+}</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de kevin"/>
+<cite>kevin</cite>
+<p>Muy buen curso, se lo agradezco bastante.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Marcos"/>
+<cite>Marcos</cite>
+<p>La verdad muy bueno. Es impresionante lo que se puede hacer con Django.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de alejandro"/>
+<cite>alejandro</cite>
+<p>checa tu databases es diferente al mio</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Sergio Infante Montero"/>
+<cite><a href='http://neosergio.net/' rel='external nofollow' class='url'>Sergio Infante Montero</a></cite>
+<p>Te falta indicarle a Django que gestor de BD vas a usar, para el curso sqlite3</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Sergio Infante Montero"/>
+<cite><a href='http://neosergio.net/' rel='external nofollow' class='url'>Sergio Infante Montero</a></cite>
+<p>Solucionado gracias a Teamviewer, un problema de duplicación de archivos. Si alguién tiene problemas y no pueden continuar siganme (twitter.com/neosergio) para coordinar una sesión con teamviewer y ver el problema específico <img src="//www.maestrosdelweb.com/wp-includes/images/smilies/simple-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;"/></p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Sergio Infante Montero"/>
+<cite><a href='http://neosergio.net/' rel='external nofollow' class='url'>Sergio Infante Montero</a></cite>
+<p>Si virtualenv y algunos complementos ayudan muchisimo al trabajo con Django, el problema es que no los he considerado en los capítulos iniciales ya que hay muchos de los que leen este material, que son novatos y hablarles de esos conceptos probablemente haga que sientan que es complejo. Sin embargo mi intención es seguir escribiendo sobre Django en Maestros, así que esos temas si están contemplados para un futuro.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de hektor"/>
+<cite><a href='http://hcosta.info' rel='external nofollow' class='url'>hektor</a></cite>
+<p>Excelente. Hace un mes que empecé a estudiar este framework por mi cuenta y tiene muchísimo potencial, de hecho ya me he embarcado en un proyecto de e-commerce. Os seguiré leyendo a ver que puedo aprender y mejorar. Gracias por compartir, así da gusto aprender. 😉</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Luis"/>
+<cite><a href='http://juegospormonton.com' rel='external nofollow' class='url'>Luis</a></cite>
+<p>Veo que ahora en Django 1.4 los apps pueden ir al lado de la carpeta del proyecto, esto me hace sentir que la carpeta del proyecto se separa y solo debe contener la &#8220;configuración&#8221; sin apps dentro de ella</p>
+<p>¿Esa es la forma correcta de hacerlo?</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Edgar"/>
+<cite>Edgar</cite>
+<p>Muy Bueno funcionando de maravilla.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de rafuru"/>
+<cite><a href='http://rafuru.blogspot.com' rel='external nofollow' class='url'>rafuru</a></cite>
+<p>El aviso de &#8220;contenido publicado originalmente&#8230;.&#8221; no me deja ver bien las entradas de codigo :/</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Eduardo Murillo"/>
+<cite><a href='http://www.fenixedo.com/' rel='external nofollow' class='url'>Eduardo Murillo</a></cite>
+<p>Muy buen curso, excelentemente explicado a detalle se agradece este tipo de aporte y estoy en espera del siguiente capitulo.</p>
+<p>Saludos</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Sergio Infante Montero"/>
+<cite><a href='http://neosergio.net/' rel='external nofollow' class='url'>Sergio Infante Montero</a></cite>
+<p>¿A que te refieres? Las entradas de código todas son en texto plano. Si puedes ser más específico podría ayudarte a resolver la molestia que tienes</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Sergio Infante Montero"/>
+<cite><a href='http://neosergio.net/' rel='external nofollow' class='url'>Sergio Infante Montero</a></cite>
+<p>Son perspectivas distintas web2py nació en el ambito académico, Django nació en el ambito de desarrollo real. Cuestiones de gusto también al final de todo es Python <img src="//www.maestrosdelweb.com/wp-includes/images/smilies/simple-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;"/></p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Sergio Infante Montero"/>
+<cite><a href='http://neosergio.net/' rel='external nofollow' class='url'>Sergio Infante Montero</a></cite>
+<p>Son perspectivas distintas web2py nació en el ambito académico, Django nació en el ámbito de desarrollo real. Cuestiones de gusto también al final de todo es Python <img src="//www.maestrosdelweb.com/wp-includes/images/smilies/simple-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;"/></p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Sergio Infante Montero"/>
+<cite><a href='http://neosergio.net/' rel='external nofollow' class='url'>Sergio Infante Montero</a></cite>
+<p>Hay que tener cuidado con el djangobook ya que muchisimas cosas han cambiado y si se sigue al pie de la letra lo único que causara es confusión. Afortunadamente se esta preparando un libro para <a href="http://pragprog.com" rel="nofollow">http://pragprog.com</a> con lo más actualizado y similar al djangobook</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Ricardo"/>
+<cite>Ricardo</cite>
+<p>Esta muy bueno el curso, muy bien explicado en espera del siguiente capitulo. Saludos!!!</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Ramón"/>
+<cite><a href='http://www.ramondevesa.com' rel='external nofollow' class='url'>Ramón</a></cite>
+<p>Ya ví el error, como bien dices Sergio me faltaba la declaración de la base de datos, cuando la introduci, sin ningún tipo de problemas, gracias, a la espera del siguiente artículo pena que sea una vez a la semana&#8230;</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Jefferson Esquea Sanchez"/>
+<cite>Jefferson Esquea Sanchez</cite>
+<p>tengo una duda </p>
+<p>tengo instalado la versión 1.3.1 de Django, y deseo tener la versión mas actual en la cual estará basa este curso, pero no se como desinstalarlo para poder intalar la version 1.4. ojala me puedan ayudar..</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Danilo"/>
+<cite><a href='http://ucssinux.org' rel='external nofollow' class='url'>Danilo</a></cite>
+<p>Hmmm yo recomendaria que lo hicieran todo en entorno linux, correrlo en windows aveces trae muchos problemas</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de smatht"/>
+<cite>smatht</cite>
+<p>Como puedo ver la primer publicación?</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Daniel L"/>
+<cite>Daniel L</cite>
+<p>En primer lugar me gustaría felicitarte por este capitulo, me a parecido realmente interesante y bien explicado.</p>
+<p>Tengo una duda sobre el curso, ¿Enseñaras como llevar un proyecto Django a un entorno de producción?.</p>
+<p>Saludos.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Danilo"/>
+<cite><a href='http://ucssinux.org' rel='external nofollow' class='url'>Danilo</a></cite>
+<p>Creo que este curso de las pautas de como puede crear y manejar un projecto en django. Osea crear el projecto y asi mismo crear y modificar las aplicaciones dentro de este. El entorno en que trabajamos es el mismo framework !!</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Sergio Infante Montero"/>
+<cite><a href='http://neosergio.net/' rel='external nofollow' class='url'>Sergio Infante Montero</a></cite>
+<p>Dependiendo la distribución que tengas, la ubicación de los archivos es distinta. Te puedo ayudar a través de teamviewer, mandame un DM por Twitter para poder ayudarte.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Sergio Infante Montero"/>
+<cite><a href='http://neosergio.net/' rel='external nofollow' class='url'>Sergio Infante Montero</a></cite>
+<p>El curso está orientado para los tres sistemas operativos más usados: GNU/Linux, OS X y Windows. No hay problema por seguir el curso en cualquiera de estos sistemas. Django se ejecuta bien en todos ellos, el asunto es saber como desplegarlo, el uso de los sistemas operativos es cuestión de gusto o costumbre. En producción definitivamente se recomienda un sistema operativo Tipo Unix.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Sergio Infante Montero"/>
+<cite><a href='http://neosergio.net/' rel='external nofollow' class='url'>Sergio Infante Montero</a></cite>
+<p>Estas comentando la primera publicación, por si te refieres a la publicación de presentación de la guía el enlace es el siguiente: <a href="http://www.maestrosdelweb.com/editorial/curso-django-introduccion/" rel="nofollow">http://www.maestrosdelweb.com/editorial/curso-django-introduccion/</a></p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Sergio Infante Montero"/>
+<cite><a href='http://neosergio.net/' rel='external nofollow' class='url'>Sergio Infante Montero</a></cite>
+<p>Muchas gracias por las felicitaciones, ahora con respecto al entorno de producción y tal y como está planteado en la presentación de la guía (<a href="http://www.maestrosdelweb.com/editorial/curso-django-introduccion/" rel="nofollow">http://www.maestrosdelweb.com/editorial/curso-django-introduccion/</a>), el despliegue en producción lo veremos en el capítulo 10.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Sergio Infante Montero"/>
+<cite><a href='http://neosergio.net/' rel='external nofollow' class='url'>Sergio Infante Montero</a></cite>
+<p>En la versión 1.4 cambia el orden de las carpetas, y lo hace con el objetivo de hacer que los proyectos crezcan facilmente. Este cambio hizo que esta guía fuera reescrita completamente, e incluso retrase nuestras publicaciones, que ya las teniamos en planificación desde marzo.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Danilo"/>
+<cite><a href='http://ucssinux.org' rel='external nofollow' class='url'>Danilo</a></cite>
+<p>bueno yo definitivamente uso django en linux, en windows me trae demasiados problemas !! sin contar que windows ya es un problema !! Yo tengo instalado los dos :3 pero definitivamente prefiero linux</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Danilo"/>
+<cite><a href='http://ucssinux.org' rel='external nofollow' class='url'>Danilo</a></cite>
+<p>He llevado ya leyendo 5 tutoriasl y documentacion y nunca era tan explicado como aca, te paseste Sergio I. M te salio genial voy a estar siguiendote, quizas tenga algunas preguntas en las que puedas ayudar para mi aplicacion y que soluciones me podrias dar para eso. por mientras seguire ansioso al siguiente tema :3</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Abdón Rodríguez Davila"/>
+<cite><a href='http://nentab.com' rel='external nofollow' class='url'>Abdón Rodríguez Davila</a></cite>
+<p>Mis felicitaciones Sergio. Nunca había usado Django, soy completamente nuevo en esto, y fui capaz de llegar hasta el final en no mucho tiempo. Me surgió un pequeño problema, pero que conseguí solucionar casi al instante.</p>
+<p>Esperando el siguiente capítulo. ¡Saludos!</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Ariel"/>
+<cite>Ariel</cite>
+<p>Hola, estoy intando conectar la aplicación con una base mysql, pero obtengo un error al hacer el &#8220;syncdb&#8221;.</p>
+<p>Mi configuración en el settings.py es:<br/>
+&#8216;default&#8217;: {<br/>
+&#8216;ENGINE&#8217;: &#8216;django.db.backends.mysql&#8217;, # Add &#8216;postgresql_psycopg2&#8217;, &#8216;mysql&#8217;, &#8216;sqlite3&#8217; or &#8216;oracle&#8217;.<br/>
+&#8216;NAME&#8217;: &#8216;test&#8217;, # Or path to database file if using sqlite3.<br/>
+&#8216;USER&#8217;: &#8216;root&#8217;, # Not used with sqlite3.<br/>
+&#8216;PASSWORD&#8217;: &#8221;, # Not used with sqlite3.<br/>
+&#8216;HOST&#8217;: &#8221;, # Set to empty string for localhost. Not used with sqlite3.<br/>
+&#8216;PORT&#8217;: &#8221;, # Set to empty string for default. Not used with sqlite3.<br/>
+}</p>
+<p>No tengo ninguna contraseña setteada para acceder a mysql, así que ese no es el problema.<br/>
+El error que me sale es el siguiente (coloco solo la parte que a mi parecer es importante, si eso no ayuda, colocaré todo el error, pero prefiero evitar llenar todo con la página con el error 😛 ) :</p>
+<p>raise ImproperlyConfigured(&#8220;Error loading MySQLdb module: %s&#8221; % e)<br/>
+django.core.exceptions.ImproperlyConfigured: Error loading MySQLdb module: No module named MySQLdb</p>
+<p>Pareciera como que tengo que agregar el módulo MySQLdb, es cierto? Me puedes dar una mano?</p>
+<p>Gracias</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Sergio Infante Montero"/>
+<cite><a href='http://neosergio.net/' rel='external nofollow' class='url'>Sergio Infante Montero</a></cite>
+<p>Muchas gracias <img src="//www.maestrosdelweb.com/wp-includes/images/smilies/simple-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;"/> . Puedes seguirme por Twitter para preguntas más específicas.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Sergio Infante Montero"/>
+<cite><a href='http://neosergio.net/' rel='external nofollow' class='url'>Sergio Infante Montero</a></cite>
+<p>Para usar Mysql con Python necesitas tener instalado MySQLdb</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Sergio Infante Montero"/>
+<cite><a href='http://neosergio.net/' rel='external nofollow' class='url'>Sergio Infante Montero</a></cite>
+<p>Estupendo, cualquier duda me mandas un DM por Twitter <img src="//www.maestrosdelweb.com/wp-includes/images/smilies/simple-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;"/></p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Ariel"/>
+<cite>Ariel</cite>
+<p>No logro instalar correctamente MySQLdb, alguien que me pueda dar una mano? MP por favor.</p>
+<p>Aclaro, uso Ubuntu 12.04</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Ariel"/>
+<cite>Ariel</cite>
+<p>Me olvidé de aclarar: mi problema cuando intento instalar mySQLdb es que me dice que no encuentra &#8220;mysql_config&#8221;</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Ariel"/>
+<cite>Ariel</cite>
+<p>Lo logré! Luego de estar un buen rato buscando por internet encontré la solución, la publico aquí para que no les pase lo mismo a los demás.</p>
+<p>Para los que quieran utilizar python con mysql en ubuntu, deberán instalar mysqldb como bien dijeron.<br/>
+Los pasos que yo seguí y me funcionaron son:<br/>
+1) Descargar el paquete python-mysql de: <a href="http://sourceforge.net/projects/mysql-python/" rel="nofollow">http://sourceforge.net/projects/mysql-python/</a><br/>
+2) sudo python setup.py install (dentro del paquete descargado)<br/>
+3) Si el paso anterior les tiró error diciendo que no encuentra mysql_config, deberán hacer lo siguiente:<br/>
+4) Correr el siguiente comando en consola: sudo apt-get install libmysqlclient-dev python2.7-dev (cuidado con la versión de python)<br/>
+5) Entrar a la carpeta descargada en el punto 1, y editar el archivo &#8220;site.cfg&#8221;, y buscar la siguiente línea:<br/>
+#mysql_config = /usr/bin/mysql_config<br/>
+Descomentarla (sacarle el &#8220;#&#8221;) y cambiar la dirección por donde tengan el mysql_config.<br/>
+6) Listo, ahora si, vuelven a realizar el punto 2 y ya debería funcionar.</p>
+<p>A mi eso me anduvo correctamente, espero poder haber ayudado a alguien.</p>
+<p>Saludos.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de andresvato"/>
+<cite>andresvato</cite>
+<p>Buena iniciativa este curso .. pero tengo el siguiente problema. Al ejecutar la linea de comando en DOS con la linea: python setup.py install &#8212; me aparece un mensaje y dice: Este archivo no tiene ningún programa asociado para realizar esta acción.Instale el programa que corresponda, o si ya lo tiene instalado,cree una asociación en el panel de control de programas predeterminados&#8230;.. // cual seria el paso a seguir mucha gracias por la ayuda de antemano.. : D</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Luis"/>
+<cite><a href='http://juegospormonton.com' rel='external nofollow' class='url'>Luis</a></cite>
+<p>Genial, me gusto mas asi, Sergio un excelente articulo, gracias por tu dedicación, espero con ansias el segundo capitulo</p>
+<p>Saludos desde Colombia</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Abdón Rodríguez Davila"/>
+<cite><a href='http://nentab.com' rel='external nofollow' class='url'>Abdón Rodríguez Davila</a></cite>
+<p>Gracias de nuevo, tener un soporte tan directo me vendrá genial en caso de quedarme atascado.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Lucia"/>
+<cite>Lucia</cite>
+<p>Hola tengo Windows 7 y cuando doy la orden </p>
+<p>django-admin.py startproject recetario me da error &#8220;django-admin.py&#8221; no se reconoce como un comando interno o externo, comando o archivo por lotes ejecutable</p>
+<p>eso es un error por el tema de los paths? yo tengo a Python en el Path y funciona bien</p>
+<p>otra duda, puedo seguir este tutorial pero ejecutando el proyecto en Eclipse con Django ya instalado?</p>
+<p>Gracias!</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Sergio Infante Montero"/>
+<cite><a href='http://neosergio.net/' rel='external nofollow' class='url'>Sergio Infante Montero</a></cite>
+<p>No viste el video de las variables de entorno con Windows, dale un tiempo, encontraras la respuesta a tu problema</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Sergio Infante Montero"/>
+<cite><a href='http://neosergio.net/' rel='external nofollow' class='url'>Sergio Infante Montero</a></cite>
+<p>No solo necesitas que Python se encuentre dentro de los path, también es necesario incluir la carpeta de scripts por lo general debe estar en un directorio C:\Python27\Scripts. Con respecto a usar Eclipse adelante, los archivos en Python pueden ser editados con tu herramienta favorita.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Sergio Infante Montero"/>
+<cite><a href='http://neosergio.net/' rel='external nofollow' class='url'>Sergio Infante Montero</a></cite>
+<p>Otra manera quizas mucho mas simple es hacer un: sudo apt-get install python-mysqldb</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Ariel"/>
+<cite>Ariel</cite>
+<p>Hola, recién estuve probando rehacer todo pero con SQLlite3, y sobre el final, cuando corro el servidor, entro a miurl/admin/, me logueo, y me sale un cartel, que dice:</p>
+<p>Administración de DJango<br/>
+Administración de Sitio<br/>
+No tiene permiso para editar nada.</p>
+<p>Osea, ya con la interfaz del admin de django.</p>
+<p>Por qué será? alguna idea?</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Ariel"/>
+<cite>Ariel</cite>
+<p>Ah, me había olvidado de &#8220;descomentar&#8221; la linea de admin.autodiscover()<br/>
+Ahora anda correctamente.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de jorge ivan"/>
+<cite><a href='http://www.virtualblog.webs.com' rel='external nofollow' class='url'>jorge ivan</a></cite>
+<p>ya solucionaste el problema??, porque a mi me sucede lo mismo <img src="//www.maestrosdelweb.com/wp-includes/images/smilies/frownie.png" alt=":(" class="wp-smiley" style="height: 1em; max-height: 1em;"/> ¿que hago?</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de jorge ivan"/>
+<cite><a href='http://www.virtualblog.webs.com' rel='external nofollow' class='url'>jorge ivan</a></cite>
+<p>porque cuando escribo python manage.py syncdb la consola me lanza errores <img src="//www.maestrosdelweb.com/wp-includes/images/smilies/frownie.png" alt=":(" class="wp-smiley" style="height: 1em; max-height: 1em;"/> ayuda, creo que he hecho bien los pasos ¿que pudo salir mal? porfa respondan me aquí o envíeme un mensaje a <a href="/cdn-cgi/l/email-protection#c6a2aca9b4a1a399f4f386aea9b2aba7afaae8a5a9ab"><span class="__cf_email__" data-cfemail="d5b1bfbaa7b2b08ae7e095bdbaa1b8b4bcb9fbb6bab8">[email&#160;protected]</span><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script></a> quiero continuar con el curso <img src="//www.maestrosdelweb.com/wp-includes/images/smilies/frownie.png" alt=":(" class="wp-smiley" style="height: 1em; max-height: 1em;"/></p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Alex Neyra"/>
+<cite>Alex Neyra</cite>
+<p>Gracias por el consejo, mientras tanto leeré la documentación de django hasta que se publique el libro &#8212;&#8212;&#8212;&#8212;&#8212;-</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Adriana"/>
+<cite><a href='http://megamercados.tumblr.com/' rel='external nofollow' class='url'>Adriana</a></cite>
+<p>Hola, Que ventajas tiene instalar el framework en Phyton</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Danilo"/>
+<cite><a href='http://ucssinux.org' rel='external nofollow' class='url'>Danilo</a></cite>
+<p>Bueno la ventaja es una esquema de trabajo ya predefinido, dentro de cual puedes crear aplicaciones ya con un estructura que facilita la modificacion de estas, ademas que trabaja bajo un lenguaje de alto nivel cuya caracteristica es de ser un lenguaje interpretado cuya funcion es asimilar la sintexis de codigo mas natural al hombres y de manera eficiente. Aparte de trabajar con el concepto DRY , Don&#8217;t Repeat Yourself !! que facilita un codigo legible, limpio facil de entender y otras cosas mas !.<br/>
+Yo Adoro pyhon y ruby. son mis lenguajes favoritos</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Sergio Infante Montero"/>
+<cite><a href='http://neosergio.net/' rel='external nofollow' class='url'>Sergio Infante Montero</a></cite>
+<p>La ventaja mas notoria es la rapidez con la cual se construyen aplicaciones y lo ordenado que puede ser.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Joseph"/>
+<cite>Joseph</cite>
+<p>Hay alguan forma o tutorial o guia de referencia para la instalacion de django + python + mysql (o similar) + nginx en un servidor de recursos minimos(256 mb ram)</p>
+<p>gracias por el tutorial 😀 </p>
+<p>Joseph</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Jheison"/>
+<cite>Jheison</cite>
+<p>Muy cierto, vi un poco de web2py pero sinceramente tiene limitaciones, por lo que leí y por comentarios que escuché de fuentes confiables pues Django es mucho más configurable que web2py además con Django se saca mejores resultados en proyectos grandes; una excelente guía, la seguiré al pie de la letra :).</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de jbaak"/>
+<cite>jbaak</cite>
+<p>Excelente el curso, muy bien explicado y facil de entender, se agradece el conocimiento compartido!</p>
+<p>saludos</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de juan"/>
+<cite>juan</cite>
+<p>muy bueno el curso. gracias por compartirlo..</p>
+<p>tengo una duda en cuanto al configurar el settings.py . respecto a la ruta del proyecto</p>
+<p>donde coloco esta variable RUTA_PROYECTO = os.path.dirname(os.path.realpath(__file__))</p>
+<p>gracias esta genial&#8230;&#8230;..</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Sergio Infante Montero"/>
+<cite><a href='http://neosergio.net/' rel='external nofollow' class='url'>Sergio Infante Montero</a></cite>
+<p>Tan específico como eso, quizas si buscas en stackoverflow puedes encontrar, o si te suscribes a las listas de correo de Django</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Sergio Infante Montero"/>
+<cite><a href='http://neosergio.net/' rel='external nofollow' class='url'>Sergio Infante Montero</a></cite>
+<p>En las primeras líneas, no te olvides de importar el os</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de juan"/>
+<cite>juan</cite>
+<p>esto esta genial gracias sergio por hacer este curso. estare esperando los proximos capitulos.</p>
+<p>gracias</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de francisco"/>
+<cite>francisco</cite>
+<p>olas a todos&#8230; recien estoy iniciando en Django, lo instale y trate de configurarlo, pero cuando escribo la linea de comando:</p>
+<p>python manage.py syncdb me sale el siguiente error: </p>
+<p>Traceback (most recent call last):<br/>
+File &#8220;manage.py&#8221;, line 10, in<br/>
+execute_from_command_line(sys.argv)<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py&#8221;, line 442, in execute_from_command_line<br/>
+utility.execute()<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py&#8221;, line 381, in execute<br/>
+self.fetch_command(subcommand).run_from_argv(self.argv)<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py&#8221;, line 252, in fetch_command<br/>
+app_name = get_commands()[subcommand]<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py&#8221;, line 101, in get_commands<br/>
+apps = settings.INSTALLED_APPS<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/utils/functional.py&#8221;, line 184, in inner<br/>
+self._setup()<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py&#8221;, line 43, in _setup<br/>
+self._wrapped = Settings(settings_module)<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py&#8221;, line 93, in __init__<br/>
+mod = importlib.import_module(self.SETTINGS_MODULE)<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/utils/importlib.py&#8221;, line 35, in import_module<br/>
+__import__(name)<br/>
+File &#8220;/home/francisco/ProyDjango/recetario/recetario/settings.py&#8221;, line 3<br/>
+/home/francisco/ProyDjango/Recetario = os.path.dirname(os.path.realpath(__file__))<br/>
+^<br/>
+SyntaxError: invalid syntax<br/>
+<a class="__cf_email__" href="/cdn-cgi/l/email-protection" data-cfemail="2e485c4f404d475d4d416e465e685c4f404d475d4d41">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>:~/ProyDjango/recetario$ python manage.py syncdb<br/>
+Traceback (most recent call last):<br/>
+File &#8220;manage.py&#8221;, line 10, in<br/>
+execute_from_command_line(sys.argv)<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py&#8221;, line 442, in execute_from_command_line<br/>
+utility.execute()<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py&#8221;, line 381, in execute<br/>
+self.fetch_command(subcommand).run_from_argv(self.argv)<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py&#8221;, line 252, in fetch_command<br/>
+app_name = get_commands()[subcommand]<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py&#8221;, line 101, in get_commands<br/>
+apps = settings.INSTALLED_APPS<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/utils/functional.py&#8221;, line 184, in inner<br/>
+self._setup()<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py&#8221;, line 43, in _setup<br/>
+self._wrapped = Settings(settings_module)<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py&#8221;, line 93, in __init__<br/>
+mod = importlib.import_module(self.SETTINGS_MODULE)<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/utils/importlib.py&#8221;, line 35, in import_module<br/>
+__import__(name)<br/>
+File &#8220;/home/francisco/ProyDjango/recetario/recetario/settings.py&#8221;, line 3<br/>
+/home/francisco/ProyDjango/Recetario = os.path.dirname(os.path.realpath(__file__))<br/>
+^<br/>
+SyntaxError: invalid syntax<br/>
+<a class="__cf_email__" href="/cdn-cgi/l/email-protection" data-cfemail="254357444b464c56464a654d556357444b464c56464a">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>:~/ProyDjango/recetario$ clear</p>
+<p><a class="__cf_email__" href="/cdn-cgi/l/email-protection" data-cfemail="553327343b363c26363a153d251327343b363c26363a">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>:~/ProyDjango/recetario$ python manage.py syncdb<br/>
+Traceback (most recent call last):<br/>
+File &#8220;manage.py&#8221;, line 10, in<br/>
+execute_from_command_line(sys.argv)<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py&#8221;, line 442, in execute_from_command_line<br/>
+utility.execute()<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py&#8221;, line 381, in execute<br/>
+self.fetch_command(subcommand).run_from_argv(self.argv)<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py&#8221;, line 252, in fetch_command<br/>
+app_name = get_commands()[subcommand]<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py&#8221;, line 101, in get_commands<br/>
+apps = settings.INSTALLED_APPS<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/utils/functional.py&#8221;, line 184, in inner<br/>
+self._setup()<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py&#8221;, line 43, in _setup<br/>
+self._wrapped = Settings(settings_module)<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/conf/__init__.py&#8221;, line 93, in __init__<br/>
+mod = importlib.import_module(self.SETTINGS_MODULE)<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/utils/importlib.py&#8221;, line 35, in import_module<br/>
+__import__(name)<br/>
+File &#8220;/home/francisco/ProyDjango/recetario/recetario/settings.py&#8221;, line 3<br/>
+/home/francisco/ProyDjango/Recetario = os.path.dirname(os.path.realpath(__file__))<br/>
+^<br/>
+SyntaxError: invalid syntax<br/>
+&#8212;&#8212;&#8212;&#8212;-</p>
+<p>por favor espero me ayuden&#8230; gracias</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Gabriel Pozo"/>
+<cite><a href='http://aprendiendodeandroidymas.blogspot.com/' rel='external nofollow' class='url'>Gabriel Pozo</a></cite>
+<p>Exelente, muy sencillo para arrancar, y nada aburrido 😉 Gracias</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Sergio Infante Montero"/>
+<cite><a href='http://neosergio.net/' rel='external nofollow' class='url'>Sergio Infante Montero</a></cite>
+<p>Es por error de sintaxis, date una vuelta por el repositorio del proyecto, para que compruebes de que el archivo settings.py es igual al que tienes, repositorio (<a href="http://neosergio.github.com/recetario_mdw" rel="nofollow">http://neosergio.github.com/recetario_mdw</a>)</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de cristian_cena"/>
+<cite>cristian_cena</cite>
+<p>estos son tutoriales!! transmisión de conocimiento 100% efectiva, aprendí, lo pude hacer!! muchas gracias.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Sergio Infante Montero"/>
+<cite><a href='http://neosergio.net/' rel='external nofollow' class='url'>Sergio Infante Montero</a></cite>
+<p>Estupendo que te haya servido <img src="//www.maestrosdelweb.com/wp-includes/images/smilies/simple-smile.png" alt=":)" class="wp-smiley" style="height: 1em; max-height: 1em;"/></p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de jose david"/>
+<cite>jose david</cite>
+<p>no puedo hacer el syncdb estoy haciendo el ejercici con postgres y luego intente con mysql y creo que no me funciona porque no tengo instalados ls paquetes para pythn de postgres y mysql ya los descargue pero no se como instalarlos&#8230;.. alguien me ayuda . gracias.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Fernando"/>
+<cite>Fernando</cite>
+<p>Hola Sergio,</p>
+<p>Al ejecutar el servidor no me deja importar patterns nose porque me sale este error </p>
+<p>cannot import name patterns</p>
+<p>Request Method: GET<br/>
+Request URL: <a href="http://127.0.0.1:8888/" rel="nofollow">http://127.0.0.1:8888/</a><br/>
+Django Version: 1.3.1<br/>
+Exception Type: ImportError<br/>
+Exception Value: </p>
+<p>cannot import name patterns</p>
+<p>Exception Location: /home/review/bin/recetario/../recetario/urls.py in , line 1<br/>
+Python Executable: /usr/bin/python<br/>
+Python Version: 2.6.8<br/>
+Python Path: </p>
+<p>[&#8216;/home/review/bin/recetario&#8217;,<br/>
+&#8216;/usr/local/lib/python2.6/site-packages/setuptools-0.6c12dev_r88846-py2.6.egg&#8217;,<br/>
+&#8216;/usr/local/lib/python2.6/site-packages/python_memcached-1.48-py2.6.egg&#8217;,<br/>
+&#8216;/usr/local/lib/python2.6/site-packages/ReviewBoard-1.6.9-py2.6.egg&#8217;,<br/>
+&#8216;/usr/local/lib/python2.6/site-packages/recaptcha_client-1.0.6-py2.6.egg&#8217;,<br/>
+&#8216;/usr/local/lib/python2.6/site-packages/pytz-2012c-py2.6.egg&#8217;,<br/>
+&#8216;/usr/local/lib/python2.6/site-packages/python_dateutil-1.5-py2.6.egg&#8217;,<br/>
+&#8216;/usr/local/lib/python2.6/site-packages/paramiko-1.7.7.2-py2.6.egg&#8217;,<br/>
+&#8216;/usr/local/lib/python2.6/site-packages/flup-1.0.3.dev_20110405-py2.6.egg&#8217;,<br/>
+&#8216;/usr/local/lib/python2.6/site-packages/Pygments-1.5-py2.6.egg&#8217;,<br/>
+&#8216;/usr/local/lib/python2.6/site-packages/Djblets-0.6.19-py2.6.egg&#8217;,<br/>
+&#8216;/usr/local/lib/python2.6/site-packages/django_evolution-0.6.7-py2.6.egg&#8217;,<br/>
+&#8216;/usr/local/lib/python2.6/site-packages/Django-1.3.1-py2.6.egg&#8217;,<br/>
+&#8216;/usr/lib/python26.zip&#8217;,<br/>
+&#8216;/usr/lib/python2.6&#8217;,<br/>
+&#8216;/usr/lib/python2.6/plat-linux2&#8217;,<br/>
+&#8216;/usr/lib/python2.6/lib-tk&#8217;,<br/>
+&#8216;/usr/lib/python2.6/lib-old&#8217;,<br/>
+&#8216;/usr/lib/python2.6/lib-dynload&#8217;,<br/>
+&#8216;/usr/lib/python2.6/site-packages&#8217;,<br/>
+&#8216;/usr/lib/python2.6/site-packages/Numeric&#8217;,<br/>
+&#8216;/usr/lib/python2.6/site-packages/PIL&#8217;,<br/>
+&#8216;/usr/local/lib/python2.6/site-packages&#8217;,<br/>
+&#8216;/usr/lib/python2.6/site-packages/gtk-2.0&#8217;]</p>
+<p>Server time:</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Fernando"/>
+<cite>Fernando</cite>
+<p>Hola Sergio encontre una forma de que me funcione pero aun no entiendo como importando<br/>
+todos los paquetes funciona y haciendolo individual no me deja importar patterns</p>
+<p>Asi me funciona.<br/>
+from django.conf.urls.defaults import *<br/>
+from django.contrib import admin</p>
+<p>Muchas gracias por su tiempo y disculpe las molestias</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Fabio Cerón"/>
+<cite>Fabio Cerón</cite>
+<p>Hola, me parece muy interesante el tema, estoy iniciando en django y estoy siguiendo el vídeo tutorial pero me quedo en la parte de instalar twython en mi distro (Ubuntu precise) cuando intento compilar el paquete me sale un error de una librería y no me deja instalar, que puedo hacer en este caso?</p>
+<p>Gracias</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de ANGEL GUSA"/>
+<cite>ANGEL GUSA</cite>
+<p>Excelente curso hasta el momento muy bueno, gracias muy buena calidad ! Saludos desde Mexico!</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de guillenoguera"/>
+<cite><a href='http://guillenoguera.com.ar' rel='external nofollow' class='url'>guillenoguera</a></cite>
+<p>Muy buen comienzo!. Aguardamos con mucha expectativa los siguientes pasos, por ahora dando los primeros pasos con django.exitos!! y gracias!</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de ANGEL GUSA"/>
+<cite>ANGEL GUSA</cite>
+<p>Buenas tardes tengo el siguiente problema cuando ejecuto el comando : python manage.py syncdb</p>
+<p>C:\recetario2&gt;python manage.py syncdb<br/>
+Traceback (most recent call last):<br/>
+File &#8220;manage.py&#8221;, line 10, in<br/>
+execute_from_command_line(sys.argv)<br/>
+File &#8220;C:\Python27\lib\site-packages\django\core\management\__init__.py&#8221;, line<br/>
+443, in execute_from_command_line<br/>
+utility.execute()<br/>
+File &#8220;C:\Python27\lib\site-packages\django\core\management\__init__.py&#8221;, line<br/>
+382, in execute<br/>
+self.fetch_command(subcommand).run_from_argv(self.argv)<br/>
+File &#8220;C:\Python27\lib\site-packages\django\core\management\__init__.py&#8221;, line<br/>
+252, in fetch_command<br/>
+app_name = get_commands()[subcommand]<br/>
+File &#8220;C:\Python27\lib\site-packages\django\core\management\__init__.py&#8221;, line<br/>
+101, in get_commands<br/>
+apps = settings.INSTALLED_APPS<br/>
+File &#8220;C:\Python27\lib\site-packages\django\utils\functional.py&#8221;, line 184, in<br/>
+inner<br/>
+self._setup()<br/>
+File &#8220;C:\Python27\lib\site-packages\django\conf\__init__.py&#8221;, line 42, in _set<br/>
+up<br/>
+self._wrapped = Settings(settings_module)<br/>
+File &#8220;C:\Python27\lib\site-packages\django\conf\__init__.py&#8221;, line 93, in __in<br/>
+it__<br/>
+mod = importlib.import_module(self.SETTINGS_MODULE)<br/>
+File &#8220;C:\Python27\lib\site-packages\django\utils\importlib.py&#8221;, line 35, in im<br/>
+port_module<br/>
+__import__(name)<br/>
+File &#8220;C:\recetario2\recetario2\settings.py&#8221;, line 109, in<br/>
+os.path.join(&#8220;C:\recetario2\recetario2\plantillas&#8221;,&#8217;plantillas&#8217;),</p>
+<p>Al final me da el siguiente error</p>
+<p>NameError: name &#8216;os&#8217; is not defined</p>
+<p>Por su apoyo gracias.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Gustavo"/>
+<cite>Gustavo</cite>
+<p>Hola cuando ingreso a mi ip/admin me sale el siguiente error.<br/>
+DoesNotExist at /admin/<br/>
+Site matching query does not exist.<br/>
+Request Method: GET<br/>
+Request URL: <a href="http://212.1.209.204:8000/admin/" rel="nofollow">http://212.1.209.204:8000/admin/</a><br/>
+Django Version: 1.4<br/>
+Exception Type: DoesNotExist<br/>
+Exception Value:<br/>
+Site matching query does not exist.<br/>
+Exception Location: /usr/local/lib/python2.7/dist-packages/django/db/models/query.py in get, line 366<br/>
+Python Executable: /usr/bin/python<br/>
+Python Version: 2.7.3<br/>
+Python Path:<br/>
+[&#8216;/root/recetario&#8217;,<br/>
+&#8216;/usr/lib/python2.7&#8217;,<br/>
+&#8216;/usr/lib/python2.7/plat-linux2&#8217;,<br/>
+&#8216;/usr/lib/python2.7/lib-tk&#8217;,<br/>
+&#8216;/usr/lib/python2.7/lib-old&#8217;,<br/>
+&#8216;/usr/lib/python2.7/lib-dynload&#8217;,<br/>
+&#8216;/usr/local/lib/python2.7/dist-packages&#8217;,<br/>
+&#8216;/usr/lib/python2.7/dist-packages&#8217;,<br/>
+&#8216;/usr/lib/python2.7/dist-packages/PIL&#8217;,<br/>
+&#8216;/usr/lib/python2.7/dist-packages/gst-0.10&#8217;,<br/>
+&#8216;/usr/lib/python2.7/dist-packages/gtk-2.0&#8217;,<br/>
+&#8216;/usr/lib/pymodules/python2.7&#8217;,<br/>
+&#8216;/usr/lib/python2.7/dist-packages/ubuntu-sso-client&#8217;,<br/>
+&#8216;/usr/lib/python2.7/dist-packages/ubuntuone-client&#8217;,<br/>
+&#8216;/usr/lib/python2.7/dist-packages/ubuntuone-control-panel&#8217;,<br/>
+&#8216;/usr/lib/python2.7/dist-packages/ubuntuone-couch&#8217;,<br/>
+&#8216;/usr/lib/python2.7/dist-packages/ubuntuone-installer&#8217;,<br/>
+&#8216;/usr/lib/python2.7/dist-packages/ubuntuone-storage-protocol&#8217;]<br/>
+alguna idea????? Gracias.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de carlos david"/>
+<cite>carlos david</cite>
+<p>DatabaseError at /admin/</p>
+<p>no such table: django_session</p>
+<p>Request Method: GET<br/>
+Request URL: <a href="http://127.0.0.1:8000/admin/" rel="nofollow">http://127.0.0.1:8000/admin/</a><br/>
+Django Version: 1.3.1<br/>
+Exception Type: DatabaseError<br/>
+Exception Value: </p>
+<p>no such table: django_session</p>
+<p>Exception Location: C:\Python27\lib\site-packages\django\db\backends\sqlite3\base.py in execute, line 234<br/>
+Python Executable: C:\Python27\python.exe<br/>
+Python Version: 2.7.3<br/>
+Python Path: </p>
+<p>[&#8216;C:\\Users\\david\\workspace\\recetario\\recetario&#8217;,<br/>
+&#8216;C:\\Users\\david\\workspace\\recetario&#8217;,<br/>
+&#8216;C:\\Python27\\DLLs&#8217;,<br/>
+&#8216;C:\\Python27\\lib&#8217;,<br/>
+&#8216;C:\\Python27\\lib\\plat-win&#8217;,<br/>
+&#8216;C:\\Python27\\lib\\lib-tk&#8217;,<br/>
+&#8216;C:\\Python27&#8217;,<br/>
+&#8216;C:\\Python27\\lib\\site-packages&#8217;,<br/>
+&#8216;C:\\Windows\\system32\\python27.zip&#8217;]</p>
+<p>Server time: sáb, 28 Jul 2012 01:35:59 -0500</p>
+<p>me sale este error y no entiendo que pasa, gracias por la ayuda muy buen tutorial</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de tato"/>
+<cite>tato</cite>
+<p>Hola que tal chicos!</p>
+<p>Necesito saber si existe un comando que hace todo lo contrario de : python manage.py runserver , lo que yo quiero hacer es parar el server, probablemente ustedes me diras solo presiona ctrl + c , pero mi pregunta es si existe un comando.</p>
+<p>Gracias.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de razalas89"/>
+<cite>razalas89</cite>
+<p>cuando pongo python manage.py syncdb me da este problema, ayuda porfavor&#8230;</p>
+<p><a class="__cf_email__" href="/cdn-cgi/l/email-protection" data-cfemail="85f7e4ffe4e9e4f6bdbcc5f7e4ffe4e9e4f6bdbc">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>:~/Documents/Django-1.4.1/lol$ python manage.py syncdb<br/>
+Traceback (most recent call last):<br/>
+File &#8220;manage.py&#8221;, line 10, in<br/>
+execute_from_command_line(sys.argv)<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py&#8221;, line 443, in execute_from_command_line<br/>
+utility.execute()<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py&#8221;, line 382, in execute<br/>
+self.fetch_command(subcommand).run_from_argv(self.argv)<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/base.py&#8221;, line 196, in run_from_argv<br/>
+self.execute(*args, **options.__dict__)<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/base.py&#8221;, line 232, in execute<br/>
+output = self.handle(*args, **options)<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/base.py&#8221;, line 371, in handle<br/>
+return self.handle_noargs(**options)<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/core/management/commands/syncdb.py&#8221;, line 57, in handle_noargs<br/>
+cursor = connection.cursor()<br/>
+File &#8220;/usr/local/lib/python2.7/dist-packages/django/db/backends/dummy/base.py&#8221;, line 15, in complain<br/>
+raise ImproperlyConfigured(&#8220;settings.DATABASES is improperly configured. &#8221;<br/>
+django.core.exceptions.ImproperlyConfigured: settings.DATABASES is improperly configured. Please supply the ENGINE value. Check settings documentation for more details.<br/>
+<a class="__cf_email__" href="/cdn-cgi/l/email-protection" data-cfemail="6b190a110a070a1853522b190a110a070a185352">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>:~/Documents/Django-1.4.1/lol$ </p>
+<p>ayuda porfavor&#8230;<br/>
+gracias</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de wilder ever"/>
+<cite>wilder ever</cite>
+<p>estuve viendo y me parece interesante, pero me estanque en el paso de crear un proyecto mediante este comando:</p>
+<p>django-admin.py startproject recetario</p>
+<p>ahí me sale que no se reconoce el comando: django-admin.py<br/>
+espero sus ayudas, saludos&#8230;</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Harry"/>
+<cite>Harry</cite>
+<p>Hola me sale un error en el comando de python manage.py runserver, me dice que no existe el fichero manage.py, yo uso ubuntu.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Bryan"/>
+<cite>Bryan</cite>
+<p>Yo estoy haciendo un proyecto en django 1.3 con python 2.7 pero para mi proyecto quiero utilizar mysql no se mucho de mysql pero en la pruebas que hago siempre me aparece este error que no se puede conectar con el servidor localhost 10061 mi configuracion es la siguiente </p>
+<p>DATABASES = {<br/>
+&#8216;default&#8217;: {<br/>
+&#8216;ENGINE&#8217;: &#8216;django.db.backends.mysql&#8217;,<br/>
+&#8216;NAME&#8217;: &#8216;pruebas&#8217;,<br/>
+&#8216;USER&#8217;: &#8216;root&#8217;,<br/>
+&#8216;PASSWORD&#8217;: &#8221;,<br/>
+&#8216;HOST&#8217;: &#8216;localhost&#8217;,<br/>
+&#8216;PORT&#8217;: &#8216;3306&#8217;,<br/>
+}<br/>
+}</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Eduardo"/>
+<cite>Eduardo</cite>
+<p>Muy buen aporte&#8230;<br/>
+Esta super interesante&#8230;</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Miguel Angel"/>
+<cite>Miguel Angel</cite>
+<p>las variables de entorno que tenes que agregar en WINDOWS son dos:</p>
+<p>C:\Python27\;C:\Python27\Scripts\</p>
+<p>asi SI funciona!!</p>
+<p>Saludos.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Alexander Romero"/>
+<cite>Alexander Romero</cite>
+<p>Muchas gracias!!!! estuve varios días buscando un tutorial de esta nivel&#8230; se agradece muchísimo 😀</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de camilo"/>
+<cite>camilo</cite>
+<p>tengo el siguiente error a la hora de ajustar la url del perfil administrador de django:<br/>
+ImportError at /admin<br/>
+cannot import name patterns</p>
+<p>sigo los pasos de este capitulo y toda esta ya bien, la base da datos ajustado y sincronizada pero ps este error no pueedo seguir</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de camilo"/>
+<cite>camilo</cite>
+<p>Miguel, ya lo hice, aun continua con el error</p>
+<p>saludos</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Alejandro"/>
+<cite>Alejandro</cite>
+<p>Tengo un problema al agregar el modulo mysql a python, aparece el siguiente error al ejecutar la instalación:</p>
+<p># python setup.py build</p>
+<p> File &#8220;setup.py&#8221;, line 16<br/>
+metadata[&#8216;ext_modules&#8217;] = [Extension(sources=[&#8216;_mysql.c&#8217;], **options)]<br/>
+^<br/>
+SyntaxError: invalid syntax</p>
+<p>alguien tiene información de este error, gracias.</p>
+<p>Saludos.</p>
+</li>
+<li>
+<img src="//www.maestrosdelweb.com/wp-content/themes/mdw5/images/avatar-default-48px.png" alt="Avatar de Diego PasMan"/>
+<cite>Diego PasMan</cite>
+<p>Hola, una pequeña duda&#8230; ¿Por qué cuando abro el administrador se ve como si no tomara los estilos css. Una página sin los estilos como se muestra en sus imagenes?</p>
+<p>Gracias.</p>
+</li>
+</ul>
+</div>
+</section>
+</div>  
+ 
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-P5K95S" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-P5K95S');</script>
+ 
+<script>/* <![CDATA[ */(function(d,s,a,i,j,r,l,m,t){try{l=d.getElementsByTagName('a');t=d.createElement('textarea');for(i=0;l.length-i;i++){try{a=l[i].href;s=a.indexOf('/cdn-cgi/l/email-protection');m=a.length;if(a&&s>-1&&m>28){j=28+s;s='';if(j<m){r='0x'+a.substr(j,2)|0;for(j+=2;j<m&&a.charAt(j)!='X';j+=2)s+='%'+('0'+('0x'+a.substr(j,2)^r).toString(16)).slice(-2);j++;s=decodeURIComponent(s)+a.substr(j,m-j)}t.innerHTML=s.replace(/</g,'&lt;').replace(/\>/g,'&gt;');l[i].href='mailto:'+t.value}}catch(e){}}}catch(e){}})(document);/* ]]> */</script></body>
+</html>
+ 

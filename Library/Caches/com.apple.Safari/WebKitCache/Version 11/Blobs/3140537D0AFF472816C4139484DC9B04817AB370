@@ -1,0 +1,1268 @@
+   <!DOCTYPE html>
+<html lang="es">
+ <head>
+       <script>
+  var PREBID_TIMEOUT = 2000;
+  var adUnits = [{"code":"div-gpt-top","sizes":[[970,250],[728,90]],"bids":[{"bidder":"rubicon","params":{"accountId":"11188","siteId":"113272","zoneId":"652202"}},{"bidder":"criteo","params":{"zoneId":"768209"}},{"bidder":"aol","params":{"network":"4808.1","placement":"6451784","server":"adserver.adtech.de"}},{"bidder":"aol","params":{"network":"4808.1","placement":"6451783","server":"adserver.adtech.de"}},{"bidder":"smartadserver","params":{"siteId":"159906","pageId":"812897","formatId":"53842","domain":"\/\/prg.smartadserver.com"}},{"bidder":"appnexus","params":{"placementId":"11286714"}}]},{"code":"div-gpt-lat","sizes":[[300,600],[300,250],[160,600]],"bids":[{"bidder":"rubicon","params":{"accountId":"11188","siteId":"113272","zoneId":"652212"}},{"bidder":"criteo","params":{"zoneId":"768210"}},{"bidder":"aol","params":{"network":"4808.1","placement":"6451771","server":"adserver.adtech.de"}},{"bidder":"aol","params":{"network":"4808.1","placement":"6451773","server":"adserver.adtech.de"}},{"bidder":"aol","params":{"network":"4808.1","placement":"6451772","server":"adserver.adtech.de"}},{"bidder":"smartadserver","params":{"siteId":"159906","pageId":"812897","formatId":"53844","domain":"\/\/prg.smartadserver.com"}},{"bidder":"appnexus","params":{"placementId":"11286716"}}]},{"code":"div-gpt-lat2","sizes":[[300,600],[300,250],[160,600]],"bids":[{"bidder":"rubicon","params":{"accountId":"11188","siteId":"113272","zoneId":"652234"}},{"bidder":"criteo","params":{"zoneId":"768211"}},{"bidder":"aol","params":{"network":"4808.1","placement":"6451778","server":"adserver.adtech.de"}},{"bidder":"aol","params":{"network":"4808.1","placement":"6451779","server":"adserver.adtech.de"}},{"bidder":"aol","params":{"network":"4808.1","placement":"6451777","server":"adserver.adtech.de"}},{"bidder":"smartadserver","params":{"siteId":"159906","pageId":"812897","formatId":"53847","domain":"\/\/prg.smartadserver.com"}},{"bidder":"appnexus","params":{"placementId":"11286717"}}]},{"code":"div-gpt-cen","sizes":[[970,250],[300,250],[728,90]],"bids":[{"bidder":"rubicon","params":{"accountId":"11188","siteId":"113272","zoneId":"652242"}},{"bidder":"criteo","params":{"zoneId":"768212"}},{"bidder":"aol","params":{"network":"4808.1","placement":"6451760","server":"adserver.adtech.de"}},{"bidder":"aol","params":{"network":"4808.1","placement":"6451761","server":"adserver.adtech.de"}},{"bidder":"aol","params":{"network":"4808.1","placement":"6451759","server":"adserver.adtech.de"}},{"bidder":"smartadserver","params":{"siteId":"159906","pageId":"812897","formatId":"53864","domain":"\/\/prg.smartadserver.com"}},{"bidder":"appnexus","params":{"placementId":"11286719"}}]},{"code":"div-gpt-cen2","sizes":[[970,250],[300,250],[728,90]],"bids":[{"bidder":"rubicon","params":{"accountId":"11188","siteId":"113272","zoneId":"652246"}},{"bidder":"criteo","params":{"zoneId":"775005"}},{"bidder":"aol","params":{"network":"4808.1","placement":"6451767","server":"adserver.adtech.de"}},{"bidder":"aol","params":{"network":"4808.1","placement":"6451765","server":"adserver.adtech.de"}},{"bidder":"aol","params":{"network":"4808.1","placement":"6451766","server":"adserver.adtech.de"}},{"bidder":"smartadserver","params":{"siteId":"159906","pageId":"812897","formatId":"53852","domain":"\/\/prg.smartadserver.com"}},{"bidder":"appnexus","params":{"placementId":"11286721"}}]},{"code":"div-gpt-bot2","sizes":[[300,250],[728,90]],"bids":[{"bidder":"rubicon","params":{"accountId":"11188","siteId":"113272","zoneId":"652250"}},{"bidder":"criteo","params":{"zoneId":"768215"}},{"bidder":"aol","params":{"network":"4808.1","placement":"6451754","server":"adserver.adtech.de"}},{"bidder":"aol","params":{"network":"4808.1","placement":"6451755","server":"adserver.adtech.de"}},{"bidder":"aol","params":{"network":"4808.1","placement":"6451753","server":"adserver.adtech.de"}},{"bidder":"smartadserver","params":{"siteId":"159906","pageId":"812897","formatId":"53854","domain":"\/\/prg.smartadserver.com"}},{"bidder":"appnexus","params":{"placementId":"11286723"}}]}];
+  var pbjs = pbjs || {};
+  pbjs.que = pbjs.que || [];
+
+  pbjs.bidderSettings = {
+   rubicon:       { bidCpmAdjustment : function(bidCpm) { return 0.82 * bidCpm; } },
+   aol:           { bidCpmAdjustment : function(bidCpm) { return 0.80 * bidCpm; } },
+   smartadserver: { bidCpmAdjustment : function(bidCpm) { return 0.85 * bidCpm; } }
+  };
+
+  pbjs.que.push(function() {
+   pbjs.setPriceGranularity('dense');
+  });
+ </script>
+ <script type="text/javascript" src="/js/prebid.js" async></script>
+ <script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+  googletag.cmd.push(function() {
+   googletag.pubads().disableInitialLoad();
+  });
+
+  function sendAdserverRequest() {
+   if (pbjs.adserverRequestSent) return;
+   pbjs.adserverRequestSent = true;
+   googletag.cmd.push(function() {
+    pbjs.que.push(function() {
+     pbjs.setTargetingForGPTAsync();
+     googletag.pubads().refresh();
+    });
+   });
+  }
+
+  pbjs.que.push(function() {
+   pbjs.addAdUnits(adUnits);
+   pbjs.requestBids({ bidsBackHandler: sendAdserverRequest });
+  });
+
+  setTimeout(function() {
+   sendAdserverRequest();
+  }, PREBID_TIMEOUT);
+ </script>
+       <meta charset="utf-8">
+<title>¿Te pierdes por las carpetas del Finder? Reorganiza su barra lateral para entender mejor su estructura</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="description" content="Una de las dudas que los switchers tienen cuando saltan de Windows a Mac es la estructura de carpetas personales que coloca OS X. Pasar del clásico Mis Docum..." />
+  <meta name="news_keywords" content="finder, barra lateral, macOS, Trucos"/>
+ <meta name='robots' content='noodp' />
+<meta property="fb:admins" content="100000716994885"/>
+<meta property="fb:pages" content="130064735384" />
+<meta name="application-name" content="Applesfera"/>
+<meta name="msapplication-tooltip" content="Apple. Applesfera"/>
+<meta name="msapplication-starturl" content="https://www.applesfera.com"/>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="msapplication-task" content="name=Lo mejor;action-uri=https://www.applesfera.com/lomejor;icon-uri=https://img.weblogssl.com/css/applesfera/v7/images/pin-bg-lomejor-icon.ico" />
+ <meta name="msapplication-task" content="name=Respuestas;action-uri=https://www.applesfera.com/respuestas;icon-uri=https://img.weblogssl.com/css/applesfera/v7/images/pin-bg-respuestas-icon.ico" />
+<!--[if gte IE 9]>
+<link rel="shortcut icon" type="image/x-icon" href="https://img.weblogssl.com/css/applesfera/v7/images/pin-bg-home-icon.ico"/>
+<link rel=icon type="image/ico" href="https://img.weblogssl.com/css/applesfera/v7/images/pin-bg-home-icon.ico"/>
+<![endif]-->
+<link rel="shortcut icon" href="https://img.weblogssl.com/css/applesfera/skin-site-default-d/images/favicon.ico" type="image/ico" />
+<link rel="apple-touch-icon" href="https://img.weblogssl.com/css/applesfera/skin-site-default-d/images/apple-touch-icon.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://img.weblogssl.com/css/applesfera/skin-site-default-d/images/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://img.weblogssl.com/css/applesfera/skin-site-default-d/images/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://img.weblogssl.com/css/applesfera/skin-site-default-d/images/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="https://img.weblogssl.com/css/applesfera/skin-site-default-d/images/apple-touch-icon-57-precomposed.png">
+  
+   <link rel="publisher" href="http://plus.google.com/+applesfera" />
+   <link rel="alternate" type="application/rss+xml" title="" href="/index.xml" />
+  <link rel="alternate" media="only screen and (max-width: 640px)" href="https://m.applesfera.com/trucos/te-pierdes-por-las-carpetas-del-finder-reorganiza-su-barra-lateral-para-entender-mejor-su-estructura" >
+ <!--[if lt IE 7]>
+<link rel="stylesheet" type="text/css" href="https://img.weblogssl.com/css/applesfera/v7/ie7.css">
+<![endif]-->
+  <link rel="image_src" href="https://i.blogs.es/3b3c52/650_1000_finder/75_75.png" />
+   <meta property="og:image" content="https://i.blogs.es/3b3c52/650_1000_finder/original.png" />
+  <meta property="og:title" content="¿Te pierdes por las carpetas del Finder? Reorganiza su barra lateral para entender mejor su estructura" />
+  <meta property="og:description" content="Una de las dudas que los switchers tienen cuando saltan de Windows a Mac es la estructura de carpetas personales que coloca OS X. Pasar del clásico Mis Docum..." />
+  <meta property="og:url" content="https://www.applesfera.com/trucos/te-pierdes-por-las-carpetas-del-finder-reorganiza-su-barra-lateral-para-entender-mejor-su-estructura" />
+  <meta property="og:type" content="article" />
+  <meta property="og:updated_time" content="2017-01-19T10:34:04">
+  <meta name="DC.Creator" content="Miguel López" />
+  <meta name="DC.Date" content="27 enero 2015" />
+  <meta name="DC.Source" content="Applesfera" />
+  <meta property="article:modified_time" content="2017-01-19T10:34:04">
+  <meta property="article:published_time" content="2015-01-27T09:01:53">
+      <link rel="canonical" href="https://www.applesfera.com/trucos/te-pierdes-por-las-carpetas-del-finder-reorganiza-su-barra-lateral-para-entender-mejor-su-estructura" />
+          <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://i.blogs.es/3b3c52/650_1000_finder/650_1200.png"><meta name="twitter:site" content="@applesfera"><meta name="twitter:title" content="¿Te pierdes por las carpetas del Finder? Reorganiza su barra lateral para entender mejor su estructura"><meta name="twitter:description" content="Una de las dudas que los switchers tienen cuando saltan de Windows a Mac es la estructura de carpetas personales que coloca OS X. Pasar del clásico Mis Docum..."><meta name="twitter:creator" content="@mlopca">       <link rel="stylesheet" type="text/css" href="https://img.weblogssl.com/css/applesfera/skin-site-default-d/main.css?v=43792">
+  <link rel="amphtml" href="https://m.applesfera.com/trucos/te-pierdes-por-las-carpetas-del-finder-reorganiza-su-barra-lateral-para-entender-mejor-su-estructura/amp" >
+<!-- IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+ <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+ <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
+        <script async="async" src="https://www.googletagservices.com/tag/js/gpt.js"></script>
+ <script type="text/javascript" src="//partner.googleadservices.com/gpt/pubads_impl_105.js"></script>
+
+  <script type="text/javascript">
+     var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function() {
+ var gads = document.createElement("script");
+ gads.async = true;
+ gads.type = "text/javascript";
+ gads.src = "//www.googletagservices.com/tag/js/gpt.js";
+ var node = document.getElementsByTagName("script")[0];
+ node.parentNode.insertBefore(gads, node);
+})();   googletag.cmd.push(function() {
+             googletag.defineSlot('/1018282/APS-LAT-interior', [[160,600],[300,250],[300,600],[300,1000]], 'div-gpt-lat').addService(googletag.pubads());
+   googletag.defineSlot('/1018282/APS-CEN-interior', [[300,250],[670,250],[728,90],[970,90],[970,250],[1000,250]], 'div-gpt-cen').addService(googletag.pubads());
+   googletag.defineSlot('/1018282/APS-CEN2-interior', [[300,250],[670,250],[728,90],[970,90],[970,250],[1000,250]], 'div-gpt-cen2').addService(googletag.pubads());
+   googletag.defineSlot('/1018282/APS-LAT2-interior', [[160,600],[300,250],[300,600],[300,1000]], 'div-gpt-lat2').addService(googletag.pubads());
+   googletag.defineSlot('/1018282/APS-BOT2-interior', [[300,250],[728,90]], 'div-gpt-bot2').addService(googletag.pubads());
+   googletag.defineSlot('/1018282/APS-TOP-interior', [[728,90],[970,90],[970,250],[1000,250]], 'div-gpt-top').addService(googletag.pubads());
+    googletag.defineOutOfPageSlot('/1018282/APS-INT-interior', 'div-gpt-int').addService(googletag.pubads());
+    var MAX_source = "";
+     var GPTcats = ["os-x", "trucos"];
+    var GPTtags = ["finder", "barra-lateral"];
+  googletag.pubads().setTargeting("screen", screen.width.toString()).setTargeting("cat", GPTcats).setTargeting("tag", GPTtags).setTargeting("type", "post").setTargeting("source",MAX_source);
+    googletag.pubads().collapseEmptyDivs();
+  googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+     });
+   </script>
+   </head>
+ <body class="js-desktop">
+     <div id="fb-share-button">
+    Compartir
+    <button class="btn-facebook"></button>
+   </div>
+    <div class="customize-me">
+            <div id='div-gpt-int' style='width:1px; height:1px;'>
+ <script type="text/javascript">
+     googletag.cmd.push(function() { googletag.display("div-gpt-int"); });
+   </script>
+</div>
+                           <script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+ __gaTracker('create', "UA-78515-40", 'auto');
+ __gaTracker('create', "UA-78515-62", 'auto', {'name': 'rollUp'});
+ __gaTracker('set', 'contentGroup1', 'post');
+ __gaTracker('set', 'contentGroup2', "miguel lópez");
+ __gaTracker('set', 'contentGroup3', "trucos");
+ __gaTracker('set', 'contentGroup4', "normal");
+ __gaTracker('set', 'contentGroup5', "150127");
+ __gaTracker('rollUp.set', 'contentGroup1', 'post');
+ __gaTracker('rollUp.set', 'contentGroup2', "miguel lópez");
+ __gaTracker('rollUp.set', 'contentGroup3', "trucos");
+ __gaTracker('rollUp.set', 'contentGroup4', "normal");
+ __gaTracker('rollUp.set', 'contentGroup5', "150127");
+ var _comscore = _comscore || [];
+var configs = {c1: "2", c2: "11306788"};
+var keyword = keyword || '';
+if(keyword) {
+ configs.options = {url_append: "comscorekw=" + keyword};
+}
+_comscore.push(configs);
+(function() {
+ var s = document.createElement("script"), el = document.getElementsByTagName("script")[1];
+ s.async = true;
+ s.src = (document.location.protocol == "https:" ? "https://sb": "http://b") + ".scorecardresearch.com/beacon.js";
+ el.parentNode.insertBefore(s, el);
+})();   if ('undefined' != typeof pbjs) {
+ pbjs.que.push(function() {
+  pbjs.enableAnalytics({
+   provider: 'ga',
+   options: {
+    global: '__gaTracker',
+    enableDistribution: false,
+   }
+  });
+ });
+}
+ </script>      <div class="head-content-favs">
+         <section class="head-container head-container-with-ad">
+ <div class="head head-with-ad is-init">
+  <div class="ad ad-head"></div>
+  <section class="head-favicons-container"><nav class="head-favicons"><div class="head-favicons-index"><a id="favicons-toggle" href="https://www.weblogssl.com/" data-target="#head-favicons"><abbr title="Weblogs SL">WSL</abbr></a></div></nav></section>  <div class="head-brand">
+   <div class="brand">
+    <a href="/" class="brand-logo head-brand-logo"><span>Applesfera</span></a>
+   </div>
+   <ul class="head-nav">
+    <li><a href="#sections" class="head-link head-link-sections m-v1 js-toggle" data-searchbox="#search-field-1">Menú</a></li>
+    <li><a href="#headlines" class="head-link head-link-new m-v1 js-toggle">Nuevo</a></li>
+    <li><a href="#search" class="head-link head-link-search m-v1 js-toggle" data-searchbox="#search-field-2">Buscar</a></li>
+   </ul>
+     </div>
+     </div>
+</section>
+                   <div class="ad ad-top">
+ <div class="ad-box" id="div-gpt-top">
+  <a href="#" class="ad-contact">Publicidad</a>
+  <script type="text/javascript">
+       googletag.cmd.push(function() { googletag.display("div-gpt-top"); });
+     </script>
+ </div>
+</div>
+             <div class="page-container">
+     <div class="content-container">
+      <main>
+              <article >
+                          <div class="article article-normal ">
+                                                   <div class="article-header article-normal-header">
+           <header>
+               <h1><span>¿Te pierdes por las carpetas del Finder? Reorganiza su barra lateral para entender mejor su estructura</span></h1>
+  <div class="article-normal-header-content">
+     <div class="article-asset-big article-asset-image js-post-images-container">
+    <img alt="¿Te pierdes por las carpetas del Finder? Reorganiza su barra lateral para entender mejor su estructura" srcset="https://i.blogs.es/3b3c52/650_1000_finder/450_1000.png 450w, https://i.blogs.es/3b3c52/650_1000_finder/650_1200.png 650w, https://i.blogs.es/3b3c52/650_1000_finder/1024_2000.png 1024w, https://i.blogs.es/3b3c52/650_1000_finder/1366_2000.png 1366w" src="https://i.blogs.es/3b3c52/650_1000_finder/450_1000.png"><span></span>
+   </div>
+    <div class="article-social-share m-in-normal">
+   <p>Compartir</p>
+   <ul>
+ <li><a href="http://www.facebook.com/dialog/feed?app_id=357292918076&redirect_uri=https://www.applesfera.com/trucos/te-pierdes-por-las-carpetas-del-finder-reorganiza-su-barra-lateral-para-entender-mejor-su-estructura%3Futm_source%3Dfacebook%26utm_medium%3Dsocial%26utm_campaign%3Dbotoneraweb&link=https://www.applesfera.com/trucos/te-pierdes-por-las-carpetas-del-finder-reorganiza-su-barra-lateral-para-entender-mejor-su-estructura%3Futm_source%3Dfacebook%26utm_medium%3Dsocial%26utm_campaign%3Dbotoneraweb" class="btn-facebook js-btn-facebook" data-postname="te-pierdes-por-las-carpetas-del-finder-reorganiza-su-barra-lateral-para-entender-mejor-su-estructura">Facebook</a></li>
+ <li><a href="https://twitter.com/intent/tweet?url=https://www.applesfera.com/p/107549%3Futm_source%3Dtwitter%26utm_medium%3Dsocial%26utm_campaign%3Dbotoneraweb&text=%C2%BFTe%20pierdes%20por%20las%20carpetas%20del%20Finder%3F%20Reorganiza%20su%20barra%20lateral%20para%20entender%20mejor%20su...&via=applesfera" class="btn-twitter js-btn-twitter" data-postname="te-pierdes-por-las-carpetas-del-finder-reorganiza-su-barra-lateral-para-entender-mejor-su-estructura">Twitter</a></li>
+ <li><a href="mailto:?subject=¿Te pierdes por las carpetas del Finder? Reorganiza su barra lateral para entender mejor su estructura&body=https://www.applesfera.com/trucos/te-pierdes-por-las-carpetas-del-finder-reorganiza-su-barra-lateral-para-entender-mejor-su-estructura%3Futm_source%3Demailsharing%26utm_medium%3Demail%26utm_content%3DPOST%26utm_campaign%3Dbotoneraweb%26utm_term%3DCLICK%2BON%2BTITLE" class="btn-email js-btn-email" data-postname="te-pierdes-por-las-carpetas-del-finder-reorganiza-su-barra-lateral-para-entender-mejor-su-estructura">E-mail</a></li>
+</ul>  </div>
+  <div class="article-actions">
+      <div class="article-save"><a id="fav-button" href="#">Guardar</a></div>
+   <div class="article-comments"><a title="15 Comentarios" href="#comments" class="js-smooth-scroll">15 Comentarios</a></div>
+  </div>
+ </div>
+           </header>
+           <div class="article-aside m-normal-first-aside">
+ <div class="article-aside-content">
+     <div class="related-alts-container">
+  <div class="aside-box aside-newsletter-box">
+   <h3 class="aside-title">Suscríbete a Applesfera</h3>
+   <form class="js-subscription newsletter-form aside-newsletter-form" method="post" data-url="http://mailer.weblogssl.com/subscribe_check/#email#/applesfera/Applesfera">
+    <p class="newsletter-hint">Recibe un email al día con nuestros artículos: </p>
+    <p><input class="js-email newsletter-input" type="email" placeholder="Tu correo electrónico">
+    <button class="btn-primary newsletter-button" type="submit">Suscribir</button></p>
+   </form>
+   <nav class="menu-follow aside-menu-follow">
+    <span class="item-meta aside-item-meta">Síguenos</span>
+    <ul>
+     <li><a href="http://twitter.com/applesfera" class="icon-twitter link-twitter">Twitter</a></li>
+     <li><a href="https://www.facebook.com/pages/Applesfera/130064735384" class="icon-facebook link-facebook">Facebook</a></li>
+           <li><a href="https://www.youtube.com/user/applesferavideo" class="icon-youtube link-youtube">Youtube</a></li>
+                              <li><a href="/index.xml" class="icon-rss link-rss">RSS</a></li>
+     <li>
+      <a href="//feedly.com/i/subscription/feed/http://feeds.weblogssl.com/applesfera" target="blank">
+      <img id='feedlyFollow' src='//img.weblogssl.com/g/xataka4/common/m-icon-feedly.png' alt='follow us in feedly' width='32' height='32'></a>
+     </li>
+    </ul>
+   </nav>
+  </div>
+ </div>
+     <div class="ad ad-lat">
+ <div class="ad-box" id="div-gpt-lat">
+  <a href="#" class="ad-contact">Publicidad</a>
+  <script type="text/javascript">
+       googletag.cmd.push(function() { googletag.display("div-gpt-lat"); });
+     </script>
+ </div>
+</div>
+    <script>
+ window.WSLModules = window.WSLModules || {};
+ WSLModules.Overlay = {'moduleConf' : "c1"};
+</script>
+<div class="related-alts-container">
+ <section class="related-alts">
+  <ul>
+           </ul>
+    </section>
+</div>
+   <div class="article-social-share m-v1 js-article-social-share">
+ <div class="article-social-share-wrapper">
+  <p>Compartir <q class="article-social-share-meta">¿Te pierdes por las carpetas del Finder? Reorganiza su barra lateral para entender mejor su estructura</q></p>
+  <ul>
+   <li><a class="btn-facebook js-btn-facebook" href="http://www.facebook.com/dialog/feed?app_id=357292918076&redirect_uri=https://www.applesfera.com/trucos/te-pierdes-por-las-carpetas-del-finder-reorganiza-su-barra-lateral-para-entender-mejor-su-estructura%3Futm_source%3Dfacebook%26utm_medium%3Dsocial%26utm_campaign%3Dbotoneraweb&link=https://www.applesfera.com/trucos/te-pierdes-por-las-carpetas-del-finder-reorganiza-su-barra-lateral-para-entender-mejor-su-estructura%3Futm_source%3Dfacebook%26utm_medium%3Dsocial%26utm_campaign%3Dbotoneraweb">Facebook</a></li>
+   <li><a class="btn-twitter" href="https://twitter.com/intent/tweet?url=https://www.applesfera.com/p/107549%3Futm_source%3Dtwitter%26utm_medium%3Dsocial%26utm_campaign%3Dbotoneraweb&text=%C2%BFTe%20pierdes%20por%20las%20carpetas%20del%20Finder%3F%20Reorganiza%20su%20barra%20lateral%20para%20entender%20mejor%20su...&via=applesfera">Twitter</a></li>
+   <li><a class="btn-email" href="mailto:?subject=%C2%BFTe%20pierdes%20por%20las%20carpetas%20del%20Finder%3F%20Reorganiza%20su%20barra%20lateral%20para%20entender%20mejor%20su%20estructura&body=https://www.applesfera.com/trucos/te-pierdes-por-las-carpetas-del-finder-reorganiza-su-barra-lateral-para-entender-mejor-su-estructura%3Futm_source%3Demailsharing%26utm_medium%3Demail%26utm_content%3DPOST%26utm_campaign%3Dbotoneraweb%26utm_term%3DCLICK%2BON%2BTITLE">Email</a></li>
+  </ul>
+ </div>
+</div>
+
+        </div>
+</div>
+          </div>
+                    <div class="article-metadata-container">
+           <div class="article-metadata">
+                        <time class="article-date" datetime="1422345713" data-format="D MMMM YYYY"></time><span id="is-editor"></span>
+                                                  <footer class="article-author">
+              <a class="article-author-avatar" href="/autor/miguel-lopez" rel="author"><img alt="miguel-lopez" src="//www.gravatar.com/avatar/52f439a84030b38b6c1fce7c5bb32358?s=80&amp;d=mm&amp;r=g"></a>
+              <a class="article-author-link" href="/autor/miguel-lopez" rel="author">Miguel López</a>
+                             <a class="article-author-twitter" href="http://www.twitter.com/mlopca">@mlopca</a>
+                           </footer>
+                       </div>
+          </div>
+          <div class="article-content">
+                                               <div class="blob js-post-images-container">
+                                     <div class="article-asset-image article-asset-normal"><div class="asset-content">  </div></div>
+
+<p>Una de las dudas que los <em>switchers</em> tienen cuando saltan de Windows a Mac es la estructura de carpetas personales que coloca OS X. Pasar del clásico <em>Mis Documentos</em> de Windows a una carpeta con tu nombre suele confundir, y más de una vez he visto cómo <strong>la organización predeteminada de la barra lateral del Finder</strong> sólo agrava el problema.</p>
+
+<p>Es por eso que, por mucho que Apple quiera que aprendas todas las funciones que tiene su sistema operativos, en ocasiones es mejor reorganizar esa barra lateral para <strong>entender mejor dónde estamos</strong>. Si estais dando vuestros primeros pasos con un Mac, atentos a estos pasos.<!--more--></p>
+
+<ul>
+<li>Cada vez que abrimos un nuevo directorio, se nos abrirá el apartado <strong>"Todos mis archivos"</strong>. Cuidado: esto no es una carpeta, sino un sitio donde veremos absolutamente todos los archivos del ordenador sin importar la carpeta en la que estén almacenados. Muchos se confunden y creen que eso es un directorio más.</li>
+<li>Con una ventana del Finder abierta, vamos al menú Finder de la barra de menús del sistema y pulsamos en Preferencias. En la pestaña General tenemos la opción para seleccionar qué carpeta queremos que se abra con cada nueva ventana del Finder que abramos. Si estáis empezando, lo mejor es <strong>seleccionar la carpeta con vuestro nombre</strong> y el icono de una casa.</li>
+<li>En la pestaña "Barra Lateral", podremos <strong>ocultar todas las carpetas que no necesitemos</strong> en la barra lateral. Los <em>switchers</em> agradecerán ocultar el apartado Todos mis archivos, Volver a mi Mac y el nombre de vuestro ordenador. Dejad activados "Servidores conectados" y "Ordenadores Bonjour", ya que así veréis todos los Mac que compartan red local ahí donde estéis.</li>
+<li>Finalmente, para evitar futuras confusiones, lo más recomendable es mover el directorio principal con nuestro nombre a la <strong>primera posición de la barra lateral</strong> como podéis ver en la imagen superior. Los directorios que queden abajo (Música, Películas, Imágenes y otros que coloquéis a vuestro gusto) estarán dentro de esa carpeta principal.</li>
+</ul>
+
+<p>En Applesfera | <a href="https://www.applesfera.com/trucos/algunas-caracteristicas-de-ios-8-y-os-x-yosemite-que-tal-vez-pasaste-por-alto">Algunas características de iOS 8 y OS X Yosemite que tal vez pasaste por alto</a></p>
+                                     </div>
+                                                                                                     <div class="article-links">
+            <div class="article-social-share m-in-links">
+             <p>Compartir <q class="article-social-share-meta">¿Te pierdes por las carpetas del Finder? Reorganiza su barra lateral para entender mejor su estructura</q></p>
+             <ul>
+ <li><a href="http://www.facebook.com/dialog/feed?app_id=357292918076&redirect_uri=https://www.applesfera.com/trucos/te-pierdes-por-las-carpetas-del-finder-reorganiza-su-barra-lateral-para-entender-mejor-su-estructura%3Futm_source%3Dfacebook%26utm_medium%3Dsocial%26utm_campaign%3Dbotoneraweb&link=https://www.applesfera.com/trucos/te-pierdes-por-las-carpetas-del-finder-reorganiza-su-barra-lateral-para-entender-mejor-su-estructura%3Futm_source%3Dfacebook%26utm_medium%3Dsocial%26utm_campaign%3Dbotoneraweb" class="btn-facebook js-btn-facebook" data-postname="te-pierdes-por-las-carpetas-del-finder-reorganiza-su-barra-lateral-para-entender-mejor-su-estructura">Facebook</a></li>
+ <li><a href="https://twitter.com/intent/tweet?url=https://www.applesfera.com/p/107549%3Futm_source%3Dtwitter%26utm_medium%3Dsocial%26utm_campaign%3Dbotoneraweb&text=%C2%BFTe%20pierdes%20por%20las%20carpetas%20del%20Finder%3F%20Reorganiza%20su%20barra%20lateral%20para%20entender%20mejor%20su...&via=applesfera" class="btn-twitter js-btn-twitter" data-postname="te-pierdes-por-las-carpetas-del-finder-reorganiza-su-barra-lateral-para-entender-mejor-su-estructura">Twitter</a></li>
+ <li><a href="mailto:?subject=¿Te pierdes por las carpetas del Finder? Reorganiza su barra lateral para entender mejor su estructura&body=https://www.applesfera.com/trucos/te-pierdes-por-las-carpetas-del-finder-reorganiza-su-barra-lateral-para-entender-mejor-su-estructura%3Futm_source%3Demailsharing%26utm_medium%3Demail%26utm_content%3DPOST%26utm_campaign%3Dbotoneraweb%26utm_term%3DCLICK%2BON%2BTITLE" class="btn-email js-btn-email" data-postname="te-pierdes-por-las-carpetas-del-finder-reorganiza-su-barra-lateral-para-entender-mejor-su-estructura">E-mail</a></li>
+</ul>            </div>
+             <div class="article-topics-list">
+ <span class="article-topic-desc">Temas</span>
+ <ul class="article-topics-categories">
+     <li><a class="article-topic-link" href="/categoria/os-x">macOS</a></li>
+     <li><a class="article-topic-link" href="/categoria/trucos">Trucos</a></li>
+   </ul>
+ <ul class="article-topics-tags">
+     <li><a class="article-topic-link" href="/tag/finder">finder</a></li>
+     <li><a class="article-topic-link" href="/tag/barra-lateral">barra lateral</a></li>
+   </ul>
+</div>           </div>
+          </div>
+         </div>
+                                   <div class="ad ad-cen">
+ <div class="ad-box" id="div-gpt-cen">
+  <a href="#" class="ad-contact">Publicidad</a>
+  <script type="text/javascript">
+       googletag.cmd.push(function() { googletag.display("div-gpt-cen"); });
+     </script>
+ </div>
+</div>
+                                     <div id="recommendedPosts"></div>
+  </article>
+  <script>
+    window.WSLModules = window.WSLModules || {};
+    WSLModules.recommendation = {'moduleConf' : 'Amplify'};
+    __gaTracker('send', 'event', 'recommendation' + WSLModules.recommendation.moduleConf, 'view', {'nonInteraction': 1});
+  </script>
+                <script type="text/javascript">
+(function() {
+ var lazyElements    = document.getElementsByClassName('sf-lazy')
+ ,   disableDesktopLazyLoading = "1"
+ ,   srcsetSupported = false
+ ,   threshold;
+
+ if (!/Edge\/\d+/.test(navigator.userAgent)) {
+  srcsetSupported = 'srcset' in document.createElement('img');
+ }
+
+ function updateAttributes(element) {
+  if (element.hasAttribute('sf-srcset')) {
+   element.setAttribute('srcset', element.getAttribute('sf-srcset'));
+  }
+  if (element.hasAttribute('sf-src')) {
+   element.setAttribute('src', element.getAttribute('sf-src'));
+  }
+  element.classList.remove('sf-lazy');
+ }
+
+ threshold = (window.innerHeight || document.documentElement.clientHeight) + 100;
+ function lazyLoad() {
+  var coords, element, i, isVisible;
+  if (0 == lazyElements.length) {
+   document.removeEventListener('scroll', lazyLoad);
+   return false;
+  }
+
+  for (i = 0; i < lazyElements.length; i++) {
+   element = lazyElements[i];
+   coords = element.getBoundingClientRect();
+   isVisible = (coords.top >= 0 && coords.left >= 0 && coords.top) <= threshold;
+   if (isVisible) {
+    updateAttributes(element);
+   }
+  }
+ }
+
+ if (srcsetSupported) {
+  if ('1' == disableDesktopLazyLoading) {
+   while(lazyElements.length > 0) {
+    updateAttributes(lazyElements[0]);
+   }
+  } else {
+   document.addEventListener('scroll', lazyLoad);
+   lazyLoad();
+  }
+ }
+})();
+</script>               <script>
+ window.WSLModules = window.WSLModules || {};
+ WSLModules.Comments = {
+   'moduleConf' : 'c9'
+ };
+ window.AML || (window.AML = {});
+ window.AML.Comments = {config:{'status':'closed'}};
+</script>
+<a id="to-comments"></a>
+<div id="comments">
+ <div class="comment-section">
+     <div class="comment-wrapper">
+    <div class="alert-message">Comentarios cerrados</div>
+   </div>
+     <div id="main-container" class="comment-section">
+  <div id="common-container">
+   <div class="comment-wrapper initial-comments" style="display:none">
+    <div class="comments-list">
+     <h2>Los mejores comentarios:</h2>
+     <ul id="initial-comments"></ul>
+    </div>
+   </div>
+   <div class="view-more">
+    <p><a class="btn-primary btn-comment js-toggle-comments-list is-closed" href="#" id="toggle-comments">Ver <span id="comment-count">15 comentarios</span></a></p>
+   </div>
+   <div id="comment-wrapper" class="comment-wrapper comment-wrapper-aside">
+    <div id="comments-area" class="comments-list" style="display: none;">
+     <div id="comment-header"></div>
+     <div id="comments-write-form" class="comment-write-form" style="display: none;"></div>
+     <!-- .comment-write-form -->
+     <ul id="comments-before-ad"></ul>
+           <div class="ad ad-cen2">
+ <div class="ad-box" id="div-gpt-cen2">
+  <a href="#" class="ad-contact">Publicidad</a>
+  <script type="text/javascript">
+   googletag.display("div-gpt-cen2"); 
+  </script>
+ </div>
+</div>
+          <ul id="comments-list"></ul>
+     <div class="view-even-more"></div>
+     <div id="bottom-create-comment-widget" class="article-comments-write article-comments-write-again"></div>
+     <div id="bottom-comments-write-form" class="comment-write-form" style="display: none;"></div>
+    </div>
+   </div>
+  </div>
+ </div>
+<script type="text/javascript">
+  window.AML || (window.AML = {});
+  AML.Comments || (AML.Comments = {});
+  AML.Comments.config || (AML.Comments.config = {});
+  AML.Comments.config.data = {"comments":[{"id":"719301","post_id":"107549","date":1422378779,"content_filtered":"<p>Pues precisamente el Finder fue una de las cosas que mas me gusto cuando comenc\u00e9 en OSx. Para los usuarios nuevos a\u00f1adir\u00eda 2 cosas sobre Finder y sus carpetas:<\/p><p>- Mostrar la barra de ruta en el Finder con ALT+CMD+P, para mi imprescindible.<\/p><p>- Algo que si me molesta con respecto a Windows es que, si seleccionas varias carpetas, OSx no da informaci\u00f3n sobre el tama\u00f1o total de las carpetas seleccionadas, ni con el menu contextual\/ informaci\u00f3n, ni pulsando la barra espaciadora. El atajo de teclado para hacerlo es CTRL+CMD+I (sirve para carpetas y archivos).<\/p>","content":"Pues precisamente el Finder fue una de las cosas que mas me gusto cuando comenc\u00e9 en OSx. Para los usuarios nuevos a\u00f1adir\u00eda 2 cosas sobre Finder y sus carpetas:\n\n- Mostrar la barra de ruta en el Finder con ALT+CMD+P, para mi imprescindible.\n\n- Algo que si me molesta con respecto a Windows es que, si seleccionas varias carpetas, OSx no da informaci\u00f3n sobre el tama\u00f1o total de las carpetas seleccionadas, ni con el menu contextual\/ informaci\u00f3n, ni pulsando la barra espaciadora. El atajo de teclado para hacerlo es CTRL+CMD+I (sirve para carpetas y archivos).","karma":"90.00","parent":"0","comment_edited_date":1422378860,"vote_count":"5","comment_level":2,"comment_deleted_date":"","tree_level":"0","comment_approved":"1","comment_author":"","user_id":"60162","author":"","webpage":"http:\/\/","user_name":"sputnik01","karma_level":"53.00","iseditor":"0","global_id":"434942","facebook_uid":null,"index":10,"avatar_type":"gravatar","avatar_link":"\/\/www.gravatar.com\/avatar\/95f6f791308a5e36518ef76bf0dd8eb6","abuse_users":[]},{"id":"719553","post_id":"107549","date":1422433036,"content_filtered":"<p>Creo q te equivocas. Si seleccionas varias carpetas y pulsando Alt + clic derecho te aparece obtener informaci\u00f3n de resumen. Ah\u00ed tienes el tama\u00f1o de las carpetas q has seleccionado<\/p>","content":"Creo q te equivocas. Si seleccionas varias carpetas y pulsando Alt + clic derecho te aparece obtener informaci\u00f3n de resumen. Ah\u00ed tienes el tama\u00f1o de las carpetas q has seleccionado","karma":"40.00","parent":"719301","comment_edited_date":"","vote_count":"2","comment_level":3,"comment_deleted_date":"","tree_level":"1","comment_approved":"1","comment_author":"","user_id":"14075","author":"","webpage":null,"user_name":"chemahega","karma_level":"44.00","iseditor":"0","global_id":"120674","facebook_uid":null,"index":12,"avatar_type":"wsl","avatar_link":"\/\/img.weblogssl.com\/avatar\/mini\/120674_1.png","abuse_users":[]},{"id":"719223","post_id":"107549","date":1422361964,"content_filtered":"<p>Desde que actualic\u00e9 a Yosemite, tengo un problema con el Finder. Yo suelo arreglar y alinear mis carpetas, tanto en tama\u00f1o como en posici\u00f3n y cada vez que reinicio mi Mac y abro el Finder, estas ya se han desordenado por completo, me aparecen muy peque\u00f1as y en total desorden. Alguien sabe algo sobre esto? Alguna soluci\u00f3n? Gracias! <\/p>","content":"Desde que actualic\u00e9 a Yosemite, tengo un problema con el Finder. Yo suelo arreglar y alinear mis carpetas, tanto en tama\u00f1o como en posici\u00f3n y cada vez que reinicio mi Mac y abro el Finder, estas ya se han desordenado por completo, me aparecen muy peque\u00f1as y en total desorden. Alguien sabe algo sobre esto? Alguna soluci\u00f3n? Gracias! ","karma":"23.00","parent":"0","comment_edited_date":"","vote_count":"1","comment_level":3,"comment_deleted_date":"","tree_level":"0","comment_approved":"1","comment_author":"","user_id":"48780","author":"","webpage":null,"user_name":"chokolate","karma_level":"25.00","iseditor":"0","global_id":"387935","facebook_uid":null,"index":5,"avatar_type":"wsl","avatar_link":"\/\/img.weblogssl.com\/avatar\/mini\/387935_2.png","abuse_users":[]},{"id":"719253","post_id":"107549","date":1422368933,"content_filtered":"<p>Sufro lo mismo que tu y no se que hacer, esperemos que la proxima actualizaci\u00f3n se lleve estas malas experiencias.<br \/>\nY porsupuesto, que si lo descubro te contestar\u00e9 aqu\u00ed mismo como solucionarlo ;)<\/p>","content":"Sufro lo mismo que tu y no se que hacer, esperemos que la proxima actualizaci\u00f3n se lleve estas malas experiencias.\nY porsupuesto, que si lo descubro te contestar\u00e9 aqu\u00ed mismo como solucionarlo ;)","karma":"8.00","parent":"719223","comment_edited_date":"","vote_count":"0","comment_level":3,"comment_deleted_date":"","tree_level":"1","comment_approved":"1","comment_author":"","user_id":"12298","author":"","webpage":null,"user_name":"danidrien","karma_level":"30.00","iseditor":"0","global_id":"104604","facebook_uid":null,"index":7,"avatar_type":"wsl","avatar_link":"\/\/img.weblogssl.com\/avatar\/mini\/104604_1.png","abuse_users":[]},{"id":"723090","post_id":"107549","date":1424061026,"content_filtered":"<p>Por favor, si sabes como solucionarlo h\u00e1zmelo saber. Este problema es muy molesto. Saludos!<\/p>","content":"Por favor, si sabes como solucionarlo h\u00e1zmelo saber. Este problema es muy molesto. Saludos!","karma":"10.00","parent":"719253","comment_edited_date":"","vote_count":"0","comment_level":3,"comment_deleted_date":"","tree_level":"2","comment_approved":"1","comment_author":"","user_id":"48780","author":"","webpage":null,"user_name":"chokolate","karma_level":"25.00","iseditor":"0","global_id":"387935","facebook_uid":null,"index":15,"avatar_type":"wsl","avatar_link":"\/\/img.weblogssl.com\/avatar\/mini\/387935_2.png","abuse_users":[]},{"id":"719330","post_id":"107549","date":1422385489,"content_filtered":"<p>Yo creo que el finder tiene una cagada, y es \"las unidades de red\" Cuando se arranca el sistema ya no aparecen conectadas, desaparece de la barra lateral del Finder. Si hay m\u00e1s de un usuario con la sesi\u00f3n abierta el Finder a veces se hace la picha un l\u00edo y se conecta como el otro usuario (que obviamente por la seguridad del servidor muestra vac\u00edo al no tener permiso), pero es una jodienda tener que volver a desconectarte y \"conectar como\" al NAS...<br \/>\nEn fin, hay muchas cosas del OSx que no est\u00e1n solucionadas. Por cosas como estas es que a nivel profesional no se instauran en los trabajos. Estas cosas en Windows est\u00e1n solucionadas desde siempre.<\/p>","content":"Yo creo que el finder tiene una cagada, y es \"las unidades de red\" Cuando se arranca el sistema ya no aparecen conectadas, desaparece de la barra lateral del Finder. Si hay m\u00e1s de un usuario con la sesi\u00f3n abierta el Finder a veces se hace la picha un l\u00edo y se conecta como el otro usuario (que obviamente por la seguridad del servidor muestra vac\u00edo al no tener permiso), pero es una jodienda tener que volver a desconectarte y \"conectar como\" al NAS...\nEn fin, hay muchas cosas del OSx que no est\u00e1n solucionadas. Por cosas como estas es que a nivel profesional no se instauran en los trabajos. Estas cosas en Windows est\u00e1n solucionadas desde siempre.","karma":"20.00","parent":"0","comment_edited_date":1422385525,"vote_count":"1","comment_level":3,"comment_deleted_date":"","tree_level":"0","comment_approved":"1","comment_author":"","user_id":"85766","author":"","webpage":null,"user_name":"leonejm","karma_level":"22.00","iseditor":"0","global_id":"624899","facebook_uid":null,"index":11,"avatar_type":"gravatar","avatar_link":"\/\/www.gravatar.com\/avatar\/88e9b0bbcade5dd88c86d40a7b4b7e28","abuse_users":[]},{"id":"719262","post_id":"107549","date":1422370097,"content_filtered":"<p>Y una preguntita para Miguel, si tengo una ventana abierta en la cual hay una carpeta \u00bfsabrias decirme como abrir es carpeta en otra nueva ventana con atajo de teclado?<br \/>\nQue no sea como lo que ahora ofrece Yosemite...<br \/>\n[IMG]http:\/\/i57.tinypic.com\/dg2hhc.jpg[\/IMG]<\/p>","content":"Y una preguntita para Miguel, si tengo una ventana abierta en la cual hay una carpeta \u00bfsabrias decirme como abrir es carpeta en otra nueva ventana con atajo de teclado?\nQue no sea como lo que ahora ofrece Yosemite...\n[IMG]http:\/\/i57.tinypic.com\/dg2hhc.jpg[\/IMG]","karma":"8.00","parent":"0","comment_edited_date":"","vote_count":"0","comment_level":3,"comment_deleted_date":"","tree_level":"0","comment_approved":"1","comment_author":"","user_id":"12298","author":"","webpage":null,"user_name":"danidrien","karma_level":"30.00","iseditor":"0","global_id":"104604","facebook_uid":null,"index":8,"avatar_type":"wsl","avatar_link":"\/\/img.weblogssl.com\/avatar\/mini\/104604_1.png","abuse_users":[]},{"id":"719300","post_id":"107549","date":1422378688,"content_filtered":"<p>En mavericks es con cmd + doble clic en la carpeta. De esta forma se abre en otra pesta\u00f1a, no se si es eso lo que buscas.<\/p><p>Por cierto, yo sigo en mavericks y leyendo lo que leo me parece que sigo quedando donde estoy ya que va de esc\u00e1ndalo.<\/p>","content":"En mavericks es con cmd + doble clic en la carpeta. De esta forma se abre en otra pesta\u00f1a, no se si es eso lo que buscas.\n\nPor cierto, yo sigo en mavericks y leyendo lo que leo me parece que sigo quedando donde estoy ya que va de esc\u00e1ndalo.","karma":"20.00","parent":"719262","comment_edited_date":"","vote_count":"1","comment_level":3,"comment_deleted_date":"","tree_level":"1","comment_approved":"1","comment_author":"","user_id":"116521","author":"","webpage":null,"user_name":"ka0s","karma_level":"22.00","iseditor":"0","global_id":"854530","facebook_uid":null,"index":9,"avatar_type":"gravatar","avatar_link":"\/\/www.gravatar.com\/avatar\/dbc6fdfbaf20699c8dc82674a5e3d740","abuse_users":[]},{"id":"719554","post_id":"107549","date":1422433615,"content_filtered":"<p>Muchusimas gracias ka0s, me es muy util esta soluci\u00f3n ;)<\/p>","content":"Muchusimas gracias ka0s, me es muy util esta soluci\u00f3n ;)","karma":"8.00","parent":"719300","comment_edited_date":"","vote_count":"0","comment_level":3,"comment_deleted_date":"","tree_level":"2","comment_approved":"1","comment_author":"","user_id":"12298","author":"","webpage":null,"user_name":"danidrien","karma_level":"30.00","iseditor":"0","global_id":"104604","facebook_uid":null,"index":13,"avatar_type":"wsl","avatar_link":"\/\/img.weblogssl.com\/avatar\/mini\/104604_1.png","abuse_users":[]},{"id":"720491","post_id":"107549","date":1422790157,"content_filtered":"<p>\u00a1Mil gracias por lo de la ruta! Iba a entrar a preguntar precisamente eso.<\/p>","content":"\u00a1Mil gracias por lo de la ruta! Iba a entrar a preguntar precisamente eso.","karma":"8.00","parent":"0","comment_edited_date":"","vote_count":"0","comment_level":3,"comment_deleted_date":"","tree_level":"0","comment_approved":"1","comment_author":"","user_id":"132656","author":"","webpage":null,"user_name":"jnavarrosp","karma_level":"35.00","iseditor":"0","global_id":"949390","facebook_uid":null,"index":14,"avatar_type":"gravatar","avatar_link":"\/\/www.gravatar.com\/avatar\/2620e2ccc9ee720b845c14e3ebd7fadd","abuse_users":[]},{"id":"719169","post_id":"107549","date":1422353747,"content_filtered":"<p>Pues yo no veo donde esta la complicacion del Finder, fue una de las cosas que mas rapido acogi cuando me cambie, a diferencia del desastre de win. Normal que lo hayan cambiado.<\/p>","content":"Pues yo no veo donde esta la complicacion del Finder, fue una de las cosas que mas rapido acogi cuando me cambie, a diferencia del desastre de win. Normal que lo hayan cambiado.","karma":"4.25","parent":"0","comment_edited_date":"","vote_count":"1","comment_level":3,"comment_deleted_date":"","tree_level":"0","comment_approved":"0","comment_author":"","user_id":"17288","author":"","webpage":null,"user_name":"ernestomac","karma_level":"27.00","iseditor":"0","global_id":"157243","facebook_uid":null,"index":4,"avatar_type":"wsl","avatar_link":"\/\/img.weblogssl.com\/avatar\/mini\/157243_1.png","abuse_users":[]},{"id":"719147","post_id":"107549","date":1422348741,"content_filtered":"<p>Desde Windows 7 las carpetas de m\u00fasica, pel\u00edculas, etc han dejado de estar dentro de mis documentos y sigue una estructura como OSX o Linux, as\u00ed que este post estar\u00eda m\u00e1s bien enfocado para switchers de XP (y creo que Vista, no recuerdo). <br \/>\nEs m\u00e1s, la barra lateral desde Windows 7 incluye carpetas inteligentes, accesos a las carpetas frecuentes y la t\u00edpica navegaci\u00f3n por el disco duro (solo faltar\u00edan las etiquetas de OSX).<\/p>","content":"Desde Windows 7 las carpetas de m\u00fasica, pel\u00edculas, etc han dejado de estar dentro de mis documentos y sigue una estructura como OSX o Linux, as\u00ed que este post estar\u00eda m\u00e1s bien enfocado para switchers de XP (y creo que Vista, no recuerdo). \nEs m\u00e1s, la barra lateral desde Windows 7 incluye carpetas inteligentes, accesos a las carpetas frecuentes y la t\u00edpica navegaci\u00f3n por el disco duro (solo faltar\u00edan las etiquetas de OSX).","karma":"0.50","parent":"0","comment_edited_date":"","vote_count":"2","comment_level":3,"comment_deleted_date":"","tree_level":"0","comment_approved":"1","comment_author":"","user_id":"91430","author":"","webpage":null,"user_name":"ryuko2002","karma_level":"37.00","iseditor":"0","global_id":"95455","facebook_uid":null,"index":1,"avatar_type":"gravatar","avatar_link":"\/\/www.gravatar.com\/avatar\/27fc99656ce96cfe1588c71853d23e6d","abuse_users":[]},{"id":"719150","post_id":"107549","date":1422349501,"content_filtered":"<p>Yo siempre he utilizado la barra lateral para organizar mis tareas...<br \/>\nPero en Yosemite 10.10.2 hay un fallo bestial, en cuanto reinicias se borran los servidores de la barra lateral (un o dos de cada diez reinicios se queda :( ), cuando siempre estaban ah\u00ed perfectamente.<br \/>\nNo parece un fallo grave de funcionamiento en los intesticios del sistema, pero si es grave a nivel de dise\u00f1o, se le ven las costuras por todos lados, como el desproposito de las etiquetas, con la man\u00eda del minimalismo ya casi no se ven, tienes que forzar la vista, cuando hantes, si querias marcar algo como si de un \"marcador flourescente\" se tratase quedaba todo subrrallado.<br \/>\nYo lo veo crudo, 4 sistemas despues de snow Leopard y tienen al mismo simio liandola de formas impensables en el 2006...<\/p>","content":"Yo siempre he utilizado la barra lateral para organizar mis tareas...\nPero en Yosemite 10.10.2 hay un fallo bestial, en cuanto reinicias se borran los servidores de la barra lateral (un o dos de cada diez reinicios se queda :( ), cuando siempre estaban ah\u00ed perfectamente.\nNo parece un fallo grave de funcionamiento en los intesticios del sistema, pero si es grave a nivel de dise\u00f1o, se le ven las costuras por todos lados, como el desproposito de las etiquetas, con la man\u00eda del minimalismo ya casi no se ven, tienes que forzar la vista, cuando hantes, si querias marcar algo como si de un \"marcador flourescente\" se tratase quedaba todo subrrallado.\nYo lo veo crudo, 4 sistemas despues de snow Leopard y tienen al mismo simio liandola de formas impensables en el 2006...","karma":"-2.00","parent":"0","comment_edited_date":"","vote_count":"1","comment_level":3,"comment_deleted_date":"","tree_level":"0","comment_approved":"1","comment_author":"","user_id":"12298","author":"","webpage":null,"user_name":"danidrien","karma_level":"30.00","iseditor":"0","global_id":"104604","facebook_uid":null,"index":2,"avatar_type":"wsl","avatar_link":"\/\/img.weblogssl.com\/avatar\/mini\/104604_1.png","abuse_users":[]},{"id":"719158","post_id":"107549","date":1422351365,"content_filtered":"<p>\"hantes\"<\/p>","content":"\"hantes\"","karma":"-0.75","parent":"719150","comment_edited_date":"","vote_count":"2","comment_level":3,"comment_deleted_date":"","tree_level":"1","comment_approved":"1","comment_author":"","user_id":"26909","author":"","webpage":"http:\/\/","user_name":"melibeotwin","karma_level":"29.00","iseditor":"0","global_id":"253502","facebook_uid":null,"index":3,"avatar_type":"wsl","avatar_link":"\/\/img.weblogssl.com\/avatar\/mini\/253502_3.png","abuse_users":[]},{"id":"719251","post_id":"107549","date":1422368624,"content_filtered":"<p>Vamos, esto lo veo muy \"relevante\":<br \/>\nSiempre he utilizado la barra lateral para organizar mis tareas...<br \/>\nPero en Yosemite 10.10.2 hay un fallo bestial, en cuanto reinicias se borran los servidores de la barra lateral (un o dos de cada diez reinicios se queda :( ), cuando siempre estaban ah\u00ed perfectamente en Snow, Lion, Muntain y Maveriks.<br \/>\nNo parece un fallo grave de funcionamiento en los intesticios del sistema, pero si es grave a nivel de dise\u00f1o, se le ven las costuras por todos lados, como el desproposito de las etiquetas, con la man\u00eda del minimalismo ya casi no se ven, tienes que forzar la vista, cuando antes, si querias marcar algo como si de un \"marcador flourescente\" se tratase quedaba todo subrrallado.<\/p>","content":"Vamos, esto lo veo muy \"relevante\":\nSiempre he utilizado la barra lateral para organizar mis tareas...\nPero en Yosemite 10.10.2 hay un fallo bestial, en cuanto reinicias se borran los servidores de la barra lateral (un o dos de cada diez reinicios se queda :( ), cuando siempre estaban ah\u00ed perfectamente en Snow, Lion, Muntain y Maveriks.\nNo parece un fallo grave de funcionamiento en los intesticios del sistema, pero si es grave a nivel de dise\u00f1o, se le ven las costuras por todos lados, como el desproposito de las etiquetas, con la man\u00eda del minimalismo ya casi no se ven, tienes que forzar la vista, cuando antes, si querias marcar algo como si de un \"marcador flourescente\" se tratase quedaba todo subrrallado.","karma":"-4.50","parent":"0","comment_edited_date":1422368811,"vote_count":"1","comment_level":3,"comment_deleted_date":"","tree_level":"0","comment_approved":"1","comment_author":"","user_id":"12298","author":"","webpage":null,"user_name":"danidrien","karma_level":"30.00","iseditor":"0","global_id":"104604","facebook_uid":null,"index":6,"avatar_type":"wsl","avatar_link":"\/\/img.weblogssl.com\/avatar\/mini\/104604_1.png","abuse_users":[]}],"meta":{"more_records":"false","start":0,"total":15,"order":"valued","totalCount":15,"commentStatus":"closed"}};
+  AML.Comments.config.postId = 107549;
+  AML.Comments.config.enableSocialShare = "0";
+  AML.Comments.config.campaignDate = "03_Aug_2017";
+  AML.Comments.config.enableImageUploading = "0";
+</script>
+ </div>
+</div>
+                                      <section id="editorialRecommendedPosts" class="section-related"></section>
+                                       <div class="ad ad-bot">
+ <div class="ad-box" id="div-gpt-bot2">
+  <a href="#" class="ad-contact">Publicidad</a>
+  <script type="text/javascript">
+       googletag.cmd.push(function() { googletag.display("div-gpt-bot2"); });
+     </script>
+ </div>
+</div>
+                     </main>
+      <section id="sections" class="head-menu-container head-menu-sections">
+ <a href="#sections" class="head-menu-toggler js-toggle"></a>
+ <div class="head-menu">
+  <a href="#sections" class="close close-corner js-toggle">Inicio</a>
+           <div class="head-menu-extras">
+    <p class="nav-heading">Destacamos</p>
+    <ul>  
+     <li><a class="head-list-item head-brand-link head-brand-tecnologiazen js-track-header-event" href="http://premios.xataka.com/">
+     Premios Xataka
+    </a></li>      
+    </ul>
+   </div>
+       <div id="sections-search"></div>
+   <script type="text/javascript">
+    document.getElementById("sections-search").innerHTML = '\
+     <div class="head-menu-search">\
+      <div class="head-search-form js-search-form">\
+       <input id="search-field-1" type="text" placeholder="Buscar en Applesfera" class="search-container-1" data-container="#search-container-1">\
+       <button class="head-search-button js-search-button" data-field="#search-field-1">Buscar</button>\
+      </div>\
+     </div>';
+   </script>
+    <div id="search-container-1" class="js-search-results"></div>
+    <nav class="head-menu-categories">
+    <ul>
+           <li><a class="head-list-item js-track-header-event" href="/categoria/iphone">iPhone</a></li>           <li><a class="head-list-item js-track-header-event" href="/categoria/ios">iOS</a></li>           <li><a class="head-list-item js-track-header-event" href="/categoria/curiosidades">Curiosidades</a></li>           <li><a class="head-list-item js-track-header-event" href="/categoria/ipad">iPad</a></li>           <li><a class="head-list-item js-track-header-event" href="/categoria/os-x">macOS</a></li>           <li><a class="head-list-item js-track-header-event" href="/categoria/ipod">iPod</a></li>                <li><a class="head-list-item js-track-header-event" href="/tag/macbook-pro">MacBook Pro</a></li>           <li><a class="head-list-item js-track-header-event" href="/tag/ipad">iPad</a></li>           <li><a class="head-list-item js-track-header-event" href="/tag/macbook">MacBook</a></li>           <li><a class="head-list-item js-track-header-event" href="/tag/ios">iOS</a></li>           <li><a class="head-list-item js-track-header-event" href="/tag/apple-watch">Apple Watch</a></li>           <li><a class="head-list-item js-track-header-event" href="/tag/ipad-pro">iPad Pro</a></li>         </ul>
+    <p class="head-more-item">
+     <a href="/archivos" class="btn js-track-header-event">Ver más temas</a>
+    </p>
+  </nav>
+  <aside class="head-menu-follow">
+   <span class="head-item-meta">Síguenos</span>
+   <ul>
+    <li><a href="http://twitter.com/applesfera" class="icon-twitter link-twitter js-track-header-event">Twitter</a></li>
+    <li><a href="https://www.facebook.com/pages/Applesfera/130064735384" class="icon-facebook link-facebook js-track-header-event">Facebook</a></li>
+         <li><a href="https://www.youtube.com/user/applesferavideo" class="icon-youtube link-youtube js-track-header-event">Youtube</a></li>
+                        <li><a href="/index.xml" class="icon-rss link-rss js-track-header-event">RSS</a></li>
+        <li id="sections-newsletter">
+     <a href="#head-menu-newsletter" class="icon-email link-email js-toggle-subscribe">E-mail</a>
+    </li>
+   </ul>
+  </aside>
+  <section id="head-menu-newsletter" class="head-menu-newsletter">
+   <a href="#head-menu-newsletter" class="close close-corner js-toggle-subscribe"></a>
+   <form class="newsletter-form head-newsletter-form js-subscription" method="post" data-url="http://mailer.weblogssl.com/subscribe_check/#email#/applesfera/Applesfera" data-id="#head-menu-newsletter">
+    <h3 class="newsletter-heading">Recibe un email al día con los artículos de Applesfera: </h3>
+    <p><input class="newsletter-input js-email" type="email" placeholder="Tu correo electrónico">
+    <button class="btn-primary newsletter-button" type="submit">Suscribir</button></p>
+   </form>
+  </section>
+  <nav class="head-menu-extras">
+   <ul class="head-list">
+         <li><a class="head-list-item section-respuestas js-track-header-event" href="/respuestas">Applesfera Respuestas</a></li>             <li><a class="head-list-item section-tv js-track-header-event" href="https://www.youtube.com/user/applesferavideo">Applesfera
+      <span>TV</span>
+    </a></li>
+     
+    <li><a class="head-list-item section-lomejor js-track-header-event" href="/lomejor">Lo mejor</a></li>
+    <li><a class="head-list-item section-staff js-track-header-event" href="/quienes-somos">Equipo editorial</a></li>
+    <li><a class="head-list-item section-contact js-track-header-event" href="/contacto">Contacta con nosotros</a></li>
+    <div id="sections-login">
+     <span id="login"></span>
+    </div>
+   </ul>
+  </nav>
+     <aside class="head-menu-external">
+    <p class="nav-heading">Más sitios que te gustarán</p>
+    <ul>
+                                    <li><a class="head-list-item js-track-header-event" rel="nofollow" href="https://www.xataka.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Xataka</a></li>                       <li><a class="head-list-item js-track-header-event"  href="https://www.vidaextra.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Vidaextra</a></li>                       <li><a class="head-list-item js-track-header-event"  href="https://www.genbeta.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Genbeta</a></li>                       <li><a class="head-list-item js-track-header-event"  href="https://www.xatakamovil.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Xataka Móvil</a></li>                       <li><a class="head-list-item js-track-header-event"  href="https://www.xatakaciencia.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Xataka Ciencia</a></li>                       <li><a class="head-list-item js-track-header-event"  href="https://www.xatakandroid.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Xataka Android</a></li>         </ul>
+   </aside>
+    <div class="head-menu-channels">
+   <h3>Explora en Weblogs SL</h3>
+   <ul>
+         <li><a href="#head-channel-tecnologia" class="head-list-item head-channel-caption explore-weblogs-sl-toggle">
+        Tecnología
+        <span class="head-item-meta m-desc">Móviles, tablets, aplicaciones, videojuegos, fotografía, domótica...</span></a><ul id="head-channel-tecnologia" class="head-channel-list"><li><a class="head-list-item tec-xataka js-track-header-event" rel="nofollow"  href="//www.xataka.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Xataka</a></li><li><a class="head-list-item tec-xatakamovil js-track-header-event"   href="//www.xatakamovil.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Xataka Móvil</a></li><li><a class="head-list-item tec-xatakafoto js-track-header-event"   href="//www.xatakafoto.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Xataka Foto</a></li><li><a class="head-list-item tec-xatakandroid js-track-header-event"   href="//www.xatakandroid.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Xataka Android</a></li><li><a class="head-list-item tec-xatakahome js-track-header-event"   href="//www.xatakahome.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Xataka Smart Home</a></li><li><a class="head-list-item tec-xatakawindows js-track-header-event"   href="//www.xatakawindows.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Xataka Windows</a></li><li><a class="head-list-item tec-xatakaciencia js-track-header-event"   href="//www.xatakaciencia.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Xataka Ciencia</a></li><li><a class="head-list-item tec-applesfera js-track-header-event"   href="//www.applesfera.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Applesfera</a></li><li><a class="head-list-item tec-vidaextra js-track-header-event"   href="//www.vidaextra.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Vida Extra</a></li><li><a class="head-list-item tec-genbeta js-track-header-event"   href="//www.genbeta.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Genbeta</a></li><li><a class="head-list-item tec-genbetadev js-track-header-event"   href="//www.genbetadev.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Genbeta Dev</a></li><li><a class="head-list-item tec-magnet js-track-header-event"   href="//magnet.xataka.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Magnet</a></li><li><a class="head-list-item tec-compradiccion js-track-header-event"   href="//www.compradiccion.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Compradiccion</a></li><li><a class="head-list-item tec-xatakaesports js-track-header-event"   href="//esports.xataka.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Xataka eSports</a></li></ul></li>         <li><a href="#head-channel-Estilodevida" class="head-list-item head-channel-caption explore-weblogs-sl-toggle">
+        Estilo de vida
+        <span class="head-item-meta m-desc">Moda, belleza, estilo, salud, fitness, familia, gastronomía, decoración, famosos...</span></a><ul id="head-channel-Estilodevida" class="head-channel-list"><li><a class="head-list-item est-trendencias js-track-header-event"   href="//www.trendencias.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Trendencias</a></li><li><a class="head-list-item est-trendenciasbelleza js-track-header-event"   href="//belleza.trendencias.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Trendencias Belleza</a></li><li><a class="head-list-item est-trendenciashombre js-track-header-event"   href="//www.trendenciashombre.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Trendencias Hombre</a></li><li><a class="head-list-item est-directoalpaladar js-track-header-event"   href="//www.directoalpaladar.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Directo al Paladar</a></li><li><a class="head-list-item est-bebesymas js-track-header-event"   href="//www.bebesymas.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Bebés y Más</a></li><li><a class="head-list-item est-vitonica js-track-header-event" rel="nofollow"  href="//www.vitonica.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Vitónica</a></li><li><a class="head-list-item est-decoesfera js-track-header-event" rel="nofollow"  href="//decoracion.trendencias.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Decoesfera</a></li><li><a class="head-list-item est-poprosa js-track-header-event"   href="//www.poprosa.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Poprosa</a></li></ul></li>         <li><a href="#head-channel-motor" class="head-list-item head-channel-caption explore-weblogs-sl-toggle">
+        Motor
+        <span class="head-item-meta m-desc">Coches, competición, motos, vehículos eléctricos, híbridos...</span></a><ul id="head-channel-motor" class="head-channel-list"><li><a class="head-list-item mot-motorpasion js-track-header-event"   href="//www.motorpasion.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Motorpasión</a></li><li><a class="head-list-item mot-motorpasionmoto js-track-header-event"   href="//www.motorpasionmoto.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Motorpasión Moto</a></li><li><a class="head-list-item mot-motorpasionfuturo js-track-header-event"   href="//www.motorpasionfuturo.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Motorpasión Futuro</a></li></ul></li>         <li><a href="#head-channel-ocio" class="head-list-item head-channel-caption explore-weblogs-sl-toggle">
+        Ocio
+        <span class="head-item-meta m-desc">Televisión, series, cine, estrenos, viajes, literatura...</span></a><ul id="head-channel-ocio" class="head-channel-list"><li><a class="head-list-item oci-espinof js-track-header-event"   href="//www.espinof.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Espinof</a></li><li><a class="head-list-item oci-diariodelviajero js-track-header-event"   href="//www.diariodelviajero.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Diario del Viajero</a></li><li><a class="head-list-item oci-papelenblanco js-track-header-event"   href="//www.papelenblanco.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Papel en Blanco</a></li></ul></li>         <li><a href="#head-channel-economia" class="head-list-item head-channel-caption explore-weblogs-sl-toggle">
+        Economía
+        <span class="head-item-meta m-desc">Finanzas, mundo de la empresa, autónomos, fiscalidad, administración, recursos humanos...</span></a><ul id="head-channel-economia" class="head-channel-list"><li><a class="head-list-item eco-elblogsalmon js-track-header-event"   href="//www.elblogsalmon.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">El Blog Salmón</a></li><li><a class="head-list-item eco-pymesyautonomos js-track-header-event"   href="//www.pymesyautonomos.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Pymes y Autónomos</a></li></ul></li>         <li><a href="#head-channel-latinoamerica" class="head-list-item head-channel-caption explore-weblogs-sl-toggle">
+        Latinoamérica
+        <span class="head-item-meta m-desc">Publicaciones de México, Colombia...</span></a><ul id="head-channel-latinoamerica" class="head-channel-list"><li><a class="head-list-item tec-xataka js-track-header-event"   href="//www.xataka.com.mx?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Xataka México</a></li><li><a class="head-list-item mot-motorpasion js-track-header-event"   href="//www.motorpasion.com.mx?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Motorpasión México</a></li><li><a class="head-list-item est-directoalpaladar js-track-header-event"   href="//www.directoalpaladar.com.mx?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Directo Al Paladar México</a></li><li><a class="head-list-item tec-xataka js-track-header-event"   href="//www.xataka.com.co?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Xataka Colombia</a></li></ul></li>         <li><a href="#head-channel-mediosparaclientes" class="head-list-item head-channel-caption explore-weblogs-sl-toggle">
+        Medios para clientes
+        <span class="head-item-meta m-desc">Publicaciones para otras marcas y partners...</span></a><ul id="head-channel-mediosparaclientes" class="head-channel-list"><li><a class="head-list-item  js-track-header-event"   href="http://www.circulaseguro.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Circula Seguro</a></li><li><a class="head-list-item  js-track-header-event"   href="http://www.circulaseguro.pt?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Circula Seguro PT</a></li><li><a class="head-list-item  js-track-header-event"   href="http://www.nobbot.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Nobbot</a></li><li><a class="head-list-item  js-track-header-event"   href="http://blog.cocacola.es?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Happing Magazine</a></li><li><a class="head-list-item  js-track-header-event"   href="http://blog.sage.es?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Sage Experience</a></li><li><a class="head-list-item  js-track-header-event"   href="http://www.optimismodigital.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Optimismo Digital</a></li><li><a class="head-list-item  js-track-header-event"   href="http://www.ennaranja.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">En Naranja</a></li><li><a class="head-list-item  js-track-header-event"   href="http://blogginzenith.zenithmedia.es?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Bloggin Zenith</a></li><li><a class="head-list-item  js-track-header-event"   href="http://www.tecnologiadetuatu.elcorteingles.es?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Tecnología de tú a tú</a></li><li><a class="head-list-item  js-track-header-event"   href="http://mimundo.philips.es?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Mi Mundo Philips</a></li><li><a class="head-list-item  js-track-header-event"   href="http://www.bloglenovo.es?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Blog Lenovo</a></li><li><a class="head-list-item  js-track-header-event"   href="http://muysaludable.sanitas.es?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Muy Saludable de Sanitas</a></li><li><a class="head-list-item  js-track-header-event"   href="http://zona.cocacola.es?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Zona Coca-Cola</a></li><li><a class="head-list-item  js-track-header-event"   href="http://www.hipercor.es/descubre/ideas-para-comer?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Hipercor: Ideas para comer</a></li><li><a class="head-list-item  js-track-header-event"   href="http://www.bluebbva.com/bluemagazine?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Bluemagazine</a></li><li><a class="head-list-item  js-track-header-event"   href="https://www.segurosdetuatu.es?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Seguros de tú a tú</a></li><li><a class="head-list-item corrienteelectrica js-track-header-event"   href="http://corrienteelectrica.renault.es?utm_source=applesfera&utm_medium=network&utm_campaign=footer">Corriente Eléctrica</a></li><li><a class="head-list-item  js-track-header-event"   href="//www.esportsunlocked.com?utm_source=applesfera&utm_medium=network&utm_campaign=footer">eSports Unlocked by Orange</a></li></ul></li>       </ul>
+  </div>
+  <nav class="head-menu-links">
+   <ul class="head-list">
+    <li><a class="head-list-item js-track-header-event" href="http://www.weblogssl.com/contenidos">Condiciones de uso</a></li>
+    <li><a class="head-list-item js-track-header-event" href="http://www.weblogssl.com/aviso">Aviso legal</a></li>
+    <li><a class="head-list-item js-track-header-event" href="http://www.socialmediasl.com/servicios/acciones-en-nuestros-medios">Publicidad</a></li>
+   </ul>
+  </nav>
+ </div>
+</section>
+<section id="headlines" class="head-menu-container head-menu-new">
+ <a href="#headlines" class="head-menu-toggler js-toggle"></a>
+ <div class="head-menu">
+  <a href="#headlines" class="close close-corner js-toggle">Inicio</a>
+    <p class="nav-heading">Reciente</p>
+  <ul id="recent-posts">
+    <li><a href="/aplicaciones-ios-1/tidy-inbox-es-la-nueva-caracteristica-de-newton-para-que-te-centres-en-los-correos-que-importan" class="head-new-item">
+ Tidy Inbox es la nueva característica de Newton para que te centres en los correos que importan 
+ <span class="head-item-meta"><time class="js-header-post" datetime="1501759907"></time></span></a></li> <li><a href="/iphone/un-concepto-abraza-la-peninsula-en-una-interfaz-del-iphone-8-sin-marcos" class="head-new-item">
+ Un concepto abraza la &quot;península&quot; en una interfaz del iPhone 8 sin marcos
+ <span class="head-item-meta"><time class="js-header-post" datetime="1501754507"></time></span></a></li> <li><a href="/accesorios/microsoft-esta-preparando-una-toch-cover-para-el-ipad-el-teclado-de-la-surface-como-sustituto-del-smart-keyboard-de-apple" class="head-new-item">
+ Microsoft está preparando una Touch Cover para el iPad, el teclado de la Surface como sustituto del Smart Keyboard de Apple
+ <span class="head-item-meta"><time class="js-header-post" datetime="1501750908"></time></span></a></li> <li><a href="/general/the-rock-vuelve-con-tres-nuevos-anuncios-para-dominar-el-mundo-con-la-ayuda-de-siri" class="head-new-item">
+ The Rock vuelve con tres nuevos anuncios para dominar el mundo con la ayuda de Siri
+ <span class="head-item-meta"><time class="js-header-post" datetime="1501747308"></time></span></a></li> <li><a href="/apple-watch/las-ventas-del-apple-watch-siguen-subiendo-podrian-haberse-vendido-2-8-millones-en-el-segundo-trimestre" class="head-new-item">
+ Las ventas del Apple Watch siguen subiendo: podrían haberse vendido 2,8 millones en el segundo trimestre 
+ <span class="head-item-meta"><time class="js-header-post" datetime="1501743707"></time></span></a></li> <li><a href="/rumores/la-camara-del-iphone-8-tendria-funciones-inteligentes-otro-detalle-filtrado-del-firmware-de-homepod" class="head-new-item">
+ La cámara del iPhone 8 tendría funciones inteligentes: otro detalle filtrado del firmware de HomePod
+ <span class="head-item-meta"><time class="js-header-post" datetime="1501740108"></time></span></a></li> <li><a href="/general/tim-cook-explica-el-lio-de-las-apps-de-vpn-en-china" class="head-new-item">
+ Tim Cook explica el lío de las apps de VPN en China 
+ <span class="head-item-meta"><time class="js-header-post" datetime="1501736511"></time></span></a></li> <li><a href="/aplicaciones-ios-1/google-earth-para-ios-se-pone-al-dia-soporte-para-64-bits-interfaz-nueva-y-las-ultimas-caracteristicas-del-servicio" class="head-new-item">
+ Google Earth para iOS se pone al día: soporte para 64 bits, interfaz nueva y las últimas características del servicio
+ <span class="head-item-meta"><time class="js-header-post" datetime="1501684307"></time></span></a></li> <li><a href="/ipad/al-ipad-no-le-ha-hecho-falta-ni-un-raton-ni-macos-para-volver-a-crecer" class="head-new-item">
+ Al iPad no le ha hecho falta ni un ratón ni macOS para volver a crecer
+ <span class="head-item-meta"><time class="js-header-post" datetime="1501680602"></time></span></a></li> <li><a href="/general/el-nuevo-canon-digital-tambien-afecta-a-la-apple-store-asi-han-subido-los-precios-del-iphone-el-ipad-y-el-mac" class="head-new-item">
+ El nuevo Canon Digital también afecta a la Apple Store: así han subido los precios del iPhone, el iPad y el Mac
+ <span class="head-item-meta"><time class="js-header-post" datetime="1501677006"></time></span></a></li> <li><a href="/aplicaciones-ios-1/los-filtros-y-la-edicion-de-vsco-suben-de-nivel-ahora-tambien-puedes-aplicarlo-a-los-videos" class="head-new-item">
+ Los filtros y la edición de VSCO suben de nivel, ahora también puedes aplicarlo a los vídeos
+ <span class="head-item-meta"><time class="js-header-post" datetime="1501664509"></time></span></a></li> <li><a href="https://www.xataka.com/streaming/que-no-pare-la-musica-comparamos-spotify-apple-music-deezer-y-google-play-music?utm_source=applesfera&utm_medium=network&utm_campaign=headlines_reciente" class="head-new-item m-crosspost">
+ Que no pare la música: comparamos Spotify, Apple Music, Deezer y Google Play Music 
+ <span class="head-item-meta">
+  en Xataka <time class="js-header-post" datetime="1501675382"></time></span></a></li> <li><a href="/apple-1/el-canon-de-apple-cumple-la-profecia-de-cook" class="head-new-item">
+ El cañón de Apple cumple la profecía de Cook
+ <span class="head-item-meta"><time class="js-header-post" datetime="1501658123"></time></span></a></li> <li><a href="/iphone/a-contracorriente-con-las-especulaciones-el-iphone-mas-continuista-se-ha-vendido-mas-de-lo-esperado" class="head-new-item">
+ A contracorriente con las especulaciones: &quot;el iPhone más continuista&quot; se ha vendido más de lo esperado 
+ <span class="head-item-meta"><time class="js-header-post" datetime="1501657307"></time></span></a></li> <li><a href="/general/tim-cook-lo-insinua-estan-trabajando-en-un-sistema-de-conduccion-autonoma-para-algo-mas-que-simples-coches" class="head-new-item">
+ Tim Cook lo insinúa, están trabajando en un sistema de conducción autónoma para algo más que simples coches
+ <span class="head-item-meta"><time class="js-header-post" datetime="1501653707"></time></span></a></li> <li><a href="/accesorios/en-los-ultimos-meses-apple-ha-aumentado-la-produccion-de-los-airpods-pero-aun-no-pueden-con-la-enorme-demanda" class="head-new-item">
+ En los últimos meses Apple ha aumentado la producción de los AirPods, pero aún no pueden con la enorme demanda
+ <span class="head-item-meta"><time class="js-header-post" datetime="1501650623"></time></span></a></li> <li><a href="/iphone/apple-preve-ingresos-por-encima-de-las-estimaciones-de-wall-street-para-su-cuarto-trimestre-fiscal" class="head-new-item">
+ Apple prevé ingresos por encima de las estimaciones de Wall Street para su cuarto trimestre fiscal 
+ <span class="head-item-meta"><time class="js-header-post" datetime="1501622809"></time></span></a></li> <li><a href="/general/vuelve-el-crecimiento-de-apple-los-resultados-financieros-del-tercer-trimestre-fiscal-se-tinen-de-verde" class="head-new-item">
+ Vuelve el crecimiento de Apple: los resultados financieros del tercer trimestre fiscal se tiñen de verde
+ <span class="head-item-meta"><time class="js-header-post" datetime="1501613382"></time></span></a></li> <li><a href="/accesorios/twelve-south-ha-lanzado-bookbook-vol-2-la-mitica-funda-de-piel-para-los-macbook-ahora-es-mucho-mas-fina" class="head-new-item">
+ Twelve South ha lanzado BookBook Vol. 2, la mítica funda de piel para los MacBook ahora es mucho más fina 
+ <span class="head-item-meta"><time class="js-header-post" datetime="1501596101"></time></span></a></li> <li><a href="/iphone/el-homepod-sigue-soltando-la-lengua-sobre-el-proximo-iphone-8-barra-de-estado-dinamica-boton-home-virtual-y-sin-touch-id" class="head-new-item">
+ El HomePod sigue soltando la lengua sobre el próximo iPhone 8: barra de estado dinámica, botón Home virtual y sin Touch ID
+ <span class="head-item-meta"><time class="js-header-post" datetime="1501589819"></time></span></a></li>  </ul>
+  <p class="head-more-item"><a href="#" class="btn" id="view-more" data-blog="applesfera">Ver más artículos</a></p>
+     <div class="head-menu-video">
+    <p class="nav-heading"> Applesfera 
+     <span>TV</span>
+    </p>
+    <ul id="recent-videos">
+          <li><a href="https://www.xataka.com/moviles/comparativa-de-android-pay-samsung-pay-y-apple-pay-en-espana-bancos-tarjetas-y-dispositivos" class="head-new-item"><span class="head-new-video-thumb"><img alt="Android Pay, Samsung Pay vs Apple Pay" src="https://img.youtube.com/vi/FKizZKU-JKM/mqdefault.jpg"></span><span class="head-new-video-desc">Android Pay, Samsung Pay vs Apple Pay</span></a></li> 
+     <li><a href="http://xataka.com" class="head-new-item"><span class="head-new-video-thumb"><img alt="Peligros de conectarse a una Wi-Fi pública" src="https://img.youtube.com/vi/pa_jA6bS3BE/mqdefault.jpg"></span><span class="head-new-video-desc">Peligros de conectarse a una Wi-Fi pública</span></a></li> 
+     <li><a href="https://www.xataka.com/analisis/meizu-pro-7-primeras-impresiones-esto-si-es-una-doble-pantalla" class="head-new-item"><span class="head-new-video-thumb"><img alt="Meizu Pro 7, primeras impresiones" src="https://img.youtube.com/vi/YJoT101gb40/mqdefault.jpg"></span><span class="head-new-video-desc">Meizu Pro 7, primeras impresiones</span></a></li> 
+    </ul>
+    <p class="head-more-item"><a href="#" class="btn" id="view-more-videos" data-blog="applesfera">Ver más vídeos</a></p>
+   </div>
+   </div>
+</section>
+<nav id="search" class="head-menu-container head-menu-searchapp">
+</nav>
+<script type="text/javascript">
+ document.getElementById("search").innerHTML = '\
+ <a href="#search" class="head-menu-toggler js-toggle"></a>\
+ <div class="head-menu">\
+  <a href="#search" class="close close-corner js-toggle">Inicio</a>\
+  <h2>Buscar</h2>\
+  <div class="head-menu-search">\
+   <div class="head-search-form js-search-form">\
+    <input id="search-field-2" type="text" placeholder="Buscar en Applesfera" class="search-container-2" data-container="#search-container-2">\
+    <button class="head-search-button js-search-button" data-field="#search-field-2">Buscar</button>\
+   </div>\
+  </div>\
+  <section id="search-container-2" class="js-search-results"></section>\
+ </div>';
+</script><nav class="nav nav-list nav-register" id="nav-twitter-register"></nav>
+<div id="react-login"></div>
+<nav class="nav nav-list nav-login" id="nav-login"></nav>
+<nav class="nav nav-list nav-register" id="nav-register"></nav>
+<nav class="nav nav-list nav-login" id="nav-recover"></nav>
+<nav class="nav nav-list nav-login" id="nav-pick"></nav>
+             <script>
+  window.WSLModules = window.WSLModules || {};
+  WSLModules.Footer = {'moduleConf' : 'c1'};
+</script>
+<footer class="foot">
+ <div class="wrapper foot-wrapper">
+  <div id="newsletter" class="newsletter-box">
+   <div class="menu-follow foot-menu-follow">
+    <span class="item-meta foot-item-meta">Síguenos</span>
+    <ul>
+     <li><a href="http://twitter.com/applesfera" class="icon-twitter link-twitter">Twitter</a></li>
+     <li><a href="https://www.facebook.com/pages/Applesfera/130064735384" class="icon-facebook link-facebook">Facebook</a></li>
+           <li><a href="https://www.youtube.com/user/applesferavideo" class="icon-youtube link-youtube">Youtube</a></li>
+                              <li><a href="/index.xml" class="icon-rss link-rss">RSS</a></li>
+         </ul>
+   </div>
+  </div>
+  <nav class="menu-categories foot-menu-categories">
+   <p class="nav-heading">En Applesfera hablamos de...</p>
+   <ul>
+         <li><a class="list-item foot-list-item" href="/categoria/iphone">iPhone</a></li>         <li><a class="list-item foot-list-item" href="/categoria/ios">iOS</a></li>         <li><a class="list-item foot-list-item" href="/categoria/curiosidades">Curiosidades</a></li>         <li><a class="list-item foot-list-item" href="/categoria/ipad">iPad</a></li>         <li><a class="list-item foot-list-item" href="/categoria/os-x">macOS</a></li>         <li><a class="list-item foot-list-item" href="/categoria/ipod">iPod</a></li>             <li><a class="list-item foot-list-item" href="/tag/macbook-pro">MacBook Pro</a></li>         <li><a class="list-item foot-list-item" href="/tag/ipad">iPad</a></li>         <li><a class="list-item foot-list-item" href="/tag/macbook">MacBook</a></li>         <li><a class="list-item foot-list-item" href="/tag/ios">iOS</a></li>         <li><a class="list-item foot-list-item" href="/tag/apple-watch">Apple Watch</a></li>         <li><a class="list-item foot-list-item" href="/tag/ipad-pro">iPad Pro</a></li>       </ul>
+   <p class="view-even-more"><a href="/archivos" class="btn">Ver más temas</a></p>
+  </nav>
+  <script type="text/javascript">
+   document.write('\
+    <div class="search-box foot-search">\
+     <div class="search-form js-search-form">\
+      <input id="search-field-3" type="text" placeholder="Buscar en Applesfera" class="search-container-3" data-container="#search-container-3">\
+      <button class="search-button js-search-button" data-field="#search-field-3">Buscar</button>\
+     </div>\
+    </div>')
+  </script>
+  <div id="search-container-3" class="js-search-results"></div>
+ </div>
+</footer>
+<section class="foot-external">
+ <div class="wrapper foot-wrapper">
+  <header class="foot-head">
+   <a class="backlink foot-backlink" href="#">Subir</a>
+   <p class="wsl-brand foot-wsl-brand">
+    <a href="http://weblogssl.com" class="wsl-logo foot-wsl-logo">
+     <span>Weblogs SL</span>
+    </a>
+   </p>
+     </header>
+    <div class="menu-external foot-menu-external">
+  <div class="spain-blogs">
+       <div class="links-category">
+     <p class="channel-title"> Tecnología </p>
+     <ul>
+       
+            <li><a class="list-item foot-list-item" rel="nofollow" href="//www.xataka.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Xataka</a></li><li><a class="list-item foot-list-item"  href="//www.xatakamovil.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Xataka Móvil</a></li><li><a class="list-item foot-list-item"  href="//www.xatakafoto.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Xataka Foto</a></li><li><a class="list-item foot-list-item"  href="//www.xatakandroid.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Xataka Android</a></li><li><a class="list-item foot-list-item"  href="//www.xatakahome.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Xataka Smart Home</a></li><li><a class="list-item foot-list-item"  href="//www.xatakawindows.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Xataka Windows</a></li><li><a class="list-item foot-list-item"  href="//www.xatakaciencia.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Xataka Ciencia</a></li><li><a class="list-item foot-list-item"  href="//www.applesfera.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Applesfera</a></li><li><a class="list-item foot-list-item"  href="//www.vidaextra.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Vida Extra</a></li><li><a class="list-item foot-list-item"  href="//www.genbeta.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Genbeta</a></li><li><a class="list-item foot-list-item"  href="//www.genbetadev.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Genbeta Dev</a></li><li><a class="list-item foot-list-item"  href="//magnet.xataka.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Magnet</a></li><li><a class="list-item foot-list-item"  href="//www.compradiccion.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Compradiccion</a></li><li><a class="list-item foot-list-item"  href="//esports.xataka.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Xataka eSports</a></li>     </ul>
+    </div>
+       <div class="links-category">
+     <p class="channel-title"> Estilo de vida </p>
+     <ul>
+       
+            <li><a class="list-item foot-list-item"  href="//www.trendencias.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Trendencias</a></li><li><a class="list-item foot-list-item"  href="//belleza.trendencias.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Trendencias Belleza</a></li><li><a class="list-item foot-list-item"  href="//www.trendenciashombre.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Trendencias Hombre</a></li><li><a class="list-item foot-list-item"  href="//www.directoalpaladar.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Directo al Paladar</a></li><li><a class="list-item foot-list-item"  href="//www.bebesymas.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Bebés y Más</a></li><li><a class="list-item foot-list-item" rel="nofollow" href="//www.vitonica.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Vitónica</a></li><li><a class="list-item foot-list-item" rel="nofollow" href="//decoracion.trendencias.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Decoesfera</a></li><li><a class="list-item foot-list-item"  href="//www.poprosa.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Poprosa</a></li>     </ul>
+    </div>
+       <div class="links-category">
+     <p class="channel-title"> Motor </p>
+     <ul>
+       
+            <li><a class="list-item foot-list-item"  href="//www.motorpasion.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Motorpasión</a></li><li><a class="list-item foot-list-item"  href="//www.motorpasionmoto.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Motorpasión Moto</a></li><li><a class="list-item foot-list-item"  href="//www.motorpasionfuturo.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Motorpasión Futuro</a></li>     </ul>
+    </div>
+       <div class="links-category">
+     <p class="channel-title"> Economía </p>
+     <ul>
+       
+            <li><a class="list-item foot-list-item"  href="//www.elblogsalmon.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">El Blog Salmón</a></li><li><a class="list-item foot-list-item"  href="//www.pymesyautonomos.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Pymes y Autónomos</a></li>     </ul>
+    </div>
+       <div class="links-category">
+     <p class="channel-title"> Ocio </p>
+     <ul>
+       
+            <li><a class="list-item foot-list-item"  href="//www.espinof.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Espinof</a></li><li><a class="list-item foot-list-item"  href="//www.diariodelviajero.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Diario del Viajero</a></li><li><a class="list-item foot-list-item"  href="//www.papelenblanco.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Papel en Blanco</a></li>     </ul>
+    </div>
+     </div>
+  <div class="latam-blogs">
+    <p class="channel-title">Latinoamérica</p>
+       <div class="links-category">
+ <ul>
+  <li><a class="list-item foot-list-item" href="//www.xataka.com.mx?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Xataka México</a></li><li><a class="list-item foot-list-item" href="//www.xataka.com.co?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Xataka Colombia</a></li> </ul>
+</div>
+       <div class="links-category">
+ <ul>
+  <li><a class="list-item foot-list-item" href="//www.directoalpaladar.com.mx?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Directo Al Paladar México</a></li> </ul>
+</div>
+       <div class="links-category">
+ <ul>
+  <li><a class="list-item foot-list-item" href="//www.motorpasion.com.mx?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Motorpasión México</a></li> </ul>
+</div>
+     </div>
+  <div class="others-blogs">
+   <p class="channel-title">Participamos en</p>
+       <div class="links-category">
+ <ul>
+  <li><a class="list-item foot-list-item" href="http://www.nobbot.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Nobbot</a></li><li><a class="list-item foot-list-item" href="http://www.tecnologiadetuatu.elcorteingles.es?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Tecnología de tú a tú</a></li><li><a class="list-item foot-list-item" href="http://www.bloglenovo.es?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Blog Lenovo</a></li><li><a class="list-item foot-list-item" href="//www.esportsunlocked.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">eSports Unlocked by Orange</a></li> </ul>
+</div>
+       <div class="links-category">
+ <ul>
+  <li><a class="list-item foot-list-item" href="http://mimundo.philips.es?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Mi Mundo Philips</a></li><li><a class="list-item foot-list-item" href="http://muysaludable.sanitas.es?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Muy Saludable de Sanitas</a></li><li><a class="list-item foot-list-item" href="http://www.cocacolaespana.es?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer" rel="nofollow">Coca-Cola Journey</a></li><li><a class="list-item foot-list-item" href="http://www.coca-colamexico.com.mx?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Coca-Cola Journey México</a></li><li><a class="list-item foot-list-item" href="http://www.cocacolaportugal.pt?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer" rel="nofollow">Coca-Cola Journey Portugal</a></li><li><a class="list-item foot-list-item" href="http://zona.cocacola.es?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Zona Coca-Cola</a></li><li><a class="list-item foot-list-item" href="http://www.hipercor.es/descubre/ideas-para-comer?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Hipercor: Ideas para comer</a></li> </ul>
+</div>
+       <div class="links-category">
+ <ul>
+  <li><a class="list-item foot-list-item" href="http://www.circulaseguro.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Circula Seguro</a></li><li><a class="list-item foot-list-item" href="http://www.circulaseguro.pt?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Circula Seguro PT</a></li><li><a class="list-item foot-list-item" href="http://corrienteelectrica.renault.es?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Corriente Eléctrica</a></li> </ul>
+</div>
+       <div class="links-category">
+ <ul>
+  <li><a class="list-item foot-list-item" href="http://www.ennaranja.com?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">En Naranja</a></li><li><a class="list-item foot-list-item" href="http://blog.sage.es?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Sage Experience</a></li><li><a class="list-item foot-list-item" href="http://blogginzenith.zenithmedia.es?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Bloggin Zenith</a></li><li><a class="list-item foot-list-item" href="https://www.segurosdetuatu.es?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Seguros de tú a tú</a></li> </ul>
+</div>
+       <div class="links-category">
+ <ul>
+  <li><a class="list-item foot-list-item" href="http://www.bluebbva.com/bluemagazine?utm_source=applesfera&amp;utm_medium=network&amp;utm_campaign=footer">Bluemagazine</a></li> </ul>
+</div>
+     </div>
+ </div>
+ </div>
+    <aside id="head-favicons" class="head-favicons-container m-is-later js-head-favicons">
+ <div class="head-favicons">
+  <div class="head-favicons-index">
+   <a class="js-group-toggle" href="#" data-target="#head-network"><acronym title="Weblogs SL">WSL</acronym></a>
+  </div>
+  <div class="head-group"><span class="head-group-logo"></span></div>
+  <ul class="head-favicons-list">
+                                       <li>
+      <a class="favicon tec-xataka
+       " rel="nofollow" href="//www.xataka.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+       <span>Xataka</span>
+      </a>
+     </li>
+                          <li>
+      <a class="favicon tec-vidaextra
+       "  href="//www.vidaextra.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+       <span>Vida Extra</span>
+      </a>
+     </li>
+                          <li>
+      <a class="favicon oci-espinof
+       "  href="//www.espinof.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+       <span>Espinof</span>
+      </a>
+     </li>
+                          <li>
+      <a class="favicon eco-elblogsalmon
+       "  href="//www.elblogsalmon.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+       <span>El Blog Salmón</span>
+      </a>
+     </li>
+                          <li>
+      <a class="favicon tec-genbeta
+       "  href="//www.genbeta.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+       <span>Genbeta</span>
+      </a>
+     </li>
+                          <li>
+      <a class="favicon mot-motorpasion
+       "  href="//www.motorpasion.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+       <span>Motorpasión</span>
+      </a>
+     </li>
+                          <li>
+      <a class="favicon est-directoalpaladar
+       "  href="//www.directoalpaladar.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+       <span>Directo al Paladar</span>
+      </a>
+     </li>
+                          <li>
+      <a class="favicon est-bebesymas
+       "  href="//www.bebesymas.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+       <span>Bebés y Más</span>
+      </a>
+     </li>
+                          <li>
+      <a class="favicon oci-diariodelviajero
+       "  href="//www.diariodelviajero.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+       <span>Diario del Viajero</span>
+      </a>
+     </li>
+                          <li>
+      <a class="favicon tec-xatakaciencia
+       "  href="//www.xatakaciencia.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+       <span>Xataka Ciencia</span>
+      </a>
+     </li>
+                          <li>
+      <a class="favicon est-trendencias
+       "  href="//www.trendencias.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+       <span>Trendencias</span>
+      </a>
+     </li>
+                          <li>
+      <a class="favicon tec-applesfera
+              favicon-current
+       "  href="//www.applesfera.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+       <span>Applesfera</span>
+      </a>
+     </li>
+                          <li>
+      <a class="favicon tec-xatakamovil
+       "  href="//www.xatakamovil.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+       <span>Xataka Móvil</span>
+      </a>
+     </li>
+                          <li>
+      <a class="favicon mot-motorpasionmoto
+       "  href="//www.motorpasionmoto.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+       <span>Motorpasión Moto</span>
+      </a>
+     </li>
+                          <li>
+      <a class="favicon oci-papelenblanco
+       "  href="//www.papelenblanco.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+       <span>Papel en Blanco</span>
+      </a>
+     </li>
+                                     <li>
+      <a class="favicon est-decoesfera
+       " rel="nofollow" href="//decoracion.trendencias.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+       <span>Decoesfera</span>
+      </a>
+     </li>
+                                     <li>
+      <a class="favicon est-vitonica
+       " rel="nofollow" href="//www.vitonica.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+       <span>Vitónica</span>
+      </a>
+     </li>
+                          <li>
+      <a class="favicon est-poprosa
+       "  href="//www.poprosa.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+       <span>Poprosa</span>
+      </a>
+     </li>
+                          <li>
+      <a class="favicon tec-xatakafoto
+       "  href="//www.xatakafoto.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+       <span>Xataka Foto</span>
+      </a>
+     </li>
+                          <li>
+      <a class="favicon eco-pymesyautonomos
+       "  href="//www.pymesyautonomos.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+       <span>Pymes y Autónomos</span>
+      </a>
+     </li>
+                          <li>
+      <a class="favicon est-trendenciasbelleza
+       "  href="//belleza.trendencias.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+       <span>Trendencias Belleza</span>
+      </a>
+     </li>
+                          <li>
+      <a class="favicon est-trendenciashombre
+       "  href="//www.trendenciashombre.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+       <span>Trendencias Hombre</span>
+      </a>
+     </li>
+                          <li>
+      <a class="favicon tec-xatakandroid
+       "  href="//www.xatakandroid.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+       <span>Xataka Android</span>
+      </a>
+     </li>
+                          <li>
+      <a class="favicon tec-genbetadev
+       "  href="//www.genbetadev.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+       <span>Genbeta Dev</span>
+      </a>
+     </li>
+                          <li>
+      <a class="favicon mot-motorpasionfuturo
+       "  href="//www.motorpasionfuturo.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+       <span>Motorpasión Futuro</span>
+      </a>
+     </li>
+                          <li>
+      <a class="favicon tec-xatakahome
+       "  href="//www.xatakahome.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+       <span>Xataka Smart Home</span>
+      </a>
+     </li>
+                          <li>
+      <a class="favicon tec-xatakawindows
+       "  href="//www.xatakawindows.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+       <span>Xataka Windows</span>
+      </a>
+     </li>
+                                                    <li>
+      <a class="favicon tec-magnet
+       "  href="//magnet.xataka.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+       <span>Magnet</span>
+      </a>
+     </li>
+                                <li>
+       <a class="favicon tec-compradiccion "  href="//www.compradiccion.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+        <span>Compradiccion</span>
+       </a>
+      </li>
+                                       <li>
+         <a class="favicon tec-xatakaesports "  href="//esports.xataka.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+          <span>Xataka eSports</span>
+         </a>
+        </li>
+              </ul>
+ </div>
+</aside>
+<aside class="favicons-expanded-container js-favicons-expand" id="head-network">
+ <div class="favicons-expanded">
+     <div class="favicons-expanded-inner">
+    <ul>
+     <li><h4>Tecnología</h4></li>
+                                                     <li>
+        <a class="favicon tec-xataka" rel="nofollow" href="//www.xataka.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+         <span></span>Xataka
+        </a>
+       </li>
+                                    <li>
+        <a class="favicon tec-xatakamovil"  href="//www.xatakamovil.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+         <span></span>Xataka Móvil
+        </a>
+       </li>
+                                    <li>
+        <a class="favicon tec-xatakafoto"  href="//www.xatakafoto.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+         <span></span>Xataka Foto
+        </a>
+       </li>
+                                    <li>
+        <a class="favicon tec-xatakandroid"  href="//www.xatakandroid.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+         <span></span>Xataka Android
+        </a>
+       </li>
+                                    <li>
+        <a class="favicon tec-xatakahome"  href="//www.xatakahome.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+         <span></span>Xataka Smart Home
+        </a>
+       </li>
+                                    <li>
+        <a class="favicon tec-xatakawindows"  href="//www.xatakawindows.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+         <span></span>Xataka Windows
+        </a>
+       </li>
+                                    <li>
+        <a class="favicon tec-xatakaciencia"  href="//www.xatakaciencia.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+         <span></span>Xataka Ciencia
+        </a>
+       </li>
+                                    <li>
+        <a class="favicon tec-applesfera"  href="//www.applesfera.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+         <span></span>Applesfera
+        </a>
+       </li>
+                                    <li>
+        <a class="favicon tec-vidaextra"  href="//www.vidaextra.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+         <span></span>Vida Extra
+        </a>
+       </li>
+                                    <li>
+        <a class="favicon tec-genbeta"  href="//www.genbeta.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+         <span></span>Genbeta
+        </a>
+       </li>
+                                    <li>
+        <a class="favicon tec-genbetadev"  href="//www.genbetadev.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+         <span></span>Genbeta Dev
+        </a>
+       </li>
+                                    <li>
+        <a class="favicon tec-magnet"  href="//magnet.xataka.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+         <span></span>Magnet
+        </a>
+       </li>
+                                            <li>
+         <a class="favicon tec-compradiccion"  href="//www.compradiccion.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+          <span></span>Compradiccion
+         </a>
+        </li>
+                                                   <li>
+         <a class="favicon tec-xatakaesports"  href="//esports.xataka.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+          <span></span>Xataka eSports
+         </a>
+        </li>
+                      </ul>
+   </div>
+     <div class="favicons-expanded-inner">
+    <ul>
+     <li><h4>Estilo de vida</h4></li>
+                                        <li>
+        <a class="favicon est-trendencias"  href="//www.trendencias.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+         <span></span>Trendencias
+        </a>
+       </li>
+                                    <li>
+        <a class="favicon est-trendenciasbelleza"  href="//belleza.trendencias.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+         <span></span>Trendencias Belleza
+        </a>
+       </li>
+                                    <li>
+        <a class="favicon est-trendenciashombre"  href="//www.trendenciashombre.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+         <span></span>Trendencias Hombre
+        </a>
+       </li>
+                                                                        <li>
+        <a class="favicon est-directoalpaladar"  href="//www.directoalpaladar.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+         <span></span>Directo al Paladar
+        </a>
+       </li>
+                                    <li>
+        <a class="favicon est-bebesymas"  href="//www.bebesymas.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+         <span></span>Bebés y Más
+        </a>
+       </li>
+                                                 <li>
+        <a class="favicon est-vitonica" rel="nofollow" href="//www.vitonica.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+         <span></span>Vitónica
+        </a>
+       </li>
+                                                 <li>
+        <a class="favicon est-decoesfera" rel="nofollow" href="//decoracion.trendencias.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+         <span></span>Decoesfera
+        </a>
+       </li>
+                                    <li>
+        <a class="favicon est-poprosa"  href="//www.poprosa.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+         <span></span>Poprosa
+        </a>
+       </li>
+               </ul>
+   </div>
+     <div class="favicons-expanded-inner">
+    <ul>
+     <li><h4>Motor</h4></li>
+                                        <li>
+        <a class="favicon mot-motorpasion"  href="//www.motorpasion.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+         <span></span>Motorpasión
+        </a>
+       </li>
+                                    <li>
+        <a class="favicon mot-motorpasionmoto"  href="//www.motorpasionmoto.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+         <span></span>Motorpasión Moto
+        </a>
+       </li>
+                                    <li>
+        <a class="favicon mot-motorpasionfuturo"  href="//www.motorpasionfuturo.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+         <span></span>Motorpasión Futuro
+        </a>
+       </li>
+               </ul>
+   </div>
+     <div class="favicons-expanded-inner">
+    <ul>
+     <li><h4>Economía</h4></li>
+                                        <li>
+        <a class="favicon eco-elblogsalmon"  href="//www.elblogsalmon.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+         <span></span>El Blog Salmón
+        </a>
+       </li>
+                                    <li>
+        <a class="favicon eco-pymesyautonomos"  href="//www.pymesyautonomos.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+         <span></span>Pymes y Autónomos
+        </a>
+       </li>
+               </ul>
+   </div>
+     <div class="favicons-expanded-inner">
+    <ul>
+     <li><h4>Ocio</h4></li>
+                                        <li>
+        <a class="favicon oci-espinof"  href="//www.espinof.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+         <span></span>Espinof
+        </a>
+       </li>
+                                    <li>
+        <a class="favicon oci-diariodelviajero"  href="//www.diariodelviajero.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+         <span></span>Diario del Viajero
+        </a>
+       </li>
+                                    <li>
+        <a class="favicon oci-papelenblanco"  href="//www.papelenblanco.com?utm_source=applesfera&utm_medium=network&utm_campaign=favicons">
+         <span></span>Papel en Blanco
+        </a>
+       </li>
+               </ul>
+   </div>
+   </div>
+ <div class="favicons-expanded favicons-new-channel">
+  <h2 class="channel-title">Latinoamérica</h2>
+     <div class="favicons-expanded-inner">
+    <ul>
+                       <li>
+       <a  href="//www.xataka.com.mx?utm_source=applesfera&utm_medium=network&utm_campaign=favicons" class="favicon tec-xataka">
+        <span></span>Xataka México
+       </a>
+      </li>
+                       <li>
+       <a  href="//www.xataka.com.co?utm_source=applesfera&utm_medium=network&utm_campaign=favicons" class="favicon tec-xataka">
+        <span></span>Xataka Colombia
+       </a>
+      </li>
+         </ul>
+   </div>
+     <div class="favicons-expanded-inner">
+    <ul>
+                       <li>
+       <a  href="//www.directoalpaladar.com.mx?utm_source=applesfera&utm_medium=network&utm_campaign=favicons" class="favicon est-directoalpaladar">
+        <span></span>Directo Al Paladar México
+       </a>
+      </li>
+         </ul>
+   </div>
+     <div class="favicons-expanded-inner">
+    <ul>
+                       <li>
+       <a  href="//www.motorpasion.com.mx?utm_source=applesfera&utm_medium=network&utm_campaign=favicons" class="favicon mot-motorpasion">
+        <span></span>Motorpasión México
+       </a>
+      </li>
+         </ul>
+   </div>
+   </div>
+</aside>
+ </section>
+<div id="adblock_placeholder"></div>
+<script>
+ (function() {
+  var form = document.createElement('form');
+  form.method = 'POST';
+  form.classList.add('js-subscription', 'newsletter-form', 'foot-newsletter-form');
+  form.setAttribute('data-url', "http://mailer.weblogssl.com/subscribe_check/#email#/applesfera/Applesfera");
+  form.innerHTML = '<p class="nav-heading">Recibe un email al día con los artículos de Applesfera: </p>\
+   <p><input class="js-email newsletter-input" type="email" placeholder="Tu correo electrónico">\
+   <button class="btn-primary newsletter-button" type="submit">Suscribir</button></p>';
+  var newsletterContainer = document.getElementById('newsletter');
+  newsletterContainer.insertBefore(form, newsletterContainer.firstChild);
+ })();
+</script>
+
+<div id="fb-root"></div>                   <div id="cookies-overlay" class="cookies-overlay"></div>           </div>
+    </div>
+         <script>
+var country = 'CH';
+</script>
+<script type="text/javascript">
+ var WSL2 = WSL2 || {};
+ WSL2 = {
+  config: {
+   fbapikey: "357292918076",
+   cookieDomain: "",
+   siteName: "Applesfera",
+   imagePath: "https://img.weblogssl.com/css/applesfera/v7",
+   desktopSiteUrl: "https://www.applesfera.com",
+   redirectDesktopRoot: 'false',
+   postId: 107549,
+   postTitle: "\u00BFTe\x20pierdes\x20por\x20las\x20carpetas\x20del\x20Finder\x3F\x20Reorganiza\x20su\x20barra\x20lateral\x20para\x20entender\x20mejor\x20su\x20estructura",
+   tweetText: "Comentario%20a%20%C2%BFTe%20pierdes%20por%20las%20carpetas%20del%20Finder%3F%20Reorganiza%20su%20barra%20lateral%20para%20entender...",
+   twitterName: "applesfera",
+   device: "desktop",
+   enabledTwitterLogin: "1",
+   postUrl: "https://www.applesfera.com/trucos/te-pierdes-por-las-carpetas-del-finder-reorganiza-su-barra-lateral-para-entender-mejor-su-estructura",
+   enableRecommendationTracker: "1",
+   enableAmplifyABTesting: "0",
+   enabledRecoverPassword: "1",
+   enableFbQuoteSharing: "1",
+   enableCommentDeleteOption: "1",
+   disableDesktopLazyLoadingImages: "1",
+   enableSidebarRecommendations: "1",
+   enableEditorialRecommendations: "1",
+   blogMeta: {
+    mnemonic: "APS",
+    blogDomain: "applesfera.com"
+   },
+   enableAdblockDetection: "1",
+   enableAdblockNetflixCampaign: "0",
+   enableAmplifyTracker: "1",
+   recommendationEngineVersion: 1,
+   enableCen2AdInComments: 1,
+   enablePinterestSharing: 0
+  }
+ };
+ /* Chartbeat snippet */
+   var _sf_async_config = {};
+  _sf_async_config.sections = "";
+  _sf_async_config.authors = "miguel lópez";
+  _sf_async_config.uid = "54296";
+  _sf_async_config.domain = "applesfera.com";
+  _sf_async_config.useCanonical = true;
+  _sf_async_config.path = _sf_async_config.domain + window.location.pathname;
+  (function(){
+   function loadChartbeat() {
+    window._sf_endpt=(new Date()).getTime();
+    var e = document.createElement("script");
+    e.setAttribute("language", "javascript");
+    e.setAttribute("type", "text/javascript");
+    e.setAttribute('src', '//static.chartbeat.com/js/chartbeat.js');
+    document.body.appendChild(e);
+   }
+   var oldonload = window.onload;
+   window.onload = (typeof window.onload != "function") ?
+   loadChartbeat : function() { oldonload(); loadChartbeat(); };
+  })();
+ </script>
+ <script type="text/javascript" async="true" src="https://img.weblogssl.com/LPbackend/prod/v2/js/postpage-1460.js"></script>
+<script type="text/javascript">
+ if ('ES' === country) {
+  (function() {
+   var e = document.createElement("script");
+   var s = document.getElementsByTagName("script")[0];
+   e.src = "//t.audience.network/b/?ah=e4da3b7fbbce2345d7772b0674a318d5&rnd=" + (new Date()).getTime();
+   e.async = true;
+   s.parentNode.insertBefore(e, s);
+  })();
+ }
+</script>
+       <script type="text/javascript" async="true" src="https://lrk0kdx4ri.execute-api.eu-west-1.amazonaws.com/production/recommendation/applesfera/te-pierdes-por-las-carpetas-del-finder-reorganiza-su-barra-lateral-para-entender-mejor-su-estructura/CH/1?category=trucos"></script>
+ <script type="text/javascript" async="true" src="https://lrk0kdx4ri.execute-api.eu-west-1.amazonaws.com/production/editorial-recommendations/applesfera"></script>
+                  
+       </div>
+  </div>
+     </body>
+</html>

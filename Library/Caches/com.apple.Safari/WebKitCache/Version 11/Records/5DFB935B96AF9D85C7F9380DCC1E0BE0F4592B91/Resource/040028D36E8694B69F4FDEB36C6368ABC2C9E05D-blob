@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es"
+>
+<head>
+    <title>Inicializar la base de datos en Django - SecNot</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href="http://www.SecNot.com/images/favicon.png" rel="icon">
+
+<link rel="canonical" href="http://www.SecNot.com/django-incializar-db.html">
+
+        <meta name="author" content="SecNot" />
+        <meta name="keywords" content="Django,Loaddata,Dumpdata" />
+        <meta name="description" content="Como almacenar los datos de inicialización de la base de datos de una aplicación Django." />
+
+        <meta property="og:site_name" content="SecNot" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Inicializar la base de datos en Django"/>
+        <meta property="og:url" content="http://www.SecNot.com/django-incializar-db.html"/>
+        <meta property="og:description" content="Como almacenar los datos de inicialización de la base de datos de una aplicación Django."/>
+        <meta property="article:published_time" content="2015-06-22" />
+            <meta property="article:section" content="Desarrollo Web" />
+            <meta property="article:tag" content="Django" />
+            <meta property="article:tag" content="Loaddata" />
+            <meta property="article:tag" content="Dumpdata" />
+            <meta property="article:author" content="SecNot" />
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://www.SecNot.com/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="http://www.SecNot.com/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="http://www.SecNot.com/theme/css/pygments/secnot.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://www.SecNot.com/theme/css/style.css" type="text/css"/>
+
+        <link href="http://www.SecNot.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+              title="SecNot ATOM Feed"/>
+
+</head>
+<body>
+
+<!-- Navbar-->
+<div class="container">
+<div class="navbar navbar-inverse" role="navigation">
+	<div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="http://www.SecNot.com/" class="navbar-brand">
+SecNot            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav pull-right">
+                         <li><a href="http://www.SecNot.com/pages/contacto.html">
+                             Contacto
+                          </a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="http://www.SecNot.com/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archivo</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+</div>
+<!-- Banner -->
+<!-- End Banner -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-9">
+
+    <section id="content">
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+            <header class="page-header">
+                <h1 itemprop="headline">
+                    <a href="http://www.SecNot.com/django-incializar-db.html"
+					   itemprop="url"
+                       rel="bookmark"
+                       title="Permalink to Inicializar la base de datos en Django">
+                        Inicializar la base de datos en Django
+                    </a>
+                </h1>
+                <div class="article-info">
+<footer class="post-info">
+    <span class="label label-default">Publicado</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time itemprop="datePublished" datetime="2015-06-22T15:49:00+02:00"> lun 22 junio 2015</time>
+    </span>
+
+
+    
+<span class="label label-default">Tags</span>
+<span itemprop="keywords">
+	<a href="http://www.SecNot.com/tag/django.html">Django</a>
+        /
+	<a href="http://www.SecNot.com/tag/loaddata.html">Loaddata</a>
+        /
+	<a href="http://www.SecNot.com/tag/dumpdata.html">Dumpdata</a>
+</span>
+    
+</footer><!-- /.post-info -->                </div>
+            </header>
+            <div itemprop="articleBody" class="entry-content">
+                <p>Algunas veces es necesario inicializar la base de datos antes de poder usar
+una aplicación, si esta aplicación no va a reutilizarse no es ningún problema,
+en cambio si es algo que planeas usar en varios proyectos, es mucho mas práctico
+añadir los datos de inicialización en la misma aplicación y cargarlos usando
+<strong>loaddata</strong>. Imaginemos una aplicación para la gestión de los productos de una
+tienda, en la que tenemos los siguientes modelos:</p>
+<div class="highlight"><pre><span class="c">#tienda/models.py</span>
+<span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="k">class</span> <span class="nc">Categoria</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+
+    <span class="n">nombre</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+    <span class="n">slug</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">SlugField</span><span class="p">(</span><span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">db_index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">descripcion</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">Producto</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+
+    <span class="n">nombre</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Charfield</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+    <span class="n">descripcion</span> <span class="n">models</span><span class="o">.</span><span class="n">TextField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+    <span class="n">precio</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DecimalField</span><span class="p">()</span>
+    <span class="n">categoria</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Categoria</span><span class="p">)</span>
+</pre></div>
+<p>Django permite crear un directorio llamado <strong>fixtures</strong> dentro de la aplicación donde
+almacenar archivos de datos que luego pueden ser volcados a la base de datos para
+inicializarla.</p>
+<p>Estos archivos pueden crearse usado tres formatos <strong>JSON</strong>, <strong>YAML</strong>, <strong>XML</strong>, yo creo
+que los dos primeros son la mejor opción, más fáciles de leer y modificar manualmente.
+Veamos un ejemplo para <strong>JSON</strong>:</p>
+<div class="highlight"><pre><span class="p">[</span>
+<span class="p">{</span>
+    <span class="nt">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;tienda.categoria&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;fields&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;nombre&quot;</span><span class="p">:</span> <span class="s2">&quot;Ordenadores portatiles&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;slug&quot;</span><span class="p">:</span> <span class="s2">&quot;portatiles&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;descripcion&quot;</span><span class="p">:</span> <span class="s2">&quot;Ordenadores portatiles de 13 a 17 pulgadas&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;pk&quot;</span><span class="p">:</span> <span class="mi">100000</span>
+<span class="p">},</span>
+<span class="p">{</span>
+    <span class="nt">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;tienda.categoria&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;fields&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;nombre&quot;</span><span class="p">:</span> <span class="s2">&quot;Tablets&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;slug&quot;</span><span class="p">:</span> <span class="s2">&quot;tablets&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;descripcion&quot;</span><span class="p">:</span> <span class="s2">&quot;Tablets android&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;pk&quot;</span><span class="p">:</span> <span class="mi">100001</span>
+<span class="p">},</span>
+<span class="p">{</span>
+    <span class="nt">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;tienda.producto&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;fields&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;nombre&quot;</span><span class="p">:</span> <span class="s2">&quot;ASUS MeMO Pad 10 ME103K 16GB&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;precio&quot;</span><span class="p">:</span> <span class="s2">&quot;120.50&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;descripcion&quot;</span><span class="p">:</span> <span class="s2">&quot;La ASUS MeMO Pad 10 se creó pensando en...&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;categoria&quot;</span><span class="p">:</span> <span class="mi">100001</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+<p>y los mismos datos en <strong>YAML</strong>:</p>
+<div class="highlight"><pre><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">model</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">tienda.categoria</span>
+<span class="l-Scalar-Plain">pk</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">100000</span>
+<span class="l-Scalar-Plain">fields</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">nombre</span><span class="p-Indicator">:</span> <span class="s">&quot;Ordenadores</span><span class="nv"> </span><span class="s">portatiles&quot;</span>
+    <span class="l-Scalar-Plain">slug</span><span class="p-Indicator">:</span> <span class="s">&quot;portatiles&quot;</span>
+    <span class="l-Scalar-Plain">descripcion</span><span class="p-Indicator">:</span> <span class="s">&quot;Ordenadores</span><span class="nv"> </span><span class="s">portatiles</span><span class="nv"> </span><span class="s">de</span><span class="nv"> </span><span class="s">13</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">17</span><span class="nv"> </span><span class="s">pulgadas&quot;</span>
+
+<span class="l-Scalar-Plain">-model</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">tienda.categoria</span>
+<span class="l-Scalar-Plain">pk</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">100001</span>
+<span class="l-Scalar-Plain">fields</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">nombre</span><span class="p-Indicator">:</span> <span class="s">&quot;Tablets&quot;</span>
+    <span class="l-Scalar-Plain">slug</span><span class="p-Indicator">:</span> <span class="s">&quot;tablets&quot;</span>
+    <span class="l-Scalar-Plain">descripcion</span><span class="p-Indicator">:</span> <span class="s">&quot;Tablets</span><span class="nv"> </span><span class="s">Android&quot;</span>
+
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">model</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">tienda.producto</span>
+<span class="l-Scalar-Plain">pk</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">100000</span>
+<span class="l-Scalar-Plain">fields</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">nombre</span><span class="p-Indicator">:</span> <span class="s">&quot;ASUS</span><span class="nv"> </span><span class="s">MeMO</span><span class="nv"> </span><span class="s">Pad</span><span class="nv"> </span><span class="s">10</span><span class="nv"> </span><span class="s">ME103K</span><span class="nv"> </span><span class="s">16GB&quot;</span>
+    <span class="l-Scalar-Plain">precio</span><span class="p-Indicator">:</span> <span class="s">&quot;120.50&quot;</span>
+    <span class="l-Scalar-Plain">descripcion</span><span class="p-Indicator">:</span> <span class="s">&quot;La</span><span class="nv"> </span><span class="s">ASUS</span><span class="nv"> </span><span class="s">MeMO</span><span class="nv"> </span><span class="s">Pad</span><span class="nv"> </span><span class="s">10</span><span class="nv"> </span><span class="s">se</span><span class="nv"> </span><span class="s">creó</span><span class="nv"> </span><span class="s">pensando</span><span class="nv"> </span><span class="s">en...&quot;</span>
+    <span class="l-Scalar-Plain">categoria</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">100001</span>
+</pre></div>
+<p>Si tienes el archivo de inicialización en la ruta <strong>tienda/fixtures/categorias.json</strong>, se
+puede cargar los datos con:</p>
+<div class="highlight"><pre><span class="nv">$ </span>python manage.py loaddata categorias
+</pre></div>
+<p>Por último aunque es posible crear y editar manualmente los archivos, Django proporciona
+una herramienta para volcar la base de datos a un archivo usando cualquiera de los formatos
+soportado, con lo que se puede usar el interfaz Admin para crear los datos y luego volcarlos
+con:</p>
+<div class="highlight"><pre><span class="nv">$ </span>python manage.py dumpdata tienda --indent <span class="m">4</span> --format json --output tienda/fixtures/categorias.json
+</pre></div>
+<p>Y eso es todo por hoy.</p>
+<div class="section" id="enlaces">
+<h2>Enlaces</h2>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.djangoproject.com/en/dev/howto/initial-data/">Django initial-data Howto</a></li>
+<li><a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/django-admin/#django-admin-dumpdata">Django dumpdata Referece</a></li>
+</ul>
+</div>
+
+            </div>
+            <!-- /.entry-content -->
+    <a href="https://twitter.com/share" class="twitter-share-button" data-via="SecNot" data-lang="en" data-size="large" data-related="SecNot">Tweet</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    <hr/>
+    <section class="comments" id="comments">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'secnot'; // required: replace example with your forum shortname
+
+                    var disqus_identifier = 'django-incializar-db';
+                var disqus_url = 'http://www.SecNot.com/django-incializar-db.html';
+
+            var disqus_config = function () {
+                this.language = "es";
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-md-3 visible-md visible-lg" id="sidebar">
+            <aside>
+
+<section class="sidebar">
+    <ul class="list-group list-group-flush">
+
+            <li class="list-group-item"><h4><span class="icon-label">Categorías</span></h4>
+                <ul class="list-group" id="categories">
+                    <li class="list-group-item">
+                        <a href="http://www.SecNot.com/category/administracion.html">
+                            Administración
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://www.SecNot.com/category/desarrollo-web.html">
+                            Desarrollo Web
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://www.SecNot.com/category/programacion.html">
+                            Programación
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="http://www.SecNot.com/category/seguridad.html">
+                            Seguridad
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        
+    <li class="list-group-item"><h4><span class="icon-label">Enlaces</span></h4>
+      <ul class="list-group" id="links">
+        <li class="list-group-item">
+            <a href="http://www.djangoproject.com/" target="_blank">
+                Django
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://ccbv.co.uk" target="_blank">
+                Classy Class-Based Views
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://python.org/" target="_blank">
+                Python.org
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://insecure.org" target="_blank">
+                Insecure.org
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://stackoverflow.com" target="_blank">
+                StackOverflow.com
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://serverfault.com" target="_blank">
+                serverfault.com
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://www.fullstackpython.com/" target="_blank">
+                Full Stack Python
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://www.secnot.com/commandos-utiles.html" target="_blank">
+                Comandos Útiles
+            </a>
+        </li>
+      </ul>
+    </li>
+        
+		<li class="list-group-item">
+			<ul class="list-group">
+				<li class="list-group-item">
+					<a href="https://twitter.com/SecNot" style="padding-right:10px;"><i class="fa fa-twitter-square fa-2x"></i></a>
+					<a href="https://github.com/secnot/" style="padding-right:10px;"><i class="fa fa-github-square fa-2x"></i></a>
+				</li>
+			</ul>
+		</li>
+
+
+    </ul>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <div class="row">
+         <div class="col-xs-10"><p>&copy; 2016 SecNot -              <small>    Contenidos
+  bajo <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Licencia Creative Commons 4.0 </a><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="//i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>
+
+</small></p>
+         </div>
+      </div>
+   </div>
+</footer>
+<!--<script src="http://www.SecNot.com/theme/js/jquery.min.js"></script>-->
+
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="http://www.SecNot.com/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="http://www.SecNot.com/theme/js/respond.min.js"></script>
+
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'secnot'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-47470582-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+</body>
+</html>
