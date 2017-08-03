@@ -1,0 +1,1588 @@
+69543     
+Delivered-To: sayde.gutierrez92@gmail.com
+Received: by 10.31.148.147 with SMTP id w141csp6357777vkd;
+        Fri, 30 Jun 2017 13:29:44 -0700 (PDT)
+X-Received: by 10.84.218.206 with SMTP id g14mr26207040plm.290.1498854584285;
+        Fri, 30 Jun 2017 13:29:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1498854584; cv=none;
+        d=google.com; s=arc-20160816;
+        b=WiG7ITI0ZU5v9COCfcNfkQOxve3FncoXfvdIH9HjKHMomXyTzevuxons26PiymW/e2
+         VgFKc/ZB+n/1VM0bFFppNvuVOLT22sF0OGwdycYONyYcTg24Ogo7pAyjkBkjrxc4MIKz
+         YzWPvWhY5J9VJ044C9fRDN8ds/1gDyHqmCGT2op9m1t2fLED0JIo4kfmKRs4qX8DAULg
+         Rd9YyObdsH6Zr2enbiV/pg4vV9JOmT+WD2xzwRGYCdnawwUCwQMBrEKMS6PLzqq5bu+B
+         YXO09bM/JAc+ObtKV6e+eRGxGNCTs2nNpHPI0vImfC6RGx03f2WKwJEyxx1GV4Of4P5X
+         mV7g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:mime-version:subject:message-id:to:reply-to:from
+         :date:dkim-signature:arc-authentication-results;
+        bh=ENoYvqGSaBJYYdFu/9STa2oDVe0jshhPEBIO3TPkS4E=;
+        b=VQFIZaGPao9iAalIypB5B4VGYBrHq95HGJfS5oaC9gw4YrWwPddtcm3JeN4Ras8EBQ
+         Sy0hpoSyqkzNDLccsXFuo6jG8dWm2UvTCEaVZewXQwh7dMihLLhqhZJGXZ5yiTG/9or2
+         Mh3xwPaOylKQ11KVEudKCCYa9wGSLArMR2zdGvDuG24NZnUzwZPOKNwpkBnjHe/qgkI+
+         AZz6pclKu28if06T92/niRXL1JeFXrUlblilqqzBhXXspaR1EJzkkcWuBF/vjAUAe3Xx
+         UggZ9KgL3GpFALU2Yoetm5wHPFFREwUwygPzS3z1RdVCwcl9KbUve0iZGEEPlpBXcHC9
+         VbzQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@mktdns.com header.b=FjbyyCI3;
+       spf=pass (google.com: domain of 059-vfz-834.0.17416.0.0.8030.9.37856707@em-sj-77.mktomail.com designates 199.15.215.34 as permitted sender) smtp.mailfrom=059-VFZ-834.0.17416.0.0.8030.9.37856707@em-sj-77.mktomail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=cisco.com
+Return-Path: <059-VFZ-834.0.17416.0.0.8030.9.37856707@em-sj-77.mktomail.com>
+Received: from dragonfly.mktdns.com (dragonfly.mktdns.com. [199.15.215.34])
+        by mx.google.com with ESMTPS id f16si2460846plk.281.2017.06.30.13.29.43
+        for <sayde.gutierrez92@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 30 Jun 2017 13:29:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 059-vfz-834.0.17416.0.0.8030.9.37856707@em-sj-77.mktomail.com designates 199.15.215.34 as permitted sender) client-ip=199.15.215.34;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mktdns.com header.b=FjbyyCI3;
+       spf=pass (google.com: domain of 059-vfz-834.0.17416.0.0.8030.9.37856707@em-sj-77.mktomail.com designates 199.15.215.34 as permitted sender) smtp.mailfrom=059-VFZ-834.0.17416.0.0.8030.9.37856707@em-sj-77.mktomail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=cisco.com
+Return-Path: <netacademail@external.cisco.com>
+X-MSFBL: c2F5ZGUuZ3V0aWVycmV6OTJAZ21haWwuY29tQGR2cC0xOTktMTUtMjE1LTM0QGJn
+	LXNqZC0zNUAwNTktVkZaLTgzNDo4MDYzOjQ3NjU6MTI4Njk6MDo4MDMwOjk6MTc0
+	MTY6Mzc4NTY3MDc=
+Received: from [10.0.87.249] ([10.0.87.249:41148] helo=sjmas01.marketo.org)
+	by sjmta03.marketo.org (envelope-from <netacademail@external.cisco.com>)
+	(ecelerity 3.6.8.47404 r(Core:3.6.8.0)) with ESMTP
+	id 3F/43-13619-5B4B6595; Fri, 30 Jun 2017 15:29:41 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1498854581;
+	s=m1; d=mktdns.com; i=@mktdns.com;
+	h=Date:From:To:Subject:MIME-Version:Content-Type;
+	bh=ENoYvqGSaBJYYdFu/9STa2oDVe0jshhPEBIO3TPkS4E=;
+	b=FjbyyCI3gPtsjPWmGS9bp0fh/GANlLexjhAQ9G+5ukwlN26dgLYWZSqQpp4V93b0
+	SuFEm4BE9GbKWUlIjyDxRSN0Apih+oG1OWjH1PUDuW/y5WbIJhaOmJzbps/WoC92mJJ
+	wsBeFXONcn1ngRkJP6Tt1cDYIpt9PJUUqdjPFnP0=
+Date: Fri, 30 Jun 2017 15:29:41 -0500 (CDT)
+From: Cisco Networking Academy <netacademail@external.cisco.com>
+Reply-To: netacademail@external.cisco.com
+To: sayde.gutierrez92@gmail.com
+Message-ID: <2078100813.1733920682.1498854581753.JavaMail.root@sjmas01.marketo.org>
+Subject: Noticias de Junio para estudiantes
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_1733920680_30644935.1498854581752"
+X-PVIQ: mkto-059VFZ834-000001-000000-017416
+X-Binding: bg-sjd-35
+X-MarketoID: 059-VFZ-834:8063:4765:12869:0:8030:9:17416:37856707
+X-MktArchive: false
+List-Unsubscribe: <mailto:INCUS3ZNL5QU23JNMZTXC3LCKZSXELLPOZBGI3ZYJFIEE3CVMQ4VEULNMRYDAWLHGN4DAPI.17416.8030.9@unsub-sj.mktomail.com>
+X-Mailfrom: 059-VFZ-834.0.17416.0.0.8030.9.37856707@em-sj-77.mktomail.com
+X-MSYS-API: {"options":{"open_tracking":false,"click_tracking":false}}
+X-MktMailDKIM: true
+
+------=_Part_1733920680_30644935.1498854581752
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Bolet=C3=ADn de Estudiante
+Read in English <http://nsmail.cisconetspace.com/Xf403SF2z000ZFygQ00nVG0>
+Edici=C3=B3n: junio 2017
+Habilidades profesionales para t=C3=A9cnicos    Prepararte para unirte a la=
+ fuerza laboral puede ser abrumador. Las habilidades t=C3=A9cnicas son impo=
+rtantes, pero =C2=BFsabes qu=C3=A9 otras habilidades profesionales necesita=
+s adquirir, sin importar qu=C3=A9 industria o carrera escojas? Conoce las c=
+ompetencias profesionales que m=C3=A1s interesan a los empleadores y que a =
+menudo los candidatos carecen. Esta serie de webinars pone de relieve las p=
+rincipales competencias profesionales que buscan los empleadores y le propo=
+rciona ideas sobre c=C3=B3mo ampliar tu nivel de habilidades.              =
+            Ver Series <http://nsmail.cisconetspace.com/ynFVgQ3z0f04ZFW0y80=
+0200>
+Webinar: Qu=C3=A9 esperar cuando trabaje para Cisco
+=20
+   Es importante saber si tienes las habilidades y la experiencia adecuadas=
+ para conseguir un trabajo en Cisco. Pero tambi=C3=A9n es importante conoce=
+r que se puede esperar despu=C3=A9s de venir a trabajar en Cisco. En esta s=
+esi=C3=B3n, hemos invitado a ex alumnos de Networking Academy que actualmen=
+te laboran en Cisco a compartir consejos, responder preguntas y mostrar c=
+=C3=B3mo sus habilidades de NetAcad se traducen al lugar de trabajo de Cisc=
+o=20
+        =20
+=20
+               Ver Webinars <http://nsmail.cisconetspace.com/wFgZzyfV400003=
+n920Q0X0F>
+Experiencias que impulsan tu carrera    Est=C3=A1s obteniendo la educaci=C3=
+=B3n que necesita para convertirte en un profesional que trabaja. Sin embar=
+go, la educaci=C3=B3n por s=C3=AD sola no te conseguir=C3=A1 un trabajo. Ta=
+mbi=C3=A9n necesita tener experiencias pr=C3=A1cticas que pongan tus habili=
+dades tecnol=C3=B3gicas en acci=C3=B3n y te ayuden a obtener otras habilida=
+des vitales de tu carrera. Esta serie de seminarios web cubre oportunidades=
+ para obtener este tipo de experiencia, d=C3=B3nde buscarlas y lo que tus p=
+ares y potenciales empleadores consideran valioso.         =20
+                Ver Serie <http://nsmail.cisconetspace.com/n0V30Ya00Qz40ZF0=
+gn20fFy>
+Convierte en h=C3=A9roe de la ciberseguridad    =C2=BFRecuerdas que hace m=
+=C3=A1s de un mes #WannaCry puso en alerta m=C3=A1xima a 99 naciones? El ma=
+rtes los cibercriminales lo hicieron de nuevo. Este ataque nos recuerda que=
+ el mundo necesita h=C3=A9roes de la ciberseguridad ahora.
+         =20
+                Conoce m=C3=A1s <http://nsmail.cisconetspace.com/JF04VQ0KnZ=
+0zWFg0f3002y0>
+Webinar en Espa=C3=B1ol de IoT,=20
+Ciberseguridad y Meraki
+
+ =20
+
+
+Participa de este Webinar en espa=C3=B1ol el jueves, 13 de Julio 2017.=C2=
+=A0 Tendremos dos sesiones de 90 minutos cada una.=20
+
+Sesi=C3=B3n 1: inicio 11:00 AM (Hora M=C3=A9xico Centro)
+Sesi=C3=B3n 2: inicio 8:00 PM (Hora M=C3=A9xico Centro)
+
+Registro: para acceder al Webinar debes registrarte en cualquiera de los si=
+guientes cursos:=C2=A0 IoT <http://nsmail.cisconetspace.com/E0f0V23bFZg0z0Q=
+Z0F0y40n> o el de Cybersecurity <http://nsmail.cisconetspace.com/LQy0ZF00n0=
+0G2Vdg3040f0z>.=C2=A0 =C2=A0=C2=A1Te esperamos!
+=C2=A1Networking Essentials Ahora en espa=C3=B1ol!=20
+   Descubra c=C3=B3mo configurar una red en un hogar o una oficina y descub=
+rir las posibilidades de una carrera en la red.=C2=A0 M=C3=A1s informaci=C3=
+=B3n de=C2=A0Networking Essentials <https://www.netacad.com/courses/network=
+ing-ess/>=20
+         ne
+Suscr=C3=ADbase a nuestros contenidos informativos y sea el primero en ente=
+rarse de las actualizaciones y las oportunidades, y comparta sus ideas inno=
+vadoras.
+
+ <[[http://nsmail.cisconetspace.com/v/SF0Z0f0g42y0zV30n00GQf2]]>
+ <http://nsmail.cisconetspace.com/wFgZzyfV400003nZ20Q0N0F>
+ <http://nsmail.cisconetspace.com/Xf4030F2z000ZFygQ00nVO0>
+ <http://nsmail.cisconetspace.com/E0f0V23eF1g0z0QZ0G0y40n>
+ <http://nsmail.cisconetspace.com/ry0Q0Z0F0F24gzVn302Q0f0>
+ =20
+     =20
+
+
+
+
+No responda este correo electr=C3=B3nico. Para obtener ayuda, inicie sesi=
+=C3=B3n en Cisco Networking Academy, vaya a Soporte y capacitaci=C3=B3n o p=
+ublique una pregunta en Facebook <http://nsmail.cisconetspace.com/wFgZzyfV4=
+00003nZ20Q0N0F>.
+
+Para cancelar la suscripci=C3=B3n, inicie sesi=C3=B3n en Cisco Networking A=
+cademy <http://nsmail.cisconetspace.com/Bn003V0Zz000y2FF0gR43Qf>, haga clic=
+ en su nombre (en la esquina superior derecha) y actualice sus preferencias=
+ de notificaciones y correo electr=C3=B3nico. Si ya no es parte del program=
+a de Networking Academy y necesita hacer que eliminen su cuenta, inicie ses=
+i=C3=B3n, vaya a Ayuda y env=C3=ADe una solicitud de eliminaci=C3=B3n.=20
+=20
+ =C2=A92017 Cisco Systems, Inc.y/o sus filiales. Todos los derechos reserva=
+dos. 170 W Tasman, San Jose, CA 95134
+=20
+ Cisco.com <http://nsmail.cisconetspace.com/I0n2SVg04y34zf0Q0F0FZ00> | Decl=
+araci=C3=B3n de privacidad <http://nsmail.cisconetspace.com/FngF400T50V230F=
+Q000Zfzy> | Marcas comerciales <http://nsmail.cisconetspace.com/wFgZzyfV400=
+003n620Q0U0F>
+
+.
+
+------=_Part_1733920680_30644935.1498854581752
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.=
+w3.org/TR/html4/loose.dtd">
+<html>
+<head>=20
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8">=
+=20
+<meta name=3D"viewport" content=3D"width=3Ddevice-width">=20
+<title></title>=20
+<style type=3D"text/css">
+a:active {
+color: #1aaae2 !important;
+}
+a:visited {
+color: #b7b7b7 !important;
+}
+h1 a:active {
+color: #1aaae2 !important;
+}
+h2 a:active {
+color: #1aaae2 !important;
+}
+h3 a:active {
+color: #1aaae2 !important;
+}
+h4 a:active {
+color: #1aaae2 !important;
+}
+h5 a:active {
+color: #1aaae2 !important;
+}
+h6 a:active {
+color: #1aaae2 !important;
+}
+h1 a:visited {
+color: #b7b7b7 !important;
+}
+h2 a:visited {
+color: #b7b7b7 !important;
+}
+h3 a:visited {
+color: #b7b7b7 !important;
+}
+h4 a:visited {
+color: #b7b7b7 !important;
+}
+h5 a:visited {
+color: #b7b7b7 !important;
+}
+h6 a:visited {
+color: #b7b7b7 !important;
+}
+table.button:hover td a {
+color: #fff !important;
+}
+table.button:visited td a {
+color: #fff !important;
+}
+table.button:active td a {
+color: #fff !important;
+}
+table.button:hover td a {
+color: #ffffff !important;
+}
+table.button:active td a {
+color: #ffffff !important;
+}
+table.button td a:visited {
+color: #ffffff !important;
+}
+table.tiny-button:hover td a {
+color: #ffffff !important;
+}
+table.tiny-button:active td a {
+color: #ffffff !important;
+}
+table.tiny-button td a:visited {
+color: #ffffff !important;
+}
+table.small-button:hover td a {
+color: #ffffff !important;
+}
+table.small-button:active td a {
+color: #ffffff !important;
+}
+table.small-button td a:visited {
+color: #ffffff !important;
+}
+table.medium-button:hover td a {
+color: #ffffff !important;
+}
+table.medium-button:active td a {
+color: #ffffff !important;
+}
+table.medium-button td a:visited {
+color: #ffffff !important;
+}
+table.large-button:hover td a {
+color: #ffffff !important;
+}
+table.large-button:active td a {
+color: #ffffff !important;
+}
+table.large-button td a:visited {
+color: #ffffff !important;
+}
+table.secondary:hover td {
+background: #d0d0d0 !important; color: #555;
+}
+table.secondary:hover td a {
+color: #555 !important;
+}
+table.secondary td a:visited {
+color: #555 !important;
+}
+table.secondary:active td a {
+color: #555 !important;
+}
+table.success:hover td {
+background: #457a1a !important;
+}
+#footertwitter img, #footertwitter1 img
+{
+        outline: none; text-decoration: none; -ms-interpolation-mode: bicub=
+ic; max-width: 100%; clear: both;
+}
+@media only screen and (max-width: 600px) {
+  table[class=3D"body"] img {
+    width: auto !important; height: auto !important;
+  }
+  table[class=3D"body"] center {
+    min-width: 0 !important;
+  }
+  table[class=3D"body"] .container {
+    width: 98% !important;
+  }
+  table[class=3D"body"] .row {
+    width: 100% !important; display: block !important;
+  }
+  table[class=3D"body"] .wrapper {
+    display: block !important;
+  }
+  table[class=3D"body"] .columns {
+    table-layout: fixed !important; float: none !important; width: 100% !im=
+portant; padding-right: 0px !important; padding-left: 0px !important; displ=
+ay: block !important;
+  }
+  table[class=3D"body"] .column {
+    table-layout: fixed !important; float: none !important; width: 100% !im=
+portant; padding-right: 0px !important; padding-left: 0px !important; displ=
+ay: block !important;
+  }
+  table[class=3D"body"] .wrapper.first .columns {
+    display: table !important;
+  }
+  table[class=3D"body"] .wrapper.first .column {
+    display: table !important;
+  }
+  table[class=3D"body"] table.columns td {
+    width: 100% !important;
+    padding-left: 0px;
+  }
+  table[class=3D"body"] table.column td {
+    width: 100% !important;
+  }
+  table[class=3D"body"] td.offset-by-one {
+    padding-left: 0 !important;
+  }
+  table[class=3D"body"] td.offset-by-two {
+    padding-left: 0 !important;
+  }
+  table[class=3D"body"] td.offset-by-three {
+    padding-left: 0 !important;
+  }
+  table[class=3D"body"] td.offset-by-four {
+    padding-left: 0 !important;
+  }
+  table[class=3D"body"] td.offset-by-five {
+    padding-left: 0 !important;
+  }
+  table[class=3D"body"] td.offset-by-six {
+    padding-left: 0 !important;
+  }
+  table[class=3D"body"] td.offset-by-seven {
+    padding-left: 0 !important;
+  }
+  table[class=3D"body"] td.offset-by-eight {
+    padding-left: 0 !important;
+  }
+  table[class=3D"body"] td.offset-by-nine {
+    padding-left: 0 !important;
+  }
+  table[class=3D"body"] td.offset-by-ten {
+    padding-left: 0 !important;
+  }
+  table[class=3D"body"] td.offset-by-eleven {
+    padding-left: 0 !important;
+  }
+  table[class=3D"body"] .expander {
+    width: 9999px !important;
+  }
+  table[class=3D"body"] .right-text-pad {
+    padding-left: 20px !important;
+  }
+  table[class=3D"body"] .text-pad-right {
+    padding-left: 20px !important;
+  }
+  table[class=3D"body"] .left-text-pad {
+    padding-right: 10px !important;
+  }
+  table[class=3D"body"] .text-pad-left {
+    padding-right: 10px !important;
+  }
+  table[class=3D"body"] .hide-for-small {
+    display: none !important;
+  }
+  table[class=3D"body"] .show-for-desktop {
+    display: none !important;
+  }
+  table[class=3D"body"] .show-for-small {
+    display: inherit !important;
+  }
+  table[class=3D"body"] .hide-for-desktop {
+    display: inherit !important;
+  }
+  *[id]#threeimg {
+    width: 165px !important; margin: 0 auto;
+  }
+ *[id]#facebook-button {
+    width: 45%;
+  }
+  *[id]#or-text {
+    width: 10%;
+  }
+  *[class].left-right-pad {
+    padding-left: 0px !important; padding-right: 0px !important;
+  }
+  *[class].left-text-pad-custom {
+    padding-left: 0px !important; padding-right: 0px !important;
+  }
+  *[class].right-text-pad-custom {
+    padding-left: 0px !important; padding-right: 0px !important;
+  }
+}
+@media only screen and (max-width: 480px) {
+  /**[id]#threeimg {
+    width: 55% !important; margin: 0 auto;
+  }*/
+  *[class].nopad
+  {
+      padding-left:0px !important;
+  }
+  *[class].left-right-pad {
+    padding-left: 0px !important; padding-right: 0px !important;
+  }
+  *[class].left-text-pad-custom {
+    padding-left: 0px !important; padding-right: 0px !important;
+  }
+  *[class].right-text-pad-custom {
+    padding-left: 0px !important; padding-right: 0px !important;
+  }
+  *[class].footer-table {
+    width: 100% !important; text-align: center;
+  }
+  *[class].footer-table img {
+    float: none !important;
+  }
+  *[id]#footer-table1 {
+    width: 100% !important; text-align: center;
+  }
+  *[id]#footertwitter, *[id]#footertwitter1
+{
+        text-align:center !important;
+}
+*[id]#copyright
+{
+        padding:20px 20px 10px !important;
+}
+}
+</style>=20
+</head>=20
+<body style=3D"width:100% !important; background:#d7d7d7; -webkit-text-size=
+-adjust:100%; -ms-text-size-adjust:100%; color:#ffffff; font-family:'Arial'=
+, 'Helvetica', sans-serif; font-weight:normal; text-align:left; line-height=
+:16px; font-size:14px; margin:0; padding:0; ">=20
+<table class=3D"body" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border-spacing:0; border-collapse:collapse; vertical-align:top; text-a=
+lign:left; height:100%; width:100%; color:#fff; font-family:'Arial', 'Helve=
+tica', sans-serif; font-weight:normal; line-height:16px; font-size:14px; ma=
+rgin:0; padding:0; ">=20
+<tbody>=20
+<tr style=3D"vertical-align:top; text-align:left; padding:0; " align=3D"lef=
+t">=20
+<td class=3D"center" align=3D"center" valign=3D"top" style=3D"word-break:br=
+eak-word; -webkit-hyphens:none; -moz-hyphens:none; hyphens:none; border-col=
+lapse:collapse !important; vertical-align:top; text-align:center; padding:0=
+; ">=20
+<center style=3D"width:100%; min-width:580px;"></center>=20
+<table class=3D"container" style=3D"border-spacing:0; background:#ffffff; b=
+order-collapse:collapse; vertical-align:top; text-align:inherit; width:580p=
+x; margin:0 auto; padding:0; border:0px solid #000000; ">=20
+<tbody>=20
+<tr style=3D"vertical-align:top; text-align:left; padding:0; " align=3D"lef=
+t">=20
+<td style=3D"word-break:break-word; -webkit-hyphens:none; -moz-hyphens:none=
+; hyphens:none; border-collapse:collapse !important; vertical-align:top; te=
+xt-align:left; padding:0; " align=3D"left" valign=3D"top">=20
+<table class=3D"row" style=3D"border-spacing:0; border-collapse:collapse; v=
+ertical-align:top; text-align:left; width:100%; position:relative; display:=
+block; padding:0px; ">=20
+<tbody>=20
+<tr style=3D"vertical-align:top; text-align:left; padding:0; " align=3D"lef=
+t">=20
+<td class=3D"wrapper last" style=3D"word-break:break-word; -webkit-hyphens:=
+none; -moz-hyphens:none; hyphens:none; border-collapse:collapse !important;=
+ vertical-align:top; text-align:left; position:relative; padding:0px 0px 0p=
+x; " align=3D"left" valign=3D"top">=20
+<table class=3D"twelve columns" style=3D"border-spacing:0; border-collapse:=
+collapse; vertical-align:top; text-align:left; width:600px; margin:0 auto; =
+padding:0; ">=20
+<tbody>=20
+<tr style=3D"vertical-align:top; text-align:left; padding:0;" align=3D"left=
+">=20
+<td class=3D"row" style=3D"border-spacing: 0; border-collapse: collapse; ve=
+rtical-align: top; text-align: left; width: 100%; position: relative; displ=
+ay: block; padding: 0px;"></td>=20
+</tr>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td height=3D"0" width=3D"100%" style=3D"border-collapse: collapse !importa=
+nt; vertical-align: top; text-align: left; color: #000000; font-family: Ari=
+al, Helvetica, sans-serif; font-weight: normal; margin: 0; padding: 0;" ali=
+gn=3D"left" valign=3D"top"></td>=20
+</tr>=20
+<!--Header-->=20
+<tr style=3D"">=20
+<td style=3D"border-collapse:collapse !important; vertical-align:bottom; te=
+xt-align:left; background:#EA3430; color:#EA3430; font-family:Arial, Helvet=
+ica, sans-serif; font-weight:normal; line-height:22px; font-size:20px; marg=
+in:0; " align=3D"left" valign=3D"top">=20
+<table cellpadding=3D"0" cellspacing=3D"0" align=3D"right" width=3D"360" cl=
+ass=3D"body" border=3D"0" style=3D"">=20
+<tbody>=20
+<tr style=3D"vertical-align:top; padding:0; " align=3D"right">=20
+<td style=3D"word-break:break-word; -webkit-hyphens:none; -moz-hyphens:none=
+; hyphens:none; border-collapse:collapse !important; vertical-align:top; te=
+xt-align:right; border:0!important; width:100%; " align=3D"right" valign=3D=
+"top">=20
+<div id=3D"social-icons" class=3D"mktEditable" style=3D"text-align:right; v=
+align:bottom; color:#663083; ">
+<img alt=3D"Cisco Networking Academy Student Newsletter" src=3D"http://csri=
+nfo.cisconetspace.com/rs/ciscoacademy/images/newsletter-banner-student-top-=
+right.png" style=3D"display: flex;" width=3D"100%">
+</div></td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+<table cellpadding=3D"0" cellspacing=3D"10" align=3D"left" width=3D"205" cl=
+ass=3D"body" id=3D"header" border=3D"0" style=3D"">=20
+<tbody>=20
+<tr style=3D"">=20
+<td style=3D"word-break:break-word; -webkit-hyphens:none; -moz-hyphens:none=
+; hyphens:none; border-collapse:collapse !important; vertical-align:bottom;=
+ text-align:left; padding:25px 0px 10px 20px; letter-spacing:1px; font-fami=
+ly:'Arial', 'Helvetica', sans-serif; color:#FFFFFF; font-size:26px; font-we=
+ight:normal; line-height:28px; margin:0; width:100%; " align=3D"left" valig=
+n=3D"bottom">=20
+<div class=3D"mktEditable" id=3D"banner_text" style=3D"">
+<div>
+ Bolet=C3=ADn de Estudiante=20
+</div>
+</div></td>=20
+</tr>=20
+</tbody>=20
+</table></td>=20
+</tr>=20
+</tbody>=20
+</table></td>=20
+</tr>=20
+</tbody>=20
+</table></td>=20
+</tr>=20
+<!--end header-->=20
+<!--Section 1-->=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td style=3D"word-break: break-word; -webkit-hyphens: auto; -moz-hyphens: a=
+uto; hyphens: auto; border-collapse: collapse !important; vertical-align: t=
+op; text-align: left; padding:5px 20px 5px" align=3D"left" valign=3D"top"><=
+/td>=20
+</tr>=20
+<tr style=3D"vertical-align:top; text-align:left; padding:0; " align=3D"lef=
+t">=20
+<td style=3D"word-break:break-word; -webkit-hyphens:none; -moz-hyphens:none=
+; hyphens:none; border-collapse:collapse !important; vertical-align:top; te=
+xt-align:left; padding:0; " align=3D"left" valign=3D"top">=20
+<table class=3D"row" id=3D"content-table5" style=3D"border-spacing:0; borde=
+r-collapse:collapse; vertical-align:top; text-align:left; width:100%; posit=
+ion:relative; display:block; padding:0px; ">=20
+<tbody>=20
+<tr style=3D"vertical-align:top; text-align:left; padding:0; " align=3D"lef=
+t">=20
+<td class=3D"wrapper" style=3D"word-break:break-word; -webkit-hyphens:none;=
+ -moz-hyphens:none; hyphens:none; border-collapse:collapse !important; vert=
+ical-align:top; text-align:left; padding-left:20px; " align=3D"left" valign=
+=3D"top">=20
+<table class=3D"eight columns" style=3D"border-spacing:0; border-collapse:c=
+ollapse; vertical-align:top; text-align:left; width:280px; margin:0 auto; p=
+adding:0; ">=20
+<tbody>=20
+<tr style=3D"vertical-align:top; text-align:left; padding:0; " align=3D"lef=
+t">=20
+<td class=3D"left-text-pad" style=3D"word-break:break-word; -webkit-hyphens=
+:none; -moz-hyphens:none; hyphens:none; border-collapse:collapse !important=
+; vertical-align:top; text-align:left; padding:5px 15px 10px 0px; color:#68=
+6868; font-family:'Arial', 'Helvetica', sans-serif; font-weight:normal; lin=
+e-height:16px; font-size:12px; " align=3D"left" valign=3D"top">=20
+<div style=3D"text-decoration:none; color:#2aa7df; " class=3D"mktEditable" =
+id=3D"translation-links">
+<p><a href=3D
+"http://nsmail.cisconetspace.com/Xf403SF2z000ZFygQ00nVG0" target=3D"_blank"=
+ id=3D""
+>Read in English</a></p>
+</div></td>=20
+<td class=3D"expander" style=3D"word-break: break-word; -webkit-hyphens: au=
+to; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important=
+; vertical-align: top; text-align: left; visibility: hidden; width: 0px; pa=
+dding: 0;" align=3D"left" valign=3D"top"></td>=20
+</tr>=20
+<tr style=3D"vertical-align:top; text-align:left; padding:0;" align=3D"left=
+">=20
+<td class=3D"left-text-pad" style=3D"word-break:break-word; -webkit-hyphens=
+:none; -moz-hyphens:none; hyphens:none; border-collapse:collapse !important=
+; vertical-align:top; text-align:left; padding:5px 15px 10px 0px; text-alig=
+n:left; color:#686868; font-family:'Arial', 'Helvetica', sans-serif; font-w=
+eight:normal; line-height:16px; font-size:13px; margin:0; padding:0 0 0px;"=
+ align=3D"left" valign=3D"top"></td>=20
+<td class=3D"expander" style=3D"word-break: break-word; -webkit-hyphens: au=
+to; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important=
+; vertical-align: top; text-align: left; visibility: hidden; width: 0px; pa=
+dding: 0;" align=3D"left" valign=3D"top"></td>=20
+</tr>=20
+</tbody>=20
+</table></td>=20
+<td class=3D"wrapper last" style=3D"word-break:break-word; -webkit-hyphens:=
+none; -moz-hyphens:none; hyphens:none; border-collapse:collapse !important;=
+ vertical-align:top; text-align:right; position:relative; padding:10px 0px =
+0px; " align=3D"right" valign=3D"top">=20
+<table class=3D"four columns" style=3D"border-spacing:0; border-collapse:co=
+llapse; vertical-align:top; text-align:right; width:270px; margin:0 auto; p=
+adding:0; ">=20
+<tbody>=20
+<tr style=3D"vertical-align:top; text-align:right; padding:0; " align=3D"ri=
+ght">=20
+<td class=3D"right-text-pad" style=3D"word-break:break-word; -webkit-hyphen=
+s:none; -moz-hyphens:none; hyphens:none; border-collapse:collapse !importan=
+t; vertical-align:top; text-align:right; padding:5px 15px 10px 90px; color:=
+#686868; font-family:'Arial', 'Helvetica', sans-serif; font-weight:normal; =
+line-height:16px; font-size:12px; " align=3D"right" valign=3D"top">=20
+<div class=3D"mktEditable" id=3D"Issue" style=3D"">
+<p>Edici=C3=B3n: junio 2017</p>
+</div></td>=20
+<td class=3D"expander" style=3D"word-break: break-word; -webkit-hyphens: au=
+to; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important=
+; vertical-align: top; text-align: left; visibility: hidden; width: 0px; pa=
+dding: 0;" align=3D"left" valign=3D"top"></td>=20
+</tr>=20
+</tbody>=20
+</table></td>=20
+</tr>=20
+</tbody>=20
+</table></td>=20
+</tr>=20
+<!--End Section 1-->=20
+<!--Content_section-->=20
+<!--Story Begin-->=20
+<tr style=3D"">=20
+<td style=3D"">=20
+<div class=3D"mktEditable" id=3D"story0" style=3D"">
+<table style=3D"width: 100%; margin: 0 auto;" class=3D"table_responsive" al=
+ign=3D"center" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"10=
+0%">=20
+<tbody>=20
+<tr>=20
+<td>=20
+<hr style=3D"color: #efefef; width: 93%; text-align: center; height: 1px; b=
+ackground: #d9d9d9; border: none;"></td>=20
+</tr>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td style=3D"word-break: break-word; -webkit-hyphens: none; -moz-hyphens: n=
+one; hyphens: none; border-collapse: collapse !important; vertical-align: t=
+op; text-align: left; padding: 0;" align=3D"left" valign=3D"top">=20
+<table style=3D"border-spacing: 0; border-collapse: collapse; vertical-alig=
+n: top; text-align: left; width: 100%; position: relative; display: block; =
+padding: 0px;">=20
+<tbody>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td class=3D"wrapper" style=3D"word-break: break-word; -webkit-hyphens: non=
+e; -moz-hyphens: none; hyphens: none; border-collapse: collapse !important;=
+ vertical-align: top; text-align: left; padding-left: 20px;" align=3D"left"=
+ valign=3D"top">=20
+<table class=3D"eight columns" style=3D"border-spacing: 0; border-collapse:=
+ collapse; vertical-align: top; text-align: left; width: 340px; margin: 0 a=
+uto; padding: 0;">=20
+<tbody>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td class=3D"left-text-pad" style=3D"word-break: break-word; -webkit-hyphen=
+s: none; -moz-hyphens: none; hyphens: none; border-collapse: collapse !impo=
+rtant; vertical-align: top; text-align: left; padding: 5px 15px 10px 0px; c=
+olor: #686868; font-family: 'Arial', 'Helvetica',sans-serif; font-weight: n=
+ormal; line-height: 20px; font-size: 18px;" align=3D"left" valign=3D"top">H=
+abilidades profesionales para t=C3=A9cnicos</td>=20
+<td class=3D"expander" style=3D"word-break: break-word; -webkit-hyphens: au=
+to; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important=
+; vertical-align: top; text-align: left; visibility: hidden; width: 0px; pa=
+dding: 0;" align=3D"left" valign=3D"top"></td>=20
+</tr>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td class=3D"left-text-pad" style=3D"word-break: break-word; -webkit-hyphen=
+s: none; -moz-hyphens: none; hyphens: none; border-collapse: collapse !impo=
+rtant; vertical-align: top; text-align: left; padding: 5px 15px 10px 0px; c=
+olor: #686868; font-family: 'Arial', 'Helvetica', sans-serif; font-weight: =
+normal; line-height: 16px; font-size: 13px;" align=3D"left" valign=3D"top">=
+Prepararte para unirte a la fuerza laboral puede ser abrumador. Las habilid=
+ades t=C3=A9cnicas son importantes, pero =C2=BFsabes qu=C3=A9 otras habilid=
+ades profesionales necesitas adquirir, sin importar qu=C3=A9 industria o ca=
+rrera escojas? Conoce las competencias profesionales que m=C3=A1s interesan=
+ a los empleadores y que a menudo los candidatos carecen. Esta serie de web=
+inars pone de relieve las principales competencias profesionales que buscan=
+ los empleadores y le proporciona ideas sobre c=C3=B3mo ampliar tu nivel de=
+ habilidades.</td>=20
+<td class=3D"expander" style=3D"word-break: break-word; -webkit-hyphens: au=
+to; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important=
+; vertical-align: top; text-align: left; visibility: hidden; width: 0px; pa=
+dding: 0;" align=3D"left" valign=3D"top"></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+<td class=3D"wrapper last" style=3D"word-break: break-word; -webkit-hyphens=
+: none; -moz-hyphens: none; hyphens: none; border-collapse: collapse !impor=
+tant; vertical-align: top; text-align: left; position: relative; padding: 1=
+0px 0px 0px;" align=3D"left" valign=3D"top">=20
+<table class=3D"four columns" style=3D"border-spacing: 0; border-collapse: =
+collapse; vertical-align: top; text-align: left; width: 210px; margin: 0 au=
+to; padding: 0;">=20
+<tbody>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td class=3D"right-text-pad" style=3D"word-break: break-word; -webkit-hyphe=
+ns: none; -moz-hyphens: none; hyphens: none; border-collapse: collapse !imp=
+ortant; vertical-align: top; text-align: left; padding: 0px 20px 20px 0px; =
+font-size: 1px; line-height: 1px; mso-table-lspace: 0; mso-table-rspace: 0;=
+ margin: 0;" align=3D"left" valign=3D"top"><img src=3D"http://csrinfo.cisco=
+netspace.com/rs/059-VFZ-834/images/3-at-table.jpg" constrain=3D"true" image=
+preview=3D"false" alt=3D"image" height=3D"133" border=3D"0" width=3D"200"><=
+/td>=20
+<td class=3D"expander" style=3D"word-break: break-word; -webkit-hyphens: au=
+to; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important=
+; vertical-align: top; text-align: left; visibility: hidden; width: 0px; pa=
+dding: 0;" align=3D"left" valign=3D"top"></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td style=3D"word-break: break-word; -webkit-hyphens: none; -moz-hyphens: n=
+one; hyphens: none; border-collapse: collapse !important; vertical-align: t=
+op; text-align: left; padding-left: 20px; padding-bottom: 15px;" align=3D"l=
+eft" valign=3D"top">=20
+<table class=3D"button alert" style=3D"border-spacing: 0; border-collapse: =
+collapse; vertical-align: top; text-align: left; overflow: hidden; width: 1=
+00px; padding: 0;" align=3D"left">=20
+<tbody>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td style=3D"word-break: break-word; -webkit-hyphens: none; -moz-hyphens: n=
+one; hyphens: none; border-collapse: collapse !important; vertical-align: t=
+op; text-align: center; display: block; width: 100px !important; color: #ff=
+ffff; background: #EA3430; padding: 3px; border: 1px solid #EA3430;" bgcolo=
+r=3D"#EA3430" align=3D"center" valign=3D"top"><a href=3D
+"http://nsmail.cisconetspace.com/h43nHyF00V000QfFz200ZTg" style=3D"color: #=
+fff; text-decoration: none; font-family: Arial, Helvetica, sans-serif; font=
+-size: 14px;"
+>Ver Series</a></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+<p></p>
+</div></td>=20
+</tr>=20
+<!--/Story end-->=20
+<!--Story Begin-->=20
+<tr style=3D"">=20
+<td style=3D"">=20
+<div class=3D"mktEditable" id=3D"story1" style=3D"">
+<table style=3D"width: 100%; margin: 0 auto;" class=3D"table_responsive" al=
+ign=3D"center" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"10=
+0%">=20
+<tbody>=20
+<tr>=20
+<td>=20
+<hr style=3D"color: #efefef; width: 93%; text-align: center; height: 1px; b=
+ackground: #d9d9d9; border: none;"></td>=20
+</tr>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td style=3D"word-break: break-word; -webkit-hyphens: none; -moz-hyphens: n=
+one; hyphens: none; border-collapse: collapse !important; vertical-align: t=
+op; text-align: left; padding: 0;" align=3D"left" valign=3D"top">=20
+<table style=3D"border-spacing: 0; border-collapse: collapse; vertical-alig=
+n: top; text-align: left; width: 100%; position: relative; display: block; =
+padding: 0px;">=20
+<tbody>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td class=3D"wrapper" style=3D"word-break: break-word; -webkit-hyphens: non=
+e; -moz-hyphens: none; hyphens: none; border-collapse: collapse !important;=
+ vertical-align: top; text-align: left; padding-left: 20px;" align=3D"left"=
+ valign=3D"top">=20
+<table class=3D"eight columns" style=3D"border-spacing: 0; border-collapse:=
+ collapse; vertical-align: top; text-align: left; width: 340px; margin: 0 a=
+uto; padding: 0;">=20
+<tbody>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td class=3D"left-text-pad" style=3D"word-break: break-word; -webkit-hyphen=
+s: none; -moz-hyphens: none; hyphens: none; border-collapse: collapse !impo=
+rtant; vertical-align: top; text-align: left; padding: 5px 15px 10px 0px; c=
+olor: #686868; font-family: 'Arial', 'Helvetica',sans-serif; font-weight: n=
+ormal; line-height: 20px; font-size: 18px;" align=3D"left" valign=3D"top">W=
+ebinar: Qu=C3=A9 esperar cuando trabaje para Cisco<br></td>=20
+<td class=3D"expander" style=3D"word-break: break-word; -webkit-hyphens: au=
+to; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important=
+; vertical-align: top; text-align: left; visibility: hidden; width: 0px; pa=
+dding: 0;" align=3D"left" valign=3D"top"><br></td>=20
+</tr>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td class=3D"left-text-pad" style=3D"word-break: break-word; -webkit-hyphen=
+s: none; -moz-hyphens: none; hyphens: none; border-collapse: collapse !impo=
+rtant; vertical-align: top; text-align: left; padding: 5px 15px 10px 0px; c=
+olor: #686868; font-family: 'Arial', 'Helvetica', sans-serif; font-weight: =
+normal; line-height: 16px; font-size: 13px;" align=3D"left" valign=3D"top">=
+Es importante saber si tienes las habilidades y la experiencia adecuadas pa=
+ra conseguir un trabajo en Cisco. Pero tambi=C3=A9n es importante conocer q=
+ue se puede esperar despu=C3=A9s de venir a trabajar en Cisco. En esta sesi=
+=C3=B3n, hemos invitado a ex alumnos de Networking Academy que actualmente =
+laboran en Cisco a compartir consejos, responder preguntas y mostrar c=C3=
+=B3mo sus habilidades de NetAcad se traducen al lugar de trabajo de Cisco</=
+td>=20
+<td class=3D"expander" style=3D"word-break: break-word; -webkit-hyphens: au=
+to; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important=
+; vertical-align: top; text-align: left; visibility: hidden; width: 0px; pa=
+dding: 0;" align=3D"left" valign=3D"top"><br></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+<td class=3D"wrapper last" style=3D"word-break: break-word; -webkit-hyphens=
+: none; -moz-hyphens: none; hyphens: none; border-collapse: collapse !impor=
+tant; vertical-align: top; text-align: left; position: relative; padding: 1=
+0px 0px 0px;" align=3D"left" valign=3D"top">=20
+<table class=3D"four columns" style=3D"border-spacing: 0; border-collapse: =
+collapse; vertical-align: top; text-align: left; width: 210px; margin: 0 au=
+to; padding: 0;">=20
+<tbody>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td class=3D"right-text-pad" style=3D"word-break: break-word; -webkit-hyphe=
+ns: none; -moz-hyphens: none; hyphens: none; border-collapse: collapse !imp=
+ortant; vertical-align: top; text-align: left; padding: 0px 20px 20px 0px; =
+font-size: 1px; line-height: 1px; mso-table-lspace: 0; mso-table-rspace: 0;=
+ margin: 0;" align=3D"left" valign=3D"top"><img src=3D"http://csrinfo.cisco=
+netspace.com/rs/059-VFZ-834/images/cisco-cyan-green-gradient-new.PNG" alt=
+=3D"" constrain=3D"true" imagepreview=3D"false" height=3D"103" border=3D"" =
+width=3D"174"><br></td>=20
+<td class=3D"expander" style=3D"word-break: break-word; -webkit-hyphens: au=
+to; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important=
+; vertical-align: top; text-align: left; visibility: hidden; width: 0px; pa=
+dding: 0;" align=3D"left" valign=3D"top"><br></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td style=3D"word-break: break-word; -webkit-hyphens: none; -moz-hyphens: n=
+one; hyphens: none; border-collapse: collapse !important; vertical-align: t=
+op; text-align: left; padding-left: 20px; padding-bottom: 15px;" align=3D"l=
+eft" valign=3D"top">=20
+<table class=3D"button alert" style=3D"border-spacing: 0; border-collapse: =
+collapse; vertical-align: top; text-align: left; overflow: hidden; width: 1=
+00px; padding: 0;" align=3D"left">=20
+<tbody>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td style=3D"word-break: break-word; -webkit-hyphens: none; -moz-hyphens: n=
+one; hyphens: none; border-collapse: collapse !important; vertical-align: t=
+op; text-align: center; display: block; width: 100px !important; color: #ff=
+ffff; background: #EA3430; padding: 3px; border: 1px solid #EA3430;" bgcolo=
+r=3D"#EA3430" align=3D"center" valign=3D"top"><a href=3D
+"http://nsmail.cisconetspace.com/m200zU00y0Qfn43gFFI0VZ0" style=3D"color: #=
+fff; text-decoration: none; font-family: Arial, Helvetica, sans-serif; font=
+-size: 14px;" target=3D"_blank"
+>Ver Webinars</a></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+<p><br></p>
+</div></td>=20
+</tr>=20
+<!--/Story end-->=20
+<!--Story Begin-->=20
+<tr style=3D"">=20
+<td style=3D"">=20
+<div class=3D"mktEditable" id=3D"story2" style=3D"">
+<table style=3D"width: 100%; margin: 0 auto;" class=3D"table_responsive" al=
+ign=3D"center" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"10=
+0%">=20
+<tbody>=20
+<tr>=20
+<td>=20
+<hr style=3D"color: #efefef; width: 93%; text-align: center; height: 1px; b=
+ackground: #d9d9d9; border: none;"></td>=20
+</tr>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td style=3D"word-break: break-word; -webkit-hyphens: none; -moz-hyphens: n=
+one; hyphens: none; border-collapse: collapse !important; vertical-align: t=
+op; text-align: left; padding: 0;" align=3D"left" valign=3D"top">=20
+<table style=3D"border-spacing: 0; border-collapse: collapse; vertical-alig=
+n: top; text-align: left; width: 100%; position: relative; display: block; =
+padding: 0px;">=20
+<tbody>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td class=3D"wrapper" style=3D"word-break: break-word; -webkit-hyphens: non=
+e; -moz-hyphens: none; hyphens: none; border-collapse: collapse !important;=
+ vertical-align: top; text-align: left; padding-left: 20px;" align=3D"left"=
+ valign=3D"top">=20
+<table class=3D"eight columns" style=3D"border-spacing: 0; border-collapse:=
+ collapse; vertical-align: top; text-align: left; width: 340px; margin: 0 a=
+uto; padding: 0;">=20
+<tbody>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td class=3D"left-text-pad" style=3D"word-break: break-word; -webkit-hyphen=
+s: none; -moz-hyphens: none; hyphens: none; border-collapse: collapse !impo=
+rtant; vertical-align: top; text-align: left; padding: 5px 15px 10px 0px; c=
+olor: #686868; font-family: 'Arial', 'Helvetica',sans-serif; font-weight: n=
+ormal; line-height: 20px; font-size: 18px;" align=3D"left" valign=3D"top">E=
+xperiencias que impulsan tu carrera</td>=20
+<td class=3D"expander" style=3D"word-break: break-word; -webkit-hyphens: au=
+to; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important=
+; vertical-align: top; text-align: left; visibility: hidden; width: 0px; pa=
+dding: 0;" align=3D"left" valign=3D"top"></td>=20
+</tr>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td class=3D"left-text-pad" style=3D"word-break: break-word; -webkit-hyphen=
+s: none; -moz-hyphens: none; hyphens: none; border-collapse: collapse !impo=
+rtant; vertical-align: top; text-align: left; padding: 5px 15px 10px 0px; c=
+olor: #686868; font-family: 'Arial', 'Helvetica', sans-serif; font-weight: =
+normal; line-height: 16px; font-size: 13px;" align=3D"left" valign=3D"top">=
+Est=C3=A1s obteniendo la educaci=C3=B3n que necesita para convertirte en un=
+ profesional que trabaja. Sin embargo, la educaci=C3=B3n por s=C3=AD sola n=
+o te conseguir=C3=A1 un trabajo. Tambi=C3=A9n necesita tener experiencias p=
+r=C3=A1cticas que pongan tus habilidades tecnol=C3=B3gicas en acci=C3=B3n y=
+ te ayuden a obtener otras habilidades vitales de tu carrera. Esta serie de=
+ seminarios web cubre oportunidades para obtener este tipo de experiencia, =
+d=C3=B3nde buscarlas y lo que tus pares y potenciales empleadores considera=
+n valioso.</td>=20
+<td class=3D"expander" style=3D"word-break: break-word; -webkit-hyphens: au=
+to; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important=
+; vertical-align: top; text-align: left; visibility: hidden; width: 0px; pa=
+dding: 0;" align=3D"left" valign=3D"top"></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+<td class=3D"wrapper last" style=3D"word-break: break-word; -webkit-hyphens=
+: none; -moz-hyphens: none; hyphens: none; border-collapse: collapse !impor=
+tant; vertical-align: top; text-align: left; position: relative; padding: 1=
+0px 0px 0px;" align=3D"left" valign=3D"top">=20
+<table class=3D"four columns" style=3D"border-spacing: 0; border-collapse: =
+collapse; vertical-align: top; text-align: left; width: 210px; margin: 0 au=
+to; padding: 0;">=20
+<tbody>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td class=3D"right-text-pad" style=3D"word-break: break-word; -webkit-hyphe=
+ns: none; -moz-hyphens: none; hyphens: none; border-collapse: collapse !imp=
+ortant; vertical-align: top; text-align: left; padding: 0px 20px 20px 0px; =
+font-size: 1px; line-height: 1px; mso-table-lspace: 0; mso-table-rspace: 0;=
+ margin: 0;" align=3D"left" valign=3D"top"><img src=3D"http://csrinfo.cisco=
+netspace.com/rs/059-VFZ-834/images/panamgames-netacad-students.jpg" constra=
+in=3D"true" imagepreview=3D"false" height=3D"129" width=3D"200"><br></td>=
+=20
+<td class=3D"expander" style=3D"word-break: break-word; -webkit-hyphens: au=
+to; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important=
+; vertical-align: top; text-align: left; visibility: hidden; width: 0px; pa=
+dding: 0;" align=3D"left" valign=3D"top"></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td style=3D"word-break: break-word; -webkit-hyphens: none; -moz-hyphens: n=
+one; hyphens: none; border-collapse: collapse !important; vertical-align: t=
+op; text-align: left; padding-left: 20px; padding-bottom: 15px;" align=3D"l=
+eft" valign=3D"top">=20
+<table class=3D"button alert" style=3D"border-spacing: 0; border-collapse: =
+collapse; vertical-align: top; text-align: left; overflow: hidden; width: 1=
+00px; padding: 0;" align=3D"left">=20
+<tbody>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td style=3D"word-break: break-word; -webkit-hyphens: none; -moz-hyphens: n=
+one; hyphens: none; border-collapse: collapse !important; vertical-align: t=
+op; text-align: center; display: block; width: 100px !important; color: #ff=
+ffff; background: #EA3430; padding: 3px; border: 1px solid #EA3430;" bgcolo=
+r=3D"#EA3430" align=3D"center" valign=3D"top"><a href=3D
+"http://nsmail.cisconetspace.com/gJ0gyz40Q00nFZ0fV200VF3" style=3D"color: #=
+fff; text-decoration: none; font-family: Arial, Helvetica, sans-serif; font=
+-size: 14px;"
+>Ver Serie</a></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+<p><br></p>
+</div></td>=20
+</tr>=20
+<!--/Story end-->=20
+<!--Story Begin-->=20
+<tr style=3D"">=20
+<td style=3D"">=20
+<div class=3D"mktEditable" id=3D"story3" style=3D"">
+<table style=3D"width: 100%; margin: 0 auto;" class=3D"table_responsive" al=
+ign=3D"center" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"10=
+0%">=20
+<tbody>=20
+<tr>=20
+<td>=20
+<hr style=3D"color: #efefef; width: 93%; text-align: center; height: 1px; b=
+ackground: #d9d9d9; border: none;"></td>=20
+</tr>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td style=3D"word-break: break-word; -webkit-hyphens: none; -moz-hyphens: n=
+one; hyphens: none; border-collapse: collapse !important; vertical-align: t=
+op; text-align: left; padding: 0;" align=3D"left" valign=3D"top">=20
+<table style=3D"border-spacing: 0; border-collapse: collapse; vertical-alig=
+n: top; text-align: left; width: 100%; position: relative; display: block; =
+padding: 0px;">=20
+<tbody>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td class=3D"wrapper" style=3D"word-break: break-word; -webkit-hyphens: non=
+e; -moz-hyphens: none; hyphens: none; border-collapse: collapse !important;=
+ vertical-align: top; text-align: left; padding-left: 20px;" align=3D"left"=
+ valign=3D"top">=20
+<table class=3D"eight columns" style=3D"border-spacing: 0; border-collapse:=
+ collapse; vertical-align: top; text-align: left; width: 340px; margin: 0 a=
+uto; padding: 0;">=20
+<tbody>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td class=3D"left-text-pad" style=3D"word-break: break-word; -webkit-hyphen=
+s: none; -moz-hyphens: none; hyphens: none; border-collapse: collapse !impo=
+rtant; vertical-align: top; text-align: left; padding: 5px 15px 10px 0px; c=
+olor: #686868; font-family: 'Arial', 'Helvetica',sans-serif; font-weight: n=
+ormal; line-height: 20px; font-size: 18px;" align=3D"left" valign=3D"top">C=
+onvierte en h=C3=A9roe de la ciberseguridad</td>=20
+<td class=3D"expander" style=3D"word-break: break-word; -webkit-hyphens: au=
+to; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important=
+; vertical-align: top; text-align: left; visibility: hidden; width: 0px; pa=
+dding: 0;" align=3D"left" valign=3D"top"></td>=20
+</tr>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td class=3D"left-text-pad" style=3D"word-break: break-word; -webkit-hyphen=
+s: none; -moz-hyphens: none; hyphens: none; border-collapse: collapse !impo=
+rtant; vertical-align: top; text-align: left; padding: 5px 15px 10px 0px; c=
+olor: #686868; font-family: 'Arial', 'Helvetica', sans-serif; font-weight: =
+normal; line-height: 16px; font-size: 13px;" align=3D"left" valign=3D"top">=
+=C2=BFRecuerdas que hace m=C3=A1s de un mes #WannaCry puso en alerta m=C3=
+=A1xima a 99 naciones? El martes los cibercriminales lo hicieron de nuevo. =
+Este ataque nos recuerda que el mundo necesita h=C3=A9roes de la cibersegur=
+idad ahora.<br></td>=20
+<td class=3D"expander" style=3D"word-break: break-word; -webkit-hyphens: au=
+to; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important=
+; vertical-align: top; text-align: left; visibility: hidden; width: 0px; pa=
+dding: 0;" align=3D"left" valign=3D"top"></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+<td class=3D"wrapper last" style=3D"word-break: break-word; -webkit-hyphens=
+: none; -moz-hyphens: none; hyphens: none; border-collapse: collapse !impor=
+tant; vertical-align: top; text-align: left; position: relative; padding: 1=
+0px 0px 0px;" align=3D"left" valign=3D"top">=20
+<table class=3D"four columns" style=3D"border-spacing: 0; border-collapse: =
+collapse; vertical-align: top; text-align: left; width: 210px; margin: 0 au=
+to; padding: 0;">=20
+<tbody>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td class=3D"right-text-pad" style=3D"word-break: break-word; -webkit-hyphe=
+ns: none; -moz-hyphens: none; hyphens: none; border-collapse: collapse !imp=
+ortant; vertical-align: top; text-align: left; padding: 0px 20px 20px 0px; =
+font-size: 1px; line-height: 1px; mso-table-lspace: 0; mso-table-rspace: 0;=
+ margin: 0;" align=3D"left" valign=3D"top"><img src=3D"http://csrinfo.cisco=
+netspace.com/rs/059-VFZ-834/images/Cyberheroe.JPG" alt=3D"Cyberheroe.JPG" c=
+onstrain=3D"true" imagepreview=3D"false" height=3D"195" width=3D"200"><br><=
+/td>=20
+<td class=3D"expander" style=3D"word-break: break-word; -webkit-hyphens: au=
+to; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important=
+; vertical-align: top; text-align: left; visibility: hidden; width: 0px; pa=
+dding: 0;" align=3D"left" valign=3D"top"></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td style=3D"word-break: break-word; -webkit-hyphens: none; -moz-hyphens: n=
+one; hyphens: none; border-collapse: collapse !important; vertical-align: t=
+op; text-align: left; padding-left: 20px; padding-bottom: 15px;" align=3D"l=
+eft" valign=3D"top">=20
+<table class=3D"button alert" style=3D"border-spacing: 0; border-collapse: =
+collapse; vertical-align: top; text-align: left; overflow: hidden; width: 1=
+00px; padding: 0;" align=3D"left">=20
+<tbody>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td style=3D"word-break: break-word; -webkit-hyphens: none; -moz-hyphens: n=
+one; hyphens: none; border-collapse: collapse !important; vertical-align: t=
+op; text-align: center; display: block; width: 100px !important; color: #ff=
+ffff; background: #EA3430; padding: 3px; border: 1px solid #EA3430;" bgcolo=
+r=3D"#EA3430" align=3D"center" valign=3D"top"><a href=3D
+"http://nsmail.cisconetspace.com/JF04VQ0KnZ0zWFg0f3002y0" style=3D"color: #=
+fff; text-decoration: none; font-family: Arial, Helvetica, sans-serif; font=
+-size: 14px;" target=3D"_blank"
+>Conoce m=C3=A1s</a></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+</div></td>=20
+</tr>=20
+<!--/Story end-->=20
+<!--Story Begin-->=20
+<tr style=3D"">=20
+<td style=3D"">=20
+<div class=3D"mktEditable" id=3D"story4" style=3D"">=20
+<table style=3D"width: 100%; margin: 0 auto;" class=3D"table_responsive" al=
+ign=3D"center" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"10=
+0%">=20
+<tbody>=20
+<tr>=20
+<td>=20
+<hr style=3D"color: #efefef; width: 93%; text-align: center; height: 1px; b=
+ackground: #d9d9d9; border: none;"> </td>=20
+</tr>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td style=3D"word-break: break-word; -webkit-hyphens: none; -moz-hyphens: n=
+one; hyphens: none; border-collapse: collapse !important; vertical-align: t=
+op; text-align: left; padding: 0;" align=3D"left" valign=3D"top">=20
+<table style=3D"border-spacing: 0; border-collapse: collapse; vertical-alig=
+n: top; text-align: left; width: 100%; position: relative; display: block; =
+padding: 0px;">=20
+<tbody>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td class=3D"wrapper" style=3D"word-break: break-word; -webkit-hyphens: non=
+e; -moz-hyphens: none; hyphens: none; border-collapse: collapse !important;=
+ vertical-align: top; text-align: left; padding-left: 20px;" align=3D"left"=
+ valign=3D"top">=20
+<table class=3D"eight columns" style=3D"border-spacing: 0; border-collapse:=
+ collapse; vertical-align: top; text-align: left; width: 340px; margin: 0 a=
+uto; padding: 0;">=20
+<tbody>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td class=3D"left-text-pad" style=3D"word-break: break-word; -webkit-hyphen=
+s: none; -moz-hyphens: none; hyphens: none; border-collapse: collapse !impo=
+rtant; vertical-align: top; text-align: left; padding: 5px 15px 10px 0px; c=
+olor: #686868; font-family: 'Arial', 'Helvetica',sans-serif; font-weight: n=
+ormal; line-height: 20px; font-size: 18px;" align=3D"left" valign=3D"top">W=
+ebinar en Espa=C3=B1ol de IoT, Ciberseguridad y Meraki</td>=20
+<td class=3D"expander" style=3D"word-break: break-word; -webkit-hyphens: au=
+to; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important=
+; vertical-align: top; text-align: left; visibility: hidden; width: 0px; pa=
+dding: 0;" align=3D"left" valign=3D"top"><br></td>=20
+</tr>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td class=3D"left-text-pad" style=3D"word-break: break-word; -webkit-hyphen=
+s: none; -moz-hyphens: none; hyphens: none; border-collapse: collapse !impo=
+rtant; vertical-align: top; text-align: left; padding: 5px 15px 10px 0px; c=
+olor: #686868; font-family: 'Arial', 'Helvetica', sans-serif; font-weight: =
+normal; line-height: 16px; font-size: 13px;" align=3D"left" valign=3D"top">=
+ <p>Participa de este Webinar en espa=C3=B1ol el j<strong>ueves, 13 de Juli=
+o 2017</strong>.&nbsp; Tendremos dos sesiones de 90 minutos cada una. <br><=
+br><span style=3D"text-decoration: underline;">Sesi=C3=B3n 1:</span> inicio=
+ 11:00 AM (Hora M=C3=A9xico Centro)<br><span style=3D"text-decoration: unde=
+rline;">Sesi=C3=B3n 2:</span> inicio 8:00 PM (Hora M=C3=A9xico Centro)<br><=
+br><strong>Registro:</strong> para acceder al Webinar debes registrarte en =
+cualquiera de los siguientes cursos:&nbsp;<a href=3D
+"http://nsmail.cisconetspace.com/s0LF24n0gFzX0V0Qy300f0Z" target=3D"_blank"=
+ id=3D""
+> IoT</a> o el de <a href=3D
+"http://nsmail.cisconetspace.com/c0y00Q3V04zF2nfZY0gMF00" target=3D"_blank"=
+ id=3D""
+>Cybersecurity</a>.&nbsp; &nbsp;=C2=A1Te esperamos!<br></p> </td>=20
+<td class=3D"expander" style=3D"word-break: break-word; -webkit-hyphens: au=
+to; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important=
+; vertical-align: top; text-align: left; visibility: hidden; width: 0px; pa=
+dding: 0;" align=3D"left" valign=3D"top"><br></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+<td class=3D"wrapper last" style=3D"word-break: break-word; -webkit-hyphens=
+: none; -moz-hyphens: none; hyphens: none; border-collapse: collapse !impor=
+tant; vertical-align: top; text-align: left; position: relative; padding: 1=
+0px 0px 0px;" align=3D"left" valign=3D"top">=20
+<table class=3D"four columns" style=3D"border-spacing: 0; border-collapse: =
+collapse; vertical-align: top; text-align: left; width: 210px; margin: 0 au=
+to; padding: 0;">=20
+<tbody>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td class=3D"right-text-pad" style=3D"word-break: break-word; -webkit-hyphe=
+ns: none; -moz-hyphens: none; hyphens: none; border-collapse: collapse !imp=
+ortant; vertical-align: top; text-align: left; padding: 0px 20px 20px 0px; =
+font-size: 1px; line-height: 1px; mso-table-lspace: 0; mso-table-rspace: 0;=
+ margin: 0;" align=3D"left" valign=3D"top"><img src=3D"http://csrinfo.cisco=
+netspace.com/rs/059-VFZ-834/images/IoTF_180_155.jpg" alt=3D"IoTF_180_155.jp=
+g" height=3D"155" width=3D"180"></td>=20
+<td class=3D"expander" style=3D"word-break: break-word; -webkit-hyphens: au=
+to; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important=
+; vertical-align: top; text-align: left; visibility: hidden; width: 0px; pa=
+dding: 0;" align=3D"left" valign=3D"top"><br></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</div></td>=20
+</tr>=20
+<!--/Story end-->=20
+<!--Story Begin-->=20
+<tr style=3D"">=20
+<td style=3D"">=20
+<div class=3D"mktEditable" id=3D"story5" style=3D"">
+<table style=3D"width: 100%; margin: 0 auto;" class=3D"table_responsive" al=
+ign=3D"center" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"10=
+0%">=20
+<tbody>=20
+<tr>=20
+<td>=20
+<hr style=3D"color: #efefef; width: 93%; text-align: center; height: 1px; b=
+ackground: #d9d9d9; border: none;"></td>=20
+</tr>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td style=3D"word-break: break-word; -webkit-hyphens: none; -moz-hyphens: n=
+one; hyphens: none; border-collapse: collapse !important; vertical-align: t=
+op; text-align: left; padding: 0;" align=3D"left" valign=3D"top">=20
+<table style=3D"border-spacing: 0; border-collapse: collapse; vertical-alig=
+n: top; text-align: left; width: 100%; position: relative; display: block; =
+padding: 0px;">=20
+<tbody>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td class=3D"wrapper" style=3D"word-break: break-word; -webkit-hyphens: non=
+e; -moz-hyphens: none; hyphens: none; border-collapse: collapse !important;=
+ vertical-align: top; text-align: left; padding-left: 20px;" align=3D"left"=
+ valign=3D"top">=20
+<table class=3D"eight columns" style=3D"border-spacing: 0; border-collapse:=
+ collapse; vertical-align: top; text-align: left; width: 340px; margin: 0 a=
+uto; padding: 0;">=20
+<tbody>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td class=3D"left-text-pad" style=3D"word-break: break-word; -webkit-hyphen=
+s: none; -moz-hyphens: none; hyphens: none; border-collapse: collapse !impo=
+rtant; vertical-align: top; text-align: left; padding: 5px 15px 10px 0px; c=
+olor: #686868; font-family: 'Arial', 'Helvetica',sans-serif; font-weight: n=
+ormal; line-height: 20px; font-size: 18px;" align=3D"left" valign=3D"top">&=
+nbsp;=C2=A1Networking Essentials Ahora en espa=C3=B1ol!</td>=20
+<td class=3D"expander" style=3D"word-break: break-word; -webkit-hyphens: au=
+to; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important=
+; vertical-align: top; text-align: left; visibility: hidden; width: 0px; pa=
+dding: 0;" align=3D"left" valign=3D"top"><br></td>=20
+</tr>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td class=3D"left-text-pad" style=3D"word-break: break-word; -webkit-hyphen=
+s: none; -moz-hyphens: none; hyphens: none; border-collapse: collapse !impo=
+rtant; vertical-align: top; text-align: left; padding: 5px 15px 10px 0px; c=
+olor: #686868; font-family: 'Arial', 'Helvetica', sans-serif; font-weight: =
+normal; line-height: 16px; font-size: 13px;" align=3D"left" valign=3D"top">=
+Descubra c=C3=B3mo configurar una red en un hogar o una oficina y descubrir=
+ las posibilidades de una carrera en la red.&nbsp; M=C3=A1s informaci=C3=B3=
+n de&nbsp;<a href=3D
+"https://www.netacad.com/courses/networking-ess/" target=3D"_blank" class=
+=3D"mktNoTrack" id=3D""
+>Networking Essentials</a></td>=20
+<td class=3D"expander" style=3D"word-break: break-word; -webkit-hyphens: au=
+to; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important=
+; vertical-align: top; text-align: left; visibility: hidden; width: 0px; pa=
+dding: 0;" align=3D"left" valign=3D"top"><br></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+<td class=3D"wrapper last" style=3D"word-break: break-word; -webkit-hyphens=
+: none; -moz-hyphens: none; hyphens: none; border-collapse: collapse !impor=
+tant; vertical-align: top; text-align: left; position: relative; padding: 1=
+0px 0px 0px;" align=3D"left" valign=3D"top">=20
+<table class=3D"four columns" style=3D"border-spacing: 0; border-collapse: =
+collapse; vertical-align: top; text-align: left; width: 210px; margin: 0 au=
+to; padding: 0;">=20
+<tbody>=20
+<tr style=3D"vertical-align: top; text-align: left; padding: 0;" align=3D"l=
+eft">=20
+<td class=3D"right-text-pad" style=3D"word-break: break-word; -webkit-hyphe=
+ns: none; -moz-hyphens: none; hyphens: none; border-collapse: collapse !imp=
+ortant; vertical-align: top; text-align: left; padding: 0px 20px 20px 0px; =
+font-size: 1px; line-height: 1px; mso-table-lspace: 0; mso-table-rspace: 0;=
+ margin: 0;" align=3D"left" valign=3D"top">ne<img src=3D"http://csrinfo.cis=
+conetspace.com/rs/059-VFZ-834/images/NetRiders Photo of guy.jpg" alt=3D"Net=
+Riders Photo of guy.jpg" constrain=3D"true" imagepreview=3D"false" height=
+=3D"192" width=3D"200"></td>=20
+<td class=3D"expander" style=3D"word-break: break-word; -webkit-hyphens: au=
+to; -moz-hyphens: auto; hyphens: auto; border-collapse: collapse !important=
+; vertical-align: top; text-align: left; visibility: hidden; width: 0px; pa=
+dding: 0;" align=3D"left" valign=3D"top"><br></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+<p><br></p>
+</div></td>=20
+</tr>=20
+<!--/Story end-->=20
+<!--Story Begin-->=20
+<tr style=3D"">=20
+<td style=3D"">=20
+<div class=3D"mktEditable" id=3D"story6" style=3D""></div></td>=20
+</tr>=20
+<!--/Story end-->=20
+<!--Story Begin-->=20
+<tr style=3D"">=20
+<td style=3D"">=20
+<div class=3D"mktEditable" id=3D"story7" style=3D""></div></td>=20
+</tr>=20
+<!--/Story end-->=20
+<!--Story Begin-->=20
+<tr style=3D"">=20
+<td style=3D"">=20
+<div class=3D"mktEditable" id=3D"story8" style=3D""></div></td>=20
+</tr>=20
+<!--/Story end-->=20
+<!--Story Begin-->=20
+<tr style=3D"">=20
+<td style=3D"">=20
+<div class=3D"mktEditable" id=3D"story9" style=3D""></div></td>=20
+</tr>=20
+<!--/Story end-->=20
+<!--Story Begin-->=20
+<tr style=3D"">=20
+<td style=3D"">=20
+<div class=3D"mktEditable" id=3D"story10" style=3D""></div></td>=20
+</tr>=20
+<!--/Story end-->=20
+<!--Story Begin-->=20
+<tr style=3D"">=20
+<td style=3D"">=20
+<div class=3D"mktEditable" id=3D"story11" style=3D""></div></td>=20
+</tr>=20
+<!--/Story end-->=20
+<!--Story Begin-->=20
+<tr style=3D"">=20
+<td style=3D"">=20
+<div class=3D"mktEditable" id=3D"story12" style=3D""></div></td>=20
+</tr>=20
+<!--/Story end-->=20
+<!--Story Begin-->=20
+<tr style=3D"">=20
+<td style=3D"">=20
+<div class=3D"mktEditable" id=3D"story13" style=3D""></div></td>=20
+</tr>=20
+<!--/Story end-->=20
+<!--Story Begin-->=20
+<tr style=3D"">=20
+<td style=3D"">=20
+<div class=3D"mktEditable" id=3D"story14" style=3D""></div></td>=20
+</tr>=20
+<!--/Story end-->=20
+<!--Story Begin-->=20
+<tr style=3D"">=20
+<td style=3D"">=20
+<div class=3D"mktEditable" id=3D"story15" style=3D""></div></td>=20
+</tr>=20
+<!--/Story end-->=20
+<!--Story Begin-->=20
+<tr style=3D"">=20
+<td style=3D"">=20
+<div class=3D"mktEditable" id=3D"story16" style=3D""></div></td>=20
+</tr>=20
+<!--/Story end-->=20
+<!--Story Begin-->=20
+<tr style=3D"">=20
+<td style=3D"">=20
+<div class=3D"mktEditable" id=3D"story17" style=3D""></div></td>=20
+</tr>=20
+<!--/Story end-->=20
+<!--Story Begin-->=20
+<tr style=3D"">=20
+<td style=3D"">=20
+<div class=3D"mktEditable" id=3D"story18" style=3D""></div></td>=20
+</tr>=20
+<!--/Story end-->=20
+<!--4th Row footer-->=20
+<tr style=3D"">=20
+<td style=3D"background-color:#ffffff; padding:5px 0px 0px 0px; " bgcolor=
+=3D"#FFFFFF">=20
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" class=3D"table_re=
+sponsive" style=3D"width:100%; " align=3D"right">=20
+<tbody>=20
+<tr style=3D"">=20
+<td style=3D"text-align:right; padding:0px; " class=3D"footer_align">=20
+<div class=3D"mktEditable" id=3D"Footer" style=3D"">=20
+<table style=3D"text-align: left; border-collapse: collapse; mso-table-lspa=
+ce: 0pt; mso-table-rspace: 0pt;" cellspacing=3D"0" cellpadding=3D"0" bgcolo=
+r=3D"#6D6E72" border=3D"0" width=3D"100%">=20
+<tbody>=20
+<tr>=20
+<td colspan=3D"8" bgcolor=3D"#6D6E72" height=3D"4"></td>=20
+</tr>=20
+<tr>=20
+<td style=3D"border-collapse: collapse;" valign=3D"top" bgcolor=3D"#6D6E72"=
+ width=3D"10"></td>=20
+<td style=3D"font-family: Arial,Helvetica,sans-serif; color: #ffffff; font-=
+size: 10px; line-height: 14px; border-collapse: collapse;" valign=3D"top" b=
+gcolor=3D"#6D6E72" width=3D"50%">Suscr=C3=ADbase a nuestros contenidos info=
+rmativos y sea el primero en enterarse de las actualizaciones y las oportun=
+idades, y comparta sus ideas innovadoras.</td>=20
+<td style=3D"border-collapse: collapse;" valign=3D"top" bgcolor=3D"#6D6E72"=
+ width=3D"3%"></td>=20
+<td style=3D"border-collapse: collapse;" valign=3D"top" bgcolor=3D"#6D6E72"=
+ width=3D"7%"><a href=3D"http://nsmail.cisconetspace.com/v/SF0Z0f0g42y0zV30=
+n00GQf2" target=3D"_blank"><img style=3D"display: block; outline: none; tex=
+t-decoration: none; border: none;" src=3D"http://csrinfo.cisconetspace.com/=
+rs/ciscoacademy/images/email.gif" alt=3D"Email" border=3D"0"></a></td>=20
+<td style=3D"border-collapse: collapse;" valign=3D"top" bgcolor=3D"#6D6E72"=
+ width=3D"7%"><a href=3D
+"http://nsmail.cisconetspace.com/wFgZzyfV400003nZ20Q0N0F" target=3D"_blank"
+><img style=3D"display: block; outline: none; text-decoration: none; border=
+: none;" src=3D"http://www.cisco.com/web/learning/le31/le46/cln/images/news=
+letter/green/facebook.jpg" alt=3D"Facebook" border=3D"0"></a></td>=20
+<td style=3D"border-collapse: collapse;" valign=3D"top" bgcolor=3D"#6D6E72"=
+ width=3D"7%"><a href=3D
+"http://nsmail.cisconetspace.com/Xf4030F2z000ZFygQ00nVO0" target=3D"_blank"
+><img style=3D"display: block; outline: none; text-decoration: none; border=
+: none;" src=3D"http://www.cisco.com/web/learning/le31/le46/cln/images/news=
+letter/green/twitter.jpg" alt=3D"Twitter" border=3D"0"></a></td>=20
+<td style=3D"border-collapse: collapse;" valign=3D"top" bgcolor=3D"#6D6E72"=
+ width=3D"7%"><a href=3D
+"http://nsmail.cisconetspace.com/c0y00Q3V04zF2nfZ10gPF00" target=3D"_blank"
+><img style=3D"display: block; outline: none; text-decoration: none; border=
+: none;" src=3D"http://www.cisco.com/web/learning/le31/le46/cln/images/news=
+letter/green/linkedin.jpg" alt=3D"LinkedIn" border=3D"0"></a></td>=20
+<td style=3D"border-collapse: collapse;" valign=3D"top" bgcolor=3D"#6D6E72"=
+ width=3D"7%"><a href=3D
+"http://nsmail.cisconetspace.com/ry0Q0Z0F0F24gzVn302Q0f0" target=3D"_blank"
+><img style=3D"display: block; outline: none; text-decoration: none; border=
+: none;" src=3D"http://csrinfo.cisconetspace.com/rs/ciscoacademy/images/you=
+tube-logo-white-on-grey-50x26.png" alt=3D"YouTube" border=3D"0"></a></td>=
+=20
+<td style=3D"border-collapse: collapse;" valign=3D"top" bgcolor=3D"#6D6E72"=
+ width=3D"2"></td>=20
+</tr>=20
+<tr>=20
+<td colspan=3D"7" bgcolor=3D"#6D6E72" height=3D"4"></td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+<table style=3D"font-family: Arial, Helvetica, sans-serif; color: #666666; =
+font-size: 11px; line-height: 14px; text-align: left; border-collapse: coll=
+apse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" cellspacing=3D"0" cell=
+padding=3D"0" bgcolor=3D"#F0F0F0" border=3D"0" width=3D"100%">=20
+<tbody>=20
+<tr>=20
+<td style=3D"border-collapse: collapse;" valign=3D"top" width=3D"10"></td>=
+=20
+<td style=3D"font-family: Arial, Helvetica, sans-serif; color: #666666; fon=
+t-size: 11px; line-height: 14px; border-collapse: collapse;" valign=3D"top"=
+ width=3D"80%"> <p><br>No responda este correo electr=C3=B3nico. Para obten=
+er ayuda, inicie sesi=C3=B3n en Cisco Networking Academy, vaya a Soporte y =
+capacitaci=C3=B3n o publique una pregunta en <a href=3D
+"http://nsmail.cisconetspace.com/wFgZzyfV400003nZ20Q0N0F" target=3D"_blank"
+>Facebook</a>.</p> <p>Para cancelar la suscripci=C3=B3n, inicie sesi=C3=B3n=
+ en <a href=3D
+"http://nsmail.cisconetspace.com/Bn003V0Zz000y2FF0gR43Qf" target=3D"_blank"
+>Cisco Networking Academy</a>, haga clic en su nombre (en la esquina superi=
+or derecha) y actualice sus preferencias de notificaciones y correo electr=
+=C3=B3nico. Si ya no es parte del programa de Networking Academy y necesita=
+ hacer que eliminen su cuenta, inicie sesi=C3=B3n, vaya a Ayuda y env=C3=AD=
+e una solicitud de eliminaci=C3=B3n. <br> <br> =C2=A92017 Cisco Systems, In=
+c.y/o sus filiales. Todos los derechos reservados. 170 W Tasman, San Jose, =
+CA 95134<br> <br> <a style=3D"color: #0088c2; text-decoration: none;" href=
+=3D
+"http://nsmail.cisconetspace.com/I0n2SVg04y34zf0Q0F0FZ00" target=3D"_blank"
+>Cisco.com</a> | <a style=3D"color: #0088c2; text-decoration: none;" href=
+=3D
+"http://nsmail.cisconetspace.com/FngF400T50V230FQ000Zfzy" target=3D"_blank"
+>Declaraci=C3=B3n de privacidad</a> | <a style=3D"color: #0088c2; text-deco=
+ration: none;" href=3D
+"http://nsmail.cisconetspace.com/wFgZzyfV400003n620Q0U0F" target=3D"_blank"
+>Marcas comerciales</a></p> </td>=20
+<td style=3D"border-collapse: collapse;" valign=3D"top" width=3D"10"></td>=
+=20
+</tr>=20
+</tbody>=20
+</table>=20
+<p></p>=20
+</div></td>=20
+</tr>=20
+</tbody>=20
+</table></td>=20
+</tr>=20
+<!--/4th Row End-->=20
+</tbody>=20
+</table></td>=20
+</tr>=20
+</tbody>=20
+</table> =20
+<a href=3D
+"http://nsmail.cisconetspace.com/LQy0ZF00n0VF2V7g3040f0z"
+></a>
+<img src=3D"http://nsmail.cisconetspace.com/trk?t=3D1&mid=3DMDU5LVZGWi04MzQ=
+6ODA2Mzo0NzY1OjEyODY5OjA6ODAzMDo5OjE3NDE2OjM3ODU2NzA3OnNheWRlLmd1dGllcnJlej=
+kyQGdtYWlsLmNvbQ%3D%3D" width=3D"1" height=3D"1" style=3D"display:none !imp=
+ortant;" alt=3D"" />
+
+<p></p>
+</body>
+</html>
+------=_Part_1733920680_30644935.1498854581752--
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>color</key>
+	<string>000000</string>
+	<key>date-last-viewed</key>
+	<integer>0</integer>
+	<key>date-received</key>
+	<integer>1498854584</integer>
+	<key>flags</key>
+	<integer>8590195840</integer>
+	<key>gmail-label-ids</key>
+	<array>
+		<integer>3</integer>
+	</array>
+	<key>remote-id</key>
+	<string>10200</string>
+</dict>
+</plist>

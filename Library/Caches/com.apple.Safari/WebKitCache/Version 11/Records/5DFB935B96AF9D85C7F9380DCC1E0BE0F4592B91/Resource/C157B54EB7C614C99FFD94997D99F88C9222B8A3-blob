@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr" class="no-js" data-ffo-opensans="false" data-ffo-zillaslab="false">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  
+    
+  
+
+  
+  <title>¿Cómo se utiliza Github pages? - Entendiendo la Web | MDN</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+    <link rel="home" href="/es/">
+    <link rel="copyright" href="#copyright">
+  
+
+  
+    
+    
+
+    <link href="https://developer.cdn.mozilla.net/static/build/styles/mdn.c4c0bada796d.css" rel="stylesheet" type="text/css" />
+
+    
+  
+
+    <link href="https://developer.cdn.mozilla.net/static/build/styles/wiki.45b665dc5427.css" rel="stylesheet" type="text/css" />
+
+
+    
+      
+        <link href="https://developer.cdn.mozilla.net/static/build/styles/zone-learn.504cb8a5081d.css" rel="stylesheet" type="text/css" />
+      
+    
+
+  <link href="https://developer.cdn.mozilla.net/static/build/styles/locales/es.f7ec0efadd4a.css" rel="stylesheet" type="text/css" />
+    <!-- common social tags -->
+    
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.72382e605ce3.png">
+    <meta property="og:site_name" content="Mozilla Developer Network">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="https://developer.cdn.mozilla.net/static/img/opengraph-logo.72382e605ce3.png">
+    <meta name="twitter:site" content="@MozDevNet">
+    <meta name="twitter:creator" content="@MozDevNet">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://developer.mozilla.org/es/search/xml" title="Mozilla Developer Network">
+  
+
+  <!-- third-generation iPad with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://developer.cdn.mozilla.net/static/img/favicon144.0d89fc050967.png">
+  <!-- iPhone with high-resolution Retina display: -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://developer.cdn.mozilla.net/static/img/favicon114.57ce6f6d1857.png">
+  <!-- first- and second-generation iPad: -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://developer.cdn.mozilla.net/static/img/favicon72.deefe20a0360.png">
+  <!-- non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+  <link rel="apple-touch-icon-precomposed" href="https://developer.cdn.mozilla.net/static/img/favicon57.930938a93373.png">
+  <!-- basic favicon -->
+  
+    
+  
+  <link rel="shortcut icon" href="https://developer.cdn.mozilla.net/static/img/favicon32.e1ca6d9bb933.png">
+  <!--[if IE]>
+  <meta http-equiv="imagetoolbar" content="no">
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/html5shiv.3948ccddab6f.js" charset="utf-8"></script>
+  <![endif]-->
+
+  <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/font-check.f6a4c7250869.js" charset="utf-8"></script>
+
+  
+  <link rel="alternate" type="application/json" href="/es/docs/Learn/Using_Github_pages$json">
+  <link rel="canonical" href="https://developer.mozilla.org/es/docs/Learn/Using_Github_pages" >
+
+  
+    
+      <link rel="alternate" hreflang="en-US" href="/en-US/docs/Learn/Common_questions/Using_Github_pages" title="How do I use GitHub Pages?">
+    
+      <link rel="alternate" hreflang="fr" href="/fr/docs/Apprendre/Utiliser_les_pages_GitHub" title="Utiliser les pages GitHub">
+    
+      <link rel="alternate" hreflang="pt-BR" href="/pt-BR/docs/Learn/Common_questions/Using_Github_pages" title="How do I use GitHub Pages?">
+    
+      <link rel="alternate" hreflang="zh-CN" href="/zh-CN/docs/Learn/Common_questions/Using_Github_pages" title="应该如何使用Github Pages?">
+    
+  
+
+  <!-- document-specific social tags -->
+  <meta property="og:title" content="¿Cómo se utiliza Github pages?">
+  <meta property="og:url" content="https://developer.mozilla.org/es/docs/Learn/Using_Github_pages">
+  <meta name="twitter:url" content="https://developer.mozilla.org/es/docs/Learn/Using_Github_pages">
+  <meta name="twitter:title" content="¿Cómo se utiliza Github pages?">
+  
+  <meta property="og:description" content="GitHub es un sitio &#34;social coding&#34;. Te permite subir repositorios de código para almacenarlo en el sistema de control de versiones Git . Tu puedes colaborar en proyectos de código, y el sistema es código abierto por defecto, lo que significa que cualquiera en el mundo puede encontrar tu código en GitHub, usarlo, aprender de el, y mejorarlo. ¡Tú puedes hacer eso con el código de otras personas tambien! Este artículo provee una guía básica para publicar contenido usando la característica gh-pages de Github.">
+  <meta name="description" content="GitHub es un sitio &#34;social coding&#34;. Te permite subir repositorios de código para almacenarlo en el sistema de control de versiones Git . Tu puedes colaborar en proyectos de código, y el sistema es código abierto por defecto, lo que significa que cualquiera en el mundo puede encontrar tu código en GitHub, usarlo, aprender de el, y mejorarlo. ¡Tú puedes hacer eso con el código de otras personas tambien! Este artículo provee una guía básica para publicar contenido usando la característica gh-pages de Github.">
+  <meta name="twitter:description" content="GitHub es un sitio &#34;social coding&#34;. Te permite subir repositorios de código para almacenarlo en el sistema de control de versiones Git . Tu puedes colaborar en proyectos de código, y el sistema es código abierto por defecto, lo que significa que cualquiera en el mundo puede encontrar tu código en GitHub, usarlo, aprender de el, y mejorarlo. ¡Tú puedes hacer eso con el código de otras personas tambien! Este artículo provee una guía básica para publicar contenido usando la característica gh-pages de Github.">
+  
+
+
+  
+    
+
+<script type="text/javascript">
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-36116321-5', 'mozilla.org');
+    ga('set', 'anonymizeIp', true);
+
+    
+
+    // dimension9 == "Section editing"
+    
+        // dimension12 == 'Page Revision'
+        ga('set', 'dimension12', '1280321');
+        // dimension17 == 'English Slug'
+        ga('set', 'dimension17', 'Learn/Common_questions/Using_Github_pages');
+
+    (function() {
+        // http://cfsimplicity.com/61/removing-analytics-clutter-from-campaign-urls
+        var win = window;
+        var removeUtms = function(){
+            var location = win.location;
+            if (location.href.indexOf('utm') != -1 && win.history.replaceState) {
+                win.history.replaceState({}, '', location.pathname);
+            }
+        };
+
+        ga('send', 'pageview', {'hitCallback': removeUtms});
+    })();
+</script>
+
+  
+</head>
+<body data-slug="Learn/Using_Github_pages" contextmenu="edit-history-menu" data-search-url="" class="document zone ">
+
+  <script type="text/javascript">
+    // make sure global mdn object exists
+    var mdn = window.mdn || {};
+
+    (function(win) {
+        'use strict';
+
+        
+            (function(){
+  var FLAGS = {
+    'compat_api': false,'kumaediting': false,'page_move': false,'redesign': true,'redesign_beta': false,'redesign_live': true,'registration_disabled': false,'search_suggestions': false,'section_edit': false,'sg_task_completion': false,'spam_admin_override': false,'spam_checks_enabled': true,'spam_spammer_override': false,'spam_submissions_enabled': false,'spam_testing_mode': false,'wiki_samples': true,'wiki_spam_exempted': false,'wiki_spam_training': false
+    },
+    SWITCHES = {
+    'wiki_error_on_delete': false,'wiki_force_immediate_rendering': false,'enable_optimizely': false,'welcome_email': true,'application_ACAO': true,'store_revision_ips': true,'dumb_doc_urls': true,'newsletter': true,'newsletter_article': true,'foundation_callout': false,'helpful-survey-2': true
+    },
+    SAMPLES = {
+    
+    };
+  window.waffle = {
+    "flag_is_active": function waffle_flag(flag_name) {
+      
+      return !!FLAGS[flag_name];
+    },
+    "switch_is_active": function waffle_switch(switch_name) {
+      
+      return !!SWITCHES[switch_name];
+    },
+    "sample_is_active": function waffle_sample(sample_name) {
+      
+      return !!SAMPLES[sample_name];
+    },
+    "FLAGS": FLAGS,
+    "SWITCHES": SWITCHES,
+    "SAMPLES": SAMPLES
+  };
+})();
+
+        
+
+        // This needs to be set before ckeditor.js loads
+        window.CKEDITOR_BASEPATH = '/static/js/libs/ckeditor/build/ckeditor/';
+
+        // Site configuration
+        win.mdn.ckeditor = {};
+        win.mdn.features = {};
+        win.mdn.staticPath = 'https://developer.cdn.mozilla.net/static/';
+        win.mdn.optimizely = win['optimizely'] || [];
+        win.mdn.wiki = {
+            autosuggestTitleUrl: '/es/docs/get-documents'
+        };
+        win.mdn.assets = {
+            css: {
+                'editor-content': ['https://developer.cdn.mozilla.net/static/build/styles/editor-content.8af994422124.css',
+                ]
+            },
+            js: {
+                'syntax-prism': ['https://developer.cdn.mozilla.net/static/build/js/syntax-prism.66bd4038bff3.js',]
+            }
+        };
+
+        win.mdn.notifications = [];
+
+        
+    })(this);
+</script>
+    
+
+  <ul id="nav-access">
+    <li><a href="#document-main" id="skip-main">Saltar al contenido principal</a></li>
+    <li><a id="skip-language" href="#language">Seleccionar idioma</a></li>
+    <li><a href="#q" id="skip-search">Saltar a la búsqueda</a></li>
+  </ul>
+
+  <!-- Header -->
+  <header id="main-header"><div class="center">
+    <a href="/es/" class="logo">Documentación web de MDN</a>
+
+    <div id="nav-sec">
+    
+      <ul>
+      <li class="nav-login"><div class="login">
+    
+        
+        <a href="/users/github/login/?next=%2Fes%2Fdocs%2FLearn%2FUsing_Github_pages" class="login-link js-login-link" data-service="GitHub">
+            Registrarse
+            <i class="icon-github" aria-hidden="true"></i>
+        </a>
+    
+</div></li>
+      </ul>
+    
+    </div>
+
+    <nav id="main-nav" class="nav-main" role="navigation"><ul><li class="nav-main-item"><a href="/es/docs/Web">Tecnologías<i aria-hidden="true" class="icon-caret-down"></i></a>
+      <div class="submenu js-submenu" id="nav-tech-submenu">
+        <div class="submenu-column">
+          <ul>
+            <li><a href="/es/docs/Web/HTML">HTML</a></li>
+            <li><a href="/es/docs/Web/CSS">CSS</a></li>
+            <li><a href="/es/docs/Web/JavaScript">JavaScript</a></li>
+            <li><a href="/es/docs/Web/Guide/Graphics">Gráficos</a></li>
+            <li><a href="/es/docs/Web/HTTP">HTTP</a></li>
+            <li><a href="/es/docs/Web/API">API / DOM</a></li>
+            <li><a href="/es/docs/Mozilla/Add-ons/WebExtensions">WebExtensions</a></li>
+            <li><a href="/es/docs/Web/MathML">MathML</a></li>
+          </ul>
+        </div></div><li class="nav-main-item"><a href="/es/docs/Learn">Referencias y guías<i aria-hidden="true" class="icon-caret-down"></i></a>
+        <div class="submenu js-submenu" id="nav-learn-submenu">
+        <div class="submenu-column">
+          <ul>
+            <li><a href="/es/docs/Learn">Aprender desarrollo web</a></li>
+            <li><a href="/es/docs/Web/Tutorials">Tutoriales</a></li>
+            <li><a href="/es/docs/Web/Reference">Referencias</a></li>
+            <li><a href="/es/docs/Web/Guide">Guías para desarrolladores</a></li>
+            <li><a href="/es/docs/Web/Accessibility">Accesibilidad</a></li>
+            <li><a href="/es/docs/Games">Desarrollo de juegos</a></li>
+            <li><a href="/es/docs/Web">...más documentos</a></li>
+          </ul>
+        </div>
+      </div>
+      </li><li class="nav-main-item"><a href="/es/docs/MDN/Feedback">Comentarios<i aria-hidden="true" class="icon-caret-down"></i></a>
+        <div class="submenu js-submenu" id="nav-contact-submenu">
+          <div class="submenu-column">
+            <ul>
+              <li><a href="https://support.mozilla.org/">Obtén ayuda de Firefox<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a href="https://stackoverflow.com/">Obtén ayuda de desarrollo web<i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+            <ul>
+              <li><a href="/es/docs/MDN/Community">Únete a la comunidad de MDN</a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.doc?bug_file_loc=https%3A//developer.mozilla.org/es/docs/Learn/Using_Github_pages">Denuncia un problema de contenido<i aria-hidden="true" class="icon-external-link"></i></a></li>
+              <li><a target="_blank" href="https://bugzilla.mozilla.org/form.mdn">Informar de un error. <i aria-hidden="true" class="icon-external-link"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </li><li class="nav-main-search"><form action="/es/search" method="get" role="search">
+        <div class="search-wrap">
+          <label for="main-q" class="offscreen">Buscar</label>
+          <input type="search" id="main-q" name="q" placeholder="Buscar" data-value="" value="" />
+          <span class="search-trigger"><i aria-hidden="true" class="icon-search"></i></span>
+          <button type="submit" class="offscreen">Buscar</button>
+        </div>
+      </form></li></ul></nav>
+  </div></header>
+
+  <!-- Content will go here -->
+  <main id="content"><div class="center clear">
+  
+
+  
+      
+        <div class="zone-article-header" id="document-main"><div class="center">
+          <!-- zone title -->
+          <div class="zone-title"><a href="/en-US/docs/Learn">Learn web development</a></div>
+          <!-- zone image -->
+          <div class="zone-image"></div>
+        </div></div>
+      
+
+     <!-- end is_zone -->
+
+
+    <div class="wiki-main-content" ><div class="center">
+      
+      <div class="article-meta">
+        <!-- action buttons -->
+        
+
+  
+    
+    
+  
+
+  
+    
+  
+
+  
+
+  <ul class="page-buttons">
+      <li><button id="languages-menu" class="transparent" aria-haspopup="true" aria-owns="languages-menu-submenu" aria-expanded="false"><span>Idiomas</span><i aria-hidden="true" class="icon-language"></i></button>
+
+        <div class="submenu js-submenu" id="languages-menu-submenu">
+          <div class="submenu-column">
+            <ul id="translations">
+              
+                
+                
+                
+                  <li><bdi><a rel="internal" href="/en-US/docs/Learn/Common_questions/Using_Github_pages" title="Inglés (EE.UU.)">English (US) (en-US)</a></bdi></li>
+                
+                  <li><bdi><a rel="internal" href="/fr/docs/Apprendre/Utiliser_les_pages_GitHub" title="Francés">Français (fr)</a></bdi></li>
+                
+                  <li><bdi><a rel="internal" href="/pt-BR/docs/Learn/Common_questions/Using_Github_pages" title="Portugués (Brasil)">Português (do Brasil) (pt-BR)</a></bdi></li>
+                
+                  <li><bdi><a rel="internal" href="/zh-CN/docs/Learn/Common_questions/Using_Github_pages" title="Chino (simplificado)">中文 (简体) (zh-CN)</a></bdi></li>
+                
+              
+
+              
+            </ul>
+          </div>
+        </div>
+      </li>
+      
+      <li class="page-buttons-edit"><a href="/es/docs/Learn/Using_Github_pages$edit" class="button neutral" data-optimizely-hook="button-edit-doc" id="edit-button" rel="nofollow, noindex">Editar<i aria-hidden="true" class="icon-pencil"></i></a></li>
+      
+
+        
+
+        <li><button id="advanced-menu" class="only-icon" aria-haspopup="true" aria-owns="advanced-menu-submenu" aria-expanded="false"><span>Avanzado</span><i aria-hidden="true" class="icon-cog"></i></button>
+        <div class="submenu js-submenu" id="advanced-menu-submenu">
+          <!-- this page -->
+          <div class="submenu-column">
+            <div class="title">Avanzado</div>
+            <ul>
+                <li><a href="/es/docs/Learn/Using_Github_pages$history" rel="nofollow, noindex">Historial</a></li>
+                
+                
+                
+
+
+                
+
+                
+                
+                
+                <li class="page-print"><a href="#" onclick="return window.print();">Imprimir este artículo</a></li>
+            </ul>
+          </div>
+        </div>
+  </li></ul>
+
+        <!-- crumbs -->
+        
+  <nav class="crumbs" role="navigation"><ol xmlns:v="http://rdf.data-vocabulary.org/#" aria-label="hilos de araña">
+    <li typeof="v:Breadcrumb"><a href="/es" rel="v:url" property="v:title">MDN</a></li>
+    
+      <li class="crumb" typeof="v:Breadcrumb"><a href="/es/docs/Learn" rel="v:url" property="v:title">Entendiendo la Web</a></li>
+    
+    <li class="crumb" typeof="v:Breadcrumb" property="v:title">¿Cómo se utiliza Github pages?</li>
+  </ol></nav>
+      </div>
+
+      <!-- heading -->
+      <div id="wiki-document-head" class="document-head">
+        <h1>¿Cómo se utiliza Github pages?</h1>
+      </div>
+      
+
+      <!-- start the main content container -->
+        <div id="wiki-column-container" class="wiki-right-present wiki-left-closed wiki-left-none">
+
+          <!-- content row with three strips -->
+          <div class="column-container column-container-reverse">
+
+            
+              <!-- TOC, approvals, etc -->
+              <div class="column-strip wiki-column" id="wiki-right">
+              
+              <!-- table of contents -->
+              <div id="toc" class="toc toggleable">
+                <a href="#toc" class="title toggler" data-open-icon="icon-caret-right" data-closed-icon="icon-caret-down">En este artículo<i></i></a>
+                <ol class="toggle-container">
+                  <li><a href="#Publicando_contenido" rel="internal">Publicando contenido</a><ol><li><a href="#Configuración_básica_de_Github" rel="internal">Configuración básica de Github</a><li><a href="#Preparando_tu_código_para_subirlo" rel="internal">Preparando tu código para subirlo</a><ol><li><a href="#An_aside_on_command_line_interfaces" rel="internal">An aside on command line interfaces</a></ol></li><li><a href="#Creando_un_repositorio_para_tu_código" rel="internal">Creando un repositorio para tu código</a><li><a href="#Subiendo_tus_archivos_a_GitHub" rel="internal">Subiendo tus archivos a GitHub</a><li><a href="#Un_mayor_conocimiento_de_GitHub" rel="internal">Un mayor conocimiento de GitHub</a></ol></li>
+                </ol>
+              </div>
+              
+              </div>
+            
+
+
+            <!-- center: main article content -->
+            <div id="wiki-content" class="column-main wiki-column text-content">
+
+              
+
+              
+              
+
+              
+
+              
+                
+              
+              
+
+              <!-- just the article content -->
+              <article id="wikiArticle">
+                
+                  
+                    <p class="summary"><a href="https://github.com/" class="external">GitHub</a> es un sitio "social coding". Te permite subir repositorios de código para almacenarlo en el <strong>sistema de control de versiones</strong> <a href="http://git-scm.com/" class="external">Git</a>. Tu puedes colaborar en proyectos de código, y el sistema es código abierto por defecto, lo que significa que cualquiera en el mundo puede encontrar tu código en GitHub, usarlo, aprender de el, y mejorarlo. ¡Tú puedes hacer eso con el código de otras personas tambien! Este artículo provee una guía básica para publicar contenido usando la característica gh-pages de Github.</p>
+
+<h2 id="Publicando_contenido">Publicando contenido</h2>
+
+<p>Github es una comunidad muy importante y útil para involucrarse, y Git/GitHub es un <a href="http://git-scm.com/book/en/v2/Getting-Started-About-Version-Control" class="external">sistema de control de versiones</a> muy popular — la mayoría de las empresas de tecnología ahora lo utilizan en su flujo de trabajo. GitHub tiene una característica muy útil llamada <a href="https://pages.github.com/" class="external">GitHub pages</a>, que te permite publicar el código del sitio en vivo en la Web.</p>
+
+<h3 id="Configuración_básica_de_Github"><span lang="es" class="short_text" id="result_box"><span class="hps">Configuración básica</span> de <span class="hps">Github</span></span></h3>
+
+<ol>
+ <li>Primero que todo, <a href="http://git-scm.com/downloads" class="external">instala Git</a> en tu máquina. <span lang="es" id="result_box"><span class="hps">Este es el</span> <span class="hps">software del sistema</span> <span class="hps">de control de versiones</span> <span class="hps">subyacente en el que</span> <span class="hps">GitHub</span> <span class="hps">funciona</span><span>.</span></span></li>
+ <li>Seguido, <a href="https://github.com/join" class="external">Regístrate para una cuenta de GitHub</a>. Es simple y fácil.</li>
+ <li>Una vez te hayas registrado, inicia sesión en <a href="https://github.com" class="external">github.com</a> con tu nombre de usuario y contraseña.</li>
+</ol>
+
+<h3 id="Preparando_tu_código_para_subirlo">Preparando tu código para subirlo</h3>
+
+<p>Tú puedes almacenar cualquier código que tu quieras en un repositorio de Github, pero para usar la característica páginas de Github con pleno efecto, tu código debe estar estructurado como un sitio web típico, por ejemplo que el punto de entrada primario sea un archivo HTML llamado<code> index.html</code>.</p>
+
+<p>La otra cosa que necesitas hacer <span lang="es" id="result_box"><span class="hps">antes de seguir adelante</span> <span class="hps">es</span> <span class="hps">inicializar</span> <span class="hps">el directorio de</span> <span class="hps">código como</span> <span class="hps">un repositorio</span> <span class="hps">Git</span></span>. para hacer esto:</p>
+
+<ol>
+ <li>Apunta la línea de comandos a tu directorio <code>test-site</code> (<span lang="es" id="result_box"><span class="hps">o como se</span> <span class="hps">llame</span> <span class="hps">el directorio que contiene</span> tu<span class="hps"> sitio web</span></span>). Para esto, usa el comando <code>cd</code> (Es decir "<em>cambio de</em> <em>d</em>irectorio"). Esto es lo que deberías digitar si has puesto tu sitio web en un directorio llamado <code>test-site</code> en tu escritorio:
+
+  <pre class="brush: bash">cd Desktop/test-site</pre>
+ </li>
+ <li>Cuando la línea comandos está apuntando hacia el interior del directorio de tu sitio web, digita el siguiente comando, que le dice a la herramienta <code>git</code> para convertir el directorio en un repositorio git:</li>
+ <li>
+  <pre class="brush: bash">git init</pre>
+ </li>
+</ol>
+
+<h4 id="An_aside_on_command_line_interfaces">An aside on command line interfaces</h4>
+
+<p>La mejor manera de subir tu código a Github es mediante la linea de comandos — esta es una ventana donde tú escribe <span lang="es" id="result_box"><span class="hps">comandos</span> <span class="hps">para hacer cosas como</span> <span class="hps">crear</span> <span class="hps">archivos y ejecutar programas</span></span>, en lugar de hacer clic dentro de una interfaz de usuario. Se verá algo como esto:</p>
+
+<p><img src="https://mdn.mozillademos.org/files/9483/command-line.png" alt="" style="display: block; height: 478px; margin: 0px auto; width: 697px;"></p>
+
+<div class="note">
+<p><strong>Nota</strong>: Tú también podrías considerar una <a href="http://git-scm.com/downloads/guis" class="external">interfaz gráfica de usuario de Git</a> para hacer el mismo trabajo, si te sientes incómodo con la linea de comandos.</p>
+</div>
+
+<p><span lang="es" id="result_box"><span class="hps">Cada sistema operativo</span> <span class="hps">viene con</span> <span class="hps">una herramienta de línea</span> <span class="hps">de comandos</span><span>:</span></span></p>
+
+<ul>
+ <li><strong>Windows</strong>: <strong>Command Prompt</strong> se puede acceder pulsando la tecla Windows, tipeando <em>Command Prompt</em>, Y elegirlo de la lista que aparece. Nota que Windows tiene sus propias convenciones de comando diferentes de Linux y OS X, así que los comandos abajo pueden variar en su máquina.</li>
+ <li><strong>OS X</strong>: <strong>Terminal</strong> se puede encontrar en <em>Aplicaciones &gt; Utilidades</em>.</li>
+ <li><strong>Linux</strong>: Por lo general, puede extraer una terminal con <em>Ctrl + Alt + T</em>. <span lang="es" class="short_text" id="result_box"><span class="hps">Si</span> <span class="hps">eso no funciona</span></span>, busca <strong>Terminal</strong> en una barra de aplicaciones o menú.</li>
+</ul>
+
+<p><span lang="es" class="short_text" id="result_box"><span class="hps">Esto puede</span> <span class="hps">parecer un poco</span> espantoso<span class="hps"> al principio</span></span>, pero no te preocupes — que pronto conseguiras la <span lang="es" id="result_box"><span class="hps">caída de</span> <span class="hps">los conceptos básicos</span></span>. Tú<span lang="es" id="result_box"><span class="hps"> le dices a</span> <span class="hps">la computadora que </span><span class="hps">haga algo en la</span> <span class="hps">terminal, digitando</span> <span class="hps">un comando y</span> <span class="hps">oprimiendo la tecla Enter</span><span>,</span> <span class="hps">como se ha visto</span> <span class="hps">anteriormente.</span></span></p>
+
+<h3 id="Creando_un_repositorio_para_tu_código">Creando un repositorio para tu código</h3>
+
+<ol>
+ <li>
+  <p><span lang="es" id="result_box"><span class="hps">A continuación</span></span>, tu necesitas crear un nuevo repositorio para colocar tus archivos en el. Has clic en el signo más (+) en la parte superior derecha de la página de inicio de GitHub, luego escoge <em>Nuevo Repositorio</em>.</p>
+ </li>
+ <li><span lang="es" class="short_text" id="result_box"><span class="hps">En esta página,</span></span> en la caja <em>Nombre del Repositorio</em>, digita el nombre para tu repositorio de código, por ejemplo <em>my-repository</em>.</li>
+ <li>También llena una descripción <span lang="es" class="short_text" id="result_box"><span class="hps">para decir lo que</span> tu <span class="hps">repositorio</span> <span class="hps">va a</span> <span class="hps">contener</span></span>. Tu pantalla debe mostrar algo como esto:<br>
+  <img src="https://mdn.mozillademos.org/files/12143/create-new-repo.png" alt="" style="display: block; height: 548px; margin: 0px auto; width: 800px;"></li>
+ <li>Has Clic en <em>Crear repositorio</em>; Esto debería llevarte a la siguiente página: <br>
+  <img src="https://mdn.mozillademos.org/files/12141/github-repo.png" alt="" style="display: block; height: 520px; margin: 0px auto; width: 800px;"></li>
+</ol>
+
+<h3 id="Subiendo_tus_archivos_a_GitHub">Subiendo tus archivos a GitHub</h3>
+
+<ol>
+ <li>En la página actual, tú estás interesado en la sección <em>…o empujar un repositorio existente desde la línea de comandos</em>. Tú deberias ver dos lineas de código listado en esta sección. <span lang="es" class="short_text" id="result_box"><span class="hps">Copia</span> <span class="hps">la totalidad de la</span> <span class="hps">primera</span> <span class="hps">línea</span></span>, pégala en la línea de comandos, presiona la tecla Enter. El comando debería mostrarte algo como esto:
+
+  <pre class="copyable-terminal-content js-zeroclipboard-target"><span class="user-select-contain">git remote add origin <span class="js-live-clone-url">https://github.com/chrisdavidmills/my-repository.git</span></span></pre>
+ </li>
+ <li><span lang="es" id="result_box"><span class="hps">A continuación</span></span>, digita los siguientes dos comandos, presionando Enter despues de cada uno. Estos preparán el código para subirlo a GitHub, y pida a GIt que administre estos archivos.
+  <pre class="brush: bash">git add --all
+git commit -m 'adding my files to my repository'</pre>
+ </li>
+ <li>Por último,<span lang="es" class="short_text" id="result_box"><span class="hps"> empuja el</span> <span class="hps">código</span> <span class="hps">hasta</span></span> GitHub yendo a la página de GitHub en la que estas e ingresando en la terminal el segundo de los dos comandos que vimos <em>…o empuje un repositorio existente desde la sección de línea de comandos</em>:
+  <pre class="brush: bash">git push -u origin master</pre>
+ </li>
+ <li>Ahora necesitas crear la rama gh-pages de tu repositorio; actualiza la página actual <span lang="es" id="result_box"><span class="hps">y verá</span> <span class="hps">una página</span> del <span class="hps">repositorio</span> <span class="hps">algo así como</span> <span class="hps">la de abajo.</span></span> Tú necesitas presionar el boton que dice <em>Branch: <strong>master</strong></em>, digita <em>gh-pages</em> en el campo de texto, luego presiona el boton azul que dice <em>Create branch: gh-pages</em>. Esto crea una rama de código especial llamada gh-pages que es publicada en una ubicación especial. La URL toma la forma <em>username.github.io/my-repository-name</em>, asi en mi caso de ejemplo, la URL debería ser <em>https://chrisdavidmills.github.io/my-repository</em>. La página mostrada es la página index.html.<br>
+  <img src="https://mdn.mozillademos.org/files/12145/repo-site.png" alt="" style="display: block; margin: 0px auto;"></li>
+ <li>Navega tu dirección web de GitHub pages en un nuevo ta del navegador, y tu deberias ver tu sitio en linea! Mandalo <span lang="es" id="result_box"><span class="hps">por correo electrónico a</span> <span class="hps">tus</span> <span class="hps">amigos</span> <span class="hps">y muestra tu</span> <span class="hps">dominio</span><span>.</span></span></li>
+</ol>
+
+<div class="note">
+<p><strong>Nota</strong>: <span lang="es" class="short_text" id="result_box"><span class="hps">Si te atascas</span></span>, la <a href="https://pages.github.com/" class="external">página de inicio de GitHub Pages</a> <span lang="es" class="short_text" id="result_box"><span class="hps">también</span> <span class="hps">es</span> <span class="hps">muy</span> <span class="hps">útil</span></span>.</p>
+</div>
+
+<h3 id="Un_mayor_conocimiento_de_GitHub"><span lang="es" class="short_text" id="result_box"><span class="hps">Un mayor conocimiento</span> <span class="hps">de GitHub</span></span></h3>
+
+<p><span lang="es" id="result_box"><span>Si deseas realizar más cambios en su sitio de prueba y cargarlos en GitHub, simplemente tendrás que realizar el cambio en tus archivos como antes.</span> <span>A continuación, debes introducir los siguientes comandos (pulsando Intro después de cada uno) para empujar los cambios a GitHub</span></span>:</p>
+
+<pre>git add --all
+git commit -m 'another commit'
+git push</pre>
+
+<p>Puedes reemplazar <em>otro commit</em> con un mensaje más adecuado para describir qué cambio acaba de hacer.</p>
+
+<p>Apenas hemos arañado la superficie de Git.Para obtener más información, comience con el <a href="https://help.github.com/index.html" class="external">sitio de ayuda de GitHub</a>.</p>
+                  
+                
+
+              
+                <aside class="helpful-survey hidden" id="helpful-survey">
+                  <p>¿Te resultó útil este artículo?</p>
+
+                  <div class="helpful-survey-content">
+                    <div class="helpful-survey-buttons">
+                      <button type="button" class="helpful-survey-vote helpful-survey-yes">
+                        <span class="offscreen">Sí</span>
+                        <i class="icon-thumbs-o-up" aria-hidden="true"></i>
+                      </button>
+                      <button type="button" class="helpful-survey-vote helpful-survey-no">
+                        <span class="offscreen">No</span>
+                        <i class="icon-thumbs-o-down" aria-hidden="true"></i>
+                      </button>
+                    </div>
+
+                    <div class="helpful-survey-thankyou">¡Gracias!</div>
+                  </div>
+                </aside>
+              
+              </article>
+
+              
+
+                <!-- contributors -->
+                <div class="wiki-block contributors">
+                  <h2 class="offscreen">Etiquetas y colaboradores del documento</h2>
+                  
+                  
+
+                  
+                    <div class="contributors-sub">
+                      <i aria-hidden="true" class="icon-group icon-fw"></i>&nbsp;<strong>Colaboradores en esta página:</strong> 
+        <a href="/es/profiles/DaniNz">DaniNz</a>, 
+    
+        <a href="/es/profiles/LuyisiMiger">LuyisiMiger</a>, 
+    
+        <a href="/es/profiles/TAXIS">TAXIS</a>
+    
+                    </div>
+                  
+
+                  
+                    <div class="contributors-sub">
+                      <i aria-hidden="true" class="icon-clock-o icon-fw"></i>&nbsp;<strong>Última actualización por:</strong>
+                      <a href="/es/profiles/DaniNz">DaniNz</a>,
+                      <time datetime="2017-07-31T19:25:44.917346-07:00">31 jul. 2017 19:25:44</time>
+                    </div>
+                  
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div> <!-- ends "main-content" -->
+
+    
+      <div class="newsletter-box">
+      <div class="newsletter">
+    <form id="newsletterForm" class="newsletter-form nodisable" name="newsletter-form" action="https://www.mozilla.org/en-US/newsletter/" method="post">
+        <div class="newsletter-head">
+            <h2 class="newsletter-teaser">Aprender lo mejor del desarrollo web</h2>
+            <p class="newsletter-description">Obtén lo mejor y más reciente de MDN directamente en tu bandeja de entrada.</p>
+            
+            <p class="newsletter-lang">Por ahora, el boletín solo está disponible en inglés.</p>
+            
+        </div>
+
+        <div class="newsletter-fields">
+            <input type="hidden" id="fmt" name="fmt" value="H">
+            <input type="hidden" id="newsletterNewslettersInput" name="newsletters" value="app-dev" />
+            <div id="newsletterErrors" class="newsletter-errors"></div>
+
+            <div id="newsletterEmail" class="form-group newsletter-group-email">
+                <label for="newsletterEmailInput" class="form-label offscreen">Correo electrónico</label>
+                <input type="email" id="newsletterEmailInput" name="email" class="form-input newsletter-input-email" required placeholder="you@example.com" size="30">
+            </div>
+
+            <div id="newsletterPrivacy" class="form-group form-group-agree newsletter-group-privacy hidden">
+                <input type="checkbox" id="newsletterPrivacyInput" name="privacy" required>
+                <label for="newsletterPrivacyInput">
+                Estoy de acuerdo con que Mozilla administre mis datos según la <a href="https://www.mozilla.org/privacy/"> Política de privacidad</a>.
+                </label>
+            </div>
+            <div id="newsletterSubmit" class="newsletter-group-submit">
+                <button id="newsletter-submit" type="submit" class="button neutral newsletter-submit">Suscribirse</button>
+            </div>
+        </div>
+    </form>
+    <div id="newsletterThanks" class="newsletter-thanks hidden">
+        <h2>¡Gracias! Comprueba tu correo para confirmar la subscripción.</h2>
+        <p>Si no has confirmado nunca una subscripción a boletines relacionados con Mozilla, tendrás que hacerlo. Comprueba tu correo o carpeta de spam para ver si recibiste un correo nuestro.
+        </p>
+    </div>
+    <button id="newsletterHide" type="button" class="only-icon newsletter-hide hidden"><span>Ocultar registro al boletín</span><i aria-hidden="true" class="icon-times"></i></button>
+</div>
+      </div>
+    
+
+  <menu type="context" id="edit-history-menu">
+    <menuitem data-action="/es/docs/Learn/Using_Github_pages$edit" label="Editar página"></menuitem>
+    <menuitem data-action="/es/docs/Learn/Using_Github_pages$history" label="Ver historial de la página"></menuitem>
+  </menu>
+
+  </div></main>
+
+  <!-- redesign notices -->
+  
+<div id="redesignNotice" class="redesign-notice hidden">
+  <h2>¿Por qué ha cambiado la apariencia de MDN?</h2>
+  <p>MDN está cambiando para centrarse en la documentación de tecnologías web. Todo el contenido sigue estando disponible, solo hemos cambiado elementos visuales y la navegación para ayudarte a encontrar más rápido los documentos sobre tecnología web que estés buscando.</p>
+  <p>Pero no te preocupes, ¡Mozilla y MDN siguen trabajando juntos! De hecho, estamos actualizando MDN para que se adapte a los nuevos colores y logo de Mozilla.</p>
+  <p><span class="redesign-old-logo"></span><span class="redesign-new-logo"></span></p>
+  <p>
+    <a href="https://blog.mozilla.org/opendesign/future-mdn-focus-web-docs/">Descubre más sobre el cambio de diseño</a> en nuestro blog.
+    ¡Gracias por usar MDN!
+  </p>
+  <button id="redesignHide" type="button" class="only-icon transparent redesign-hide"><span>Ocultar anuncio de cambio de diseño</span><i aria-hidden="true" class="icon-times"></i></button>
+</div>
+
+
+
+  <!-- Footer -->
+    <footer id="nav-footer" class="nav-footer">
+      <div class="center">
+          <a href="/es/" class="nav-footer-logo">Documentación web de MDN</a>
+          <div class="footer-group footer-group-mdn">
+            <h2 class="footer-title">MDN</h2>
+            <ul class="footer-list">
+              <li><a href="/es/docs/Web">Tecnologías web</a></li>
+              <li><a href="/es/docs/Learn">Aprender Desarrollo web</a></li>
+              <li><a href="/docs/MDN/About">Acerca de MDN</a></li>
+              <li><a href="/es/docs/MDN/Feedback">Comentarios</a></li>
+              <li class="footer-social"><a href="https://twitter.com/mozdevnet" class="only-icon"><i aria-hidden="true" class="icon-twitter"></i> <span>Twitter</span></a></li>
+              <li class="footer-social"><a href="https://github.com/mdn/" class="only-icon"><i aria-hidden="true" class="icon-github"></i> <span>GitHub</span></a></li>
+            </ul>
+          </div>
+
+          <a href="https://mozilla.org" class="nav-footer-mozilla">Mozilla</a>
+          <div class="footer-group footer-group-mozilla">
+            <h2 class="footer-title">Mozilla</h2>
+            <ul class="footer-list">
+              <li><a href="https://www.mozilla.org/about/">Acerca de</a></li>
+              <li><a href="https://www.mozilla.org/contact/">Contáctanos</a></li>
+              <li><a href="https://donate.mozilla.org/?utm_source=developer.mozilla.org&utm_medium=referral&utm_content=footer">Donar</a></li>
+              <li class="footer-social"><a href="https://twitter.com/mozilla" class="only-icon"><i aria-hidden="true" class="icon-twitter"></i> <span>Twitter</span></a></li>
+              <li class="footer-social"><a href="https://www.facebook.com/mozilla" class="only-icon"><i aria-hidden="true" class="icon-facebook"></i> <span>Facebook</span></a></li>
+              <li class="footer-social"><a href="https://www.instagram.com/mozillagram/" class="only-icon"><i aria-hidden="true" class="icon-instagram"></i> <span>Instagram</span></a></li>
+            </ul>
+          </div>
+
+          
+            
+  
+    <form class="languages go" method="get" action="/es/docs/Web">
+      <label for="language">Otros idiomas:</label>
+      <select id="language" class="wiki-l10n" name="next" dir="ltr">
+        <option title="Español" value="/es/docs/Learn/Using_Github_pages" selected>
+          Español (es)
+        </option>
+        
+          <option title="Inglés (EE.UU.)" value="/en-US/docs/Learn/Common_questions/Using_Github_pages">
+            English (US) (en-US)
+          </option>
+          <option title="Francés" value="/fr/docs/Apprendre/Utiliser_les_pages_GitHub">
+            Français (fr)
+          </option>
+          <option title="Portugués (Brasil)" value="/pt-BR/docs/Learn/Common_questions/Using_Github_pages">
+            Português (do Brasil) (pt-BR)
+          </option>
+          <option title="Chino (simplificado)" value="/zh-CN/docs/Learn/Common_questions/Using_Github_pages">
+            中文 (简体) (zh-CN)
+          </option>
+      </select>
+      <noscript><button type="submit">Ir</button></noscript>
+    </form>
+  
+
+          
+
+          
+            <ul class="footer-tos">
+              <li><a href="https://www.mozilla.org/about/legal/terms/mozilla">Condiciones</a></li>
+              <li><a href="https://www.mozilla.org/privacy/websites/">Privacidad</a></li>
+              <li><a href="https://www.mozilla.org/privacy/websites/#cookies">Cookies</a></li>
+            </ul>
+
+            <div class="contentinfo">
+              <p>&copy; Mozilla Developer Network y colaboradores individuales de 2005-2017 .</p> <p>El contenido está disponible bajo <a href="/en-US/docs/MDN/About#Copyrights_and_licenses">estas licencias</a>.</p>
+            </div>
+          
+      </div>
+    </footer>
+
+  <!-- site js -->
+  
+    
+    <!--[if lte IE 8]><script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/selectivizr.091e18cf669b.js" charset="utf-8"></script><![endif]-->
+
+    
+    <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/jsi18n/es/javascript.13b294eed761.js"></script>
+    <script type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/main.cac6bc38607c.js" charset="utf-8"></script>
+    
+      <script>
+        if(window.mdn && mdn.analytics) mdn.analytics.trackOutboundLinks();
+      </script>
+    
+    
+
+  
+    <script async type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/wiki.a9621cb01608.js" charset="utf-8"></script>
+
+
+  
+
+  
+
+  
+
+  
+    <script async type="text/javascript" src="https://developer.cdn.mozilla.net/static/build/js/newsletter.7cd3274169f2.js" charset="utf-8"></script>
+  
+
+
+</body>
+</html>

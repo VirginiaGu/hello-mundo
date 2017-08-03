@@ -1,0 +1,495 @@
+//$Id$
+var time = "";
+var paramTimer = "";
+var previous = "";
+function searchFn()
+{
+        var searchObj = document.searchMainForm.searchText;
+	var searchText = searchObj.value;
+        if(searchfocus == "")
+            {
+                alertSearchLayer(I18N.getMsg("dc.common.search.listofoptionstosearch"));
+                return false;
+            }
+	if(searchText == "" || searchObj.className == 'greyText')
+	{
+		alertSearchLayer(I18N.getMsg("dc.common.search.keywordtosearch"));
+		return false;
+	}
+	else
+	{
+                document.searchMainForm.searchfocus.value = searchfocus;
+                document.searchMainForm.submitSearchText.value = encodeURIComponent(searchText);
+		document.searchMainForm.submit();
+	}
+        return false;
+}
+
+function alertSearchLayer(alertmsg)
+{
+    showDialog('<table class="bodytext" width="100%" height="100%"><tr><td rowspan="3">&nbsp;&nbsp;&nbsp;<img src="images/alerts.png"/></td><td></td><td></td></tr><tr ><td colspan="2"><span class="bodytext">'+alertmsg+'</span></td></tr> <tr><td></td><td></td></tr> <tr><td align="center" colspan="3" class="formSubmitBg"><input type="button" value="'+I18N.getMsg('dc.common.ok')+'" class="primaryActionBtn" onclick="javascript:closeDialog(null,this);"></td></tr></table>','width=400,modal=yes,height=110,position=absolute,left=400,top=200,title='+I18N.getMsg('dc.js.common.ALERT')); //No I18N
+}
+
+function sleep(ms)
+{
+    var st = new Date().getTime();
+    while (new Date().getTime() < st + ms);
+}
+
+function searchOnEnter( event )
+{
+     var key = "";
+     var winKey = "";
+     if(window.event)
+         {
+         winKey = window.event.keyCode;
+         }
+     key = event.keyCode;
+     if(key == 13 || winKey == 13)
+         {
+        searchFn();
+         }
+    return false;
+}
+
+//This function is added as a fix
+//to solve the problem of submitting
+//even when no data is available.
+function submitSearchForm()
+{
+	return false;
+}
+
+
+function getBaseSearchParam()
+{
+    var obj = document.getElementById("baseParamList").getElementsByTagName("li");
+    document.getElementById("baseSearchDiv").className = "hide";
+    var len = obj.length;
+    if(len == 0)
+        {
+            DMAjaxAPI.sendRequest({URL:"advsearch.do",PARAMETERS:"actionToCall=getBaseSearchParams",ONSUCCESSFUNC:showBaseSearchParams});//No i18n
+        }
+        else
+            {
+                clearPrevious();
+                show_search();
+            }
+}
+
+var anchorGlobal = "";
+var isHistoryGlobal = "";
+function showBaseSearchParams(req)
+{
+    var ul = document.getElementById("baseParamList");
+    ul.className = "";
+    var jsonObject = req.responseText;
+    var list = eval('(' + jsonObject + ')');
+    var li;
+    var a;
+    var extraSearchlParams = "";
+    var selectedSearchParamtype = "";
+    for (var i in list)
+    {
+        if (list.hasOwnProperty(i))
+        {
+            var searchParamType = list[i].searchParamType;
+            if(searchParamType != selectedSearchParamtype)
+            {
+               appendHR(ul);
+            }
+            if(list[i].isTitle == true)
+            {
+                appendTitle(ul, list[i].searchTitle);
+                selectedSearchParamtype = searchParamType;
+                continue;
+            }
+            if (list[i].searchParamName == "dc.js.common.COMPUTER_NAME" || list[i].searchParamName == "dc.js.common.DEVICE_NAME" )
+            {
+               extraSearchlParams = document.getElementById("extraSearchlParams").value;
+               extraSearchlParams = createSearchTags(extraSearchlParams,list[i],ul,true);
+               document.getElementById("extraSearchlParams").value = extraSearchlParams;
+            }
+            else
+            {
+                li = document.createElement("li");
+                a = document.createElement("a");
+                a.innerHTML = "<span style='display: inline-block; width: 16px; text-align: left'><img src='../../images/bullet_left.gif'></span>" + I18N.getMsg(list[i].searchParamName);
+                a.setAttribute("id",list[i].searchParamId);
+                a.setAttribute("name",list[i].searchLevel);
+                a.setAttribute("href", "#");
+                if (list[i].searchParamName == "dc.js.common.SEARCH_HISTORY")
+                {
+                    a.onmouseover = function()
+                    {
+                        clearPrevious();
+                        getSearchParams(this, true);
+                    };
+                    li.setAttribute("id","liSearch");
+                }
+                else
+                {
+                    a.onmouseover = function()
+                    {
+                        clearPrevious();
+                        getSearchParams(this, false);
+                    };
+                    li.onclick = function(){
+                        liClick=true;
+                        setTimeout(function(){
+                            liClick=false;
+                        },50);
+                    }
+                    li.setAttribute("id","li"+list[i].searchParamId);
+                }
+                a.onmouseout = function()
+                {
+                    previous = this;
+                };
+                li.appendChild(a);
+                if (window.event)
+                {
+                    li.onmouseleave = function()
+                    {
+                        previous = this;
+                    };
+                }
+                ul.appendChild(li);
+                //ul.style.paddingTop = "7px";    //No I18N
+            }
+            selectedSearchParamtype = searchParamType;
+        }
+    }
+    show_search();
+}
+
+function appendHR(ul)
+{
+    var li = document.createElement("li");
+    var hr = document.createElement("hr");
+    hr.style.height = "1px"
+    hr.style.borderColor = "#e5e5e5";   //No I18N
+    li.appendChild(hr);
+    //ul.appendChild(li);
+}
+function appendTitle(ul,searchTitle)
+{
+    var li = document.createElement("li");
+    li.innerHTML = "<span style='display: inline-block; width: 10px;'>&nbsp;</span>"+"<b>"+I18N.getMsg(searchTitle)+"</b>";
+    li.className = "noHover";
+    ul.appendChild(li);
+}
+
+function getSearchParams(anchor,isHistory)
+{
+    clearTimeout(paramTimer);
+    paramTimer = setTimeout(function(){createSearchParams(anchor,isHistory);},100);
+}
+
+function createSearchParams(anchor,isHistory)
+{
+    var len = anchor.parentNode.getElementsByTagName("ul").length;
+    anchorGlobal = anchor;
+    isHistoryGlobal = isHistory;
+    if(len == 0)
+        {
+            var url = "/advsearch.do";   //No I18N
+            var params = "actionToCall=getSearchParams&searchLevel="+anchor.name+"&searchParamId="+anchor.id+"&isHistory="+isHistory;  //No I18N
+            DMAjaxAPI.sendRequest({URL:url,PARAMETERS:params,ONSUCCESSFUNC:showSearchParams});
+        }
+        else
+        {
+            anchor.parentNode.getElementsByTagName("ul")[0].style.display = "block";
+        }
+}
+
+
+function showSearchParams(req)
+{
+    var anchor = anchorGlobal;
+    var isHistory = isHistoryGlobal
+    var jsonObject = req.responseText;
+    var list = eval('(' + jsonObject + ')');
+    var ul;
+    var extraSearchlParams = document.getElementById("extraSearchlParams").value;
+    ul = document.createElement("ul");
+    var count = 0;
+    for(var i in list)
+    {
+        if(list.hasOwnProperty(i))
+        {
+            count++;
+            extraSearchlParams = createSearchTags(extraSearchlParams,list[i],ul,false,isHistory);
+        }
+    }
+    if(count != 0)
+        {
+    document.getElementById("extraSearchlParams").value = extraSearchlParams;
+    anchor.parentNode.appendChild(ul);
+    ul.style.display = "block";
+    
+    var ulClone = ul.cloneNode(true);
+    ulClone.style.minWidth = "190px"; // NO I18N
+    var cascadeDiv = document.createElement("div");
+    cascadeDiv.className = "cascadesidebar";
+    cascadeDiv.appendChild(ulClone);
+    document.body.appendChild(cascadeDiv);
+    var subMenuWidth = ulClone.offsetWidth;
+    cascadeDiv.parentNode.removeChild(cascadeDiv);
+    
+    ul.style.left = "-" + (subMenuWidth+2) +"px";
+    ul.style.minWidth = "190px"; // NO I18N
+}
+}
+
+function createSearchTags(extraSearchlParams,value,ul,isSpecial,isHistory)
+{
+    var hisName;
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    var defSearchParamId = document.getElementById("searchParamId").value;
+    a.setAttribute("id",value.searchParamId);
+    a.setAttribute("style","style='width: 100%'");
+    if(isHistory == true)
+        {
+            hisName = I18N.getMsg(value.searchParamName) + " - " + value.searchText ;
+            a.setAttribute("title", hisName);
+            if(hisName.length > 20)
+                {
+                    hisName = hisName.substring(0, 20)+"...";
+                }
+            a.innerHTML = tickMarkEnableDisable(hisName,false)
+            a.onclick = function(){setSearchParam(this.id,value.searchText,I18N.getMsg(value.searchParamName));searchFn();};
+        }
+        else
+            {
+                if(defSearchParamId == value.searchParamId)
+                    {
+                            document.getElementById("selectedSearchParamName").value = I18N.getMsg(value.searchParamName);
+                            document.getElementById("selectedSearchParamId").value = value.searchParamId;
+                            a.innerHTML=tickMarkEnableDisable(I18N.getMsg(value.searchParamName), true);
+                    }
+                    else
+                        {
+                            a.innerHTML=tickMarkEnableDisable(I18N.getMsg(value.searchParamName), false);
+                        }
+                        a.onclick = function(){setSearchParam(this.id,value.searchText,I18N.getMsg(value.searchParamName))};
+            }
+    a.setAttribute("href", "#")
+    if(isSpecial == true)
+    {
+        a.onmouseover = function(){clearPrevious();};
+    }
+    li.appendChild(a);
+    li.setAttribute("id","li"+value.searchParamId);
+    ul.appendChild(li);
+    extraSearchlParams += value.searchParamId + "," + value.searchParamName + "$";
+    return extraSearchlParams;
+}
+
+function tickMarkEnableDisable(searchParamName,isEnable)
+{
+    var searchParamInnerHtml;
+    if(isEnable)
+        {
+           searchParamInnerHtml = "<span style='display: inline-block; width: 16px; text-align: left'><img align='absmiddle' src='/images/tick_black.png'/></span><span style='display: inline-block;  text-align: left'>"+searchParamName+"</span>"
+        }
+        else
+            {
+                searchParamInnerHtml = "<span style='display: inline-block; width: 16px; text-align: left'>&nbsp;</span>"+searchParamName
+            }
+            return searchParamInnerHtml;
+}
+
+function setSearchParam(id,searchText,searchParamName)
+{
+    var selectedSearchNameObj = document.getElementById("selectedSearchParamName");
+    var selectedSearchIdObj = document.getElementById("selectedSearchParamId");
+    var selectedSearchParamName = selectedSearchNameObj.value;
+    var selectedSearchParamId = selectedSearchIdObj.value;
+    if(document.getElementById(selectedSearchParamId) != null)
+        {
+            document.getElementById(selectedSearchParamId).innerHTML = tickMarkEnableDisable(selectedSearchParamName, false);
+        }
+    document.getElementById(id).innerHTML = tickMarkEnableDisable(searchParamName, true);
+    selectedSearchNameObj.value = searchParamName;
+    selectedSearchIdObj.value = id;
+    var extraSearchlParams = document.getElementById("extraSearchlParams").value;
+    var rp = extraSearchlParams.split("$");
+    for(var i = 0 ; i < rp.length ; i++)
+    {
+        var param = rp[i].split(",");
+        if(param[0] == id)
+            {
+                document.getElementById("searchParamId").value = param[0];
+                document.getElementById("searchParamName").value = param[1];
+                searchfocus = I18N.getMsg(param[1].trim());
+                var textObj = document.getElementById("searchText");
+                var index;
+                if(searchText != null && searchText != "" && searchText != undefined)
+                    {
+                        document.getElementById("searchText").value = searchText;
+                        document.getElementById("searchText").className = "";
+                        index = textObj.value.length;
+                    }
+                    else
+                        {
+                            document.getElementById("searchText").placeholder = param[1].trim();
+                            document.getElementById("searchText").value = "";
+                            document.getElementById("searchText").className = "greyText";
+                            index = 0;
+                        }
+                        setSelection(textObj,index);
+                        break;
+            }
+    }
+}
+
+function setSelection(selectionObj,index)
+{
+    if (selectionObj.createTextRange) {
+       //IE
+       var FieldRange = selectionObj.createTextRange();
+       FieldRange.moveStart('character', index);//No i18n
+       FieldRange.collapse();
+       fillSearchText(selectionObj);
+       FieldRange.select();
+       enableNormalText(selectionObj);
+       }
+      else
+      {
+           fillSearchText(selectionObj);
+           selectionObj.setSelectionRange(index, index);
+           selectionObj.focus();
+           enableNormalText(selectionObj);
+      }
+}
+function clearSearchText(obj)
+{
+    if(obj.className == 'greyText')
+    {
+        obj.value = "";
+    }
+}
+
+function fillSearchText(obj)
+{
+    if(obj.value == "")
+    {
+        obj.className = 'greyText';
+        obj.value = "";
+        obj.placeholder = searchfocus;
+    }
+}
+
+function showBaseParams()
+{
+if(searchfocus == "" || searchfocus == null)
+    {
+        getBaseSearchParam();
+    }
+}
+
+function enableNormalText(obj)
+{
+    clearSearchText(obj);
+    obj.className = "";
+}
+
+function show_search()
+{
+    clearTimeout(time);
+    document.getElementById("baseSearchDiv").className = "links";
+}
+function hide_search()
+{
+    if(document.getElementById("baseSearchDiv").className != "hide") {
+    time = setTimeout(function(){document.getElementById("baseSearchDiv").className = "hide";},300);
+    }
+}
+
+function clearPrevious()
+{
+    if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1 && previous != "")
+    {
+        previous = previous.parentElement;
+    }
+    if(previous != "")
+    {
+        var baseul = previous.getElementsByTagName("ul");
+        if(baseul != null && baseul[0] != undefined)
+            {
+                baseul[0].style.display = "none";
+            }
+    }
+}
+
+function advSearchSuggestion(eventAction,element,callFn,getAdvSearchSuggestionParam)
+{
+    var searchParamId = document.getElementById("searchParamId").value;
+    if(searchParamId != "")
+        {
+            suggestSearchThis(eventAction,element,callFn,getAdvSearchSuggestionParam);
+        }
+}
+
+function getAdvSearchSuggestionParam()
+{
+    var searchParamId = document.getElementById("searchParamId").value;
+    var str = "classId=advSearchSuggestionParams&params="+searchParamId; //No i18n
+    return str;
+}
+function callBackIdSelected(selectedId)
+{
+    var textObj = document.getElementById("searchText");
+    var index = textObj.value.length;
+    setSelection(textObj,index);
+}
+
+function assignUserCallBack(selectedId)
+{    
+     var textObj = document.getElementById("newADAuthUserEmail");
+     var index = textObj.value.length;
+     setSelection(textObj,index);
+}
+
+function selectAllObjects(check)
+{
+ 	var tableRows =document.getElementsByName("object_list");
+	var len = tableRows.length;
+
+	for(var i=0; i < len; i++)
+	{
+		if (check && !tableRows[i].disabled)
+		{
+			tableRows[i].checked = true;
+		}
+		else
+		{
+			tableRows[i].checked = false;
+		}
+	}
+}
+
+function setDefaultSearchParam()
+{
+    var setDefault = function(req)
+    {
+        var parsedJSON = eval('('+req.responseText+')');
+        var searchParamName=parsedJSON.searchParamName;
+        var searchParamId=parsedJSON.searchParamId;
+        if(searchParamName != undefined && searchParamId != undefined)
+        {
+            var textObj = document.getElementById("searchText");
+            document.getElementById("searchParamId").value = searchParamId;
+            document.getElementById("searchParamName").value = searchParamName;
+            textObj.placeholder = I18N.getMsg(searchParamName);
+            textObj.value = "";
+            searchfocus = I18N.getMsg(searchParamName);
+            textObj.className = "greyText";
+        }
+    };
+    var url = "/advsearch.do";   //No I18N
+    var params = "actionToCall=getDefaultSearchParam"  //No I18N
+    DMAjaxAPI.sendRequest({URL:url,PARAMETERS:params,ONSUCCESSFUNC:setDefault});
+}

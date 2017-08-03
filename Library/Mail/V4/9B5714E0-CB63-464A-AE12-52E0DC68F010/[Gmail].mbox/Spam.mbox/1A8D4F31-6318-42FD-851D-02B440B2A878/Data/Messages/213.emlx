@@ -1,0 +1,812 @@
+39912     
+Delivered-To: sayde.gutierrez92@gmail.com
+Received: by 10.31.148.147 with SMTP id w141csp6069827vkd;
+        Tue, 18 Jul 2017 09:25:03 -0700 (PDT)
+X-Received: by 10.237.37.52 with SMTP id v49mr3164583qtc.97.1500395103132;
+        Tue, 18 Jul 2017 09:25:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1500395103; cv=none;
+        d=google.com; s=arc-20160816;
+        b=FsnTdzNN88aQfaPr1eMviIKE6xAiphMl3YGzmhpvK43/K7XE+O5OMN8r/HY2kUN1rr
+         kG5KUzWobLQ6wks+5AnaUX5kiMvO/AxXuIyZ+n0Nkn0nJ0OtQYzRZBOtDhtESKpDgewc
+         SYEiDAhNu7awU99mmxbZbXTRZjWPw3g8oXibBv8iSANYwpTRd7GMah1kYzczUyh+f0n+
+         mbRvgewIZdAYtzjVZIT1yFYWK/kWC91ChgGQLv1p5A1KAOTTGxcXpvCTPH5IaLKTgnLI
+         +NKuiSGOg6N/0H28HYxZyPdlxVS6C8jg/qKJf5U3nooBx/xCnXkYwGcrQ0pVsmMe6IH7
+         UVCg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:mime-version:subject:message-id:to:reply-to:from
+         :date:domainkey-signature:dkim-signature:arc-authentication-results;
+        bh=mjhAnJYNLTZJTxt0OsLk2djLn/7CPVdmYHIQ6lTatg0=;
+        b=G5HQVSnxR+F+kmNvsEZRJ+ewCDKhpSPuXaUcauHCPxRWpgIKBzKGjVJ9r9ayPS2v/r
+         pBuQ7rZljjinj/La16kwh9YjWE7kx9tDJMnYckXU2FD4RFgdelVcbQXYUOGYwpanCEWD
+         oS259OFx6CKLMIQVEuMfOSVYceOAiAW3KFiuUPoptqTl7VfF/rDXMSD7kl/DYPPY4tPb
+         CDd2p1zfrThoxp9o6Pebe/8tAMfIxXdU5Z82Yu8eT451NI4wCUhj9Ko/Eoqu3drVU/bv
+         ZH0LzgmGxaSucOZRamDEa0xwMPcJv4yOvCo/tPUh1w+mjL4zERjinZPXxHbJ+8x33uxF
+         hxrA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@msg.booking.com header.b=Kpf0FOSJ;
+       spf=pass (google.com: domain of 399817602000000010302-t17199-bf1e6c477cbe4409842f965c0f46bf44@msg.booking.com designates 52.200.59.30 as permitted sender) smtp.mailfrom=399817602000000010302-t17199-bf1e6c477cbe4409842f965c0f46bf44@msg.booking.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=booking.com
+Return-Path: <399817602000000010302-t17199-bf1e6c477cbe4409842f965c0f46bf44@msg.booking.com>
+Received: from grp59-30.msg.booking.com (grp59-30.msg.booking.com. [52.200.59.30])
+        by mx.google.com with ESMTPS id x14si2520358qta.122.2017.07.18.09.25.02
+        for <sayde.gutierrez92@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 18 Jul 2017 09:25:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 399817602000000010302-t17199-bf1e6c477cbe4409842f965c0f46bf44@msg.booking.com designates 52.200.59.30 as permitted sender) client-ip=52.200.59.30;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@msg.booking.com header.b=Kpf0FOSJ;
+       spf=pass (google.com: domain of 399817602000000010302-t17199-bf1e6c477cbe4409842f965c0f46bf44@msg.booking.com designates 52.200.59.30 as permitted sender) smtp.mailfrom=399817602000000010302-t17199-bf1e6c477cbe4409842f965c0f46bf44@msg.booking.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=booking.com
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=gears; d=msg.booking.com;
+ h=Date:From:Reply-To:To:Message-ID:Subject:MIME-Version:Content-Type:
+ List-Unsubscribe; i=email.campaign@msg.booking.com;
+ bh=+oMxJMmL8K2uH5fpYgB2o/oj27A=;
+ b=Kpf0FOSJ/F8NbDL5DMK0OOhWbxlIsw7NRQW61pFLO2H49MlSfFfT0CF5oLGsvl+kCj1hy3yRk93F
+   Z3CXxHwH9GVkR2TDyjlTvF6P/XsdlBQG9tRKrhvQNPLmGHFDaXpk00FDApJbkI6/iEb8YJ9k0rBF
+   qpCxdYEsRHjhw1PY0tY=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=gears; d=msg.booking.com;
+ b=ercJBo70dBcqTWtNQNq5j186aTjkvjKpTeMt2V4IzUsgElJucOVQPol4Nm1sZF4VjySbDTN6jakB
+   1ya6o3i8FwzTb2je2ACD/rmxPwVU+ihqUdFat6bTMTq0aZVeECKTPH+BjmGv8KYLMHSX8bB6wD/D
+   1xMKMF4v9zDi6ar4VpM=;
+Date: Tue, 18 Jul 2017 12:25:02 -0400 (EDT)
+From: "Booking.com" <email.campaign@msg.booking.com>
+Reply-To: noreply@booking.com
+To: sayde.gutierrez92@gmail.com
+Message-ID: <686913868.5614891.1500395102094.JavaMail.root@mta0304.messagegears.net>
+Subject: A while back, we noticed something...
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_5614888_281283262.1500395102093"
+X-Original-To: sayde.gutierrez92@gmail.com
+List-Unsubscribe: <http://trk.booking.com/u/1/99817602/02-t17199-bf1e6c477cbe4409842f965c0f46bf44/fnlqr.thgvreerm47/tznvy/pbz>, <mailto:unsub-399817602000000010302-t17199-bf1e6c477cbe4409842f965c0f46bf44@msg.booking.com>
+
+------=_Part_5614888_281283262.1500395102093
+Content-Type: multipart/related; 
+	boundary="----=_Part_5614889_1705236133.1500395102094"
+
+------=_Part_5614889_1705236133.1500395102094
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_5614890_1178223887.1500395102094"
+
+------=_Part_5614890_1178223887.1500395102094
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+All the content is in the HTML part. https://www.booking.com/
+------=_Part_5614890_1178223887.1500395102094
+Content-Type: text/html;charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/htm=
+l4/strict.dtd">
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml">
+<head>
+<meta http-equiv=3D"content-type" content=3D"text/html; charset=3DUTF-8">
+<meta http-equiv=3D"content-style-type" content=3D"text/css" />
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, user-scalable=3Dno=
+, initial-scale=3D1.0, minimum-scale=3D1.0, maximum-scale=3D1.0">
+<link rel=3D"shortcut icon" href=3D"http://r.bstatic.com/static/img/favicon=
+.ico" />
+<title>Booking.com - A while back, we noticed something...</title>
+<style type=3D"text/css">
+=E2=80=A8.ReadMsgBody {width:100%;}
+=E2=80=A8.ExternalClass {width:100%;}
+.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font,=
+ .ExternalClass td, .ExternalClass div {line-height:100%;}
+body {-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}
+body {margin:0;padding:0;}
+body {width:100% !important;}
+table {border-spacing:0;}
+table td {border-collapse:collapse;}
+.yshortcuts a {border-bottom:none!important;}
+img {border:0 none;line-height:100%;outline:none;text-decoration:none;-ms-i=
+nterpolation-mode:bicubic;}
+a img {border:0 none;text-decoration:none;}
+.im-fix {display:block;}
+table td {border-collapse:collapse;}
+table {border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;}
+blockquote .hideforwarded, .WordSection1 .hideforwarded {width:0;max-height=
+:0;overflow:hidden;float:left;display:none;}
+blockquote .showforwarded, .WordSection1 .showforwarded {display:block!impo=
+rtant;width:auto!important;max-height:inherit!important;overflow:visible!im=
+portant;float:none!important;}
+img[class~=3Dav] {-moz-border-radius:6px;-webkit-border-radius:6px;border-r=
+adius:6px;-moz-box-shadow:0 1px 1px rgba(0,0,0,.1);-webkit-box-shadow: 0px =
+1px 1px rgba(0,0,0,.1);box-shadow:0 1px 1px rgba(0,0,0,.1);}
+td.c-cta-xs,td.c-cta-sm,td.c-cta,td.c-cta-lg{padding:0!important;}
+a.c-cta-xs,a.c-cta-sm,a.c-cta,a.c-cta-lg{display:block!important;}
+a.c-cta-xs{padding:4px!important;}
+a.c-cta-sm{padding:4px 8px!important;}
+a.c-cta{padding:8px 16px!important;}
+a.c-cta-lg{padding:15px 30px!important;}
+td.c-srch-text,td.c-srch-cta{padding:0!important;}
+a.c-srch-text,a.c-srch-cta{display:block!important;}
+a.c-srch-text{padding:4px!important;}
+a.c-srch-cta{padding:4px 10px!important;}
+td.search-btn{padding:0 !important;}
+td.search-btn a{display:block; padding:2px 12px; width:80px;}
+td.search-box{padding:0 !important; width:auto !important;}
+td.search-box a{padding:0 16px 0 8px; width:220px;}
+body[yahoo] .footer-buttons td {padding:0!important;}
+body[yahoo] .footer-buttons a {padding:7px 10px!important;}
+body[yahoo] .b-icon-desktop {width: 100px!important; vertical-align: middle=
+!important; padding: 10px!important}
+body[yahoo] .b-icon-desktop img {width: 80px!important; height:auto!importa=
+nt;}
+body[yahoo] .footer-buttons a:hover {color:#ffffff!important;background:#2f=
+4a73;}
+@media only screen and (min-width: 480px) {
+body[yahoo] .d-hide{width:0!important;max-height:0!important;line-height:0!=
+important;display:none!important;}
+}
+@media screen and (max-width: 479px) {
+div[class=3Dmobilecontent]{display: block!important; max-height: none!impor=
+tant;}
+}
+@media only screen and (max-width: 479px) {
+body[yahoo] .m-hide{width:0;display:none!important;}
+body[yahoo] .m-show{display:block!important;}
+body[yahoo] .m-show-search-text{display:block!important;font-size:12px!impo=
+rtant;line-height:25px!important;max-height:none!important;}
+body[yahoo] .m-show-td {width: 36px!important;}
+body[yahoo] .m-show-icon {width: 28px!important; height: 28px!important;}
+body[yahoo] .m-search-adj {font-size: 13px!important; letter-spacing: -0.02=
+em!important;}
+body[yahoo] .footer-buttons {margin-bottom:12px;}
+body[yahoo] .footer-buttons td {padding:0!important;}
+body[yahoo] .footer-buttons a {display:block; text-align:center; padding:10=
+px;}
+body[yahoo] .footer-buttons a:hover {background-color:none!important;}
+body[yahoo] .h-searchblogo a{ width:40px; height:40px; background: #00265c =
+url("http://r.bstatic.com/static/img/newsletters/bcom_logo_mobile_emk.png")=
+ top right no-repeat;}
+body[yahoo] .h-searchbox {width:66%!important;}
+body[yahoo] .h-searchbox-f {width:60%!important;}
+body[yahoo] .h-searchbtn {width:33%!important;}
+body[yahoo] .m-search-pad {padding-left: 20px!important; padding-right:20px=
+!important;}
+body[yahoo] .m-usp-pad {padding-top: 10px!important; padding-bottom: 10px!i=
+mportant; padding-right: 10px!important; padding-left: 10px!important;}
+body[yahoo] .m-usp-color {color: #c3d4e5!important;}
+body[yahoo] .footer_mob_button_back {background:#001B42 !important; padding=
+:10px 20px 10px 20px !important;}
+body[yahoo] .footer_mob_button {border-radius:8px 8px 8px 8px !important; b=
+ox-shadow: 0 1px 2px #000000 !important; color:#FFFFFF !important; font-siz=
+e: 24px !important; line-height:26px !important; font-weight:500 !important=
+; background-color: #003580 !important;}
+body[yahoo] .faux_mob_header_text {padding:4px 10px 12px 10px !important; f=
+ont-size:15px !important; color:#003580 !important; line-height:18px !impor=
+tant;}
+body[yahoo] .faux_mob_header_text a {color:#003580 !important;}
+body[yahoo] .footer_mob_button_text {padding:8px 20px 8px 15px !important; =
+font-size:16px !important; font-weight:300 !important; color:#FFFFFF !impor=
+tant;}
+body[yahoo] .footer_mob_button_text a {color:#FFFFFF !important;}
+body[yahoo] .footer_mob_app_text {padding:0px 0px 20px 0px !important; font=
+-size:22px !important; font-weight:400 !important; color:#FFFFFF !important=
+;}
+body[yahoo] .footer_mob_app_text a {color:#FFFFFF !important;}
+body[yahoo] .footer_fri_deals_cta {padding:15px 10px !important; font-size:=
+16px !important; color:#FFFFFF !important;}
+body[yahoo] .footer_fri_deals_cta a {color:#FFFFFF !important;}
+body[yahoo] .footer_mob_button_pad {border-top: solid 20px #001B42 !importa=
+nt; border-bottom: solid 20px #001B42 !important;}
+body[yahoo] .footer_mob_button_pad_x {border-top: solid 20px #001B42 !impor=
+tant; border-bottom: solid 1px #001B42 !important;}
+body[yahoo] .footer_mob_button_arrow img {height:100% !important; width: au=
+to !important; padding:10px 0 !important;}
+body[yahoo] .footer_mob_text_title {text-align:center !important; font-size=
+: 14px !important;}
+body[yahoo] .footer_mob_text_main {text-align:center !important; font-size:=
+ 11px !important;}
+body[yahoo] .footer_mob_text_whiteline_remove {border: solid 2px #001B42 !i=
+mportant;}
+body[yahoo] .ss_icon_mobile {width:10!important;height:auto!important;}
+body[yahoo] .ss_icon_mobile img{width:10px!important;height:auto!important;=
+}
+body[yahoo] .ss_round_edges {border-radius:20px 20px 20px 20px!important;}
+body[yahoo] .ss-image-stack {display:block!important;}
+body[yahoo] .ss_icon {text-align:center !important; padding: 10px 0px 10px =
+0px !important;}
+body[yahoo] .ss_icon img{width:80px!important;height:auto!important;margin:=
+0 auto!important;}
+body[yahoo] .ss_mob_text_title {text-align:center !important; font-weight:n=
+ormal !important; font-size: 26px !important; line-height:28px !important; =
+padding:2px 0px 12px 0px !important; padding-left:12px !important; padding-=
+right:6px !important;}
+body[yahoo] .ss_mob_text_title a {text-align:left !important; font-weight:n=
+ormal !important; font-size: 26px !important;}
+body[yahoo] .ss_mob_text_subtitle {text-align:center !important; font-size:=
+16px !important; font-weight:600 !important; padding: 0px 4px 6px 4px !impo=
+rtant;}
+body[yahoo] .ss_mob_text_subtitle a {text-align:center !important; font-wei=
+ght:600 !important; font-size:16px !important; color:#FFFFFF !important;}
+body[yahoo] .ss_mob_button_text {padding:8px 20px 8px 15px !important; font=
+-size:18px !important; font-weight:500 !important; color:#ffffff !important=
+;}
+body[yahoo] .ss_mob_button_text a {color:#ffffff !important;}
+body[yahoo] .ss_mob_button_back {background:rgba(0, 0, 0, 0) !important; pa=
+dding:10px 16px 16px 16px !important;}
+body[yahoo] .ss_mob_button {border-radius:8px 8px 8px 8px !important; borde=
+r:2px solid #ffffff !important; border-collapse: separate !important;
+box-shadow: 0 1px 2px #b65904 !important;
+color: #FFFFFF !important; font-size: 24px !important; line-height:26px !im=
+portant; font-weight:500 !important;
+background-color: #40adfe !important;
+background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#40adfe), t=
+o(#0782de)) !important;
+background-image: -webkit-linear-gradient(top, #40adfe, #0782de) !important=
+;
+background-image: -moz-linear-gradient(top, #40adfe, #0782de) !important;
+background-image: -ms-linear-gradient(top, #40adfe, #0782de) !important;
+background-image: -o-linear-gradient(top, #40adfe, #0782de) !important;
+}
+body[yahoo] .m-cta-below-s {width: 100%!important; display: block!important=
+; float: left!important; }
+body[yahoo] .m-cta-below-h {width: 100%!important; float: left!important; b=
+order: none!important;margin-top: 4px!important;}
+body[yahoo] .b-copy-area {padding-top: 10px!important; padding-bottom: 20px=
+!important; width:100%!important;}
+body[yahoo] .b-copy-area a > span {font-size: 15px!important;mso-line-heigh=
+t-rule: exactly!important; line-height: 30px!important;}
+body[yahoo] .b-icon-td {width: 60px!important; vertical-align: middle!impor=
+tant; padding-left: 5px!important; padding-right: 5px!important;}
+body[yahoo] .b-icon-td img {width: 50px!important; height: 33px!important;}
+body[yahoo] .b-icon-default {width: 60px!important; vertical-align: middle!=
+important; padding-left: 5px!important; padding-right: 5px!important;}
+body[yahoo] .b-icon-default img {width: 60px!important; height:auto!importa=
+nt;}
+body[yahoo] .b-banner-copy {padding-top: 20px!important; padding-left: 20px=
+!important; padding-bottom: 20px!important; width:100%!important;}
+body[yahoo] .b-banner-copy a > span {font-size: 16px!important;mso-line-hei=
+ght-rule: exactly!important; line-height: 18px!important;}
+body[yahoo] .b-arrow-cta {background-color: transparent!important;}
+body[yahoo] .b-arrow-cta td {background-color: transparent!important;paddin=
+g-right: 15px!important;}
+body[yahoo] .b-arrow-show {width:13px!important; height: 26px!important; di=
+splay:block!important;}
+}
+@media print {
+.message-tag {display:block!important;visibility:visible!important;max-heig=
+ht:auto!important;font-size:inherit!important;}
+}
+@media only screen and (max-width: 479px) {
+body[yahoo] .m-navigation{display:block!important;float:left!important;widt=
+h:100%!important;text-align:center!important;border-bottom:1px solid #00265=
+c;padding:4px 0}
+body[yahoo] .m-navigation-tab {width:100%!important;border:none!important}
+*[class~=3Dshowonmobile] {
+display : block !important;
+width : auto !important;
+max-height: inherit !important;
+overflow : visible !important;
+float : none !important;
+}
+*[class~=3Dstackonmobile] {
+display: table !important;
+clear: both !important;
+width: 100% !important;
+margin: 0!important;
+}
+*[class~=3Dfullwidthresettable] {display: table !important;}
+*[class~=3Dcontenttable] {width: 100% !important;}
+*[class~=3Dhideonmobile] { display: none !important;}
+*[class~=3DmblForceAlCenter] {text-align: center !important;}
+*[class~=3DmblAlRtoC] {text-align: center !important;}
+*[class~=3DmblAlltoR] {text-align: right !important;}
+*[class~=3DmblAlltoL] {text-align: left !important;}
+*[class~=3DmblNoPadding] {padding: 0 !important;}
+*[class~=3DmblProfile] {padding: 8px !important; border-top: 1px solid #C4C=
+9CF; border-bottom: 1px solid #C4C9CF;}
+*[class~=3DmblHugeButton] {width: 100% !important; padding: 3px 0 !importan=
+t;}
+*[class~=3DmblHugeButtona] { font-size: 18px !important;}
+*[class~=3Dhavesomespacebelow] { padding-bottom: 15px !important; padding-r=
+ight: 0 !important; }
+*[class~=3Dhavesomemarginbelow] { margin:0 0 15px 0 !important; }
+*[class~=3Dhavedoublemarginbelow] { margin:0 0 30px 0 !important; }
+*[class~=3Dsearchinputbox] {width: 170px !important; }
+*[class~=3Dsearchinputbox_wide] {width: 100% !important; }
+*[class~=3Dsearchinputcontainer] {width: 180px !important; }
+*[class~=3Dsearchbuttoncontainer] {width: 110px !important; }
+*[class~=3Dsecretdealmessage] {width: 100% !important; padding: 15px !impor=
+tant; background: #273e7c url("http://q.bstatic.com/static/img/newsletters/=
+sd_bg_mobile.jpg") top right no-repeat; border-top: 1px solid #003580; bord=
+er-right: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF; border-left:=
+ 1px solid #003580;}
+*[class~=3Dsearchicon] {width: 30px !important; }
+*[class~=3Dsearchtallerinput] {padding: 6px 6px !important; }
+*[class~=3Dsdmessage_clear] {padding: 15px !important;}
+*[class~=3Dmblfont14] {font-size: 14px !important;}
+*[class~=3DmblSubscribebox] {padding: 0 10px !important; }
+*[class~=3DmblSubsribeInput] {padding: 8px 5px !important; border: 1px soli=
+d #c4c9cf !important; font-size: 13px !important; }
+*[class~=3DmblSubsribeButton] {padding-left: 5px !important; padding-right:=
+ 5px !important; border: 1px solid #4167cf !important; font-size: 15px !imp=
+ortant; }
+*[class~=3DmblImgMaxWidth] {width: 100% !important; height: auto! important=
+;}
+*[class~=3DmlbImgNorborder] {border: none !important; }
+*[class~=3Dautoheight] {height: auto !important;}
+*[class~=3DmblPopBigtitle] {padding-right: 10px !important; font-size: 28px=
+ !important; line-height: 28px !important; }
+*[class~=3DmblPopDesc] {padding-right: 10px !important; }
+img[class~=3Dno-border] {border:0 none !important;}
+*[class~=3Dft-l] {padding-top: 4px; padding-bottom: 4px; }
+*[class~=3Dm-search] {padding:3px 10px 6px 10px!important }
+*[class~=3Dm-search-table] {background-color:transparent!important }
+*[class~=3Dm-search-field] {border-radius:3px 0 0 3px!important }
+*[class~=3Dm-search-user] {text-align:left!important; padding:0 10px!import=
+ant; height:auto!important }
+*[class~=3Dm-search-user-v2] {text-align:left!important; padding:0 15px 5px=
+ 15px!important; height:auto!important }
+body[yahoo] .deviceWidth{width:95%!important;padding:0!important;}
+body[yahoo] .r-fw,body[yahoo] .m-fw,body[yahoo] .m-100p {width:100%!importa=
+nt;padding:0!important;}
+body[yahoo] img.m-fw,body[yahoo] img.r-fw{width:100%!important;height:auto!=
+important;}
+body[yahoo] .m-spc-v{height:4px!important;}
+body[yahoo] .m-g-divider-v{border-bottom:1px solid #E0E2ED;}
+body[yahoo] #similar-destinations .g-tile:last-child .m-g-divider-v{border:=
+0 none!important;}
+body[yahoo] .m-hide{width:0;display:none!important;}
+body[yahoo] .m-50p{width:49%!important;padding:0!important;}
+body[yahoo] .m-nopad{padding:0!important;}
+body[yahoo] .m-nomar{margin:0!important;}
+body[yahoo] .m-smallpad{padding-top:6px!important;padding-right:0!important=
+;padding-bottom:4px!important;padding-left:0!important;}
+body[yahoo] .m-pad-a{padding:8px!important;}
+body[yahoo] .m-pad-t{padding:0!important;padding-top:8px!important;}
+body[yahoo] .m-pad-b{padding:0!important;padding-bottom:8px!important;}
+body[yahoo] .m-pad-l{padding:0!important;padding-left:8px!important;}
+body[yahoo] .m-pad-r{padding:0!important;padding-right:8px!important;}
+body[yahoo] .m-pad-a-t{padding:8px!important;padding-top:0!important;}
+body[yahoo] .m-pad-a-b{padding:8px!important;padding-bottom:0!important;}
+body[yahoo] .m-pad-a-l{padding:8px!important;padding-left:0!important;}
+body[yahoo] .m-pad-a-r{padding:8px!important;padding-right:0!important;}
+body .m-stack{display:block!important;float:left!important;width:100%!impor=
+tant;}
+body[yahoo] .deal-block {width:100%!important;float:none!important;clear:no=
+ne!important;}
+body[yahoo] .m-auto-w{width:auto!important;}
+body[yahoo] .m-auto-h{height:auto!important;}
+body[yahoo] .m-txt-xl{font-size:20px!important;}
+body[yahoo] .m-txt-l{font-size:16px!important;}
+body[yahoo] .m-txt-m{font-size:13px!important;}
+body[yahoo] .m-txt-s{font-size:12px!important;}
+body[yahoo] .m-txt-xs{font-size:10px!important;}
+body[yahoo] .m-txt-fw{font-weight: normal!important;}
+body[yahoo] .m-align-left {text-align:left!important;}
+body[yahoo] .m-align-center {text-align:center!important;}
+body[yahoo] .m-align-right {text-align:right!important;}
+body[yahoo] .g-logo{width:144px!important;height:24px!important;}
+body[yahoo] .g-username{text-align:left!important;}
+body[yahoo] .g-sd-banner{padding:!important;}
+body[yahoo] .headerTxtWidth{width:85%!important;padding:0!important;}
+body[yahoo] .removeTri{display:none!important;}
+table.more-deals{width:100%;}
+/* price banner */
+.price-banner>span,.price-banner>strong{display:inline;}
+.price-banner>.star,.price-banner>strong{font-size:inherit;}
+body[yahoo] .deviceWidth {width:90%!important;padding:0!important;}
+body[yahoo] .m-c-pad-t{padding-top:4px!important;}
+body[yahoo] .m-center {text-align: center!important;}
+body[yahoo] .m-c-margin-b{margin-bottom:4px!important;}
+body[yahoo] .r-fw,body[yahoo] .m-fw{width:100%!important;padding:0;}
+body[yahoo] img.m-fw,body[yahoo] img.r-fw{width:100%!important;height:auto!=
+important;}
+body[yahoo] img.m-fw-50{width:50%!important;height:auto!important;}
+body[yahoo] .m-60w{width:60px!important;padding:0;}
+body[yahoo] .m-stack{display:block!important;float:left!important;width:100=
+%!important;}
+body[yahoo] .m-auto{width:auto!important;}
+body[yahoo] .m-nopad{padding:0!important;}
+body[yahoo] .m-pad-b{padding-bottom:30px!important;}
+body[yahoo] .m-pad-tb{padding-top:10px!important;padding-bottom:10px!import=
+ant;}
+body[yahoo] .m-pad-tbb{padding:25px!important;}
+body[yahoo] .m-pad-lr{padding-left:10px!important;padding-right:10px!import=
+ant;}
+body[yahoo] .m-wider{width:87%!important;}
+body[yahoo] .m-nobrdr{border-top:none!important;}
+body[yahoo] .m-imgsize{width:50%!important;}
+body[yahoo] .m-300w{width:300px!important;padding:0;}
+body[yahoo] .m-smlpad{padding:20px 5px!important;}
+body[yahoo] .m-srchbar{width:70%!important;}
+body[yahoo] .m-srchbtn{width:30%!important;}
+body[yahoo] .m-br{border-radius:4px 4px 0px 0px!important;}
+body[yahoo] .m-br-all{border-radius:4px 4px 4px 4px!important;}
+body[yahoo] .m-txt-l {font-size: 18px!important; line-height: 24px!importan=
+t;}
+body[yahoo] .m-txt-header {font-size: 50px!important;}
+body[yahoo] .m-txt-why-city {font-size: 24px!important;}
+body[yahoo] .m-txt-center {text-align: center!important;}
+body[yahoo] .g-tile-pad-h{padding:0!important;padding-bottom:12px!important=
+;}
+body[yahoo] .g-tile-pad-t{padding:0!important;padding-top:12px!important;}
+body[yahoo] .m-arrow-w {width: 5px!important; height: 15px!important;}
+}
+</style>
+</head>
+<body bgcolor=3D"#FFFFFF" topmargin=3D"0" leftmargin=3D"0" marginwidth=3D"0=
+" marginheight=3D"0" yahoo=3D"fix" style=3D"background-color:#FFFFFF;paddin=
+g:0;margin:0;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;;fo=
+nt-size:14px;">
+<style>
+.preheader{
+display:none;
+}
+</style>
+<table width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" id=
+=3D"email-content" >
+<tr>
+<td bgcolor=3D"#001B42" style=3D"background:#001B42;padding:0 10px;">
+<table width=3D"700" align=3D"center" cellspacing=3D"0" cellpadding=3D"0" b=
+order=3D"0" class=3D"m-100p" style=3D"margin:0 auto;" >
+<tr>
+<td style=3D"padding:13px 0 2px 0;">
+<table align=3D"left" cellpadding=3D"0" cellspacing=3D"0" border=3D"0">
+<tr>
+<td>
+<a target=3D"_blank" href=3D"http://trk.booking.com/c/4/?T=3DOTk4MTc2MDI%3A=
+MDItdDE3MTk5LWJmMWU2YzQ3N2NiZTQ0MDk4NDJmOTY1YzBmNDZiZjQ0%3Ac2F5ZGUuZ3V0aWVy=
+cmV6OTJAZ21haWwuY29t%3An%3AZmFsc2U%3AMA%3A%3AaHR0cHM6Ly93d3cuYm9va2luZy5jb2=
+0vaW5kZXguZW4tZ2IuaHRtbD9haWQ9MzM5NTMwJmxhYmVsPTMwMV9oZWFkZXJfbG9nb192Mi0mY=
+2hlY2tpbj0yMDE3LTA3LTIwJmNoZWNrb3V0PTIwMTctMDctMjEmZGtzYz0xJnNlbGVjdGVkX2N1=
+cnJlbmN5PU1YTiZlbWs9QVBOV0Q2N1JDMA&K=3DBAz4L0BoI9WDsLg45n3_Ww" style=3D"dis=
+play:inline-block;font-family:'Helvetica Neue', Helvetica, Arial, sans-seri=
+f;;font-size:22px;color:#FFFFFF;font-weight:600;text-decoration:none;">
+<img style=3D"display:block;" src=3D"http://r.bstatic.com/images/misc_image=
+s/newsletter/logo_3x.gif" width=3D"150" height=3D"25" border=3D"0" alt=3D"B=
+ooking.com" />
+</a>
+</td>
+</tr>
+</table>
+<table align=3D"right" cellpadding=3D"0" cellspacing=3D"0" border=3D"0">
+<tr>
+<td style=3D"font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;;fo=
+nt-size:13px;" class=3D"m-hide">
+<a target=3D"_blank" href=3D"http://trk.booking.com/c/4/?T=3DOTk4MTc2MDI%3A=
+MDItdDE3MTk5LWJmMWU2YzQ3N2NiZTQ0MDk4NDJmOTY1YzBmNDZiZjQ0%3Ac2F5ZGUuZ3V0aWVy=
+cmV6OTJAZ21haWwuY29t%3An%3AZmFsc2U%3AMQ%3A%3AaHR0cHM6Ly9zZWN1cmUuYm9va2luZy=
+5jb20vbG9naW4uZW4tZ2IuaHRtbD9haWQ9MzM5NTMwJmxhYmVsPTMwMV9oZWFkZXJfcHJvZmlsZ=
+V92Mi0mY2hlY2tpbj0yMDE3LTA3LTIwJmNoZWNrb3V0PTIwMTctMDctMjEmc2VsZWN0ZWRfY3Vy=
+cmVuY3k9TVhOJnRtcGw9cHJvZmlsZSUyRm15YWNjb3VudCZ1c2VybmFtZT1zYXlkZS5ndXRpZXJ=
+yZXo5MiU0MGdtYWlsLmNvbSZlbWs9QVBOV0Q2N1JDMA&K=3Dkv-JHR_EIryC2pQuwzzknw" sty=
+le=3D"text-decoration:none;color:#FEBB02;">
+Virginia Sayde Guti=C3=A9rrez Gonz=C3=A1lez
+</a>
+</td>
+<td width=3D"24" style=3D"padding-left:8px;">
+<a target=3D"_blank" href=3D"http://trk.booking.com/c/4/?T=3DOTk4MTc2MDI%3A=
+MDItdDE3MTk5LWJmMWU2YzQ3N2NiZTQ0MDk4NDJmOTY1YzBmNDZiZjQ0%3Ac2F5ZGUuZ3V0aWVy=
+cmV6OTJAZ21haWwuY29t%3An%3AZmFsc2U%3AMg%3A%3AaHR0cHM6Ly9zZWN1cmUuYm9va2luZy=
+5jb20vbG9naW4uZW4tZ2IuaHRtbD9haWQ9MzM5NTMwJmxhYmVsPTMwMV9oZWFkZXJfYXZhdGFyX=
+3YyLSZjaGVja2luPTIwMTctMDctMjAmY2hlY2tvdXQ9MjAxNy0wNy0yMSZzZWxlY3RlZF9jdXJy=
+ZW5jeT1NWE4mdG1wbD1wcm9maWxlJTJGbXlhY2NvdW50JnVzZXJuYW1lPXNheWRlLmd1dGllcnJ=
+lejkyJTQwZ21haWwuY29tJmVtaz1BUE5XRDY3UkMw&K=3DeEvd0uUk-gOb-LbpuN8HvQ">
+<img style=3D"display:block;" src=3D"http://r.bstatic.com/static/img/newsle=
+tters/icon_avatar_blue.gif" width=3D"24" height=3D"24" border=3D"0" />
+</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td align=3D"center" bgcolor=3D"#001B42" style=3D"background:#001B42;paddin=
+g:0 10px 10px 10px;" class=3D"m-pad-a">
+<table align=3D"center" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" wi=
+dth=3D"700" style=3D"margin: 0 auto;" class=3D"m-100p" >
+<tr>
+<td align=3D"left">
+<table align=3D"left" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" widt=
+h=3D"700" class=3D"m-100p" >
+<tr>
+<td align=3D"left" style=3D"font-family:'Helvetica Neue', Helvetica, Arial,=
+ sans-serif;;font-size: 12px; color:#FFFFFF;">
+<a href=3D"http://trk.booking.com/c/4/?T=3DOTk4MTc2MDI%3AMDItdDE3MTk5LWJmMW=
+U2YzQ3N2NiZTQ0MDk4NDJmOTY1YzBmNDZiZjQ0%3Ac2F5ZGUuZ3V0aWVycmV6OTJAZ21haWwuY2=
+9t%3An%3AZmFsc2U%3AMw%3A%3AaHR0cHM6Ly93d3cuYm9va2luZy5jb20vaW5kZXguZW4tZ2Iu=
+aHRtbD9haWQ9MzM5NTMwJmxhYmVsPTMwMV9oZWFkZXJfdXNwLWNvcHlfdjItJmNoZWNraW49MjA=
+xNy0wNy0yMCZjaGVja291dD0yMDE3LTA3LTIxJmRrc2M9MSZzZWxlY3RlZF9jdXJyZW5jeT1NWE=
+4mZW1rPUFQTldENjdSQzA&K=3DzUq_7V7YqQETnBgdi291DA" target=3D"_blank" style=
+=3D"color:#FFFFFF; text-decoration: none; display:block;">
+Pay at the property for selected bookings =E2=80=93 And we offer FREE cance=
+llation on most rooms!
+</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td width=3D"100%" height=3D"1" bgcolor=3D"#001B42" style=3D"background-col=
+or:#001B42;height:1px; font-size:1px;mso-line-height-rule:exactly;line-heig=
+ht:1px;padding:0;">
+<a target=3D"_blank" href=3D"http://trk.booking.com/c/4/?T=3DOTk4MTc2MDI%3A=
+MDItdDE3MTk5LWJmMWU2YzQ3N2NiZTQ0MDk4NDJmOTY1YzBmNDZiZjQ0%3Ac2F5ZGUuZ3V0aWVy=
+cmV6OTJAZ21haWwuY29t%3An%3AZmFsc2U%3ANA%3A%3AaHR0cHM6Ly93d3cuYm9va2luZy5jb2=
+0vaW5kZXguZW4tZ2IuaHRtbD9haWQ9MzM5NTMwJmxhYmVsPTMwMV9oZWFkZXJfdHJhY2tpbmctc=
+Gl4ZWwtMDFfdjItJmNoZWNraW49MjAxNy0wNy0yMCZjaGVja291dD0yMDE3LTA3LTIxJmRrc2M9=
+MSZzZWxlY3RlZF9jdXJyZW5jeT1NWE4mZW1rPUFQTldENjdSQzA&K=3DCyfG1SGq4li0-laCRTZ=
+1cQ" style=3D"display:block;">
+<SG_TRACK_PIXEL>
+</a>
+</td>
+</tr>
+<tr>
+<td height=3D"1" bgcolor=3D"#001B42" style=3D"background-color:#001B42;heig=
+ht:1px;font-size:1px;mso-line-height-rule:exactly;line-height:1px;padding:0=
+;">
+<a target=3D"_blank" href=3D"http://trk.booking.com/c/4/?T=3DOTk4MTc2MDI%3A=
+MDItdDE3MTk5LWJmMWU2YzQ3N2NiZTQ0MDk4NDJmOTY1YzBmNDZiZjQ0%3Ac2F5ZGUuZ3V0aWVy=
+cmV6OTJAZ21haWwuY29t%3An%3AZmFsc2U%3ANQ%3A%3AaHR0cHM6Ly93d3cuYm9va2luZy5jb2=
+0vaW5kZXguZW4tZ2IuaHRtbD9haWQ9MzM5NTMwJmxhYmVsPTMwMV9oZWFkZXJfdHJhY2tpbmctc=
+Gl4ZWwtMDJfdjItJmNoZWNraW49MjAxNy0wNy0yMCZjaGVja291dD0yMDE3LTA3LTIxJmRrc2M9=
+MSZzZWxlY3RlZF9jdXJyZW5jeT1NWE4mZW1rPUFQTldENjdSQzA&K=3DzqyFoewOxXr5GAzbu3Y=
+qgA" style=3D"display:block;">
+ <img src=3D"https://www.booking.com/emk_track_pixel.gif?aid=3D339530&emk=
+=3DAPNWD67RC0&lang=3Den-gb&stype=3D23&&label=3Demk_header" alt=3D"" width=
+=3D"1" height=3D"1" border=3D"0" style=3D"height:1px!important;width:1px!im=
+portant;border-width:0!important;margin-top:0!important;margin-bottom:0!imp=
+ortant;margin-right:0!important;margin-left:0!important;padding-top:0!impor=
+tant;padding-bottom:0!important;padding-right:0!important;padding-left:0!im=
+portant">
+</a>
+</td>
+</tr>
+</table>
+<table width=3D"100%" align=3D"center" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"table-layout:fixed; margin:0 auto;" class=3D"m-100p" =
+>
+<tr>
+<td align=3D"center" style=3D"padding-bottom: 30px; background-color:#00358=
+0;">
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"700" class=
+=3D"deviceWidth">
+<tr>
+<td style=3D"padding: 10px 0 20px 0; font-family: 'Helvetica Neue', Helveti=
+ca, Arial, sans-serif;; font-size: 16px; line-height: 26px; font-weight: no=
+rmal; color:#FFFFFF;" align=3D"left" class=3D"m-stack">
+<span style=3D"font-size: 24px; font-weight: bold; line-height: 32px;" clas=
+s=3D"m-txt-l">
+And what we noticed was that you hadn't used our email newsletters for a wh=
+ile.
+</span>
+<br><br>
+When we realised, we thought it would probably be a good idea to stop sendi=
+ng them to you. After all, not everyone is travelling all of the time, righ=
+t? But we still just wanted to check you're happy with us doing that.
+<br><br>
+You'll find an easy way to update your preferences below. If there's a spot=
+ of travel in your future, you might want to start receiving our emails aga=
+in so you can get a great deal on your next trip.
+</td>
+<td style=3D"padding-top:20px;padding-left:20px;" valign=3D"top" align=3D"r=
+ight" class=3D"m-hide"><img src=3D"http://r.bstatic.com/static/img/newslett=
+ers/pulse_check_envelopes.png" style=3D"display: block;" width=3D"178" heig=
+ht=3D"321" border=3D"0" class=3D"m-hide"></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td align=3D"center" style=3D"background-color:#FFFFFF;">
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"700" class=
+=3D"deviceWidth">
+<tr>
+<td align=3D"left">
+<img src=3D"http://r.bstatic.com/static/img/newsletters/pulse_check_arrow_k=
+nockout.png" style=3D"display: block;background-color:#003580" width=3D"110=
+" height=3D"29" border=3D"0">
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td align=3D"center" style=3D"background-color:#FFFFFF;">
+<table cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"700" class=
+=3D"deviceWidth">
+<tr>
+<td width=3D"100%" style=3D"padding: 30px 20px 20px 0; font-family: 'Helvet=
+ica Neue', Helvetica, Arial, sans-serif;; font-size: 16px; line-height: 26p=
+x; font-weight: normal; color:#001B42;">
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%">
+<tr>
+<td style=3D"font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;; =
+font-size: 16px; line-height: 26px; font-weight: normal; color:#001B42;" al=
+ign=3D"left">
+<a href=3D"http://trk.booking.com/c/4/?T=3DOTk4MTc2MDI%3AMDItdDE3MTk5LWJmMW=
+U2YzQ3N2NiZTQ0MDk4NDJmOTY1YzBmNDZiZjQ0%3Ac2F5ZGUuZ3V0aWVycmV6OTJAZ21haWwuY2=
+9t%3An%3AZmFsc2U%3ANg%3A%3AaHR0cHM6Ly93d3cuYm9va2luZy5jb20vdW5zdWJzY3JpYmUu=
+ZW4tZ2IuaHRtbD9haWQ9MzM5NTMwJmxhYmVsPTMwMV9wdWxzZWNoZWNrX2NvcHktdXBkYXRlX3Y=
+yLSZlbWFpbD1zYXlkZS5ndXRpZXJyZXo5MiU0MGdtYWlsLmNvbSZpZD1BUE5XRDY3UkMwJnNlbG=
+VjdGVkX2N1cnJlbmN5PU1YTiZ1bnN1YnNjcmliZV90eXBlPWFjdGl2YXRlJmVtaz1BUE5XRDY3U=
+kMw&K=3DPWMn_yrGi5Qdn3FrwUcTgA" target=3D"_blank" style=3D"display: block; =
+text-decoration: none; color:#001B42;">
+I'd like to receive deals and offers again!
+</a>
+</td>
+</tr>
+<tr>
+<td align=3D"left" style=3D"padding-top: 10px;" class=3D"m-pad-tb">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"background=
+:#0077CC; border-radius:6px;">
+<tr>
+<td align=3D"left" style=3D"padding:0 10px 0 15px; font-family:'Helvetica N=
+eue', Helvetica, Arial, sans-serif;; font-size:18px; line-height:15px;mso-l=
+ine-height-rule:exactly;font-weight:300;" class=3D"all-btn">
+<a target=3D"_blank" href=3D"http://trk.booking.com/c/4/?T=3DOTk4MTc2MDI%3A=
+MDItdDE3MTk5LWJmMWU2YzQ3N2NiZTQ0MDk4NDJmOTY1YzBmNDZiZjQ0%3Ac2F5ZGUuZ3V0aWVy=
+cmV6OTJAZ21haWwuY29t%3An%3AZmFsc2U%3ANw%3A%3AaHR0cHM6Ly93d3cuYm9va2luZy5jb2=
+0vdW5zdWJzY3JpYmUuZW4tZ2IuaHRtbD9haWQ9MzM5NTMwJmxhYmVsPTMwMV9wdWxzZWNoZWNrX=
+2N0YS1ib29raW5nX3YyLSZlbWFpbD1zYXlkZS5ndXRpZXJyZXo5MiU0MGdtYWlsLmNvbSZpZD1B=
+UE5XRDY3UkMwJnNlbGVjdGVkX2N1cnJlbmN5PU1YTiZ1bnN1YnNjcmliZV90eXBlPWFjdGl2YXR=
+lJmVtaz1BUE5XRDY3UkMw&K=3DUoRk04sWTEOnkM75nuN_DA" style=3D"color:#FFFFFF;te=
+xt-decoration:none;display:block;" class=3D"all-btn">
+Update my preferences
+</a>
+</td>
+<td width=3D"25" align=3D"left" style=3D"padding:12px 0 12px 20px">
+<a target=3D"_blank" href=3D"http://trk.booking.com/c/4/?T=3DOTk4MTc2MDI%3A=
+MDItdDE3MTk5LWJmMWU2YzQ3N2NiZTQ0MDk4NDJmOTY1YzBmNDZiZjQ0%3Ac2F5ZGUuZ3V0aWVy=
+cmV6OTJAZ21haWwuY29t%3An%3AZmFsc2U%3AOA%3A%3AaHR0cHM6Ly93d3cuYm9va2luZy5jb2=
+0vdW5zdWJzY3JpYmUuZW4tZ2IuaHRtbD9haWQ9MzM5NTMwJmxhYmVsPTMwMV9wdWxzZWNoZWNrX=
+2N0YS11cGRhdGVfdjItJmVtYWlsPXNheWRlLmd1dGllcnJlejkyJTQwZ21haWwuY29tJmlkPUFQ=
+TldENjdSQzAmc2VsZWN0ZWRfY3VycmVuY3k9TVhOJnVuc3Vic2NyaWJlX3R5cGU9YWN0aXZhdGU=
+mZW1rPUFQTldENjdSQzA&K=3D21CezPRGPIRdrjdTGKN-Og" style=3D"color:#FFFFFF;tex=
+t-decoration:none; display: block">
+<img src=3D"http://r.bstatic.com/static/img/newsletters/arrow-right-white.g=
+if" width=3D"15" height=3D"30" border=3D"0" style=3D"display:block;"/>
+</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td align=3D"left" style=3D"font-family: 'Helvetica Neue', Helvetica, Arial=
+, sans-serif;; font-size: 16px; line-height: 26px; padding-top: 30px;" clas=
+s=3D"m-pad-tb">
+<a target=3D"_blank" href=3D"http://trk.booking.com/c/4/?T=3DOTk4MTc2MDI%3A=
+MDItdDE3MTk5LWJmMWU2YzQ3N2NiZTQ0MDk4NDJmOTY1YzBmNDZiZjQ0%3Ac2F5ZGUuZ3V0aWVy=
+cmV6OTJAZ21haWwuY29t%3An%3AZmFsc2U%3AOQ%3A%3AaHR0cHM6Ly93d3cuYm9va2luZy5jb2=
+0vaW5kZXguZW4tZ2IuaHRtbD9haWQ9MzM5NTMwJmxhYmVsPTMwMV9wdWxzZWNoZWNrX2N0YS1ib=
+29raW5nX3YyLSZjaGVja2luPTIwMTctMDctMjAmY2hlY2tvdXQ9MjAxNy0wNy0yMSZka3NjPTEm=
+c2VsZWN0ZWRfY3VycmVuY3k9TVhOJmVtaz1BUE5XRDY3UkMw&K=3DIY1FXu5-ujuz72aF5X64bA=
+" style=3D"color:#0077CC;display:block;font-weight:bold;">
+Head to Booking.com
+</a>
+</td>
+</tr>
+<tr>
+<td style=3D"padding-top: 30px; padding-bottom: 20px; font-family: 'Helveti=
+ca Neue', Helvetica, Arial, sans-serif;; font-size: 16px; line-height: 26px=
+; font-weight: normal; color:#001B42;" align=3D"left">
+Thanks for reading and happy travels!
+<br>
+<img src=3D"http://q.bstatic.com/static/img/newsletters/logo_dark_3x.gif" s=
+tyle=3D"display: block;" border=3D"0" height=3D"25">
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+<tr>
+<td height=3D"1" style=3D"background-color:#001B42;height:1px;font-size:1px=
+;mso-line-height-rule:exactly;line-height:1px;padding:0;">
+<a target=3D"_blank" href=3D"http://trk.booking.com/c/4/?T=3DOTk4MTc2MDI%3A=
+MDItdDE3MTk5LWJmMWU2YzQ3N2NiZTQ0MDk4NDJmOTY1YzBmNDZiZjQ0%3Ac2F5ZGUuZ3V0aWVy=
+cmV6OTJAZ21haWwuY29t%3An%3AZmFsc2U%3AMTA%3A%3AaHR0cHM6Ly93d3cuYm9va2luZy5jb=
+20vaW5kZXguZW4tZ2IuaHRtbD9haWQ9MzM5NTMwJmxhYmVsPTMwMV9mb290ZXJfdHJhY2tpbmct=
+cGl4ZWwtMDFfdjItJmNoZWNraW49MjAxNy0wNy0yMCZjaGVja291dD0yMDE3LTA3LTIxJmRrc2M=
+9MSZzZWxlY3RlZF9jdXJyZW5jeT1NWE4mZW1rPUFQTldENjdSQzA&K=3DrOJ82MW8WjG8P-73SA=
+PwFQ" style=3D"display:block;">
+ <img src=3D"https://www.booking.com/emk_track_pixel.gif?aid=3D339530&emk=
+=3DAPNWD67RC0&lang=3Den-gb&stype=3D23&&label=3Demk_bottom" alt=3D"" width=
+=3D"1" height=3D"1" border=3D"0" style=3D"height:1px!important;width:1px!im=
+portant;border-width:0!important;margin-top:0!important;margin-bottom:0!imp=
+ortant;margin-right:0!important;margin-left:0!important;padding-top:0!impor=
+tant;padding-bottom:0!important;padding-right:0!important;padding-left:0!im=
+portant">
+</a>
+</td>
+</tr>
+<tr>
+<td style=3D"background-color:#001B42; padding: 5px 0px 15px 0px">
+<table width=3D"700" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" align=
+=3D"center" class=3D"deviceWidth" style=3D"margin: 0 auto;" >
+<tr>
+<td align=3D"center" style=3D"padding: 5px; padding-top: 10px; text-align: =
+center; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;; font-=
+size: 16px; color:#FFFFFF; line-height: 18px; font-weight: 300; letter-spac=
+ing: 0.03em;">
+<a target=3D"_blank" style=3D"text-decoration:none; color:#FFFFFF;" href=3D=
+"http://trk.booking.com/c/4/?T=3DOTk4MTc2MDI%3AMDItdDE3MTk5LWJmMWU2YzQ3N2Ni=
+ZTQ0MDk4NDJmOTY1YzBmNDZiZjQ0%3Ac2F5ZGUuZ3V0aWVycmV6OTJAZ21haWwuY29t%3An%3AZ=
+mFsc2U%3AMTE%3A%3AaHR0cHM6Ly93d3cuYm9va2luZy5jb20vdW5zdWJzY3JpYmUuZW4tZ2Iua=
+HRtbD9haWQ9MzM5NTMwJmxhYmVsPTMwMV9mb290ZXJfdW5zdWJzY3JpYmVfdjItJmVtYWlsPXNh=
+eWRlLmd1dGllcnJlejkyJTQwZ21haWwuY29tJmlkPUFQTldENjdSQzAmc2VsZWN0ZWRfY3VycmV=
+uY3k9TVhOJnVuc3Vic2NyaWJlX3R5cGU9YWN0aXZhdGUmZW1rPUFQTldENjdSQzA&K=3D7Ez-DO=
+3hV3TO2pKKpk-aMw">
+Unsubscribe
+</a>
+</td>
+</tr>
+<tr>
+<td align=3D"center" style=3D"padding: 5px; padding-top: 10px; text-align: =
+center; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;; font-=
+size: 13px; color:#FFFFFF; line-height: 18px; font-weight: 300; letter-spac=
+ing: 0.03em;">
+These emails are automated, so please do not reply.
+</td>
+</tr>
+<tr>
+<td class=3D"footer_mob_text_main" align=3D"center" style=3D"text-align:cen=
+ter; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;; font-siz=
+e: 13px; color:#BDBDBD; padding-top: 10px; line-height: 18px;">
+<div>
+This e-mail was sent by Booking.com, Herengracht 597, 1017 CE Amsterdam, Ne=
+therlands&nbsp;&nbsp;|&nbsp;&nbsp;<a target=3D"_blank" style=3D"color:#FFFF=
+FF; text-decoration:none;font-size: 11px;" href=3D"http://trk.booking.com/c=
+/4/?T=3DOTk4MTc2MDI%3AMDItdDE3MTk5LWJmMWU2YzQ3N2NiZTQ0MDk4NDJmOTY1YzBmNDZiZ=
+jQ0%3Ac2F5ZGUuZ3V0aWVycmV6OTJAZ21haWwuY29t%3An%3AZmFsc2U%3AMTI%3A%3AaHR0cHM=
+6Ly93d3cuYm9va2luZy5jb20vZ2VuZXJhbC5lbi1nYi5odG1sP2FpZD0zMzk1MzAmbGFiZWw9Mz=
+AxX2Zvb3Rlcl9wcml2YWN5X3YyLSZ0bXBsPWRvY3MlMkZwcml2YWN5LXBvbGljeSZjaGVja2luP=
+TIwMTctMDctMjAmY2hlY2tvdXQ9MjAxNy0wNy0yMSZzZWxlY3RlZF9jdXJyZW5jeT1NWE4mZW1r=
+PUFQTldENjdSQzA&K=3D1xRmerk6BUKvIAwMGK1QkQ">Privacy Statement</a>
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" alig=
+n=3D"center" style=3D"background:#17213d;" >
+<tr>
+<td style=3D"font-size:1px;background:#17213d;">
+<img src=3D"http://pixel.monitor1.returnpath.net/pixel.gif?r=3D839e456c119e=
+a9a78ccfe546f71afa37f95e244f&amp;c=3D301&amp;campaign_type=3Dactivate" widt=
+h=3D"1" height=3D"1">
+</td>
+</tr>
+</table>
+<img src=3D"http://trk.booking.com/o/3/T1RrNE1UYzJNREk6TURJdGRERTNNVGs1TFdK=
+bU1XVTJZelEzTjJOaVpUUTBNRGs0TkRKbU9UWTFZekJtTkRaaVpqUTA6YzJGNVpHVXVaM1YwYVd=
+WeWNtVjZPVEpBWjIxaGFXd3VZMjl0Og/ouifxbm2e0AggdBOmVr8Ig" width=3D"1" height=
+=3D"1" /></body>
+</html>
+------=_Part_5614890_1178223887.1500395102094--
+
+------=_Part_5614889_1705236133.1500395102094--
+
+------=_Part_5614888_281283262.1500395102093--
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>date-last-viewed</key>
+	<integer>0</integer>
+	<key>date-received</key>
+	<integer>1500395103</integer>
+	<key>flags</key>
+	<integer>8606972928</integer>
+	<key>remote-id</key>
+	<string>857</string>
+</dict>
+</plist>

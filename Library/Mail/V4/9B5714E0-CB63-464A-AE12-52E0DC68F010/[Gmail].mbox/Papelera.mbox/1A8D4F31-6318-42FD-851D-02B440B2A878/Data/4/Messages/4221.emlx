@@ -1,0 +1,612 @@
+29957     
+Delivered-To: sayde.gutierrez92@gmail.com
+Received: by 10.31.166.138 with SMTP id p132csp585488vke;
+        Thu, 3 Aug 2017 01:10:11 -0700 (PDT)
+X-Received: by 10.129.123.213 with SMTP id w204mr547611ywc.172.1501747811025;
+        Thu, 03 Aug 2017 01:10:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501747810; cv=none;
+        d=google.com; s=arc-20160816;
+        b=vGlRoaTLzG81M0K3dTnk0/fR4ZRm0VKjMjcWaw/0PoT83s0yY089khDqD0BYgQYuNb
+         dwQvUnnQmdpavNuu5hDLcqp4a1bA8XHPl39FgEtJiy2RA6qbg+B2AyZxdiQfDGelQTwC
+         ZR49iQVnr2NBOskzWkGBTPItH6ZGCLfQaFYoRi4noFxc1wzTRLM6YtT3/K9B+97F1D4o
+         Jh2DcYdkP9+dNdaI1T2FZm0Mt4Pn4kReuYR7fJhCGFCeqxNCJ9tgtNxjy8F9bT9//Nw3
+         dyPdeSV7Sd3c0Ubpe6x3jvXD6wnrekqUx0milzm9DJpWNFm+P6lQ1eXG3+pAAaAgmsEi
+         g4Og==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:date:message-id:to:subject:from:dkim-signature
+         :dkim-signature:arc-authentication-results;
+        bh=Wd/9D7aJzRcXf6eX/q05tvgDYomDqSkwz2baznBfS2o=;
+        b=O3yFQdEWXVIVw3JHj+a6tzWCW05CuJ7ECV2xPmTj1NSPtHRsUZ/8BM43c3U6hzkAQL
+         yJuAKdo9AlOtCMLiph/4PDn1VY59/6ckEWR4jiCh6tCu8s3ri97pFIn2NgzJQoLjstAJ
+         W19VgIkfAu41XaRrVIfbn6tAuruYfV5upBwbEjuu4s7Kaqv9JIWy0ZmM4O5gP4+cCtDq
+         50SjRD/SZgQUyf3yCpcOXC+D/1US/LbDj7hN9WnP+v73teNvDExXIJyBldnFNfmK/mOx
+         iRZXPszJPNodvXVmRFAxbi8lQ5Pzk4RIurXTVEhTvDESNNmbT/GQaUKxwn1iB4A+TcQv
+         dKRQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@codeschool.com header.b=kIR2bLcW;
+       dkim=pass header.i=@mandrillapp.com header.b=fQ38VPG0;
+       spf=pass (google.com: domain of bounce-md_10342275.5982da62.v1-39d0e583fd184ee6a65e6e7024e2d359@mandrillapp.com designates 198.2.177.5 as permitted sender) smtp.mailfrom=bounce-md_10342275.5982da62.v1-39d0e583fd184ee6a65e6e7024e2d359@mandrillapp.com
+Return-Path: <bounce-md_10342275.5982da62.v1-39d0e583fd184ee6a65e6e7024e2d359@mandrillapp.com>
+Received: from mail177-5.suw61.mandrillapp.com (mail177-5.suw61.mandrillapp.com. [198.2.177.5])
+        by mx.google.com with ESMTPS id t7si5445287ybd.455.2017.08.03.01.10.10
+        for <sayde.gutierrez92@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 03 Aug 2017 01:10:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce-md_10342275.5982da62.v1-39d0e583fd184ee6a65e6e7024e2d359@mandrillapp.com designates 198.2.177.5 as permitted sender) client-ip=198.2.177.5;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@codeschool.com header.b=kIR2bLcW;
+       dkim=pass header.i=@mandrillapp.com header.b=fQ38VPG0;
+       spf=pass (google.com: domain of bounce-md_10342275.5982da62.v1-39d0e583fd184ee6a65e6e7024e2d359@mandrillapp.com designates 198.2.177.5 as permitted sender) smtp.mailfrom=bounce-md_10342275.5982da62.v1-39d0e583fd184ee6a65e6e7024e2d359@mandrillapp.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=mandrill; d=codeschool.com;
+ h=From:Subject:To:Message-Id:Date:MIME-Version:Content-Type; i=support@codeschool.com;
+ bh=Wd/9D7aJzRcXf6eX/q05tvgDYomDqSkwz2baznBfS2o=;
+ b=kIR2bLcWdk71694FrXiofahtnx17WAF7/L4ZVR0wVZ8TqSp5f7B1zSGnwf4rvSmy+Yt/KY4Qu28W
+   kHEakVRKKD933tuhWBoBvYM4zL8drfHZfuasvCLjaeA4w9Dx7CU4R8vSHUjNT8tgsfgIMjO/pk/O
+   9VTpZM13E9+Iutt+Eic=
+Received: from pmta06.mandrill.prod.suw01.rsglab.com (127.0.0.1) by mail177-5.suw61.mandrillapp.com id hgbd6422rtkn for <sayde.gutierrez92@gmail.com>; Thu, 3 Aug 2017 08:10:10 +0000 (envelope-from <bounce-md_10342275.5982da62.v1-39d0e583fd184ee6a65e6e7024e2d359@mandrillapp.com>)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mandrillapp.com; 
+ i=@mandrillapp.com; q=dns/txt; s=mandrill; t=1501747810; h=From : 
+ Subject : To : Message-Id : Date : MIME-Version : Content-Type : From : 
+ Subject : Date : X-Mandrill-User : List-Unsubscribe; 
+ bh=Wd/9D7aJzRcXf6eX/q05tvgDYomDqSkwz2baznBfS2o=; 
+ b=fQ38VPG0r0V0bgaGwDs+cQynXAv3qM/woLiQDKbpJbRnncE0+z6miGSVfGbblFq5gHQKeq
+ IvNl1b8Th+g8JdiABpQSLZx5goBZ0M3UpAUSvPLiC975dYs1H6xc+2VaW2GsRCjdhKxz4RsV
+ P1q/ya56e9oZ5KLnsHG7aEWaMVHWw=
+From: Code School <support@codeschool.com>
+Subject: You Unlocked a Bonus!
+Return-Path: <bounce-md_10342275.5982da62.v1-39d0e583fd184ee6a65e6e7024e2d359@mandrillapp.com>
+Received: from [173.230.154.225] by mandrillapp.com id 39d0e583fd184ee6a65e6e7024e2d359; Thu, 03 Aug 2017 08:10:10 +0000
+To: Code School Student <sayde.gutierrez92@gmail.com>
+X-Report-Abuse: Please forward a copy of this message, including all headers, to abuse@mandrill.com
+X-Report-Abuse: You can also report abuse here: http://mandrillapp.com/contact/abuse?id=10342275.39d0e583fd184ee6a65e6e7024e2d359
+X-Mandrill-User: md_10342275
+Message-Id: <10342275.20170803081010.5982da627e3f27.38035544@mail177-5.suw61.mandrillapp.com>
+Date: Thu, 03 Aug 2017 08:10:10 +0000
+MIME-Version: 1.0
+Content-Type: multipart/alternative; boundary="_av-W-_iQK9xFFK7WO5oVJCIsA"
+
+--_av-W-_iQK9xFFK7WO5oVJCIsA
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+      First Course Complete v2 <https://mandrillapp.com/track/click/1034227=
+5/www.codeschool.com?p=3DeyJzIjoiRHdrU3RsdXU2OHdHcFpGeS1uVnNTVThYbnl3Iiwidi=
+I6MSwicCI6IntcInVcIjoxMDM0MjI3NSxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXFxcL=
+3d3dy5jb2Rlc2Nob29sLmNvbVwiLFwiaWRcIjpcIjM5ZDBlNTgzZmQxODRlZTZhNjVlNmU3MDI0=
+ZTJkMzU5XCIsXCJ1cmxfaWRzXCI6W1wiMDJmNmYzOGM4NDVjNTBjMjBkNzc4NmIwMTg3Nzc5YWZ=
+mMDkwNTZkNFwiXX0ifQ>
+<https://mandrillapp.com/track/click/10342275/www.codeschool.com?p=3DeyJzIj=
+oiV1FVYkdSNEZrcGh6MW5hUVRGRXZNaTFIQ0tVIiwidiI6MSwicCI6IntcInVcIjoxMDM0MjI3N=
+SxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXFxcL3d3dy5jb2Rlc2Nob29sLmNvbVxcXC9m=
+aXJzdC1jb3Vyc2UtYm9udXNcXFwvP3V0bV9tZWRpdW09ZW1haWwmYW1wO3V0bV9jYW1wYWlnbj1=
+maXJzdF9jb3Vyc2VfY29tcGxldGUmYW1wO3V0bV9zb3VyY2U9bWFpbGNoaW1wJmFtcDt1dG1fY2=
+9udGVudD1udWxsXCIsXCJpZFwiOlwiMzlkMGU1ODNmZDE4NGVlNmE2NWU2ZTcwMjRlMmQzNTlcI=
+ixcInVybF9pZHNcIjpbXCJmMDk4YzQ2NzBjM2JkZDg1Y2YzNDM3MTdkNGI3Y2IzNzM3MWY2Mjk3=
+XCJdfSJ9>
+           Nice job! You just earned *$10 off* for completing your first
+course. The discount expires in *7 days*, so use it while you can!     
+Claim Discount
+<https://mandrillapp.com/track/click/10342275/www.codeschool.com?p=3DeyJzIj=
+oiV1FVYkdSNEZrcGh6MW5hUVRGRXZNaTFIQ0tVIiwidiI6MSwicCI6IntcInVcIjoxMDM0MjI3N=
+SxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXFxcL3d3dy5jb2Rlc2Nob29sLmNvbVxcXC9m=
+aXJzdC1jb3Vyc2UtYm9udXNcXFwvP3V0bV9tZWRpdW09ZW1haWwmYW1wO3V0bV9jYW1wYWlnbj1=
+maXJzdF9jb3Vyc2VfY29tcGxldGUmYW1wO3V0bV9zb3VyY2U9bWFpbGNoaW1wJmFtcDt1dG1fY2=
+9udGVudD1udWxsXCIsXCJpZFwiOlwiMzlkMGU1ODNmZDE4NGVlNmE2NWU2ZTcwMjRlMmQzNTlcI=
+ixcInVybF9pZHNcIjpbXCJmMDk4YzQ2NzBjM2JkZDg1Y2YzNDM3MTdkNGI3Y2IzNzM3MWY2Mjk3=
+XCJdfSJ9>
+          If you're ready to keep learning after completing Try Git, use
+your bonus to unlock *all* of our courses and screencasts. Ready? Set. Go!
+<https://mandrillapp.com/track/click/10342275/twitter.com?p=3DeyJzIjoiU0IwW=
+TRHTG5UdDJfd0NScjFJSjZRSjVkVFA0IiwidiI6MSwicCI6IntcInVcIjoxMDM0MjI3NSxcInZc=
+IjoxLFwidXJsXCI6XCJodHRwOlxcXC9cXFwvdHdpdHRlci5jb21cXFwvY29kZXNjaG9vbFwiLFw=
+iaWRcIjpcIjM5ZDBlNTgzZmQxODRlZTZhNjVlNmU3MDI0ZTJkMzU5XCIsXCJ1cmxfaWRzXCI6W1=
+wiZGJmYTEwOTg0Y2I5MDE0NjA0N2Y3MjgxYTQwNDgwYjJiMTQ2NWM0ZVwiXX0ifQ> <https://=
+mandrillapp.com/track/click/10342275/facebook.com?p=3DeyJzIjoid3RfR2EzMk9Ra=
+21STEtrZ2pnSmpiNXd5ZGNZIiwidiI6MSwicCI6IntcInVcIjoxMDM0MjI3NSxcInZcIjoxLFwi=
+dXJsXCI6XCJodHRwOlxcXC9cXFwvZmFjZWJvb2suY29tXFxcL2NvZGVzY2hvb2xcIixcImlkXCI=
+6XCIzOWQwZTU4M2ZkMTg0ZWU2YTY1ZTZlNzAyNGUyZDM1OVwiLFwidXJsX2lkc1wiOltcIjdiZG=
+VlZTUxN2YwZjRhYjhkNWZlZWRiYWJmZWFhNTlhZjE1MzFjYjhcIl19In0>
+<https://mandrillapp.com/track/click/10342275/www.youtube.com?p=3DeyJzIjoiR=
+zdXRVlpQ1RHeG5aRVFfbjlZMlpkQ2trSDFnIiwidiI6MSwicCI6IntcInVcIjoxMDM0MjI3NSxc=
+InZcIjoxLFwidXJsXCI6XCJodHRwOlxcXC9cXFwvd3d3LnlvdXR1YmUuY29tXFxcL3VzZXJcXFw=
+vQ29kZVNjaG9vbFRWXCIsXCJpZFwiOlwiMzlkMGU1ODNmZDE4NGVlNmE2NWU2ZTcwMjRlMmQzNT=
+lcIixcInVybF9pZHNcIjpbXCIzNzU5MGM0MDNmN2E1MDY4MGNhMWRlMTFmODllMDFjNmMyYTdmO=
+TUzXCJdfSJ9>
+<https://mandrillapp.com/track/click/10342275/plus.google.com?p=3DeyJzIjoib=
+TRPUS1ybFo1THdMV0VndkxXbENfOEppeS1JIiwidiI6MSwicCI6IntcInVcIjoxMDM0MjI3NSxc=
+InZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXFxcL3BsdXMuZ29vZ2xlLmNvbVxcXC8xMDQxNzI=
+wMTQxODg4NTgyOTY1NjNcXFwvcG9zdHNcIixcImlkXCI6XCIzOWQwZTU4M2ZkMTg0ZWU2YTY1ZT=
+ZlNzAyNGUyZDM1OVwiLFwidXJsX2lkc1wiOltcImYzZDRhNzhjNjA1MGJmMzU3NWU4ZDU2YjgyO=
+DVhZmJlZTE4MWNiYTVcIl19In0>       Have questions
+or need assistance?                Support
+<https://mandrillapp.com/track/click/10342275/www.codeschool.com?p=3DeyJzIj=
+oiVW1zWG9VemE5VmhESjktZzVRMFJPUDFZaDIwIiwidiI6MSwicCI6IntcInVcIjoxMDM0MjI3N=
+SxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXFxcL3d3dy5jb2Rlc2Nob29sLmNvbVxcXC9z=
+dXBwb3J0XCIsXCJpZFwiOlwiMzlkMGU1ODNmZDE4NGVlNmE2NWU2ZTcwMjRlMmQzNTlcIixcInV=
+ybF9pZHNcIjpbXCJmODg4YjY1NzVmOTVkMzlkZWI3YjQ5ZDIwNjU0Y2M3YTFlYjcyMTg4XCJdfS=
+J9>    
+       FAQ <https://mandrillapp.com/track/click/10342275/www.codeschool.com=
+?p=3DeyJzIjoiclBndnZ3Y3VIVFNqQ3k5c1ZzU1U5Y2gxakcwIiwidiI6MSwicCI6IntcInVcIj=
+oxMDM0MjI3NSxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXFxcL3d3dy5jb2Rlc2Nob29sL=
+mNvbVxcXC9mYXFcIixcImlkXCI6XCIzOWQwZTU4M2ZkMTg0ZWU2YTY1ZTZlNzAyNGUyZDM1OVwi=
+LFwidXJsX2lkc1wiOltcImZhZGMyNGMzNTBkNTVlNjczODA5ZTJlMmRhYmVkYmJjZGU1MThjZWR=
+cIl19In0>     
+          =C2=A9 2016 Code School LLC. Crafted lovingly in Orlando, Florida=
+.   
+ *|LIST:ADDRESS|*     Edit your email settings
+<https://mandrillapp.com/track/click/10342275/www.codeschool.com?p=3DeyJzIj=
+oiR3NxM3BCSFFmRUNER2xod1VXS0Z0NUo0SEVVIiwidiI6MSwicCI6IntcInVcIjoxMDM0MjI3N=
+SxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXFxcL3d3dy5jb2Rlc2Nob29sLmNvbVxcXC9h=
+Y2NvdW50XFxcL2VkaXRcIixcImlkXCI6XCIzOWQwZTU4M2ZkMTg0ZWU2YTY1ZTZlNzAyNGUyZDM=
+1OVwiLFwidXJsX2lkc1wiOltcImU4MWJmMTUzYjUzYWIwZWM1YTRlNzVmNGE4MGQxMTFhY2FlNT=
+FjNGJcIl19In0>      Unsubscribe
+<https://mandrillapp.com/track/click/10342275/www.codeschool.com?p=3DeyJzIj=
+oiVWpCclJIZ3pxLXhQTVZhMGpuNkhrX25hT2xrIiwidiI6MSwicCI6IntcInVcIjoxMDM0MjI3N=
+SxcInZcIjoxLFwidXJsXCI6XCJodHRwOlxcXC9cXFwvd3d3LmNvZGVzY2hvb2wuY29tXFxcL2Vt=
+YWlsc1xcXC91bnN1YnNjcmliZT90b2tlbj02Y2Q0YjIxOS1jY2NjLTRkN2ItODZiNi0yODRmODc=
+2Nzk0Y2YmdHlwZT1hY2hpZXZlbWVudHNcIixcImlkXCI6XCIzOWQwZTU4M2ZkMTg0ZWU2YTY1ZT=
+ZlNzAyNGUyZDM1OVwiLFwidXJsX2lkc1wiOltcIjVjY2VjNTc3NmZlYzUwOWEyNDU5YTdjZDRiZ=
+jlkYjM4MmYwMGUzMTBcIl19In0>
+
+--_av-W-_iQK9xFFK7WO5oVJCIsA
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html lang=3D"en">
+  <head>
+    <meta charset=3D"utf-8">
+    <meta content=3D"width=3Ddevice-width, initial-scale=3D1.0" name=3D"vie=
+wport">
+    <meta content=3D"noindex" name=3D"robots">
+    <title>First Course Complete v2</title>
+  </head>
+  <body style=3D"margin: 0; padding: 0;">
+    <table bgcolor=3D"#ffffff" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"header" width=3D"100%">
+      <tr>
+        <td align=3D"center" style=3D"border-bottom: 1px solid #f7f7f7; pad=
+ding: 12px 0;">
+          <a href=3D"https://mandrillapp.com/track/click/10342275/www.codes=
+chool.com?p=3DeyJzIjoiRHdrU3RsdXU2OHdHcFpGeS1uVnNTVThYbnl3IiwidiI6MSwicCI6I=
+ntcInVcIjoxMDM0MjI3NSxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXFxcL3d3dy5jb2Rl=
+c2Nob29sLmNvbVwiLFwiaWRcIjpcIjM5ZDBlNTgzZmQxODRlZTZhNjVlNmU3MDI0ZTJkMzU5XCI=
+sXCJ1cmxfaWRzXCI6W1wiMDJmNmYzOGM4NDVjNTBjMjBkNzc4NmIwMTg3Nzc5YWZmMDkwNTZkNF=
+wiXX0ifQ">
+            <img alt=3D"" border=3D"0" src=3D"https://gallery.mailchimp.com=
+/8234ed62d6a7fa87721ff1d8a/images/3b956e42-1381-4d47-8332-808334d3b280.png"=
+ width=3D"190">
+          </a>
+        </td>
+      </tr>
+    </table>
+    <style>
+      table {
+        border-collapse: collapse;
+        border-spacing: 0; }
+      
+      td.text,
+      .has-btn {
+        mso-line-height-rule: exactly;
+        -webkit-font-smoothing: antialiased;
+        -ms-text-size-adjust: none;
+        -webkit-text-size-adjust: none; }
+      
+      a[x-apple-data-detectors] {
+        color: inherit !important;
+        text-decoration: none !important;
+        font-size: inherit !important;
+        font-family: inherit !important;
+        font-weight: inherit !important;
+        line-height: inherit !important; }
+      
+      @media screen and (max-width: 600px) {
+        .text {
+          font-size: 14px !important;
+          line-height: 21px !important; }
+      
+        .h1 {
+          font-size: 20px !important; }
+      
+        .h2 {
+          font-size: 18px !important; }
+      
+        .h3 {
+          font-size: 16px !important; }
+      
+        .h4 {
+          font-size: 14px !important; }
+      
+        .h5 {
+          font-size: 14px !important; }
+      
+        table {
+          line-height: 1.5 !important; }
+      
+        .h1, .h2, .h3, .h4, .h5 {
+          line-height: 1.2 !important; }
+      
+        .cs-logo {
+          width: 120px !important; }
+      
+        .flex-size {
+          max-width: 100% !important;
+          width: 100% !important; }
+      
+        .flex-size img {
+          max-width: 100% !important; }
+      
+        .s-height {
+          height: 10px !important; }
+      
+        .s-db {
+          display: block !important; }
+      
+        .s-dib {
+          display: inline-block !important; }
+      
+        .s-hf {
+          height: 0 !important; }
+      
+        .s-paf {
+          padding: 0 !important; }
+      
+        .s-pbf {
+          padding-bottom: 0 !important; }
+      
+        .s-pbm {
+          padding-bottom: 16px !important; }
+      
+        .s-plf {
+          padding-left: 0 !important; }
+      
+        .s-prf {
+          padding-right: 0 !important; }
+      
+        .s-pts {
+          padding-top: 8px !important; }
+      
+        .s-ptm {
+          padding-top: 16px !important; }
+      
+        .s-ptl {
+          padding-top: 32px !important; }
+      
+        .s-tac {
+          text-align: center !important; }
+      
+        .s-tal {
+          text-align: left !important; } }
+      @media screen and (min-device-width: 375px) and (max-device-width: 66=
+7px) {
+        table {
+          font-size: 16px !important; }
+      
+        table.footer-content {
+          font-size: 12px !important; } }
+      .footer a {
+        color: #aebdc1; }
+    </style>
+    <table bgcolor=3D"#ffffff" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" width=3D"100%">
+      <tr>
+        <td align=3D"center" style=3D'background: url("https://gallery.mail=
+chimp.com/8234ed62d6a7fa87721ff1d8a/images/310aaa31-e60c-4e1d-8d6c-409569bf=
+72ad.png") no-repeat center center / cover; padding: 40px 20px 48px 20px;'>
+          <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" class=3D"flex-size">
+            <tr>
+              <td style=3D"font-size: 0;">&nbsp;</td>
+              <td align=3D"center" style=3D"padding-bottom: 16px;">
+                  <a href=3D"https://mandrillapp.com/track/click/10342275/w=
+ww.codeschool.com?p=3DeyJzIjoiai1NSXFmOGluaVVjNjNoU2M0WEVCMUZxSEMwIiwidiI6M=
+SwicCI6IntcInVcIjoxMDM0MjI3NSxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXFxcL3d3=
+dy5jb2Rlc2Nob29sLmNvbVxcXC9maXJzdC1jb3Vyc2UtYm9udXNcXFwvP3V0bV9tZWRpdW09ZW1=
+haWwmdXRtX2NhbXBhaWduPWZpcnN0X2NvdXJzZV9jb21wbGV0ZSZ1dG1fc291cmNlPW1haWxjaG=
+ltcCZ1dG1fY29udGVudD1udWxsXCIsXCJpZFwiOlwiMzlkMGU1ODNmZDE4NGVlNmE2NWU2ZTcwM=
+jRlMmQzNTlcIixcInVybF9pZHNcIjpbXCJmMDk4YzQ2NzBjM2JkZDg1Y2YzNDM3MTdkNGI3Y2Iz=
+NzM3MWY2Mjk3XCJdfSJ9"><img src=3D"https://gallery.mailchimp.com/8234ed62d6a=
+7fa87721ff1d8a/images/c27330df-85d6-4dbd-afe6-48e35eb77906.png" style=3D"di=
+splay: block; max-width: 100%;" width=3D"200"></a>
+              </td>
+              <td style=3D"font-size: 0;">&nbsp;</td>
+            </tr>
+            <tr>
+              <td style=3D"font-size: 0;">&nbsp;</td>
+              <td bgcolor=3D"#ffffff" style=3D"border-radius: 6px; padding:=
+ 24px;" width=3D"360">
+                <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wid=
+th=3D"100%">
+                  <tr>
+                      <td class=3D"text" align=3D"center" style=3D"color: #=
+393d40; font-family: 'Open Sans', Verdana, Helvetica, Arial, sans-serif; fo=
+nt-size: 16px; line-height: 24px; ">
+                          Nice job! You just earned <strong>$10 off</strong=
+> for completing your first course. The discount expires in <i>7 days</i>, =
+so use it while you can!
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align=3D"center" style=3D"padding-top: 16px;">
+                      <!--[if mso]>
+                        <v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:v=
+ml" xmlns:w=3D"urn:schemas-microsoft-com:office:word" href=3D"https://www.c=
+odeschool.com/first-course-bonus/?utm_medium=3Demail&utm_campaign=3Dfirst_c=
+ourse_complete&utm_source=3Dmailchimp&utm_content=3Dnull" style=3D"height:4=
+0px;v-text-anchor:middle;width:200px;" arcsize=3D"250%" stroke=3D"f" fillco=
+lor=3D"#5dbb6c">
+                        <w:anchorlock/>
+                        <center>
+                      <![endif]-->
+                      <a class=3D"btn-a" href=3D"https://mandrillapp.com/tr=
+ack/click/10342275/www.codeschool.com?p=3DeyJzIjoiai1NSXFmOGluaVVjNjNoU2M0W=
+EVCMUZxSEMwIiwidiI6MSwicCI6IntcInVcIjoxMDM0MjI3NSxcInZcIjoxLFwidXJsXCI6XCJo=
+dHRwczpcXFwvXFxcL3d3dy5jb2Rlc2Nob29sLmNvbVxcXC9maXJzdC1jb3Vyc2UtYm9udXNcXFw=
+vP3V0bV9tZWRpdW09ZW1haWwmdXRtX2NhbXBhaWduPWZpcnN0X2NvdXJzZV9jb21wbGV0ZSZ1dG=
+1fc291cmNlPW1haWxjaGltcCZ1dG1fY29udGVudD1udWxsXCIsXCJpZFwiOlwiMzlkMGU1ODNmZ=
+DE4NGVlNmE2NWU2ZTcwMjRlMmQzNTlcIixcInVybF9pZHNcIjpbXCJmMDk4YzQ2NzBjM2JkZDg1=
+Y2YzNDM3MTdkNGI3Y2IzNzM3MWY2Mjk3XCJdfSJ9" style=3D"background-color:#5dbb6c=
+; border-radius:100px; color:#ffffff; display:inline-block; font-family: 'O=
+pen Sans', Verdana, Helvetica, Arial, sans-serif; font-size:14px; line-heig=
+ht:40px; text-align:center; text-decoration:none; width:200px;">Claim Disco=
+unt</a>
+                      <!--[if mso]>
+                        </center>
+                        </v:roundrect>
+                      <![endif]-->
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align=3D"center" style=3D"padding-top: 48px;">
+                      <img src=3D"https://d1ffx7ull4987f.cloudfront.net/ima=
+ges/achievements/large_badge/121/completed-try-git-b54d1cd9fa940e4a3c192505=
+6d38eca2.png" style=3D"display: block; max-width: 100%;" width=3D"110">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align=3D"left" class=3D"text" style=3D"color: #393d=
+40; font-family: 'Open Sans', Verdana, Helvetica, Arial, sans-serif; font-s=
+ize: 14px; line-height: 24px; padding-top: 8px;">
+                        If you're ready to keep learning after completing T=
+ry Git, use your bonus to unlock <i>all</i> of our courses and screencasts.=
+ Ready? Set. Go!
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td style=3D"font-size: 0;">&nbsp;</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    <table bgcolor=3D"#2d3033" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"wrapper" style=3D"color: #aebdc1; font-size: 12px;" width=
+=3D"100%">
+      <tr>
+        <td align=3D"center">
+          <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0">
+            <tr>
+              <td align=3D"center" style=3D"padding: 32px 12px 0 12px;">
+                <a href=3D"https://mandrillapp.com/track/click/10342275/twi=
+tter.com?p=3DeyJzIjoiU0IwWTRHTG5UdDJfd0NScjFJSjZRSjVkVFA0IiwidiI6MSwicCI6In=
+tcInVcIjoxMDM0MjI3NSxcInZcIjoxLFwidXJsXCI6XCJodHRwOlxcXC9cXFwvdHdpdHRlci5jb=
+21cXFwvY29kZXNjaG9vbFwiLFwiaWRcIjpcIjM5ZDBlNTgzZmQxODRlZTZhNjVlNmU3MDI0ZTJk=
+MzU5XCIsXCJ1cmxfaWRzXCI6W1wiZGJmYTEwOTg0Y2I5MDE0NjA0N2Y3MjgxYTQwNDgwYjJiMTQ=
+2NWM0ZVwiXX0ifQ" style=3D"text-decoration: none;">
+                  <img alt=3D"Twitter Icon" border=3D"0" height=3D"30" src=
+=3D"http://d367zuf2xzw0m3.cloudfront.net/common/social-twitter.png" width=
+=3D"30">
+                </a>
+              </td>
+              <td align=3D"center" style=3D"padding: 32px 12px 0 12px;">
+                <a href=3D"https://mandrillapp.com/track/click/10342275/fac=
+ebook.com?p=3DeyJzIjoid3RfR2EzMk9Ra21STEtrZ2pnSmpiNXd5ZGNZIiwidiI6MSwicCI6I=
+ntcInVcIjoxMDM0MjI3NSxcInZcIjoxLFwidXJsXCI6XCJodHRwOlxcXC9cXFwvZmFjZWJvb2su=
+Y29tXFxcL2NvZGVzY2hvb2xcIixcImlkXCI6XCIzOWQwZTU4M2ZkMTg0ZWU2YTY1ZTZlNzAyNGU=
+yZDM1OVwiLFwidXJsX2lkc1wiOltcIjdiZGVlZTUxN2YwZjRhYjhkNWZlZWRiYWJmZWFhNTlhZj=
+E1MzFjYjhcIl19In0" style=3D"text-decoration: none;">
+                  <img alt=3D"Facebook Icon" border=3D"0" height=3D"30" src=
+=3D"http://d367zuf2xzw0m3.cloudfront.net/common/social-facebook.png" width=
+=3D"30">
+                </a>
+              </td>
+              <td align=3D"center" style=3D"padding: 32px 12px 0 12px;">
+                <a href=3D"https://mandrillapp.com/track/click/10342275/www=
+.youtube.com?p=3DeyJzIjoiRzdXRVlpQ1RHeG5aRVFfbjlZMlpkQ2trSDFnIiwidiI6MSwicC=
+I6IntcInVcIjoxMDM0MjI3NSxcInZcIjoxLFwidXJsXCI6XCJodHRwOlxcXC9cXFwvd3d3Lnlvd=
+XR1YmUuY29tXFxcL3VzZXJcXFwvQ29kZVNjaG9vbFRWXCIsXCJpZFwiOlwiMzlkMGU1ODNmZDE4=
+NGVlNmE2NWU2ZTcwMjRlMmQzNTlcIixcInVybF9pZHNcIjpbXCIzNzU5MGM0MDNmN2E1MDY4MGN=
+hMWRlMTFmODllMDFjNmMyYTdmOTUzXCJdfSJ9" style=3D"text-decoration: none;">
+                  <img alt=3D"Youtube Icon" border=3D"0" height=3D"30" src=
+=3D"https://gallery.mailchimp.com/8234ed62d6a7fa87721ff1d8a/images/email_so=
+cial_youtube.png" width=3D"30">
+                </a>
+              </td>
+              <td align=3D"center" style=3D"padding: 32px 12px 0 12px;">
+                <a href=3D"https://mandrillapp.com/track/click/10342275/plu=
+s.google.com?p=3DeyJzIjoibTRPUS1ybFo1THdMV0VndkxXbENfOEppeS1JIiwidiI6MSwicC=
+I6IntcInVcIjoxMDM0MjI3NSxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXFxcL3BsdXMuZ=
+29vZ2xlLmNvbVxcXC8xMDQxNzIwMTQxODg4NTgyOTY1NjNcXFwvcG9zdHNcIixcImlkXCI6XCIz=
+OWQwZTU4M2ZkMTg0ZWU2YTY1ZTZlNzAyNGUyZDM1OVwiLFwidXJsX2lkc1wiOltcImYzZDRhNzh=
+jNjA1MGJmMzU3NWU4ZDU2YjgyODVhZmJlZTE4MWNiYTVcIl19In0" style=3D"text-decorat=
+ion: none;">
+                  <img alt=3D"Google+ Icon" border=3D"0" height=3D"30" src=
+=3D"https://gallery.mailchimp.com/8234ed62d6a7fa87721ff1d8a/images/email_so=
+cial_gplus.png" width=3D"30">
+                </a>
+              </td>
+            </tr>
+          </table>
+          <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" class=3D"flex-size">
+            <tr>
+              <td align=3D"left" class=3D"text s-tac" style=3D"color: #aebd=
+c1; font-family: 'Open Sans', Verdana, Helvetica, Arial, sans-serif; font-s=
+ize: 14px; line-height: 21px; padding-top: 24px;">
+                Have questions or need assistance?
+              </td>
+            </tr>
+          </table>
+          <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" class=3D"flex-size">
+            <tr>
+              <td align=3D"center">
+                <!--[if (IE)|mso]>
+                <table align=3D'center' border=3D'0' cellpadding=3D'0' cell=
+spacing=3D'0' width=3D'384'>
+                <tr>
+                <td>
+                <![endif]-->
+                <table align=3D"center" border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0" class=3D"flex-size" style=3D"max-width: 384px;" width=3D"100%=
+">
+                  <tr>
+                    <td style=3D"font-size: 0; text-align: center;">
+                      <div style=3D"display: inline-block;">
+                        <table align=3D"left" border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" class=3D"content" width=3D"182">
+                          <tr>
+                            <td align=3D"center" style=3D"padding: 16px 16p=
+x 0 16px;">
+                              <!--[if mso]>
+                                <v:roundrect xmlns:v=3D"urn:schemas-microso=
+ft-com:vml" xmlns:w=3D"urn:schemas-microsoft-com:office:word" href=3D"https=
+://www.codeschool.com/support" style=3D"height:40px;v-text-anchor:middle;wi=
+dth:150px;" arcsize=3D"200%" strokecolor=3D"#aebdc1" fillcolor=3D"#2d3033">
+                                <w:anchorlock/>
+                                <center style=3D"color:#aebdc1;font-family:=
+'Open Sans', Verdana, Helvetica, Arial, sans-serif;font-size:12px;font-weig=
+ht:bold;">Support</center>
+                                </v:roundrect>
+                              <![endif]-->
+                              <a href=3D"https://mandrillapp.com/track/clic=
+k/10342275/www.codeschool.com?p=3DeyJzIjoiVW1zWG9VemE5VmhESjktZzVRMFJPUDFZa=
+DIwIiwidiI6MSwicCI6IntcInVcIjoxMDM0MjI3NSxcInZcIjoxLFwidXJsXCI6XCJodHRwczpc=
+XFwvXFxcL3d3dy5jb2Rlc2Nob29sLmNvbVxcXC9zdXBwb3J0XCIsXCJpZFwiOlwiMzlkMGU1ODN=
+mZDE4NGVlNmE2NWU2ZTcwMjRlMmQzNTlcIixcInVybF9pZHNcIjpbXCJmODg4YjY1NzVmOTVkMz=
+lkZWI3YjQ5ZDIwNjU0Y2M3YTFlYjcyMTg4XCJdfSJ9" style=3D"background-color:#2d30=
+33;border:1px solid #aebdc1;border-radius:20px;color:#aebdc1;display:inline=
+-block;font-family:'Open Sans', Verdana, Helvetica, Arial, sans-serif;font-=
+size:12px;font-weight:300;line-height:40px;text-align:center;text-decoratio=
+n:none;width:150px;-webkit-text-size-adjust:none;text-transform: uppercase;=
+mso-hide:all;">Support</a>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                      <!--[if mso]>
+                      </td>
+                      <td>
+                      <![endif]-->
+                      <div style=3D"display: inline-block;">
+                        <table align=3D"left" border=3D"0" cellpadding=3D"0=
+" cellspacing=3D"0" class=3D"content" width=3D"182">
+                          <tr>
+                            <td align=3D"center" style=3D"padding: 16px 16p=
+x 0 16px;">
+                              <!--[if mso]>
+                                <v:roundrect xmlns:v=3D"urn:schemas-microso=
+ft-com:vml" xmlns:w=3D"urn:schemas-microsoft-com:office:word" href=3D"https=
+://www.codeschool.com/faq" style=3D"height:40px;v-text-anchor:middle;width:=
+150px;" arcsize=3D"200%" strokecolor=3D"#aebdc1" fillcolor=3D"#2d3033">
+                                <w:anchorlock/>
+                                <center style=3D"color:#aebdc1;font-family:=
+'Open Sans', Verdana, Helvetica, Arial, sans-serif;font-size:12px;font-weig=
+ht:bold;">FAQ</center>
+                                </v:roundrect>
+                              <![endif]-->
+                              <a href=3D"https://mandrillapp.com/track/clic=
+k/10342275/www.codeschool.com?p=3DeyJzIjoiclBndnZ3Y3VIVFNqQ3k5c1ZzU1U5Y2gxa=
+kcwIiwidiI6MSwicCI6IntcInVcIjoxMDM0MjI3NSxcInZcIjoxLFwidXJsXCI6XCJodHRwczpc=
+XFwvXFxcL3d3dy5jb2Rlc2Nob29sLmNvbVxcXC9mYXFcIixcImlkXCI6XCIzOWQwZTU4M2ZkMTg=
+0ZWU2YTY1ZTZlNzAyNGUyZDM1OVwiLFwidXJsX2lkc1wiOltcImZhZGMyNGMzNTBkNTVlNjczOD=
+A5ZTJlMmRhYmVkYmJjZGU1MThjZWRcIl19In0" style=3D"background-color:#2d3033;bo=
+rder:1px solid #aebdc1;border-radius:20px;color:#aebdc1;display:inline-bloc=
+k;font-family:'Open Sans', Verdana, Helvetica, Arial, sans-serif;font-size:=
+12px;font-weight:300;line-height:40px;text-align:center;text-decoration:non=
+e;width:150px;-webkit-text-size-adjust:none;text-transform: uppercase;mso-h=
+ide:all;">FAQ</a>
+                              <!--[if (IE)|mso]>
+                              </td>
+                              </tr>
+                              </table>
+                              <![endif]-->
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+          <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" class=3D"flex-size">
+            <tr>
+              <td align=3D"center" class=3D"text" style=3D"color: #aebdc1; =
+font-family: 'Open Sans', Verdana, Helvetica, Arial, sans-serif; font-size:=
+ 12px; line-height: 18px; padding: 32px 20px 0 20px;">
+                &copy; 2016 Code School LLC. Crafted lovingly in Orlando, F=
+lorida.
+              </td>
+            </tr>
+            <tr>
+              <td align=3D"center" class=3D"text" style=3D"color: #aebdc1; =
+font-family: 'Open Sans', Verdana, Helvetica, Arial, sans-serif; font-size:=
+ 12px; line-height: 18px; padding: 0 20px;">
+                <span class=3D"maskLink-footer">*|LIST:ADDRESS|*</span>
+              </td>
+            </tr>
+            <tr>
+              <td align=3D"center" class=3D"text" style=3D"color: #aebdc1; =
+font-family: 'Open Sans', Verdana, Helvetica, Arial, sans-serif; font-size:=
+ 12px; line-height: 18px; padding: 16px 0 32px 0;">
+                <a href=3D"https://mandrillapp.com/track/click/10342275/www=
+.codeschool.com?p=3DeyJzIjoiR3NxM3BCSFFmRUNER2xod1VXS0Z0NUo0SEVVIiwidiI6MSw=
+icCI6IntcInVcIjoxMDM0MjI3NSxcInZcIjoxLFwidXJsXCI6XCJodHRwczpcXFwvXFxcL3d3dy=
+5jb2Rlc2Nob29sLmNvbVxcXC9hY2NvdW50XFxcL2VkaXRcIixcImlkXCI6XCIzOWQwZTU4M2ZkM=
+Tg0ZWU2YTY1ZTZlNzAyNGUyZDM1OVwiLFwidXJsX2lkc1wiOltcImU4MWJmMTUzYjUzYWIwZWM1=
+YTRlNzVmNGE4MGQxMTFhY2FlNTFjNGJcIl19In0" style=3D"color: #aebdc1;">Edit you=
+r email settings</a>
+                &nbsp; &nbsp;
+                <a href=3D"https://mandrillapp.com/track/click/10342275/www=
+.codeschool.com?p=3DeyJzIjoiVWpCclJIZ3pxLXhQTVZhMGpuNkhrX25hT2xrIiwidiI6MSw=
+icCI6IntcInVcIjoxMDM0MjI3NSxcInZcIjoxLFwidXJsXCI6XCJodHRwOlxcXC9cXFwvd3d3Lm=
+NvZGVzY2hvb2wuY29tXFxcL2VtYWlsc1xcXC91bnN1YnNjcmliZT90b2tlbj02Y2Q0YjIxOS1jY=
+2NjLTRkN2ItODZiNi0yODRmODc2Nzk0Y2YmdHlwZT1hY2hpZXZlbWVudHNcIixcImlkXCI6XCIz=
+OWQwZTU4M2ZkMTg0ZWU2YTY1ZTZlNzAyNGUyZDM1OVwiLFwidXJsX2lkc1wiOltcIjVjY2VjNTc=
+3NmZlYzUwOWEyNDU5YTdjZDRiZjlkYjM4MmYwMGUzMTBcIl19In0" style=3D"color: #aebd=
+c1;">
+                  Unsubscribe
+                </a>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  <img src=3D"https://mandrillapp.com/track/open.php?u=3D10342275&id=3D39d0=
+e583fd184ee6a65e6e7024e2d359" height=3D"1" width=3D"1"></body>
+</html>
+
+--_av-W-_iQK9xFFK7WO5oVJCIsA--
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>color</key>
+	<string>000000</string>
+	<key>date-received</key>
+	<integer>1501747810</integer>
+	<key>flags</key>
+	<integer>8623750273</integer>
+	<key>gmail-label-ids</key>
+	<array>
+		<integer>3</integer>
+	</array>
+</dict>
+</plist>

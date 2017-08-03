@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/> 
+<title>Issues - MMP - MMP tracker</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="dML4AhfHEEyGpSvw9LZXd1J0rz4cGKbCi+uMVc4vSd5IWSBqcWvFem65mV6vDMBJ1lOthxsTA5xaA+O6ZgYUbg==" />
+<link rel='shortcut icon' href='/themes/mp_redmine/favicon/favicon.png' />
+<link rel="stylesheet" media="all" href="/stylesheets/jquery/jquery-ui-1.11.0.css" />
+<link rel="stylesheet" media="all" href="/themes/mp_redmine/stylesheets/application.css" />
+
+<script src="/javascripts/jquery-1.11.1-ui-1.11.0-ujs-3.1.4.js"></script>
+<script src="/javascripts/application.js"></script>
+<script>
+//<![CDATA[
+$(window).load(function(){ warnLeavingUnsaved('The current page contains unsaved text that will be lost if you leave this page.'); });
+//]]>
+</script>
+
+<style type="text/css">/* Generic */
+a, a:link, a:visited {
+  color: #5e7440;
+}
+
+#sidebar a.selected {
+  background-color: #5e7440;
+}
+
+.next-prev-links.contextual { /* to be removed from theme */
+  margin-top: 0;
+  margin-right: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+div.issue .next-prev-links {
+  color: #505143;
+}
+
+.details p.author {
+    padding-bottom: 18px;
+}
+
+table.progress td.closed {
+  background-color: darkGreen;
+}
+
+/* Issue colors */
+
+/* Immediate (priority-10) */
+.details.priority-10 .subject,
+.details.priority-10 p.author {
+  background-color: #ff6666;
+}
+table.list tr.priority-10.odd,
+table.list tr.priority-10.even {
+  color: #333333;
+  background-color: #ff6666;
+  border-bottom: 1px solid white;
+}
+table.list tr.priority-10 a {
+  color: black;
+}
+
+/* Urgent (priority-1) */
+.details.priority-1 .subject,
+.details.priority-1 p.author {
+  background-color: #f5f068;
+}
+table.list tr.priority-1.odd,
+table.list tr.priority-1.even {
+  color: #333333;
+  background-color: #f5f068;
+  border-bottom: 1px solid white;
+}
+table.list tr.priority-1 a {
+  color: black;
+}
+
+/* High (priority-5) */
+.details.priority-5 .subject,
+.details.priority-5 p.author {
+  background-color: #fbbf4e;
+}
+table.list tr.priority-5.odd,
+table.list tr.priority-5.even {
+  color: #333333;
+  background-color: #fbbf4e;
+  border-bottom: 1px solid white;
+}
+table.list tr.priority-5 a {
+  color: black;
+}
+
+/* Normal (priority-2) */
+.details.priority-2 .subject,
+.details.priority-2 p.author {
+  background-color: #aae6bf;
+}
+table.list tr.priority-2.odd,
+table.list tr.priority-2.even {
+  color: #333333;
+  background-color: #aae6bf;
+  border-bottom: 1px solid white;
+}
+table.list tr.priority-2 a {
+  color: black;
+}
+
+/* Low (priority-3) */
+.details.priority-3 .subject,
+.details.priority-3 p.author {
+  background-color: #ececec;
+}
+table.list tr.priority-3.odd,
+table.list tr.priority-3.even {
+  color: #333333;
+  background-color: #ececec;
+  border-bottom: 1px solid white;
+}
+table.list tr.priority-3 a {
+  color: black;
+}
+
+/* For Later (priority-9) */
+.details.priority-9 .subject,
+.details.priority-9 p.author {
+  background-color: #f7f7f7;
+}
+table.list tr.priority-9.odd,
+table.list tr.priority-9.even {
+  color: #333333;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid white;
+}
+table.list tr.priority-9 a {
+  color: black;
+}
+
+/* Patch style */
+.details.tracker-11 .subject,
+.details.tracker-11 p.author {
+  background-color: #f07d59;
+}
+table.list tr.tracker-11.odd,
+table.list tr.tracker-11.even {
+  color: #333333;
+  background-color: #f07d59;
+  border-bottom: 1px solid white;
+}
+table.list tr.tracker-11 a {
+  color: black;
+}</style> <script src="/plugin_assets/redmine_open_links_in_new_window/javascripts/redmine_open_links_in_new_window.js"></script> <script src="/plugin_assets/redmine_checklists/javascripts/checklists.js"></script><link rel="stylesheet" media="screen" href="/plugin_assets/redmine_checklists/stylesheets/checklists.css" />
+<!-- page specific tags -->
+<script>
+//<![CDATA[
+var datepickerOptions={dateFormat: 'yy-mm-dd', firstDay: 0, showOn: 'button', buttonImageOnly: true, buttonImage: '/images/calendar.png', showButtonPanel: true, showWeek: true, showOtherMonths: true, selectOtherMonths: true, changeMonth: true, changeYear: true, beforeShow: beforeShowDatePicker};
+//]]>
+</script>    <link rel="alternate" type="application/atom+xml" title="Issues" href="https://tracker.moneypark.ch/projects/mmp/issues.atom?key=792ff3895c2bc3705735e0c7fedd15570b96568b" />
+    <link rel="alternate" type="application/atom+xml" title="Details of all changes" href="https://tracker.moneypark.ch/issues/changes.atom?key=792ff3895c2bc3705735e0c7fedd15570b96568b" />
+<script src="/javascripts/context_menu.js"></script><link rel="stylesheet" media="screen" href="/stylesheets/context_menu.css" /></head>
+<body class="theme-Mp redmine project-mmp controller-issues action-index">
+<div id="wrapper">
+<div id="wrapper2">
+<div id="wrapper3">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a class="my-account" href="/my/account">My account</a></li>
+<li><a class="logout" rel="nofollow" data-method="post" href="/logout">Sign out</a></li></ul>    </div>
+    <div id="loggedas">Logged in as <a class="user active" href="/users/95">virginia.kehl</a></div>
+    <ul><li><a class="home" href="/">Home</a></li>
+<li><a class="my-page" href="/my/page">My page</a></li>
+<li><a class="projects" href="/projects">Projects</a></li>
+<li><a class="help" href="http://www.redmine.org/guide">Help</a></li></ul></div>
+
+<div id="header">
+    <div id="quick-search">
+        <form action="/projects/mmp/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+        <input type="hidden" name="issues" value="1" />
+        <label for='q'>
+          <a accesskey="4" href="/projects/mmp/search">Search</a>:
+        </label>
+        <input type="text" name="q" id="q" size="20" class="small" accesskey="f" />
+</form>        <select name="project_quick_jump_box" id="project_quick_jump_box" onchange="if (this.value != &#39;&#39;) { window.location = this.value; }"><option value=''>Jump to a project...</option><option value="" disabled="disabled">---</option><option value="/projects/mmp?jump=issues" selected="selected">MMP</option><option value="/projects/mmp-frontend?jump=issues">&nbsp;&nbsp;&#187; MMP Frontend</option><option value="/projects/mmp-landingpages?jump=issues">&nbsp;&nbsp;&#187; MMP Landingpages</option><option value="/projects/mmp-tech-debt?jump=issues">&nbsp;&nbsp;&#187; MMP Technical debt</option><option value="/projects/mmp-test-coverage?jump=issues">&nbsp;&nbsp;&#187; MMP Test Coverage</option><option value="/projects/mmp_langusta?jump=issues">&nbsp;&nbsp;&#187; mmp_langusta</option></select>
+    </div>
+
+    <h1>MMP</h1>
+
+    <div id="main-menu">
+        <ul><li><a class="overview" href="/projects/mmp">Overview</a></li>
+<li><a class="activity" href="/projects/mmp/activity">Activity</a></li>
+<li><a class="roadmap" href="/projects/mmp/roadmap">Roadmap</a></li>
+<li><a class="issues selected" href="/projects/mmp/issues">Issues</a></li>
+<li><a accesskey="7" class="new-issue" href="/projects/mmp/issues/new">New issue</a></li>
+<li><a class="dashboard" href="/projects/mmp/rdb">Dashboard</a></li>
+<li><a class="news" href="/projects/mmp/news">News</a></li>
+<li><a class="documents" href="/projects/mmp/documents">Documents</a></li>
+<li><a class="wiki" href="/projects/mmp/wiki">Wiki</a></li>
+<li><a class="files" href="/projects/mmp/files">Files</a></li>
+<li><a class="repository" href="/projects/mmp/repository">Repository</a></li></ul>
+    </div>
+</div>
+
+<div id="main" class="">
+    <div id="sidebar">
+            <h3>Issues</h3>
+
+<ul>
+<li><a href="/projects/mmp/issues?set_filter=1">View all issues</a></li>
+<li><a href="/projects/mmp/issues/report">Summary</a></li>
+
+</ul>
+
+
+
+
+<h3>Custom queries</h3>
+<ul class="queries"><li><a class="query" href="/projects/mmp/issues?query_id=12">Assigned to DS</a></li>
+<li><a class="query" href="/projects/mmp/issues?query_id=9">Awaiting for merge</a></li>
+<li><a class="query" href="/projects/mmp/issues?query_id=34">Marketing task</a></li>
+<li><a class="query" href="/projects/mmp/issues?query_id=4">My open tasks</a></li>
+<li><a class="query" href="/projects/mmp/issues?query_id=49">My Patches to Review</a></li>
+<li><a class="query" href="/projects/mmp/issues?query_id=31">My Tasks to Review</a></li>
+<li><a class="query" href="/projects/mmp/issues?query_id=50">Next Version</a></li>
+<li><a class="query" href="/projects/mmp/issues?query_id=7">No version</a></li>
+<li><a class="query" href="/projects/mmp/issues?query_id=8">Open task queue by status</a></li>
+<li><a class="query" href="/projects/mmp/issues?query_id=1">open tasks</a></li>
+<li><a class="query" href="/projects/mmp/issues?query_id=43">Patches: Awaiting Deploy</a></li>
+<li><a class="query" href="/projects/mmp/issues?query_id=44">Patches: Awaiting Merge</a></li>
+<li><a class="query" href="/projects/mmp/issues?query_id=30">Patches: Awaiting Review</a></li>
+<li><a class="query" href="/projects/mmp/issues?query_id=42">Patches: Open Status</a></li>
+<li><a class="query" href="/projects/mmp/issues?query_id=14">Per person review</a></li>
+<li><a class="query" href="/projects/mmp/issues?query_id=35">Reviewers Tasks</a></li>
+<li><a class="query" href="/projects/mmp/issues?query_id=13">Sprint Start</a></li></ul>
+
+
+
+
+        
+    </div>
+
+    <div id="content">
+        
+        <div class="contextual">
+</div>
+
+<h2>Issues</h2>
+
+<form id="query_form" action="/projects/mmp/issues" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+  <div id="query_form_with_buttons" class="hide-when-print">
+    <input type="hidden" name="set_filter" id="set_filter" value="1" />
+    <div id="query_form_content">
+    <fieldset id="filters" class="collapsible ">
+      <legend onclick="toggleFieldset(this);">Filters</legend>
+      <div style="">
+        <script>
+//<![CDATA[
+
+var operatorLabels = {"=":"is","!":"is not","o":"open","c":"closed","!*":"none","*":"any","\u003e=":"\u003e=","\u003c=":"\u003c=","\u003e\u003c":"between","\u003ct+":"in less than","\u003et+":"in more than","\u003e\u003ct+":"in the next","t+":"in","t":"today","ld":"yesterday","w":"this week","lw":"last week","l2w":"last 2 weeks","m":"this month","lm":"last month","y":"this year","\u003et-":"less than days ago","\u003ct-":"more than days ago","\u003e\u003ct-":"in the past","t-":"days ago","~":"contains","!~":"doesn't contain","=p":"any issues in project","=!p":"any issues not in project","!p":"no issues in project"};
+var operatorByType = {"list":["=","!"],"list_status":["o","=","!","c","*"],"list_optional":["=","!","!*","*"],"list_subprojects":["*","!*","="],"date":["=","\u003e=","\u003c=","\u003e\u003c","\u003ct+","\u003et+","\u003e\u003ct+","t+","t","ld","w","lw","l2w","m","lm","y","\u003et-","\u003ct-","\u003e\u003ct-","t-","!*","*"],"date_past":["=","\u003e=","\u003c=","\u003e\u003c","\u003et-","\u003ct-","\u003e\u003ct-","t-","t","ld","w","lw","l2w","m","lm","y","!*","*"],"string":["=","~","!","!~","!*","*"],"text":["~","!~","!*","*"],"integer":["=","\u003e=","\u003c=","\u003e\u003c","!*","*"],"float":["=","\u003e=","\u003c=","\u003e\u003c","!*","*"],"relation":["=","=p","=!p","!p","!*","*"]};
+var availableFilters = {"status_id":{"type":"list_status","name":"Status","values":[["0. Rejected","9"],["1. New","5"],["2.a Open","1"],["2.b Reopened","6"],["2.c On Hold","11"],["3.a In Progress","4"],["3.b Feedback","8"],["4. Awaiting Merge","10"],["5.a Ready for Docker","15"],["5.b Deployed on Docker","14"],["5.c Tested on Docker","16"],["6. Finished","2"],["7. Awaiting Deploy","12"],["8. Closed","3"]]},"tracker_id":{"type":"list","name":"Tracker","values":[["Task","1"],["Patch","11"],["Bug","2"],["Improvement","7"],["Epic","4"],["Feature","3"],["User story","5"],["Timelog","8"]]},"priority_id":{"type":"list","name":"Priority","values":[["Immediate","10"],["Urgent","1"],["High","5"],["Normal","2"],["Low","3"],["For later","9"]]},"author_id":{"type":"list","name":"Author","values":[["\u003c\u003c me \u003e\u003e","me"],["Adrian Claudiu Valculescu","96"],["Alexandr Zayets","86"],["Alyona Nedelchenko","84"],["Andreas Schneider","51"],["Anton Ovchinnikov","75"],["API Client","50"],["Arez Khalimi","89"],["Benjamin Tacquet","6"],["Boris Garic","40"],["Bug Domain","41"],["David Fritschi","63"],["Denis Podlesniy","93"],["Deployment Inspector","72"],["Florent Morille","76"],["Galina Potapova","16"],["Ilia Ryzhov","55"],["Jasser Kassab","90"],["Joelle Gautier","87"],["Julia Dizhak","12"],["Julien Schillewaert","35"],["Lukas Bode","18"],["Maria Yakimova","30"],["Oleg Kovalyov","94"],["Oliver Wirtz","91"],["Roman Gaponov","3"],["Roman Osipenko","5"],["Salomon Baumann","42"],["Sergey Kubrak","32"],["Severin Ammann","88"],["Vadym Zakovinko","36"],["Vasyl Dizhak","4"],["Virginia Kehl","95"],["Vladimir Dmitriev","92"]]},"assigned_to_id":{"type":"list_optional","name":"Assignee","values":[["\u003c\u003c me \u003e\u003e","me"],["Adrian Claudiu Valculescu","96"],["Alexandr Zayets","86"],["Alyona Nedelchenko","84"],["Andreas Schneider","51"],["Anton Ovchinnikov","75"],["API Client","50"],["Arez Khalimi","89"],["Benjamin Tacquet","6"],["Boris Garic","40"],["Bug Domain","41"],["David Fritschi","63"],["Denis Podlesniy","93"],["Deployment Inspector","72"],["Florent Morille","76"],["Galina Potapova","16"],["Ilia Ryzhov","55"],["Jasser Kassab","90"],["Joelle Gautier","87"],["Julia Dizhak","12"],["Julien Schillewaert","35"],["Lukas Bode","18"],["Maria Yakimova","30"],["Oleg Kovalyov","94"],["Oliver Wirtz","91"],["Roman Gaponov","3"],["Roman Osipenko","5"],["Salomon Baumann","42"],["Sergey Kubrak","32"],["Severin Ammann","88"],["Vadym Zakovinko","36"],["Vasyl Dizhak","4"],["Virginia Kehl","95"],["Vladimir Dmitriev","92"]]},"assigned_to_role":{"type":"list_optional","name":"Assignee's role","values":[["Developer","3"],["Watcher","4"],["Product owner","5"]]},"fixed_version_id":{"type":"list_optional","name":"Target version","values":[["MMP - Sprint 4","6"],["MMP - Beta 1","4"],["MMP - v 1.0","5"],["MMP - Sprint 29","37"],["MMP - Sprint 31","39"],["MMP - Sprint 50","65"],["MMP - v1.17","79"],["MMP - v1.18","80"],["MMP - v1.19","81"],["MMP - v1.20","82"],["MMP - v1.21","83"],["MMP - Beta 2","20"],["MMP - Sprint 1","1"],["MMP - Sprint 10","14"],["MMP - Sprint 11","15"],["MMP - Sprint 12","16"],["MMP - Sprint 13","17"],["MMP - Sprint 14","18"],["MMP - Sprint 15","19"],["MMP - Sprint 16","21"],["MMP - Sprint 17","22"],["MMP - Sprint 18","23"],["MMP - Sprint 19","24"],["MMP - Sprint 2","2"],["MMP - Sprint 20","25"],["MMP - Sprint 21","26"],["MMP - Sprint 22","27"],["MMP - Sprint 23","28"],["MMP - Sprint 24","29"],["MMP - Sprint 25","30"],["MMP - Sprint 26","31"],["MMP - Sprint 27","33"],["MMP - Sprint 28","34"],["MMP - Sprint 3","3"],["MMP - Sprint 30","38"],["MMP - Sprint 32","41"],["MMP - Sprint 33","42"],["MMP - Sprint 34","44"],["MMP - Sprint 35","45"],["MMP - Sprint 36","46"],["MMP - Sprint 37","47"],["MMP - Sprint 38","49"],["MMP - Sprint 39","51"],["MMP - Sprint 40","52"],["MMP - Sprint 41","54"],["MMP - Sprint 42","55"],["MMP - Sprint 43","56"],["MMP - Sprint 44","57"],["MMP - Sprint 45","59"],["MMP - Sprint 46","60"],["MMP - Sprint 47","61"],["MMP - Sprint 48","62"],["MMP - Sprint 49","63"],["MMP - Sprint 5","7"],["MMP - Sprint 51","66"],["MMP - Sprint 52","67"],["MMP - Sprint 53","68"],["MMP - Sprint 54","69"],["MMP - Sprint 55","70"],["MMP - Sprint 56","71"],["MMP - Sprint 57","72"],["MMP - Sprint 58","73"],["MMP - Sprint 59","74"],["MMP - Sprint 6","8"],["MMP - Sprint 60","75"],["MMP - Sprint 61","76"],["MMP - Sprint 62","77"],["MMP - Sprint 63","78"],["MMP - Sprint 7","9"],["MMP - Sprint 8","10"],["MMP - Sprint 9","13"],["MMP - v1.22","106"],["MMP - v1.23","107"],["MMP - v1.24","108"],["MMP - v1.25","112"]]},"category_id":{"type":"list_optional","name":"Category","values":[["Advisors partners","39"],["Affiliates","37"],["API","43"],["app i18n","25"],["B2B","40"],["BETA.CH.ISSUES","22"],["Calendar","53"],["Celery","49"],["Cleaning","42"],["CRM","21"],["Cross selling ","162"],["Customer details","142"],["DevOps","166"],["Docs","12"],["Documentation","165"],["Documents","54"],["Estimate","33"],["ETF-Ambassadors","123"],["Financepark","126"],["Frontend-tied","139"],["GIT","52"],["I18N","15"],["Insurance","141"],["Interface ","13"],["International expension","38"],["Investments","149"],["Learning","10"],["Mails","151"],["Meetings Investment","19"],["Meetings MMP","20"],["Meetings Retirement","50"],["Meetings Retirement API","125"],["Metrics","18"],["MMP Factory","146"],["MoneyHome","163"],["Monitoring","168"],["Mortgage","17"],["Mortgages API","57"],["MP testing env (Docker)","127"],["Order","16"],["Partners portal","36"],["Performance","24"],["Product search \/ matching","4"],["Profile management","2"],["Quality","124"],["Search","122"],["Security","5"],["Server side","11"],["Translation tool","145"],["Unit tests","7"],["Update","159"],["Website Calculators","167"]]},"subject":{"type":"text","name":"Subject"},"created_on":{"type":"date_past","name":"Created"},"updated_on":{"type":"date_past","name":"Updated"},"closed_on":{"type":"date_past","name":"Closed"},"start_date":{"type":"date","name":"Start date"},"due_date":{"type":"date","name":"Due date"},"estimated_hours":{"type":"float","name":"Estimated time"},"done_ratio":{"type":"integer","name":"% Done"},"is_private":{"type":"list","name":"Private","values":[["yes","1"],["no","0"]]},"watcher_id":{"type":"list","name":"Watcher","values":[["\u003c\u003c me \u003e\u003e","me"]]},"subproject_id":{"type":"list_subprojects","name":"Subproject","values":[["MMP Frontend","14"],["MMP Landingpages","13"],["MMP Technical debt","7"],["MMP Test Coverage","12"],["mmp_langusta","17"]]},"cf_10":{"type":"list_optional","name":"Marketing task","values":[["Yes","1"],["No","0"]]},"cf_11":{"type":"list_optional","name":"Task to be estimated","values":[["Yes","1"],["No","0"]]},"cf_12":{"type":"list_optional","name":"Reviewer","values":[["\u003c\u003c me \u003e\u003e","me"],["Adrian Claudiu Valculescu","96"],["Alexandr Zayets","86"],["Alyona Nedelchenko","84"],["Andreas Schneider","51"],["Anton Ovchinnikov","75"],["API Client","50"],["Arez Khalimi","89"],["Benjamin Tacquet","6"],["Boris Garic","40"],["Bug Domain","41"],["David Fritschi","63"],["Denis Podlesniy","93"],["Deployment Inspector","72"],["Florent Morille","76"],["Galina Potapova","16"],["Ilia Ryzhov","55"],["Jasser Kassab","90"],["Joelle Gautier","87"],["Julia Dizhak","12"],["Julien Schillewaert","35"],["Lukas Bode","18"],["Maria Yakimova","30"],["Oleg Kovalyov","94"],["Oliver Wirtz","91"],["Roman Gaponov","3"],["Roman Osipenko","5"],["Salomon Baumann","42"],["Sergey Kubrak","32"],["Severin Ammann","88"],["Vadym Zakovinko","36"],["Vasyl Dizhak","4"],["Virginia Kehl","95"],["Vladimir Dmitriev","92"]]},"cf_20":{"type":"text","name":"Test procedure"},"cf_16":{"type":"list_optional","name":"Documentation type","values":["Inline documentation","Wiki Page"]},"cf_17":{"type":"string","name":"Deploy status"},"cf_19":{"type":"text","name":"Pull Request(s)"},"cf_22":{"type":"list_optional","name":"Repository","values":["mmp","mmp_bi","mmp_factory","mmp_affordability","ansible-roles","mmp_b2bcrm","swisslife-hypothek","moneypark.com","mmp_property_suggestion","langustahq","mmp_rates","mmp_mobile_api","mmp_financepark","micro-labs"]},"relates":{"type":"relation","name":"Related to"},"duplicates":{"type":"relation","name":"Duplicates"},"duplicated":{"type":"relation","name":"Duplicated by"},"blocks":{"type":"relation","name":"Blocks"},"blocked":{"type":"relation","name":"Blocked by"},"precedes":{"type":"relation","name":"Precedes"},"follows":{"type":"relation","name":"Follows"},"copied_to":{"type":"relation","name":"Copied to"},"copied_from":{"type":"relation","name":"Copied from"}};
+var labelDayPlural = "days";
+var allProjects = [["MMP","1"],["-- MMP Frontend","14"],["-- MMP Landingpages","13"],["-- MMP Technical debt","7"],["-- MMP Test Coverage","12"],["-- mmp_langusta","17"]];
+$(document).ready(function(){
+  initFilters();
+  addFilter("status_id", "o", [""]);
+});
+
+//]]>
+</script>
+<table style="width:100%">
+<tr>
+<td>
+<table id="filters-table">
+</table>
+</td>
+<td class="add-filter">
+<label for="add_filter_select">Add filter</label>
+<select id="add_filter_select"><option value="">&nbsp;</option>
+<option value="status_id">Status</option>
+<option value="tracker_id">Tracker</option>
+<option value="priority_id">Priority</option>
+<option value="author_id">Author</option>
+<option value="assigned_to_id">Assignee</option>
+<option value="fixed_version_id">Target version</option>
+<option value="category_id">Category</option>
+<option value="subject">Subject</option>
+<option value="estimated_hours">Estimated time</option>
+<option value="done_ratio">% Done</option>
+<option value="is_private">Private</option>
+<option value="watcher_id">Watcher</option>
+<option value="subproject_id">Subproject</option>
+<option value="cf_10">Marketing task</option>
+<option value="cf_11">Task to be estimated</option>
+<option value="cf_12">Reviewer</option>
+<option value="cf_20">Test procedure</option>
+<option value="cf_16">Documentation type</option>
+<option value="cf_17">Deploy status</option>
+<option value="cf_19">Pull Request(s)</option>
+<option value="cf_22">Repository</option><optgroup label="Assignee"><option value="assigned_to_role">Assignee&#39;s role</option></optgroup><optgroup label="Date"><option value="created_on">Created</option>
+<option value="updated_on">Updated</option>
+<option value="closed_on">Closed</option>
+<option value="start_date">Start date</option>
+<option value="due_date">Due date</option></optgroup><optgroup label="Related issues"><option value="relates">Related to</option>
+<option value="duplicates">Duplicates</option>
+<option value="duplicated">Duplicated by</option>
+<option value="blocks">Blocks</option>
+<option value="blocked">Blocked by</option>
+<option value="precedes">Precedes</option>
+<option value="follows">Follows</option>
+<option value="copied_to">Copied to</option>
+<option value="copied_from">Copied from</option></optgroup></select>
+</td>
+</tr>
+</table>
+<input type="hidden" name="f[]" id="f_" value="" />
+
+      </div>
+    </fieldset>
+    <fieldset class="collapsible collapsed">
+      <legend onclick="toggleFieldset(this);">Options</legend>
+      <div style="display: none;">
+        <table>
+          <tr>
+            <td>Columns</td>
+            <td><table class="query-columns">
+  <tr>
+    <td style="padding-left:0">
+      <label for="available_columns">Available Columns</label>
+      <br />
+      <select name="available_columns[]" id="available_columns" multiple="multiple" size="10" style="width:150px" ondblclick="moveOptions(this.form.available_columns, this.form.selected_columns);"><option value="project">Project</option>
+<option value="parent">Parent task</option>
+<option value="author">Author</option>
+<option value="category">Category</option>
+<option value="fixed_version">Target version</option>
+<option value="start_date">Start date</option>
+<option value="due_date">Due date</option>
+<option value="estimated_hours">Estimated time</option>
+<option value="spent_hours">Spent time</option>
+<option value="done_ratio">% Done</option>
+<option value="created_on">Created</option>
+<option value="closed_on">Closed</option>
+<option value="relations">Related issues</option>
+<option value="cf_9">Known workaround</option>
+<option value="cf_10">Marketing task</option>
+<option value="cf_11">Task to be estimated</option>
+<option value="cf_12">Reviewer</option>
+<option value="cf_20">Test procedure</option>
+<option value="cf_16">Documentation type</option>
+<option value="cf_17">Deploy status</option>
+<option value="cf_19">Pull Request(s)</option>
+<option value="cf_21">Specific to</option>
+<option value="cf_22">Repository</option>
+<option value="is_private">Private</option></select>
+    </td>
+    <td class="buttons">
+      <input type="button" value="&#8594;"
+       onclick="moveOptions(this.form.available_columns, this.form.selected_columns);" /><br />
+      <input type="button" value="&#8592;"
+       onclick="moveOptions(this.form.selected_columns, this.form.available_columns);" />
+    </td>
+    <td>
+      <label for="selected_columns">Selected Columns</label>
+      <br />
+      <select name="c[]" id="selected_columns" multiple="multiple" size="10" style="width:150px" ondblclick="moveOptions(this.form.selected_columns, this.form.available_columns);"><option value="tracker">Tracker</option>
+<option value="status">Status</option>
+<option value="priority">Priority</option>
+<option value="subject">Subject</option>
+<option value="assigned_to">Assignee</option>
+<option value="updated_on">Updated</option></select>
+    </td>
+    <td class="buttons">
+      <input type="button" value="&#8648;" onclick="moveOptionTop(this.form.selected_columns);" /><br />
+      <input type="button" value="&#8593;" onclick="moveOptionUp(this.form.selected_columns);" /><br />
+      <input type="button" value="&#8595;" onclick="moveOptionDown(this.form.selected_columns);" /><br />
+      <input type="button" value="&#8650;" onclick="moveOptionBottom(this.form.selected_columns);" />
+    </td>
+  </tr>
+</table>
+
+<script>
+//<![CDATA[
+
+$(document).ready(function(){
+  $('.query-columns').closest('form').submit(function(){
+    $('#selected_columns option').prop('selected', true);
+  });
+});
+
+//]]>
+</script></td>
+          </tr>
+          <tr>
+            <td><label for='group_by'>Group results by</label></td>
+            <td><select name="group_by" id="group_by"><option value="">&nbsp;</option>
+<option value="project">Project</option>
+<option value="tracker">Tracker</option>
+<option value="status">Status</option>
+<option value="priority">Priority</option>
+<option value="author">Author</option>
+<option value="assigned_to">Assignee</option>
+<option value="category">Category</option>
+<option value="fixed_version">Target version</option>
+<option value="done_ratio">% Done</option>
+<option value="cf_10">Marketing task</option>
+<option value="cf_11">Task to be estimated</option>
+<option value="cf_12">Reviewer</option>
+<option value="cf_21">Specific to</option></select></td>
+          </tr>
+          <tr>
+            <td>Show</td>
+            <td><label class="inline"><input type="checkbox" name="c[]" value="description" /> Description</label></td>
+          </tr>
+        </table>
+      </div>
+    </fieldset>
+    </div>
+    <p class="buttons">
+    <a href="#" onclick="$(&quot;#query_form&quot;).submit(); return false;" class="icon icon-checked">Apply</a>
+    <a class="icon icon-reload" href="/projects/mmp/issues?set_filter=1">Clear</a>
+        <a href="#" onclick="$(&#39;#query_form&#39;).attr(&#39;action&#39;, &#39;/projects/mmp/queries/new&#39;).submit(); return false;" class="icon icon-save">Save</a>
+    </p>
+  </div>
+</form>
+
+<form action="/projects/mmp/issues" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="YYNJE4UTJnK3f6YXF0IKhE6htX2fBLXkPlI0rXnLPPBdGJF747/zRF9jFLlM+J26yoa3xJgPELrvultC0eJhQA==" /><input type="hidden" name="back_url" value="/projects/mmp/issues" />
+<div class="autoscroll">
+<table class="list issues sort-by-id sort-desc">
+  <thead>
+    <tr>
+      <th class="checkbox hide-when-print">
+        <a onclick="toggleIssuesSelection(this); return false;" title="Check all/Uncheck all" href="/projects/mmp/issues"><img src="/images/toggle_check.png" alt="Toggle check" /></a>
+      </th>
+        <th title="Sort by &quot;#&quot;"><a class="sort desc" href="/projects/mmp/issues?sort=id">#</a></th>
+        <th title="Sort by &quot;Tracker&quot;"><a href="/projects/mmp/issues?sort=tracker%2Cid%3Adesc">Tracker</a></th>
+        <th title="Sort by &quot;Status&quot;"><a href="/projects/mmp/issues?sort=status%2Cid%3Adesc">Status</a></th>
+        <th title="Sort by &quot;Priority&quot;"><a href="/projects/mmp/issues?sort=priority%3Adesc%2Cid%3Adesc">Priority</a></th>
+        <th title="Sort by &quot;Subject&quot;"><a href="/projects/mmp/issues?sort=subject%2Cid%3Adesc">Subject</a></th>
+        <th title="Sort by &quot;Assignee&quot;"><a href="/projects/mmp/issues?sort=assigned_to%2Cid%3Adesc">Assignee</a></th>
+        <th title="Sort by &quot;Updated&quot;"><a href="/projects/mmp/issues?sort=updated_on%3Adesc%2Cid%3Adesc">Updated</a></th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr id="issue-12429" class="hascontextmenu odd issue tracker-1 status-5 priority-2 priority-default assigned-to-me ">
+    <td class="checkbox hide-when-print"><input type="checkbox" name="ids[]" value="12429" /></td>
+    <td class="id"><a href="/issues/12429">12429</a></td><td class="tracker">Task</td><td class="status">1. New</td><td class="priority">Normal</td><td class="subject"><a href="/issues/12429">Learn about translation and i18n in django and file formats</a></td><td class="assigned_to"><a class="user active" href="/users/95">Virginia Kehl</a></td><td class="updated_on">08/02/2017 09:25 AM</td>
+  </tr>
+  <tr id="issue-12427" class="hascontextmenu even issue tracker-1 status-4 priority-2 priority-default child ">
+    <td class="checkbox hide-when-print"><input type="checkbox" name="ids[]" value="12427" /></td>
+    <td class="id"><a href="/issues/12427">12427</a></td><td class="tracker">Task</td><td class="status">3.a In Progress</td><td class="priority">Normal</td><td class="subject"><a href="/issues/12427">Remove FastTrackPensionPlanningCustomerInfoSerializer if we don&#39;t use it</a></td><td class="assigned_to"><a class="user active" href="/users/86">Alexandr Zayets</a></td><td class="updated_on">08/02/2017 09:01 AM</td>
+  </tr>
+  <tr id="issue-12426" class="hascontextmenu odd issue tracker-1 status-5 priority-2 priority-default ">
+    <td class="checkbox hide-when-print"><input type="checkbox" name="ids[]" value="12426" /></td>
+    <td class="id"><a href="/issues/12426">12426</a></td><td class="tracker">Task</td><td class="status">1. New</td><td class="priority">Normal</td><td class="subject"><a href="/issues/12426">Presentation about referrers and emails managing</a></td><td class="assigned_to"><a class="user active" href="/users/32">Sergey Kubrak</a></td><td class="updated_on">08/01/2017 10:40 AM</td>
+  </tr>
+  <tr id="issue-12425" class="hascontextmenu even issue tracker-1 status-5 priority-5 priority-low3 ">
+    <td class="checkbox hide-when-print"><input type="checkbox" name="ids[]" value="12425" /></td>
+    <td class="id"><a href="/issues/12425">12425</a></td><td class="tracker">Task</td><td class="status">1. New</td><td class="priority">High</td><td class="subject"><a href="/issues/12425">Form Your feedback is not working on contact page</a></td><td class="assigned_to"><a class="user active" href="/users/4">Vasyl Dizhak</a></td><td class="updated_on">08/01/2017 11:49 PM</td>
+  </tr>
+  <tr id="issue-12424" class="hascontextmenu odd issue tracker-1 status-5 priority-2 priority-default ">
+    <td class="checkbox hide-when-print"><input type="checkbox" name="ids[]" value="12424" /></td>
+    <td class="id"><a href="/issues/12424">12424</a></td><td class="tracker">Task</td><td class="status">1. New</td><td class="priority">Normal</td><td class="subject"><a href="/issues/12424">FinancePark Fast-Track-Tool  - colour coding</a></td><td class="assigned_to"><a class="user active" href="/users/84">Alyona Nedelchenko</a></td><td class="updated_on">07/31/2017 05:44 PM</td>
+  </tr>
+  <tr id="issue-12423" class="hascontextmenu even issue tracker-1 status-5 priority-2 priority-default ">
+    <td class="checkbox hide-when-print"><input type="checkbox" name="ids[]" value="12423" /></td>
+    <td class="id"><a href="/issues/12423">12423</a></td><td class="tracker">Task</td><td class="status">1. New</td><td class="priority">Normal</td><td class="subject"><a href="/issues/12423">FinancePark Fast-Track-Tool  - pre-selected provider by default</a></td><td class="assigned_to"><a class="user active" href="/users/30">Maria Yakimova</a></td><td class="updated_on">07/31/2017 05:39 PM</td>
+  </tr>
+  <tr id="issue-12422" class="hascontextmenu odd issue tracker-1 status-5 priority-2 priority-default ">
+    <td class="checkbox hide-when-print"><input type="checkbox" name="ids[]" value="12422" /></td>
+    <td class="id"><a href="/issues/12422">12422</a></td><td class="tracker">Task</td><td class="status">1. New</td><td class="priority">Normal</td><td class="subject"><a href="/issues/12422">FinancePark Fast-Track-Tool  - front-end mistake see screenshot</a></td><td class="assigned_to"><a class="user active" href="/users/84">Alyona Nedelchenko</a></td><td class="updated_on">07/31/2017 05:37 PM</td>
+  </tr>
+  <tr id="issue-12421" class="hascontextmenu even issue tracker-1 status-5 priority-2 priority-default ">
+    <td class="checkbox hide-when-print"><input type="checkbox" name="ids[]" value="12421" /></td>
+    <td class="id"><a href="/issues/12421">12421</a></td><td class="tracker">Task</td><td class="status">1. New</td><td class="priority">Normal</td><td class="subject"><a href="/issues/12421">FinancePark Fast-Track-Tool  - 2x income before retirement</a></td><td class="assigned_to"><a class="user active" href="/users/30">Maria Yakimova</a></td><td class="updated_on">07/31/2017 05:35 PM</td>
+  </tr>
+  <tr id="issue-12420" class="hascontextmenu odd issue tracker-1 status-5 priority-2 priority-default ">
+    <td class="checkbox hide-when-print"><input type="checkbox" name="ids[]" value="12420" /></td>
+    <td class="id"><a href="/issues/12420">12420</a></td><td class="tracker">Task</td><td class="status">1. New</td><td class="priority">Normal</td><td class="subject"><a href="/issues/12420">Investment request url in mobile menu</a></td><td class="assigned_to"><a class="user active" href="/users/84">Alyona Nedelchenko</a></td><td class="updated_on">07/31/2017 05:34 PM</td>
+  </tr>
+  <tr id="issue-12419" class="hascontextmenu even issue tracker-1 status-5 priority-2 priority-default ">
+    <td class="checkbox hide-when-print"><input type="checkbox" name="ids[]" value="12419" /></td>
+    <td class="id"><a href="/issues/12419">12419</a></td><td class="tracker">Task</td><td class="status">1. New</td><td class="priority">Normal</td><td class="subject"><a href="/issues/12419">Update checker with correct path inside @register.inclusion_tag</a></td><td class="assigned_to"><a class="user active" href="/users/75">Anton Ovchinnikov</a></td><td class="updated_on">07/31/2017 05:08 PM</td>
+  </tr>
+  <tr id="issue-12418" class="hascontextmenu odd issue tracker-1 status-5 priority-2 priority-default ">
+    <td class="checkbox hide-when-print"><input type="checkbox" name="ids[]" value="12418" /></td>
+    <td class="id"><a href="/issues/12418">12418</a></td><td class="tracker">Task</td><td class="status">1. New</td><td class="priority">Normal</td><td class="subject"><a href="/issues/12418">Slide Next Navigation, weird behaviour on safari (homepage) </a></td><td class="assigned_to"><a class="user active" href="/users/84">Alyona Nedelchenko</a></td><td class="updated_on">07/31/2017 05:06 PM</td>
+  </tr>
+  <tr id="issue-12417" class="hascontextmenu even issue tracker-1 status-5 priority-5 priority-low3 ">
+    <td class="checkbox hide-when-print"><input type="checkbox" name="ids[]" value="12417" /></td>
+    <td class="id"><a href="/issues/12417">12417</a></td><td class="tracker">Task</td><td class="status">1. New</td><td class="priority">High</td><td class="subject"><a href="/issues/12417">Prepare for frontend deploy: Issue with migration column profiles_profile.show_which_partner_offer_belongs_to does not exist</a></td><td class="assigned_to"><a class="user active" href="/users/4">Vasyl Dizhak</a></td><td class="updated_on">07/31/2017 04:38 PM</td>
+  </tr>
+  <tr id="issue-12416" class="hascontextmenu odd issue tracker-1 status-5 priority-2 priority-default ">
+    <td class="checkbox hide-when-print"><input type="checkbox" name="ids[]" value="12416" /></td>
+    <td class="id"><a href="/issues/12416">12416</a></td><td class="tracker">Task</td><td class="status">1. New</td><td class="priority">Normal</td><td class="subject"><a href="/issues/12416">[Refactoring/TODO] F601 dictionary key &#39;x&#39; repeated with different values</a></td><td class="assigned_to"><a class="user active" href="/users/4">Vasyl Dizhak</a></td><td class="updated_on">07/31/2017 04:32 PM</td>
+  </tr>
+  <tr id="issue-12415" class="hascontextmenu even issue tracker-1 status-5 priority-2 priority-default child ">
+    <td class="checkbox hide-when-print"><input type="checkbox" name="ids[]" value="12415" /></td>
+    <td class="id"><a href="/issues/12415">12415</a></td><td class="tracker">Task</td><td class="status">1. New</td><td class="priority">Normal</td><td class="subject"><a href="/issues/12415">Request createdFrom for calculators page (check and add if it&#39;s not exist)</a></td><td class="assigned_to"><a class="user active" href="/users/4">Vasyl Dizhak</a></td><td class="updated_on">07/31/2017 01:55 PM</td>
+  </tr>
+  <tr id="issue-12414" class="hascontextmenu odd issue tracker-1 status-5 priority-2 priority-default ">
+    <td class="checkbox hide-when-print"><input type="checkbox" name="ids[]" value="12414" /></td>
+    <td class="id"><a href="/issues/12414">12414</a></td><td class="tracker">Task</td><td class="status">1. New</td><td class="priority">Normal</td><td class="subject"><a href="/issues/12414">[Refactoring/TODO] Investigate the ability to migrate JS scripts import to .json related file</a></td><td class="assigned_to"></td><td class="updated_on">07/31/2017 12:30 PM</td>
+  </tr>
+  <tr id="issue-12413" class="hascontextmenu even issue tracker-1 status-5 priority-2 priority-default ">
+    <td class="checkbox hide-when-print"><input type="checkbox" name="ids[]" value="12413" /></td>
+    <td class="id"><a href="/issues/12413">12413</a></td><td class="tracker">Task</td><td class="status">1. New</td><td class="priority">Normal</td><td class="subject"><a href="/issues/12413">[Refactoring/TODO] Remove CSV export functionality from the list of orders.</a></td><td class="assigned_to"><a class="user active" href="/users/4">Vasyl Dizhak</a></td><td class="updated_on">07/31/2017 10:13 AM</td>
+  </tr>
+  <tr id="issue-12412" class="hascontextmenu odd issue tracker-11 status-5 priority-2 priority-default ">
+    <td class="checkbox hide-when-print"><input type="checkbox" name="ids[]" value="12412" /></td>
+    <td class="id"><a href="/issues/12412">12412</a></td><td class="tracker">Patch</td><td class="status">1. New</td><td class="priority">Normal</td><td class="subject"><a href="/issues/12412">Partner platform - &quot;Mulitplication factor for pension income&quot; is not applied on income</a></td><td class="assigned_to"><a class="user active" href="/users/30">Maria Yakimova</a></td><td class="updated_on">07/28/2017 11:05 AM</td>
+  </tr>
+  <tr id="issue-12411" class="hascontextmenu even issue tracker-1 status-10 priority-2 priority-default child ">
+    <td class="checkbox hide-when-print"><input type="checkbox" name="ids[]" value="12411" /></td>
+    <td class="id"><a href="/issues/12411">12411</a></td><td class="tracker">Task</td><td class="status">4. Awaiting Merge</td><td class="priority">Normal</td><td class="subject"><a href="/issues/12411">Use correct customer serializer for redirection on standard meeting and fast-track</a></td><td class="assigned_to"><a class="user active" href="/users/30">Maria Yakimova</a></td><td class="updated_on">07/30/2017 03:58 PM</td>
+  </tr>
+  <tr id="issue-12410" class="hascontextmenu odd issue tracker-1 status-10 priority-2 priority-default child ">
+    <td class="checkbox hide-when-print"><input type="checkbox" name="ids[]" value="12410" /></td>
+    <td class="id"><a href="/issues/12410">12410</a></td><td class="tracker">Task</td><td class="status">4. Awaiting Merge</td><td class="priority">Normal</td><td class="subject"><a href="/issues/12410">Add back &#39;save&#39; buttons on fast-track steps</a></td><td class="assigned_to"><a class="user active" href="/users/86">Alexandr Zayets</a></td><td class="updated_on">07/31/2017 02:01 PM</td>
+  </tr>
+  <tr id="issue-12409" class="hascontextmenu even issue tracker-1 status-2 priority-2 priority-default child ">
+    <td class="checkbox hide-when-print"><input type="checkbox" name="ids[]" value="12409" /></td>
+    <td class="id"><a href="/issues/12409">12409</a></td><td class="tracker">Task</td><td class="status">6. Finished</td><td class="priority">Normal</td><td class="subject"><a href="/issues/12409">Refactor deploy information management</a></td><td class="assigned_to"><a class="user active" href="/users/75">Anton Ovchinnikov</a></td><td class="updated_on">07/27/2017 10:19 PM</td>
+  </tr>
+  <tr id="issue-12408" class="hascontextmenu odd issue tracker-1 status-5 priority-5 priority-low3 ">
+    <td class="checkbox hide-when-print"><input type="checkbox" name="ids[]" value="12408" /></td>
+    <td class="id"><a href="/issues/12408">12408</a></td><td class="tracker">Task</td><td class="status">1. New</td><td class="priority">High</td><td class="subject"><a href="/issues/12408">Avoid putting user passwords in URL on JavaScript errors</a></td><td class="assigned_to"><a class="user active" href="/users/12">Julia Dizhak</a></td><td class="updated_on">07/27/2017 10:05 AM</td>
+  </tr>
+  <tr id="issue-12407" class="hascontextmenu even issue tracker-1 status-5 priority-2 priority-default child ">
+    <td class="checkbox hide-when-print"><input type="checkbox" name="ids[]" value="12407" /></td>
+    <td class="id"><a href="/issues/12407">12407</a></td><td class="tracker">Task</td><td class="status">1. New</td><td class="priority">Normal</td><td class="subject"><a href="/issues/12407">[AFFORDABILITY CALCULATIONS] Implement `OfferVerifications#verification_provider_evaluation_method`</a></td><td class="assigned_to"></td><td class="updated_on">07/26/2017 06:03 PM</td>
+  </tr>
+  <tr id="issue-12406" class="hascontextmenu odd issue tracker-1 status-5 priority-2 priority-default child ">
+    <td class="checkbox hide-when-print"><input type="checkbox" name="ids[]" value="12406" /></td>
+    <td class="id"><a href="/issues/12406">12406</a></td><td class="tracker">Task</td><td class="status">1. New</td><td class="priority">Normal</td><td class="subject"><a href="/issues/12406">[AFFORDABILITY CALCULATIONS] Implement `OfferVerifications#verification_financing_for_swiss_citizens_domiciled_abroad`</a></td><td class="assigned_to"></td><td class="updated_on">07/26/2017 06:02 PM</td>
+  </tr>
+  <tr id="issue-12405" class="hascontextmenu even issue tracker-1 status-5 priority-2 priority-default child ">
+    <td class="checkbox hide-when-print"><input type="checkbox" name="ids[]" value="12405" /></td>
+    <td class="id"><a href="/issues/12405">12405</a></td><td class="tracker">Task</td><td class="status">1. New</td><td class="priority">Normal</td><td class="subject"><a href="/issues/12405">[AFFORDABILITY CALCULATIONS] Implement `OfferVerifications#verification_accepted_resident_permit`</a></td><td class="assigned_to"></td><td class="updated_on">07/26/2017 06:02 PM</td>
+  </tr>
+  <tr id="issue-12404" class="hascontextmenu odd issue tracker-1 status-5 priority-2 priority-default child ">
+    <td class="checkbox hide-when-print"><input type="checkbox" name="ids[]" value="12404" /></td>
+    <td class="id"><a href="/issues/12404">12404</a></td><td class="tracker">Task</td><td class="status">1. New</td><td class="priority">Normal</td><td class="subject"><a href="/issues/12404">[AFFORDABILITY CALCULATIONS] Implement `OfferVerifications#verification_customer_seldemployed`</a></td><td class="assigned_to"></td><td class="updated_on">07/26/2017 06:01 PM</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+</form>
+<p class="pagination"><span class="current page">1</span> <a class="page" href="/projects/mmp/issues?page=2">2</a> <a class="page" href="/projects/mmp/issues?page=3">3</a> <span class="spacer">...</span> <a class="page" href="/projects/mmp/issues?page=36">36</a> <a class="next" accesskey="n" href="/projects/mmp/issues?page=2">Next »</a> <span class="items">(1-25/889)</span> <span class="per-page">Per page: <span>25</span>, <a href="/projects/mmp/issues?per_page=50">50</a>, <a href="/projects/mmp/issues?per_page=100">100</a></span></p>
+
+<p class="other-formats">Also available in:  <span><a class="atom" rel="nofollow" href="/projects/mmp/issues.atom?key=792ff3895c2bc3705735e0c7fedd15570b96568b">Atom</a></span>
+  <span><a class="csv" rel="nofollow" onclick="showModal(&#39;csv-export-options&#39;, &#39;350px&#39;); return false;" href="/projects/mmp/issues.csv">CSV</a></span>
+  <span><a class="pdf" rel="nofollow" href="/projects/mmp/issues.pdf">PDF</a></span>
+</p>
+<div id="csv-export-options" style="display:none;">
+  <h3 class="title">CSV export options</h3>  
+  <form id="csv-export-form" action="/projects/mmp/issues.csv" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+  <p>
+    <label><input type="radio" name="columns" id="columns_" value="" checked="checked" /> Selected Columns</label><br />
+    <label><input type="radio" name="columns" id="columns_all" value="all" /> All Columns</label>
+  </p>
+  <p>
+    <label><input type="checkbox" name="description" id="description" value="1" /> Description</label>
+  </p>
+  <p class="icon icon-warning">
+    Issues export limit: 500
+  </p>
+  <p class="buttons">
+    <input type="submit" value="Export" onclick="hideModal(this);" />
+    <input type="button" value="Cancel" onclick="hideModal(this);" />
+  </p>
+</form></div>
+
+
+
+
+
+<script>
+//<![CDATA[
+contextMenuInit('/issues/context_menu')
+//]]>
+</script>
+
+        
+        <div style="clear:both;"></div>
+    </div>
+</div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+
+<div id="footer">
+  <div class="bgl"><div class="bgr">
+    Powered by <a href="http://www.redmine.org/">Redmine</a> &copy; 2006-2015 Jean-Philippe Lang
+  </div></div>
+</div>
+</div>
+</div>
+
+</body>
+</html>

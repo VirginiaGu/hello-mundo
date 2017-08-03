@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="http://blog.udacity.com/xmlrpc.php">
+	<link rel="shortcut icon" href="http://1onjea25cyhx3uvxgs4vu325.wpengine.netdna-cdn.com/wp-content/themes/udacity_wp_1_8/favicon.ico" />
+	
+	<!--[if lt IE 9]>
+	<script src="http://1onjea25cyhx3uvxgs4vu325.wpengine.netdna-cdn.com/wp-content/themes/udacity_wp_1_8/js/html5.js" type="text/javascript"></script>
+	<script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	<script src="//cdn.optimizely.com/js/2320620403.js"></script><title>A Beginner&#039;s Git and GitHub Tutorial | Udacity</title>
+
+<!-- This site is optimized with the Yoast SEO plugin v4.8 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="This Git and GitHub tutorial is a beginner&#039;s guide to a tool every developer should be familiar with."/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="http://blog.udacity.com/2015/06/a-beginners-git-github-tutorial.html" />
+<link rel="publisher" href="https://plus.google.com/+Udacity/posts"/>
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="A Beginner&#039;s Git and GitHub Tutorial | Udacity" />
+<meta property="og:description" content="This Git and GitHub tutorial is a beginner&#039;s guide to a tool every developer should be familiar with." />
+<meta property="og:url" content="http://blog.udacity.com/2015/06/a-beginners-git-github-tutorial.html" />
+<meta property="og:site_name" content="Udacity" />
+<meta property="article:tag" content="github" />
+<meta property="article:section" content="Programming" />
+<meta property="article:published_time" content="2015-06-22T10:06:32-07:00" />
+<meta property="article:modified_time" content="2015-07-01T10:32:47-07:00" />
+<meta property="og:updated_time" content="2015-07-01T10:32:47-07:00" />
+<meta property="og:image" content="http://blog.udacity.com/wp-content/uploads/2015/06/git_github_tutorial.jpg" />
+<meta property="og:image" content="https://s3.amazonaws.com/external_clips/attachments/59189/original/git-init-repository.png?1432284219" />
+<meta property="og:image" content="https://s3.amazonaws.com/external_clips/attachments/59190/original/git-status.png?1432284243" />
+<meta property="og:image" content="https://s3.amazonaws.com/external_clips/attachments/59191/original/git-status-two-files.png?1432284265" />
+<meta property="og:image" content="https://s3.amazonaws.com/external_clips/attachments/59192/original/git-staged-and-unstaged-files.png?1432284296" />
+<meta property="og:image" content="https://s3.amazonaws.com/external_clips/attachments/59193/original/git-status-post-commit.png?1432284359" />
+<meta property="og:image" content="https://s3.amazonaws.com/external_clips/attachments/59194/original/git-log.png?1432284381" />
+<meta property="og:image" content="https://s3.amazonaws.com/external_clips/attachments/59195/original/git-log-oneline.png?1432284408" />
+<meta property="og:image" content="https://s3.amazonaws.com/external_clips/attachments/60768/original/git-merge.png?1433344369" />
+<meta property="og:image" content="https://s3.amazonaws.com/external_clips/attachments/60767/original/github-repository-annotated.png?1433344064" />
+<meta property="og:image" content="https://s3.amazonaws.com/external_clips/attachments/59197/original/github-commit-changes-inline-comment.png?1432284515" />
+<meta property="og:image" content="https://s3.amazonaws.com/external_clips/attachments/59198/original/github-create-new-repository.png?1432284535" />
+<meta property="og:image" content="https://s3.amazonaws.com/external_clips/attachments/59199/original/github-create-repository.png?1432284557" />
+<meta property="og:image" content="https://s3.amazonaws.com/external_clips/attachments/59200/original/github-post-repository-creation.png?1432284580" />
+<meta property="og:image" content="https://s3.amazonaws.com/external_clips/attachments/59201/original/github-post-first-push.png?1432284599" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="This Git and GitHub tutorial is a beginner&#039;s guide to a tool every developer should be familiar with." />
+<meta name="twitter:title" content="A Beginner&#039;s Git and GitHub Tutorial | Udacity" />
+<meta name="twitter:site" content="@udacity" />
+<meta name="twitter:image" content="http://blog.udacity.com/wp-content/uploads/2015/06/git_github_tutorial.jpg" />
+<meta name="twitter:creator" content="@udacity" />
+<!-- / Yoast SEO plugin. -->
+
+<link rel='dns-prefetch' href='//platform.twitter.com' />
+<link rel='dns-prefetch' href='//a.optnmstr.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Udacity &raquo; Feed" href="http://blog.udacity.com/feed" />
+<link rel="alternate" type="application/rss+xml" title="Udacity &raquo; Comments Feed" href="http://blog.udacity.com/comments/feed" />
+<link rel="alternate" type="application/rss+xml" title="Udacity &raquo; A Beginner&#8217;s Git and GitHub Tutorial Comments Feed" href="http://blog.udacity.com/2015/06/a-beginners-git-github-tutorial.html/feed" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/blog.udacity.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.8"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,56826,8203,55356,56819),0,0),c=j.toDataURL(),b===c&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55358,56794,8205,9794,65039),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55358,56794,8203,9794,65039),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='tm_clicktotweet-css'  href='http://1onjea25cyhx3uvxgs4vu325.wpengine.netdna-cdn.com/wp-content/plugins/click-to-tweet-by-todaymade/assets/css/styles.css?ver=4.8' type='text/css' media='all' />
+<link rel='stylesheet' id='perfect-pullquotes-styles-css'  href='http://1onjea25cyhx3uvxgs4vu325.wpengine.netdna-cdn.com/wp-content/plugins/perfect-pullquotes/perfect-pullquotes.css?ver=1.7' type='text/css' media='all' />
+<link rel='stylesheet' id='quotable-css'  href='http://1onjea25cyhx3uvxgs4vu325.wpengine.netdna-cdn.com/wp-content/plugins/quotable/includes/quotable.css?ver=4.8' type='text/css' media='all' />
+<link rel='stylesheet' id='_s-style-css'  href='http://1onjea25cyhx3uvxgs4vu325.wpengine.netdna-cdn.com/wp-content/themes/udacity_wp_1_8/style.css?ver=4.8' type='text/css' media='all' />
+<link rel='stylesheet' id='udacity-style-css'  href='http://1onjea25cyhx3uvxgs4vu325.wpengine.netdna-cdn.com/wp-content/themes/udacity_wp_1_8/udacity.css?ver=4.8' type='text/css' media='all' />
+<script type='text/javascript' src='http://1onjea25cyhx3uvxgs4vu325.wpengine.netdna-cdn.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://1onjea25cyhx3uvxgs4vu325.wpengine.netdna-cdn.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='http://1onjea25cyhx3uvxgs4vu325.wpengine.netdna-cdn.com/wp-content/plugins/duracelltomi-google-tag-manager/js/gtm4wp-form-move-tracker.js?ver=1.6.1'></script>
+<script type='text/javascript' data-cfasync="false" id="omapi-script" async="async" src='//a.optnmstr.com/app/js/api.min.js?ver=1.1.9'></script>
+<link rel='https://api.w.org/' href='http://blog.udacity.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.udacity.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blog.udacity.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='shortlink' href='http://blog.udacity.com/?p=2392' />
+<link rel="alternate" type="application/json+oembed" href="http://blog.udacity.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fblog.udacity.com%2F2015%2F06%2Fa-beginners-git-github-tutorial.html" />
+<link rel="alternate" type="text/xml+oembed" href="http://blog.udacity.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fblog.udacity.com%2F2015%2F06%2Fa-beginners-git-github-tutorial.html&#038;format=xml" />
+
+<!-- Google Tag Manager for WordPress by DuracellTomi - http://duracelltomi.com -->
+<script data-cfasync="false" type="text/javascript">
+	var gtm4wp_datalayer_name = "dataLayer";
+	var dataLayer = dataLayer || [];
+	dataLayer.push({"pagePostType":"post","pagePostType2":"single-post","pageCategory":["programming"],"pageAttributes":["github"],"pagePostAuthor":"Matthew Setter"});
+</script>
+<script data-cfasync="false">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.'+'js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5Q3X6D');</script>
+<!-- End Google Tag Manager -->
+<!-- End Google Tag Manager for WordPress by DuracellTomi --><script type="text/javascript">
+        setTimeout(function(){var a=document.createElement("script");
+        var b=document.getElementsByTagName('script')[0];
+        a.src=document.location.protocol+"//script.crazyegg.com/pages/scripts/0032/8040.js";
+        a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+        </script>
+      <link rel="icon" href="http://1onjea25cyhx3uvxgs4vu325.wpengine.netdna-cdn.com/wp-content/uploads/2017/06/cropped-favicon-32x32.png" sizes="32x32" />
+<link rel="icon" href="http://1onjea25cyhx3uvxgs4vu325.wpengine.netdna-cdn.com/wp-content/uploads/2017/06/cropped-favicon-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="http://1onjea25cyhx3uvxgs4vu325.wpengine.netdna-cdn.com/wp-content/uploads/2017/06/cropped-favicon-180x180.png" />
+<meta name="msapplication-TileImage" content="http://blog.udacity.com/wp-content/uploads/2017/06/cropped-favicon-270x270.png" />
+	<script>
+		jQuery(document).ready(function () {
+			jQuery(".nav_toggle").click(function (e) {
+				jQuery("nav").toggleClass("nav--on"), e.preventDefault()
+			}), jQuery(".footer_nav_toggle h3").click(function (e) {
+				jQuery(this).parent().toggleClass("nav--on"), e.preventDefault()
+			});
+		});
+	</script>
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+				(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-28524234-22', 'auto');
+		ga('send', 'pageview');
+
+	</script>
+	<style>
+		#disqus_thread {
+			max-width: 85.714em;
+			margin: 0 auto;
+			padding: 0 2em;
+		}
+	</style>
+</head>
+
+<body class="post-template-default single single-post postid-2392 single-format-standard group-blog">
+<div id="page" class="site">
+	<header id="masthead" class="site-header" role="banner">
+		<div class="container nav-container">
+			<row>
+				<div class="site-branding col-xs-4">
+					<a href="http://blog.udacity.com">
+						 <img src="http://1onjea25cyhx3uvxgs4vu325.wpengine.netdna-cdn.com/wp-content/themes/udacity_wp_1_8/images/Udacity_Logo_SVG_200x35.svg" border="0" alt="Udacity" />
+					</a>
+				</div><!-- .site-branding -->
+
+				<div class="col-xs-8 nav-block">
+					<!-- <a data-navbar-guest="" href="https://www.udacity.com/account/auth#!/signup" class="sign_in_link"
+					   style="display: block;">Sign Up</a>
+					<a data-navbar-guest="" href="https://www.udacity.com/account/auth#!/signin" class="sign_in_link"
+					   style="display: block;">Sign In</a> -->
+					<nav class="main">
+						<ul class="main_nav">
+							<li class="home_link"><a href="/">Home</a></li>
+							<li class="nanodegree_link"><a href="https://www.udacity.com/nanodegree">Nanodegree</a></li>
+							<li class="free_courses_link"><a href="https://www.udacity.com/courses/all">Catalog</a></li>
+<li class="my_classroom_link"><a href="https://www.udacity.com/me">My Classroom</a></li>
+						</ul>
+						<a href="#" class="nav_toggle">
+							<span class="bar bar_top"></span>
+
+							<span class="bar bar_mid"></span>
+
+							<span class="bar bar_bottom"></span>
+						</a>
+					</nav>
+				</div>
+			</row>
+		</div>
+
+		<div id="featured-post" class="container-fluid">
+
+		</div>
+
+	</header><!-- #masthead -->
+
+		<div class="wrap single-post-masthead"
+	     style="background-image:url('http://1onjea25cyhx3uvxgs4vu325.wpengine.netdna-cdn.com/wp-content/uploads/2016/03/cropped-chalkboard-image.jpg');">';
+	
+		<div class="after">
+			<div class="container">
+
+				<div class="row category">
+					<a href="http://blog.udacity.com/category/programming" rel="category tag">Programming</a>				</div>
+				<div class="row title">
+					A Beginner&#8217;s Git and GitHub Tutorial				</div>
+				<div class="row meta">
+					<img src="http://0.gravatar.com/avatar/0f7160372a5015b6bee3d069a28ce2db?s=35&#038;d=mm&#038;r=g" width="35" height="35" alt="" class="avatar avatar-35 wp-user-avatar wp-user-avatar-35 photo avatar-default" />					<p>
+						By <strong><i>Matthew Setter</i></strong>
+						<br/> June 22, 2015					</p>
+					<div class="social-share">
+						<a href="https://twitter.com/intent/tweet?url=http://blog.udacity.com/2015/06/a-beginners-git-github-tutorial.html&via=udacity&text=A Beginner&#8217;s Git and GitHub Tutorial"
+						   target="_blank" onclick="var w=window.open(this.href,this.target,'width=500,height=400');
+return w?false:true" class="twitter"></a>
+						<a href="http://www.facebook.com/sharer/sharer.php?u=http://blog.udacity.com/2015/06/a-beginners-git-github-tutorial.html" target="_blank"
+						   onclick="var w=window.open(this.href,this.target,'width=500,height=400');
+return w?false:true" class="facebook"></a>
+						<a href="https://plus.google.com/share?url=http://blog.udacity.com/2015/06/a-beginners-git-github-tutorial.html" target="_blank" onclick="var w=window.open(this.href,this.target,'width=500,height=400');
+return w?false:true" class="google"></a>
+						<a href="https://www.linkedin.com/shareArticle?mini=true&url=http://blog.udacity.com/2015/06/a-beginners-git-github-tutorial.html&title=A Beginner&#8217;s Git and GitHub Tutorial"
+						   target="_blank" onclick="var w=window.open(this.href,this.target,'width=500,height=400');
+return w?false:true" class="linkedin"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+
+		<div id="content" class="site-content">
+
+			<div id="primary" class="content-area">
+				<main id="main" class="site-main" role="main">
+
+					
+<article id="post-2392" class="post-2392 post type-post status-publish format-standard hentry category-programming tag-github">
+	<header class="entry-header">
+		
+		<div class="entry-meta">
+					</div><!-- .entry-meta -->
+	</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<div id="quotablecontent"><p><a href="https://www.udacity.com/course/how-to-use-git-and-github--ud775"><img class=" size-full wp-image-2407 alignnone" src="http://1onjea25cyhx3uvxgs4vu325.wpengine.netdna-cdn.com/wp-content/uploads/2015/06/git_github_tutorial.jpg" alt="Beginner's Tutorial to Git and GitHub" width="1200" height="628" srcset="http://1onjea25cyhx3uvxgs4vu325.wpengine.netdna-cdn.com/wp-content/uploads/2015/06/git_github_tutorial.jpg 1200w, http://1onjea25cyhx3uvxgs4vu325.wpengine.netdna-cdn.com/wp-content/uploads/2015/06/git_github_tutorial-300x157.jpg 300w, http://1onjea25cyhx3uvxgs4vu325.wpengine.netdna-cdn.com/wp-content/uploads/2015/06/git_github_tutorial-1024x536.jpg 1024w" sizes="(max-width: 1200px) 100vw, 1200px"></a></p>
+<p><a href="https://www.udacity.com/course/how-to-use-git-and-github--ud775" target="_blank">Git and GitHub</a> are two of the coolest technologies around for developers. Git, despite its complexity and rather terse beginnings, is the version control tool of choice for everyone from web designers to kernel developers. And GitHub is the social code-hosting platform used more than any other. On GitHub, you&rsquo;ll find everything from playful, simple experiments to the Linux kernel itself.</p>
+<p>But despite this popularity, there&rsquo;s a lot to learn if you want to use these tools properly, and not just be a beginner. Both tools are sophisticated, providing a rich tapestry of functionality. Consequently, they&rsquo;re not for the faint of heart: they can be quite demanding if you want to use them to the fullest.</p>
+<p>So if you&rsquo;re just starting out, perhaps coming across from one of the older version control tools, I want to help you make a great start, by giving you a solid working foundation from which you can grow your knowledge over time. To do so, we&rsquo;ll start with Git, learning how to perform the common operations you&rsquo;ll do every day on a local source code repository. Then we&rsquo;ll cover the basics of GitHub, and how to integrate the local Git repository into it, so that others have access to this project as well. Sound good? Then let&rsquo;s get started.</p>
+<p><span id="more-2392"></span></p>
+<h2>The Fundamentals</h2>
+<p>First, you&rsquo;ll need to have a few things installed and available. For starters, I&rsquo;ll assume you already have Git installed. If you don&rsquo;t, <a href="http://git-scm.com/downloads" target="_blank">grab a copy of the latest version</a> for your operating system. If you&rsquo;re on Linux, you can install it via your package manager instead.</p>
+<p>Secondly, you&rsquo;ll need to be at least partly comfortable with using the command line. Now not everyone is, so if you&rsquo;re not, don&rsquo;t worry. This will all be quite straightforward. Nothing too complex. Thirdly, we&rsquo;re going to create a simple repository consisting of a code file and a README. So make sure you have a directory set aside where you can do this.</p>
+<p>Then, with everything prepared, let&rsquo;s step through a standard set of actions you&rsquo;ll commonly use on a daily basis. Specifically, we&rsquo;re going to use <code>init</code>, <code>clone</code>, <code>add</code>, <code>commit</code>, <code>diff</code>, and <code>log</code>. There are a number of other, more advanced actions you can perform. But in the beginning, you won&rsquo;t need them.</p>
+<h2>Initializing a Repository</h2>
+<p>Before you can work with Git, you have to <a href="http://git-scm.com/docs/git-init" target="_blank">initialize a project repository</a>, setting it up so that Git will manage it. Open up your terminal, and in your project directory run the command <code>git init . </code>as shown in the screenshot below.</p>
+<p><img src="https://s3.amazonaws.com/external_clips/attachments/59189/original/git-init-repository.png?1432284219" alt=""></p>
+<p>A new hidden directory called <code>.git</code> will now be present in your project directory. This is where Git stores its database and configuration information, so that it can track your project.</p>
+<h2>Cloning a Repository</h2>
+<p>There&rsquo;s another way to access a repository, which is <a href="http://git-scm.com/docs/git-clone" target="_blank">cloning</a>. Similar to checking out a repository in other systems, running <code>git clone &lt;repository URL&gt;</code> will pull in a complete copy of the remote repository to your local system. Now you can work away on it, making changes, staging them, committing them, and pushing the changes back.</p>
+<h2>Adding a New File</h2>
+<p>I&rsquo;m primarily a PHP developer, so that&rsquo;s what I&rsquo;ll be using in the sample code for this tutorial. However, if you prefer Python, Ruby, Go, or another language, feel free to substitute your language of choice. Now create a new file, called <code>index.php</code>, in your project directory, and in it, add the following code:</p>
+<pre>&lt;?php print "Hello World";</pre>
+<p>After saving the file, from the terminal run the command <code>git status</code>. This will show you the current status of your working repository. It should look similar to the screenshot below, with <code>index.php</code> listed as a new, untracked file.</p>
+<p><img src="https://s3.amazonaws.com/external_clips/attachments/59190/original/git-status.png?1432284243" alt=""></p>
+<p>Now let&rsquo;s see how you can work on multiple files, without having to commit all of them. Create a second file, called <code>README.md</code> (every good project has to have one, right?). In that, add a few details, such as the project name, your name, and your email address. Run <code>git status</code> again, and you&rsquo;ll now see the two files listed as untracked, as shown below.</p>
+<p><img src="https://s3.amazonaws.com/external_clips/attachments/59191/original/git-status-two-files.png?1432284265" alt=""></p>
+<p>Now let&rsquo;s stage <code>index.php</code>, because we&rsquo;re not interested in <code>README.md</code> just for the moment. To do that, run <code>git add index.php</code>. Now run <code>git status</code> again, and you&rsquo;ll see <code>index.php</code> listed as a new file under &ldquo;Changes to be committed,&rdquo; and <code>README.md</code> left in the &ldquo;Untracked files&rdquo; area.</p>
+<p><img src="https://s3.amazonaws.com/external_clips/attachments/59192/original/git-staged-and-unstaged-files.png?1432284296" alt=""></p>
+<h2>Updating Your Git Configuration</h2>
+<p>Now you&rsquo;re ready to commit <code>index.php</code>. But before you do, I want to show you how to configure the editor, which Git will use when you write commit messages. This can be quite helpful, especially if you&rsquo;re not a regular command-line user.</p>
+<p>By default, Git uses the program specified in the environment variables <code>$VISUAL</code> or <code>$EDITOR</code>, which on Linux systems is normally pico, vi, vim, or emacs. If these are new to you, you might want to change it to an application you&rsquo;re more familiar with, perhaps Notepad, TextEdit, or Gedit. To do that, run the following command from your terminal:</p>
+<pre>git config --global core.editor &lt;your app's name&gt;</pre>
+<p>There are a number of other configuration changes you can make, such as your name and email address, what the commit message looks like by default, whether to use colors, and so on. For a complete list, check out the <a href="https://git-scm.com/book/tr/v2/Customizing-Git-Git-Configuration" target="_blank">git configuration section</a> of the Git book. For the remainder of this tutorial, I&rsquo;ll be using vim, as it&rsquo;s my editor of choice. But don&rsquo;t feel you have to.</p>
+<h2>Making the First Commit</h2>
+<p>Committing in Git is a lot like committing in other version control systems, such as Subversion. You start the process, add a meaningful commit message to explain why the change was made, and that&rsquo;s it, the file&rsquo;s changed. So run <code>git commit</code>. This will automatically open up your editor and display the commit template below.</p>
+<pre># Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#       new file:   index.php
+#
+# Untracked files:
+#       README.md
+#</pre>
+<p>As with the output of <code>git status</code>, you see the state of your working repository, which makes it easy to remember what you&rsquo;re committing and what you&rsquo;re not. A <a href="https://robots.thoughtbot.com/5-useful-tips-for-a-better-commit-message" target="_blank">good commit message</a> is composed of two parts: a short message, less than 72 characters long, which briefly states (in active voice) the change being made; and a much longer, optional description, which is separated from the brief description by a newline.</p>
+<p>In this case, there&rsquo;s no need to write anything too involved, as we&rsquo;re just adding the file to the repository. But if the change you were making involved a complex algorithm, perhaps in response to a bug filed against the code, you&rsquo;d want to give your fellow developers a good understanding of why you made the change that you did. So add the following simple message &ldquo;Adding the core script file to the repository,&rdquo; save it, and exit the editor.</p>
+<p>Now that the file&rsquo;s committed, run <code>git status</code> again, and you&rsquo;ll see that <code>README.md</code> is still listed as untracked.</p>
+<p><img src="https://s3.amazonaws.com/external_clips/attachments/59193/original/git-status-post-commit.png?1432284359" alt=""></p>
+<h2>Seeing Differences</h2>
+<p>Now that we&rsquo;ve got some files under version control and have looked at the basic commands, let&rsquo;s see how to review file changes. I didn&rsquo;t complete the last commit for that reason. To review changes in a file, we use the command <code>git diffcommand</code>. Git <code>diff</code>, similar to Linux <code>diff </code> and other <code>diff</code> programs, compares two files and shows the changes the more recent file contains, if any.</p>
+<p>Let&rsquo;s have a look at the differences we&rsquo;ve staged for <code>README.md</code>. To do that, run <code>git diff README.md</code>. See something unexpected? I&rsquo;m guessing you were expecting to see the difference between the most recent version and the staged copy of the file, not the unstaged. That&rsquo;s a little gotcha that might catch you out, at least at first.</p>
+<p>You need to bear in mind whether you&rsquo;re diff&rsquo;ing a staged or an unstaged file. By default, with no extra arguments, <code>git diff </code>will diff the unstaged changes. If you want to see staged changes, then run <code>git diff --cached README.md</code>. That command will display something similar to this:</p>
+<pre>diff --git a/README.md b/README.md new file mode 100644 index 0000000..27c0a86 --- /dev/null +++ b/README.md @@ -0,0 +1,5 @@ +# Simple Git Project + +## Authors + +Matthew Setter &lt;matthew@maltblue.com&gt;</pre>
+<p>There you see the changes to the file. It&rsquo;s a bit too much to cover in-depth, so I&rsquo;m going to focus on the last five lines. Before each line you see a plus sign, which indicates an addition. So all of those lines are being added to the file. If we&rsquo;d removed any content, it would be preceded by a minus. There&rsquo;s quite a number of options which can be passed to <code>diff</code>. Have a look at the <a href="http://git-scm.com/docs/git-diff" target="_blank">online reference</a>.</p>
+<h2>Viewing Change History</h2>
+<p>Now what if you wanted to see your repository or file history over time? To do that, you need to use <a href="http://git-scm.com/docs/git-log" target="_blank">git log</a>. Just running <code>git log</code> in your project repository will show you a list of changes in reverse chronological order. With no further arguments, you&rsquo;ll see the commit hash, the author name and email, a timestamp for the commit, and the commit message.</p>
+<p><img src="https://s3.amazonaws.com/external_clips/attachments/59194/original/git-log.png?1432284381" alt=""></p>
+<p>Now this is fine, but what if you want to customize what you see? What if you just want to view the commit hash and the commit message? To do that, you pass the <code>--oneline</code> switch to <code>git log</code>, like this: <code>git log --oneline</code>. This will output history information, as shown in the screenshot below, which I&rsquo;ve taken from the Zend Framework 2 project, as we don&rsquo;t have enough history with our project. <code>--oneline</code> is a shortcut for <code>--pretty=oneline</code>. Instead of <code>oneline</code>, you could also have used <code>short</code>, <code>medium</code>, or <code>email</code> for different types of perspectives on your repository history.</p>
+<p><img src="https://s3.amazonaws.com/external_clips/attachments/59195/original/git-log-oneline.png?1432284408" alt=""></p>
+<p>For the full set of options you can pass to <code>log</code>, run <code>git help log</code> from your terminal or take a look at the <a href="http://git-scm.com/docs/git-log" target="_blank">reference documentation</a>. There is a wide variety of options available. So you&rsquo;ll be able to configure it just as you want it, to best suit your needs.</p>
+<h2>Branching</h2>
+<p>Before we finish up, let&rsquo;s look at branching, one of the fundamental aspects of working with Git. You may not have used branches before. You might be used to working instead on the mainline trunk (or <i>master branch</i> in Git terminology) or perhaps a development branch, along with the entire team.</p>
+<p>You can do it that way, of course, but problems can arise quickly when more than one person works on the same section of the same file. Branches are essential for being able to safely experiment with concepts and ideas. Git makes it painless to create your own branch, experiment with or implement features, and then merge those changes back into the development branch, when you&rsquo;re finished. Let&rsquo;s see how to do that.</p>
+<p>You may have noticed in this tutorial that you&rsquo;ve been using the master branch, which is what Git starts with by default. Now we&rsquo;ll create the development branch. From your terminal, run <code>git checkout -b develop</code> to create a new branch called <code>develop</code>. Running this command will both create and check out the new branch, which at first is simply a copy of the master branch. If you run <code>git status</code>, you&rsquo;ll still see the two separate changes to <code>README.md</code>. Stage and commit both, then let&rsquo;s see how to merge those changes back to the master branch.</p>
+<p>With those two changes staged and committed, you&rsquo;re ready to merge them to the master branch. First, you need to check out the branch you want to merge. To do that, run <code>git checkout master</code>. Then you need to merge the changes to the current branch from the branch you&rsquo;ve worked on. To do that, run <code>git merge develop</code>.</p>
+<p>When that completes, you&rsquo;ll see output that shows the files changed and a brief summary of those changes.</p>
+<p><img src="https://s3.amazonaws.com/external_clips/attachments/60768/original/git-merge.png?1433344369" alt=""></p>
+<p>That&rsquo;s how simple it is to branch and merge. Now there are other ways of doing this, but I&rsquo;ve not covered them, as we&rsquo;re focusing on the fundamentals.</p>
+<h2>Using GitHub</h2>
+<p>Now that you&rsquo;ve got a good handle on Git, let&rsquo;s look at GitHub. I&rsquo;m keen not to overwhelm you, so I&rsquo;ve made an annotated screenshot of a GitHub project, so that you can quickly become familiar with the most common features. Yes, GitHub is more than simply a project repository, but that&rsquo;s where you&rsquo;re likely going to spend most of your time on the site.</p>
+<p><img src="https://s3.amazonaws.com/external_clips/attachments/60767/original/github-repository-annotated.png?1433344064" alt=""></p>
+<p>What you see is a project homepage. Across the top, in point one, are listed the project name, how many people are watching it, how many people have given it a vote of confidence by starring it, and how many people have forked it, perhaps to make changes of their own to it and contribute to it. Then, in point two, there&rsquo;s the number of commits to the current branch, the number of branches, the number of releases, and the number of contributors. Next, in point three, there&rsquo;s the branch picker, then below that there&rsquo;s a listing of the top-level files in the project, and when the last commit was.</p>
+<p>Over on the righthand side, in point four, you have the key navigation options. These are:</p>
+<ul><li><strong>Code</strong>: The view you&rsquo;re on by default, showing the files in the project.</li>
+<li><strong>Issues</strong>: A simple but effective issue tracker, whether you and the team want to report bugs and problems, make requests for new features, or other such tasks.</li>
+<li><strong>Wiki</strong>: A simple but effective wiki for documenting the project in more detail than a standard <code>README</code> file allows.</li>
+<li><strong>Pulse</strong>: A summary of statistics about the project, including open and closed issues. Here is where you find out how active the project is.</li>
+<li><strong>Graphs</strong>: A timeline of commits, followed by a breakdown of commits by individual contributor. You can then use the available tabs to look at the project activity in detail, based on a series of key metrics including code frequency, least to most active days for contributions, and so on.</li>
+</ul><p>Finally, also on the righthand side, there&rsquo;s the link to the repository URL. If you want to clone this project, this is the URL you pass to <code>git clone</code>.</p>
+<p>Now let&rsquo;s look at the commit history, by clicking <b>commits</b>. There you see the commits in reverse chronological order. On the left, you see the commit short description, the author&rsquo;s username, and when the commit was made. On the right, the short version of the commit hash, and a link to the commit.</p>
+<p>Click the commit hash, so you can see the changes it contains. In this example, we see a side-by-side diff of the project&rsquo;s <code>README</code> file and a second file, <code>library/Zend/Version/Version.php</code>. You can see on the left what was removed from the previous version, and on the right what was added to this version. Above each commit, on the lefthand side, you see a short summary of the changes, which shows both the total changes (in this case 15) and a visual representation. Now here&rsquo;s some fun.</p>
+<p><img src="https://s3.amazonaws.com/external_clips/attachments/59197/original/github-commit-changes-inline-comment.png?1432284515" alt=""></p>
+<p>Mouse over either the left or right sides. Notice a blue plus icon appears? If you click on it, you can comment on the code at that point in time. This is an excellent feature, as it makes GitHub a truly collaborative coding experience. One last thing, want to comment on the commit as a whole? There&rsquo;s a comment box at the bottom of every commit. Click through the other tabs, and see what you find in each.</p>
+<h2>Adding Our Project to GitHub</h2>
+<p>Now let&rsquo;s get the simple project we&rsquo;ve been working on into GitHub. To do that, after you&rsquo;ve logged in to your account, click the plus symbol in the upper righthand corner, and click <code>New repository</code> from the dropdown. There you&rsquo;ll see the new project creation form.</p>
+<p><img src="https://s3.amazonaws.com/external_clips/attachments/59198/original/github-create-new-repository.png?1432284535" alt=""></p>
+<p>In the <code>Repository name</code> field, add a name. It needn&rsquo;t be special: &ldquo;first-project&rdquo; works. Give it a description if you want. Perhaps &ldquo;My first GitHub project.&rdquo; Then, leave the project with the default of public. That way anyone can find it if they search for it. Finally, click the <code>Initialize this repository with a README</code> checkbox, and leave the two select boxes set to <code>None</code>. Now click <code>Create repository</code>.</p>
+<p><img src="https://s3.amazonaws.com/external_clips/attachments/59199/original/github-create-repository.png?1432284557" alt=""></p>
+<p>You&rsquo;ll now be taken to the quick setup page. This page gives you a host of post-setup information about integrating your new GitHub project with your existing local repository, which we&rsquo;ll do, or cloning it fresh. We&rsquo;re going to add GitHub as a remote for our project. To do that, copy the first line under <code>&hellip;or push an existing repository from the command line</code>, and paste it in the terminal where you&rsquo;ve been working up till now.</p>
+<p><img src="https://s3.amazonaws.com/external_clips/attachments/59200/original/github-post-repository-creation.png?1432284580" alt=""></p>
+<p>Doing so won&rsquo;t display any output. Now copy the second line and paste it into your terminal. This will push our changes to GitHub. You&rsquo;ll see output, something like that shown in the screenshot below. Now go back to GitHub in your browser and refresh the page. You&rsquo;ll see our <code>README.md</code> and <code>index.php</code> displayed in the files list, and the contents of the <code>README.md</code> rendered at the bottom of the page.</p>
+<p><img src="https://s3.amazonaws.com/external_clips/attachments/59201/original/github-post-first-push.png?1432284599" alt=""></p>
+<h2>The Bottom Line</h2>
+<p>And that&rsquo;s the basics of how to work with Git and GitHub. I hope you&rsquo;ve seen that, whilst there are quite a lot of concepts to take in, once you&rsquo;ve gotten a handle on the basics, you can pick it up reasonably quickly, if with some patience.</p>
+<p>There&rsquo;s so much more to cover than there&rsquo;s the opportunity to do here. But one thing about both Git and GitHub&mdash;the community behind them is extremely supportive and generous in the sheer volume of information contributed. You&rsquo;ll be in good hands.</p>
+<p>For more learning, try the Udacity <a href="https://www.udacity.com/course/how-to-use-git-and-github--ud775" target="_blank">How to Use Git and GitHub</a> course for free, or look through the&nbsp;selection of links in the further reading section. You&rsquo;ll find just about all you need to become a Git and GitHub master in next to no time.</p>
+<h2>Links / Further Reading</h2>
+<ul><li><a href="http://git-scm.com/book/en/v2/">http://git-scm.com/book/en/v2/</a></li>
+<li><a href="https://github.com/">https://github.com/</a></li>
+<li><a href="https://help.github.com/">https://help.github.com/</a></li>
+<li><a href="https://try.github.io/levels/1/challenges/1">https://try.github.io/levels/1/challenges/1</a></li>
+<li><a href="http://gitref.org/">http://gitref.org/</a></li>
+<li><a href="https://www.atlassian.com/git/">https://www.atlassian.com/git/</a></li>
+<li><a href="http://rogerdudler.github.io/git-guide/">http://rogerdudler.github.io/git-guide/</a></li>
+<li><a href="https://help.github.com/articles/good-resources-for-learning-git-and-github/">https://help.github.com/articles/good-resources-for-learning-git-and-github/</a></li>
+<li><a href="http://gitimmersion.com/">http://gitimmersion.com/</a></li>
+</ul></div>
+			</div><!-- .entry-content -->
+
+	<footer class="entry-footer">
+			</footer><!-- .entry-footer -->
+</article><!-- #post-## -->
+
+				</main><!-- #main -->
+			</div><!-- #primary -->
+
+			
+<div id="secondary" class="widget-area" role="complementary">
+	<aside id="text-20" class="widget widget_text"><h2 class="widget-title">Get Job Ready with Udacity</h2>			<div class="textwidget">Master in-demand skills. Build and design amazing projects. Earn a valued credential. Launch your career in Data Science, Machine Learning, Android, iOS, and more. Be in demand.
+<br>
+<br>
+<a href="https://auth.udacity.com/sign-up?next=https%3A%2F%2Fclassroom.udacity.com%2Fauthenticated" target="_blank" title="Create your free Udacity account"><button class="btn btn-primary">Start Learning Free</button></a></div>
+		</aside><aside id="text-17" class="widget widget_text"><h2 class="widget-title">Popular Nanodegree Programs</h2>			<div class="textwidget"><ul>
+	<li><a href="https://www.udacity.com/course/intro-to-programming-nanodegree--nd000">Intro to Programming </a></li>
+	<li><a href="https://www.udacity.com/course/android-basics-nanodegree-by-google--nd803" title="Android Basics Nanodegree by Google">Android Basics Nanodegree by Google</a></li>
+	<li><a href="https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001" title="Front-End Web Developer Nanodegree">Front-End Web Developer Nanodegree</a></li>
+	<li><a href="https://www.udacity.com/course/ios-developer-nanodegree--nd003">iOS Developer </a></li>
+	<li><a href="https://www.udacity.com/course/machine-learning-engineer-nanodegree--nd009">Machine Learning Engineer </a></li>
+	<li><a href="https://www.udacity.com/course/android-developer-nanodegree--nd801">Android Developer </a></li>
+	</div>
+		</aside>		<aside id="recent-posts-3" class="widget widget_recent_entries">		<h2 class="widget-title">Latest Posts</h2>		<ul>
+					<li>
+				<a href="http://blog.udacity.com/2017/08/3-industries-using-machine-learning.html">3 Industries You Probably Didn’t Know Were Using Machine Learning</a>
+						</li>
+					<li>
+				<a href="http://blog.udacity.com/2017/07/social-media-advertising-guide.html">Learn Social Media Advertising [Free Guide]</a>
+						</li>
+					<li>
+				<a href="http://blog.udacity.com/2017/07/curiosity-and-career-change.html">Curiosity and Career Change</a>
+						</li>
+					<li>
+				<a href="http://blog.udacity.com/2017/07/discovery-week-savings.html">Discovery Week Savings: Your Last Day Checklist</a>
+						</li>
+					<li>
+				<a href="http://blog.udacity.com/2017/07/discovery-week-predicts-future-deep-learning-digital-marketing.html">Discovery Week Predicts the Future: Deep Learning, Digital Marketing, and more!</a>
+						</li>
+				</ul>
+		</aside>		<aside id="text-18" class="widget widget_text">			<div class="textwidget"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#subscribeModal">Subscribe to the blog</button></div>
+		</aside><aside id="optin-monster-api-9" class="widget optin-monster-api"><!-- This site is converting visitors into subscribers and customers with OptinMonster - https://optinmonster.com :: Campaign Title: 06-2017 - Blog - Sidebar - Data Career Guide --><div id="om-dr5279ctmly2vxlwfn0t-holder"></div><script>var dr5279ctmly2vxlwfn0t,dr5279ctmly2vxlwfn0t_poll=function(){var r=0;return function(n,l){clearInterval(r),r=setInterval(n,l)}}();!function(e,t,n){if(e.getElementById(n)){dr5279ctmly2vxlwfn0t_poll(function(){if(window['om_loaded']){if(!dr5279ctmly2vxlwfn0t){dr5279ctmly2vxlwfn0t=new OptinMonsterApp();return dr5279ctmly2vxlwfn0t.init({"u":"5695.596131","staging":0,"dev":0,"beta":0});}}},25);return;}var d=false,o=e.createElement(t);o.id=n,o.src="//a.optnmstr.com/app/js/api.min.js",o.async=true,o.onload=o.onreadystatechange=function(){if(!d){if(!this.readyState||this.readyState==="loaded"||this.readyState==="complete"){try{d=om_loaded=true;dr5279ctmly2vxlwfn0t=new OptinMonsterApp();dr5279ctmly2vxlwfn0t.init({"u":"5695.596131","staging":0,"dev":0,"beta":0});o.onload=o.onreadystatechange=null;}catch(t){}}}};(document.getElementsByTagName("head")[0]||document.documentElement).appendChild(o)}(document,"script","omapi-script");</script><!-- / OptinMonster --></aside></div><!-- #secondary -->
+
+		</div><!-- #content -->
+	</div><!-- .container -->
+
+	<div class="wrap post-author-wrap">
+		<div class="container">
+			<div class="row">
+				<img src="http://0.gravatar.com/avatar/0f7160372a5015b6bee3d069a28ce2db?s=50&#038;d=mm&#038;r=g" width="50" height="50" alt="" class="avatar avatar-50 wp-user-avatar wp-user-avatar-50 photo avatar-default" />			</div>
+			<div class="row">
+				<div class="col-md-7 post-author-data">
+					<div class="row">
+						<h4>Matthew Setter</h4>
+						<p>Matthew Setter is a software developer and freelance technical writer with over 14 years of professional software development experience gained in Australia, England, and Germany. He is the author of Zend Framework 2 Foundations, writes for a variety of publications including PHP Architect magazine and SitePoint.com, and regularly develops with PHP and related technologies.</p>
+						<h5 class="author-posts">Posts by Matthew</h5>
+					</div>
+					<div class="row">
+						<div class="col-sm-6"><a href="http://blog.udacity.com/2015/06/common-myths-web-development.html" class="category_btn"><span>Common Myths about Web Development</span></a></div><div class="col-sm-6"><a href="http://blog.udacity.com/2015/03/9-examples-stunning-accidental-success.html" class="category_btn"><span>9 Stunning Examples of Accidental Success, and How You Can Have It Too</span></a></div>					</div>
+				</div>
+				<div class="col-md-5 social-share">
+					<div class="row">
+						<h4>Share This Post</h4>
+						<ul class="share-post">
+							<a href="https://twitter.com/intent/tweet?url=http://blog.udacity.com/2015/06/a-beginners-git-github-tutorial.html&via=udacity&text=A Beginner&#8217;s Git and GitHub Tutorial"
+							   target="_blank" onclick="var w=window.open(this.href,this.target,'width=500,height=400');
+return w?false:true">
+								<li class="twitter">Twitter</li>
+							</a>
+							<a href="http://www.facebook.com/sharer/sharer.php?u=http://blog.udacity.com/2015/06/a-beginners-git-github-tutorial.html"
+							   target="_blank" onclick="var w=window.open(this.href,this.target,'width=500,height=400');
+return w?false:true">
+								<li class="facebook">Facebook</li>
+							</a>
+							<a href="https://plus.google.com/share?url=http://blog.udacity.com/2015/06/a-beginners-git-github-tutorial.html" target="_blank"
+							   onclick="var w=window.open(this.href,this.target,'width=500,height=400');
+return w?false:true">
+								<li class="google">Google+</li>
+							</a>
+							<a href="https://www.linkedin.com/shareArticle?mini=true&url=http://blog.udacity.com/2015/06/a-beginners-git-github-tutorial.html&title=A Beginner&#8217;s Git and GitHub Tutorial"
+							   target="_blank" onclick="var w=window.open(this.href,this.target,'width=500,height=400');
+return w?false:true">
+								<li class="linkedin">LinkedIn</li>
+							</a>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="wrap">
+		<div class="container">
+			<div class="row post-navigation">
+				<div class="post-navigation-left col-md-6">
+					<h5>Previous Post</h5> <span>&larr;</span> <a href="http://blog.udacity.com/2015/06/udacity-dads-user-research-manager-steven-johnson.html">Udacity Dads: User Research Manager Steven Johnson</a>				</div>
+				<div class="post-navigation-right col-md-6">
+					<h5>Next Post</h5> <a href="http://blog.udacity.com/2015/06/how-to-turn-your-nanodegree-experience-into-a-job.html">How to Turn Your Nanodegree Experience into a Job</a> <span>&rarr;</span>				</div>
+			</div>
+		</div>
+	</div>
+
+	
+
+
+<footer class="site-footer wrap" role="contentinfo">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-2">
+				<div class="mark">
+					 <img src="http://1onjea25cyhx3uvxgs4vu325.wpengine.netdna-cdn.com/wp-content/themes/udacity_wp_1_8/images/udacity_mark.png" width="100%" alt="Udacity" />
+				</div>
+			</div>
+
+			<div class="col-sm-10">
+				<nav class="foot">
+					<ul class="footer_nav">
+						<li class="footer_nav_toggle">
+							<h3>Popular Nanodegree Programs</h3>
+							<ul class="nav_list">
+								<li><a href="https://www.udacity.com/course/vr-developer-nanodegree--nd017">VR Developer</a></li>
+								<li><a href="https://www.udacity.com/course/self-driving-car-engineer-nanodegree--nd013">Self-Driving Car Engineer</a></li>
+								<li><a href="https://www.udacity.com/course/data-analyst-nanodegree--nd002">Data Analyst </a></li>
+								<li><a href="https://www.udacity.com/course/ios-developer-nanodegree--nd003">iOS Developer </a></li>
+								<li><a href="https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001">Front-End Web Developer</a></li>
+								<li><a href="https://www.udacity.com/course/machine-learning-engineer-nanodegree--nd009">Machine Learning
+										Engineer </a></li>
+								<li><a href="https://www.udacity.com/course/android-developer-nanodegree--nd801">Android Developer </a></li>
+							</ul>
+						</li>
+						<li class="footer_nav_toggle">
+							<h3>Student Resources</h3>
+							<ul class="nav_list">
+								<li><a href="http://blog.udacity.com">Blog</a></li>
+								<li><a href="https://career-resource-center.udacity.com">Career Resource Center</a></li>
+								<li><a href="https://www.udacity.com/faq">Help&nbsp;&amp;&nbsp;FAQ</a></li>
+								<li><a href="https://www.udacity.com/courses/all">Catalog</a></li>
+								<li><a href="https://www.udacity.com/veterans">Veteran Programs</a></li>
+								<li><a href="https://www.udacity.com/mobile">Mobile</a></li>
+								<li><a href="https://www.udacity.com/scholarships">Scholarships</a></li>
+								<li><a href="https://www.udacity.com/hiring-partners">Hiring Partners</a></li>
+							</ul>
+						</li>
+						<li class="footer_nav_toggle">
+							<h3>Udacity</h3>
+							<ul class="nav_list">
+								<li><a href="https://www.udacity.com/us">About</a></li>
+								<li><a href="https://www.udacity.com/press">In the News</a></li>
+								<li><a href="https://www.udacity.com/jobs">Jobs @ Udacity</a></li>
+								<li><a href="https://www.udacity.com/georgia-tech">Georgia Tech</a></li>
+								<li><a href="https://www.udacity.com/business">Udacity for Business</a></li>
+								<li><a href="https://www.udacity.com/employers">Hire Graduates</a></li>
+								<li><a href="https://www.udacity.com/success">Student Success</a></li>
+							</ul>
+						</li>
+						<li class="footer_nav_toggle">
+							<h3>Inquiries</h3>
+							<ul class="nav_list">
+								<!-- <li><a href="#">Press</a></li> -->
+								<li><a href="https://www.udacity.com/contact">Contact Us</a></li>
+								<li><a href="https://www.udacity.com/legal">Legal</a></li>
+								<li><a href="http://status.udacity.com">Service Status</a></li>
+								<li><a href="https://www.udacity.com/sitemap">Site Map</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div>
+
+			<!--			<div class="col-md-10">-->
+			<!--				<div class="row">-->
+			<!--					<div class="widget-area" role="complementary">-->
+			<!--						-->			<!--					</div>-->
+			<!--				</div>-->
+			<!--			</div>-->
+		</div>
+
+		<div class="row site-info-row">
+			<div class="col-sm-6">
+				<div class="site-info">
+					Nanodegree is a trademark of Udacity.
+					<br/>
+					&copy; 2011-2017 Udacity, Inc.
+				</div><!-- .site-info -->
+			</div>
+			<div class="col-sm-6">
+				<nav class="social">
+					<ul class="social_links">
+						<li>
+							<a href="https://twitter.com/udacity"><img src="https://s3-us-west-1.amazonaws.com/udacity-blog/social_twitter.svg" alt="Twitter"></a>
+						</li>
+						<li>
+							<a href="https://www.facebook.com/Udacity"><img src="https://s3-us-west-1.amazonaws.com/udacity-blog/social_facebook.svg" alt="Facebook"></a>
+						</li>
+						<li>
+							<a href="https://plus.google.com/+Udacity/posts"><img src="https://s3-us-west-1.amazonaws.com/udacity-blog/social_gplus.svg" alt="Google +"></a>
+						</li>
+						<li>
+							<a href="https://www.linkedin.com/company/udacity"><img src="https://s3-us-west-1.amazonaws.com/udacity-blog/social_linkedin.svg" alt="LinkedIn"></a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+</footer><!-- #colophon -->
+
+<!-- Subscribe Modal -->
+<!-- new comment -->
+<div class="modal fade" id="subscribeModal" tabindex="-1" role="dialog" aria-labelledby="subscribeModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+						aria-hidden="true">&times;</span></button>
+			</div>
+			<div class="modal-body">
+				<h3 class="modal-title" id="subscribeModalLabel">Subscribe To Our Newsletter</h3>
+				<small>learning = growing</small>
+				<p>Sign up for Udacity blog updates to get the latest in guidance and inspiration as you discover
+					programming, web development, data science, and more.</p>
+
+					<!--form class="form-inline" action='https://app.getvero.com/forms/b9b296726ded18de88563dec47213605' method='post'>
+					  <div class="form-group">
+					  	<input type="hidden" name='email' type='email' />
+					  	<input type="hidden" type='submit' value='Subscribe' />
+					  	<input type="email" name="email" placeholder="Email Address" />
+					  	<button type="submit" class="btn btn-primary">Submit</button>
+					  </div>
+					</form-->
+					<form class="form-inline" action="http://udacity.us9.list-manage.com/subscribe/post">
+						<div class="form-group">
+							<input type="hidden" name="u" value="4d05b2ee9291e1caafe0113a7">
+							<input type="hidden" name="id" value="cbed5f65c4">
+							<input type="email" name="MERGE0" class="form-control" id="MERGE0" placeholder="Email Address">
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</form>
+				<p>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div><!-- #page -->
+
+ <script type="text/javascript">
+  analytics.track("Viewed Post", {"title":"A Beginner&#8217;s Git and GitHub Tutorial","category":"Programming","noninteraction":true}, {"library":"analytics-wordpress"});
+    
+</script>
+<a target='_blank' style='visibility: hidden; top: 0; left: 0;' href='' id='quotable-toolbar' data-permalink='http://blog.udacity.com/2015/06/a-beginners-git-github-tutorial.html' data-author='' data-related='udacity' data-hashtags='github,'> tweet</a><!-- This site is converting visitors into subscribers and customers with OptinMonster - https://optinmonster.com :: Campaign Title: 11-2016 - Blog - Slide In - Pathfinder --><div id="om-rnjka5tunmd2ze2v-holder"></div><script>var rnjka5tunmd2ze2v,rnjka5tunmd2ze2v_poll=function(){var r=0;return function(n,l){clearInterval(r),r=setInterval(n,l)}}();!function(e,t,n){if(e.getElementById(n)){rnjka5tunmd2ze2v_poll(function(){if(window['om_loaded']){if(!rnjka5tunmd2ze2v){rnjka5tunmd2ze2v=new OptinMonsterApp();return rnjka5tunmd2ze2v.init({"u":"5695.447065","staging":0,"dev":0,"beta":0});}}},25);return;}var d=false,o=e.createElement(t);o.id=n,o.src="//a.optnmstr.com/app/js/api.min.js",o.async=true,o.onload=o.onreadystatechange=function(){if(!d){if(!this.readyState||this.readyState==="loaded"||this.readyState==="complete"){try{d=om_loaded=true;rnjka5tunmd2ze2v=new OptinMonsterApp();rnjka5tunmd2ze2v.init({"u":"5695.447065","staging":0,"dev":0,"beta":0});o.onload=o.onreadystatechange=null;}catch(t){}}}};(document.getElementsByTagName("head")[0]||document.documentElement).appendChild(o)}(document,"script","omapi-script");</script><!-- / OptinMonster -->	    <script type="text/javascript">var dr5279ctmly2vxlwfn0t_shortcode = true;var rnjka5tunmd2ze2v_shortcode = true;</script>
+	    <script type='text/javascript' src='http://platform.twitter.com/widgets.js?ver=4.8'></script>
+<script type='text/javascript' src='http://1onjea25cyhx3uvxgs4vu325.wpengine.netdna-cdn.com/wp-content/plugins/quotable/includes/quotable.js?ver=4.8'></script>
+<script type='text/javascript' src='http://1onjea25cyhx3uvxgs4vu325.wpengine.netdna-cdn.com/wp-content/themes/udacity_wp_1_8/js/skip-link-focus-fix.js?ver=20130115'></script>
+<script type='text/javascript' src='http://1onjea25cyhx3uvxgs4vu325.wpengine.netdna-cdn.com/wp-content/themes/udacity_wp_1_8/bootstrap/js/bootstrap.min.js?ver=v3.3.5'></script>
+<script type='text/javascript' src='http://1onjea25cyhx3uvxgs4vu325.wpengine.netdna-cdn.com/wp-includes/js/wp-embed.min.js?ver=4.8'></script>
+	    <script type="text/javascript">var omapi_localized = { ajax: 'http://blog.udacity.com/wp-admin/admin-ajax.php?optin-monster-ajax-route=1', nonce: '99818d0460' };</script>
+	    
+</body>
+</html>

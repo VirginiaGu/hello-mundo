@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="es-ES" class="no-js">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="x-rim-auto-match" content="none">
+<meta name="robots" content="NOODP">
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="/images/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="/images/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/images/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/images/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/images/apple-touch-icon-152x152.png">
+<link rel="icon" type="image/png" href="/images/favicon-196x196.png" sizes="196x196">
+<link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/images/favicon-128.png" sizes="128x128">
+<meta name="application-name" content="Styde.net">
+<meta name="msapplication-TileColor" content="#D8574B">
+<meta name="msapplication-TileImage" content="/images/mstile-144x144.png">
+<meta name="msapplication-square70x70logo" content="/images/mstile-70x70.png">
+<meta name="msapplication-square150x150logo" content="/images/mstile-150x150.png">
+<meta name="msapplication-wide310x150logo" content="/images/mstile-310x150.png">
+<meta name="msapplication-square310x310logo" content="/images/mstile-310x310.png">
+<meta property="og:image" content="https://styde.net/images/StydeAvatar6.png">
+<meta name="twitter:image" content="https://styde.net/images/StydeAvatar6.png">
+<meta property="og:url" content="https://styde.net/eliminar-un-archivo-de-un-repositorio-git/">
+<meta property="og:title" content="Eliminar un archivo de un repositorio Git">
+<meta name="description" content="Aprende a eliminar archivos de un repositorio de git sin perderlos de forma local siguiendo unos simples pasos.">
+<meta property="og:description" content="Aprende a eliminar archivos de un repositorio de git sin perderlos de forma local siguiendo unos simples pasos.">
+<script>(function(){document.documentElement.className='js'})();</script>
+<title>Eliminar un archivo de un repositorio Git &#8211; Styde.net</title>
+<link rel='dns-prefetch' href='//s.w.org'/>
+<link rel="alternate" type="application/rss+xml" title="Styde.net &raquo; Feed" href="https://styde.net/feed/"/>
+<link rel="alternate" type="application/rss+xml" title="Styde.net &raquo; RSS de los comentarios" href="https://styde.net/comments/feed/"/>
+<link rel="alternate" type="application/rss+xml" title="Styde.net &raquo; Eliminar un archivo de un repositorio Git RSS de los comentarios" href="https://styde.net/eliminar-un-archivo-de-un-repositorio-git/feed/"/>
+<link rel='stylesheet' id='pmpro_print-group-css' href='https://styde.net/wp-content/plugins/bwp-minify/min/?f=wp-content/plugins/paid-memberships-pro/css/print.css&#038;ver=1501741377' type='text/css' media='print'/>
+<link rel='stylesheet' id='theme-my-login-group-css' href='https://styde.net/wp-content/plugins/bwp-minify/min/?f=wp-content/plugins/theme-my-login/theme-my-login.css,wp-content/plugins/crayon-syntax-highlighter/themes/tomorrow-night/tomorrow-night.css,wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css,wp-content/plugins/invitations-for-slack/invitations-for-slack/assets/style.css,wp-content/plugins/wpcomplete/public/css/wpcomplete-public.css,wp-content/themes/styde/style.css,wp-content/themes/styde/css/styles.css,wp-content/plugins/authorsure/styles/public.css&#038;ver=1501741377' type='text/css' media='all'/>
+<script type='text/javascript' src='https://styde.net/wp-content/plugins/bwp-minify/min/?f=wp-includes/js/jquery/jquery.js,wp-includes/js/jquery/jquery-migrate.min.js&#038;ver=1501741377'></script>
+<link rel='https://api.w.org/' href='https://styde.net/wp-json/'/>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://styde.net/xmlrpc.php?rsd"/>
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://styde.net/wp-includes/wlwmanifest.xml"/>
+<link rel='prev' title='Creando formularios con el paquete Styde/Html' href='https://styde.net/creando-formularios-con-el-paquete-styde-html/'/>
+<link rel='next' title='Tipos de servidores y entornos' href='https://styde.net/tipos-de-servidores-y-entornos/'/>
+<link rel="canonical" href="https://styde.net/eliminar-un-archivo-de-un-repositorio-git/"/>
+<link rel='shortlink' href='https://styde.net/?p=5125'/>
+<style type="text/css">a.wpc-complete{background:#217677;color:#ffffff;}a.wpc-completed{background:#1c1c33;color:#ffffff;}.wpc-radial-progress,.wpc-bar-progress .wpc-progress-track{background-color:#cac8c8;}.wpc-radial-progress .wpc-fill,.wpc-bar-progress .wpc-progress-fill{background-color:#217677;}.wpc-radial-progress .wpc-numbers,.wpc-bar-progress .wpc-numbers{color:#217677;}.wpc-bar-progress[data-progress="75"] .wpc-numbers,.wpc-bar-progress[data-progress="76"] .wpc-numbers,.wpc-bar-progress[data-progress="77"] .wpc-numbers,.wpc-bar-progress[data-progress="78"] .wpc-numbers,.wpc-bar-progress[data-progress="79"] .wpc-numbers,.wpc-bar-progress[data-progress="80"] .wpc-numbers,.wpc-bar-progress[data-progress="81"] .wpc-numbers,.wpc-bar-progress[data-progress="82"] .wpc-numbers,.wpc-bar-progress[data-progress="83"] .wpc-numbers,.wpc-bar-progress[data-progress="84"] .wpc-numbers,.wpc-bar-progress[data-progress="85"] .wpc-numbers,.wpc-bar-progress[data-progress="86"] .wpc-numbers,.wpc-bar-progress[data-progress="87"] .wpc-numbers,.wpc-bar-progress[data-progress="88"] .wpc-numbers,.wpc-bar-progress[data-progress="89"] .wpc-numbers,.wpc-bar-progress[data-progress="90"] .wpc-numbers,.wpc-bar-progress[data-progress="91"] .wpc-numbers,.wpc-bar-progress[data-progress="92"] .wpc-numbers,.wpc-bar-progress[data-progress="93"] .wpc-numbers,.wpc-bar-progress[data-progress="94"] .wpc-numbers,.wpc-bar-progress[data-progress="95"] .wpc-numbers,.wpc-bar-progress[data-progress="96"] .wpc-numbers,.wpc-bar-progress[data-progress="97"] .wpc-numbers,.wpc-bar-progress[data-progress="98"] .wpc-numbers,.wpc-bar-progress[data-progress="99"] .wpc-numbers,.wpc-bar-progress[data-progress="100"] .wpc-numbers{color:#cac8c8;}li .wpc-lesson{}li .wpc-lesson-complete{}li .wpc-lesson-completed{opacity:.5;}li .wpc-lesson-completed:after{content:"✔";margin-left:5px;}</style> <style type="text/css">.recentcomments a{display:inline!important;padding:0!important;margin:0!important;}</style>
+<script data-no-minify="1" data-cfasync="false">(function(w,d){function a(){var b=d.createElement("script");b.async=!0;b.src="https://styde.net/wp-content/plugins/wp-rocket/inc/front/js/lazyload.1.0.5.min.js";var a=d.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a)}w.attachEvent?w.attachEvent("onload",a):w.addEventListener("load",a,!1)})(window,document);</script> <script>dataLayer = [];</script>
+<style media="print">.box.widget{display:none;}.banner{color:black!important;}</style>
+</head>
+<body class="post-template-default single single-post postid-5125 single-format-standard pmpro-body-has-access">
+ 
+<noscript><iframe src="https://styde.net/wp-content/plugins/wp-rocket/inc/front/img/blank.gif" data-lazy-src="//www.googletagmanager.com/ns.html?id=GTM-5P8597" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5P8597');</script>
+ 
+<div class="wrap" itemscope itemtype="http://schema.org/WebPage">
+<header class="head" itemscope itemtype="http://schema.org/WPHEader">
+<div class="container">
+<div class="col12">
+<div class="logo" itemscope itemtype="http://schema.org/Organization">
+<a href="/" itemprop="name">Styde.net</a>
+</div>
+<nav class="main-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+<a href="#menu-principal" class="btn-menu">Menu <i class="icon-menu"></i><i class="icon-cancel"></i></a>
+<div class="btn-nav-subs">
+<a href="/planes" class="btn btn-green-cta">¡Regístrate ahora!</a>
+</div>
+<ul id="menu-principal" class="main-menu">
+<li><a href="https://styde.net/cursos/">Cursos y Series</a></li>
+<li class="current"><a href="https://styde.net/blog/">Blog</a></li>
+<li><a href="https://styde.net/planes/">
+Regístrate </a></li>
+<li><a href="https://styde.net/login/">Inicia sesión</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</header>
+<section class="banner banner-post-serie">
+<div class="container">
+<div class="col10">
+<h1 itemprop="name"><a href="https://styde.net/eliminar-un-archivo-de-un-repositorio-git/">Eliminar un archivo de un repositorio Git</a></h1>
+</div>
+</div>
+</section>
+<section class="curso-info">
+<div class="container">
+<div class="col9 m-2_3">
+<p>
+<i class="icon-graduation-cap"></i>
+<strong>Curso: <a href="https://styde.net/git/">Git</a></strong>
+</p>
+</div>
+<div class="col3 m-1_3">
+<p class="lesson-serie-lessons"><a href="https://styde.net/git/"><i class="icon-list"></i> Ver todas las lecciones</a></p>
+</div>
+</div>
+</section>
+<section>
+<div class="container">
+<div class="col8 post-content">
+<p class="post-meta">
+<span class="post-author"><i class="icon-user"></i> Jeff </span>
+<span class="post-date"><i class="icon-calendar"></i> 13/08/2015</span> <br>
+<span class="post-category"><i class="icon-folder-open"></i> <a href="https://styde.net/category/git/" rel="category tag">Git</a></span>
+<span class="post-comments"><i class="icon-chat"></i> <a href="https://styde.net/eliminar-un-archivo-de-un-repositorio-git/#comments"><span class="dsq-postid" data-dsqidentifier="5125 https://styde.net/?p=5125">3 Comentarios</span></a></span>
+</p>
+<p class="post-share">
+Comparte en
+<a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fstyde.net%2Feliminar-un-archivo-de-un-repositorio-git%2F" class="btn btn-facebook btn-sm" target="_blank"><i class="icon-facebook"></i> Facebook</a>
+<a href="https://twitter.com/intent/tweet?text=Eliminar un archivo de un repositorio Git https%3A%2F%2Fstyde.net%2Feliminar-un-archivo-de-un-repositorio-git%2F&via=Stydenet" class="btn btn-sm btn-twitter" target="_blank"><i class="icon-twitter"></i> Twitter</a>
+<a href="https://plus.google.com/share?url=https%3A%2F%2Fstyde.net%2Feliminar-un-archivo-de-un-repositorio-git%2F" class="btn btn-sm btn-google" target="_blank"><i class="icon-googleplus-rect"></i> Google+</a>
+</p>
+<p><a href="https://styde.net/eliminar-un-archivo-de-un-repositorio-git"><img class="aligncenter size-full wp-image-5128" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="https://styde.net/wp-content/uploads/2015/08/eliminar-archivos-de-un-repositorio-git.png" alt="eliminar-archivos-de-un-repositorio-git" width="680" height="170" data-lazy-srcset="https://styde.net/wp-content/uploads/2015/08/eliminar-archivos-de-un-repositorio-git.png 680w, https://styde.net/wp-content/uploads/2015/08/eliminar-archivos-de-un-repositorio-git-300x75.png 300w" data-lazy-sizes="(max-width: 680px) 100vw, 680px"/><noscript><img class="aligncenter size-full wp-image-5128" src="https://styde.net/wp-content/uploads/2015/08/eliminar-archivos-de-un-repositorio-git.png" alt="eliminar-archivos-de-un-repositorio-git" width="680" height="170" srcset="https://styde.net/wp-content/uploads/2015/08/eliminar-archivos-de-un-repositorio-git.png 680w, https://styde.net/wp-content/uploads/2015/08/eliminar-archivos-de-un-repositorio-git-300x75.png 300w" sizes="(max-width: 680px) 100vw, 680px"/></noscript></a></p>
+<p>Ocasionalmente por error o descuido incluimos en un repositorio algún archivo que no queremos mostrar, puede ser el caso de archivos de configuración u otro tipo de información correspondiente única y exclusivamente a nuestro entorno de trabajo, entonces el problema ocurre cuando queremos eliminar dicho archivo del repositorio remoto pero conservarlo en local.</p>
+<p><span id="more-5125"></span></p>
+<p>Esta tarea puede llegar a ser muy confusa, afortunadamente gracias a un simple comando de git podemos hacer este proceso en unos pocos pasos.</p>
+<p>Supongamos que nuestro directorio de trabajo esta compuesto de la siguiente manera</p>
+<ul>
+<li>index.php</li>
+<li>css
+<ul>
+<li>style.css</li>
+<li>common.css</li>
+</ul>
+</li>
+<li>js
+<ul>
+<li>jquery.js</li>
+<li>scripts.js</li>
+</ul>
+</li>
+<li>local.config.php</li>
+<li>example.config.php</li>
+</ul>
+<p>Luego de realizar algunos cambios, ejecutar el <strong><em>commit</em></strong> y posteriormente enviar los avances al repositorio remoto, nos olvidamos de excluir el archivo <strong>local.config.php</strong> que contiene información importante como claves de acceso a la base de datos, credenciales de servicios de pago, configuración de la cuenta de email, etc.</p>
+<blockquote><p>Si quieres saber más sobre commits y uso básico de git te recomiendo el post sobre <a href="https://styde.net/primeros-pasos-con-git-y-github/" target="_blank">Primeros pasos con git y GitHub</a>.</p></blockquote>
+<p>Una solución es eliminar el archivo de forma local, realizar un commit con estos cambios y posteriormente volver a crear el archivo en local teniendo en cuenta que hay que excluirlo del próximo commit. Pero ésta sería la forma incorrecta, veamos una mejor manera de solucionar esto:</p>
+<h2>1. Eliminar un archivo del repositorio</h2>
+<p>El siguiente comando nos permite eliminar ficheros dentro de un repositorio de git, pero actúa como un &#8220;soft delete&#8221;, debido a que el archivo se va a borrar del repositorio pero seguirá estando disponible en nuestro entorno de trabajo.</p>
+<p>Te recomiendo ver el post sobre <a href="https://styde.net/flujos-y-zonas-por-las-que-pasa-un-fichero-en-un-repositorio-git/" target="_blank">Flujos y zonas por las que pasa un fichero en un repositorio Git</a>.</p> 
+<div id="crayon-5982ef58a6d2d614132297" class="crayon-syntax crayon-theme-tomorrow-night crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 24px; margin-bottom: 12px; font-size: 14px !important; line-height: 28px !important;">
+<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><span class="crayon-title"></span>
+<div class="crayon-tools" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><div class="crayon-button crayon-nums-button" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">PHP</span></div></div>
+<div class="crayon-info" style="min-height: 19.6px !important; line-height: 19.6px !important;"></div>
+<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 14px !important; line-height: 28px !important;">
+$ git rm --cached ruta-de-archivo</textarea></div>
+<div class="crayon-main" style="">
+<table class="crayon-table">
+<tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 28px !important;"><div class="crayon-num" data-line="crayon-5982ef58a6d2d614132297-1">1</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 28px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5982ef58a6d2d614132297-1"><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-e">git </span><span class="crayon-i">rm</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-e">cached </span><span class="crayon-i">ruta</span><span class="crayon-o">-</span><span class="crayon-i">de</span><span class="crayon-o">-</span><span class="crayon-i">archivo</span></div></div></td>
+</tr>
+</table>
+</div>
+</div>
+ 
+<p>Así que si aplicamos esto al ejemplo mencionado anteriormente tendríamos algo similar a esto</p> 
+<div id="crayon-5982ef58a6d35827911241" class="crayon-syntax crayon-theme-tomorrow-night crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 24px; margin-bottom: 12px; font-size: 14px !important; line-height: 28px !important;">
+<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><span class="crayon-title"></span>
+<div class="crayon-tools" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><div class="crayon-button crayon-nums-button" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">PHP</span></div></div>
+<div class="crayon-info" style="min-height: 19.6px !important; line-height: 19.6px !important;"></div>
+<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 14px !important; line-height: 28px !important;">
+$ git rm --cached local.config.php</textarea></div>
+<div class="crayon-main" style="">
+<table class="crayon-table">
+<tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 28px !important;"><div class="crayon-num" data-line="crayon-5982ef58a6d35827911241-1">1</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 28px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5982ef58a6d35827911241-1"><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-e">git </span><span class="crayon-i">rm</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-e">cached </span><span class="crayon-i">local</span><span class="crayon-sy">.</span><span class="crayon-i">config</span><span class="crayon-sy">.</span><span class="crayon-i">php</span></div></div></td>
+</tr>
+</table>
+</div>
+</div>
+ 
+<p></p>
+<h2>2. Agregando el archivo eliminado a .gitignore</h2>
+<p>En una lección anterior te explicaba sobre el uso de los archivos .gitignore para la <a href="https://styde.net/exclusion-de-ficheros-en-un-repositorio-git/" target="_blank">Exclusión de ficheros en un repositorio Git</a>. Probablemente si estas usando este método es por que quieres conservar este archivo de forma local, y es muy tedioso tener que excluirlo en cada commit, para ello agregamos la ruta al .gitignore y de esta forma los cambios realizados en este archivo especifico no serán seguidos por git de aquí en adelante.</p>
+<p><strong>.gitignore</strong></p> 
+<div id="crayon-5982ef58a6d38145265182" class="crayon-syntax crayon-theme-tomorrow-night crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 24px; margin-bottom: 12px; font-size: 14px !important; line-height: 28px !important;">
+<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><span class="crayon-title">.gitignore</span>
+<div class="crayon-tools" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><div class="crayon-button crayon-nums-button" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">PHP</span></div></div>
+<div class="crayon-info" style="min-height: 19.6px !important; line-height: 19.6px !important;"></div>
+<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 14px !important; line-height: 28px !important;">
+local.config.php</textarea></div>
+<div class="crayon-main" style="">
+<table class="crayon-table">
+<tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 28px !important;"><div class="crayon-num" data-line="crayon-5982ef58a6d38145265182-1">1</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 28px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5982ef58a6d38145265182-1"><span class="crayon-i">local</span><span class="crayon-sy">.</span><span class="crayon-i">config</span><span class="crayon-sy">.</span><span class="crayon-i">php</span></div></div></td>
+</tr>
+</table>
+</div>
+</div>
+ 
+<p>en este momento nuestro directorio debería así</p>
+<ul>
+<li>index.php</li>
+<li>css
+<ul>
+<li>style.css</li>
+<li>common.css</li>
+</ul>
+</li>
+<li>js
+<ul>
+<li>jquery.js</li>
+<li>scripts.js</li>
+</ul>
+</li>
+<li>local.config.php</li>
+<li>example.config.php</li>
+<li>.gitconfig</li>
+</ul>
+<h2>3. Guardando los cambios en el repositorio remoto</h2>
+<p>Finalmente debemos hacer commit para que se hagan efectivos de igual manera en el repositorio remoto, esto lo podemos hacer con estos simples comandos desde la consola</p> 
+<div id="crayon-5982ef58a6d3a011893066" class="crayon-syntax crayon-theme-tomorrow-night crayon-font-monaco crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 24px; margin-bottom: 12px; font-size: 14px !important; line-height: 28px !important;">
+<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><span class="crayon-title"></span>
+<div class="crayon-tools" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><div class="crayon-button crayon-nums-button" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">PHP</span></div></div>
+<div class="crayon-info" style="min-height: 19.6px !important; line-height: 19.6px !important;"></div>
+<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 14px !important; line-height: 28px !important;">
+$ git add --all
+
+$ git commit -m "eliminando un archivo del repositorio"
+
+//si estas en master
+$ git push origin master 
+
+//si estas en otra rama
+$ git push origin rama-en-la-que-trabajas</textarea></div>
+<div class="crayon-main" style="">
+<table class="crayon-table">
+<tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 28px !important;"><div class="crayon-num" data-line="crayon-5982ef58a6d3a011893066-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5982ef58a6d3a011893066-2">2</div><div class="crayon-num" data-line="crayon-5982ef58a6d3a011893066-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5982ef58a6d3a011893066-4">4</div><div class="crayon-num" data-line="crayon-5982ef58a6d3a011893066-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5982ef58a6d3a011893066-6">6</div><div class="crayon-num" data-line="crayon-5982ef58a6d3a011893066-7">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5982ef58a6d3a011893066-8">8</div><div class="crayon-num" data-line="crayon-5982ef58a6d3a011893066-9">9</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 28px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5982ef58a6d3a011893066-1"><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-e">git </span><span class="crayon-i">add</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-i">all</span></div><div class="crayon-line crayon-striped-line" id="crayon-5982ef58a6d3a011893066-2">&nbsp;</div><div class="crayon-line" id="crayon-5982ef58a6d3a011893066-3"><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-e">git </span><span class="crayon-i">commit</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">m</span><span class="crayon-h"> </span><span class="crayon-s">"eliminando un archivo del repositorio"</span></div><div class="crayon-line crayon-striped-line" id="crayon-5982ef58a6d3a011893066-4">&nbsp;</div><div class="crayon-line" id="crayon-5982ef58a6d3a011893066-5"><span class="crayon-c">//si estas en master</span></div><div class="crayon-line crayon-striped-line" id="crayon-5982ef58a6d3a011893066-6"><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-e">git </span><span class="crayon-e">push </span><span class="crayon-e">origin </span><span class="crayon-i">master</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-5982ef58a6d3a011893066-7">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5982ef58a6d3a011893066-8"><span class="crayon-c">//si estas en otra rama</span></div><div class="crayon-line" id="crayon-5982ef58a6d3a011893066-9"><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-e">git </span><span class="crayon-e">push </span><span class="crayon-e">origin </span><span class="crayon-i">rama</span><span class="crayon-o">-</span><span class="crayon-i">en</span><span class="crayon-o">-</span><span class="crayon-i">la</span><span class="crayon-o">-</span><span class="crayon-i">que</span><span class="crayon-o">-</span><span class="crayon-i">trabajas</span></div></div></td>
+</tr>
+</table>
+</div>
+</div>
+ 
+<p>Puede que te interese este otro post sobre <a href="https://styde.net/sistema-de-ramificaciones-en-git/" target="_blank">Sistema de ramificaciones en git</a>.</p>
+<p>Perfecto, ahora el repositorio remoto tendrá la siguiente estructura</p>
+<ul>
+<li>index.php</li>
+<li>css
+<ul>
+<li>style.css</li>
+<li>common.css</li>
+</ul>
+</li>
+<li>js
+<ul>
+<li>jquery.js</li>
+<li>scripts.js</li>
+</ul>
+</li>
+<li>example.config.php</li>
+<li>.gitconfig</li>
+</ul>
+<p>y debido a que agregamos la ruta de este archivo al .gitignore de ahora en adelante no tendremos que preocuparnos por que vaya a incluirse en futuros commits.</p>
+<p>Espero que te haya gustado esta lección y que te sea de mucha ayuda, no olvides compartir el contenido y recuerda dejar tus dudas en la sección de comentarios.</p>
+<p><strong>Material relacionado</strong></p>
+<ul>
+<li><a href="https://styde.net/pull-request-en-github/" target="_blank">Pull request en GitHub</a></li>
+<li><a href="https://styde.net/configuracion-de-git-en-proyectos-de-laravel/" target="_blank">Configuración de Git en proyectos de Laravel</a></li>
+<li><a href="https://styde.net/aprende-git/" target="_blank">Aprende Git</a></li>
+</ul>
+<p>
+Aprende PHP, Laravel y más por sólo 9<sup style="font-size: 0.65em">99</sup> al mes:
+<a href="https://styde.net/planes/">ver planes</a>.
+</p>
+<div class="box-post-author">
+<div class="author-avatar">
+<img alt='Jeff' src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src='https://secure.gravatar.com/avatar/3a3e853c84312d9ec5c6c7524296e99d?s=60&#038;d=Jeff&#038;r=g' data-lazy-srcset='https://secure.gravatar.com/avatar/3a3e853c84312d9ec5c6c7524296e99d?s=120&amp;d=Jeff&amp;r=g 2x' class='avatar avatar-60 photo' height='60' width='60'/><noscript><img alt='Jeff' src='https://secure.gravatar.com/avatar/3a3e853c84312d9ec5c6c7524296e99d?s=60&#038;d=Jeff&#038;r=g' srcset='https://secure.gravatar.com/avatar/3a3e853c84312d9ec5c6c7524296e99d?s=120&amp;d=Jeff&amp;r=g 2x' class='avatar avatar-60 photo' height='60' width='60'/></noscript>
+</div>
+<div class="author-details">
+<h4>Publicado por: <a href="https://styde.net/author/jeff/" title="Entradas de Jeff" rel="author">Jeff</a></h4>
+<p>Laravel developer</p>
+<ul class="author-links">
+<li><a href="https://www.facebook.com/jeffer.8a" target="_blank"><i class="icon-facebook"></i></a></li>
+<li><a href="https://twitter.com/jeffer_8a" target="_blank"><i class="icon-twitter"></i></a></li>
+<li><a href="https://www.linkedin.com/profile/view?id=aaiaaabelauby-_mrd_rzqrlr17ulih41kfrpk8" target="_blank"><i class="icon-linkedin"></i></a></li>
+<li><a href="https://plus.google.com/b/107368848175950174806/+jefferochoave" target="_blank"><i class="icon-google"></i></a></li>
+</ul>
+</div>
+</div>
+<p class="tags"></p>
+<p class="post-neighbours">
+<a href="https://styde.net/pull-request-en-github/" class="lnk-prev"><span class="neighbour-type"><i class="icon-left-open-1"></i> Lección anterior</span> <strong>Pull request en GitHub</strong></a>
+<a href="https://styde.net/deshaciendo-cosas-en-git/" class="lnk-next"><span class="neighbour-type">Lección siguiente <i class="icon-right-open-1"></i></span> <strong>Deshaciendo cosas en Git</strong></a>
+<div class="clear"></div>
+</p>
+</div>
+<div class="col4 m-full">
+<aside id="search" class="box widget widget_search">
+<form role="search" method="get" id="searchform" class="searchform" action="https://styde.net/">
+<div>
+<label class="screen-reader-text" for="s">Buscar:</label>
+<input type="text" value="" name="s" id="s"/>
+<input type="submit" id="searchsubmit" value="Buscar"/>
+</div>
+</form><i class="fa fa-search"></i>
+</aside>
+<aside class="txtc sidebar-banner">
+<a href="https://styde.net/planes/">
+<img src="https://styde.net/images/Banner_9_99_Sidebar.png" alt="¡Obtén acceso a más de 700 lecciones por sólo 9.99 al mes!">
+</a>
+</aside>
+<aside class="box widget">
+<h5>Cursos</h5>
+<ul>
+<li><strong>PHP y Laravel esenciales</strong></li>
+<li>
+<a href="https://styde.net/curso-de-programacion-orientada-a-objetos-con-php/">
+Programación orientada a objetos </a>
+</li>
+<li>
+<a href="https://styde.net/laravel-5/">
+Primeros pasos con Laravel 5.* </a>
+</li>
+<li>
+<a href="https://styde.net/curso-crea-una-aplicacion-con-laravel-5-3/">
+Crea una aplicación con Laravel 5.3 y 5.4 </a>
+</li>
+<li>
+<a href="https://styde.net/curso-introductorio-laravel-5-1/">
+Curso de Laravel 5.1 </a>
+</li>
+<li>
+<a href="https://styde.net/curso-crea-componentes-para-php-y-laravel/">
+Crea componentes para PHP </a>
+</li>
+</ul>
+<ul>
+<li><strong>PHP y Laravel adicionales</strong></li>
+<li>
+<a href="https://styde.net/curso-de-novedades-de-laravel-5-4/">
+Novedades de Laravel 5.4 </a>
+</li>
+<li>
+<a href="https://styde.net/curso-de-novedades-en-laravel-5-3/">
+Novedades en Laravel 5.3 </a>
+</li>
+<li>
+<a href="https://styde.net/curso-de-novedades-en-laravel-5-2/">
+Novedades en Laravel 5.2 </a>
+</li>
+<li>
+<a href="https://styde.net/curso-de-eventos-y-jobs-con-laravel/">
+Curso de eventos y jobs </a>
+</li>
+<li>
+<a href="https://styde.net/curso-basico-de-eloquent-orm-con-laravel-5-1/">
+Curso básico de Eloquent ORM </a>
+</li>
+<li>
+<a href="https://styde.net/curso-avanzado-de-eloquent-orm/">
+Curso avanzado de Eloquent ORM </a>
+</li>
+<li>
+<a href="https://styde.net/curso-configuracion-administracion-de-servidores-php-laravel/">
+Curso de administración de servidores </a>
+</li>
+<li>
+<a href="https://styde.net/curso-de-interfaces-dinamicas-con-laravel-y-jquery/">
+Interfaces dinámicas con Laravel y jQuery </a>
+</li>
+</ul>
+<ul>
+<li><strong>Otras tecnologías</strong></li>
+<li>
+<a href="https://styde.net/curso-basico-de-terminal/">
+Curso básico de Terminal </a>
+</li>
+<li>
+<a href="https://styde.net/curso-de-git/">
+Curso de Git </a>
+</li>
+<li>
+<a href="https://styde.net/curso-de-vue-2/">
+Curso de Vue 2 </a>
+</li>
+<li>
+<a href="https://styde.net/curso-de-sass/">
+Curso de Sass </a>
+</li>
+<li>
+<a href="https://styde.net/curso-gulp-y-herramientas-de-automatizacion/">
+Curso de Gulp </a>
+</li>
+<li>
+<a href="https://styde.net/curso-de-vue-js/">
+Curso de Vue.js (versión 1) </a>
+</li>
+</ul>
+<p><strong>
+<a href="https://styde.net/cursos/">Ver todos los cursos y series</a>
+</strong></p>
+</aside>
+<aside class="box widget widget_recent_comments">
+<h5>Comentarios recientes</h5>
+<ul id="recentcomments">
+<li class="recentcomments">
+<span class="comment-author-link">Marcos Villavicencio</span> en
+<a href="https://styde.net/validacion-con-laravel-5-form-requests/#comment-7837">
+Validación con Laravel 5 (Form Requests) </a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">Duilio Palacios</span> en
+<a href="https://styde.net/por-que-necesitamos-clases-y-objetos-php/#comment-7836">
+¿Por qué necesitamos clases y objetos? </a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">Duilio Palacios</span> en
+<a href="https://styde.net/por-que-necesitamos-clases-y-objetos-php/#comment-7835">
+¿Por qué necesitamos clases y objetos? </a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">Juan Diego Zambrano</span> en
+<a href="https://styde.net/por-que-necesitamos-clases-y-objetos-php/#comment-7834">
+¿Por qué necesitamos clases y objetos? </a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">Juan Miguel Paulino</span> en
+<a href="https://styde.net/formularios-y-rutas-post-put-y-delete-con-laravel/#comment-7833">
+Formularios y rutas POST, PUT y DELETE con Laravel </a>
+</li>
+</ul> </aside>
+</div>
+</div>
+</section>
+<section class="post-comments">
+<div class="container">
+<div class="col10 pre1">
+<div id="disqus_thread">
+<div id="dsq-content">
+<ul id="dsq-comments">
+<li class="comment even thread-even depth-1" id="dsq-comment-2621">
+<div id="dsq-comment-header-2621" class="dsq-comment-header">
+<cite id="dsq-cite-2621">
+<span id="dsq-author-user-2621">César Camilo Cruz Cáceres</span>
+</cite>
+</div>
+<div id="dsq-comment-body-2621" class="dsq-comment-body">
+<div id="dsq-comment-message-2621" class="dsq-comment-message"><p>Excelente gracias!.</p>
+</div>
+</div>
+</li> 
+<li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-2622">
+<div id="dsq-comment-header-2622" class="dsq-comment-header">
+<cite id="dsq-cite-2622">
+<span id="dsq-author-user-2622">AxelGrazx</span>
+</cite>
+</div>
+<div id="dsq-comment-body-2622" class="dsq-comment-body">
+<div id="dsq-comment-message-2622" class="dsq-comment-message"><p>Y si incluyes el parámetro -f para que reescriba la historia de los commits? En caso de que haya cargado un archivo con contraseñas o keys =)</p>
+<p>Edit: bueno ahora que lo pienso necesitarías eliminar/editar el commit localmente primero jejeje</p>
+</div>
+</div>
+</li> 
+<li class="comment even thread-even depth-1" id="dsq-comment-2627">
+<div id="dsq-comment-header-2627" class="dsq-comment-header">
+<cite id="dsq-cite-2627">
+<span id="dsq-author-user-2627">cloud4bpm</span>
+</cite>
+</div>
+<div id="dsq-comment-body-2627" class="dsq-comment-body">
+<div id="dsq-comment-message-2627" class="dsq-comment-message"><p>¿Se elimina también usando los comandos que describes del history de commits?</p>
+</div>
+</div>
+</li> 
+</ul>
+</div>
+</div>
+<script type="text/javascript">
+var disqus_url = 'https://styde.net/eliminar-un-archivo-de-un-repositorio-git/';
+var disqus_identifier = '5125 https://styde.net/?p=5125';
+var disqus_container_id = 'disqus_thread';
+var disqus_shortname = 'duilio';
+var disqus_title = "Eliminar un archivo de un repositorio Git";
+var disqus_config_custom = window.disqus_config;
+var disqus_config = function () {
+    /*
+    All currently supported events:
+    onReady: fires when everything is ready,
+    onNewComment: fires when a new comment is posted,
+    onIdentify: fires when user is authenticated
+    */
+    
+    
+    this.language = '';
+        this.callbacks.onReady.push(function () {
+
+        // sync comments in the background so we don't block the page
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = '?cf_action=sync_comments&post_id=5125';
+
+        var firstScript = document.getElementsByTagName('script')[0];
+        firstScript.parentNode.insertBefore(script, firstScript);
+    });
+    
+    if (disqus_config_custom) {
+        disqus_config_custom.call(this);
+    }
+};
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+</div>
+</div>
+</section>
+<br>
+<section class="subscribe">
+<div class="container">
+<div class="col12">
+<form class="form" action="https://duilio.us10.list-manage.com/subscribe/post?u=48f2082df849a26cc23d85517&amp;id=c6fa450847" data-id="0" method="post" target="_blank">
+<h3><img src="https://styde.net/wp-content/themes/styde/img/icon-email.svg" alt="Email icon" width="39" height="40" class="form-email-icon"> Suscríbete a nuestro boletín</h3>
+<p>Te enviaremos publicaciones con consejos útiles y múltiples recursos para que sigas aprendiendo.</p>
+<input id="mce-EMAIL" name="EMAIL" type="email" required placeholder="Tu correo electrónico">
+<input id="mce-NAME" name="NAME" type="hidden" value="Suscriptor">
+<input class="btn btn-yellow-cta" name="subscribe" type="submit" value="Suscríbete">
+<div class="hon">
+<input tabindex="-1" name="b_48f2082df849a26cc23d85517_c6fa450847" type="text" value=""/>
+</div>
+</form>
+<ul class="social">
+<li class="social-twitter"><a href="https://twitter.com/Stydenet" target="_blank"><i class="icon-twitter"></i></a></li>
+<li class="social-facebook"><a href="https://www.facebook.com/Stydenet" target="_blank"><i class="icon-facebook"></i></a></li>
+<li class="social-youtube"><a href="https://www.youtube.com/user/silencedsg/videos" target="_blank"><i class="icon-youtube-play"></i></a></li>
+<li class="social-disqus"><a href="https://disqus.com/home/forum/duilio/" target="_blank"><i class="icon-disqus"></i></a></li>
+<li class="social-feed"><a href="https://styde.net/feed/" target="_blank"><i class="icon-rss"></i></a></li>
+<li class="social-github"><a href="https://www.github.com/Stydenet" target="_blank"><i class="icon-github"></i></a></li>
+</ul>
+</div>
+</div>
+</section>
+<footer class="foot" itemscope itemtype="http://schema.org/WPFooter">
+<div class="container">
+<div class="col12">
+<p><a href="/"><img src="https://styde.net/wp-content/themes/styde/img/styde-w-o.png" alt="Styde.net logo" width="100" height="30"></a></p>
+</div>
+<div class="col6">
+<p>En Styde nos dedicamos a enseñarte tecnologías actuales de desarrollo web para ayudarte a crear tus proyectos de una forma más eficiente.</p>
+</div>
+<div class="col6">
+<p class="txtr foot-links">
+<a href="https://styde.net/planes/">Ver Planes</a> • <a href="https://styde.net/cursos/">Series y cursos</a> • <a href="https://styde.net/blog/">Ver últimas lecciones</a> <br>
+<a href="https://styde.net/terminos-y-condiciones-de-uso/">Términos y condiciones de uso</a> • <a href="https://styde.net/politica-de-privacidad/">Política de privacidad</a>
+</p>
+</div>
+</div>
+<div class="end">
+<div class="container">
+<div class="col12 txtc">
+<p class="copyright">&copy; 2017 Derechos Reservados - Styde Limited</p>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<script type="text/javascript">
+        // <![CDATA[
+        var disqus_shortname = 'duilio';
+        (function () {
+            var nodes = document.getElementsByTagName('span');
+            for (var i = 0, url; i < nodes.length; i++) {
+                if (nodes[i].className.indexOf('dsq-postid') != -1 && nodes[i].parentNode.tagName == 'A') {
+                    nodes[i].parentNode.setAttribute('data-disqus-identifier', nodes[i].getAttribute('data-dsqidentifier'));
+                    url = nodes[i].parentNode.href.split('#', 1);
+                    if (url.length == 1) { url = url[0]; }
+                    else { url = url[1]; }
+                    nodes[i].parentNode.href = url + '#disqus_thread';
+                }
+            }
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+        // ]]>
+        </script>
+ 
+<link rel='stylesheet' id='crayon-group-css' href='https://styde.net/wp-content/plugins/bwp-minify/min/?f=wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css&#038;ver=1501741377' type='text/css' media='all'/>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var InvitationsForSlack = {"endpoints":{"invite.send":"https:\/\/styde.net\/wp-json\/invitations-for-slack\/v1\/invite.send","team.stats":"https:\/\/styde.net\/wp-json\/invitations-for-slack\/v1\/team.stats"},"teamInfo":{"id":"T03DXUE17","name":"Styde","domain":"styde","email_domain":"","icon":{"image_34":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_34.png","image_44":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_44.png","image_68":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_68.png","image_88":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_88.png","image_102":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_102.png","image_132":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_132.png","image_original":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_original.png","image_230":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_230.png"}},"userIsMember":"","template":"    <div class=\"invite-box-wrapper hidden\">        <div class=\"invite-box\">             <div class=\"no-access-message\">[LOGGED_IN_MESSAGE]<\/div>             <div class=\"team-stats\"><strong class=\"online\">[STATS_ONLINE]<\/strong> usuarios en l\u00ednea. <strong class=\"registered\">[STATS_TOTAL]<\/strong> usuarios registrados.<\/div>        <\/div>    <\/div>","data":{"team":{"id":"T03DXUE17","name":"Styde","domain":"styde","email_domain":"","icon":{"image_34":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_34.png","image_44":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_44.png","image_68":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_68.png","image_88":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_88.png","image_102":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_102.png","image_132":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_132.png","image_original":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_original.png","image_230":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_230.png"}},"stats":{"total":1243,"online":14},"only_logged_in":"1","allow_different_email":false,"logged_in_message":"Reg\u00edstrate en Styde para obtener la invitaci\u00f3n a Slack","user_allowed":true,"is_logged_in":false,"is_registered":false,"user":false},"processing_text":"Enviando invitaci\u00f3n..."};
+/* ]]> */
+</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpcompletable = {"ajax_url":"https:\/\/styde.net\/wp-admin\/admin-ajax.php","nonce":"1c92a0e05f"};
+/* ]]> */
+</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"https:\/\/styde.net\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Presiona %s para copiar y %s para pegar","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://styde.net/wp-content/plugins/bwp-minify/min/?f=wp-content/plugins/invitations-for-slack/invitations-for-slack/scripts/script.js,wp-content/plugins/wpcomplete/public/js/wpcomplete-public.js,wp-content/themes/styde/js/min/scripts.js,wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js&#038;ver=1501741377'></script>
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "WebSite",
+    "name" : "Styde Limited",
+    "email" : "info@styde.net",
+    "url" : "https://styde.net",
+    "logo" : "https://styde.net/images/StydeAvatar6.png",
+    "sameAs" : [
+        "https://twitter.com/Stydenet",
+        "https://www.facebook.com/Stydenet",
+        "https://www.youtube.com/user/silencedsg/videos"
+    ],
+    "contactPoint" : [
+        {
+            "@type" : "ContactPoint",
+            "email" : "admin@styde.net",
+            "contactType" : "customer service"
+        }
+    ],
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://styde.net?s={search_term_string}",
+        "query-input": "required s=search_term_string"
+    }
+}
+</script>
+</body>
+</html>
+ 

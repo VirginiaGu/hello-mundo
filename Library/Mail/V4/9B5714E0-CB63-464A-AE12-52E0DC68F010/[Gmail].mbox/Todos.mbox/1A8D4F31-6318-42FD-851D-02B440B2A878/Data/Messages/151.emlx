@@ -1,0 +1,366 @@
+16655     
+Delivered-To: sayde.gutierrez92@gmail.com
+Received: by 10.31.166.138 with SMTP id p132csp5310941vke;
+        Tue, 25 Jul 2017 11:05:48 -0700 (PDT)
+X-Received: by 10.99.134.194 with SMTP id x185mr14356379pgd.210.1501005948107;
+        Tue, 25 Jul 2017 11:05:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501005948; cv=none;
+        d=google.com; s=arc-20160816;
+        b=P5I9FL9y4JAKYvs147FdeSsGPe0B1hZFUHPnZ1io1jSZK2FZt3Hv148aWd76khP+FO
+         Mkk1FVJ53nkAJFKPlRddT4iJXCNlg0RDybY6UcJrb/HaOwZijA0uz/4azMVimTX9+Jza
+         eIiv1AbupSe1QxA7YmGTwgJvDawB+pgq7goBS0aIwYDcYFOWDsugIXRfvsdqgKwf6RK5
+         IUrnF68ceaX3xLuKznUWQC+1Iq2PGeY2qBMpXCTnwDRc4xPmB0gwo5R2jf7IVBEzQPr2
+         /N43RvnGghTvyyEk1QW0FP+3rmpnLLiJC/8q7BW6VP+YZhEBgp1OAjZU2LKndOSjoUti
+         0cCA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:spamdiagnosticmetadata:spamdiagnosticoutput:user-agent
+         :content-language:accept-language:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from:dkim-signature
+         :arc-authentication-results;
+        bh=tghnjD060hzRWZwDDGBejD5B0eRHhpICyhT4DWFJs5Q=;
+        b=TVxoX3JnZC5JtjgrgnuH71rQFr9QI4DutJFIVhXHJvn+ZQc3uyMHc+uCl4Qgk19he5
+         GBV8k+FSLEMl/fFYcfQ6R7DoTPl8fx6OX1BynXDPSinhdNTvsXbyDJiS0XnDEd/ABv8E
+         uv1fP8TN8T/xIogCkB0NxxUgAIGimgOw26sofclV5our+OhDqIoDeB4bvCs0x0hY4dYU
+         ML4llBeGBe7/QRAfNJNvEmXlg6syWu3oN6ADICaoM5GVu2tnZQBCS0YMGvBUBAj1wp80
+         IDd39koGoQnxlwXa5AUR4h6Tc846i/DwxX1oMHbFi3PeTlGruoqX0dI9sBqhItdEmpq0
+         R4vg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@moneypark.ch header.b=IybCxPrQ;
+       spf=pass (google.com: domain of iven.schellhorn@moneypark.ch designates 40.107.5.120 as permitted sender) smtp.mailfrom=iven.schellhorn@moneypark.ch
+Return-Path: <iven.schellhorn@moneypark.ch>
+Received: from EUR03-VE1-obe.outbound.protection.outlook.com (mail-eopbgr50120.outbound.protection.outlook.com. [40.107.5.120])
+        by mx.google.com with ESMTPS id v4si6537792pfv.94.2017.07.25.11.05.46
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 25 Jul 2017 11:05:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of iven.schellhorn@moneypark.ch designates 40.107.5.120 as permitted sender) client-ip=40.107.5.120;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@moneypark.ch header.b=IybCxPrQ;
+       spf=pass (google.com: domain of iven.schellhorn@moneypark.ch designates 40.107.5.120 as permitted sender) smtp.mailfrom=iven.schellhorn@moneypark.ch
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=moneypark.ch;
+ s=selector1; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
+ bh=tghnjD060hzRWZwDDGBejD5B0eRHhpICyhT4DWFJs5Q=;
+ b=IybCxPrQylEZkuY8aRsQ9kZqxGFQ4Vvsd860bzyJyYL1WMeiYmzmXq3wjsSIal7H4UpQWg3sHrevHhdSkiZCLP53xZaqWvdNknUlqZ6zbd7p6K1SnAFLG994a+aTv6/y5KRIXXZ0BUyyirk4rDyXg22H06AqcUsdme+Mv/5jjgs=
+Received: from VI1PR0302MB2832.eurprd03.prod.outlook.com (10.171.106.21) by
+ VI1PR0302MB2589.eurprd03.prod.outlook.com (10.171.104.10) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.1282.10; Tue, 25 Jul 2017 18:05:42 +0000
+Received: from VI1PR0302MB2832.eurprd03.prod.outlook.com
+ ([fe80::916b:f662:dc90:3ccc]) by VI1PR0302MB2832.eurprd03.prod.outlook.com
+ ([fe80::916b:f662:dc90:3ccc%18]) with mapi id 15.01.1282.017; Tue, 25 Jul
+ 2017 18:05:42 +0000
+From: Iven Schellhorn <iven.schellhorn@moneypark.ch>
+To: Valculescu Claudiu <claudio040788@gmail.com>, sayde gutierrez
+	<sayde.gutierrez92@gmail.com>
+CC: Florent Morille <florent.morille@moneypark.ch>, Benjamin Tacquet
+	<benjamin.tacquet@moneypark.ch>, Vasyl Dizhak <vasyl.dizhak@moneypark.ch>,
+	Isabelle Ernst <isabelle.ernst@moneypark.ch>
+Subject: your start @ MoneyPark
+Thread-Topic: your start @ MoneyPark
+Thread-Index: AQHTBXCh7ro/37PnyE+Ztjjra51awg==
+Date: Tue, 25 Jul 2017 18:05:42 +0000
+Message-ID: <D59D5511.DE25%iven.schellhorn@moneypark.com>
+Accept-Language: de-DE, en-US
+Content-Language: de-DE
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+user-agent: Microsoft-MacOutlook/14.7.3.170325
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=iven.schellhorn@moneypark.ch; 
+x-originating-ip: [212.203.74.22]
+x-ms-publictraffictype: Email
+x-microsoft-exchange-diagnostics: 1;VI1PR0302MB2589;7:CWQUW5q5qxexJGilZq+ufzgzbOmZ9x/GAHUVvW4iFRDtvCzMJTmTKPbbuJvdQeWeWQ0Bmcw2BV2/pEorffkiLv97NaqGWtIM+2XwRulstDn82ajxQJdLL4mHkp/qyBJsjktg+nFIiZ1QQ4JeWIGNtKw6UQ1suSpy4j0rEk+tgfjEjhA+v33dT8DGaYpeysQR7YrWAd6RYs3aj6T3TG2JKvv2UiRr+h/3tfzGyJrgq7Nv5vHHHtIeicKv5uSWyg/4bPpKyanb8ekL04gQwfAoaW2bFF4uvI96p7Xlys1MCcTNiTQbGql6cleesqOeR+sufRjrD06F7p726lW2e4CjkmsJfEU2CO9uoKsx58tJtNrX6JTPY2o00fARfIA6LQOwgNNuYhcD++I+TkyzU0+8QzcwzKaB2u6riHkEdHgFd3W/Tk44SyTnilI2q45QFkkHSxOXLR/IOX9nJ4I2OSxbTGhwc/IImo7xH35Zqkh14qFfxGQjzK7ziLXOtVx0GR98Cv7DUFroM8MJ4xDI3K7hc1yWNuxZ43HX22QyA+NJT4sCpGRo+Eetv/riQBUn/UmGFsXVGGPkD/DSL8H/FKIJRpRrxZ9wvxqeB6HtzPpffdvrnT4vUQbagCBmtlmYJmp7fsXlXGd4/CRhXASubvtN6BDMcedKR5gnf46Ax4J99LJq1RQfQ7uLy2HrfmslF/SSuTREa2gLUyEv7BxwOHMRSnr4ByetYW492VYglKdCJEbKDcjJNorwnQPerayTXq9vb+uT0l/HRR/vSNCU+70vR8afNvp7YbxjlQc1j9QbG6s=
+x-ms-office365-filtering-correlation-id: 2da7823d-932f-4e7a-200d-08d4d387c3fa
+x-microsoft-antispam: UriScan:;BCL:0;PCL:0;RULEID:(300000500095)(300135000095)(300000501095)(300135300095)(22001)(300000502095)(300135100095)(2017030254075)(300000503095)(300135400095)(2017052603031)(201703131423075)(201702281549075)(300000504095)(300135200095)(300000505095)(300135600095)(300000506095)(300135500095);SRVR:VI1PR0302MB2589;
+x-ms-traffictypediagnostic: VI1PR0302MB2589:
+x-exchange-antispam-report-test: UriScan:;
+x-microsoft-antispam-prvs: <VI1PR0302MB25898105351BEFF6A36B2C459BB80@VI1PR0302MB2589.eurprd03.prod.outlook.com>
+x-exchange-antispam-report-cfa-test: BCL:0;PCL:0;RULEID:(100000700101)(100105000095)(100000701101)(100105300095)(100000702101)(100105100095)(6040450)(601004)(2401047)(8121501046)(5005006)(100000703101)(100105400095)(93006095)(93001095)(10201501046)(3002001)(6041248)(20161123555025)(20161123564025)(20161123560025)(20161123562025)(20161123558100)(201703131423075)(201702281528075)(201703061421075)(201703061406153)(2016111802025)(6072148)(6043046)(100000704101)(100105200095)(100000705101)(100105500095);SRVR:VI1PR0302MB2589;BCL:0;PCL:0;RULEID:(100000800101)(100110000095)(100000801101)(100110300095)(100000802101)(100110100095)(100000803101)(100110400095)(100000804101)(100110200095)(100000805101)(100110500095);SRVR:VI1PR0302MB2589;
+x-forefront-prvs: 03793408BA
+x-forefront-antispam-report: SFV:NSPM;SFS:(10019020)(39840400002)(39400400002)(39450400003)(39410400002)(189002)(252514010)(199003)(2906002)(450100002)(236005)(6512007)(25786009)(733005)(9686003)(6436002)(5660300001)(86362001)(74482002)(54896002)(99286003)(54906002)(6306002)(478600001)(68736007)(83506001)(53936002)(102836003)(3846002)(39060400002)(4326008)(54356999)(101416001)(5250100002)(50986999)(6486002)(4001350100001)(6506006)(36756003)(3280700002)(81156014)(38730400002)(3660700001)(6116002)(107886003)(7736002)(861006)(106356001)(8676002)(606006)(105586002)(81166006)(2900100001)(189998001)(8936002)(66066001)(97736004)(14454004);DIR:OUT;SFP:1102;SCL:1;SRVR:VI1PR0302MB2589;H:VI1PR0302MB2832.eurprd03.prod.outlook.com;FPR:;SPF:None;PTR:InfoNoRecords;MX:1;A:1;LANG:en;
+received-spf: None (protection.outlook.com: moneypark.ch does not designate
+ permitted sender hosts)
+spamdiagnosticoutput: 1:99
+spamdiagnosticmetadata: NSPM
+Content-Type: multipart/alternative;
+	boundary="_000_D59D5511DE25ivenschellhornmoneyparkcom_"
+MIME-Version: 1.0
+X-OriginatorOrg: moneypark.ch
+X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Jul 2017 18:05:42.6616
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 5781b2e1-0185-41a3-8959-861ca9be6857
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR0302MB2589
+
+--_000_D59D5511DE25ivenschellhornmoneyparkcom_
+Content-Type: text/plain; charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
+
+Hello Sayde, hello Claudiu
+
+
+We are counting the days and looking forward working with you. We would lik=
+e you to start on Wednesday August 2 at 9 am sharp in Gartenstrasse 25, 800=
+2 Z=FCrich.
+
+@Sayde =96 Vasyl our team leader development will be responsible for you an=
+d will give you an introduction.
+
+@Claudiu =96 Florent our BI Manager will be responsible for you and will gi=
+ve you an introduction.
+
+
+Please bring along your laptop or working device. Your accounts have alread=
+y been created.
+
+
+See you next Wednesday.
+
+Best regards
+Iven
+
+Iven Schellhorn
+Head of Human Resources
+
+
+Direkt: +41 <tel:+41%2044%20200%2075%2075> 78 65 75 289
+Telefon: 0800 220 440<tel:0800%20220%20440>
+Email: iven.schellhorn@moneypark.ch<mailto:iven.schellhorn@moneypark.ch>
+
+
+MoneyPark AG
+Gartenstrasse 25
+8002 Z=FCrich
+
+[www.moneypark.ch]<https://moneypark.ch/en/>
+
+
+[https://moneypark.ch/footer-email/static/i/speaker.png]
+[MoneyPark weiterempfehlen]<https://moneypark.ch/news-wissen/weiterempfehle=
+n/>
+[und einen Gutschein im Wert von CHF 200 erhalten]<https://moneypark.ch/new=
+s-wissen/weiterempfehlen/>
+[https://moneypark.ch/footer-email/static/i/lunch.png]  [https://moneypark.=
+ch/footer-email/static/i/chair.png]  [https://moneypark.ch/footer-email/sta=
+tic/i/mask.png]
+
+
+
+
+--_000_D59D5511DE25ivenschellhornmoneyparkcom_
+Content-Type: text/html; charset="Windows-1252"
+Content-ID: <F51C7C6F1A89E84DBF04F63D2F7C8F05@eurprd03.prod.outlook.com>
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DWindows-1=
+252">
+</head>
+<body style=3D"word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-lin=
+e-break: after-white-space; color: rgb(0, 0, 0); font-size: 14px; font-fami=
+ly: Calibri, sans-serif;">
+<div>Hello Sayde, hello Claudiu</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div>We are counting the days and looking forward working with you. We woul=
+d like you to start on Wednesday August 2 at 9 am sharp in Gartenstrasse 25=
+, 8002 Z=FCrich.</div>
+<div><br>
+</div>
+<div>@Sayde =96 Vasyl our team leader development will be responsible for y=
+ou and will give you an introduction.</div>
+<div><br>
+</div>
+<div>@Claudiu =96 Florent our BI Manager will be responsible for you and wi=
+ll give you an introduction.</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div>Please bring along your laptop or working device. Your accounts have a=
+lready been created.</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div>See you next Wednesday.</div>
+<div><br>
+</div>
+<div>Best regards</div>
+<div>Iven</div>
+<div><br>
+</div>
+<div>
+<div>
+<div>
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" styl=
+e=3D"color: rgb(0, 0, 0); font-family: Calibri, Arial, Helvetica, sans-seri=
+f, EmojiFont, 'Apple Color Emoji', 'Segoe UI Emoji', NotoColorEmoji, 'Segoe=
+ UI Symbol', 'Android Emoji', EmojiSymbols; font-size: 16px; orphans: 2; wi=
+dows: 2; background-color: rgb(255, 255, 255);">
+<tbody>
+<tr>
+<td style=3D"font-family: Arial, sans-serif; font-size: 12pt; color: rgb(73=
+, 78, 65);">
+<span class=3D"given-name">Iven&nbsp;</span><span class=3D"family-name">Sch=
+ellhorn</span></td>
+</tr>
+<tr>
+<td><span class=3D"title" style=3D"font-family: Arial, sans-serif; font-siz=
+e: 12pt; color: rgb(73, 78, 65);">Head of Human Resources</span>&nbsp;</td>
+</tr>
+<tr>
+<td style=3D"height: 10px; display: block;">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<table width=3D"100%" cellspacing=3D"0" cellpadding=3D"0" style=3D"color: r=
+gb(0, 0, 0); font-family: Calibri, Arial, Helvetica, sans-serif, EmojiFont,=
+ 'Apple Color Emoji', 'Segoe UI Emoji', NotoColorEmoji, 'Segoe UI Symbol', =
+'Android Emoji', EmojiSymbols; font-size: 16px; orphans: 2; widows: 2; back=
+ground-color: rgb(255, 255, 255); border-top-width: 1px; border-top-style: =
+solid; border-top-color: rgb(234, 234, 234); border-bottom-width: 1px; bord=
+er-bottom-style: solid; border-bottom-color: rgb(234, 234, 234);">
+<tbody>
+<tr>
+<td class=3D"row">
+<table class=3D"adr" width=3D"100%" cellspacing=3D"0" border=3D"0" cellpadd=
+ing=3D"0">
+<tbody>
+<tr>
+<td style=3D"height: 10px; display: block;">&nbsp;</td>
+</tr>
+<tr>
+<td class=3D"tel"><span class=3D"type" style=3D"font-family: Arial, sans-se=
+rif; font-size: 12pt; color: rgb(73, 78, 65);">Direkt:&nbsp;</span><a class=
+=3D"value" href=3D"tel:&#43;41 44 200 75 75" id=3D"LPNoLP" style=3D"text-de=
+coration: none; outline: none; color: rgb(73, 78, 65); font-size: 12pt; fon=
+t-family: Arial, sans-serif;">&#43;41&nbsp;</a>78
+ 65 75 289</td>
+</tr>
+<tr>
+<td class=3D"tel"><span class=3D"type" style=3D"font-family: Arial, sans-se=
+rif; font-size: 12pt; color: rgb(73, 78, 65);">Telefon:&nbsp;</span><a clas=
+s=3D"value" href=3D"tel:0800 220 440" id=3D"LPNoLP" style=3D"text-decoratio=
+n: none; outline: none; color: rgb(73, 78, 65); font-size: 12pt; font-famil=
+y: Arial, sans-serif;">0800
+ 220 440</a></td>
+</tr>
+<tr>
+<td class=3D"email"><span class=3D"type" style=3D"font-family: Arial, sans-=
+serif; font-size: 12pt; color: rgb(73, 78, 65);">Email:&nbsp;</span><a clas=
+s=3D"value" href=3D"mailto:iven.schellhorn@moneypark.ch" id=3D"LPNoLP" styl=
+e=3D"text-decoration: none; outline: none; color: rgb(73, 78, 65); font-siz=
+e: 12pt; font-family: Arial, sans-serif;">iven.schellhorn@moneypark.ch</a>
+<div style=3D"height: 10px;">&nbsp;</div>
+</td>
+</tr>
+<tr>
+<td><span class=3D"org" style=3D"font-family: Arial, sans-serif; font-size:=
+ 12pt; color: rgb(73, 78, 65);">MoneyPark AG</span></td>
+</tr>
+<tr>
+<td><span class=3D"street-address" style=3D"font-family: Arial, sans-serif;=
+ font-size: 12pt; color: rgb(73, 78, 65);">Gartenstrasse 25</span></td>
+</tr>
+<tr>
+<td><span class=3D"postal-code" style=3D"font-family: Arial, sans-serif; fo=
+nt-size: 12pt; color: rgb(73, 78, 65);">8002&nbsp;</span><span class=3D"loc=
+ality" style=3D"font-family: Arial, sans-serif; font-size: 12pt; color: rgb=
+(73, 78, 65);">Z=FCrich</span></td>
+</tr>
+<tr>
+<td style=3D"height: 20px; display: block;">&nbsp;</td>
+</tr>
+<tr>
+<td><a href=3D"https://moneypark.ch/en/" target=3D"_blank" id=3D"LPNoLP" st=
+yle=3D"font-family: Arial, sans-serif; font-size: 20px; color: rgb(120, 158=
+, 86); display: block; line-height: 52px; padding-right: 5px;"><img src=3D"=
+https://moneypark.ch/footer-email/static/i/lde.png" width=3D"221" height=3D=
+"59" alt=3D"www.moneypark.ch" nosend=3D"1" style=3D"background: transparent=
+; text-align: center; user-select: none;"></a></td>
+</tr>
+</tbody>
+</table>
+</td>
+<td class=3D"row" align=3D"right" style=3D"text-align: right;">
+<table width=3D"275" class=3D"second-table" cellspacing=3D"20" border=3D"0"=
+ cellpadding=3D"0" align=3D"right" style=3D"background-color: rgb(120, 158,=
+ 86); text-align: center;">
+<tbody>
+<tr>
+<td style=3D"height: 1px; display: block;">&nbsp;</td>
+</tr>
+<tr>
+<td><img src=3D"https://moneypark.ch/footer-email/static/i/speaker.png" wid=
+th=3D"83" height=3D"45" nosend=3D"1" alt=3D""></td>
+</tr>
+<tr>
+<td><a href=3D"https://moneypark.ch/news-wissen/weiterempfehlen/" target=3D=
+"_blank" id=3D"LPNoLP" style=3D"font-family: Arial, sans-serif; font-size: =
+16px; color: rgb(255, 255, 255); display: block; line-height: 50px;"><img s=
+rc=3D"https://moneypark.ch/footer-email/static/i/rde.png" alt=3D"MoneyPark =
+weiterempfehlen" width=3D"210" height=3D"60" nosend=3D"1" style=3D"backgrou=
+nd-color: transparent; background-position: initial initial; background-rep=
+eat: initial initial;"></a></td>
+</tr>
+<tr>
+<td><a href=3D"https://moneypark.ch/news-wissen/weiterempfehlen/" target=3D=
+"_blank" id=3D"LPNoLP" style=3D"font-family: Arial, sans-serif; font-size: =
+14px; color: rgb(255, 255, 255); display: block; line-height: 28px;"><img s=
+rc=3D"https://moneypark.ch/footer-email/static/i/rdeun.png" alt=3D"und eine=
+n Gutschein im Wert von CHF 200 erhalten" width=3D"210" height=3D"60" nosen=
+d=3D"1" style=3D"background-color: transparent; background-position: initia=
+l initial; background-repeat: initial initial;"></a></td>
+</tr>
+<tr>
+<td>
+<table width=3D"100%" cellspacing=3D"0" border=3D"0" cellpadding=3D"0">
+<tbody>
+<tr>
+<td><img src=3D"https://moneypark.ch/footer-email/static/i/lunch.png" width=
+=3D"54" height=3D"52" nosend=3D"1"></td>
+<td><img src=3D"https://moneypark.ch/footer-email/static/i/chair.png" width=
+=3D"54" height=3D"52" nosend=3D"1" data-pin-nopin=3D"true"></td>
+<td><img src=3D"https://moneypark.ch/footer-email/static/i/mask.png" width=
+=3D"44" height=3D"42" nosend=3D"1" data-pin-nopin=3D"true"></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<br>
+</div>
+</div>
+</body>
+</html>
+
+--_000_D59D5511DE25ivenschellhornmoneyparkcom_--
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>date-last-viewed</key>
+	<integer>0</integer>
+	<key>date-received</key>
+	<integer>1501005947</integer>
+	<key>flags</key>
+	<integer>8590195713</integer>
+	<key>gmail-label-ids</key>
+	<array>
+		<integer>3</integer>
+		<integer>8</integer>
+	</array>
+	<key>remote-id</key>
+	<string>10547</string>
+</dict>
+</plist>

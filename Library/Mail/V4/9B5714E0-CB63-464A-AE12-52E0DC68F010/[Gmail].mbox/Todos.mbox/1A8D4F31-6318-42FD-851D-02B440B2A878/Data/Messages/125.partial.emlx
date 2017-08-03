@@ -1,0 +1,797 @@
+31752     
+Delivered-To: sayde.gutierrez92@gmail.com
+Received: by 10.31.166.138 with SMTP id p132csp513854vke; Fri, 21 Jul 2017
+ 03:19:40 -0700 (PDT)
+X-Received: by 10.99.44.206 with SMTP id s197mr6913471pgs.116.1500632379949;
+ Fri, 21 Jul 2017 03:19:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1500632379; cv=none; d=google.com;
+ s=arc-20160816;
+ b=UhfVOq149LGAUqNrPqmqn/jqckB/RRgyMVsgW3911KOgWiD8reRLlK5XTAS/xZ8Xwo
+ 7dWY/OzvmSbCEgTmVl8DqOfmlbspKwUNaSKRoMKEBQ3t8VaoQNCGK979HY4Jjl5K+xRR
+ YuuakxR/FfMdq1b+VqhrZN70ymkyFb4o5vNFoQhD5aGC6n20iNWsyFVOC/ZrFQ7ePmgy
+ G2Lyxrzi7F7PVYh5SbkGAFn1u6n5drSYQz2XaGI+Tfm8V8Sifsv2JXVQV5Co+D5TEWss
+ +Fp9tGKTthur8rgC8LfLVe+fpArL1fi+/A778eAm7BeDHyZz6/q6xnUmf07ORk5P9AKW W4gA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20160816;
+ h=mime-version:spamdiagnosticmetadata:spamdiagnosticoutput:user-agent
+ :content-language:accept-language:in-reply-to:references:message-id
+ :date:thread-index:thread-topic:subject:cc:to:from:dkim-signature
+ :arc-authentication-results; bh=fUoSpLnzcbHR2karBIExtTXwaH7geNJXJxqYtM08SHQ=;
+ b=DV5f7YKfLRONK8LP0ekf+pcU2fc8tXqbcFoXMQky9x5j1VpjFQbFczQO/MKzASQ9aJ
+ WUW2Z7S8v+2bWBCcLFvSn/sqMhHAj2nuAGl78uMYH1hc1vBjrcJYc4lD5eTG8xQr5g7X
+ PoC9NPbJHj4bw9afEvBQyjD4RqmjLjJuTi54in/+RaXpZddsJ5kgo2OCN3yG2thPX2TB
+ /GwkWctf+OE31PqjoocQrCEWQfnqDi/qRGovJPkVcK0D9sPjZN3YUPSsHULapJtrQgU4
+ MbS7IhAxLEt2XL4JsUfmBxTHgPj1kDHQWiHwUgGnKJFZ+meMw8DEmwA9kP4244yzGmxs LuzA==
+ARC-Authentication-Results: i=1; mx.google.com; dkim=pass
+ header.i=@moneypark.ch header.b=AhCnkbCr; spf=pass (google.com: domain of
+ iven.schellhorn@moneypark.ch designates 104.47.0.126 as permitted sender)
+ smtp.mailfrom=iven.schellhorn@moneypark.ch
+Return-Path: <iven.schellhorn@moneypark.ch>
+Received: from EUR01-HE1-obe.outbound.protection.outlook.com
+ (mail-he1eur01on0126.outbound.protection.outlook.com. [104.47.0.126]) by
+ mx.google.com with ESMTPS id p127si2823213pfp.90.2017.07.21.03.19.38 for
+ <sayde.gutierrez92@gmail.com> (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA
+ bits=128/128); Fri, 21 Jul 2017 03:19:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of iven.schellhorn@moneypark.ch
+ designates 104.47.0.126 as permitted sender) client-ip=104.47.0.126;
+Authentication-Results: mx.google.com; dkim=pass header.i=@moneypark.ch
+ header.b=AhCnkbCr; spf=pass (google.com: domain of
+ iven.schellhorn@moneypark.ch designates 104.47.0.126 as permitted sender)
+ smtp.mailfrom=iven.schellhorn@moneypark.ch
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=moneypark.ch;
+ s=selector1; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version;
+ bh=fUoSpLnzcbHR2karBIExtTXwaH7geNJXJxqYtM08SHQ=;
+ b=AhCnkbCr2Y+vHRkdVPHvwZQPdONgylvnRn6O6UkUoCZC0Lcr+SWcetZ4/NsarSqocE1zDrPKPZ80Ey3l57tjx7jSQZ5WdzEgnTxQkYswAN/fhDkLEqS7hA4CxvY4112GATbXUGw1nYe4m+1e1oTmy6NYVjhZ9wodWyapaGwpxK0=
+Received: from VI1PR0302MB2832.eurprd03.prod.outlook.com (10.171.106.21) by
+ DB6PR03MB2871.eurprd03.prod.outlook.com (10.165.140.20) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.1261.13; Fri, 21 Jul 2017 10:19:33 +0000
+Received: from VI1PR0302MB2832.eurprd03.prod.outlook.com
+ ([fe80::d166:b80:709f:630f]) by VI1PR0302MB2832.eurprd03.prod.outlook.com
+ ([fe80::d166:b80:709f:630f%18]) with mapi id 15.01.1261.024; Fri, 21 Jul 2017
+ 10:19:32 +0000
+From: Iven Schellhorn <iven.schellhorn@moneypark.ch>
+To: Thomas Kehl <thomas.kehl@moneypark.ch>
+CC: "sayde.gutierrez92@gmail.com" <sayde.gutierrez92@gmail.com>, "Isabelle
+ Ernst" <isabelle.ernst@moneypark.ch>
+Subject: =?Windows-1252?Q?Re:_Vertrag_zur=FCck?=
+Thread-Topic: =?Windows-1252?Q?Vertrag_zur=FCck?=
+Thread-Index: AdMBYtgA0XPWgvTJQ2e70JvCgMVUZwAuLskA
+Date: Fri, 21 Jul 2017 10:19:31 +0000
+Message-ID: <D597A0C6.B691%iven.schellhorn@moneypark.com>
+References: <VI1PR03MB18221F256345BF545B92894D8FA70@VI1PR03MB1822.eurprd03.prod.outlook.com>
+In-Reply-To: <VI1PR03MB18221F256345BF545B92894D8FA70@VI1PR03MB1822.eurprd03.prod.outlook.com>
+Accept-Language: de-DE, en-US
+Content-Language: de-DE
+X-MS-Has-Attach: yes
+X-MS-TNEF-Correlator: 
+user-agent: Microsoft-MacOutlook/14.7.3.170325
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=iven.schellhorn@moneypark.ch;
+x-originating-ip: [212.203.74.22]
+x-ms-publictraffictype: Email
+x-microsoft-exchange-diagnostics: 1;DB6PR03MB2871;7:xUrt5Dowu46teTraUI8hzld50hSoJgOBWy9gibWYV2Bsyz6UFSfk6WXdYwLkw/ptx8U+PIXNL9qJr0fuAKxjETyFf2pGIblEUZDc9Dhac7PPKDqOXUvogoyf+aTS/nrEW2pxB/mcTVluiolxLoWvDj+t+iw9i7GG0amIcCtxq3wHO8PPwQ3lsRl/qgugJ3e5rtbfhsnEaiSI7pAar2iUwqwvkeSMZPQ7hOMTMGFSaSv3BhPhI/05cDRGubCld62z7amvpinGknPp2NdOOBeC6hDUAeeAdb9LViFsQLlXde2YSivQdRB85c21vVNMv4x+0kYzFeFDXIB3y9rcoZgodg5OYTGgOFz3Om4b27Pjtpbtzj5yKwmr2ZgbD054pysktzaDbAR4w1vEwPPXZMdKeD1X+ljaK7FEKMAOxpOg7KPELkAdoMl5UKIL8qp3nYWsdcioB5yZUyyS0EDvlhRH7bomQVWC5COfLAP7/zVnM8QONUmsPMZBz2mIdxSQLAKSsqPKtGvBQ+8XtN+DbnwRuoEjOQjnN0iuGBvFgoyglMT8TVfdZxB1lmoozqBi51IhpYYza8N/h6B8Mb1K/xr51ftpl/KkMcbJDQ9O54vhnvTZSUq1NhH4DuBrGqMyLDPTzrl8THRFZWOIEcrW7S2W3CMPxylZClKPieg8vwUEJmDaq+skuToDuenC7t/14zdEds/SGKaCSDeG/vHW28be4V5Y668bmbLPPPZvDKuq46llWAf9A7Rjudskm6Ob82RydqO4YFe+aEK4F1EMRIYy1Yr5A6seUgNoR8/RR5CPaSM=
+x-ms-office365-filtering-correlation-id: 583a7265-0f05-419a-a7e9-08d4d021fa81
+x-microsoft-antispam: UriScan:;BCL:0;PCL:0;RULEID:(300000500095)(300135000095)(300000501095)(300135300095)(22001)(300000502095)(300135100095)(2017030254075)(300000503095)(300135400095)(2017052603031)(49563074)(201703131423075)(201702281549075)(300000504095)(300135200095)(300000505095)(300135600095)(300000506095)(300135500095);SRVR:DB6PR03MB2871;
+x-ms-traffictypediagnostic: DB6PR03MB2871:
+x-exchange-antispam-report-test: UriScan:(151999592597050)(26388249023172)(21748063052155);
+x-microsoft-antispam-prvs: <DB6PR03MB28711DFDDCC3F97C91B4FD609BA40@DB6PR03MB2871.eurprd03.prod.outlook.com>
+x-exchange-antispam-report-cfa-test: BCL:0;PCL:0;RULEID:(100000700101)(100105000095)(100000701101)(100105300095)(100000702101)(100105100095)(102415395)(6040450)(601004)(2401047)(5005006)(8121501046)(93006095)(93001095)(10201501046)(3002001)(100000703101)(100105400095)(6041248)(20161123564025)(20161123560025)(20161123555025)(20161123558100)(201703131423075)(201702281528075)(201703061421075)(201703061406153)(20161123562025)(2016111802025)(6072148)(6043046)(100000704101)(100105200095)(100000705101)(100105500095);SRVR:DB6PR03MB2871;BCL:0;PCL:0;RULEID:(100000800101)(100110000095)(100000801101)(100110300095)(100000802101)(100110100095)(100000803101)(100110400095)(100000804101)(100110200095)(100000805101)(100110500095);SRVR:DB6PR03MB2871;
+x-forefront-prvs: 0375972289
+x-forefront-antispam-report: SFV:NSPM;SFS:(10019020)(979002)(39840400002)(39400400002)(39450400003)(39410400002)(199003)(132844002)(252514010)(189002)(5250100002)(53376002)(14454004)(4326008)(38730400002)(102836003)(39060400002)(97736004)(189998001)(101416001)(54356999)(99936001)(6116002)(6246003)(53936002)(606006)(6436002)(2900100001)(6862004)(74482002)(733005)(4001350100001)(76176999)(50986999)(19273905006)(3280700002)(18926415007)(790700001)(7736002)(478600001)(107886003)(110136004)(3846002)(6506006)(106356001)(3660700001)(68736007)(6306002)(224303003)(19627405001)(2906002)(54906002)(83506001)(6636002)(99286003)(224313004)(66066001)(19613025002)(5660300001)(36756003)(8936002)(6512007)(25786009)(6486002)(86362001)(54556002)(9686003)(81166006)(54896002)(236005)(81156014)(105586002)(2950100002)(229853002)(19627235001)(969003)(989001)(999001)(1009001)(1019001);DIR:OUT;SFP:1102;SCL:1;SRVR:DB6PR03MB2871;H:VI1PR0302MB2832.eurprd03.prod.outlook.com;FPR:;SPF:None;PTR:InfoNoRecords;A:1;MX:1;LANG:en;
+received-spf: None (protection.outlook.com: moneypark.ch does not designate
+ permitted sender hosts)
+spamdiagnosticoutput: 1:99
+spamdiagnosticmetadata: NSPM
+Content-Type: multipart/mixed;
+ boundary="_013_D597A0C6B691ivenschellhornmoneyparkcom_"
+MIME-Version: 1.0
+X-OriginatorOrg: moneypark.ch
+X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Jul 2017 10:19:31.9194 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 5781b2e1-0185-41a3-8959-861ca9be6857
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB6PR03MB2871
+
+
+--_013_D597A0C6B691ivenschellhornmoneyparkcom_
+Content-Type: multipart/ALTERNATIVE;
+	boundary=_000_D597A0C6B691ivenschellhornmoneyparkcom_
+
+
+--_000_D597A0C6B691ivenschellhornmoneyparkcom_
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Type: TEXT/PLAIN;
+	charset=Windows-1252
+
+Hello Virginia
+
+
+As your start is getting closer  I do need some more information from you f=
+or the administration. Please send the data until next Wednesday =96 is tha=
+t ok with you? Please fill in everything and save the document as doc or do=
+cx so that I can copy paste everything. Beside the data needed, I would lik=
+e you to prepare a little introduction in English (like the example). This =
+is an intro which I send out to every employee of MoneyPark to introduce yo=
+u before you start. (PLEASE cc Isabelle)
+
+
+Looking forward working with you.
+
+
+
+best regards
+Iven
+
+
+
+Von: Thomas Kehl <thomas.kehl@moneypark.ch<mailto:thomas.kehl@moneypark.ch>=
+>
+Datum: Donnerstag, 20. Juli 2017 um 16:17
+An: Iven Schellhorn <iven.schellhorn@moneypark.ch<mailto:iven.schellhorn@mo=
+neypark.ch>>
+Betreff: Vertrag zur=FCck
+
+Hey Iven
+
+Gen=FCgt dir der Scan oder ben=F6tigst du noch das Original?
+
+Gruss und Dank
+
+
+
+
+
+Thomas Kehl
+
+Kundenberater Hypotheken
+
+
+
+
+
+
+Direkt: +41 41 561 40 53<tel:+41%2041%20561%2040%2053>
+
+Telefon: 0800 220 440<tel:0800%20220%20440>
+
+Email: thomas.kehl@moneypark.ch<mailto:thomas.kehl@moneypark.ch>
+
+
+MoneyPark AG
+
+Hirschengraben 31
+
+6003 Luzern
+
+
+
+[www.moneypark.ch]<https://moneypark.ch/en/>
+
+
+
+
+[cid:image003.png@01D30173.A8332FB0]
+
+[MoneyPark weiterempfehlen]<https://moneypark.ch/news-wissen/weiterempfehle=
+n/>
+
+[und einen Gutschein im Wert von CHF 200 erhalten]<https://moneypark.ch/new=
+s-wissen/weiterempfehlen/>
+
+[cid:image006.png@01D30173.A8332FB0]
+
+[cid:image007.png@01D30173.A8332FB0]
+
+[cid:image008.png@01D30173.A8332FB0]
+
+
+
+
+
+
+
+Thomas Kehl
+Kundenberater Hypotheken
++41 41 561 40 53<tel:+41%2041%20561%2040%2053>
+
+
+--_000_D597A0C6B691ivenschellhornmoneyparkcom_
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+Content-Type: TEXT/HTML;
+	charset=Windows-1252
+Content-Id: <FB99CB0F0A93FB4D83D81121A3D7C3F8@eurprd03.prod.outlook.com>
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DWindows-1=
+252">
+</head>
+<body style=3D"word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-lin=
+e-break: after-white-space; color: rgb(0, 0, 0); font-family: Calibri, sans=
+-serif;">
+<div>
+<div style=3D"color: rgb(33, 33, 33); font-family: wf_segoe-ui_normal, 'Seg=
+oe UI', 'Segoe WP', Tahoma, Arial, sans-serif, serif, EmojiFont;">
+<font style=3D"font-family: Calibri, sans-serif, serif, EmojiFont;">Hello V=
+irginia</font></div>
+<font style=3D"color: rgb(33, 33, 33); font-family: Calibri, sans-serif, se=
+rif, EmojiFont;"><span id=3D"OLK_SRC_BODY_SECTION"></span></font><span styl=
+e=3D"font-family: Calibri, Arial, Helvetica, sans-serif;"></span>
+<div style=3D"color: rgb(33, 33, 33); font-family: wf_segoe-ui_normal, 'Seg=
+oe UI', 'Segoe WP', Tahoma, Arial, sans-serif, serif, EmojiFont;">
+<font style=3D"font-family: Calibri, sans-serif, serif, EmojiFont;"></font>
+<div><font style=3D"font-family: Calibri, sans-serif, serif, EmojiFont;"><s=
+pan id=3D"OLK_SRC_BODY_SECTION"><span id=3D"OLK_SRC_BODY_SECTION"><span id=
+=3D"OLK_SRC_BODY_SECTION">
+<div><br>
+</div>
+<div><br>
+</div>
+<div>As your start is getting closer &nbsp;I do need some more information =
+from you for the&nbsp;<span class=3D"highlight" id=3D"0.9387441497516593" n=
+ame=3D"searchHitInReadingPane">admin</span>istration. Please send the data =
+until next Wednesday =96 is that ok with you? Please
+ fill in everything and save the document as doc or docx so that I can copy=
+ paste everything. Beside the data needed, I would like you to&nbsp;prepare=
+ a little introduction in English (like the example). This is an intro whic=
+h I send out to every employee of MoneyPark
+ to introduce you before you start. (PLEASE cc Isabelle)</div>
+</span></span>
+<div><br>
+</div>
+<div><br>
+</div>
+<div>Looking forward working with you.</div>
+</span></font></div>
+</div>
+<br style=3D"font-family: Calibri, Arial, Helvetica, sans-serif;">
+<p style=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Aria=
+l, Helvetica, sans-serif;">
+</p>
+<p style=3D"margin-top: 0px; margin-bottom: 0px; font-family: Calibri, Aria=
+l, Helvetica, sans-serif;">
+<br>
+</p>
+<div id=3D"Signature" style=3D"font-size: 16px; font-family: Calibri, Arial=
+, Helvetica, sans-serif;">
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" clas=
+s=3D"vcard">
+<tbody>
+<tr>
+<td>
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0">
+<tbody>
+<tr>
+<td><img width=3D"1" height=3D"1" nosend=3D"1" alt=3D"" src=3D"https://mone=
+ypark.ch/footer-email/static/i/blank.gif">best regards<br>
+Iven<br>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div style=3D"font-size: 14px;"><br>
+</div>
+<span id=3D"OLK_SRC_BODY_SECTION" style=3D"font-size: 14px;">
+<div style=3D"font-family:Calibri; font-size:11pt; text-align:left; color:b=
+lack; BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; PADDING-BOTTOM:=
+ 0in; PADDING-LEFT: 0in; PADDING-RIGHT: 0in; BORDER-TOP: #b5c4df 1pt solid;=
+ BORDER-RIGHT: medium none; PADDING-TOP: 3pt">
+<span style=3D"font-weight:bold">Von: </span>Thomas Kehl &lt;<a href=3D"mai=
+lto:thomas.kehl@moneypark.ch">thomas.kehl@moneypark.ch</a>&gt;<br>
+<span style=3D"font-weight:bold">Datum: </span>Donnerstag, 20. Juli 2017 um=
+ 16:17<br>
+<span style=3D"font-weight:bold">An: </span>Iven Schellhorn &lt;<a href=3D"=
+mailto:iven.schellhorn@moneypark.ch">iven.schellhorn@moneypark.ch</a>&gt;<b=
+r>
+<span style=3D"font-weight:bold">Betreff: </span>Vertrag zur=FCck<br>
+</div>
+<div><br>
+</div>
+<div xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micro=
+soft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" x=
+mlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:/=
+/www.w3.org/TR/REC-html40">
+<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
+<!--[if !mso]><style>v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style><![endif]--><style><!--
+/* Font Definitions */
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;
+	mso-fareast-language:EN-US;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:#0563C1;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:#954F72;
+	text-decoration:underline;}
+span.E-MailFormatvorlage17
+	{mso-style-type:personal-compose;
+	font-family:"Calibri",sans-serif;
+	color:windowtext;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-family:"Calibri",sans-serif;
+	mso-fareast-language:EN-US;}
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:70.85pt 70.85pt 2.0cm 70.85pt;}
+div.WordSection1
+	{page:WordSection1;}
+--></style><!--[if gte mso 9]><xml>
+<o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+<o:shapelayout v:ext=3D"edit">
+<o:idmap v:ext=3D"edit" data=3D"1" />
+</o:shapelayout></xml><![endif]-->
+<div lang=3D"DE-CH" link=3D"#0563C1" vlink=3D"#954F72">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal">Hey Iven <o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">Gen=FCgt dir der Scan oder ben=F6tigst du noch das O=
+riginal?<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class=3D"MsoNormal">Gruss und Dank<o:p></o:p></p>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+<table class=3D"MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"100%" style=3D"width:100.0%">
+<tbody>
+<tr>
+<td style=3D"padding:0cm 0cm 0cm 0cm">
+<table class=3D"MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"100%" style=3D"width:100.0%">
+<tbody>
+<tr>
+<td style=3D"padding:0cm 0cm 0cm 0cm">
+<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt;font-family:&quot;Ti=
+mes New Roman&quot;,serif;mso-fareast-language:DE-CH"><img width=3D"1" heig=
+ht=3D"1" style=3D"width:.0104in;height:.0104in" id=3D"_x0000_i1032" src=3D"=
+cid:image001.gif@01D30173.A8332FB0"></span><span style=3D"font-size:12.0pt;=
+font-family:&quot;Times New Roman&quot;,serif;mso-fareast-language:DE-CH"><=
+o:p></o:p></span></p>
+</td>
+</tr>
+<tr style=3D"height:7.5pt">
+<td style=3D"padding:0cm 0cm 0cm 0cm;height:7.5pt">
+<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt;font-family:&quot;Ti=
+mes New Roman&quot;,serif;mso-fareast-language:DE-CH">&nbsp;<o:p></o:p></sp=
+an></p>
+</td>
+</tr>
+<tr>
+<td style=3D"padding:0cm 0cm 0cm 0cm">
+<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt;font-family:&quot;Ar=
+ial&quot;,sans-serif;color:#494E41;mso-fareast-language:DE-CH">Thomas&nbsp;=
+Kehl<o:p></o:p></span></p>
+</td>
+</tr>
+<tr>
+<td style=3D"padding:0cm 0cm 0cm 0cm">
+<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt;font-family:&quot;Ar=
+ial&quot;,sans-serif;color:#494E41;mso-fareast-language:DE-CH">Kundenberate=
+r Hypotheken</span><span style=3D"font-size:12.0pt;font-family:&quot;Times =
+New Roman&quot;,serif;mso-fareast-language:DE-CH">&nbsp;<o:p></o:p></span><=
+/p>
+</td>
+</tr>
+<tr style=3D"height:7.5pt">
+<td style=3D"padding:0cm 0cm 0cm 0cm;height:7.5pt">
+<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt;font-family:&quot;Ti=
+mes New Roman&quot;,serif;mso-fareast-language:DE-CH">&nbsp;<o:p></o:p></sp=
+an></p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt;font-family:&quot;Ti=
+mes New Roman&quot;,serif;display:none;mso-fareast-language:DE-CH"><o:p>&nb=
+sp;</o:p></span></p>
+<table class=3D"MsoNormalTable" border=3D"1" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"100%" style=3D"width:100.0%;border-top:solid #EAEAEA 1.0pt;=
+border-left:none;border-bottom:solid #EAEAEA 1.0pt;border-right:none">
+<tbody>
+<tr>
+<td style=3D"border:none;padding:0cm 0cm 0cm 0cm">
+<table class=3D"MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"100%" style=3D"width:100.0%">
+<tbody>
+<tr style=3D"height:7.5pt">
+<td style=3D"padding:0cm 0cm 0cm 0cm;height:7.5pt">
+<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt;font-family:&quot;Ti=
+mes New Roman&quot;,serif;mso-fareast-language:DE-CH">&nbsp;<o:p></o:p></sp=
+an></p>
+</td>
+</tr>
+<tr>
+<td style=3D"padding:0cm 0cm 0cm 0cm">
+<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt;font-family:&quot;Ar=
+ial&quot;,sans-serif;color:#494E41;mso-fareast-language:DE-CH">Direkt:&nbsp=
+;</span><span style=3D"font-size:12.0pt;font-family:&quot;Times New Roman&q=
+uot;,serif;mso-fareast-language:DE-CH"><a href=3D"tel:&#43;41%2041%20561%20=
+40%2053"><span style=3D"font-family:&quot;Arial&quot;,sans-serif;color:#494=
+E41;text-decoration:none">&#43;41
+ 41 561 40 53</span></a><o:p></o:p></span></p>
+</td>
+</tr>
+<tr>
+<td style=3D"padding:0cm 0cm 0cm 0cm">
+<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt;font-family:&quot;Ar=
+ial&quot;,sans-serif;color:#494E41;mso-fareast-language:DE-CH">Telefon:&nbs=
+p;</span><span style=3D"font-size:12.0pt;font-family:&quot;Times New Roman&=
+quot;,serif;mso-fareast-language:DE-CH"><a href=3D"tel:0800%20220%20440"><s=
+pan style=3D"font-family:&quot;Arial&quot;,sans-serif;color:#494E41;text-de=
+coration:none">0800
+ 220 440</span></a><o:p></o:p></span></p>
+</td>
+</tr>
+<tr>
+<td style=3D"padding:0cm 0cm 0cm 0cm">
+<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt;font-family:&quot;Ar=
+ial&quot;,sans-serif;color:#494E41;mso-fareast-language:DE-CH">Email:&nbsp;=
+</span><span style=3D"font-size:12.0pt;font-family:&quot;Times New Roman&qu=
+ot;,serif;mso-fareast-language:DE-CH"><a href=3D"mailto:thomas.kehl@moneypa=
+rk.ch"><span style=3D"font-family:&quot;Arial&quot;,sans-serif;color:#494E4=
+1;text-decoration:none">thomas.kehl@moneypark.ch</span></a><o:p></o:p></spa=
+n></p>
+<div>
+<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt;font-family:&quot;Ti=
+mes New Roman&quot;,serif;mso-fareast-language:DE-CH">&nbsp;<o:p></o:p></sp=
+an></p>
+</div>
+</td>
+</tr>
+<tr>
+<td style=3D"padding:0cm 0cm 0cm 0cm">
+<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt;font-family:&quot;Ar=
+ial&quot;,sans-serif;color:#494E41;mso-fareast-language:DE-CH">MoneyPark AG=
+</span><span style=3D"font-size:12.0pt;font-family:&quot;Times New Roman&qu=
+ot;,serif;mso-fareast-language:DE-CH"><o:p></o:p></span></p>
+</td>
+</tr>
+<tr>
+<td style=3D"padding:0cm 0cm 0cm 0cm">
+<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt;font-family:&quot;Ar=
+ial&quot;,sans-serif;color:#494E41;mso-fareast-language:DE-CH">Hirschengrab=
+en 31</span><span style=3D"font-size:12.0pt;font-family:&quot;Times New Rom=
+an&quot;,serif;mso-fareast-language:DE-CH"><o:p></o:p></span></p>
+</td>
+</tr>
+<tr>
+<td style=3D"padding:0cm 0cm 0cm 0cm">
+<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt;font-family:&quot;Ar=
+ial&quot;,sans-serif;color:#494E41;mso-fareast-language:DE-CH">6003&nbsp;Lu=
+zern</span><span style=3D"font-size:12.0pt;font-family:&quot;Times New Roma=
+n&quot;,serif;mso-fareast-language:DE-CH"><o:p></o:p></span></p>
+</td>
+</tr>
+<tr style=3D"height:15.0pt">
+<td style=3D"padding:0cm 0cm 0cm 0cm;height:15.0pt">
+<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt;font-family:&quot;Ti=
+mes New Roman&quot;,serif;mso-fareast-language:DE-CH">&nbsp;<o:p></o:p></sp=
+an></p>
+</td>
+</tr>
+<tr>
+<td style=3D"padding:0cm 0cm 0cm 0cm">
+<p class=3D"MsoNormal"><a href=3D"https://moneypark.ch/en/" target=3D"_blan=
+k"><span style=3D"font-size:15.0pt;font-family:&quot;Arial&quot;,sans-serif=
+;color:#789E56;mso-fareast-language:DE-CH;text-decoration:none"><img border=
+=3D"0" width=3D"221" height=3D"59" style=3D"width:2.302in;height:.6145in" i=
+d=3D"_x0000_i1031" src=3D"cid:image002.png@01D30173.A8332FB0" alt=3D"www.mo=
+neypark.ch"></span></a><span style=3D"font-size:12.0pt;font-family:&quot;Ti=
+mes New Roman&quot;,serif;mso-fareast-language:DE-CH"><o:p></o:p></span></p=
+>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td style=3D"border:none;padding:0cm 0cm 0cm 0cm">
+<table class=3D"MsoNormalTable" border=3D"0" cellspacing=3D"20" cellpadding=
+=3D"0" align=3D"right" width=3D"275" style=3D"width:206.25pt;background:#78=
+9E56">
+<tbody>
+<tr style=3D"height:.75pt">
+<td style=3D"padding:0cm 0cm 0cm 0cm;height:.75pt">
+<p class=3D"MsoNormal" align=3D"center" style=3D"text-align:center"><span s=
+tyle=3D"font-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif;mso-=
+fareast-language:DE-CH">&nbsp;<o:p></o:p></span></p>
+</td>
+</tr>
+<tr>
+<td style=3D"padding:0cm 0cm 0cm 0cm">
+<p class=3D"MsoNormal" align=3D"center" style=3D"text-align:center"><span s=
+tyle=3D"font-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif;mso-=
+fareast-language:DE-CH"><img border=3D"0" width=3D"83" height=3D"45" style=
+=3D"width:.8645in;height:.4687in" id=3D"_x0000_i1030" src=3D"cid:image003.p=
+ng@01D30173.A8332FB0"></span><span style=3D"font-size:12.0pt;font-family:&q=
+uot;Times New Roman&quot;,serif;mso-fareast-language:DE-CH"><o:p></o:p></sp=
+an></p>
+</td>
+</tr>
+<tr>
+<td style=3D"padding:0cm 0cm 0cm 0cm">
+<p class=3D"MsoNormal" align=3D"center" style=3D"text-align:center"><a href=
+=3D"https://moneypark.ch/news-wissen/weiterempfehlen/" target=3D"_blank"><s=
+pan style=3D"font-size:12.0pt;font-family:&quot;Arial&quot;,sans-serif;colo=
+r:white;mso-fareast-language:DE-CH;text-decoration:none"><img border=3D"0" =
+width=3D"210" height=3D"60" style=3D"width:2.1875in;height:.625in" id=3D"_x=
+0000_i1029" src=3D"cid:image004.png@01D30173.A8332FB0" alt=3D"MoneyPark wei=
+terempfehlen"></span></a><span style=3D"font-size:12.0pt;font-family:&quot;=
+Times New Roman&quot;,serif;mso-fareast-language:DE-CH"><o:p></o:p></span><=
+/p>
+</td>
+</tr>
+<tr>
+<td style=3D"padding:0cm 0cm 0cm 0cm">
+<p class=3D"MsoNormal" align=3D"center" style=3D"text-align:center"><a href=
+=3D"https://moneypark.ch/news-wissen/weiterempfehlen/" target=3D"_blank"><s=
+pan style=3D"font-size:10.5pt;font-family:&quot;Arial&quot;,sans-serif;colo=
+r:white;mso-fareast-language:DE-CH;text-decoration:none"><img border=3D"0" =
+width=3D"210" height=3D"60" style=3D"width:2.1875in;height:.625in" id=3D"_x=
+0000_i1028" src=3D"cid:image005.png@01D30173.A8332FB0" alt=3D"und einen Gut=
+schein im Wert von CHF 200 erhalten"></span></a><span style=3D"font-size:12=
+.0pt;font-family:&quot;Times New Roman&quot;,serif;mso-fareast-language:DE-=
+CH"><o:p></o:p></span></p>
+</td>
+</tr>
+<tr>
+<td style=3D"padding:0cm 0cm 0cm 0cm">
+<div align=3D"center">
+<table class=3D"MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"100%" style=3D"width:100.0%">
+<tbody>
+<tr>
+<td style=3D"padding:0cm 0cm 0cm 0cm">
+<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt;font-family:&quot;Ti=
+mes New Roman&quot;,serif;mso-fareast-language:DE-CH"><img border=3D"0" wid=
+th=3D"54" height=3D"52" style=3D"width:.5625in;height:.5416in" id=3D"_x0000=
+_i1027" src=3D"cid:image006.png@01D30173.A8332FB0"></span><span style=3D"fo=
+nt-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif;mso-fareast-la=
+nguage:DE-CH"><o:p></o:p></span></p>
+</td>
+<td style=3D"padding:0cm 0cm 0cm 0cm">
+<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt;font-family:&quot;Ti=
+mes New Roman&quot;,serif;mso-fareast-language:DE-CH"><img border=3D"0" wid=
+th=3D"54" height=3D"52" style=3D"width:.5625in;height:.5416in" id=3D"_x0000=
+_i1026" src=3D"cid:image007.png@01D30173.A8332FB0"></span><span style=3D"fo=
+nt-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif;mso-fareast-la=
+nguage:DE-CH"><o:p></o:p></span></p>
+</td>
+<td style=3D"padding:0cm 0cm 0cm 0cm">
+<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt;font-family:&quot;Ti=
+mes New Roman&quot;,serif;mso-fareast-language:DE-CH"><img border=3D"0" wid=
+th=3D"44" height=3D"42" style=3D"width:.4583in;height:.4375in" id=3D"_x0000=
+_i1025" src=3D"cid:image008.png@01D30173.A8332FB0"></span><span style=3D"fo=
+nt-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif;mso-fareast-la=
+nguage:DE-CH"><o:p></o:p></span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p class=3D"MsoNormal"><o:p>&nbsp;</o:p></p>
+</div>
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1.=
+0">
+<link rel=3D"profile" href=3D"http://microformats.org/profile/hcard">
+<table width=3D"100%" border=3D"0" cellspacing=3D"0" cellpadding=3D"0" clas=
+s=3D"vcard">
+<tbody>
+<tr>
+<td><img width=3D"1" height=3D"1" src=3D"https://moneypark.ch/footer-email/=
+static/i/blank.gif" border=3D"0" nosend=3D"1" alt=3D""></td>
+</tr>
+<tr>
+<td style=3D"height:10px;display:block">&nbsp;</td>
+</tr>
+<tr>
+<td style=3D"font-family:Helvetica,sans-serif;font-size:16px;color:#494e41;=
+"><span class=3D"given-name">Thomas&nbsp;</span><span class=3D"family-name"=
+>Kehl</span></td>
+</tr>
+<tr>
+<td><span class=3D"title" style=3D"font-family:Helvetica,sans-serif;font-si=
+ze:16px;color:#494e41;">Kundenberater Hypotheken</span></td>
+</tr>
+<tr>
+<td class=3D"tel"><a href=3D"tel:&#43;41 41 561 40 53" class=3D"value" styl=
+e=3D"text-decoration:none;outline:none"><font color=3D"#494e41" face=3D"Hel=
+vetica,sans-serif" style=3D"font-size:12pt;">&#43;41 41 561 40 53</font></a=
+></td>
+</tr>
+<tr>
+<td style=3D"height:10px;display:block">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</span>
+</body>
+</html>
+
+--_000_D597A0C6B691ivenschellhornmoneyparkcom_--
+
+--_013_D597A0C6B691ivenschellhornmoneyparkcom_
+Content-Transfer-Encoding: BASE64
+Content-Disposition: ATTACHMENT;
+	size=1093;
+	modification-date="Fri, 21 Jul 2017 10:19:31 GMT";
+	filename=image001.gif;
+	creation-date="Fri, 21 Jul 2017 10:19:31 GMT"
+Content-Type: IMAGE/GIF;
+	name=image001.gif
+X-Apple-Content-Length: 1480
+Content-Id: <image001.gif@01D30173.A8332FB0>
+
+
+--_013_D597A0C6B691ivenschellhornmoneyparkcom_
+Content-Transfer-Encoding: BASE64
+Content-Disposition: ATTACHMENT;
+	size=3906;
+	modification-date="Fri, 21 Jul 2017 10:19:31 GMT";
+	filename=image002.png;
+	creation-date="Fri, 21 Jul 2017 10:19:31 GMT"
+Content-Type: IMAGE/PNG;
+	name=image002.png
+X-Apple-Content-Length: 5277
+Content-Id: <image002.png@01D30173.A8332FB0>
+
+
+--_013_D597A0C6B691ivenschellhornmoneyparkcom_
+Content-Transfer-Encoding: BASE64
+Content-Disposition: ATTACHMENT;
+	size=2288;
+	modification-date="Fri, 21 Jul 2017 10:19:31 GMT";
+	filename=image003.png;
+	creation-date="Fri, 21 Jul 2017 10:19:31 GMT"
+Content-Type: IMAGE/PNG;
+	name=image003.png
+X-Apple-Content-Length: 3093
+Content-Id: <image003.png@01D30173.A8332FB0>
+
+
+--_013_D597A0C6B691ivenschellhornmoneyparkcom_
+Content-Transfer-Encoding: BASE64
+Content-Disposition: ATTACHMENT;
+	size=2937;
+	modification-date="Fri, 21 Jul 2017 10:19:31 GMT";
+	filename=image004.png;
+	creation-date="Fri, 21 Jul 2017 10:19:31 GMT"
+Content-Type: IMAGE/PNG;
+	name=image004.png
+X-Apple-Content-Length: 3968
+Content-Id: <image004.png@01D30173.A8332FB0>
+
+
+--_013_D597A0C6B691ivenschellhornmoneyparkcom_
+Content-Transfer-Encoding: BASE64
+Content-Disposition: ATTACHMENT;
+	size=3013;
+	modification-date="Fri, 21 Jul 2017 10:19:31 GMT";
+	filename=image005.png;
+	creation-date="Fri, 21 Jul 2017 10:19:31 GMT"
+Content-Type: IMAGE/PNG;
+	name=image005.png
+X-Apple-Content-Length: 4073
+Content-Id: <image005.png@01D30173.A8332FB0>
+
+
+--_013_D597A0C6B691ivenschellhornmoneyparkcom_
+Content-Transfer-Encoding: BASE64
+Content-Disposition: ATTACHMENT;
+	size=1583;
+	modification-date="Fri, 21 Jul 2017 10:19:31 GMT";
+	filename=image006.png;
+	creation-date="Fri, 21 Jul 2017 10:19:31 GMT"
+Content-Type: IMAGE/PNG;
+	name=image006.png
+X-Apple-Content-Length: 2140
+Content-Id: <image006.png@01D30173.A8332FB0>
+
+
+--_013_D597A0C6B691ivenschellhornmoneyparkcom_
+Content-Transfer-Encoding: BASE64
+Content-Disposition: ATTACHMENT;
+	size=1782;
+	modification-date="Fri, 21 Jul 2017 10:19:31 GMT";
+	filename=image007.png;
+	creation-date="Fri, 21 Jul 2017 10:19:31 GMT"
+Content-Type: IMAGE/PNG;
+	name=image007.png
+X-Apple-Content-Length: 2408
+Content-Id: <image007.png@01D30173.A8332FB0>
+
+
+--_013_D597A0C6B691ivenschellhornmoneyparkcom_
+Content-Transfer-Encoding: BASE64
+Content-Disposition: ATTACHMENT;
+	size=1533;
+	modification-date="Fri, 21 Jul 2017 10:19:31 GMT";
+	filename=image008.png;
+	creation-date="Fri, 21 Jul 2017 10:19:31 GMT"
+Content-Type: IMAGE/PNG;
+	name=image008.png
+X-Apple-Content-Length: 2071
+Content-Id: <image008.png@01D30173.A8332FB0>
+
+
+--_013_D597A0C6B691ivenschellhornmoneyparkcom_
+Content-Transfer-Encoding: BASE64
+Content-Disposition: ATTACHMENT;
+	size=350666;
+	modification-date="Fri, 21 Jul 2017 10:19:31 GMT";
+	filename="Intro Jasser Kassab.docx";
+	creation-date="Fri, 21 Jul 2017 10:19:31 GMT"
+Content-Type: APPLICATION/VND.OPENXMLFORMATS-OFFICEDOCUMENT.WORDPROCESSINGML.DOCUMENT;
+	name="Intro Jasser Kassab.docx"
+X-Apple-Content-Length: 473709
+Content-Id: <0B05CA63FABC6B448A4B62CED7B78C52@eurprd03.prod.outlook.com>
+
+
+--_013_D597A0C6B691ivenschellhornmoneyparkcom_
+Content-Transfer-Encoding: BASE64
+Content-Disposition: ATTACHMENT;
+	size=96705;
+	modification-date="Fri, 21 Jul 2017 10:19:31 GMT";
+	filename="2016 - admindataHR_Eng.docx";
+	creation-date="Fri, 21 Jul 2017 10:19:31 GMT"
+Content-Type: APPLICATION/VND.OPENXMLFORMATS-OFFICEDOCUMENT.WORDPROCESSINGML.DOCUMENT;
+	name="2016 - admindataHR_Eng.docx"
+X-Apple-Content-Length: 130637
+Content-Id: <2098A812F5D25248871903A4413FA5DD@eurprd03.prod.outlook.com>
+
+
+--_013_D597A0C6B691ivenschellhornmoneyparkcom_--
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>date-last-viewed</key>
+	<integer>0</integer>
+	<key>date-received</key>
+	<integer>1500632379</integer>
+	<key>flags</key>
+	<integer>25770010625</integer>
+	<key>gmail-label-ids</key>
+	<array>
+		<integer>3</integer>
+		<integer>8</integer>
+	</array>
+	<key>remote-id</key>
+	<string>10432</string>
+</dict>
+</plist>

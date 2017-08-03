@@ -1,0 +1,804 @@
+30450     
+Delivered-To: sayde.gutierrez92@gmail.com
+Received: by 10.31.148.147 with SMTP id w141csp655213vkd;
+        Thu, 22 Jun 2017 17:43:06 -0700 (PDT)
+X-Received: by 10.99.137.66 with SMTP id v63mr5293966pgd.182.1498178586092;
+        Thu, 22 Jun 2017 17:43:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1498178586; cv=none;
+        d=google.com; s=arc-20160816;
+        b=EHqZmUba6mmloTxvyTY9za/VbPrzblhHxZtvNdpb1M/HcwB9URFTK8jKchYLJ42wo3
+         8JsDcuzYDosMwQOa2dpBWFjm0oq8gN7bQgQXcn7txv55TI+6/RGo5ynkyi2CN1gBzFZe
+         q5D0TWjQBJZnp4h/RWYk+7vQ1ayvRBDGwk7km2B4yNB7CZBEJSs2M0JmzmWiQcB7PNjV
+         /ODtneQ7Qyzk1VsEynydJyEYGweBANbIV3cQlkNtVvr/ePMBHNnXx24URpjniSDDdN1N
+         022Ums3wDLHSsOyVzm7ggTOuoFdWll9IATVLuMFV8okSLaHyyTwnJUO4e32QJsvx4Oab
+         kBoQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:subject:message-id:to:reply-to:from:date
+         :dkim-signature:arc-authentication-results;
+        bh=GiXi2AGtpUQRrQD3bhRKSR/ItPPxUCK70hJowNwhvk8=;
+        b=JqCREROO2JzLx3ur7QzTytHHTYkGFS7+PZsL27tKKkohJbWx0+WD4sSgsJlqUSscgm
+         Tx+NNa9EBNbn7QrWG18HSj75PC0UdpL4sCLnZQvg0fKaxWB8kV8gfKJfo/PhKOoIC9Ze
+         voNV/gyni7lhHt9iV9MT+LMCDgsVPwjaRTwixMFihMs/yoj8l8e1WqptAVyXmlO7u6x6
+         R/s0N0TUE460haE0TRisoAjq4iHpLNIfRbUGam1XIqhtKstPC7BH4Knb9JpuJQXrnCLb
+         qNIzXYEj3+CTi5Ga33O11XNVIJeXKYSF3iVrNIW+q4MC5XfwJJohvQwCpqRZsxQCQi+E
+         KegQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@mktdns.com header.b=pkLxlJaC;
+       spf=pass (google.com: domain of 059-vfz-834.0.16968.0.0.7986.9.37856707@em-sj-77.mktomail.com designates 192.28.146.118 as permitted sender) smtp.mailfrom=059-VFZ-834.0.16968.0.0.7986.9.37856707@em-sj-77.mktomail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=cisco.com
+Return-Path: <059-VFZ-834.0.16968.0.0.7986.9.37856707@em-sj-77.mktomail.com>
+Received: from bonapartenykus.mktdns.com (bonapartenykus.mktdns.com. [192.28.146.118])
+        by mx.google.com with ESMTPS id 1si2190167pgu.95.2017.06.22.17.43.05
+        for <sayde.gutierrez92@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 22 Jun 2017 17:43:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 059-vfz-834.0.16968.0.0.7986.9.37856707@em-sj-77.mktomail.com designates 192.28.146.118 as permitted sender) client-ip=192.28.146.118;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mktdns.com header.b=pkLxlJaC;
+       spf=pass (google.com: domain of 059-vfz-834.0.16968.0.0.7986.9.37856707@em-sj-77.mktomail.com designates 192.28.146.118 as permitted sender) smtp.mailfrom=059-VFZ-834.0.16968.0.0.7986.9.37856707@em-sj-77.mktomail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=cisco.com
+Return-Path: <netacademail@external.cisco.com>
+X-MSFBL: c2F5ZGUuZ3V0aWVycmV6OTJAZ21haWwuY29tQGR2cC0xOTItMjgtMTQ2LTExOEBi
+	Zy1zamQtMzVAMDU5LVZGWi04MzQ6Nzk3NTo0NzM3OjEyNzM4OjA6Nzk4Njo5OjE2
+	OTY4OjM3ODU2NzA3
+Received: from [10.0.87.249] ([10.0.87.249:59233] helo=sjmas02.marketo.org)
+	by sjmta15.marketo.org (envelope-from <netacademail@external.cisco.com>)
+	(ecelerity 3.6.8.47404 r(Core:3.6.8.0)) with ESMTP
+	id D0/37-17588-C046C495; Thu, 22 Jun 2017 19:42:52 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1498178572;
+	s=m1; d=mktdns.com; i=@mktdns.com;
+	h=Date:From:To:Subject:MIME-Version:Content-Type;
+	bh=GiXi2AGtpUQRrQD3bhRKSR/ItPPxUCK70hJowNwhvk8=;
+	b=pkLxlJaCh8iUdjxHcTYK1tzR/+WekyQy8RD+mXx6qe/w2iOxuq2O3boS5WqQUhA+
+	UKCPJtNylfUGu3XSMZmknrn3pnCfGaFq9zDMFOo+u1xYXggV1eqvwqwR6aCtyiMPoBq
+	y+DXY1mm/HLJN21JLIzow/Zgzlol5TC6h8VMi6VY=
+Date: Thu, 22 Jun 2017 19:42:52 -0500 (CDT)
+From: Cisco Networking Academy <netacademail@external.cisco.com>
+Reply-To: netacademail@external.cisco.com
+To: sayde.gutierrez92@gmail.com
+Message-ID: <2074866722.604627334.1498178572071.JavaMail.root@sjmas02.marketo.org>
+Subject: Scheduled Networking Academy Maintenance on July 15
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_604627333_2094197915.1498178572071"
+X-PVIQ: mkto-059VFZ834-000001-000000-016968
+X-Binding: bg-sjd-35
+X-MarketoID: 059-VFZ-834:7975:4737:12738:0:7986:9:16968:37856707
+X-MktArchive: false
+X-Mailfrom: 059-VFZ-834.0.16968.0.0.7986.9.37856707@em-sj-77.mktomail.com
+X-MSYS-API: {"options":{"open_tracking":false,"click_tracking":false}}
+X-MktMailDKIM: true
+
+------=_Part_604627333_2094197915.1498178572071
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Scheduled Maintenance July 15
+
+On=C2=A0Saturday July 15, Networking Academy post-login site will be unavai=
+lable for 2 separate periods; a 2 hour period and a 15 minute period, due t=
+o scheduled maintenance. Dates and times are listed below for your location=
+:
+
+
+=09- San Francisco:
+
+
+=09- Period 1: 15 July, 9 a.m. =E2=80=93 11:00 a.m. PDT (UTC-7)=C2=A0
+=09- Period 2: 15 July, 3:30 p.m. - 3:45 p.m. PDT (UTC-7)
+
+
+=09- New York:=C2=A0
+
+
+=09- Period 1: 15 July, noon =E2=80=93 2:00 p.m. EDT =C2=A0(UTC-4)=C2=A0
+=09- Period 2: 15 July, 6:30 p.m. =E2=80=93 6:45 p.m. EDT (UTC 5)
+
+
+=09- London:
+
+
+=09- Period 1: 15 July, 5 p.m. =E2=80=93 7:00 p.m. BST =C2=A0(UTC)=C2=A0
+=09- Period 2: 15 July, 11:30 p.m. =E2=80=93 11:45 p.m. BST (UTC)
+
+
+=09- Hong Kong:
+
+
+=09- Period 1: 16 July midnight =E2=80=93 2:00 a.m. HKT (UTC+8)=C2=A0
+=09- Period 2: 16 July, 6:30 a.m. =E2=80=93 6:45 a.m. HKT (UTC+8)
+
+
+=09- Sydney:
+
+
+=09- Period 1: 16 July, 2 a.m.=C2=A0 4 a.m. =C2=A0AEST (UTC+10)=C2=A0
+=09- Period 2: 16 July 8:30 a.m. =E2=80=93 8:45 a.m. AEST (UTC +10)
+
+
+
+
+
+Additionally, assessments along with some courses will be unavailable for 4=
+ hours. Please plan your learning activities to avoid the times listed belo=
+w for your location.=C2=A0 We apologize for any inconvenience and will be b=
+ack online as soon as our work is complete.
+
+
+=09- San Francisco: 15 July, 9:00 a.m. =E2=80=93 1:00 p.m. PDT =C2=A0(UTC-7=
+)
+
+=09- New York:=C2=A0 15 July, noon =C2=A0- 4:00 p.m. EDT (UTC-5)
+
+=09- London: 15 July, 5:00 p.m. =E2=80=93 9:00 p.m. BST (UTC)
+
+=09- Hong Kong: 16 July, midnight =E2=80=93 4:00 a.m. HKT (UTC+8)
+
+=09- Sydney: 16 July, 2:00 a.m.- 6:00 a.m. AEST (UTC+10)
+<http://nsmail.cisconetspace.com/uQz200gFy40f0I00l3QVZn0>
+ <http://nsmail.cisconetspace.com/uRz200gFy40f0J00l3QVZn0>
+ <http://nsmail.cisconetspace.com/ez0gSZ00020FVl0QynK430f>
+ <http://nsmail.cisconetspace.com/wFgZzyfV400003nL20Q0T0l>
+
+
+You are receiving this notification due to its business critical nature. If=
+ you are no longer part of the Networking Academy program, or if you have m=
+ultiple accounts and need to have an account deleted or merged, navigate to=
+ Submit Global support Desk Ticket <http://nsmail.cisconetspace.com/a000240=
+nQV0g00MZUFzly3f>, provide the account deletion details.
+=20
+ =C2=A92017 Cisco Systems, Inc. and/or its affiliates. All rights reserved.=
+ 170 W Tasman Dr., San Jose, CA 95134.
+=20
+ Cisco.com <http://nsmail.cisconetspace.com/llFQN0004ng30Z0fy0z0V2V> | Priv=
+acy Statement <http://nsmail.cisconetspace.com/c0y00Q3V04zF2nfZO0gWl00> | T=
+rademarks <http://nsmail.cisconetspace.com/ez0gXZ00020FVl0QynP430f>
+
+------=_Part_604627333_2094197915.1498178572071
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml" style=3D"width: 100%;">
+<head>=20
+<!-- Marketo Variable Definitions -->                                      =
+ =20
+<!-- Other Meta Tags -->=20
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8" />=
+=20
+<meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D1,=
+ minimum-scale=3D1, maximum-scale=3D1" />=20
+<meta name=3D"robots" content=3D"noindex,nofollow" />=20
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge" />=20
+<link href=3D"https://fonts.googleapis.com/css?family=3DRaleway:300,400,700=
+" rel=3D"stylesheet" type=3D"text/css" />=20
+<link href=3D"https://fonts.googleapis.com/css?family=3DLato:300,400,700" r=
+el=3D"stylesheet" type=3D"text/css" />=20
+<!--[if mso]>
+<style type=3D'text/css'>
+.primary-font {
+font-family: Arial, sans-serif !important;
+}
+</style>
+<![endif]-->=20
+<!--[if mso]>
+<style type=3D'text/css'>
+.secondary-font {
+font-family: Arial, sans-serif !important;
+}
+</style>
+<![endif]-->=20
+<style>
+=09=09=09/*startcommon*/
+=09=09=09@media only screen and (max-width: 800px) {
+=09=09=09=09table#boxing{
+=09=09=09=09=09width: 100% !important;
+=09=09=09=09}
+=09=09=09}
+=09=09=09/*endcommon*/
+=09=09</style>=20
+<!--[if gte mso 9]>
+<style type=3D"text/css">
+=09=09    =09#hero .table3-3{
+=09=09=09=09=09width: 100% !important;
+=09=09    =09}
+=09=09    </style>
+=09=09<![endif]-->=20
+<style media=3D"all">
+/* CLIENT-SPECIFIC STYLES */
+#outlook a {
+  padding: 0;
+}
+/* Force Outlook to provide a "view in browser" message */
+.ReadMsgBody {
+  width: 100%;
+}
+.ExternalClass {
+  width: 100%;
+}
+/* Force Hotmail to display emails at full width */
+.ExternalClass,
+.ExternalClass p,
+.ExternalClass span,
+.ExternalClass font,
+.ExternalClass td,
+.ExternalClass div {
+  line-height: 100%;
+}
+/* Force Hotmail to display normal line spacing */
+/* iOS BLUE LINKS */
+.appleBody a {
+  color: #000;
+  text-decoration: none;
+}
+.appleFooter a {
+  color: #000;
+  text-decoration: none;
+}
+@-ms-viewport {=20
+    width: device-width;=20
+}
+</style>=20
+<style media=3D"all">
+@media only screen and (max-width: 640px) {
+/*starttablet*/
+=09.mktoVideoThumbnail{
+=09=09width: 100% !important;
+=09=09height: auto!important;
+=09=09max-height:inherit!important;
+=09=09min-height:inherit!important;
+=09}
+body {
+=09width: auto !important;
+}
+table[class=3D"table600"] {
+=09width: 450px !important;
+}
+table[class=3D"table-inner"] {
+=09width: 86% !important;
+}
+table[class=3D"table1-2"] {
+=09width: 47% !important;
+=09clear: both;
+}
+table[class=3D"table1-3"] {
+=09width: 29.4% !important;
+}
+table[class=3D"table1-4"] {
+=09width: 100% !important;
+=09text-align: left !important;
+}
+table[class=3D"table2-3"] {
+=09width: 64% !important;
+=09text-align: center !important;
+}
+table[class=3D"table3-3"] {
+=09width: 100% !important;
+=09text-align: center !important;
+=09clear: both;
+}
+table[class=3D"footer-logo"] {
+=09width: 10% !important;
+=09text-align: right !important;
+}
+td[class=3D"outer"] {
+=09min-width: 0 !important;
+}
+td[class=3D"stack"] {
+=09padding-bottom: 40px !important;
+}
+.stack-tablet {
+=09padding-bottom: 20px !important;
+=09overflow: visible !important;
+=09float: none !important;
+=09mso-hide: none !important;
+=09display: block !important;
+}
+img[class=3D"mobile-img"] {
+=09width: 100% !important;
+=09height: auto !important;
+}
+td[class=3D"center-tablet"] {
+=09text-align: center !important;
+}
+td[class=3D"hide-tablet"] {
+=09display: none !important;
+}
+table[class=3D"footer-column"] {
+=09width: 47% !important;
+=09text-align: left !important;
+}
+.m_two-articles .table1-2 {
+=09width: 100% !important;
+}
+.m_two-articles .photo img {
+=09width: 100% !important;
+}
+.m_two-articles .stack-tablet td {
+=09height: 60px !important;
+}
+.m_free-image img {
+=09width: 450px !important;
+}
+/*endtablet*/
+}
+@media only screen and (max-width: 479px) {
+/*startmobile*/
+body {
+=09width: auto !important;
+}
+table[class=3D"table600"] {
+=09width: 290px !important;
+}
+table[class=3D"table-inner"] {
+=09width: 80% !important;
+=09float: none !important;
+}
+table[class=3D"table1-2"] {
+=09width: 100% !important;
+=09clear: both;
+}
+table[class=3D"table1-3"] {
+=09width: 100% !important;
+=09clear: both;
+}
+table[class=3D"table1-4"] {
+=09width: 100% !important;
+=09text-align: center !important;
+}
+table[class=3D"table2-3"] {
+=09width: 100% !important;
+=09text-align: center !important;
+}
+table[class=3D"table3-3"] {
+=09width: 100% !important;
+=09text-align: center !important;
+=09clear: both;
+}
+table[class=3D"footer-logo"] {
+=09width: 60% !important;
+=09text-align: center !important;
+}
+td[class=3D"outer"] {
+=09min-width: 0 !important;
+}
+td[class=3D"td3-1"] {
+=09width: 60% !important;
+=09text-align: center !important;
+}
+.stack-smartphone {
+=09padding-bottom: 20px !important;
+=09overflow: visible !important;
+=09float: none !important;
+=09display: block !important;
+=09mso-hide: none !important;
+}
+td[class=3D"center-smartphone"] {
+=09text-align: center !important;
+}
+img[class=3D"mobile-img"] {
+=09width: 100% !important;
+}
+td[class=3D"center-tablet"] {
+=09text-align: center !important;
+}
+td[class=3D"hide-smartphone"] {
+=09display: none !important;
+}
+table[class=3D"footer-column"] {
+=09width: 100% !important;
+=09text-align: center !important;
+}
+.m_free-image img {
+=09width: 290px !important;
+}
+.m_hr .table-inner {
+=09width: 100% !important;
+}
+/*endmobile*/
+}
+</style>=20
+</head>=20
+<body style=3D"margin-bottom: 0; -webkit-text-size-adjust: 100%; padding-bo=
+ttom: 0; min-width: 100%; margin-top: 0; margin-right: 0; -ms-text-size-adj=
+ust: 100%; margin-left: 0; padding-top: 0; padding-right: 0; padding-left: =
+0; width: 100%;">=20
+<div style=3D"display:none; white-space:nowrap; font:15px courier; line-hei=
+ght:0;">
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
+p; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &n=
+bsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=20
+</div>=20
+<!-- Outer table START -->=20
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" styl=
+e=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-=
+lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0; border-collapse: col=
+lapse;">=20
+<tbody>=20
+<tr>=20
+<td class=3D"outer" valign=3D"top" style=3D"-webkit-text-size-adjust: 100%;=
+ -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; =
+word-break: break-word; -webkit-hyphens: none; -moz-hyphens: none; hyphens:=
+ none; min-width: 600px; border-collapse: collapse; background-color: #eeee=
+ee;">=20
+<table width=3D"800" align=3D"center" id=3D"boxing" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse;margin-top: 0; margin-right: auto; marg=
+in-bottom: 0; margin-left: auto;">=20
+<tbody>=20
+<tr>=20
+<td class=3D"mktoContainer boxedbackground" id=3D"template-wrapper" style=
+=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-l=
+space: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit-hyphens:=
+ none; -moz-hyphens: none; hyphens: none; border-collapse: collapse;">
+<table class=3D"mktoModule m_free-image" id=3D"free-image" style=3D"-webkit=
+-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt;=
+ mso-table-rspace: 0pt; border-spacing: 0; border-collapse: collapse;" alig=
+n=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%=
+">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse;backgr=
+ound-color:#ffffff;" bgcolor=3D"#ffffff" valign=3D"top">=20
+<center>=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; border-collapse: collaps=
+e;">=20
+<center>=20
+<div class=3D"mktoImg" id=3D"single" mktolockimgsize=3D"true">
+<a> <img alt=3D"" style=3D"-ms-interpolation-mode: bicubic; outline: none; =
+border-right-width: 0; border-bottom-width: 0; border-left-width: 0; text-d=
+ecoration: none; border-top-width: 0; display: block; max-width: 100%; line=
+-height: 100%; height: auto; width: 600px;" width=3D"600" src=3D"http://csr=
+info.cisconetspace.com/rs/059-VFZ-834/images/banner-NetAcad-everyday.png" /=
+> </a>
+</div>=20
+</center> </td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</center> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table class=3D"mktoModule m_hr" id=3D"hr" style=3D"-webkit-text-size-adjus=
+t: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspac=
+e: 0pt; border-spacing: 0; border-collapse: collapse;" align=3D"center" bor=
+der=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse;backgr=
+ound-color:#ffffff;" bgcolor=3D"#ffffff" valign=3D"top">=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; border-collapse: collaps=
+e;">=20
+<center>=20
+<table class=3D"table-inner" style=3D"-webkit-text-size-adjust: 100%; -ms-t=
+ext-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border=
+-spacing: 0; border-collapse: collapse;" align=3D"center" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; border-collapse: collaps=
+e;">=20
+<table class=3D"table3-3" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse;" border=3D"0" cellpadding=3D"0" cellsp=
+acing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr style=3D"height: 10px;">=20
+<td class=3D"bordered" style=3D"-moz-hyphens: none;-webkit-text-size-adjust=
+: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-=
+webkit-hyphens: none;-ms-text-size-adjust: 100%;hyphens: none;border-top-st=
+yle: none;border-bottom-width:1px;border-bottom-style: solid;border-bottom-=
+color:#e6e6e6;border-collapse:=20
+collapse;border-top-color:#e6e6e6;border-left-color:#e6e6e6;border-right-co=
+lor:#e6e6e6;border-top-width:1px;border-left-width:1px;border-right-width:1=
+px;">&nbsp;</td>=20
+</tr>=20
+<tr style=3D"height: 10px;">=20
+<td style=3D"-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; -webkit=
+-hyphens: none; -moz-hyphens: none; hyphens: none; border-collapse: collaps=
+e;">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</center> </td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table class=3D"mktoModule m_free-text" id=3D"free-text" idstyle=3D"-webkit=
+-text-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt;=
+ mso-table-rspace: 0pt; border-spacing: 0; border-collapse: collapse;" alig=
+n=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%=
+">=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse;backgr=
+ound-color:#ffffff;" bgcolor=3D"#ffffff" valign=3D"top">=20
+<center>=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr>=20
+<td class=3D"" style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust=
+: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-=
+webkit-hyphens: none;-moz-hyphens: none;hyphens: none;border-collapse: coll=
+apse;line-height:20px;font-size:20px;" height=3D"20px">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td class=3D"secondary-font text" style=3D"-moz-hyphens: none;-webkit-text-=
+size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: b=
+reak-word;-webkit-hyphens: none;-ms-text-size-adjust: 100%;hyphens: none;fo=
+nt-family:'Lato', Arial, sans-serif;font-size: 14px;line-height: 23px;color=
+: #666666;border-collapse: collapse;">=20
+<div class=3D"mktoText" id=3D"text">
+<p><strong><span style=3D"font-size: 18px;">Scheduled Maintenance July 15</=
+span></strong></p>=20
+<p>On&nbsp;Saturday July 15, Networking Academy post-login site will be una=
+vailable for 2 separate periods; a 2 hour period and a 15 minute period, du=
+e to scheduled maintenance. Dates and times are listed below for your locat=
+ion:</p>=20
+<ul>=20
+<li>San Francisco:</li>=20
+<ul>=20
+<li>Period 1: 15 July, 9 a.m. =E2=80=93 11:00 a.m. PDT (UTC-7)&nbsp;</li>=
+=20
+<li>Period 2: 15 July, 3:30 p.m. - 3:45 p.m. PDT (UTC-7)</li>=20
+</ul>=20
+<li>New York:&nbsp;</li>=20
+<ul>=20
+<li>Period 1: 15 July, noon =E2=80=93 2:00 p.m. EDT &nbsp;(UTC-4)&nbsp;</li=
+>=20
+<li>Period 2: 15 July, 6:30 p.m. =E2=80=93 6:45 p.m. EDT (UTC 5)</li>=20
+</ul>=20
+<li>London:</li>=20
+<ul>=20
+<li>Period 1: 15 July, 5 p.m. =E2=80=93 7:00 p.m. BST &nbsp;(UTC)&nbsp;</li=
+>=20
+<li>Period 2: 15 July, 11:30 p.m. =E2=80=93 11:45 p.m. BST (UTC)</li>=20
+</ul>=20
+<li>Hong Kong:</li>=20
+<ul>=20
+<li>Period 1: 16 July midnight =E2=80=93 2:00 a.m. HKT (UTC+8)&nbsp;</li>=
+=20
+<li>Period 2: 16 July, 6:30 a.m. =E2=80=93 6:45 a.m. HKT (UTC+8)</li>=20
+</ul>=20
+<li>Sydney:</li>=20
+<ul>=20
+<li>Period 1: 16 July, 2 a.m.&nbsp; 4 a.m. &nbsp;AEST (UTC+10)&nbsp;</li>=
+=20
+<li>Period 2: 16 July 8:30 a.m. =E2=80=93 8:45 a.m. AEST (UTC +10)</li>=20
+</ul>=20
+</ul>=20
+<p>Additionally, assessments along with some courses will be unavailable fo=
+r 4 hours. Please plan your learning activities to avoid the times listed b=
+elow for your location.&nbsp; We apologize for any inconvenience and will b=
+e back online as soon as our work is complete.</p>=20
+<ul>=20
+<li>San Francisco: 15 July, 9:00 a.m. =E2=80=93 1:00 p.m. PDT &nbsp;(UTC-7)=
+<br /></li>=20
+<li>New York:&nbsp; 15 July, noon &nbsp;- 4:00 p.m. EDT (UTC-5)<br /></li>=
+=20
+<li>London: 15 July, 5:00 p.m. =E2=80=93 9:00 p.m. BST (UTC)<br /></li>=20
+<li>Hong Kong: 16 July, midnight =E2=80=93 4:00 a.m. HKT (UTC+8)<br /></li>=
+=20
+<li>Sydney: 16 July, 2:00 a.m.- 6:00 a.m. AEST (UTC+10)</li>=20
+</ul>
+</div> </td>=20
+</tr>=20
+<tr>=20
+<td class=3D"" style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust=
+: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-=
+webkit-hyphens: none;-moz-hyphens: none;hyphens: none;border-collapse: coll=
+apse;line-height:20px;font-size:20px;" height=3D"20px">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</center> </td>=20
+</tr>=20
+</tbody>=20
+</table>
+<table class=3D"mktoModule m_free-text" id=3D"footer" idstyle=3D"-webkit-te=
+xt-size-adjust: 100%; -ms-text-size-adjust: 100%; mso-table-lspace: 0pt; ms=
+o-table-rspace: 0pt; border-spacing: 0; border-collapse: collapse;" align=
+=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%"=
+>=20
+<tbody>=20
+<tr>=20
+<td style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;mso-=
+table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-webkit-hyph=
+ens: none;-moz-hyphens: none;hyphens: none;border-collapse: collapse;backgr=
+ound-color:#ffffff;" bgcolor=3D"#ffffff" valign=3D"top">=20
+<center>=20
+<table class=3D"table600" style=3D"-webkit-text-size-adjust: 100%; -ms-text=
+-size-adjust: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-sp=
+acing: 0; border-collapse: collapse; margin-top: 0; margin-right: auto; mar=
+gin-bottom: 0; margin-left: auto;" align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"600">=20
+<tbody>=20
+<tr>=20
+<td class=3D"" style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust=
+: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-=
+webkit-hyphens: none;-moz-hyphens: none;hyphens: none;border-collapse: coll=
+apse;line-height:10px;font-size:10px;" height=3D"10px">&nbsp;</td>=20
+</tr>=20
+<tr>=20
+<td class=3D"secondary-font text" style=3D"-moz-hyphens: none;-webkit-text-=
+size-adjust: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: b=
+reak-word;-webkit-hyphens: none;-ms-text-size-adjust: 100%;hyphens: none;fo=
+nt-family:'Lato', Arial, sans-serif;font-size: 14px;line-height: 23px;color=
+: #666666;border-collapse: collapse;">=20
+<table class=3D"table_responsive" style=3D"width: 100%;" width=3D"100%" cel=
+lspacing=3D"0" cellpadding=3D"0" align=3D"right">=20
+<tbody>=20
+<tr>=20
+<td style=3D"text-align: right; padding: 0px;" class=3D"footer_align">=20
+<div class=3D"mktoSnippet" id=3D"Footer">
+<table style=3D"text-align: left; border-collapse: collapse; mso-table-lspa=
+ce: 0pt; mso-table-rspace: 0pt;" width=3D"100%" cellspacing=3D"0" cellpaddi=
+ng=3D"0" border=3D"0" bgcolor=3D"#6D6E72">=20
+<tbody>=20
+<tr>=20
+<td colspan=3D"8" height=3D"4" bgcolor=3D"#6D6E72"><br /></td>=20
+</tr>=20
+<tr>=20
+<td style=3D"border-collapse: collapse;" width=3D"10%" valign=3D"top" bgcol=
+or=3D"#6D6E72"><br /></td>=20
+<td style=3D"font-family: Arial,Helvetica,sans-serif; color: #ffffff; font-=
+size: 10px; line-height: 14px; border-collapse: collapse;" width=3D" 60%" v=
+align=3D"top" bgcolor=3D"#6D6E72"></td>=20
+<td style=3D"border-collapse: collapse;" valign=3D"top" bgcolor=3D"#6D6E72"=
+><a target=3D"_blank" href=3D
+"http://nsmail.cisconetspace.com/uQz200gFy40f0I00l3QVZn0"
+><img style=3D"display: block; outline: none; text-decoration: none; border=
+: none;" src=3D"http://www.cisco.com/web/learning/le31/le46/cln/images/news=
+letter/green/twitter.jpg" alt=3D"" border=3D"0" /></a></td>=20
+<td style=3D"border-collapse: collapse;" valign=3D"top" bgcolor=3D"#6D6E72"=
+><a target=3D"_blank" href=3D
+"http://nsmail.cisconetspace.com/uRz200gFy40f0J00l3QVZn0"
+><img style=3D"display: block; outline: none; text-decoration: none; border=
+: none;" src=3D"http://www.cisco.com/web/learning/le31/le46/cln/images/news=
+letter/green/facebook.jpg" alt=3D"" border=3D"0" /></a></td>=20
+<td style=3D"border-collapse: collapse;" valign=3D"top" bgcolor=3D"#6D6E72"=
+><a target=3D"_blank" href=3D
+"http://nsmail.cisconetspace.com/ez0gSZ00020FVl0QynK430f"
+><img style=3D"display: block; outline: none; text-decoration: none; border=
+: none;" src=3D"http://csrinfo.cisconetspace.com/rs/ciscoacademy/images/you=
+tube-logo-white-on-grey-50x26.png" alt=3D"" border=3D"0" /></a></td>=20
+<td style=3D"border-collapse: collapse;" valign=3D"top" bgcolor=3D"#6D6E72"=
+><a target=3D"_blank" href=3D
+"http://nsmail.cisconetspace.com/wFgZzyfV400003nL20Q0T0l"
+><img imagepreview=3D"false" constrain=3D"true" src=3D"http://www.cisco.com=
+/web/learning/le31/le46/cln/images/newsletter/green/linkedin.jpg" alt=3D"li=
+nked in" /></a></td>=20
+<td style=3D"border-collapse: collapse;" valign=3D"top" bgcolor=3D"#6D6E72"=
+><br /></td>=20
+<td style=3D"border-collapse: collapse;" valign=3D"top" bgcolor=3D"#6D6E72"=
+><br /></td>=20
+</tr>=20
+<tr>=20
+<td colspan=3D"8" height=3D"4" bgcolor=3D"#6D6E72"><br /></td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+<table style=3D"font-family: Arial, Helvetica, sans-serif; color: #666666; =
+font-size: 11px; line-height: 14px; text-align: left; border-collapse: coll=
+apse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width=3D"100%" cellspa=
+cing=3D"0" cellpadding=3D"0" border=3D"0">=20
+<tbody>=20
+<tr>=20
+<td style=3D"font-family: Arial, Helvetica, sans-serif; color: #666666; fon=
+t-size: 11px; line-height: 14px; padding: 0px 20px;" valign=3D"top"> <p><br=
+ />You are receiving this notification due to its business critical nature.=
+ If you are no longer part of the Networking Academy program, or if you hav=
+e multiple accounts and need to have an account deleted or merged, navigate=
+ to <a href=3D
+"http://nsmail.cisconetspace.com/a000240nQV0g00MZUFzly3f" target=3D"_blank"=
+ id=3D""
+>Submit Global support Desk Ticket</a>, provide the account deletion detail=
+s.<br /> <br /> =C2=A92017 Cisco Systems, Inc. and/or its affiliates. All r=
+ights reserved. 170 W Tasman Dr., San Jose, CA 95134.<br /> <br /> <a style=
+=3D"color: #0088c2; text-decoration: none;" href=3D
+"http://nsmail.cisconetspace.com/llFQN0004ng30Z0fy0z0V2V" target=3D"_blank"
+>Cisco.com</a> | <a style=3D"color: #0088c2; text-decoration: none;" href=
+=3D
+"http://nsmail.cisconetspace.com/c0y00Q3V04zF2nfZO0gWl00" target=3D"_blank"
+>Privacy Statement</a> | <a style=3D"color: #0088c2; text-decoration: none;=
+" href=3D
+"http://nsmail.cisconetspace.com/ez0gXZ00020FVl0QynP430f" target=3D"_blank"
+>Trademarks</a></p> </td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+<p></p>
+</div> </td>=20
+</tr>=20
+</tbody>=20
+</table> <p></p> </td>=20
+</tr>=20
+<tr>=20
+<td class=3D"" style=3D"-webkit-text-size-adjust: 100%;-ms-text-size-adjust=
+: 100%;mso-table-lspace: 0pt;mso-table-rspace: 0pt;word-break: break-word;-=
+webkit-hyphens: none;-moz-hyphens: none;hyphens: none;border-collapse: coll=
+apse;line-height:20px;font-size:20px;" height=3D"20px">&nbsp;</td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+</center> </td>=20
+</tr>=20
+</tbody>=20
+</table></td>=20
+</tr>=20
+</tbody>=20
+</table> </td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+<!-- Outer Table END -->  =20
+<a href=3D
+"http://nsmail.cisconetspace.com/I0n2YVg04y3Qzf0Q0l0FZ00"
+></a>
+<img src=3D"http://nsmail.cisconetspace.com/trk?t=3D1&mid=3DMDU5LVZGWi04MzQ=
+6Nzk3NTo0NzM3OjEyNzM4OjA6Nzk4Njo5OjE2OTY4OjM3ODU2NzA3OnNheWRlLmd1dGllcnJlej=
+kyQGdtYWlsLmNvbQ%3D%3D" width=3D"1" height=3D"1" style=3D"display:none !imp=
+ortant;" alt=3D"" />
+</body>
+</html>
+------=_Part_604627333_2094197915.1498178572071--
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>color</key>
+	<string>000000</string>
+	<key>date-last-viewed</key>
+	<integer>0</integer>
+	<key>date-received</key>
+	<integer>1498178586</integer>
+	<key>flags</key>
+	<integer>8590195840</integer>
+	<key>gmail-label-ids</key>
+	<array>
+		<integer>3</integer>
+	</array>
+	<key>remote-id</key>
+	<string>10124</string>
+</dict>
+</plist>

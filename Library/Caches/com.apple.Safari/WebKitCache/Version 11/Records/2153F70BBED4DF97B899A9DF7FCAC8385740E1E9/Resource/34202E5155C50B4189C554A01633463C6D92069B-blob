@@ -1,0 +1,645 @@
+//$Id$
+var _NO_ACTION = false;
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) {d=document;} if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all){ x=d.all[n];} for (i=0;!x&&i<d.forms.length;i++){ x=d.forms[i][n];}
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++){ x=MM_findObj(n,d.layers[i].document);}
+  if(!x && d.getElementById) {x=d.getElementById(n);} return x;}
+
+function toggleSwipe(rowid)
+{
+	for (i=1;i<=5;i++)
+	{
+		var rowObj=MM_findObj('row'+i)//No I18N
+		var colObj=MM_findObj('col'+i)//No I18N
+		var bulletObj=MM_findObj('bullet'+i)//No I18N
+		var applinkObj=MM_findObj('app'+i)//No I18N
+		var swipecontentObj=MM_findObj('swipecontent'+i)//No I18N
+
+		if ('swipecontent'+i!='swipecontent'+rowid)
+		{
+//			rowObj.className="stepsHelp"
+			colObj.className="celllink"
+			bulletObj.src="images/bullet01.gif"
+			applinkObj.className="bodybold"
+			swipecontentObj.className='hide'
+		}
+		else
+		{
+			if (swipecontentObj.className=='hide')
+			{
+//				rowObj.className="link2"
+				colObj.className="celllink"
+				bulletObj.src="images/bullet03.gif"
+				applinkObj.className="bodybold"
+				swipecontentObj.className=''
+			}
+		}
+	}
+	if (rowid == "1")
+	{
+	  document.clock.taskType.value="Add Configuration"//No I18N
+	}
+	else if (rowid == "2")
+	{
+	  document.clock.taskType.value="View Configuration"//No I18N
+	}
+	else if (rowid == "3")
+	{
+	  document.clock.taskType.value="Quick Links"//No I18N
+	}
+	else if (rowid == "4")
+	{
+	  document.clock.taskType.value="Summary View"//No I18N
+	}
+	else if (rowid == "5")
+	{
+	  document.clock.taskType.value="Once"//No I18N
+	}
+}
+
+
+function helpCard(paramkey,helphide)
+{
+	if(helphide == "true")
+	{
+		var linkurl ="/settings.do?actionToCall=setHelpCard&helpCard=true&paramName="+paramkey;//No I18N
+	}
+	else
+	{
+		var linkurl ="/settings.do?actionToCall=setHelpCard&helpCard=false&paramName="+paramkey;//No I18N
+	}
+	getHelpCardResult(linkurl,"set");//No I18N
+}
+
+function helpCardValue(paramkey)
+{
+	var linkurl ="/settings.do?actionToCall=getHelpCard&paramName="+paramkey;//No I18N
+	getHelpCardResult(linkurl,"get");//No I18N
+}
+
+function getHelpCardResult(url,method)
+{
+	if(method == "set")
+	{
+	if (window.XMLHttpRequest)
+	{
+		req = new XMLHttpRequest();
+		req.onreadystatechange = processHelpCard;
+		req.open("GET", url, true);
+		req.send(null);
+	}else if (window.ActiveXObject)
+	{
+		req = new ActiveXObject("Microsoft.XMLHTTP");
+		if(req)
+		{
+			req.onreadystatechange = processHelpCard;
+			req.open("GET", url, true);
+			req.send();
+		}
+	}
+	}
+	if(method == "get")
+	{
+	if (window.XMLHttpRequest)
+	{
+		req = new XMLHttpRequest();
+		req.onreadystatechange = getHelpCard;
+		req.open("GET", url, true);
+		req.send(null);
+	}else if (window.ActiveXObject)
+	{
+		req = new ActiveXObject("Microsoft.XMLHTTP");
+		if(req)
+		{
+			req.onreadystatechange = getHelpCard;
+			req.open("GET", url, true);
+			req.send();
+		}
+	}
+	}
+}
+
+function processHelpCard()
+{
+	if(req.readyState == 4)
+	{
+        if (req.status == 200)
+		{
+			try
+			{
+			//later we can have a option to show help card on each page top right.
+				var x = req.responseXML.getElementsByTagName('helpCardDetails');
+				var helpcard = x[0].getAttribute("HELP_CARD");
+			}catch(e)
+			{
+				return ;
+			}
+        }
+    }
+	else
+	{
+		return ;
+	}
+}
+
+function getHelpCard()
+{
+	if(req.readyState == 4)
+	{
+        if (req.status == 200)
+		{
+			try
+			{
+			//later we can have a option to show help card on each page top right.
+				var x = req.responseXML.getElementsByTagName('helpCardDetails');
+				var helpcard = x[0].getAttribute("HELP_CARD");
+				showHelpCard(helpcard);
+			}catch(e)
+			{
+				return ;
+			}
+        }
+    }
+	else
+	{
+		return ;
+	}
+}
+
+function customShowMessage(trimmedMsg, completeMsg, insertionId, action, destDoc)
+{
+    var data = "";
+    if(action != null && action != "" && action != "null"){
+        data = data.concat("<a href='" + action + "'>");
+    }
+    completeMsg = completeMsg.replace(/\n/gi,"\\n ");
+    completeMsg = completeMsg.replace("'", "\\\'");
+    window[insertionId] = {};
+    data = data.concat("<span onMouseOver=\"javascript:customShowCompleteMessage('" + insertionId + "', '" + completeMsg + "');return false\" onMouseOut=\"hideCustomMessage();return false;\">");
+    data = data.concat(trimmedMsg);
+    data = data.concat("</span>");
+    if(action != null && action != "" && action != "null"){
+        data = data.concat("</a>");
+    }
+    destDoc.getElementById(insertionId).innerHTML = data;
+}
+
+function customShowCompleteMessage(insertionId, completeMsg)
+{
+    var divobj = document.getElementById(insertionId);
+    var divparobj = divobj.parentNode;
+    var dlen = divparobj.offsetWidth;
+    //alert(dlen);
+    var dlen1 = dlen / 9;
+    var dlen2 = Math.round(dlen1);
+
+    var newmsg = "";
+    var len = completeMsg.length;
+    var brstr = "<br>";
+    while(len > dlen2)
+    {
+        newmsg =  newmsg + completeMsg.substring(0, dlen2) + brstr;
+        completeMsg = completeMsg.substring(dlen2, len);
+        len = completeMsg.length;
+    }
+    newmsg = newmsg + completeMsg;
+    //newmsg = newmsg.substring(0, newmsg.length - brstr.length);
+    //alert(newmsg);
+	
+    window[insertionId].MSG= newmsg;
+
+    showCompleteMessage(insertionId);
+}
+
+function openSupportWindow()
+{
+	window.open('/support.do?selectedTreeElem=Support','DesktopCentralSupport','scrollbars=no,top=200,left=300,width=500,height=265');
+}
+
+function showErrMsgInLayer(message)
+{
+	var content = "<table class=\"tableborder\" width=\"100%\" height=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" ><tr><td width=\"10%\"><img src=\"/images/alerts_small.png\" widhth=\"20\" height=\"20\" border=\"0\" ></td><td width=\"2%\">&nbsp;</td><td width=\"88%\" class=\"bodytext\">";
+	content = content +message+"</td></tr><tr><td colspan=\"3\" align=\"center\"><input type=\"button\" value=\"Close\" onClick=\"closeDialog();\"></td></tr></table>";
+
+	//New code for calculating window height/width and place the window at the center
+	var myWidth = 0, myHeight = 0;
+	if( typeof( window.innerWidth ) == 'number' ) {
+		//Non-IE
+		myWidth = window.innerWidth;
+		myHeight = window.innerHeight;
+	} else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+		//IE 6+ in 'standards compliant mode'
+		myWidth = document.documentElement.clientWidth;
+		myHeight = document.documentElement.clientHeight;
+	} else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+		//IE 4 compatible
+		myWidth = document.body.clientWidth;
+		myHeight = document.body.clientHeight;
+	}
+	var win_left = (myWidth/2) - 275;
+	var win_top = (myHeight/2) - 200;
+
+	showDialog( content , 'position=absolute,modal=no,height=100,width=250,scrollbars=no,title='+ I18N.getMsg("dc.js.common.ALERT") + ',left='+win_left+',top='+win_top); //No I18N
+}
+
+function showErrMsgInLine(message)
+{
+	document.getElementById("validationErrMsgRow").className = "";
+	document.getElementById("validationErrMsgTD").innerHTML = "<img src=\"/images/alerts_small.png\" style=\"width:20px;height:20px\"  align=\"absmiddle\">&nbsp;" + message; //No I18N
+
+}
+
+function openPortNow(type, firewallAndDcomStatus)
+{
+	var url ="/portAction.do?actionToCall=configureFirewallAndDCOMSettings";//No I18N
+	var req = AjaxAPI.getXMLHttpRequest();
+	if(req)
+	{
+		req.open("GET", url, true);
+		if (window.XMLHttpRequest)
+		{
+			req.send(null);
+		}
+		else if (window.ActiveXObject)
+		{
+			req.send();
+		}
+		req.onreadystatechange = function(){
+			if (req.readyState == 4)
+			{
+				if (req.status == 200)
+				{
+//					updateMessageInsertSection(req);
+                                        // commenting this as Ids are not common to clode message. in DC´openPort.jsp have t duplicate method showOpenPortResult(req.responseText, firewallAndDcomStatus);
+				}
+			}
+		};
+	}
+}
+
+
+function getFirewallAndDCOMStatus( fromPage )
+{
+	var isPortOpenedURL = '/portAction.do?actionToCall=getFirewallAndDCOMStatus';//No I18N
+
+	//var returnText = "";
+	var req = AjaxAPI.getXMLHttpRequest();
+	if(req)
+	{
+		req.open("GET", isPortOpenedURL, true);
+		if (window.XMLHttpRequest)
+		{
+			req.send(null);
+		}
+		else if (window.ActiveXObject)
+		{
+			req.send();
+		}
+		req.onreadystatechange = function(){
+			if (req.readyState == 4)
+			{
+				if (req.status == 200)
+				{
+					var respText = req.responseText;
+					if(respText)
+					{
+						//alert("respText :"+respText);
+						//returnText = respText;
+						//alert("returning returnText :"+returnText);
+						//return returnText;
+						if( fromPage == "somDefn")
+						{
+							showConfirmDialogForAgentInstall(respText);
+						}
+						else if(fromPage == "somList")
+						{
+							handleInstallation( respText );
+						}
+					}
+				}
+			}
+		};
+	}
+}
+
+function jumpToPage(uniqueViewName, pagelength, pageNo)
+{
+	var nextRow = (pagelength * (pageNo - 1)) + 1;
+	showRange(uniqueViewName, nextRow, pageNo);
+}
+
+function validateEmail(email)
+{
+var emailStr = email;
+var emailPat=/^(.+)@(.+)$/;
+var matchArray=emailStr.match(emailPat);
+
+	if (matchArray==null)
+	{
+			alert(I18N.getMsg('dc.common.enter_valid_email_address')+" - "+email);
+			return false;
+	}
+	return true;
+}
+    
+/**
+ * Trim method included to be used by Mickey's I18N.getMsg for JS
+ */
+
+function ltrim(str)
+{
+	var k = 0; 
+	while(k < str.length && isWhitespace(str.charAt(k))){
+	 k++ ;
+	}
+	return str.substring(k, str.length);
+}
+function rtrim(str)
+{
+	var j=str.length-1;
+	while (j>=0 && isWhitespace(str.charAt(j)) ) {
+		j-- ; 
+	}
+	return str.substring(0,j+1);
+}
+
+function trim(str)
+{
+	return ltrim(rtrim(str));
+}
+function isWhitespace(charToCheck)
+{
+	var whitespaceChars = " \t\n\r\f";//NO I18N
+	return (whitespaceChars.indexOf(charToCheck) != -1);
+}
+
+/**
+ * function to show helptip with description
+ * srcID - ID of the help icon image element
+ * titleKey - I18N key for the help tip title
+ * contentKey - I18N key for the help tip content.
+ * setwidth - width of the diaalog box.If not passed default size is taken
+ */
+function showHelpTip(srcID,titleKey,contentKey,setwidth){
+var width=330;
+if(setwidth!=null)
+{
+  width=setwidth;
+}
+    showURLInDialog('/jsp/common/dcHelpTip.jsp?helpTitle='+titleKey+'&helpContent='+contentKey+'&fromElement='+srcID,'dialogBoxType=helpTip,position=relative,width='+width+'px'); //No I18N
+}
+
+/** Methods related to Graph **/
+
+function showGraph(name,xmlFile,generatorClass,paramString)
+{
+    showGraph(name,xmlFile,generatorClass,paramString,'500',undefined,undefined);
+
+}
+function showGraph(name,xmlFile,generatorClass,paramString,width,chartGenerator,graphType){
+    var id = name + "_graph"; //No I18N
+	width = width == null? '500' : width;//No I18N
+    document.getElementById(id).value='<img src="/images/s_progressbar.gif" align="absmiddle">&nbsp;' + I18N.getMsg("dc.js.common.LOADING_GRAPH"); //No I18N
+    var url ="/showGraph.cc?name="+name+"&xmlFile="+xmlFile+"&generatorClass="+generatorClass+"&width="+width+"&params="+paramString; //No I18N
+    if( chartGenerator != undefined ){
+        url = url + "&chartGenerator=" +chartGenerator;//No I18N
+    }
+    if( graphType != undefined ){
+        url = url + "&graphType="+graphType;//No I18N
+    }
+    var req = AjaxAPI.getXMLHttpRequest();
+    req.open("GET", url, true);
+    req.send(null);
+    req.onreadystatechange = function()
+    {
+        showGraphResponse(req,id,name);
+    }
+}
+
+function showGraphResponse(req,id,name)
+{
+    if (req.readyState == 4) 
+    {
+        if (req.status == 200 || req.status == 304) 
+        {
+            results = req.responseText;
+            document.getElementById(id).innerHTML = results;
+			var chartContainer="#zohoChart_"+name;//No I18N
+			var chartScripts=jQuery(chartContainer).find('script').each(function(i) {
+				eval(jQuery(this).text());
+			});
+        } 
+        else 
+        {
+            document.getElementById(id).innerHTML="<span style='color:#FF5F5F; font-weight:bold;'><img src='/images/failureicon.gif' align='absmiddle'>&nbsp;" + I18N.getMsg("dc.js.common.GRAPH_DATA_ERROR") + "</span>" +req.statusText;
+        }
+    }
+}
+
+function toggleDCGraph(id,type)
+{
+    if(type == 'Bar3D')
+    {
+        document.getElementById(id+"_Bar3D").style.display = "block";
+        document.getElementById(id+"_Pie3D").style.display = "none"; 
+        document.getElementById(id+"_graph_show_Pie3D").style.display = "block";
+        document.getElementById(id+"_graph_show_Bar3D").style.display = "none"; 
+    }
+    else if(type == 'Pie3D')
+    {
+        document.getElementById(id+"_Bar3D").style.display = "none";
+        document.getElementById(id+"_Pie3D").style.display = "block";
+        document.getElementById(id+"_graph_show_Pie3D").style.display = "none";
+        document.getElementById(id+"_graph_show_Bar3D").style.display = "block"; 
+        
+    }
+}
+function getTimeZoneMsg()
+{
+return I18N.getMsg('dc.js.common.TIMEZONE_MESSAGE');
+
+}
+
+function getServertimeInMillis() {
+
+    var req = AjaxAPI.getXMLHttpRequest();
+    req.open("POST", '/resourceActions.do?actionToCall=getServerTime', true);
+
+    //Send the proper header information along with the request
+    req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    req.send(null);
+
+    req.onreadystatechange = function() {
+
+        if (req.readyState == 4)
+        {
+            if (req.status == 200)
+            {
+                 serverTime = Number(req.responseText.trim());
+
+            }
+        }
+    };
+}
+
+function is_int(id, event) {
+   
+    if (event && ((event.keyCode > 36 && event.keyCode < 41) || (event.keyCode > 47 && event.keyCode < 58) || (event.keyCode > 95 && event.keyCode < 106)) ) {
+        return
+    }
+    
+    var is_int = true;
+    var value = (id.value).trim();
+
+    /**
+     *method entered wethere not a number , "" .
+     */
+
+    if (!is_intFunction(value)) {
+        is_int = false;
+
+        while (value != "" && !is_intFunction(value)) {
+            value = value.slice(0, value.length - 1);
+        }
+    }
+    id.value = value;
+    return is_int;
+
+    function is_intFunction(value) {
+        return !isNaN(value) && (parseFloat(value) == parseInt(value))
+    }
+
+}
+
+function removeClassFromElement(element, className) {
+    if (element.className.search(className) != -1) {
+        element.className = element.className.replace(new RegExp("\\b" + className + "\\b", "g"), '');
+    }
+}
+
+function appendClassToElement(element, classNames) {
+    classNames = classNames.trim().split(",");
+
+    for (var i = 0; i < classNames.length; i++) {
+        var classList = element.className.split(" ");//initilaze each time for if classNames contains same class repeated like ("hilite","hilite") 
+        var classname = classNames[i].trim()
+        var classAlreadyExists = false
+
+        for (var j = 0; j < classList.length; j++) {
+            if (classList[j].trim() == classname) {
+                classAlreadyExists = true
+            }
+        }
+        if (!classAlreadyExists) {
+            element.className += " " + classname;
+        }
+    }
+}
+
+function showActionMenu(menuId) {
+    var menuElem = document.getElementById(menuId);
+    var menuClone = menuElem.cloneNode(true);
+    
+    menuClone.style.display = "block";
+    menuClone.className = "";
+    var testDiv = document.createElement("div");
+    testDiv.appendChild(menuClone);
+    document.body.appendChild(testDiv);
+    var leftPos = menuClone.firstElementChild.offsetWidth;
+    testDiv.parentNode.removeChild(testDiv);
+
+    showDialog(menuElem.innerHTML, 'closeButton=no,closeOnBodyClick=yes,zAdjust=true,position=relative,left='+(0-leftPos+6)+',top=20'); // NO I18N
+}
+
+function postDownload(url)
+{
+	if(!document.getElementById('postDownloadForm')){
+		var form=document.createElement('form');
+        form.method='POST';//No I18N
+        form.action=url;
+        form.setAttribute("id", "postDownloadForm");
+        form=addCSRF(form);
+        document.getElementsByTagName("BODY")[0].appendChild(form);
+	}
+	else
+	{
+		document.getElementById('postDownloadForm').action=url;
+	}
+    document.getElementById('postDownloadForm').submit();
+}
+
+function displayToolTip(id, messageTitle, messageContent, link) {
+    setTimeout(function() {
+        var span = document.createElement('span'); //NO I18N 
+        var currelem = document.getElementById(id);
+        // add span only one time 
+        if (currelem.childNodes.length < 4) {
+            if (messageContent !== undefined) {
+				if(link === undefined && !messageTitle) {
+					span.innerHTML="<p>"+I18N.getMsg(messageContent)+"</p>";
+				}
+                else if (link === undefined) {
+                    span.innerHTML = "<p><Strong>" + I18N.getMsg(messageTitle) + "<\/Strong> <br\/>" + I18N.getMsg(messageContent) + "</p>"; //NO I18N      
+                } else {
+                    var splitlink=link.split("#");
+
+                    if(splitlink.length==1)
+                    {
+                      link = mdmUrl + link + "?" + trackingcode;
+                    }
+                    else
+                    {
+                      link =mdmUrl+splitlink[0]+"?" + trackingcode+"#"+splitlink[1];
+                    }
+                    span.innerHTML = "<p><Strong>" + I18N.getMsg(messageTitle) + "<\/Strong> <br\/>" + I18N.getMsg(messageContent, new Array(link)) + "</p>"; //NO I18N
+                }
+            } else {
+                span.innerHTML = "<p><Strong>" + I18N.getMsg(messageTitle) + "<\/Strong></p>"; //NO I18N 
+            }
+
+            currelem.style = 'text-decoration:none;'
+            currelem.appendChild(span);
+            ///NO I18N 
+        }
+
+    }, 400);
+}
+	
+function getValue(elemName)
+{
+	var value = "";
+
+	var e = getElement(elemName);
+
+	if(e)
+	{
+		value = e.value;
+	}
+	return value;
+}
+
+function setValue(elemName,value)
+{
+	var e = getElement(elemName);
+	if(e)
+	{
+		e.value = value;
+	}
+}
+function getElement(elemName)
+{
+	if(document.getElementsByName(elemName))
+	{
+		var elem = document.getElementsByName(elemName);
+		var e = elem[0];
+		return e;
+	}
+
+    var idRef = document.getElementById(elemName)
+    if (idRef) {
+        return idRef;
+	}
+}
+

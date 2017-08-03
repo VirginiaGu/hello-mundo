@@ -1,0 +1,332 @@
+15298     
+Delivered-To: sayde.gutierrez92@gmail.com
+Received: by 10.79.165.85 with SMTP id v21csp777239ivh;
+        Wed, 31 May 2017 23:11:11 -0700 (PDT)
+X-Received: by 10.99.168.6 with SMTP id o6mr36228910pgf.104.1496297471859;
+        Wed, 31 May 2017 23:11:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1496297471; cv=none;
+        d=google.com; s=arc-20160816;
+        b=LqcnV/z6ZLKIDQaJ7mzC3kiZNFY04YrOq0wm47apq7GBzg+IhXjjnBtOEz/TfBuw9+
+         kflxdthQGn3mC7mp8oZxxnLGegcCpCNkX6aMaRaYEkC1oDZRQImtWgN9S3/ywbbaFz95
+         urtXpfTuldeJgZ7ucKyx05HHo4zw5gUXWmDcrSO0wSihXTX+Lhabu0Frm+fDN6F6s37t
+         9LsIm+IhqCzrgnqjNfwvvdOuUN82iWk6f6IQ6QEap2PeLO+2576aAQ2iqVdkNIpwujSF
+         v8t01Es8eq07dEn1CPQTfp3/jRnW7ihAZcIIvAuvzm0WnpNgrFtUxJui2Flb5z7JJJS+
+         ldtg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=date:auto-submitted:mime-version:subject:message-id:to:from
+         :dkim-signature:arc-authentication-results;
+        bh=waYvY5KAa16sAweaJmN0f2o1xGXEbKdfDZuzExcNWRw=;
+        b=0fsHuvlqsctAGESaStEVYydWKIvOMAteOTBMZp1qLhP2mIjTijFd+MtgAVlIyF6PLs
+         fSork9Ju1RJcLJ8M95Cavur2masn732ARGRFn8KvXZURbJXpm7DyHVoGX4+sOdBHwDlX
+         GE2FtyMM6rV3Q6xrLJMmTzdPKHJE79sP1aIVobpYv+/s5qa8vOmKrzTHB+TQDjL5+p9O
+         ozKMjwd8sOzWBlNxRdz3QChWpgKjIM87lElKnpVzRFYGbtjA8++y2UoZzdAkOgKpnqkx
+         GGoC/64juJ+gpHaOADVXLXWlU7nKmsLIQzOhcjfvaU4jIlRbbYBzFnQh+61gli2VkMiI
+         iMZA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@es.one.com;
+       spf=pass (google.com: domain of ventas@es.one.com designates 195.47.247.170 as permitted sender) smtp.mailfrom=ventas@es.one.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=one.com
+Return-Path: <ventas@es.one.com>
+Received: from crm-mailrelay1.public.one.com (crm-mailrelay1.public.one.com. [195.47.247.170])
+        by mx.google.com with ESMTPS id 32si18791187pgx.200.2017.05.31.23.11.10
+        for <sayde.gutierrez92@gmail.com>
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Wed, 31 May 2017 23:11:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ventas@es.one.com designates 195.47.247.170 as permitted sender) client-ip=195.47.247.170;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@es.one.com;
+       spf=pass (google.com: domain of ventas@es.one.com designates 195.47.247.170 as permitted sender) smtp.mailfrom=ventas@es.one.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=one.com
+Received: from crm-appsrv2.public.one.com (crm-appsrv2.public.one.com [195.47.247.229])
+	by crm-mailrelay1.public.one.com (Postfix) with ESMTP id 6AFD01502A5
+	for <sayde.gutierrez92@gmail.com>; Thu,  1 Jun 2017 06:11:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=es.one.com; s=201606;
+	t=1496297467; bh=Hrceim9wfIv5bsG8Hlb5kytrPmFrNxtrpxVbXPY7vVg=;
+	h=From:To:Subject:Date:From;
+	b=iYZ7CGPQmQ9Y+xrZrtYy3Qvy3zwte47Og1+gNAE1mRM0Pa6cDEv/eYRMH9j4w8HdH
+	 WNoXBhkQEQIhsHSz6AtiuDJuuMOW0d1mf1YYeZ52gD0+ZiM4MYqvWyyhz1D3Goutd5
+	 ib4H0pGGGmv7RspkJ+l4aRZ09SSzDjHWISc03AtHo2vAeF5z5Ro8Db0fZvqQUBjBQL
+	 hnSoTCZbPDHlJDp7wPKmrn3H586TjyKmeeHEKGwDfB0sVkBxVGYKrW4UHRddTLivSu
+	 KqD0XneeOjuLzMqyLGmLJxUU8PAk765IjhaQGK9n/2ko7bomuT77BYOb+8d5XLm9Xa
+	 NHtAirvj6+Izg==
+Received: from crm-appsrv2.public.one.com (localhost [127.0.0.1])
+	by crm-appsrv2.public.one.com (Postfix) with ESMTP id 5F997C038677;
+	Thu,  1 Jun 2017 06:11:07 +0000 (UTC)
+From: ventas@es.one.com
+To: sayde.gutierrez92@gmail.com
+Message-ID: <154430716.14215.1496297467389@crm-appsrv2>
+Subject: =?UTF-8?Q?Actualizaci=C3=B3n_de_la_informaci=C3=B3n_de_c?=
+ =?UTF-8?Q?ontacto_de_dominio_spanisch-luzern.ch?=
+MIME-Version: 1.0
+Content-Type: multipart/related; type="multipart/alternative"; 
+	boundary="----=_Part_14214_12114061.1496297467389"
+Auto-Submitted: auto-generated
+Date: Thu,  1 Jun 2017 06:11:07 +0000 (UTC)
+
+
+------=_Part_14214_12114061.1496297467389
+Content-Type: multipart/alternative;
+	boundary="----=_Part_14213_989116454.1496297467389"
+
+
+------=_Part_14213_989116454.1496297467389
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=UTF-8
+
+Estimado/a Virginia Guti=C3=A9rrez,
+
+Hemos actualizado la informaci=C3=B3n de contacto de dominio
+spanisch-luzern.ch a:
+
+Virginia Gutierrez
+Heiterweid 26
+6015 Luzern
+
+Suiza
+Tel=C3=A9fono: +41 764463541
+M=C3=B3vil: +41 764463541
+Direcci=C3=B3n de correo electr=C3=B3nico: sayde.gutierrez92@gmail.com
+Siempre puede cambiar los datos anteriores en el panel de control. Si
+tiene alguna pregunta relativa a este asunto, p=C3=B3ngase en contacto con =
+el
+servicio de soporte: ventas@es.one.com.
+
+Atentamente,
+One.com (https://www.one.com)
+------=_Part_14213_989116454.1496297467389
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html;
+	charset=UTF-8
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml" xml:lang=3D"en" >
+        <head>
+                <title>Mail from One.com</title>
+                <meta http-equiv=3D"content-type" content=3D"text/html; cha=
+rset=3DUTF-8" />
+                <meta name=3D"author" content=3D"One.com" />
+               =20
+                <style type=3D"text/css">
+                    #outlook a{padding:0;}
+                    body{width:100% !important;} .ReadMsgBody{width:100%;} =
+.ExternalClass{width:100%;}
+                    body{-webkit-text-size-adjust:none;}
+
+                    body{margin:0; padding:0;}
+                    img{border:0; height:auto; line-height:100%; outline:no=
+ne; text-decoration:none;}
+                    table td{border-collapse:collapse;}
+                    #backgroundTable{height:100% !important; margin:0; padd=
+ing:0; width:100% !important;}
+
+                    h2 {color:#474747 !important;}
+                    h3 {color:#71a631 !important;}
+                       =20
+                    .headerContent img {
+                        height:auto !important;
+                    }                       =20
+                    @media only screen and (max-width:480px){
+                        * {
+                            width:100% !important;
+                            max-width: 600px !important;
+                            font-size:16px !important;
+                            -webkit-text-size-adjust: none;
+                        }
+                        a img {
+                            width:auto !important;
+                            max-width:auto !important;
+                        }
+                        .headerContent img {
+                            width:100% !important;
+                        }
+                    }
+                    .bodyContent {
+                        padding: 30px;
+                    }
+
+                    a {color:#5e5e5e !important;}
+                    a.styledLink {color:#71a631 !important;}
+                       =20
+                </style>
+        </head>
+        <body leftmargin=3D"0" marginwidth=3D"0" topmargin=3D"0" marginheig=
+ht=3D"0" offset=3D"0">
+                <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" hei=
+ght=3D"100%" width=3D"100%" id=3D"backgroundTable">
+                        <tr>
+                                <td align=3D"center" valign=3D"top">
+                                        <table border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" width=3D"698">
+                                                <tr>
+                                                        <td align=3D"center=
+" valign=3D"top" style=3D"border:1px solid #c7c7c7;border-top:none;border-b=
+ottom:none;">
+                                                                <table bord=
+er=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"698" id=3D"container"=
+>
+                                                                        <tr=
+>
+                                                                           =
+     <td class=3D"headerContent">
+                                                                           =
+             <img alt=3D"header" src=3D"cid:logo@cids.one.com" style=3D"max=
+-width:698px;" />
+                                                                           =
+     </td>
+                                                                        </t=
+r>
+                                                                </table>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td valign=3D"top" =
+style=3D"border:1px solid #c7c7c7;border-top: none;">
+                                                                <table bord=
+er=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"698" id=3D"container"=
+>
+                                                                        <tr=
+>
+                                                                           =
+     <td valign=3D"top" width=3D"75%">
+                                                                           =
+             <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=
+=3D"100%">
+                                                                           =
+                     <tr>
+                                                                           =
+                             <td valign=3D"top">
+                                                                           =
+                                     <table border=3D"0" cellpadding=3D"30"=
+ cellspacing=3D"0" width=3D"100%">
+                                                                           =
+                                             <tr>
+                                                                           =
+                                                     <td valign=3D"top" cla=
+ss=3D"bodyContent">
+                                                                           =
+                                                             <table border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%">
+                                                                           =
+                                                                     <tr>
+                                                                           =
+                                                                           =
+  <td valign=3D"top" style=3D"line-height:150%;color:#5e5e5e;font-size:14px=
+;font-family:Arial;text-align:left;">
+                                                                           =
+                                                                           =
+          <div>
+                                                                           =
+                                                                           =
+                  Estimado/a Virginia Guti=C3=A9rrez,<br>
+<br>
+
+ Hemos actualizado la informaci=C3=B3n de contacto de dominio spanisch-luze=
+rn.ch a:<br>
+<br>
+
+Virginia Gutierrez<br>
+Heiterweid 26<br>
+6015 Luzern<br>
+<br>
+Suiza<br>
+ Tel=C3=A9fono: +41 764463541<br>
+ M=C3=B3vil: +41 764463541<br>
+ Direcci=C3=B3n de correo electr=C3=B3nico: sayde.gutierrez92@gmail.com<br>
+ Siempre puede cambiar los datos anteriores en el panel de control. Si tien=
+e alguna pregunta relativa a este asunto, p=C3=B3ngase en contacto con el s=
+ervicio de soporte: <a href=3D"mailto:ventas@es.one.com" style=3D"border:no=
+ne;color:#71a631 !important; " class=3D"styledLink"">ventas@es.one.com</a>.=
+<br>
+<br>
+
+Atentamente,<br>
+<a href=3D"https://www.one.com" style=3D"text-decoration:none;color:#5e5e5e=
+ !important">One.com</a><br>
+<br>
+                                                                           =
+                                                                           =
+          </div>
+                                                                           =
+                                                                           =
+  </td>
+                                                                           =
+                                                                     </tr>
+                                                                           =
+                                                             </table>
+                                                                           =
+                                                     </td>
+                                                                           =
+                                             </tr>
+                                                                           =
+                                     </table>
+                                                                           =
+                             </td>
+                                                                           =
+                     </tr>
+                                                                           =
+             </table>
+                                                                           =
+     </td>
+                                                                        </t=
+r>
+                                                                </table>
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td colspan=3D"2" v=
+align=3D"middle" style=3D"text-align:center;font-family:Arial;">
+                                                                <br />
+                                                                <a style=3D=
+"color:#b1b1b1;font-weight:normal;text-decoration:none;font-size:14px;" hre=
+f=3D"http://www.one.com/init.do">&nbsp;&nbsp;&nbsp;&nbsp;www.one.com</a>
+                                                                <a style=3D=
+"color:#b1b1b1;font-weight:normal;text-decoration:none;font-size:14px;" hre=
+f=3D"http://www.one.com/es/condiciones-comerciales">&nbsp;&nbsp;&nbsp;&nbsp=
+;Condiciones comerciales</a>
+                                                                <a style=3D=
+"color:#b1b1b1;font-weight:normal;text-decoration:none;font-size:14px;" hre=
+f=3D"http://www.one.com/es/info/politica-de-privacidad">&nbsp;&nbsp;&nbsp;&=
+nbsp;Pol=C3=ADtica de privacidad</a>
+                                                                <a style=3D=
+"color:#b1b1b1;font-weight:normal;text-decoration:none;font-size:14px;" hre=
+f=3D"">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                                                <br /><br /=
+>
+                                                        </td>
+                                                </tr>
+                                        </table>
+                                </td>
+                        </tr>
+                </table>
+        </body>
+</html>
+
+------=_Part_14213_989116454.1496297467389--
+
+------=_Part_14214_12114061.1496297467389
+Content-Transfer-Encoding: base64
+Content-Disposition: inline;
+	filename=onelogo.gif
+Content-Type: image/gif;
+	name=onelogo.gif
+X-Apple-Content-Length: 8409
+Content-Id: <logo@cids.one.com>
+
+
+------=_Part_14214_12114061.1496297467389--
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>date-last-viewed</key>
+	<integer>0</integer>
+	<key>date-received</key>
+	<integer>1496297471</integer>
+	<key>flags</key>
+	<integer>8590132225</integer>
+	<key>remote-id</key>
+	<string>9944</string>
+</dict>
+</plist>

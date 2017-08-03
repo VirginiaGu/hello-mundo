@@ -1,0 +1,1992 @@
+<!-- $Id$ -->
+var criteriaJSON={
+        "criteria":[]//No I18N
+    };
+var isFilterRenamed=false;
+function getElementDataValue(elementId)
+{
+    //alert(elementId);
+    var element=document.getElementById(elementId);
+    var dataValue=element.getAttribute("data-value");
+    return dataValue;
+}
+function setElementDataValue(elementId,value)
+{
+    //alert(value);
+    var element=document.getElementById(elementId);
+    element.setAttribute("data-value",value);
+}
+function getRowId(elementId)
+{
+    var rowId=elementId.split("_")[1];
+    return rowId;
+}
+function populateCriteriaRow(criteriaRowId)
+{
+    var rowNumber=getRowId(criteriaRowId);
+    var columnDropDownId="columnList_"+rowNumber;//No I18N
+    var comparatorDropDownId="comparatorList_"+rowNumber;//No I18N
+    populateCriteriaCol(columnDropDownId);
+    loadComparators(comparatorDropDownId,'CHAR');//No I18N
+}
+function showFilterComponent(isShow,isEdit)
+{
+    if(isShow)
+    {
+        resetFilterComponent();
+        document.getElementById("dcViewFilterComponent").className="";
+        //populateCriteriaRow("criteriaRow_1");//No I18N
+    }
+    else
+    {
+        document.getElementById("dcViewFilterComponent").className="hide";
+    }
+    if(!isEdit)
+    {
+        document.getElementById("isEdit").value="false";
+        document.getElementById("editFilterId").value="";
+    }
+}
+function fetchDropDownId(elementId,idFor)
+{
+    var dropDownFor=elementId.split("_")[0].toLowerCase();
+    var dropDownRow=getRowId(elementId);
+    var dropDownId="";
+    var dropDownTitleId="";
+    if(dropDownFor.indexOf("logical")!=-1)
+    {
+        dropDownId="logicalOperatorDiv_"+dropDownRow;//No I18N
+        dropDownTitleId="logicalOperatorTitle_"+dropDownRow;//No I18N
+    }
+    else if(dropDownFor.indexOf("column")!=-1)
+    {
+        dropDownId="columnDiv_"+dropDownRow;//No I18N
+        dropDownTitleId="columnTitle_"+dropDownRow;//No I18N
+    }
+    else if(dropDownFor.indexOf("comparator")!=-1)
+    {
+        dropDownId="comparatorDiv_"+dropDownRow;//No I18N
+        dropDownTitleId="comparatorTitle_"+dropDownRow;//No I18N
+    }
+    else if(dropDownFor.indexOf("value")!=-1)
+    {
+        dropDownId="valueDiv_"+dropDownRow;//No I18N
+        dropDownTitleId="valueTitle_"+dropDownRow;//No I18N
+    }
+    if(idFor=="title")
+    {
+        return dropDownTitleId;
+    }
+    else if(idFor=="dropDown")
+    {
+        return dropDownId;
+    }
+}
+function showCustomDropDown(dropDownTitleId)
+{
+    var dropDownId=fetchDropDownId(dropDownTitleId,"dropDown");//No I18N
+    if(dropDownId!="")
+    {
+        if(dropDownId.indexOf("value")!=-1)
+        {
+            document.getElementById(dropDownId).className="customDropdown valueDropDown";
+        }
+        else if(dropDownId.indexOf("logical")!=-1)
+        {
+           document.getElementById(dropDownId).className="customDropdown logicalDropDown";
+        }
+        else
+        {
+            document.getElementById(dropDownId).className="customDropdown";
+        }
+    }
+}
+function delayHideCustomDropDown(dropDownTitleTd)
+{
+    var dropDownTitleId=dropDownTitleTd.children[0].id;
+    hideCustomDropDown(dropDownTitleId);
+}
+function hideCustomDropDown(dropDownTitleId)
+{
+    var dropDownId=fetchDropDownId(dropDownTitleId,"dropDown");//No I18N
+    var rowId=getRowId(dropDownTitleId);
+    if(dropDownId!="")
+    {
+        document.getElementById(dropDownId).className="hide";
+    }
+}
+function populateCriteriaCol(rowId)
+{
+    //alert("Inside populateCriteriaCol");
+    var criteriaColumnsList = document.getElementById(rowId);
+    criteriaColumnsList.innerHTML="";
+    setCriteriaTitle(rowId,I18N.getMsg("dc.filter.criteriaComponent.column"),null);//No I18N
+    for(var i = 0; i < criteriaCols.length; i++)
+    {
+        if((typeof criteriaCols[i].category !== 'undefined') && (criteriaCols[i].category.trim() != ''))
+        {
+            addListItem(criteriaColumnsList,criteriaCols[i].category,null,true);
+        }
+        var columnsInGroup=[];
+        columnsInGroup=criteriaCols[i].columns;
+        for(var j = 0; j < columnsInGroup.length; j++)
+        {
+            addListItem(criteriaColumnsList,columnsInGroup[j].displayString,columnsInGroup[j].columnId,false);
+        }
+    }
+}
+function setCriteriaTitle(elementId,displayText,itemValue)
+{
+    //alert("Inside setCriteriaTitle");
+    var actualElementId=fetchDropDownId(elementId,"title");//No I18N
+    //alert(actualElementId);
+    var rowId=getRowId(elementId);
+    var actualElementIdClass=document.getElementById(actualElementId).className;
+    if(actualElementIdClass.indexOf("hide")==-1 && actualElementIdClass.indexOf("disabledFilterColumn")==-1)
+    {
+        actualElementIdClass="filterColumn";//No I18N
+        if(actualElementId.indexOf("logical")!=-1)
+        {
+            actualElementIdClass+=" andOr";//No I18N
+        }
+        else if(actualElementId.indexOf("value")!=-1)
+        {
+            actualElementIdClass="valueFilterColumn";//No I18N
+        }
+        document.getElementById(actualElementId).className=actualElementIdClass;
+    }
+    document.getElementById(actualElementId).innerHTML=displayText;
+    if(itemValue==null)
+    {
+        itemValue="";
+    }
+    setElementDataValue(actualElementId,itemValue);
+    if(actualElementId.indexOf("column")!=-1)
+    {
+        var dataType=getParameterFromId(itemValue,"dataType");//No I18N
+        if(itemValue!=null && itemValue.trim()!="")
+        {
+            enableComparatorDiv(rowId);
+        }
+        loadComparators("comparatorList_"+rowId,dataType);//No I18N
+        changeValueDiv("disabled",rowId);//No I18N
+    }
+    else if(actualElementId.indexOf("comparator")!=-1)
+    {
+        var columnId=getElementDataValue("columnTitle_"+rowId);//No I18N
+        if(columnId!=null && columnId!="")
+        {
+            qualifyAndFetchValue(columnId,rowId,itemValue);
+        }
+        else
+        {
+            resetValues(rowId);
+            changeValueDiv("disabled",rowId);//No I18N
+        }
+    }
+    else if(actualElementId.indexOf("value")!=-1)
+    {
+        if(itemValue=="custom")
+        {
+            changeValueDiv("dateDiv",rowId);//No I18N
+        }
+    }
+}
+function enableComparatorDiv(rowId)
+{
+    var comparatorTitle=document.getElementById("comparatorTitle_"+rowId);
+    comparatorTitle.className="filterColumn";
+    comparatorTitle.addEventListener("click",function()
+    {
+        showCustomDropDown(this.id);
+    });
+}
+function qualifyAndFetchValue(columnId,rowId,operatorValue)
+{
+    resetValues(rowId);
+    var dataType=getParameterFromId(columnId,"dataType");//No I18N
+    var opValue=operatorValue.toLowerCase();
+    if(dataType=='BOOLEAN')
+    {
+        changeValueDiv("dropDown",rowId);//No I18N
+        populateBooleanValue(rowId);
+    }
+    else if(dataType=='BIGINT' || dataType=='INT')
+    {
+        if(opValue=="equal" || opValue=="not equal")
+        {
+            changeValueDiv("dropDown",rowId);//No I18N
+            fetchSearchValues(columnId,rowId);
+        }
+        else
+        {
+            changeValueDiv("textBox",rowId);//No I18N
+        }
+    }
+    else if(dataType!='DATE')
+    {
+        if(opValue=="equal" || opValue=="not equal")
+        {
+            changeValueDiv("dropDown",rowId);//No I18N
+            fetchSearchValues(columnId,rowId);
+        }
+        else if(opValue=="like" || opValue=="not like" || opValue=="starts with" || opValue =="ends with")
+        {
+            changeValueDiv("textBox",rowId);//No I18N
+        }
+        else if(opValue=="empty" || opValue=="not empty")
+        {
+            changeValueDiv("disabled",rowId);//No I18N
+        }
+    }
+    else
+    {
+        if(opValue=="last_n_days")
+        {
+            changeValueDiv("textBox",rowId);//No I18N
+        }
+        else if(opValue=="is")
+        {
+            var noDataInitial=document.getElementById("noDataInitial");
+            if(noDataInitial)
+            {
+                var noDataInitialParentId=noDataInitial.parentNode.id;
+                var dropDownId="valueDiv_"+rowId;//No I18N
+                if(noDataInitialParentId==dropDownId)
+                {
+                    document.getElementById(dropDownId).removeChild(noDataInitial);
+                }
+            }
+            changeValueDiv("dropDown",rowId);//No I18N
+            var elementId="valueList_"+rowId;//No I18N
+            setCriteriaTitle(elementId,I18N.getMsg("dc.filter.criteriaComponent.value"),null);//No I18N
+            var valuesList = document.getElementById(elementId);
+            valuesList.innerHTML="";
+            var dateValuelistArray=viewFilterCompValueJSON["dcViewFilterDateValuelist"];
+            var dateValuelistArray_i18n=viewFilterCompValueI18NJSON["dcViewFilterDateValuelist_I18N"];
+            for(var i = 0; i < dateValuelistArray.length; i++)
+            {
+               addDateValueListItem(valuesList,dateValuelistArray_i18n[i],dateValuelistArray[i]);
+            }
+        }
+        else if(opValue=="between")
+        {
+            changeValueDiv("dateDiv2",rowId);//No I18N
+        }
+        else
+        {
+            changeValueDiv("dateDiv",rowId);//No I18N
+        }
+    }
+}
+function resetValues(rowId)
+{
+    setCriteriaTitle("valueTitle_"+rowId,I18N.getMsg("dc.filter.criteriaComponent.value"),null);//No I18N
+    document.getElementById("valueText_"+rowId).value="";
+    document.getElementById("valueDate_"+rowId).value="";
+    document.getElementById("valueDate2_"+rowId).value="";
+
+}
+function changeValueDiv(changeTo,rowId)
+{
+    var valueText=document.getElementById("valueText_"+rowId);
+    valueText.className="hide";
+    var disabledValueText=document.getElementById("disabledValueText_"+rowId);
+    disabledValueText.className="hide";
+    valueText.value="";
+    var valueTitle=document.getElementById("valueTitle_"+rowId);
+    valueTitle.className="hide";
+    var valueDate=document.getElementById("valueDate_"+rowId);
+    valueDate.value="";
+    valueDate.className="hide";
+    var valueDate2=document.getElementById("valueDate2_"+rowId);
+    valueDate2.value="";
+    valueDate2.className="hide";
+    if(changeTo=="textBox")
+    {
+        valueText.placeholder=I18N.getMsg("dc.filter.criteriaComponent.value");
+        valueText.className="filterValueText";
+    }
+    else if(changeTo=="dropDown")
+    {
+        valueTitle.className="valueFilterColumn";
+    }
+    else if(changeTo=="dateDiv")
+    {
+        valueDate.placeholder=I18N.getMsg("dc.common.viewFilter.Date");
+        valueDate.className="filterDateDiv";
+    }
+    else if(changeTo=="dateDiv2")
+    {
+        valueDate.placeholder=I18N.getMsg("dc.common.viewFilter.From");
+        valueDate2.placeholder=I18N.getMsg("dc.common.viewFilter.To");
+        valueDate.className="filterBetweenDateDiv";
+        valueDate2.className="filterBetweenDateDiv";
+    }
+    else if(changeTo=="disabled")
+    {
+        disabledValueText.className="filterValueText";
+    }
+}
+function addDateValueListItem(parentElement,displayText,itemValue)
+{
+    var listItem = document.createElement('li');
+    var parentElementId=parentElement.id;
+
+    listItem.setAttribute("data-value",itemValue);
+    listItem.setAttribute("data-display",displayText);
+    var rowId=getRowId(parentElementId);
+    if(itemValue != "custom")
+    {
+        addCheckBoxForValueLi(rowId,listItem,itemValue,displayText);
+    }
+    else
+    {
+        var span=document.createElement("span");
+        span.innerHTML=displayText;
+
+        var input=document.createElement("input");
+        input.setAttribute("type", "checkbox");
+        input.style.visibility="hidden";//No I18N
+
+        listItem.appendChild(input);
+        listItem.appendChild(span);
+
+        listItem.style.borderTop="1px solid #e3e3e3";//No I18N
+        listItem.style.marginTop="4px";//No I18N
+        listItem.style.marginBottom="4px";//No I18N
+        //listItem.innerHTML=displayText;
+        listItem.addEventListener("click",function()
+        {
+            selectCustomDate(this,parentElementId);
+        });
+    }
+    parentElement.appendChild(listItem);
+}
+function addListItem(parentElement,displayText,itemValue,isCategory)
+{
+    var listItem = document.createElement('li');
+    var parentElementId=parentElement.id;
+    if(isCategory)
+    {
+        listItem.className="category";
+    }
+    else
+    {
+        listItem.setAttribute("data-value",itemValue);
+    }
+    if(parentElementId.indexOf("value")!=-1)
+    {
+        listItem.setAttribute("data-display",displayText);
+        var rowId=getRowId(parentElementId);
+        addCheckBoxForValueLi(rowId,listItem,itemValue,displayText);
+    }
+    else
+    {
+        listItem.innerHTML=displayText;
+        if(!isCategory)
+        {
+            listItem.addEventListener("click",function()
+            {
+                setCriteriaTitle(parentElementId,displayText,itemValue);hideCustomDropDown(parentElementId);
+            });
+        }
+    }
+    parentElement.appendChild(listItem);
+}
+function setCheckBox(element,rowId)
+{
+    var listId="valueList_"+rowId;//No I18N
+    var elementCheckBox=element.parentElement.getElementsByTagName("input");
+    elementCheckBox[0].checked=!elementCheckBox[0].checked;
+    setCriteriaTitleForValue(elementCheckBox[0],listId);
+
+}
+function setCriteriaTitleForValue(element,listId)
+{
+    //var elementCheckBox=element.getElementsByTagName("input");
+    //alert(elementCheckBox[0].checked);
+    //alert(!elementCheckBox[0].checked);
+
+    //elementCheckBox[0].checked=!elementCheckBox[0].checked;
+
+    //alert(elementCheckBox[0].checked);
+
+    var actualElementId=fetchDropDownId(listId,"title");//No I18N
+    var dataValue=getElementDataValue(actualElementId);
+    var dataDisplayValue=document.getElementById(actualElementId).getAttribute("data-display");
+    //var displayText=document.getElementById(actualElementId).innerHTML;
+
+    var elementDataValue=element.getAttribute("data-value");
+    var elementDisplayText=element.getAttribute("data-display");
+    var rowId=getRowId(actualElementId);
+
+    //alert(elementDataValue);
+    //alert(elementDisplayText);
+    if(element.checked)
+    {
+        //alert("checked");
+        if(dataValue=="")
+        {
+            dataValue=elementDataValue;
+            dataDisplayValue=elementDisplayText;
+            //displayText=elementDisplayText;
+        }
+        else
+        {
+            dataValue+=","+elementDataValue;
+            dataDisplayValue+=","+elementDisplayText;
+            //displayText+=","+elementDisplayText;
+        }
+    }
+    else
+    {
+        //alert("UnChecked");
+        if(dataValue!="")
+        {
+            var dataValArray=dataValue.split(",");
+            var dataDisplayValueArray=dataDisplayValue.split(",");
+            //var dispTxtArray=displayText.split(",");
+
+            //alert(dispTxtArray);
+
+            removeItemFromarray(elementDataValue,dataValArray);
+            removeItemFromarray(elementDisplayText,dataDisplayValueArray);
+
+            //alert(dispTxtArray);
+
+            dataValue=dataValArray.join();
+            dataDisplayValue=dataDisplayValueArray.join();
+            //displayText=dispTxtArray.join();
+
+            if(dataValue==null||dataValue=="")
+            {
+                dataDisplayValue=I18N.getMsg("dc.filter.criteriaComponent.value");
+                //displayText=I18N.getMsg("dc.filter.criteriaComponent.value");
+                document.getElementById(actualElementId).setAttribute("data-display","");
+                setCriteriaTitle(actualElementId,dataDisplayValue,null);
+                setValueToolTip(actualElementId,null);
+                return;
+            }
+        }
+    }
+    createValueComponent(dataValue,dataDisplayValue,actualElementId);
+    setValueToolTip(actualElementId,dataDisplayValue);
+    //document.getElementById(actualElementId).innerHTML=displayText;
+    if(dataValue==null)
+    {
+        dataValue="";
+    }
+    document.getElementById(actualElementId).setAttribute("data-display",dataDisplayValue);
+    setElementDataValue(actualElementId,dataValue);
+}
+function selectCustomDate(element,listId)
+{
+    var actualElementId=fetchDropDownId(listId,"title");//No I18N
+    var dataValue=getElementDataValue(actualElementId);
+    var elementDataValue=element.getAttribute("data-value");
+    var rowId=getRowId(actualElementId);
+    hideCustomDropDown(actualElementId);
+    dataValue=elementDataValue;
+    setElementDataValue(actualElementId,dataValue);
+    changeValueDiv("dateDiv",rowId);//No I18N
+    return;
+}
+function removeItemFromarray(item,valueArray)
+{
+    var index=valueArray.indexOf(item);
+    if(index!=-1)
+    {
+        valueArray.splice(index,1);
+    }
+}
+function addCheckBoxForValueLi(rowId,listItem,itemValue,displayText)
+{
+    var listId="valueList_"+rowId;//No I18N
+    var span=document.createElement("span");
+    span.innerHTML=displayText;
+    var checkBox=document.createElement("input");
+    checkBox.setAttribute("type", "checkbox");
+    checkBox.setAttribute("name","valueCheck_"+rowId)
+    checkBox.setAttribute("data-display",displayText);
+    checkBox.setAttribute("data-value",itemValue);
+    checkBox.addEventListener("click",function()
+    {
+        setCriteriaTitleForValue(this,listId);
+    });
+    span.addEventListener("click",function()
+    {
+        setCheckBox(this,rowId);
+    });
+    listItem.appendChild(checkBox);
+    listItem.appendChild(span);
+}
+function loadComparators(elementId,dataType)
+{
+    //alert("Inside loadComparators");
+    var comparators = document.getElementById(elementId);
+    comparators.innerHTML="";
+    var chosenList=new Array();
+    var chosenDisplayList=new Array();
+    chosenList=chooseComparatorsList(dataType);
+    chosenDisplayList=chooseComparatorsI18NList(dataType);
+    setCriteriaTitle(elementId,I18N.getMsg("dc.filter.criteriaComponent.criteria"),null);//No I18N
+    for(var i = 0; i < chosenList.length; i++)
+    {
+        addListItem(comparators,chosenDisplayList[i],chosenList[i],false);
+    }
+}
+function loadValues(elementId,valueArray)
+{
+    setCriteriaTitle(elementId,I18N.getMsg("dc.filter.criteriaComponent.value"),null);//No I18N
+    var valuesList = document.getElementById(elementId);
+    valuesList.innerHTML="";
+    var dropDownId=fetchDropDownId(elementId,"dropDown");//No I18N
+    var noDataInitial=document.getElementById("noDataInitial");
+    if(noDataInitial)
+    {
+        var noDataInitialParentId=noDataInitial.parentNode.id;
+        if(noDataInitialParentId==dropDownId)
+        {
+            document.getElementById(dropDownId).removeChild(noDataInitial);
+        }
+    }
+    if(valueArray!=null && valueArray.length!=0)
+    {
+        for(var i = 0; i < valueArray.length; i++)
+        {
+           addListItem(valuesList,valueArray[i].displayValue,valueArray[i].searchValue,false);
+        }
+    }
+    else if(valueArray.length==0)
+    {
+        var dropDownId=fetchDropDownId(elementId,"dropDown");//No I18N
+        var parentElement = document.getElementById(dropDownId);
+        var listItem = document.createElement('li');
+        listItem.id="noDataInitial";
+        listItem.setAttribute("style","list-style:none")
+        listItem.innerHTML=I18N.getMsg("dc.rep.schRep.no_data_available");
+        parentElement.appendChild(listItem);
+    }
+}
+function chooseComparatorsList(dataType)
+{
+    var chosenList=new Array();
+    if(dataType=='CHAR'){
+        chosenList=viewFilterComparatorJSON["charlist"];
+    }else if(dataType=='INT'||dataType=='BIGINT')//No I18N
+    {
+        chosenList=viewFilterComparatorJSON["intlist"];
+    }else if(dataType=='DATE')//No I18N
+    {
+        chosenList=viewFilterComparatorJSON["dcViewFilterDatelist"];
+    }else if(dataType=='I18N')//No I18N
+    {
+        chosenList=viewFilterComparatorJSON["i18nlist"];
+    }
+    else if(dataType=='BOOLEAN')//No I18N
+    {
+        chosenList=viewFilterComparatorJSON["booleanOperatorList"];
+    }
+    else if(dataType=='EQUALONLY')//No I18N
+    {
+        chosenList=viewFilterComparatorJSON["equalOnlyList"];
+    }
+    else if(dataType=='SIMILAR')//No I18N
+    {
+        chosenList=viewFilterComparatorJSON["similarOperatorList"];
+    }
+    else if(dataType=='EQUALLIKE')//No I18N
+    {
+        chosenList=viewFilterComparatorJSON["equalLikeList"];
+    }
+    return chosenList;
+}
+function chooseComparatorsI18NList(dataType)
+{
+    var chosenList=new Array();
+    if(dataType=='CHAR')
+    {
+        chosenList=viewFilterComparatorI18NJSON["charlist_I18N"];
+    }
+    else if(dataType=='INT'||dataType=='BIGINT')//No I18N
+    {
+        chosenList=viewFilterComparatorI18NJSON["intlist_I18N"];
+    }
+    else if(dataType=='DATE')//No I18N
+    {
+        chosenList=viewFilterComparatorI18NJSON["dcViewFilterDatelist_I18N"];
+    }
+    else if(dataType=='I18N')//No I18N
+    {
+        chosenList=viewFilterComparatorI18NJSON["i18nList_I18n"];
+    }
+    else if(dataType=='BOOLEAN')//No I18N
+    {
+        chosenList=viewFilterComparatorI18NJSON["booleanOperatorList_I18N"];
+    }
+    else if(dataType=='EQUALONLY')//No I18N
+    {
+        chosenList=viewFilterComparatorI18NJSON["equalOnlyList_i18n"];
+    }
+    else if(dataType=='SIMILAR')//No I18N
+    {
+        chosenList=viewFilterComparatorI18NJSON["similarOperator_i18n"];
+    }
+    else if(dataType=='EQUALLIKE')//No I18N
+    {
+        chosenList=viewFilterComparatorI18NJSON["equalLike_i18n"];
+    }
+    return chosenList;
+}
+function getCurrentRowId(elementId)
+{
+    var rowId=getRowId(elementId);
+    return "criteriaRow_"+rowId;//No I18N
+}
+function addNewCriteria(elementId)
+{
+    //To Generate Id For New Criteria
+    var dateval = new Date();
+    var newtrID = dateval.getTime();
+    var newRowId="criteriaRow_" + newtrID;//No I18N
+
+    var currentCriteriaRowId=getCurrentRowId(elementId);
+    //alert(currentCriteriaRowId);
+
+    var table = document.getElementById('criteriaTemplate');
+    var newRow = table.rows[0].cloneNode(true);
+    newRow.id = newRowId;
+
+    var currentRow=document.getElementById(currentCriteriaRowId);
+
+    var parentElement=currentRow.parentElement;
+    parentElement.insertBefore(newRow, currentRow.nextSibling);
+
+    assignIdForNewCriteria(newRowId);
+    populateCriteriaRow(newRowId);
+
+    return newRowId;
+}
+function assignIdForNewCriteria(newCriteriaId)
+{
+    var newCriteriaRow=getRowId(newCriteriaId);
+    var newCriteria=document.getElementById(newCriteriaId);
+
+    var divList=newCriteria.getElementsByTagName("div");
+    for(var i=0;i<divList.length;i++)
+    {
+        divList[i].setAttribute('id',divList[i].getAttribute('id')+'_'+newCriteriaRow);
+    }
+
+    var ulList=newCriteria.getElementsByTagName("ul");
+    for(var i=0;i<ulList.length;i++)
+    {
+        ulList[i].setAttribute('id',ulList[i].getAttribute('id')+'_'+newCriteriaRow);
+    }
+
+    var imgList=newCriteria.getElementsByTagName("img");
+    for(var i=0;i<imgList.length;i++)
+    {
+        imgList[i].setAttribute('id',imgList[i].getAttribute('id')+'_'+newCriteriaRow);
+    }
+    var inputList=newCriteria.getElementsByTagName("input");
+    for(var i=0;i<inputList.length;i++)
+    {
+        inputList[i].setAttribute('id',inputList[i].getAttribute('id')+'_'+newCriteriaRow);
+    }
+}
+function deleteCriteria(elementId)
+{
+    var table = document.getElementById('criteriaTable');
+    var allRows=table.rows;
+    var criteriaRowId=getCurrentRowId(elementId);
+    var element = document.getElementById(criteriaRowId);
+    if(allRows[0].id == criteriaRowId)
+    {
+        if(allRows.length > 3)
+        {
+            element.parentNode.removeChild(element);
+            var firstCriRow = allRows[0];
+            var firstCriRowId=firstCriRow.getAttribute('id');
+            var firstCritRowId=getRowId(firstCriRowId);
+            //alert(firstCritRowId);
+            hideLogicalOperator(firstCritRowId);
+        }
+        else
+        {
+            addNewCriteria(criteriaRowId);
+            element.parentNode.removeChild(element);
+            var firstCriRow = allRows[0];
+            var firstCriRowId=firstCriRow.getAttribute('id');
+            var firstCritRowId=getRowId(firstCriRowId);
+            //alert(firstCritRowId);
+            hideLogicalOperator(firstCritRowId);
+        }
+    }
+    else
+    {
+        element.parentNode.removeChild(element);
+    }
+}
+function hideLogicalOperator(rowId)
+{
+    var logicalOperatorTitle=document.getElementById("logicalOperatorTitle_"+rowId);
+    var logicalOperatorDiv=document.getElementById("logicalOperatorDiv_"+rowId);
+    logicalOperatorTitle.className = "hide";
+    logicalOperatorDiv.className = "hide";
+}
+function showFilterName(show)
+{
+    if(show)
+    {
+        document.getElementById("filterNameTitleDiv").className="filterName";
+        document.getElementById("filterNameTextDiv").className="hide";
+    }
+    else
+    {
+        document.getElementById("filterNameTitleDiv").className="hide";
+        document.getElementById("filterNameTextDiv").className="filterName";
+        document.getElementById("filterNameText").focus();
+        isFilterRenamed=false;
+    }
+}
+function delayRenameFilter()
+{
+    setTimeout(renameFilter, 2000);
+}
+function renameFilter()
+{
+    //alert(isFilterRenamed);
+    if(isFilterRenamed)
+    {
+        var filterName=document.getElementById("filterNameText").value;
+        var isDuplicateFilterName=isFilterNameExsists(filterName);
+        var isValidFilterName=validateFilterName(filterName);
+        if(filterName!="" && filterName.trim().length!=0 &&!isDuplicateFilterName && isValidFilterName)
+        {
+            hideValidationText();
+
+            document.getElementById("filterNameTitle").innerHTML=filterName;
+            var isEdit=document.getElementById("isEdit").value;
+            if(isEdit=="true")
+            {
+                var editFilterId=document.getElementById("editFilterId").value;
+                var savedFilterComponent=document.getElementById("savedFilterComponent_"+editFilterId);
+                savedFilterComponent.children[0].innerHTML=filterName;
+
+                var url="/dcViewFilterAction.do?actionToCall=renameFilter&pageId="+pageId+"&viewId="+viewId+"&filterName="+filterName;//No I18N
+                url+="&isEdit=true&editFilterId="+editFilterId;//No I18N
+                var data="";
+                var isAsyn=true;
+                var isSameAsSelected=false;
+                sendAjaxRequest(url,data,"json",true,true,false,null,isAsyn,isSameAsSelected);// No I18N
+            }
+        }
+        else if(isDuplicateFilterName)
+        {
+            showValidationMessage(I18N.getMsg("dc.common.viewFilter.filter_name_exists"),false);//No I18N
+        }
+        else if(!isValidFilterName)
+        {
+            showValidationMessage(I18N.getMsg("dc.common.viewFilter.filter_name_splChar"),false);//No I18N
+        }
+    }
+    showFilterName(true);
+}
+function renameFilterKeyPress(event)
+{
+    if(event.keyCode==13)
+    {
+        renameFilter();
+    }
+    else if(event.keyCode==27)
+    {
+        showFilterName(true);
+    }
+    else
+    {
+        isFilterRenamed=true;
+    }
+}
+function getParameterFromId(id,requiredParameter)
+{
+    for(var i = 0; i < criteriaCols.length; i++)
+    {
+        for (var j = 0; j < criteriaCols[i].columns.length; j++)
+        {
+            if(criteriaCols[i].columns[j].columnId==id)
+            {
+                var value;
+                if(requiredParameter=='displayString')
+                {
+                    value=criteriaCols[i].columns[j].displayString;
+                }
+                else if(requiredParameter=='dataType')//No I18N
+                {
+                    value=criteriaCols[i].columns[j].dataType;
+                }
+                else if(requiredParameter=='searchEnabled')//No I18N
+                {
+                    value=criteriaCols[i].columns[j].searchEnabled;
+                }
+                else if(requiredParameter=='dependentColumn')//No I18N
+                {
+                    value=criteriaCols[i].columns[j].dependentColumn;
+                }
+                return value;
+            }
+        }
+    }
+    return null;
+}
+function populateBooleanValue(rowId)
+{
+    var noDataInitial=document.getElementById("noDataInitial");
+    if(noDataInitial)
+    {
+        var dropDownId="valueDiv_"+rowId;//No I18N
+        var noDataInitialParentId=noDataInitial.parentNode.id;
+        if(noDataInitialParentId==dropDownId)
+        {
+            document.getElementById(dropDownId).removeChild(noDataInitial);
+        }
+    }
+    var elementId="valueList_"+rowId;//No I18N
+    setCriteriaTitle(elementId,I18N.getMsg("dc.filter.criteriaComponent.value"),null);//No I18N
+    var booleanValuelistArray=viewFilterCompValueJSON["booleanValueList"];
+    var booleanValuelistArray_i18n=viewFilterCompValueI18NJSON["booleanValueList_I18N"];
+    if(booleanValuelistArray!=null)
+    {
+        var valuesList = document.getElementById(elementId);
+        valuesList.innerHTML="";
+        for(var i = 0; i < booleanValuelistArray.length; i++)
+        {
+           addListItem(valuesList,booleanValuelistArray_i18n[i],booleanValuelistArray[i],false);
+        }
+    }
+}
+function fetchSearchValues(colId,rowId)
+{
+    var reportId=viewId;
+    var url ='/reportCriteria.do?actionToCall=getColumnBrowseValues';//No I18N
+    var params='&columnId='+colId+'&reportId='+reportId;//No I18N
+    document.getElementById('chosenRow').value=rowId;
+    document.getElementById('chosenColumnId').value=colId;
+
+    req = GetXmlHttpObject();
+    if (req==null)
+    {
+        alert ('<%=I18N.getMsg("desktopcentral.patch.common.no_browser_support")%>');
+        return;
+    }
+    else
+    {
+        constructSyncXmlHttpRequest(url,params,"processResponse");//No I18N
+    }
+}
+function constructSyncXmlHttpRequest(url,data,funName)
+{
+    if (window.XMLHttpRequest)
+    {
+        req = new XMLHttpRequest();
+        req.onreadystatechange = function()
+        {
+            constructResponse(req , funName);
+        // alert(funName);
+        };
+        req.open("POST", url, false);
+        req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+        req.send(data);
+    }
+    else if (window.ActiveXObject)
+    {
+        isIE = true;
+        req = new ActiveXObject("Microsoft.XMLHTTP");
+        if(req)
+        {
+            req.onreadystatechange = function(){
+                constructResponse(req , funName);
+            };
+            req.open("POST", url, false);
+            req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+            req.send(data);
+        }
+    }
+}
+function processResponse(req){
+    var respText = req.responseText;
+    var valueArray = eval('(' + respText + ')');
+    var chosenRow=document.getElementById('chosenRow').value;
+    loadValues("valueList_"+chosenRow,valueArray);//No I18N
+}
+function checkAndAddAdditionalParams(url)
+{
+    var fetchAdditionalParams=document.getElementById("fetchAdditionalParamsFrom").value;
+    var additionalParams=null;
+    if(fetchAdditionalParams!="")
+    {
+        additionalParams=window[fetchAdditionalParams]();
+    }
+    if(additionalParams!=null && additionalParams.trim().length>0)
+    {
+        url+='&'+additionalParams;
+    }
+    return url;
+}
+function checkAndAddToolID(url)
+{
+    if(typeof(toolID)!='undefined')
+    {
+        url+="&toolID="+toolID;//No I18N
+    }
+    return url;
+}
+function applyFilter()
+{
+    var isValid=createCriteriaJSON();
+    if(isValid=="true")
+    {
+        var url="&viewId="+viewId+"&criteriaJSON="+encodeURIComponent(JSON.stringify(criteriaJSON));//No I18N
+        resetPersistCount(viewName);
+        refreshView(url);
+    }
+    var selectedFilterId=document.getElementById("selectedFilterId").value;
+    var editFilterId=document.getElementById("editFilterId").value;
+    if(selectedFilterId!=editFilterId)
+    {
+        document.getElementById("savedFilterTitle").innerHTML=I18N.getMsg("dc.common.viewFilter.advanced_filter");
+        document.getElementById("selectedFilterId").value="";
+        setElementDataValue("savedFilterTitle","");//No I18N
+    }
+}
+function isFilterNameExsists(filterName)
+{
+    var filterNameJSON=savedFilters["SavedFilters"];
+    for (var i=0;i<filterNameJSON.length;i++)
+    {
+        if (filterNameJSON[i]["filterName"] === filterName)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+function checkForEditComponent()
+{
+    var isEdit=document.getElementById("isEdit").value;
+    if(isEdit=="true")
+    {
+        closeFilterComponent();
+    }
+    else
+    {
+        showFilterComponent(false,false);
+    }
+    resetPersistCount(viewName);
+}
+function closeFilterComponent()
+{
+    var isEdit=document.getElementById("isEdit").value;
+    if(isEdit=="false" || isEdited())
+    {
+        var htmlText='<table style="width:100%;height:100%"><tr><td>&nbsp;&nbsp;&nbsp;<img src="images/confirmation.gif"/></td><td class="bodytext">'+I18N.getMsg("dc.common.viewFilter.save_filter_confirm")+'</td></tr><tr align="center" ><td colspan="2" align="center"><input type="button" value="'+I18N.getMsg("dc.inv.js.common.Yes")+'" class="primaryActionBtn" onclick="closeDialog();checkValidBeforClose();" /><input type="button" value="'+I18N.getMsg("dc.js.common.NO")+'" class="secondaryActionBtn" onclick="checkAndRefreshViewBeforeClose();closeDialog();" /></td></tr></table>';
+        showDialog(htmlText,'modal=yes,width=400,height=110,position=absmiddle,left=400,top=200,title='+I18N.getMsg("dc.js.common.CONFIRM_ACTION")+'');//No I18N
+    }
+    else
+    {
+        showFilterComponent(false,false);
+    }
+}
+function checkValidBeforClose()
+{
+    var isSaved=saveAndApplyFilter();
+    if(isSaved!=false)
+    {
+        showFilterComponent(false,false);
+    }
+}
+function refreshView(url)
+{
+    toggleLoadingDiv('true');
+    url=checkAndAddAdditionalParams(url);
+    stateData[viewName]["_D_RP"]=url;
+    var viewNameURL=viewName+'.cc?'+url;//No I18N
+    AjaxAPI.sendRequest({URL:viewNameURL,TARGET:"_view_"+viewName,ONSUCCESSFUNC:function(){checkAndInvokeFilterCallBack(url);}});//No I18N
+    //refreshSubView(viewName);
+}
+function checkAndInvokeFilterCallBack(url)
+{
+    if(typeof(dcViewFilterCallBackFn)!='undefined' && typeof (dcViewFilterCallBackFn)=='function')
+    {
+        /**
+         The URL will contain criteriaJSON, additionalParams if any.
+         Criteria JSON param will be encoded using encodeURIComponent.
+         If no Criteria is present (or) if the filter is reset url will contain isDCViewFilterReset=true
+         **/
+        window['dcViewFilterCallBackFn'](url);
+    }
+    toggleLoadingDiv('false');
+
+}
+function toggleLoadingDiv(show)
+{
+    var loadingDivId=document.getElementById("loadingDivId").value;
+    var loadingDiv=document.getElementById(loadingDivId);
+    if(loadingDiv)
+    {
+        loadingDiv.style.display=(show==='true')?'':'none';
+    }
+}
+function checkAndRefreshViewBeforeClose()
+{
+    var isEdit=document.getElementById("isEdit").value;
+    var selectedFilterId=document.getElementById("selectedFilterId").value;
+    if(isEdit=="false" && selectedFilterId.trim()=="")
+    {
+        var url="&isDCViewFilterReset=true";//No I18N
+        refreshView(url);
+    }
+    showFilterComponent(false,false);
+}
+function isEdited()
+{
+    var editFilterId=document.getElementById("editFilterId").value;
+
+    var data="";
+    var url="/dcViewFilterAction.do?actionToCall=getCriteriaJSONForFilter&filterId="+editFilterId;// No I18N
+    var isAsyn=false;
+    var isEdit=false;
+    var isSameAsSelected=false;
+    sendAjaxRequest(url,data,"json",false,isEdit,false,null,isAsyn,isSameAsSelected);// No I18N
+
+    var oldCriteriaJSON=criteriaJSON;
+    if(typeof(oldCriteriaJSON)!='object')
+    {
+        oldCriteriaJSON=JSON.parse(oldCriteriaJSON);
+    }
+    createCriteriaJSON();
+    var newCriteriaJSON=criteriaJSON;
+    var isSame=compareCriteriaJSON(oldCriteriaJSON,newCriteriaJSON);
+    if(isSame)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+function compareCriteriaJSON(oldCriteriaJSON,newCriteriaJSON)
+{
+    var oldCriteriaArray=oldCriteriaJSON["criteria"];
+    var newCriteriaArray=newCriteriaJSON["criteria"];
+    if(oldCriteriaArray.length!=newCriteriaArray.length)
+    {
+        return false;
+    }
+    else
+    {
+        for(var i=0;i<oldCriteriaArray.length;i++)
+        {
+            for(key in oldCriteriaArray[i])
+            {
+                if(newCriteriaArray[i].hasOwnProperty(key))
+                {
+                    if(oldCriteriaArray[i][key]!=newCriteriaArray[i][key])
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
+function checkAndValidateFilterName()
+{
+    var filterNameDialog=document.getElementById("filterNameDialog").value;
+    var isDuplicateFilterName=isFilterNameExsists(filterNameDialog);
+    var isValidFilterName=validateFilterName(filterNameDialog);
+    if(filterNameDialog.trim().length==0 || isDuplicateFilterName || !isValidFilterName)
+    {
+        var filterNameValidationTD=document.getElementById("filterNameValidationTD");
+        filterNameValidationTD.className="bodyTextRed";
+        if(filterNameDialog.trim().length==0)
+        {
+            filterNameValidationTD.innerHTML=I18N.getMsg("dc.common.viewFilter.filter_name_empty");
+        }
+        else if(isDuplicateFilterName)
+        {
+            filterNameValidationTD.innerHTML=I18N.getMsg("dc.common.viewFilter.filter_name_exists");
+        }
+        else if(!isValidFilterName)
+        {
+            filterNameValidationTD.innerHTML=I18N.getMsg("dc.common.viewFilter.filter_name_splChar");
+        }
+    }
+    else
+    {
+        document.getElementById("filterNameTitle").innerHTML=filterNameDialog.trim();
+        saveAndApplyFilter();
+        closeDialog();
+    }
+}
+function saveAndApplyFilter()
+{
+    var isValid=createCriteriaJSON();
+    //send Ajax Request.
+    var data="";
+    var isEdit=document.getElementById("isEdit").value;
+    var filterName=document.getElementById("filterNameTitle").innerHTML;
+    filterName=filterName.trim();
+    var isValidFilterName=validateFilterName(filterName);
+    if(isEdit!="true" && isFilterNameExsists(filterName))
+    {
+        showValidationMessage(I18N.getMsg("dc.common.viewFilter.filter_name_exists"),false);//No I18N
+        return false;
+    }
+    if(isValid=="true")
+    {
+        var untitledFilter=I18N.getMsg("dc.filter.criteriaComponent.untitled_filer");
+        if(filterName==untitledFilter || filterName.trim().length==0)
+        {
+            var htmlText='<table style="width:100%;height:100%"><tr><td colspan="3"><br/></td></tr><tr align="center"><td class="bodytext">'+I18N.getMsg("dc.common.viewFilter.Give_Filter_Name")+'&nbsp;:&nbsp;&nbsp;<input type="text" class="bodytext" id="filterNameDialog" onkeypress="return preventSpecialCharacter();"/>&nbsp;</td></tr><tr><td colspan="3"><br/></td></tr><tr align="center"><td class="hide" colspan="3" id="filterNameValidationTD"></td></tr><tr align="center"><td colspan="3" align="center"><input type="button" value="'+I18N.getMsg("dc.js.common.Save")+'" class="primaryActionBtn" onclick="checkAndValidateFilterName();" /><input type="button" value="'+I18N.getMsg("dc.js.common.CANCEL")+'" class="secondaryActionBtn" onclick="closeDialog();" /></td></tr></table>'
+            showDialog(htmlText,'modal=yes,width=400,height=110,position=absmiddle,left=400,top=200,title='+I18N.getMsg("dc.common.viewFilter.Save_Filter_Title")+'');//No I18N
+            return false;
+        }
+        if(!isValidFilterName)
+        {
+            showValidationMessage(I18N.getMsg("dc.common.viewFilter.filter_name_splChar"),false);//No I18N
+            return false;
+        }
+        var url="/dcViewFilterAction.do?actionToCall=saveAndApplyFilter&pageId="+pageId+"&viewId="+viewId+"&filterName="+filterName;//No I18N
+        if(isEdit=="true")
+        {
+            var editFilterId=document.getElementById("editFilterId").value;
+            url+="&isEdit=true&editFilterId="+editFilterId;//No I18N
+        }
+        url+="&criteriaJSON="+encodeURIComponent(JSON.stringify(criteriaJSON));//No I18N
+        var isAsyn=true;
+        var isSameAsSelected=false;
+        sendAjaxRequest(url,data,"json",true,false,false,filterName,isAsyn,isSameAsSelected);//No I18N
+
+        var url="&viewId="+viewId+"&criteriaJSON="+encodeURIComponent(JSON.stringify(criteriaJSON));//No I18N
+        resetPersistCount(viewName);
+        refreshView(url);
+    }
+    else
+    {
+        return false;
+    }
+}
+function selectFilterAfterSave(filterName,isSave)
+{
+    var filterNameRows =document.getElementById("savedFilterTable").rows;//No I18N
+    var len = filterNameRows.length;
+    for(var i=1; i < len; i++)
+    {
+        var value =filterNameRows[i].children[0].getAttribute("data-value");//No I18N
+        if(value == filterName)
+        {
+            var filterTRId=filterNameRows[i].id;
+            var filterId=filterTRId.split("_")[1];
+            createSavedFilterComponent(filterId,filterName);
+            setElementDataValue("filterName_"+filterId,filterName);//No I18N
+            if(isSave)
+            {
+                document.getElementById("editFilterId").value=filterId;
+            }
+        }
+    }
+}
+function sendAjaxRequest(url,data,dataType,isSave,isEdit,isDelete,filterName,isAsyn,isSameAsSelected)
+{
+    if (window.XMLHttpRequest)
+    {
+        req = new XMLHttpRequest();
+        req.onreadystatechange = function()
+        {
+            if(req.readyState==4 && req.status==200)
+            {
+                qualifyAndProcessResponse(req,isSave,isEdit,isDelete,filterName,isAsyn,isSameAsSelected);
+            }
+        };
+        req.open("POST", url, isAsyn);
+        if(dataType==null)
+        {
+            dataType="x-www-form-urlencoded";// No I18N
+        }
+        req.setRequestHeader("Content-Type", "application/"+dataType+"; charset=UTF-8");
+        req.send(data);
+    }
+    else if (window.ActiveXObject)
+    {
+        isIE = true;
+        req = new ActiveXObject("Microsoft.XMLHTTP");
+        if(req)
+        {
+            req.onreadystatechange = function(){
+                if(req.readyState==4 && req.status==200)
+                {
+                    qualifyAndProcessResponse(req,isSave,isEdit,isDelete,filterName,isAsyn,isSameAsSelected);
+                }
+            };
+            req.open("POST", url, isAsyn);
+            if(dataType==null)
+            {
+                dataType="x-www-form-urlencoded";// No I18N
+            }
+            req.setRequestHeader("Content-Type", "application/"+dataType+"; charset=UTF-8");
+            req.send(data);
+        }
+    }
+}
+function qualifyAndProcessResponse(req,isSave,isEdit,isDelete,filterName,isAsyn,isSameAsSelected)
+{
+    if(isEdit && isSave)
+    {
+        var newSavedFilters=req.responseText;
+        rePopulateFilterList(newSavedFilters);
+    }
+    else if(isSave || isDelete)
+    {
+        var newSavedFilters=req.responseText;
+        rePopulateFilterList(newSavedFilters);
+        var htmlText='';
+        var saveDelete='';
+        if(isSave)
+        {
+            document.getElementById("isEdit").value="true";
+            saveDelete=I18N.getMsg("dc.common.viewFilter.filter_saved");
+            selectFilterAfterSave(filterName,isSave);
+        }
+        else
+        {
+            showFilterComponent(false,false);
+            saveDelete=I18N.getMsg("dc.common.viewFilter.filter_deleted");
+        }
+        var resultMessage=document.getElementById("viewFilterResultMsg");
+        //htmlText='<table style="width:100%;height:100%"><tr align="center"><td class="bodytext">'+I18N.getMsg("dc.common.viewFilter.filter_saved/Deleted_successfully",new Array(saveDelete))+'</td></tr><tr align="center" style="background-color:#f8f8f8"><td align="center"><input type="button" value="'+I18N.getMsg("dc.common.ok")+'" class="primaryActionBtn" onclick="closeDialog();" /></td></tr></table>';
+        //showDialog(htmlText,'modal=yes,width=400,height=110,position=absmiddle,left=400,top=200,title='+I18N.getMsg("dc.js.common.ALERT")+'');//No I18N
+        //showValidationMessage(I18N.getMsg("dc.common.viewFilter.filter_saved_successfully"),true);
+        document.getElementById('viewFilterResultDiv').innerHTML='<img src="/images/approved.gif" width="13" height="13" hspace="3" vspace="0" align="absmiddle" ><span class="bodytextbig">'+filterName+" "+I18N.getMsg("dc.common.viewFilter.filter_saved/Deleted_successfully",new Array(saveDelete))+'</span>';
+
+        showDialog(resultMessage.innerHTML,"position=absmiddle,closeButton=no,closePrevious=false,draggable=yes,closeOnBodyClick=yes,zAdjust=false,overflow=hidden,transitionInterval=0.0,transitionType=Effect.BlindDown");//No I18N
+        setTimeout(function(){closeWindow()},2000);
+    }
+    //This content will be executed only when checking for isEdited()
+    else if(!isEdit && !isAsyn)
+    {
+        var criteriaJsonForFilter=req.responseText;
+        criteriaJSON=criteriaJsonForFilter;
+    }
+    else
+    {
+        var criteriaJsonForFilter=req.responseText;
+        criteriaJSON=criteriaJsonForFilter;
+        if(!isSameAsSelected)
+        {
+            applySavedFilter(criteriaJsonForFilter, isEdit);
+        }
+        else
+        {
+            populateCriteriaJSONForEdit(criteriaJsonForFilter);
+        }
+    }
+}
+function createCriteriaJSON()
+{
+    criteriaJSON={
+        "criteria":[]//No I18N
+    };
+    var criteriaTable=document.getElementById("criteriaTable");
+    var criteriaRows=criteriaTable.rows;
+    var isValidTable="true";
+    var invalidRowsCount=0;
+    var validationText=I18N.getMsg("dc.filter.criteriaComponent.validation_text")+" ";
+    hideValidationText();
+    for(var i=0;i<criteriaRows.length-2;i++)
+    {
+        var isValidRow="true";
+        var criteriaRowId=criteriaRows[i].id;
+        var rowId=getRowId(criteriaRowId);
+
+        var logicalOperator="AND";//No I18N
+        var selectedColumnId=getElementDataValue("columnTitle_"+rowId);//No I18N
+        var selectedComparator=getElementDataValue("comparatorTitle_"+rowId);//No I18N
+        var selectedValue=getElementDataValue("valueTitle_"+rowId);//No I18N
+        var searchValue2="";
+        var opCustomType="";
+        if(i!=0)
+        {
+            logicalOperator=getElementDataValue("logicalOperatorTitle_"+rowId);//No I18N
+        }
+
+        if(selectedColumnId==null || selectedColumnId =="")
+        {
+            isValidRow="false";
+            highlightCriteiraTitle("columnTitle_"+rowId);//No I18N
+        }
+        else if(selectedComparator==null || selectedComparator=="")
+        {
+            isValidRow="false";
+            highlightCriteiraTitle("comparatorTitle_"+rowId);//No I18N
+        }
+        else if(selectedComparator!="empty"&&selectedComparator!="not empty" && (selectedValue==null || selectedValue==""))
+        {
+            selectedValue=document.getElementById("valueText_"+rowId).value;
+            if(selectedValue=="")
+            {
+                selectedValue=document.getElementById("valueDate_"+rowId).value;
+                if(selectedValue=="")
+                {
+                    isValidRow="false";
+                    highlightCriteiraTitle("valueTitle_"+rowId);//No I18N
+                    highlightCriteiraTitle("valueText_"+rowId);//No I18N
+                    highlightCriteiraTitle("valueDate_"+rowId);//No I18N
+                }
+            }
+            if(selectedComparator=="empty" || selectedComparator=="not empty")
+            {
+                selectedValue=null;
+            }
+        }
+        else if(selectedValue=="custom")
+        {
+            searchValue2=document.getElementById("valueDate_"+rowId).value;
+            opCustomType="isDate";//No I18N
+            if(searchValue2=="")
+            {
+                isValidRow="false";
+                highlightCriteiraTitle("valueDate_"+rowId);//No I18N
+            }
+        }
+        var dataType=getParameterFromId(selectedColumnId,"dataType");//No I18N
+        if(dataType=="BIGINT" || dataType=="INT")
+        {
+            if(isNaN(selectedValue))
+            {
+                validationText=I18N.getMsg("dc.filter.criteriaComponent.appropriate_input")+" ";
+                isValidRow="false";
+                highlightCriteiraTitle("valueTitle_"+rowId);//No I18N
+                highlightCriteiraTitle("valueText_"+rowId);//No I18N
+            }
+        }
+        if(selectedComparator=="between")
+        {
+            searchValue2=document.getElementById("valueDate2_"+rowId).value;//No I18N
+            opCustomType="betweenDate";//No I18N
+            if(searchValue2=="")
+            {
+                isValidRow="false";
+                highlightCriteiraTitle("valueTitle_"+rowId);//No I18N
+                highlightCriteiraTitle("valueDate2_"+rowId);//No I18N
+            }
+        }
+        if(selectedComparator=="last_n_days")
+        {
+            if(isNaN(selectedValue))
+            {
+                validationText=I18N.getMsg("dc.filter.criteriaComponent.appropriate_input")+" ";
+                isValidRow="false";
+                highlightCriteiraTitle("valueTitle_"+rowId);//No I18N
+                highlightCriteiraTitle("valueText_"+rowId);//No I18N
+                highlightCriteiraTitle("valueDate_"+rowId);//No I18N
+                highlightCriteiraTitle("valueDate2_"+rowId);//No I18N
+            }
+        }
+        if(selectedValue.length > 750 || searchValue2.length >750)
+        {
+            validationText=I18N.getMsg("dc.filter.criteriaComponent.maxLengthExceeds_input")+" ";
+            isValidRow="false";
+            highlightCriteiraTitle("valueTitle_"+rowId);//No I18N
+            highlightCriteiraTitle("valueText_"+rowId);//No I18N
+            highlightCriteiraTitle("valueDate_"+rowId);//No I18N
+            highlightCriteiraTitle("valueDate2_"+rowId);//No I18N
+        }
+        if(isValidRow=="true")
+        {
+            //alert("entered");
+            criteria={
+                'logicalOperator':logicalOperator,//No I18N
+                'columnId':selectedColumnId,//No I18N
+                'comparator':selectedComparator,//No I18N
+                'comparatorCustomType':opCustomType,//No I18N
+                'value':selectedValue,//No I18N
+                'criteriaIndex':i,//No I18N
+                'searchValue2':searchValue2 //No I18N
+            };
+            criteriaJSON.criteria.push(criteria);
+        }
+        else
+        {
+            if(invalidRowsCount)
+            {
+                validationText+=",";
+            }
+            validationText+=i+1;
+
+            isValidTable="false";
+            invalidRowsCount++;
+        }
+    }
+    if(isValidTable=="false")
+    {
+        showValidationMessage(validationText,false);
+    }
+    return isValidTable;
+}
+function showValidationMessage(validationMessage,isSuccess)
+{
+    var validationTextElement=document.getElementById("validationText");
+    validationTextElement.value=validationMessage;
+    if(isSuccess)
+    {
+        validationTextElement.className="bodyboldgreen"
+    }
+    else
+    {
+        validationTextElement.className="bodyTextRed";
+    }
+}
+function hideValidationText()
+{
+    var validationTextElement=document.getElementById("validationText");
+    validationTextElement.value="";
+    validationTextElement.className="hide";
+}
+function showCalendar(elementId)
+{
+    Calendar.setup({
+        inputField     :    elementId,    // No I18N
+        ifFormat       :    "%m/%d/%Y",  // No I18N
+        button         :    elementId,    // No I18N
+        align          :    "Tl",        // No I18N
+        eventName      :    'click',     // No I18N
+        singleClick    :    true,
+    });
+}
+function getCriteriaJSONForFilter(filterId,isEdit,isSameAsSelected)
+{
+    var data="";
+    var url="/dcViewFilterAction.do?actionToCall=getCriteriaJSONForFilter&filterId="+filterId;// No I18N
+    var isAsyn=true;
+    sendAjaxRequest(url,data,"json",false,isEdit,false,null,isAsyn,isSameAsSelected);// No I18N
+}
+function applySavedFilter(criteriaJsonForFilter,isEdit)
+{
+    //alert(criteriaJsonForFilter);
+    var url="&viewId="+viewId+"&criteriaJSON="+encodeURIComponent(criteriaJsonForFilter);//No I18N
+    refreshView(url);
+    if(isEdit)
+    {
+        populateCriteriaJSONForEdit(criteriaJsonForFilter);
+    }
+}
+function editSavedFilter(filterElementId)
+{
+    //alert("editSavedFilter");
+    var filterId=getRowId(filterElementId);
+    document.getElementById("isEdit").value="true";
+    document.getElementById("editFilterId").value=filterId;
+    showFilterComponent(true,true);
+    selectSavedFilter(filterElementId,true);
+    resetPersistCount(viewName);
+}
+function populateCriteriaJSONForEdit(criteriaJSON)
+{
+    //alert("populateCriteriaJSONForEdit");
+    var newRowId=1;
+    criteriaJSON=JSON.parse(criteriaJSON);
+    var prevRowId="1";
+    var criteriaArray=criteriaJSON.criteria;
+    for(var i=0;i<criteriaArray.length;i++)
+    {
+        //alert(i);
+        var logicalOperator=criteriaArray[i].logicalOperator;
+        var selectedColumnId=criteriaArray[i].columnId;
+        var selectedComparator=criteriaArray[i].comparator;
+        var selectedValue=criteriaArray[i].value;
+        var searchValue2=criteriaArray[i].searchValue2;
+        var opCustomType=criteriaArray[i].comparatorCustomType;
+
+        if(i!=0)
+        {
+            newRowId=addNewCriteria("criteriaRow_"+prevRowId);//No I18N
+            newRowId=getRowId(newRowId);
+            prevRowId=newRowId;
+        }
+        var filterId=document.getElementById("editFilterId").value;
+        var filterName=document.getElementById("filterName_"+filterId).innerHTML;
+        document.getElementById("filterNameText").value=filterName;
+        document.getElementById("filterNameTitle").innerHTML=filterName;
+
+        if(logicalOperator=="AND")
+        {
+            setCriteriaTitle("logicalOperatorTitle_"+newRowId,I18N.getMsg("dc.filter.criteriaComponent.AND"),"AND");//No I18N
+        }
+        else
+        {
+            setCriteriaTitle("logicalOperatorTitle_"+newRowId,I18N.getMsg("dc.filter.criteriaComponent.OR"),"OR");//No I18N
+        }
+
+        var columnDispText=getParameterFromId(selectedColumnId,"displayString");//No I18N
+        setCriteriaTitle("columnTitle_"+newRowId,columnDispText,selectedColumnId);//No I18N
+
+        var dataType=getParameterFromId(selectedColumnId,"dataType");//No I18N
+        var comparatorDispText=getSelectedComparatorDispTxt(dataType,selectedComparator);
+        setCriteriaTitle("comparatorTitle_"+newRowId,comparatorDispText,selectedComparator);//No I18N
+
+        var valueDisplayText=getValueDisplayText("valueList_"+newRowId,selectedValue);//No I18N
+        if(valueDisplayText==null && selectedComparator!="equal" && selectedComparator!="not equal" && selectedComparator!="is")
+        {
+            qualifyAndSetValue(newRowId,selectedComparator,selectedValue,searchValue2);
+            //setCriteriaTitle("valueTitle_"+newRowId,valueDisplayText,selectedValue);//No I18N
+        }
+        if(selectedComparator=="is" && selectedValue.toLowerCase()=="custom" && opCustomType=="isDate")
+        {
+            changeValueDiv("dateDiv",newRowId);//No I18N
+            qualifyAndSetValue(newRowId,selectedComparator,selectedValue,searchValue2);
+        }
+
+        else if(selectedComparator=="equal" || selectedComparator =="not equal" || selectedComparator =="is")
+        {
+            setCheckBoxValueDisplay("valueList_"+newRowId,selectedValue);//No I18N
+        }
+    }
+}
+function getSelectedComparatorDispTxt(dataType,comparatorValue)
+{
+    //alert("getSelectedComparatorDispTxt");
+    var chosenList=new Array();
+    var chosenDisplayList=new Array();
+    chosenList=chooseComparatorsList(dataType);
+    chosenDisplayList=chooseComparatorsI18NList(dataType);
+    for(var i=0;i<chosenList.length;i++)
+    {
+        if(chosenList[i]==comparatorValue)
+        {
+            return chosenDisplayList[i];
+        }
+    }
+}
+function setCheckBoxValueDisplay(elementId,selectedValue)
+{
+    var valueListChildren=document.getElementById(elementId).children;
+    var isSelectedValFound=false;
+    var selectedValueArray=selectedValue.split(",");
+    if(selectedValueArray.length>1)
+    {
+        for(var j=0;j<selectedValueArray.length;j++)
+        {
+            var isSelectedValFound=false;
+            for(var i=0;i<valueListChildren.length;i++)
+            {
+                var dataValue=valueListChildren[i].getAttribute("data-value");
+                if(dataValue==selectedValueArray[j])
+                {
+                    var element=valueListChildren[i].getElementsByTagName("span");
+                    var rowId=getRowId(elementId);
+                    setCheckBox(element[0],rowId);
+                    isSelectedValFound=true;
+                    break;
+                }
+            }
+            if(!isSelectedValFound)
+            {
+                var rowId=getRowId(elementId);
+                var valueTitleId="valueTitle_"+rowId;//No I18N
+                createDummyValueComponent(selectedValueArray[j],selectedValueArray[j],valueTitleId);
+            }
+        }
+    }
+    else
+    {
+        for(var i=0;i<valueListChildren.length;i++)
+        {
+            var dataValue=valueListChildren[i].getAttribute("data-value");
+            if(dataValue==selectedValue)
+            {
+                var element=valueListChildren[i].getElementsByTagName("span");
+                var rowId=getRowId(elementId);
+                setCheckBox(element[0],rowId);
+                isSelectedValFound=true;
+                break;
+            }
+        }
+        if(!isSelectedValFound)
+        {
+            var rowId=getRowId(elementId);
+            var valueTitleId="valueTitle_"+rowId;//No I18N
+            createDummyValueComponent(selectedValue,selectedValue,valueTitleId);
+        }
+    }
+
+}
+function getValueDisplayText(elementId,selectedValue)
+{
+    //alert("getValueDisplayText");
+    var valueListChildren=document.getElementById(elementId).children;
+    for(var i=0;i<valueListChildren.length;i++)
+    {
+        var dataValue=valueListChildren[i].getAttribute("data-value");
+        if(dataValue==selectedValue)
+        {
+            return valueListChildren[i].innerHTML;
+        }
+    }
+    return null;
+}
+function qualifyAndSetValue(rowId,comparator,selectedValue,selectedValue2)
+{
+    var valueDisplayText=getValueDisplayText("valueList_"+rowId,selectedValue);//No I18N
+    if(comparator=="before" || comparator=="after")
+    {
+        setValueDateAndText("valueDate_"+rowId,selectedValue);//No I18N
+    }
+    else if(comparator=="between")
+    {
+        setValueDateAndText("valueDate_"+rowId,selectedValue);//No I18N
+        setValueDateAndText("valueDate2_"+rowId,selectedValue2);//No I18N
+    }
+    else if(comparator=="is")
+    {
+        var valueTitleId="valueTitle_"+rowId;//No I18N
+        setElementDataValue(valueTitleId,"custom");//No I18N
+        setValueDateAndText("valueDate_"+rowId,selectedValue2);//No I18N
+    }
+    else
+    {
+        setValueDateAndText("valueText_"+rowId,selectedValue);//No I18N
+    }
+}
+function setValueDateAndText(elementId,value)
+{
+    document.getElementById(elementId).value=value;
+}
+function resetFilterComponent()
+{
+    //alert("Inside resetFilterComponent");
+    hideValidationText();
+    var table = document.getElementById('criteriaTable');
+    var allRows=table.rows;
+    while(allRows.length>2)
+    {
+        var criteriaId=allRows[0].id;
+        if(criteriaId.indexOf("criteriaRow")!=-1)
+        {
+            var parentNode=document.getElementById(criteriaId).parentNode;
+            parentNode.removeChild(allRows[0]);
+        }
+    }
+    document.getElementById("filterNameText").value="";
+    document.getElementById("filterNameTitle").innerHTML=I18N.getMsg("dc.filter.criteriaComponent.untitled_filer");
+
+    var criteriaTemplate = document.getElementById('criteriaTemplate');
+    var newRow = criteriaTemplate.rows[0].cloneNode(true);
+    var newRowId="criteriaRow_1";//No I18N
+    newRow.id=newRowId;
+
+    var validationRow=document.getElementById("validationTR");
+    var parentElement=validationRow.parentNode;
+    parentElement.insertBefore(newRow, validationRow);
+
+    assignIdForNewCriteria(newRowId);
+    hideLogicalOperator("1");
+    populateCriteriaRow(newRowId);
+}
+function searchValueSuggestion(elementId)
+{
+    var isMatchFound=false;
+    var dropDownId=fetchDropDownId(elementId,"dropDown");//No I18N
+    var rowId=getRowId(elementId);
+    var listItems =document.getElementById(dropDownId).getElementsByTagName("li");
+    var len = listItems.length;
+    var search = document.getElementById("searchValueHint_"+rowId).value;
+    for(var i=0; i < len; i++)
+    {
+        var value =listItems[i].getAttribute("data-display");
+        listItems[i].className="";
+        if(value!=null)
+        {
+            if(value.toLowerCase().indexOf(search.toLowerCase().trim()) == -1)
+            {
+                listItems[i].className="hide";
+            }
+            else
+            {
+                isMatchFound=true;
+            }
+        }
+        if(listItems[i].id=="noData" || listItems[i].id=="noDataInitial")
+        {
+            document.getElementById(dropDownId).removeChild(listItems[i]);
+        }
+    }
+    if(!isMatchFound)
+    {
+        var listItem = document.createElement('li');
+        listItem.id="noData";
+        listItem.setAttribute("style","list-style:none")
+        listItem.innerHTML=I18N.getMsg("dc.rep.schRep.no_data_available");
+        var parentElement=document.getElementById(dropDownId);
+        parentElement.appendChild(listItem);
+    }
+}
+function resetSearchValueSuggestion(elementId)
+{
+    //alert(elementId);
+    var dropDownId=fetchDropDownId(elementId,"dropDown");//No I18N
+    var rowId=getRowId(elementId);
+    document.getElementById("searchValueHint_"+rowId).value="";
+    var listItems =document.getElementById(dropDownId).getElementsByTagName("li");
+    var len = listItems.length;
+    for(var i=0; i < len; i++)
+    {
+        var value =listItems[i].getAttribute("data-value");
+        listItems[i].className="";
+        if(listItems[i].id=="noData")
+        {
+            var element=listItems[i].parentNode;
+            element.removeChild(listItems[i]);
+        }
+    }
+}
+function createValueComponent(dataValue,displayValue,valueTitleId)
+{
+    //alert("entered");
+    var rowId=getRowId(valueTitleId);
+    var displayValueArray=displayValue.split(",");
+    document.getElementById(valueTitleId).innerHTML="";
+    var columnId=getElementDataValue("columnTitle_"+rowId);//No I18N
+    var dataValueArray=dataValue.split(",");
+    document.getElementById(valueTitleId).className="valueFilterColumn";
+    for(var i=0;i<displayValueArray.length;i++)
+    {
+        var valueComponent=document.getElementById("valueComponent").cloneNode(true);
+        var span=valueComponent.getElementsByTagName("span");
+        span[0].innerHTML=displayValueArray[i];
+        valueComponent.id="valueComponent_"+rowId+"_"+dataValueArray[i];
+
+        document.getElementById(valueTitleId).appendChild(valueComponent);
+
+        setElementDataValue(valueComponent.id,dataValueArray[i]);
+    }
+}
+function removeValueComponent(valueComponentId)
+{
+    var rowId=getRowId(valueComponentId);
+    var valueList=document.getElementById("valueList_"+rowId);
+    var valueListChildren=valueList.children;
+    var valueComponentDataValue=document.getElementById(valueComponentId).getAttribute("data-value");
+    //alert(valueComponentDataValue);
+    for(var i=0;i<valueListChildren.length;i++)
+    {
+        var listItemDataValue=valueListChildren[i].getAttribute("data-value");
+        //alert(listItemDataValue);
+        if(listItemDataValue==valueComponentDataValue)
+        {
+            setCheckBox(valueListChildren[i].children[0],rowId);
+            break;
+        }
+    }
+}
+function createDummyValueComponent(dataValue,displayValue,valueTitleId)
+{
+    var rowId=getRowId(valueTitleId);
+    var displayValueArray=displayValue.split(",");
+    //document.getElementById(valueTitleId).innerHTML="";
+    var columnId=getElementDataValue("columnTitle_"+rowId);//No I18N
+    var dataValueArray=dataValue.split(",");
+    var dataValueOfCrit=getElementDataValue(valueTitleId);
+    if(dataValueOfCrit==null || dataValueOfCrit=="")
+    {
+        document.getElementById(valueTitleId).innerHTML="";
+    }
+    document.getElementById(valueTitleId).className="valueFilterColumn";
+    for(var i=0;i<displayValueArray.length;i++)
+    {
+        var valueComponent=document.getElementById("valueComponent").cloneNode(true);
+        var span=valueComponent.getElementsByTagName("span");
+        span[0].innerHTML=displayValueArray[i];
+        valueComponent.id="valueComponent_"+rowId+"_"+dataValueArray[i];
+
+        span[1].addEventListener("click",function()
+        {
+            var valueListId="valueList_"+rowId;//No I18N
+            removeDummyValueComponent(valueComponent,valueListId);
+        });
+        var valueTitleElement=document.getElementById(valueTitleId);
+        if(valueTitleElement.firstChild)
+        {
+            valueTitleElement.insertBefore(valueComponent,valueTitleElement.firstChild);
+        }
+        else
+        {
+            valueTitleElement.innerHTML="";
+            valueTitleElement.appendChild(valueComponent);
+        }
+        setElementDataValue(valueComponent.id,dataValueArray[i]);
+        valueComponent.setAttribute("data-display",dataValueArray[i]);
+    }
+}
+function removeDummyValueComponent(element,listId)
+{
+    var actualElementId=fetchDropDownId(listId,"title");//No I18N
+    var dataValue=getElementDataValue(actualElementId);
+    var dataDisplayValue=document.getElementById(actualElementId).getAttribute("data-display");
+
+    var elementDataValue=element.getAttribute("data-value");
+    var elementDisplayText=element.getAttribute("data-display");
+    var rowId=getRowId(actualElementId);
+    if(dataValue!="")
+    {
+        var dataValArray=dataValue.split(",");
+        var dataDisplayValueArray=dataDisplayValue.split(",");
+
+        removeItemFromarray(elementDataValue,dataValArray);
+        removeItemFromarray(elementDisplayText,dataDisplayValueArray);
+
+        dataValue=dataValArray.join();
+        dataDisplayValue=dataDisplayValueArray.join();
+
+        if(dataValue==null||dataValue=="")
+        {
+            dataDisplayValue=I18N.getMsg("dc.filter.criteriaComponent.value");
+            //displayText=I18N.getMsg("dc.filter.criteriaComponent.value");
+            document.getElementById(actualElementId).setAttribute("data-display","");
+            setCriteriaTitle(actualElementId,dataDisplayValue,null);
+            setValueToolTip(actualElementId,null);
+            return;
+        }
+        createValueComponent(dataValue,dataDisplayValue,actualElementId);
+        setValueToolTip(actualElementId,dataDisplayValue);
+        //document.getElementById(actualElementId).innerHTML=displayText;
+        if(dataValue==null)
+        {
+            dataValue="";
+        }
+        document.getElementById(actualElementId).setAttribute("data-display",dataDisplayValue);
+        setElementDataValue(actualElementId,dataValue);
+    }
+    else
+    {
+        dataDisplayValue=I18N.getMsg("dc.filter.criteriaComponent.value");
+        //displayText=I18N.getMsg("dc.filter.criteriaComponent.value");
+        document.getElementById(actualElementId).setAttribute("data-display","");
+        setCriteriaTitle(actualElementId,dataDisplayValue,null);
+        setValueToolTip(actualElementId,null);
+        return;
+    }
+}
+function showActionIcons(rowElementId)
+{
+    var rowId=getRowId(rowElementId);
+    document.getElementById("delCritImg_"+rowId).className="advFilter";
+    document.getElementById("addCritImg_"+rowId).className="advFilter";
+}
+function hideActionIcons(rowElementId)
+{
+    var rowId=getRowId(rowElementId);
+    document.getElementById("delCritImg_"+rowId).className="invisible";
+    document.getElementById("addCritImg_"+rowId).className="invisible";
+}
+function showCloseValueComponent(elementId)
+{
+    var valueComponent=document.getElementById(elementId);
+    valueComponent.children[1].className="closeValueComponent";
+}
+function hideCloseValueComponent(event,elementId)
+{
+    var valueComponent=document.getElementById(elementId);
+    valueComponent.children[1].className="hide";
+    event.stopPropagation();
+}
+function setValueToolTip(elementId,displayValue)
+{
+    if(displayValue==null)
+    {
+        displayValue="";
+    }
+    document.getElementById(elementId).setAttribute("title",displayValue);
+}
+function highlightCriteiraTitle(elementId)
+{
+    document.getElementById(elementId).className+=" filterValidateError";//No I18N
+}
+function resetHighlightCriteria()
+{
+    var elements = document.getElementsByClassName("filterValidateError");//No I18N
+    if(elements!=null)
+    {
+        for(var i=0;i<elements.length;i++)
+        {
+            var classNameList=elements[i].className.split(" ");
+            removeItemFromarray("filterValidateError",classNameList);//No I18N
+            elements[i].className="";
+            for(var j=0;j<classNameList.length;j++)
+            {
+                elements[i].className+=classNameList[j];
+            }
+        }
+    }
+}
+function resetClassForValueDate(elementId)
+{
+    var valueTextClass=document.getElementById(elementId).className;
+    if(valueTextClass.indexOf("BetweenDate")!=-1)
+    {
+        document.getElementById(elementId).className="filterBetweenDateDiv";
+    }
+    else if(valueTextClass.indexOf("filterDate")!=-1)
+    {
+        document.getElementById(elementId).className="filterDateDiv";
+    }
+    else
+    {
+        document.getElementById(elementId).className="filterValueText";
+    }
+}
+function revertRename()
+{
+    //alert("entered revertRename");//No I18N
+    //window.clearTimeout(timer);
+    isFilterRenamed=false;
+    showFilterName(true);
+}
+function preventSpecialCharacter()
+{
+    /* EventCode:48-57 -> Numbers 0 to 9
+       EventCode:65-90 -> Alphabets A to Z
+       EventCode:97-122-> Alphabets a to z
+       EventCode:32    -> Space
+    */
+    if(!((event.keyCode >= 65 && event.keyCode <= 90) ||
+     (event.keyCode >= 97 && event.keyCode <= 122) ||
+     (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode==32))
+    {
+        event.keyCode = 0;
+        return false;
+    }
+    /*if(event.keyCode == 39 || event.keyCode == 34)
+    {
+       event.keyCode = 0;
+        return false;
+    }*/
+}
+function validateFilterName(value)
+{
+    var allowedChars=new RegExp("^[a-zA-Z0-9 ]+$");
+
+    var hasSpecialChar=/[-!$%^&*()_+|~=`\\#{}\[\]:";'<>?,.\/]/.test(value);
+    if (!hasSpecialChar && value.length<100)
+    {
+        return true;
+    }
+    return false;
+}

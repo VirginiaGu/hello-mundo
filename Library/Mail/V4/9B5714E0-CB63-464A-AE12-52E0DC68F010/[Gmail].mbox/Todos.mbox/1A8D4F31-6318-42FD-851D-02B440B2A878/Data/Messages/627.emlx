@@ -1,0 +1,840 @@
+39438     
+Delivered-To: sayde.gutierrez92@gmail.com
+Received: by 10.79.165.91 with SMTP id v27csp510178ivh;
+        Wed, 17 May 2017 14:24:24 -0700 (PDT)
+X-Received: by 10.36.181.1 with SMTP id v1mr1000877ite.103.1495056263972;
+        Wed, 17 May 2017 14:24:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1495056263; cv=none;
+        d=google.com; s=arc-20160816;
+        b=QCLqBppvbNzew9GHbAlJ1Yyrr5V94DvaijyY3jkKu1xOJjfoM0g/tbPziqaSlR9Ekc
+         kYpHkEIMpSwxVHcDf7JMI+Jnrjcf0Y7nLE9lkPzA0ig8BVt0klVcwarL7gHx3dSNeN/V
+         Ylje26HmJwVjpSrtkjvYCLtMr5vfY74ozvjL6Q2EaUiRqfvh31rhp34uqd9rPdjO3CkQ
+         fOpNLDJGyiEXTZ0DB9bfV3i6hmF5yR7/MxvUtCX12BFE3mSG6pxRQiFXDDBSIr1utJzC
+         aVkpuoZRXKKIg2pZfmv/l/t85gpoQRtSypKFLJunwFh/u7KPcTznzg85Zxe3XYDno5yb
+         Q0Ng==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:subject:from:to:reply-to:message-id:date:sender
+         :domainkey-signature:dkim-signature:domainkey-signature
+         :dkim-signature:arc-authentication-results;
+        bh=Pttmu0posDeAW9tCw0Q5+4qFYku/r7KhT/07QR6dg84=;
+        b=jz7Q2UAv4JLhMN3Ywvt6X6EI0N9LqNxzVvq/3FK1ybyAPWDiiHf+5fAQHEss9FoDyF
+         IOvKLOe4ikSUSY1tI8dJN06ZLHrDzkYr2wG/9geoDvZUMDf/NKqLhhvUo7ydMOFYWAzs
+         1hU81nS5WK040tyUnHZLktr4mCWT1fa1u9MDXDWtjLgzWFWlheD6/LVwP6O5DqhuoMnI
+         lg61Cw6X6JAE6FylUfyRjE9MQBbRlq5cPZ2/xqDdmvdM5Te68SuXn3i8RaC3OOSQdtGA
+         IOXzACaPW82mMKRdXbwAhUvEUutKbsVeixujhI+Jsfd0zuxSilAOzPyYjM1pUqCVj3ly
+         TZPg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@postmaster.hackerrankmail.com;
+       dkim=pass header.i=@mailgun.org;
+       spf=pass (google.com: domain of bounce+def52b.966a2-sayde.gutierrez92=gmail.com@postmaster.hackerrankmail.com designates 166.78.70.25 as permitted sender) smtp.mailfrom=bounce+def52b.966a2-sayde.gutierrez92=gmail.com@postmaster.hackerrankmail.com
+Return-Path: <bounce+def52b.966a2-sayde.gutierrez92=gmail.com@postmaster.hackerrankmail.com>
+Received: from m70-25.mailgun.net (m70-25.mailgun.net. [166.78.70.25])
+        by mx.google.com with UTF8SMTPS id x13si4084799ite.18.2017.05.17.14.24.23
+        for <sayde.gutierrez92@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 17 May 2017 14:24:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounce+def52b.966a2-sayde.gutierrez92=gmail.com@postmaster.hackerrankmail.com designates 166.78.70.25 as permitted sender) client-ip=166.78.70.25;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@postmaster.hackerrankmail.com;
+       dkim=pass header.i=@mailgun.org;
+       spf=pass (google.com: domain of bounce+def52b.966a2-sayde.gutierrez92=gmail.com@postmaster.hackerrankmail.com designates 166.78.70.25 as permitted sender) smtp.mailfrom=bounce+def52b.966a2-sayde.gutierrez92=gmail.com@postmaster.hackerrankmail.com
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=postmaster.hackerrankmail.com;
+ q=dns/txt; s=k1; t=1495056263; h=Content-Type: Mime-Version: Subject:
+ From: To: Reply-To: Message-Id: Date: Sender: X-Feedback-Id;
+ bh=Pttmu0posDeAW9tCw0Q5+4qFYku/r7KhT/07QR6dg84=; b=evzM4VhCdCX+dtHmmyE41y6tKSdShwcmiHzY5Yg2rRDI9PgeKGa/iC5sKr/rCZRe91GuEq0q
+ W+nViYlQhsCZS/DDMa+NLZPOqSVSy0wE1wctN01M1XFjWN1t1N5R620N6oSPMUxf+KE2CJFr
+ AVp6bLXiUPm95qsYZYyf0h91Isc=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+ d=postmaster.hackerrankmail.com; s=k1; q=dns; h=X-Feedback-Id: Sender:
+ Date: Message-Id: Reply-To: To: From: Subject: Mime-Version:
+ Content-Type;
+ b=ebEZRnB7CVzGkI7Bnpg0QwgHXddDhe50p1DbFQSBJ2QzavuoxgGbam7UzUgbHhb0B6L/T6
+ 4rW7HIszbjQLB5hlUSIiJ66/fgVSkhLLse9d5ykGctSSKQjbR1BgnftLkhiSW4yNWDnsyyyR
+ RyIGg2AVnWE9RgF9O72lfMP4y7wiA=
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mailgun.org; q=dns/txt; s=mg;
+ t=1495056263; h=Content-Type: Mime-Version: Subject: From: To:
+ Reply-To: Message-Id: Date: Sender: X-Feedback-Id;
+ bh=Pttmu0posDeAW9tCw0Q5+4qFYku/r7KhT/07QR6dg84=; b=L4lWntv1t/odec6Z6j2+tneebWTGqVdV4NJ8DSw+SyI0CLpgJoQxTRDmETWZJrH6L6VbHY4R
+ Qig6ty6L5t8NriY1M4h368VPtZD0heN24PJ1kIvi+qROpLX9yP9oOAhzsfv9FQ1V4mcps7lk
+ uoSwMbnhurprNCNv4iT+5dzzses=
+DomainKey-Signature: a=rsa-sha1; c=nofws; d=mailgun.org; s=mg; q=dns;
+ h=X-Feedback-Id: Sender: Date: Message-Id: Reply-To: To: From: Subject:
+ Mime-Version: Content-Type;
+ b=WsgOD8sqgSM5q//NpqaakCPWH9iS5u6JC1E3evxKGKDZk1wM9zP23dMmPaeMsLN31CCcld
+ oZWYyohXclNZx1FXR6CyRRC+2f31Nh5pJJWdQKNh4oQofhRqIhMoSbgWqi9xHMJZykMAFg3P
+ I1ULu3bsqMrsC4FjlcFt3JLu3uffA=
+X-Feedback-Id: 5200c2915a76182fad4e7507:mailgun
+Sender: hackers=hackerrankmail.com@postmaster.hackerrankmail.com
+Date: Wed, 17 May 2017 21:24:23 +0000
+X-Mailgun-Sending-Ip: 166.78.70.25
+X-Mailgun-Sid: WyJkYTM2NyIsICJzYXlkZS5ndXRpZXJyZXo5MkBnbWFpbC5jb20iLCAiOTY2YTIiXQ==
+Received: by luna.mailgun.net with HTTP; Wed, 17 May 2017 21:24:23 +0000
+Message-Id: <20170517212423.23810.5274.4FD1B4AA@postmaster.hackerrankmail.com>
+Reply-To: 
+X-Mailgun-Tag: mail_template_918
+To: sayde.gutierrez92@gmail.com
+From: HackerRank Team <hackers@hackerrankmail.com>
+Subject: Prove your coding skills by joining World CodeSprint 11!
+Mime-Version: 1.0
+Content-Type: multipart/alternative; boundary="f7dc8bdd8d93406291b2c5dd24d01819"
+
+--f7dc8bdd8d93406291b2c5dd24d01819
+Content-Type: text/plain; charset="utf-8"
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+
+   =20
+
+  | =20
+
+  | =20
+
+  | =20
+
+  | =20
+
+  | ![HackerRank Logo](http://email.postmaster.hackerrankmail.com/c/eJxNkk2=
+TojAQhn-N3obKB6AcPKCCjiOyfCULl6mYBFECspAZlV-_zGVrq_rwVlf321Xv02Ll2DZD8-sKAb=
+gAFlwgiEyEDYSXEBgWWpiG6W_h2nTdmQm6-6AbNmjZGxXjtex71tYNuyqD35t5tWKmWS4kBAu7t=
+Ey8BAiBpRDmdEFIvrTLuVpVWnfDDLsz5E_1eDz-c_pxmZrD9dIy_dVLo2svM-yLGd7K3cmnmbqF=
+Hoxo07EP8CSpB5_hzv_ISDwW1HlmLe_Pah1mHlQpEH_iHdGF6prjeKiSlw44vJvRWL1TrxpoTVh=
+OnW2xX7PYO2TJ3jXPWadZo78DagVx-g6ytvKJfzjRRNs5Ba8sjfuQdl64zZ6kLVTRipr7hybwui=
+G_xa9gR7C41Yh71iizQ8K9HCQqQLKON1EbVxElIaFOfMJBT3DVRa2LRXraFNAfz3t1zG6napqLQ=
+kp-B1RtsptKpBJdCkgt9uIZoNMX35GWYdeM4OFY7Ky19HKrGIFzTGB-HoNX3nCYA1KQW3EMvEIR=
+7L1CEuNfKZhSfHsrS4dDDoS9lBNiXNr2xBtLiTFDpXT42XaEDR0-Q7aeFtT9cp_3q4G9hDQuX_o=
+6gZKjg6ZfuPzjrlc_8lPLplNMy08HLv8CGGPBNw) |
+
+  |
+
+  |
+
+  |
+| =20
+
+  | =20
+
+  | =20
+
+  | =20
+Join=C2=A0World CodeSprint 11
+  |
+
+  |
+
+  | =20
+
+  | =C2=A0 |
+
+  |
+
+  | =20
+
+  | =20
+
+Hi Sayde,
+
+Join World CodeSprint 11, an online coding contest, to solve challenges and=
+ see how you compare against thousands of programmers from around the world!
+
+Beginning Friday,=C2=A0May 26th, you=E2=80=99ll have 48 hours to solve 7 ch=
+allenges. Top coders ranked on the leaderboard win $15,000 in=C2=A0cash pri=
+zes, World Champion t-shirts and the opportunity to interview with=C2=A0spo=
+nsoring companies looking to hire. Learn more=C2=A0 [here](http://email.pos=
+tmaster.hackerrankmail.com/c/eJx1UtuO4jAM_Rp4o8r98tAHRojfqELiQAWhVZqKnf36cQ=
+ozsLusVKnJ8Tm2j53QWqUcW_ctI1QTSTWjTDDeMG4oaSTTohH7Hf0Q2-1KkHGYSnJTgdycnD9Dz=
+u56Tq6_NH5I61PLUOa8OghrD5J7z6yNBjDTwehIpVhf2lMp44pvV2yP3-12e0lUkyDo5nLC3x3v=
+MoQ-gy8rvvfDtcAvPO1qya5AGi-uwJPC1EPUByQJZZlUCJ7hE6-eUy2tAWWEt0JQC8wE541kEYQ=
+3oIN1lAiPgtInmIpL2OiOCis5YUqxGhgQWRwwWT3I6kK-94Hw0uazu4qUrmQkVv2PHzz_5chS03=
+23L19dVepLoDqrUNRGEWKCJEFpSnXwnkSrmVHWG63RNAdrZFhEf5Z6JMWKz-A8P9DID1GSqJWOl=
+jsvOfXaagdERcqcEYsEh1K59VxHMeRL2PghwDTm_lo2lC4Rvp9L6qZhzh7uwO4NdTPmIQ33VKou=
+YGF-VGnCOc7pIYXa51uax6vrj9f_11jndnKfAZrjXHrcGPy2DN_28ecdl_afbXwBJM74tg).
+
+Sign up now and we'll notify you a few times before start time so you don't=
+ miss out. See you on the leaderboard!=C2=A0
+
+  |
+
+  |
+
+  | =20
+
+  | [SIGN UP NOW](http://email.postmaster.hackerrankmail.com/c/eJx1UsuO4jAQ=
+_Bq4Ednt9yEHRojfiIwfEIHjyHHEzH792iEzsLusFCnt6qruLrdtqzjXsO1bQFgghgVgoEAaIBK=
+jhoGgDT0e8Afd7zcUjXHKQU_ZpeaizdWlpIdr0P2tMTFsL-3JK3nyCBGEtAehkbcKU8nIyVgQYL=
+a39pLzuCH7DRzLd7_fXwrVIgXUc76U3wPvkrN9ciZvyNHEIbvPEh1qyy67MN50dk8K8FXU20KiX=
+AHjBby6r3I0BAumpOOSGkUpVg6k1UYy8I4a6YRVGiNqiiD3wU1ZhzLoAVPFCALOoSZiQRYHwKoH=
+Vl2w9z4KvIz5nK4iucupEKv-x0-J_3KksOy-x2evrir1JVGdVcgLyRGSliHLBcbCGoO8EiC5MlK=
+IYpo4JZldRH-2WouWjs_kPK-oJyfPkBdceEW0YQQboYR2iHsMWtJFUi6lcmvMvre3hLd47oc1vs=
+d0szsTrZvG1A95h_GSIcc5h26KczLuARzeUHdjiiE-SvG6l4X5UaWhXO8cVqmr47-lmXLU_Xn4f=
+49taif9ZV1znnNfFul-KShP_vzzvHP7z5J-Aztk_8k "SIGN UP NOW") |
+
+  |
+
+  | =20
+
+  | =20
+
+Happy Coding! =20
+The HackerRank Team
+
+  |
+
+  |
+
+  |
+
+  |
+| =20
+
+  | =20
+
+  | =C2=A0 |
+
+   =20
+
+  | =C2=A0 |
+
+   =20
+
+  | =C2=A0 |
+
+  |
+
+  |
+| =20
+
+  | =C2=A0 |
+
+  |
+| =20
+
+  | =20
+
+  | =20
+
+  | =20
+
+   =20
+If you don't want to receive these mails, from HackerRank, please [unsubscr=
+ibe](http://email.postmaster.hackerrankmail.com/c/eJx1U1uO4yAQPE3yaUFD8_jwx=
+4yiXMPC0EysPGVjZWdPv-DYiTO7K1lyU_2sagi1VcrBtquBcc2Qa-AgQVQgDGcVgpaV3O_4p_z4=
+2Eh2uw7p7IZEfXVw_kh97y7Hs-tOlb-et4eaFARlQFjHopHYBucCSm6sgUhSse2pPqR024iPDez=
+zd7_fV4VKkQy6MR3y74E3PYWuJ582Yu-vl0S_srUrLZtE59vJJXqFgJqTupCDpLKAKoNH-s5HL7=
+hGa0gZ6a2U3BKY4LzBMpo3pIN1nEmfE1J3piG5cx50x6VFwUApKI5rRiYGgIUDFhb4bx4ZnsZ8T=
+VeQ1KQ-B5b8J59s_2BkuWmW8XHNqoSuHIVZgaI2ijETkAWlOdfBexatBqOsN1pn0oKswTAlvbea=
+i-aOL-c4zmgUbUQWtdLRCudRcK-tdsRU5OCMnFKyKCV2lmURZpbmv-LgsujJ_Lnsqc5KoNJgvAx=
+j25y6y_GR9CbLuzBPaQrc5g0LdKQFoo6EWirQouUMVQQZGUcZFZol8bX8R_r6AuCTb_E8znn6ab=
+LB911LMyYmcs0yxKQwqeCE9RZbR4Fli3PVQszyAnArPbmWnMalqqKZ2LqVuvUUm5VDPz3jCn0os=
+e3rwX0Hqr7G1GX16beF_Ii_ng821X9duz9_qjDt). =20
+Copyright =C2=A9 2016 HackerRank (2300 Geng Road, Suite 250 Palo Alto, Cali=
+fornia 94303), All rights reserved.
+
+  |
+
+  |
+
+  |
+
+  |
+
+  |
+
+
+--f7dc8bdd8d93406291b2c5dd24d01819
+Content-Type: text/html; charset="ascii"
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+
+<title></title>
+<style type=3D"text/css">img { border: 0; height: auto; outline: none; text=
+-decoration: none; } body { height: 100% !important; margin: 0; padding: 0;=
+ width: 100% !important; } img { -ms-interpolation-mode: bicubic; } .ReadMs=
+gBody { width: 100%; } .ExternalClass { width: 100%; } body { -ms-text-size=
+-adjust: 100%; -webkit-text-size-adjust: 100%; } .ExternalClass { line-heig=
+ht: 100%; } body { background-color: #f8f9fa; } @media screen and (min-widt=
+h: 768px) { .columnsContainer { width: 197px !important; } } @media only sc=
+reen and (max-width: 480px) { body { width: 100% !important; min-width: 100=
+% !important; } td#bodyCell { padding-top: 10px !important; } .columnsConta=
+iner { max-width: 100% !important; width: 100% !important; } .columnWidth {=
+ width: 100% !important; } img.mcnImage { width: 100% !important; } table.m=
+cnCaptionTopContent { width: 100% !important; } table.mcnCaptionBottomConte=
+nt { width: 100% !important; } table.mcnTextContentContainer { width: 100% =
+!important; } table.mcnImageGroupContentContainer { width: 100% !important;=
+ } table.mcnCaptionLeftTextContentContainer { width: 100% !important; } tab=
+le.mcnCaptionRightTextContentContainer { width: 100% !important; } table.mc=
+nCaptionLeftImageContentContainer { width: 100% !important; } table.mcnCapt=
+ionRightImageContentContainer { width: 100% !important; } table.mcnImageCar=
+dLeftTextContentContainer { width: 100% !important; } table.mcnImageCardRig=
+htTextContentContainer { width: 100% !important; } .mcnBoxedTextContentCont=
+ainer { max-width: 100% !important; min-width: 100% !important; width: 100%=
+ !important; } td.mcnImageGroupContent { padding: 9px !important; } table.m=
+cnCaptionLeftContentOuter td.mcnTextContent { padding-top: 9px !important; =
+} table.mcnCaptionRightContentOuter td.mcnTextContent { padding-top: 9px !i=
+mportant; } td.mcnImageCardTopImageContent { padding-top: 18px !important; =
+} td.mcnCaptionBlockInner table.mcnCaptionTopContent:last-child td.mcnTextC=
+ontent { padding-top: 18px !important; } td.mcnImageCardBottomImageContent =
+{ padding-bottom: 9px !important; } td.mcnImageGroupBlockInner { padding-to=
+p: 0 !important; padding-bottom: 0 !important; } tbody.mcnImageGroupBlockOu=
+ter { padding-top: 9px !important; padding-bottom: 9px !important; } td.mcn=
+TextContent { padding-right: 18px !important; padding-left: 18px !important=
+; } td.mcnBoxedTextContentColumn { padding-right: 18px !important; padding-=
+left: 18px !important; } td.mcnImageCardLeftImageContent { padding-right: 1=
+8px !important; padding-bottom: 0 !important; padding-left: 18px !important=
+; } td.mcnImageCardRightImageContent { padding-right: 18px !important; padd=
+ing-bottom: 0 !important; padding-left: 18px !important; } td.columnsContai=
+ner { display: block !important; max-width: 600px !important; width: 100% !=
+important; } table.mcpreview-image-uploader { display: none !important; wid=
+th: 100% !important; } td.footerContainer a.utilityLink { display: block !i=
+mportant; } h1 { font-size: 24px !important; line-height: 125% !important; =
+} h2 { font-size: 20px !important; line-height: 125% !important; } h3 { fon=
+t-size: 18px !important; line-height: 125% !important; } h4 { font-size: 16=
+px !important; line-height: 125% !important; } table.mcnBoxedTextContentCon=
+tainer td.mcnTextContent { font-size: 18px !important; line-height: 125% !i=
+mportant; } td.mcnBoxedTextContentContainer td.mcnTextContent p { font-size=
+: 18px !important; line-height: 125% !important; } td#templatePreheader { d=
+isplay: block !important; } td.preheaderContainer td.mcnTextContent { font-=
+size: 12px !important; line-height: 115% !important; } td.preheaderContaine=
+r td.mcnTextContent p { font-size: 12px !important; line-height: 115% !impo=
+rtant; } td.headerContainer td.mcnTextContent { font-size: 18px !important;=
+ line-height: 125% !important; } td.headerContainer td.mcnTextContent p { f=
+ont-size: 18px !important; line-height: 125% !important; } td.upperBodyCont=
+ainer td.mcnTextContent { font-size: 18px !important; line-height: 125% !im=
+portant; } td.upperBodyContainer td.mcnTextContent p { font-size: 18px !imp=
+ortant; line-height: 125% !important; } td.leftColumnContainer td.mcnTextCo=
+ntent { font-size: 14px !important; line-height: 125% !important; } td.left=
+ColumnContainer td.mcnTextContent p { font-size: 14px !important; line-heig=
+ht: 125% !important; } td.centerColumnContainer td.mcnTextContent { font-si=
+ze: 14px !important; line-height: 125% !important; } td.centerColumnContain=
+er td.mcnTextContent p { font-size: 14px !important; line-height: 125% !imp=
+ortant; } td.rightColumnContainer td.mcnTextContent { font-size: 14px !impo=
+rtant; line-height: 125% !important; } td.rightColumnContainer td.mcnTextCo=
+ntent p { font-size: 14px !important; line-height: 125% !important; } td.lo=
+werBodyContainer td.mcnTextContent { font-size: 18px !important; line-heigh=
+t: 125% !important; } td.lowerBodyContainer td.mcnTextContent p { font-size=
+: 18px !important; line-height: 125% !important; } td.footerContainer td.mc=
+nTextContent { font-size: 14px !important; line-height: 115% !important; } =
+td.footerContainer td.mcnTextContent p { font-size: 14px !important; line-h=
+eight: 115% !important; } }
+</style>
+<center>
+<table bgcolor=3D"#f8f9fa" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ height=3D"100%" id=3D"bodyTable" style=3D"-ms-text-size-adjust: 100%; -web=
+kit-text-size-adjust: 100%; background: #f8f9fa; border-collapse: collapse;=
+ height: 100% !important; margin: 0; mso-table-lspace: 0pt; mso-table-rspac=
+e: 0pt; padding: 0; width: 100% !important" width=3D"100%">
+	<tbody>
+		<tr>
+			<td align=3D"center" id=3D"bodyCell" style=3D"-ms-text-size-adjust: 100%=
+; -webkit-text-size-adjust: 100%; border-top-width: 0; height: 100% !import=
+ant; margin: 0; mso-line-height-rule: exactly; padding: 20px 10px; width: 1=
+00% !important" valign=3D"top"><!--[if gte mso 9]>
+        <table align=3D"center" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" style=3D"width:600px;" width=3D"600">
+          <tr>
+            <td align=3D"center" valign=3D"top">
+        <![endif]-->
+			<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-tex=
+t-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-collapse: colla=
+pse; border: 0; max-width: 600px; mso-table-lspace: 0pt; mso-table-rspace: =
+0pt" width=3D"100%">
+				<tbody>
+					<tr>
+						<td align=3D"center" bgcolor=3D"#f8f9fa" id=3D"templatePreheader" sty=
+le=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; backgroun=
+d: #f8f9fa; border-bottom-color: #2ec866; border-bottom-style: solid; borde=
+r-bottom-width: 15px; border-top-width: 0; mso-line-height-rule: exactly" v=
+align=3D"top"><!-- BEGIN PREHEADER // -->
+						<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-=
+text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-collapse: co=
+llapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt" width=3D"100%">
+							<tbody>
+								<tr>
+									<td class=3D"preheaderContainer" style=3D"-ms-text-size-adjust: 10=
+0%;margin-bottom:10px; -webkit-text-size-adjust: 100%; mso-line-height-rule=
+: exactly" valign=3D"top">
+									<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"m=
+cnTextBlock" style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust:=
+ 100%; border-collapse: collapse; min-width: 100%; mso-table-lspace: 0pt; m=
+so-table-rspace: 0pt" width=3D"100%">
+										<tbody class=3D"mcnTextBlockOuter">
+											<tr>
+												<td class=3D"mcnTextBlockInner" style=3D"-ms-text-size-adjust: =
+100%; -webkit-text-size-adjust: 100%; mso-line-height-rule: exactly" valign=
+=3D"top">
+												<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" class=3D"mcnTextContentContainer" style=3D"-ms-text-size-adjust: 10=
+0%; -webkit-text-size-adjust: 100%; border-collapse: collapse; min-width: 1=
+00%; mso-table-lspace: 0pt; mso-table-rspace: 0pt" width=3D"100%">
+													<tbody>
+														<tr>
+															<td align=3D"center" class=3D"mcnTextContent" style=3D"-ms-t=
+ext-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #ffffff; font=
+-family: Helvetica; font-size: 11px; line-height: 125%; mso-line-height-rul=
+e: exactly; padding: 9px 18px; text-align: center" valign=3D"top"><img src=
+=3D'https://www.hackerrank.com/signature.png?d=3DeGNFWUljOE1QWmpaK0xVTE1xOG=
+FKUVRzZW9xUncrblBOUE1lT0dqRGVtZlpmLzJhSytMc1o4QzhIWEhsWkVaYW9DZHBaREJUSHA4b=
+UptamtvMW5MRTI0UnhFVFJNWSt6YW0yUTRrOWpEODUxVnZlZndkcFJmMEpsYjRyMGV3djk2cE5z=
+eUJScEY0SlM2ekRCQnRhQWVOVW9RN3MrV3hpQnA3dTNCZ1FzbHlLUjNhQnRQOWVXMWlCUjlSeld=
+pT0VkdHdxM2NucGVna3A4Q1JLZG5BeEY5Zz09LS1YbzMyYmc1Y0VZVjZLMEZlV3EyOVR3PT0=3D=
+--ff9c1c0d68e2383f661243ee33a2fe9cb69d619c&t=3Dlogo' alt=3D'HackerRank Logo=
+'></td>
+														</tr>
+													</tbody>
+												</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<!-- // END PREHEADER --></td>
+					</tr>
+					<tr>
+						<td align=3D"center" bgcolor=3D"#ffffff" id=3D"templateUpperBody" sty=
+le=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; backgroun=
+d: #ffffff; border-bottom-width: 0; border-top-width: 0; mso-line-height-ru=
+le: exactly" valign=3D"top"><!-- BEGIN UPPER BODY // -->
+						<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-=
+text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-collapse: co=
+llapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt" width=3D"100%">
+							<tbody>
+								<tr>
+									<td class=3D"upperBodyContainer" style=3D"-ms-text-size-adjust: 10=
+0%; -webkit-text-size-adjust: 100%; mso-line-height-rule: exactly" valign=
+=3D"top">
+									<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"m=
+cnTextBlock" style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust:=
+ 100%; border-collapse: collapse; min-width: 100%; mso-table-lspace: 0pt; m=
+so-table-rspace: 0pt" width=3D"100%">
+										<tbody class=3D"mcnTextBlockOuter">
+											<tr>
+												<td class=3D"mcnTextBlockInner" style=3D"-ms-text-size-adjust: =
+100%; -webkit-text-size-adjust: 100%; mso-line-height-rule: exactly" valign=
+=3D"top">
+												<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" class=3D"mcnTextContentContainer" style=3D"-ms-text-size-adjust: 10=
+0%; -webkit-text-size-adjust: 100%; border-collapse: collapse; min-width: 1=
+00%; mso-table-lspace: 0pt; mso-table-rspace: 0pt" valign=3D"center" width=
+=3D"100%">
+													<tbody>
+														<tr>
+															<td align=3D"left" class=3D"mcnTextContent" style=3D"-ms-tex=
+t-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #606060; font-f=
+amily: Verdana, Geneva, sans-serif; font-size: 15px; line-height: 125%; mso=
+-line-height-rule: exactly; padding: 18px; text-align: left" valign=3D"top">
+															<div align=3D"center" style=3D"text-align: center"><span sty=
+le=3D"font-family: arial,helvetica neue,helvetica,sans-serif"><span style=
+=3D"color: #2ec866"><span style=3D"font-size: 20px">Join&nbsp;World CodeSpr=
+int 11</span></span></span></div>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+
+									<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"m=
+cnDividerBlock" style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adju=
+st: 100%; border-collapse: collapse; min-width: 100%; mso-table-lspace: 0pt=
+; mso-table-rspace: 0pt" width=3D"100%">
+										<tbody class=3D"mcnDividerBlockOuter">
+											<tr>
+												<td class=3D"mcnDividerBlockInner" style=3D"-ms-text-size-adjus=
+t: 100%; -webkit-text-size-adjust: 100%; min-width: 100%; mso-line-height-r=
+ule: exactly; padding: 2px">
+												<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"mcnDividerContent" style=3D"-ms-text-size-adjust: 100%; -webkit-text-si=
+ze-adjust: 100%; border-collapse: collapse; border-top-color: #EAEAEA; bord=
+er-top-style: solid; border-top-width: 2px; min-width: 100%; mso-table-lspa=
+ce: 0pt; mso-table-rspace: 0pt" width=3D"100%">
+													<tbody>
+														<tr>
+															<td style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-a=
+djust: 100%; mso-line-height-rule: exactly">&nbsp;</td>
+														</tr>
+													</tbody>
+												</table>
+												<!--
+                                          <td class=3D"mcnDividerBlockInner=
+" style=3D"padding: 18px;">
+                                          <hr class=3D"mcnDividerContent" s=
+tyle=3D"border-bottom-color:none; border-left-color:none; border-right-colo=
+r:none; border-bottom-width:0; border-left-width:0; border-right-width:0; m=
+argin-top:0; margin-right:0; margin-bottom:0; margin-left:0;" />
+                          --></td>
+											</tr>
+										</tbody>
+									</table>
+
+									<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"m=
+cnTextBlock" style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust:=
+ 100%; border-collapse: collapse; min-width: 100%; mso-table-lspace: 0pt; m=
+so-table-rspace: 0pt" width=3D"100%">
+										<tbody class=3D"mcnTextBlockOuter">
+											<tr>
+												<td class=3D"mcnTextBlockInner" style=3D"-ms-text-size-adjust: =
+100%; -webkit-text-size-adjust: 100%; mso-line-height-rule: exactly" valign=
+=3D"top">
+												<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" class=3D"mcnTextContentContainer" style=3D"-ms-text-size-adjust: 10=
+0%; -webkit-text-size-adjust: 100%; border-collapse: collapse; min-width: 1=
+00%; mso-table-lspace: 0pt; mso-table-rspace: 0pt" width=3D"100%">
+													<tbody>
+														<tr style=3D"font-family:arial,helvetica,sans-serif;font-size=
+:15px">
+															<td align=3D"left" class=3D"mcnTextContent" style=3D"-ms-tex=
+t-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #606060; font-f=
+amily: Verdana, Geneva, sans-serif; font-size: 15px; line-height: 125%; mso=
+-line-height-rule: exactly; padding: 9px 18px; text-align: left" valign=3D"=
+top">
+															<p><span style=3D"font-family:arial,helvetica,sans-serif;">H=
+i Sayde,</span></p>
+
+															<p><span style=3D"font-family:arial,helvetica,sans-serif;">J=
+oin World CodeSprint 11, an online coding contest, to solve challenges and =
+see how you compare against thousands of programmers from around the world!=
+</span></p>
+
+															<p><span style=3D"font-family:arial,helvetica,sans-serif;">B=
+eginning Friday,&nbsp;May 26th, you&rsquo;ll have 48 hours to solve 7 chall=
+enges. Top coders ranked on the leaderboard win $15,000 in&nbsp;cash prizes=
+, World Champion t-shirts and the opportunity to interview with&nbsp;sponso=
+ring companies looking to hire. Learn more&nbsp;<a href=3D"http://email.pos=
+tmaster.hackerrankmail.com/c/eJx1UtuO4jAM_Rp4o8r98tAHRojfqELiQAWhVZqKnf36cQ=
+ozsLusVKnJ8Tm2j53QWqUcW_ctI1QTSTWjTDDeMG4oaSTTohH7Hf0Q2-1KkHGYSnJTgdycnD9Dz=
+u56Tq6_NH5I61PLUOa8OghrD5J7z6yNBjDTwehIpVhf2lMp44pvV2yP3-12e0lUkyDo5nLC3x3v=
+MoQ-gy8rvvfDtcAvPO1qya5AGi-uwJPC1EPUByQJZZlUCJ7hE6-eUy2tAWWEt0JQC8wE541kEYQ=
+3oIN1lAiPgtInmIpL2OiOCis5YUqxGhgQWRwwWT3I6kK-94Hw0uazu4qUrmQkVv2PHzz_5chS03=
+23L19dVepLoDqrUNRGEWKCJEFpSnXwnkSrmVHWG63RNAdrZFhEf5Z6JMWKz-A8P9DID1GSqJWOl=
+jsvOfXaagdERcqcEYsEh1K59VxHMeRL2PghwDTm_lo2lC4Rvp9L6qZhzh7uwO4NdTPmIQ33VKou=
+YGF-VGnCOc7pIYXa51uax6vrj9f_11jndnKfAZrjXHrcGPy2DN_28ecdl_afbXwBJM74tg" sty=
+le=3D"color:#4691f6">here</a>.</span><span style=3D"font-family: arial, hel=
+vetica, sans-serif; line-height: 125%;"> </span></p>
+
+															<p><span style=3D"font-family: arial, helvetica, sans-serif;=
+ line-height: 125%;">Sign up now and we&#39;ll notify you a few times befor=
+e start time so you don&#39;t miss out. See you on the leaderboard!&nbsp;</=
+span></p>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+
+									<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"mcnButtonBlock" style=3D"-ms-text-size-adjust: 100%; -webki=
+t-text-size-adjust: 100%; border-collapse: collapse; float: center; mso-tab=
+le-lspace: 0pt; mso-table-rspace: 0pt">
+										<tbody class=3D"mcnButtonBlockOuter">
+											<tr>
+												<td align=3D"center" class=3D"mcnButtonBlockInner" style=3D"-ms=
+-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; mso-line-height-ru=
+le: exactly; padding: 18px" valign=3D"top">
+												<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=
+=3D"mcnButtonContentContainer" style=3D"-ms-text-size-adjust: 100%; -webkit=
+-text-size-adjust: 100%; border-collapse: separate !important; border-radiu=
+s: 3px; mso-table-lspace: 0pt; mso-table-rspace: 0pt">
+													<tbody>
+														<tr>
+															<td align=3D"center" class=3D"mcnButtonContent" style=3D"-ms=
+-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; font-family: Arial=
+, Helvetica, sans-serif; font-size: 16px; mso-line-height-rule: exactly; pa=
+dding: 15px" valign=3D"middle"><!--[if mso]>
+                                                                    <v:roun=
+drect xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:w=3D"urn:schemas-micr=
+osoft-com:office:word" href=3D"http://www.hackerrank.com/auth/hacker_redire=
+ct?context=3Dmail_template_redirect&hacker_id=3D469256&key=3Dc317598e684c94=
+419e28dac852fe4c8e7d9a104c&timestamp=3D1495302662&to=3Dhttp%3A%2F%2Fwww.hac=
+kerrank.com%2Fmail_redirect%2Fmt_track%3Fcontext%3Dmail_template_918_469256=
+%26hacker_id%3D469256%26key%3Df786008d50d67117dcc0f972869c8778e63e985d%26ma=
+il_template_id%3D918%26mail_uuid%3Df3bf50f767f93ac531c797ae06f12a84%26to%3D=
+%252Fauth%252Flogin%252Fworld-codesprint-11%253Futm_source%253Dworld-codesp=
+rint-11-promo%2526amp%253Butm_medium%253Demail%2526amp%253Butm_campaign%253=
+Dworld-codesprint-11" style=3D"height:40px;v-text-anchor:middle;width:240px=
+;" arcsize=3D"5%" strokecolor=3D"#20ca61" fillcolor=3D"#20ca61">
+                                                                    <w:anch=
+orlock/>
+                                                                    <center=
+ style=3D"color:#ffffff;font-family:Helvetica, Arial,sans-serif;font-size:1=
+6px;">SIGN UP NOW</center>
+                                                                    </v:rou=
+ndrect>
+                                                                    <![endi=
+f]--><a href=3D"http://email.postmaster.hackerrankmail.com/c/eJx1UsuO4jAQ_B=
+q4Ednt9yEHRojfiIwfEIHjyHHEzH792iEzsLusFCnt6qruLrdtqzjXsO1bQFgghgVgoEAaIBKjh=
+oGgDT0e8Afd7zcUjXHKQU_ZpeaizdWlpIdr0P2tMTFsL-3JK3nyCBGEtAehkbcKU8nIyVgQYLa3=
+9pLzuCH7DRzLd7_fXwrVIgXUc76U3wPvkrN9ciZvyNHEIbvPEh1qyy67MN50dk8K8FXU20KiXAH=
+jBby6r3I0BAumpOOSGkUpVg6k1UYy8I4a6YRVGiNqiiD3wU1ZhzLoAVPFCALOoSZiQRYHwKoHVl=
+2w9z4KvIz5nK4iucupEKv-x0-J_3KksOy-x2evrir1JVGdVcgLyRGSliHLBcbCGoO8EiC5MlKIY=
+po4JZldRH-2WouWjs_kPK-oJyfPkBdceEW0YQQboYR2iHsMWtJFUi6lcmvMvre3hLd47oc1vsd0=
+szsTrZvG1A95h_GSIcc5h26KczLuARzeUHdjiiE-SvG6l4X5UaWhXO8cVqmr47-lmXLU_Xn4f49=
+taif9ZV1znnNfFul-KShP_vzzvHP7z5J-Aztk_8k" style=3D"background-color:#20ca61=
+;border:1px solid #20ca61;border-radius:3px;color:#ffffff;display:inline-bl=
+ock;font-family:sans-serif;font-size:16px;line-height:40px;text-align:cente=
+r;text-decoration:none;width:240px;-webkit-text-size-adjust:none;mso-hide:a=
+ll;font-weight: bold;" target=3D"_blank" title=3D"SIGN UP NOW">SIGN UP NOW<=
+/a></td>
+														</tr>
+													</tbody>
+												</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+
+									<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"m=
+cnTextBlock" style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust:=
+ 100%; border-collapse: collapse; min-width: 100%; mso-table-lspace: 0pt; m=
+so-table-rspace: 0pt" width=3D"100%">
+										<tbody class=3D"mcnTextBlockOuter">
+											<tr>
+												<td class=3D"mcnTextBlockInner" style=3D"-ms-text-size-adjust: =
+100%; -webkit-text-size-adjust: 100%; mso-line-height-rule: exactly" valign=
+=3D"top">
+												<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" class=3D"mcnTextContentContainer" style=3D"-ms-text-size-adjust: 10=
+0%; -webkit-text-size-adjust: 100%; border-collapse: collapse; min-width: 1=
+00%; mso-table-lspace: 0pt; mso-table-rspace: 0pt" width=3D"100%">
+													<tbody>
+														<tr>
+															<td align=3D"left" class=3D"mcnTextContent" style=3D"-ms-tex=
+t-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #606060; font-f=
+amily: Verdana, Geneva, sans-serif; font-size: 15px; line-height: 125%; mso=
+-line-height-rule: exactly; padding: 9px 18px; text-align: left" valign=3D"=
+top">
+															<p><span style=3D"font-family: arial,helvetica neue,helvetic=
+a,sans-serif">Happy Coding!<br />
+															The HackerRank Team</span></p>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<!-- // END UPPER BODY --></td>
+					</tr>
+					<tr><!-- BEGIN COLUMNS // -->
+						<td align=3D"center" bgcolor=3D"#FFFFFF" id=3D"templateColumns" style=
+=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; background:=
+ #FFFFFF; border-bottom-width: 0; border-top-width: 0; mso-line-height-rule=
+: exactly" valign=3D"top">
+						<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; bo=
+rder-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt" widt=
+h=3D"100%">
+							<tbody>
+								<tr>
+									<td align=3D"center" style=3D"-ms-text-size-adjust: 100%; -webkit-=
+text-size-adjust: 100%; display: inline-block; mso-line-height-rule: exactl=
+y; text-align: center" valign=3D"top"><!-- BEGIN INDIVIDUAL COLUMNS // --><=
+!--[if gte mso 9]>
+                    <table align=3D"center" border=3D"0" cellspacing=3D"0" =
+cellpadding=3D"0" style=3D"width:600px;" width=3D"600">
+                      <tr>
+                        <td align=3D"center" valign=3D"top" style=3D"width:=
+197px;" width=3D"197">
+                    <![endif]-->
+									<div class=3D"columnWidth" style=3D"display: inline-block; vertica=
+l-align: top; width: 197px">
+									<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"columnsContainer" style=3D"-ms-text-size-adjust: 100%; -web=
+kit-text-size-adjust: 100%; border-collapse: collapse; max-width: 197px; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt" width=3D"100%">
+										<tbody>
+											<tr>
+												<td class=3D"leftColumnContainer" style=3D"-ms-text-size-adjust=
+: 100%; -webkit-text-size-adjust: 100%; mso-line-height-rule: exactly" vali=
+gn=3D"top">&nbsp;</td>
+											</tr>
+										</tbody>
+									</table>
+									</div>
+									<!--[if gte mso 9]>
+                    </td>
+                    <td align=3D"center" valign=3D"top" style=3D"width:197p=
+x;" width=3D"197">
+                    <![endif]-->
+
+									<div class=3D"columnWidth" style=3D"display: inline-block; vertica=
+l-align: top; width: 197px">
+									<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"columnsContainer" style=3D"-ms-text-size-adjust: 100%; -web=
+kit-text-size-adjust: 100%; border-collapse: collapse; max-width: 197px; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt" width=3D"100%">
+										<tbody>
+											<tr>
+												<td class=3D"centerColumnContainer" style=3D"-ms-text-size-adju=
+st: 100%; -webkit-text-size-adjust: 100%; mso-line-height-rule: exactly" va=
+lign=3D"top">&nbsp;</td>
+											</tr>
+										</tbody>
+									</table>
+									</div>
+									<!--[if gte mso 9]>
+                    </td>
+                    <td align=3D"center" valign=3D"top" style=3D"width:197p=
+x;" width=3D"197">
+                    <![endif]-->
+
+									<div class=3D"columnWidth" style=3D"display: inline-block; vertica=
+l-align: top; width: 197px">
+									<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"columnsContainer" style=3D"-ms-text-size-adjust: 100%; -web=
+kit-text-size-adjust: 100%; border-collapse: collapse; max-width: 197px; ms=
+o-table-lspace: 0pt; mso-table-rspace: 0pt" width=3D"100%">
+										<tbody>
+											<tr>
+												<td align=3D"center" class=3D"rightColumnContainer" style=3D"-m=
+s-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; mso-line-height-r=
+ule: exactly" valign=3D"top">&nbsp;</td>
+											</tr>
+										</tbody>
+									</table>
+									</div>
+									<!--[if gte mso 9]>
+                    </td>
+                    </tr>
+                    </table>
+                    <![endif]--><!-- // END INDIVIDUAL COLUMNS --></td>
+								</tr>
+							</tbody>
+						</table>
+						</td>
+						<!-- // END COLUMNS -->
+					</tr>
+					<tr>
+						<td align=3D"center" bgcolor=3D"#eff1f3" id=3D"templateLowerBody" sty=
+le=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; backgroun=
+d: #eff1f3; border-bottom-width: 0; border-top-width: 0; mso-line-height-ru=
+le: exactly" valign=3D"top"><!-- BEGIN LOWER BODY // -->
+						<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; bo=
+rder-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt" widt=
+h=3D"100%">
+							<tbody>
+								<tr>
+									<td class=3D"lowerBodyContainer" style=3D"-ms-text-size-adjust: 10=
+0%; -webkit-text-size-adjust: 100%; mso-line-height-rule: exactly" valign=
+=3D"top">&nbsp;</td>
+								</tr>
+							</tbody>
+						</table>
+						<!-- // END LOWER BODY --></td>
+					</tr>
+					<tr>
+						<td align=3D"center" bgcolor=3D"#f8f9fa" id=3D"templateFooter" style=
+=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; background:=
+ #f8f9fa; border-bottom-width: 0; border-top-width: 0; mso-line-height-rule=
+: exactly" valign=3D"top"><!-- BEGIN FOOTER // -->
+						<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"-ms-=
+text-size-adjust: 100%; -webkit-text-size-adjust: 100%; border-collapse: co=
+llapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt" width=3D"100%">
+							<tbody>
+								<tr>
+									<td class=3D"footerContainer" style=3D"-ms-text-size-adjust: 100%;=
+ -webkit-text-size-adjust: 100%; mso-line-height-rule: exactly" valign=3D"t=
+op">
+									<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"m=
+cnTextBlock" style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust:=
+ 100%; border-collapse: collapse; min-width: 100%; mso-table-lspace: 0pt; m=
+so-table-rspace: 0pt" width=3D"100%">
+										<tbody class=3D"mcnTextBlockOuter">
+											<tr>
+												<td class=3D"mcnTextBlockInner" style=3D"-ms-text-size-adjust: =
+100%; -webkit-text-size-adjust: 100%; mso-line-height-rule: exactly" valign=
+=3D"top">
+												<table align=3D"left" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" class=3D"mcnTextContentContainer" style=3D"-ms-text-size-adjust: 10=
+0%; -webkit-text-size-adjust: 100%; border-collapse: collapse; min-width: 1=
+00%; mso-table-lspace: 0pt; mso-table-rspace: 0pt" width=3D"100%">
+													<tbody>
+														<tr>
+															<td align=3D"center" class=3D"mcnTextContent" style=3D"-ms-t=
+ext-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #000000; font=
+-family: Verdana, Geneva, sans-serif; font-size: 11px; line-height: 125%; m=
+so-line-height-rule: exactly; padding: 9px 18px; text-align: center" valign=
+=3D"top">
+															<p><br />
+															<span style=3D"color: #808080"><span style=3D"font-family: a=
+rial,helvetica neue,helvetica,sans-serif">If you don&#39;t want to receive =
+these mails, from HackerRank, please <a href=3D"http://email.postmaster.hac=
+kerrankmail.com/c/eJx1U1uO4yAQPE3yaUFD8_jwx4yiXMPC0EysPGVjZWdPv-DYiTO7K1lyU=
+_2sagi1VcrBtquBcc2Qa-AgQVQgDGcVgpaV3O_4p_z42Eh2uw7p7IZEfXVw_kh97y7Hs-tOlb-e=
+t4eaFARlQFjHopHYBucCSm6sgUhSse2pPqR024iPDezzd7_fV4VKkQy6MR3y74E3PYWuJ582Yu-=
+vl0S_srUrLZtE59vJJXqFgJqTupCDpLKAKoNH-s5HL7hGa0gZ6a2U3BKY4LzBMpo3pIN1nEmfE1=
+J3piG5cx50x6VFwUApKI5rRiYGgIUDFhb4bx4ZnsZ8TVeQ1KQ-B5b8J59s_2BkuWmW8XHNqoSuH=
+IVZgaI2ijETkAWlOdfBexatBqOsN1pn0oKswTAlvbeai-aOL-c4zmgUbUQWtdLRCudRcK-tdsRU=
+5OCMnFKyKCV2lmURZpbmv-LgsujJ_Lnsqc5KoNJgvAxj25y6y_GR9CbLuzBPaQrc5g0LdKQFoo6=
+EWirQouUMVQQZGUcZFZol8bX8R_r6AuCTb_E8znn6abLB911LMyYmcs0yxKQwqeCE9RZbR4Fli3=
+PVQszyAnArPbmWnMalqqKZ2LqVuvUUm5VDPz3jCn0ose3rwX0Hqr7G1GX16beF_Ii_ng821X9du=
+z9_qjDt" style=3D"-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100=
+%; color: #606060; font-weight: normal; mso-line-height-rule: exactly; text=
+-decoration: underline; word-wrap: break-word">unsubscribe</a>.</span></spa=
+n><br />
+															<span style=3D"color: #808080"><span style=3D"font-family: a=
+rial,helvetica neue,helvetica,sans-serif">Copyright &copy; 2016 HackerRank =
+(2300 Geng Road, Suite 250 Palo Alto, California 94303), All rights reserve=
+d.</span></span></p>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<!-- // END FOOTER --></td>
+					</tr>
+				</tbody>
+			</table>
+			<!--[if gte mso 9]>
+        </td>
+        </tr>
+        </table>
+        <![endif]--></td>
+		</tr>
+	</tbody>
+</table>
+</center>
+<img width=3D"1px" height=3D"1px" alt=3D"" src=3D"http://email.postmaster.h=
+ackerrankmail.com/o/eJw9zDsOgzAQANHThNLyrn-4cEEU5RpogTUgMCDjFMnpQ5p008wbgre=
+WsJoDSnDSgENAjUqgqkEKg04L_XzAXTfNTctjP0uis3AWE_UL50zbkmheRb-nagpA1kpj2ZPuIk=
+fXs4_RGDS-UxClqnI46T2wGF9lvm7-eLzY8U-U8Mu2cDpWKtx6qL_itjJB">
+--f7dc8bdd8d93406291b2c5dd24d01819--
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>color</key>
+	<string>000000</string>
+	<key>date-last-viewed</key>
+	<integer>0</integer>
+	<key>date-received</key>
+	<integer>1495056263</integer>
+	<key>flags</key>
+	<integer>8590195840</integer>
+	<key>gmail-label-ids</key>
+	<array>
+		<integer>3</integer>
+	</array>
+	<key>remote-id</key>
+	<string>9814</string>
+</dict>
+</plist>

@@ -1,0 +1,537 @@
+/* $Id$ */
+
+
+/* Show "Packages" tab */
+function showPackages(packageName)
+{
+    var url = "/inventoryMSI.do?actionToCall=showInventory&SW_TAB=true&fromTemplatesGotoPkg=true&templatePkgName="+packageName; // NO I18N
+    location.href = url;
+}
+
+/* Show "Templates" tab */
+function showTemplates()
+{
+    refreshTemplateFilters(); 
+}
+
+/* Go to package from "Templates" tab to "Packages" tab, once package is created
+ * @param packageName Name of the package
+ */
+function goToPackage(packageName){    
+    showPackages(packageName);
+    }
+
+/* Show alert message in a dialog box.
+ * @param message - message to be displayed.
+ * @param title - title text for the dialog
+ * @param position - absmiddle,relative or absolute
+ * @param height - Height of the dialog
+ * @param width - Width of the dialog
+ */
+function showAlertLayer(message,title,position,width,height){
+    showDialog('<table class="bodytext" width="100%" height="100%"><tr><td rowspan="3" width="12%">&nbsp;&nbsp;<img src="images/alerts.png"/></td><td></td><td></td></tr><tr ><td colspan="2"><span class="bodytext">' + message + '</span></td></tr> <tr><td></td><td></td></tr> <tr><td align="center" colspan="3" class="formSubmitBg"><input type="button" value="' + I18N.getMsg('dc.common.ok') + '" class="primaryActionBtn" onclick="javascript:closeDialog(null,this);"></td></tr></table>', 'modal=yes,width=400,height=110,position=absmiddle,left=400,top=200,title=' + I18N.getMsg("dc.js.common.ALERT")); // No I18N
+}
+
+function showAlertLayerModalwithTitle(message,title){
+     showDialog('<table class="bodytext" width="100%" height="100%"><tr><td rowspan="3" width="12%">&nbsp;&nbsp;<img src="images/alerts.png"/></td><td></td><td></td></tr><tr ><td colspan="2"><span class="bodytext">' + message + '</span></td></tr> <tr><td></td><td></td></tr> <tr><td align="center" colspan="3" class="formSubmitBg"><input type="button" value="' + I18N.getMsg('dc.common.ok') + '" class="primaryActionBtn" onclick="javascript:closeDialog(null,this);"></td></tr></table>', 'modal=yes,width=400,height=110,position=absmiddle,left=400,top=200,title=' + title); // No I18N
+}
+/*
+ * 
+ *  always use this. alert with modal
+ */
+function showAlertLayerModal(message){
+     showDialog('<table class="bodytext" width="100%" height="100%"><tr><td rowspan="3" style="padding : 10 0 10 0" width="12%">&nbsp;&nbsp;<img src="images/alerts.png"/></td><td></td><td></td></tr><tr ><td  style="padding : 10 0 10 0"  colspan="2"><span class="bodytext">' + message + '</span></td></tr> <tr><td></td><td></td></tr> <tr><td align="center" colspan="3" class="formSubmitBg"><input type="button" value="' + I18N.getMsg('dc.common.ok') + '" class="primaryActionBtn" onclick="javascript:closeDialog(null,this);"></td></tr></table>', 'modal=yes,width=400,height=110,position=absmiddle,left=400,top=200,title=' + I18N.getMsg("dc.js.common.ALERT")); // No I18N
+}
+var focusEle;
+function focusError(){
+    focusEle.focus()
+}
+/* Show confirmation dialog box
+ * @param message - message to be displayed.
+ * @param title - title text for the dialog
+ * @param position - absmiddle,relative or absolute
+ */
+function showConfirmLayer(message,title,position){
+    showDialog('<table class="bodytext" width="100%" height="100%"><tr><td></td></tr><tr><td rowspan="3">&nbsp;&nbsp;&nbsp;<img src="images/confirmation.gif"/></td><td></td><td></td></tr><tr ><td colspan="2"><span class="bodytext">'+message+'</span></td></tr> <tr><td></td></tr> <tr><td align="center" colspan="3" class="formSubmitBg"><input type="button" value="'+I18N.getMsg('dc.inv.js.common.Yes')+'" class="primaryActionBtn" onclick="javascript:closeDialog(null,this);checkWANResource();"><input type="button" value="'+I18N.getMsg('dc.js.common.NO')+'" class="secondaryActionBtn" onClick="javascript:closeDialog(null,this);"></td></tr></table>','title='+title+',position='+position); // No I18N
+}
+
+/* Show status message when package creation is in_progress, success or failed and refreshes the table view.
+ * @param type Type of message , can be in_progress,success or failed
+ * @param packageName Name of the package to be displayed along with the status
+ * @param goToPkgName goToPkgName when package creation is successful.
+ * */
+function showStatusMessage(type,packageName,goToPkgName){
+
+    var message = "";
+    var classChange = "";
+    if(type === "success"){
+        
+        classChange = "sucessboard";
+        message = I18N.getMsg("dc.sd.creating_pkg")+ " <a href=\"\" id='gotolink' onclick=\"goToPackage('"+goToPkgName+"');return false;\">" + packageName + "</a> " + I18N.getMsg("dc.sd.creating_pkg_success"); //No I18N
+        document.getElementById("packCreationTableFromTemplates").style.padding = '5px';
+        message = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + message;// No I18N
+        refreshSubView("AutomatedPackagesView"); // No i18N
+    }
+    else if(type === "failed"){
+        message = I18N.getMsg('dc.sd.package_creation_failed',new Array(packageName));
+        //image = "/images/failureicon.gif";  // No I18N
+        classChange="message alert";
+        refreshSubView("AutomatedPackagesView"); // No i18N
+    }
+    else if(type === "in_progress"){
+        if(messageClosed){
+            return;
+        }
+        if(packageName){
+            message = I18N.getMsg('dc.sd.creating_package',new Array(packageName));
+        } else {
+            message = I18N.getMsg('dc.sd.initiating_package_creation');
+        }
+        //image = "/images/s_progressbar.gif";  // No I18N
+        classChange = "message progress";
+        setTimeout(function(){refreshSubView('AutomatedPackagesView')},500);
+    }
+    else {
+        if(type != null){
+            alert("Invalid status type - "+type); // No I18N
+        }
+        return;
+    }
+    document.getElementById("packCreationStatusFromTemplates").style.display = "block";
+    document.getElementById("packCreationStatusMsgForTemplates").innerHTML = "&nbsp;&nbsp;" + message; // No I18N
+    document.getElementById("packCreationTableFromTemplates").className = classChange;
+
+
+}
+
+        /* Ajax function that checks for updates and continues if status is still in progress.
+     */
+    function checkAndContinue(req,packageID)
+    {
+        if(req.responseXML !== null )
+        {
+            var res = req.responseXML.getElementsByTagName("PackageParams");
+            if(res.length > 0)
+            {
+                var packageName = res[0].getAttribute("package_name");
+                var status = res[0].getAttribute("status");
+                var goToPkgName = res[0].getAttribute("go_to_package");
+
+                showStatusMessage(status,packageName,goToPkgName);
+
+                if(status == "in_progress"){
+                    setTimeout(function(){getCreationStatus(packageID)},500);
+                }
+                else {
+                    messageClosed = false;
+                    getNextPackage();
+                    window.getNextPackageCallBack = function(packageID){
+                        if(packageID != "-1"){ // When a package creation is in progress.
+                            getCreationStatus(packageID);
+                        } else {
+                            // Completed fully!
+                            document.getElementById("create_package_button").disabled = false;
+                            inProgress = false;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* Returns the package id of Package that is currently being created.
+     * If no package creation is in progress, returns -1
+     * @return packageID
+     */
+    function getNextPackage(){
+        var url ='/inventoryMSI.do?actionToCall=getPackageCreationStatus';  //No I18N
+        var req = AjaxAPI.getXMLHttpRequest();
+        if(req)
+        {
+            req.open("GET", url, true);
+            req.send(null);
+            req.onreadystatechange = function(){
+                if (req.readyState == 4)
+                {
+                    if (req.status == 200)
+                    {
+                        var currentPackage = req.responseText;
+                        if(currentPackage != null)
+                        {
+                            getNextPackageCallBack(currentPackage);
+                        }
+                    }
+                }
+            };
+        }
+    }
+
+    /* Gets the creation status of template
+     * @param packageID PreDefinedPackage-ID
+     */
+    function getCreationStatus(packageID){
+
+        var url ='/inventoryMSI.do?actionToCall=getPackageCreationStatus';  //No I18N
+        var params = "packageID="+packageID;  //No I18N
+        var req = AjaxAPI.getXMLHttpRequest();
+
+        if(req)
+        {
+            req.open("POST", url, true);
+            req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            req.setRequestHeader("Content-length", params.length);
+            req.setRequestHeader("Connection", "close");
+            req.send(params);
+            req.onreadystatechange = function(){
+                if (req.readyState == 4)
+                {
+                    if (req.status == 200)
+                    {
+                        if(req.responseXML != null)
+                        {
+                            checkAndContinue(req,packageID);
+                        }
+                    }
+                }
+            };
+        }
+    }
+
+/* Create package from templates.
+ * @param packageID pre-defined-package-ID
+ * @param proxyConfigured boolean value conveying if proxy is already configured.
+ * @param showDownloadAlert boolean value if download alert has to be shown.
+ * @param isMultiple boolean value if multiple or single package for creation.
+ */
+function createPackage(packageID,proxyConfigured,showDownloadAlert,isMultiple){
+
+    if (!proxyConfigured){
+        showProxyNotConfiguredAlert();
+    }
+    else if (showDownloadAlert){
+        showDownloadAlertDialog();
+    } else {
+        createPackageFor(packageID,isMultiple);
+    }
+    window.proxyAddedCallBack = function(){
+        closeDialog(null,this);
+        if(showDownloadAlert){
+            showDownloadAlertDialog();
+        } else {
+            createPackageFor(packageID,isMultiple);
+        }
+    };
+    window.alertShownCallBack = function(){
+        closeDialog(null,this);
+        createPackageFor(packageID,isMultiple);
+    };
+}
+
+/* Displays alert dialog before downloading packages.
+ */
+function showDownloadAlertDialog()
+{    
+    var content = I18N.getMsg('dc.sd.downloadAlert.alert_message');
+    var confirmation = I18N.getMsg('dc.sd.downloadAlert.dont_show_this_message_again');
+    var title = I18N.getMsg('dc.sd.download_alert');
+    var yes = I18N.getMsg('dc.inv.js.common.Yes');
+    var no = I18N.getMsg('dc.js.common.NO');
+    if(window.opener != null)
+    {
+        content = window.opener.I18N.getMsg('dc.sd.downloadAlert.alert_message');
+        confirmation = window.opener.I18N.getMsg('dc.sd.downloadAlert.dont_show_this_message_again');
+        title = window.opener.I18N.getMsg('dc.sd.download_alert');
+        yes = window.opener.I18N.getMsg('dc.inv.js.common.Yes');
+        no = window.opener.I18N.getMsg('dc.js.common.NO');
+    }
+    showDialog('<table width="100%" border="0" cellpadding="0" cellspacing="0" ><tr> <td height="5" colspan="2"><img src="images/spacer.png" width="1" height="1"></td> </tr> <tr> <td> <table> <tr> <td width="10%"> <img style="margin-left:20px" src="images/confirmation.gif" align="left"/> </td> <td width="95%" class="bodytext"> '+content+'</td> </tr> <tr> <td height="5" colspan="2"><img src="images/spacer.png" width="1" height="1"></td> </tr> <tr> <td> </td> <td width="100%"> <table> <tr> <td align="left"> <input type="checkbox" id="showAlert" value=""> </td> <td class="bodytext"> '+confirmation+'</td> </tr> </table> </td> </tr> </table> </td> </tr> <tr> <td height="5" colspan="2"><img src="images/spacer.png" width="1" height="1"></td> </tr> <tr> <td align="center" class="formSubmitBg"> <input class="primaryActionBtn" type="button" onclick="applyChanges(this);" value="'+yes+'" name="eventLogSettingButton"/> <input class="secondaryActionBtn" type="button" value="'+no+'" onclick="applyChanges(this);"/> </td> </tr><tr><td height="5" colspan="2"><img src="images/spacer.png" width="1" height="1"></td></tr></table>','height=80,width=450,title='+title); // No I18N
+
+}
+
+/* Apply changes for checkbox selection in "Dont show this message again"
+ */
+function applyChanges(e){
+    var showAlert = !document.getElementById("showAlert").checked; // Invert because, check box is for dont show
+    if(showAlert == false){
+        var url ='/inventoryMSI.do?actionToCall=updateAlertSettings'; // No I18N
+        var params = "showAlert=false"; // No I18N
+        constructXmlHttpRequest(url,params,"alertSettingsUpdated"); // No I18N
+        window.alertSettingsUpdated = function(){
+            callNext(e);
+        }
+    } else {
+        callNext(e);
+    }
+}
+function callNext(e){
+    var noVal = I18N.getMsg('dc.js.common.NO');
+    if(window.opener != null)
+    {
+        noVal = window.opener.I18N.getMsg('dc.js.common.NO');
+    }
+    if(e.value == noVal){
+        closeDialog(this,true);
+        var url = "/inventoryMSI.do?actionToCall=showTemplate&SW_TAB=true"; // NO I18N
+        if( window.opener == null){
+            location.href = url;
+        }
+        else {
+            location.reload();
+        }
+    } else {
+        alertShownCallBack();
+    }
+}
+
+/* This method actualy creates the package!
+ * @param packageID PreDefinedPackage-ID
+ * @param isMultiple true if multiple package creation
+ * Sends AJAX request to initiate package creation and then
+ *  1. Reloads templates page - If single package
+ *  2. Opens status layer - If multiple package
+ */
+function createPackageFor(packageID,isMultiple){
+    if(isMultiple){
+        // Show status layer.
+        url = "/inventoryMSI.do?actionToCall=addPackage&packageID="+packageID+"&isMultiple=true&isFromTemplates=true"; //No i18N
+        //url = "/jsp/softwareDeploy/packCreationStatus.jsp?packageID="+packageID; // No I18n
+        var title = I18N.getMsg('dc.sd.pack_creation_status');
+        var winParams='position=absmiddle,modal=yes,closeOnEscKey=no,width=500,closeButton=no,title='+title; // No I18N
+        showURLInDialog(url,winParams);
+    } else {
+        refreshTemplates(packageID);
+    }
+}
+
+/* Refreshes templates view
+ */
+function refreshTemplates(packageID){
+	var isfromManualPkg = null;
+	if(document.getElementById('isFromManualPkg'))
+	{
+		isfromManualPkg = document.getElementById('isFromManualPkg').value;
+	}
+   if((isfromManualPkg == null || isfromManualPkg != 'true') && window.opener != null)
+    {
+        window.opener.submitForm(packageID);
+        window.close();
+    }else {
+    submitForm(packageID);
+    }
+}
+
+/*
+ * Cancel package creation. [Only for multiple packages. Those packages that are "Yet to Start" will be cancelled.]
+ */
+function cancelPackage(){
+
+    var table = TableModel.getInstance("PackagesStatusView"); // No i18N
+    var rowCount = table.getRowCount();
+    var cancel = confirm(I18N.getMsg('dc.sd.packages_will_be_cancelled'));
+    if(cancel){
+        var toCancel = cancelPossible(rowCount);
+        if(typeof toCancel !== 'boolean' ){
+            window.isCancelled = true;
+            var url = "/inventoryMSI.do?actionToCall=cancelPackageCreation";  // No I18N
+
+            var request = AjaxAPI.getXMLHttpRequest();
+            request.open("GET", url, true);
+            request.send(null);
+
+            window.cancelledCount = toCancel.length;
+            for(i=0 ; i < cancelledCount ; i++){
+                var id = "PackagesStatusView_r_"+toCancel[i]+"_2"; // No i18N
+                document.getElementById(id).innerHTML = I18N.getMsg('dc.sd.cancelled');
+            }
+            document.getElementById("button_2").className = "buttongrey";
+            document.getElementById("button_2").disabled = true;
+        }
+    }
+}
+
+/*
+ * Function to check if cancellation is possible while multiple package creation is in progress.
+ * @param rowCount number of rows in the table.
+ * returns false if it is not possible, Else an array containing cancellable package rows.
+ */
+function cancelPossible(rowCount){
+    if (rowCount == 1){
+        return false;
+    } else {
+        var cancellableRows = new Array();
+        var j=0;
+        for(i=0; i < rowCount; i++){
+            // Accessing status column in table.
+            var id = "PackagesStatusView_r_"+i+"_2"; // No i18N
+            var value = document.getElementById(id).innerHTML;
+            value = value.trim()
+            if(value == "Yet to start"){
+                cancellableRows[j++] = i;
+            }
+        }
+        if(cancellableRows.length == 0){
+            return false;
+        } else {
+            return cancellableRows;
+        }
+    }
+}
+
+function refreshTemplateFilters()
+{
+    document.getElementById("Status_FILTER").value = "all";// No i18N
+    document.getElementById("PERIOD_FILTER").value = "all";// No i18N
+    document.getElementById("Template_Platform_FILTER").value = "all";// No i18N
+
+    var action = "&statusFilter=all&periodFilter=all";//No I18N
+    stateData["AutomatedPackagesView"]["_D_RP"] = action;     //No I18N
+    refreshSubView("AutomatedPackagesView"); //No I18N
+}
+
+function refreshPackageFilters()
+{
+    
+//    document.getElementById("Platform_FILTER").value = "0";// No i18N
+//    document.getElementById("swFilter").value = "0";// No i18N
+//    var isMacEnabled="false";
+//    if(document.getElementById("PLATFORM_ID"))
+//    {
+//        document.getElementById("PLATFORM_ID").value="0";// No i18N
+//        isMacEnabled = "true";
+//    }
+//
+//    var action = "&filterParam=0&isMacEnabled="+isMacEnabled+"&osFilterParam=0";//No I18N
+    
+//    stateData["MSIRepositoryView"]["_D_RP"] = action;     //No I18N
+//   
+//    refreshSubView("MSIRepositoryView"); //No I18N
+    
+}
+
+    function getActionWorkDone(url,method,id)
+    {
+        if (window.XMLHttpRequest)
+        {
+            reqConn = new XMLHttpRequest();
+            reqConn.onreadystatechange = function() { method(reqConn,id); };
+            reqConn.open("GET", url, true);
+            reqConn.send(null);
+        }else if (window.ActiveXObject)
+        {
+            reqConn = new ActiveXObject("Microsoft.XMLHTTP");
+            if(reqConn)
+            {
+                reqConn.onreadystatechange = function() { method(reqConn,id); };
+                reqConn.open("GET", url, true);
+                reqConn.send();
+            }
+        }
+    }
+    
+    function processGivenAction(req,packageID)
+    {
+        if(req.readyState == 4)
+        {
+            if (req.status == 200)
+            {
+                var xmlRes = req.responseXML.getElementsByTagName('packageDetails');
+
+                var isConfigDefined = xmlRes[0].getAttribute("isConfigDefined");
+                var isPackagePublished = xmlRes[0].getAttribute("isPackagePublished");
+                var isConfigDefforOtherCust = xmlRes[0].getAttribute("isConfigDefforOtherCust");
+                var isConfigDefforSameCust = xmlRes[0].getAttribute("isConfigDefforSameCust");
+                var ispublishedforOtherCust = xmlRes[0].getAttribute("ispublishedforOtherCust");
+                var ispublishedforSameCust = xmlRes[0].getAttribute("ispublishedforSameCust");
+
+                if(isConfigDefined == "no" && isPackagePublished == "no")
+                {
+                    confirmDeletePkg(packageID);
+                }
+                else if(isConfigDefforOtherCust == "true" || ispublishedforOtherCust == "true")
+                {
+                    var message = I18N.getMsg('dc.sd.packages.ssp_cannot_delete_package_all_customer');
+                    var title = I18N.getMsg("dc.js.common.ALERT");//No I18N
+                    showAlertLayerModalwithTitle(message,title);
+                }
+                else if(isConfigDefined == "yes")
+                {
+                    var collectionNames = xmlRes[0].getAttribute("collectionName");
+		    var message = I18N.getMsg('dc.sd.packages.cannot_delete_package',new Array(collectionNames));
+                    var title = I18N.getMsg("dc.js.common.ALERT");//No I18N
+                    showAlertLayerModalwithTitle(message,title);
+
+                }
+		else if(isPackagePublished == "yes")
+		{
+                    var publishCGNames = xmlRes[0].getAttribute("publishCGNames");
+                    var message = I18N.getMsg('dc.sd.packages.ssp_cannot_delete_package',new Array(publishCGNames));
+                    var title = I18N.getMsg("dc.js.common.ALERT");//No I18N
+                    showAlertLayerModalwithTitle(message,title);
+		}
+		else
+		{
+                    alert(I18N.getMsg('dc.js.inv.PROB_RETRIEVING_XML'));
+                }
+            }
+            else
+            {
+                alert(I18N.getMsg('dc.js.inv.PROB_RETRIEVING_XML')+ req.statusText);
+            }
+        }
+    }
+    
+    function confirmDeletePkg(packageID)
+    {
+          var title = I18N.getMsg('dc.js.common.CONFIRM_ACTION');//No I18N
+          var message =I18N.getMsg("dc.sd.confirm_delete_package");
+          var htmlText1='<table class="bodytext" colspan="10" width="100%" height="100%"><tr><td>&nbsp;&nbsp;&nbsp;<img src="images/confirmation.gif" align="absmiddle"/></td><td nowrap height="50"><span class="bodytext">'+message+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td></tr><tr><td align="center" colspan="2" align="center" class="formSubmitBg"><input type="button" value="'+I18N.getMsg('dc.inv.js.common.Yes') +'" class="primaryActionBtn"  onclick=redirect(\"'+packageID+'\");><input type="button" value="'+I18N.getMsg('dc.js.common.NO') +'" class="secondaryActionBtn" onclick="closeDialog();"></td></tr></table>';
+          showDialog(htmlText1,'modal=yes,title='+title+',position=absmiddle');//No I18N
+    }
+    
+      function redirect(packageID)
+    {
+        location.href = "inventoryMSI.do?actionToCall=deleteInventory&SW_TAB=true&PACKAGE_ID="+packageID;
+    }
+    
+    function installPackage(type,packageID,os)
+    {
+        var packageIdAdded = packageID;
+        if(packageID != null)
+        {
+            var url = "/configAction.do?actionToCall=initSingleConfig&configName=WINDOWS_INSTALLER&ascending=false&configType="+type+"&packageIds="+packageIdAdded+"&SW_TAB=true"; //No I18N
+            if(os == 2)
+            {
+                url = "/configAction.do?actionToCall=initSingleConfig&configName=MAC_INSTALLER&platFormID=2&ascending=false&configType="+type+"&packageIds="+packageIdAdded+"&SW_TAB=true"; //No I18N
+            }
+			else if(os == 3)
+            {
+                 url = "/configAction.do?actionToCall=initSingleConfig&configName=LINUX_INSTALLER&platFormID=3&ascending=false&configType="+type+"&packageIds="+packageIdAdded+"&SW_TAB=true"; //No I18N
+            }
+            window.location = url;
+        }
+        else
+        {
+            var alertTitle = I18N.getMsg("dc.js.common.ALERT");//No I18N
+            var msg = I18N.getMsg("dc.sd.error_oninstall_package");
+            showAlertLayer(msg,alertTitle);
+        }
+    }
+    
+function showorHideLinkMsg(configureLink, status)
+{
+    if (status == true)
+    {
+        document.getElementById(configureLink).className = "infoText";
+    }
+    else if (status == false)
+    {
+        document.getElementById(configureLink).className = "infoText hide";
+    }
+}
+
+ function showConfirmActionMsg(htmlText)
+    {            
+          var title = I18N.getMsg('dc.js.common.CONFIRM_ACTION');//No I18N          
+          showDialog(htmlText,'modal=yes,title='+title+',position=absmiddle');//No I18N
+    }
+

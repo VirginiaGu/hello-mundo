@@ -1,0 +1,961 @@
+97256     
+Delivered-To: sayde.gutierrez92@gmail.com
+Received: by 10.31.166.138 with SMTP id p132csp485182vke;
+        Fri, 28 Jul 2017 08:00:51 -0700 (PDT)
+X-Received: by 10.101.70.198 with SMTP id n6mr7643971pgr.249.1501254051230;
+        Fri, 28 Jul 2017 08:00:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1501254051; cv=none;
+        d=google.com; s=arc-20160816;
+        b=G2vEe2KxJcpD3SQhhTs31bh/eCUv5OGRGXLCgOCw2ypZZbm1Z8aSK4fjIJG1SnQBh3
+         X0VM3yN6F/WgTgN3O5wenTIMTd01V94d94FXnyseB1ptTEBdEpj1lPZp5Y3Q/PTKg/55
+         W/0weFgMh61jKBFphB8DzKCgxtOy4h5lW5uIBhjQEzdrU0RVGbeTeX5GZuLjDaHAU4DK
+         C2tK4l1fXQR6XvUWJ5k+UxeCpjQTI52O36bdUnbABI+5/cWJJOO0cFjy+Me5Gl1vpyra
+         yb+kRxlNtxD4c4PnbsLhkBwGCXImgN5CTdcgQxW32gLN39bTH+jFY0O2TtwSNyIRO1bc
+         hmrg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:list-unsubscribe:feedback-id:subject:reply-to:from:to
+         :date:mime-version:domainkey-signature:dkim-signature:dkim-signature
+         :arc-authentication-results;
+        bh=hK6wgsM6paPMZqwuMLaHR77JxDHhLaGB7bJ4fpt8G2Q=;
+        b=xlx6OVdTWKPNFqun9wyybPCZZ8vLTOo8nq0tXEA8gqb0wZXdceZu54bPi3TVvOqbXs
+         cPC9kGGsPQj4h7Y/KcdmsOE82KkvRKQmd29g2LxU7zLUHSSFTP1gBv2P2buZ9KAh4HXN
+         vI3fmtHAPchsywPAdSvi/4Q7rSDQsXTb0i7MC5mBsJ11Wa0wiAl9+Kopj2QrFSlpIXNy
+         /dYGMtleMXblTwBdj/t5Tuc7Z31g4AOjom1ftttloqjqUUoekbfHAeDuN6B/LrBE5cbd
+         ews2TmLtNfJY4d4flJI5K46C1nbiw42q8bMUxYNfXh0Zr+7ZQvUHN2WYx/bWc5y/HLYo
+         pt3A==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@e.nationalgeographic.com header.b=rj4HhYzV;
+       dkim=pass header.i=@responsys.net header.b=aTCi405u;
+       spf=pass (google.com: domain of natgeo.51608@envfrm.rsys5.com designates 199.7.202.190 as permitted sender) smtp.mailfrom=natgeo.51608@envfrm.rsys5.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=e.nationalgeographic.com
+Return-Path: <natgeo.51608@envfrm.rsys5.com>
+Received: from omp.e.nationalgeographic.com (omp.e.nationalgeographic.com. [199.7.202.190])
+        by mx.google.com with ESMTPS id w22si13246350plk.820.2017.07.28.08.00.50
+        for <sayde.gutierrez92@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 28 Jul 2017 08:00:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of natgeo.51608@envfrm.rsys5.com designates 199.7.202.190 as permitted sender) client-ip=199.7.202.190;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@e.nationalgeographic.com header.b=rj4HhYzV;
+       dkim=pass header.i=@responsys.net header.b=aTCi405u;
+       spf=pass (google.com: domain of natgeo.51608@envfrm.rsys5.com designates 199.7.202.190 as permitted sender) smtp.mailfrom=natgeo.51608@envfrm.rsys5.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=e.nationalgeographic.com
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=nationalgeographic; d=e.nationalgeographic.com;
+ h=MIME-Version:Content-Type:Date:To:From:Reply-To:Subject:Feedback-ID:List-Unsubscribe:Message-ID; i=ng@e.nationalgeographic.com;
+ bh=cocrPe5EDk15uhRl9/jAAJQRTvg=;
+ b=rj4HhYzV7WxkPvM/809K6HeWxdR1I6OIk+cp7XSJt+Qr6xksEcD7GONRWgEE5nFCM9Ckp5zbTY4c
+   6+aDRGtP86qPvnfG3o/iPH4QTwFW/oTV7qfG8l0AkLrSQXkdwhHYtkjsNeeqI1qXAqZdf4djhELM
+   Ipb4ERidCSS/GBcfKHs=
+DKIM-Signature: v=1; a=rsa-sha1; c=relaxed/relaxed; s=oraclersys; d=responsys.net;
+ h=MIME-Version:Content-Type:Date:To:From:Reply-To:Subject:Feedback-ID:List-Unsubscribe:Message-ID;
+ bh=cocrPe5EDk15uhRl9/jAAJQRTvg=;
+ b=aTCi405u3rClZ1kaTjkz2DwlSQEzRWjd4eG/U/FIsN24IEU0LANqitcj1GDHFOqQqY8ihCIX745+
+   AVKmfmstdpiDCmPrTEyCdrQ7CqVOQOlxpblj6Q0OGCzE2fqwVmKuYW2nXJwHlE/DArKS3+dbhI34
+   up+/Oz3r9pQRLzIerNA=
+DomainKey-Signature: a=rsa-sha1; c=nofws; q=dns; s=nationalgeographic; d=e.nationalgeographic.com;
+ b=VxsR87y0GdGdDXCc0tflzoCQWV+2XP7w7S4646JPmq+nWIUxyEZ44QYR0VU2pwCPK6IgEQCCw3yi
+   U/WE8WFxuiNL5v/wWT5K7HUHxqWJIiJVyLHOUeEXm6U96ex/mqUNtfRvVGTJhZlX9n2tvR5HDN9o
+   0s8/cE2MtBGTo9dfZrU=;
+Received: by omp.e.nationalgeographic.com id hfd8q61615kg for <sayde.gutierrez92@gmail.com>; Fri, 28 Jul 2017 08:00:23 -0700 (envelope-from <natgeo.51608@envfrm.rsys5.com>)
+X-CSA-Complaints: whitelist-complaints@eco.de
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="----msg_border_TqssFPYVvE"
+Date: Fri, 28 Jul 2017 08:00:23 -0700
+To: sayde.gutierrez92@gmail.com
+From: "National Geographic" <ng@e.nationalgeographic.com>
+Reply-To: "National Geographic" <emailfeedback@e.natgeo.com>
+Subject: Watch This: 4 more of our favorite animal videos this summer (so far)
+Feedback-ID: 51608:10118316:oraclersys
+List-Unsubscribe: <https://e.nationalgeographic.com/pub/optout/UnsubscribeOneStepConfirmAction?YES=true&_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyD&_ei_=EolaGGF4SNMvxFF7KucKuWNfYkmHZKYlXizz6BGT1_MUsPkNGdryXFtXS9g>, <mailto:unsubscribe-YQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyD@imh.rsys5.com?subject=List-Unsubscribe>
+X-sgxh1: kHPKLQnmlpLjjLFDTxnuHptQJhu
+X-rext: 5.interact5.EuepeWu2QNuCpLtQM77xBkugJO_aqmAvOO3c4tECu8FRwtFOnXP9
+X-cid: natgeo.10185391
+X-CSA-Complaints: whitelist-complaints@eco.de
+Message-ID: <0.0.3B.827.1D307B23D30D984.0@omp.e.nationalgeographic.com>
+
+This is a multi-part message in MIME format.
+
+------msg_border_TqssFPYVvE
+Date: Fri, 28 Jul 2017 08:00:23 -0700
+Content-Type: multipart/alternative; boundary="----alt_border_vnll3316Pc_1"
+
+
+
+------alt_border_vnll3316Pc_1
+Content-Type: text/plain;
+	charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+
+An elephant rescued from the ocean, bear cubs hitch a ride, and 
+more.?|? 
+---------------------------------------------
+
+You are receiving this email because $lookup(EMAIL_ADDRESS_)$ 
+
+mailto:$lookup(EMAIL_ADDRESS_)$ 
+is signed up to receive National Geographic communications. If you 
+prefer not to receive emails from us, please unsubscribe 
+
+http://sites.mypreferences.com/National_Geographic/natgeo/subscriptions/optdown?$encodedristring(campaignname())$&FilterID=gpho&CID=$lookup(RIID_)$&CustomerType=ngsreg&Campaign_Id=$campaignid()$ 
+.. 
+
+About Us 
+
+
+https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUABY&_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZso9b1fZod-dpq6pDmvzt94Ndtg.Jg%3D%3D
+ 
+| Contact Us 
+
+
+https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUABA&_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZso9b1fZod-dpq6pDmvzt94Ndtg.Jg%3D%3D
+ 
+| Privacy Policy 
+
+
+https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUABB&_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZso9b1fZod-dpq6pDmvzt94Ndtg.Jg%3D%3D
+ 
+
+To ensure that you receive your National Geographic emails, please add 
+ng@e.nationalgeographic.com 
+
+mailto:ng@e.nationalgeographic.com 
+to your address book now. Learn how 
+
+
+https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUABC&_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZso9b1fZod-dpq6pDmvzt94Ndtg.Jg%3D%3D
+ 
+.. 
+
+National Geographic | 1?145 1?7th Street N.W. | Washington, D.C. 
+2?0036 
+
+Copyright ? 2017 National Geographic Partners, LLC. All rights 
+reserved.
+______________________________________________________________________
+This message was sent by National Geographic using Responsys Interact.
+    http://www.responsys.com/?cid=6
+
+Safely unsubscribe from National Geographic email at any time:
+    https://e.nationalgeographic.com/pub/optout?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyD&_ei_=EolaGGF4SNMvxFF7KucKuWNfYkmHZKYlXizz6BGT1_MUsPkNGdryXFtXS9g
+
+View our permission marketing policy:
+    https://e.nationalgeographic.com/pub/pp/1?u=https://e.nationalgeographic.com/pub/optout?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyD&_ei_=EolaGGF4SNMvxFF7KucKuWNfYkmHZKYlXizz6BGT1_MUsPkNGdryXFtXS9g
+
+------alt_border_vnll3316Pc_1
+Content-Type: text/html;
+	charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <title>National Geographic | WATCH THIS</title>
+    <link href="http://www.nationalgeographic.com/interactive-assets/fonts/verlag/HCo_fonts-verlag.css" rel="stylesheet">
+    <style type="text/css">
+                     /* CLIENT STYLES */
+                     #outlook a{padding:0;} /* Force Outlook to provide a "view in browser" message */
+                     .ReadMsgBody{width:100%;} .ExternalClass{width:100%;} /* Force Hotmail to display emails at full width */
+                     .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;} /* Force Hotmail to display normal line spacing */
+                     body, table, td, a{-webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;} /* Prevent WebKit and Windows mobile changing default text sizes */
+                     table, td{mso-table-lspace:0pt; mso-table-rspace:0pt;} /* Remove spacing between tables in Outlook 2007 and up */
+                     img{-ms-interpolation-mode:bicubic;} /* Allow smoother rendering of resized image in Internet Explorer */
+
+                     /* RESET STYLES */
+                     body{margin:0; padding:0;}
+                     img{border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
+                     table{border-collapse:collapse !important;}
+                     body{height:100% !important; margin:0; padding:0; width:100% !important;}
+                     .appleFooter a {color: #000000; text-decoration: none;}
+
+                     @media screen and (max-width: 640px) {     
+                     
+                         .hide {display:none !important;} 
+                         .center { text-align:center !important;}
+                         .mobile-only {display: block !important; max-height: none !important;}
+
+                         table[class="responsivetable"]{
+                             width:100%!important;
+                             border:0 !important;}
+
+                          table[class~="70responsivetable"]{
+                             width:70%!important;
+                             border:0 !important;}
+                         
+                         table[class~="80responsivetable"]{
+                             width:80%!important;
+                             border:0 !important;}
+                         
+                         table[class~="90responsivetable"]{
+                             width:90%!important;
+                             border:0 !important;}
+                         
+                         img[class="full_img"]{
+                             width: 100% !important;}
+                         
+                         img[class="mappingwidthimg"]{
+                             width: 60px !important;}
+                         
+                         td[class~="mappingwidth"]{
+                             width: 60px !important;}
+
+                         td[class~="newrow"]{
+                             display: block !important;
+                             width: 100% !important;}
+
+                         td[class~="centered"]{
+                             text-align: center !important;}
+                         
+                          td[class~="left"]{
+                             text-align: left !important;}
+
+                         td[class~="nopadding"]{
+                             padding: 0px !important;}
+                         
+                         td[class~="introtextpadding"]{
+                             padding: 25px 0px 15px 0px !important;}
+
+                         th[class~="featurefont"]{
+                             font-size: 26px !important;
+                             line-height: 28px !important;} 
+
+
+    </style><!--[if gte mso 9]>
+<xml>
+<o:OfficeDocumentSettings>
+<o:AllowPNG/>
+<o:PixelsPerInch>96</o:PixelsPerInch>
+</o:OfficeDocumentSettings>
+</xml>
+<![endif]-->
+
+<style type="text/css"></style>
+</head>
+<body style="margin: 0; padding: 0; -webkit-text-size-adjust: none; -ms-text-size-adjust: none;">
+    <div style="display: none; font-size: 0px; line-height: 0px; max-height: 0px; max-width: 0px; width: 0px; opacity: 0; overflow: hidden;">An elephant rescued from the ocean, bear cubs hitch a ride, and more.&nbsp;|&nbsp;
+    </div><!-- DESKOP BANNER -->
+    <table bgcolor="#222222" border="0" cellpadding="0" cellspacing="0" class="hide" width="100%">
+        <tr>
+            <td align="center" style="padding-top: 12px; padding-bottom: 12px;">
+                <table border="0" cellpadding="0" cellspacing="0" class="responsivetable" style="width: 620px;" width="620">
+                    <tr>
+                        <td align="left" style="font-family: CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; font-size: 8px; line-height: 8px; color: #ffffff;">
+                            <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUABD&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; font-weight: normal; text-decoration: none; text-transform: uppercase; letter-spacing: 2.4px; color: #ffffff;"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">WATCH THOUSANDS OF VIDEOS ON OUR WEBSITE</span></a>
+                        </td>
+                        <td align="right" style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; font-size: 8px; line-height: 8px; font-weight: normal; color: #ffffff;">
+                            <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUACR&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; font-weight: normal; text-decoration: none; text-transform: uppercase; letter-spacing: 2.4px; color: #ffffff;"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">WHAT&rsquo;S ON TV&nbsp;&nbsp;&nbsp;&nbsp;</span></a><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">|</span><a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBTD&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZso9b1fZod-dpq6pDmvzt94Ndtg." style="font-family:Helvetica,Arial,sans-serif; font-weight: normal; text-decoration: none; text-transform: uppercase; letter-spacing: 2.4px; color: #ffffff;"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">&nbsp;&nbsp;&nbsp;&nbsp;VIEW ONLINE</span></a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table><!-- END DESKTOP BANNER -->
+    <!-- MOBILE BANNER -->
+    <!--[if !mso]><!-->
+    <div class="mobile-only" style="font-size: 0; max-height: 0; overflow: hidden; display: none; mso-hide: all;">
+        <table bgcolor="#222222" border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <td align="center" style="padding-top: 13px; padding-bottom: 13px;">
+                    <table border="0" cellpadding="0" cellspacing="0" class="responsivetable" style="width: 640px;" width="640">
+                        <tr>
+                            <td align="center" style="font-family: CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; font-size: 10px; line-height: 13px; font-weight: normal; color: #ffffff;">
+                                <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUABD&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; font-weight: normal; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; color: #ffffff;"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">TAP HERE TO EXPLORE THOUSANDS OF&nbsp;NAT&nbsp;GEO&nbsp;VIDEOS</span></a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div><!--<![endif]-->
+    <!-- END MOBILE BANNER -->
+    <!-- HEADER -->
+    <table align="center" bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="center" style="padding-top: 40px;">
+                <table align="center" border="0" cellpadding="0" cellspacing="0" class="responsivetable" style="width: 640px;" width="640">
+                    <tr>
+                        <td align="left" class="newrow centered nopadding" style="padding: 8px 0px 5px 5px;" valign="bottom" width="250">
+                            <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUACS&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." target="_blank"><img align="absbottom" alt="National Geographic" src="https://static.cdn.responsys.net/i5/responsysimages/natgeo/contentlibrary/201707/watch_this_20170728/logo.png" style="color: #ffffff; font-family:Helvetica,Arial,sans-serif;" width="167"></a>
+                        </td>
+                        <td align="center" class="newrow centered">
+                            <table align="center" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="center">
+                                        <table border="0" cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td align="center" class="newrow centered">
+                                                    <table align="center" border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td align="center" style="padding: 8px 0px 0px 0px;" width="313"><a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUACT&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." target="_blank"><img alt="WATCH THIS" class="full_img" src="https://static.cdn.responsys.net/i5/responsysimages/natgeo/contentlibrary/201707/watch_this_20170728/title_watchthis.png" style="color: #ffffff; font-family:Helvetica,Arial,sans-serif;" width="338.5"></a></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td align="right" class="hide" style="padding: 8px 0px 0px 0px;" width="30"><a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUACT&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." target="_blank"><img alt="" class="full_img" src="https://static.cdn.responsys.net/i5/responsysimages/natgeo/contentlibrary/201707/watch_this_20170728/title_pipe.png" width="29.5"></a></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="nopadding centered" style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; font-size: 8px; line-height: 8px; font-weight: normal; color: #ffffff; padding-left: 33px;">
+                                        <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUACU&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; font-weight: normal; text-decoration: none; text-transform: uppercase; letter-spacing: 2.4px; color: #ffffff;"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">ANIMALS&nbsp;&nbsp;</span></a><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important; color: #808080;">|</span><a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUACW&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-family:Helvetica,Arial,sans-serif; font-weight: normal; text-decoration: none; text-transform: uppercase; letter-spacing: 2.4px; color: #ffffff;"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">&nbsp;&nbsp;&nbsp;EXPLORERS&nbsp;&nbsp;</span><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important; color: #808080;">|</span></a><a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUACY&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; font-weight: normal; text-decoration: none; text-transform: uppercase; letter-spacing: 2.4px; color: #ffffff;"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">&nbsp;&nbsp;NEWS&nbsp;&nbsp;</span></a><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important; color: #808080;">|</span><a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUACA&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-family:Helvetica,Arial,sans-serif; font-weight: normal; text-decoration: none; text-transform: uppercase; letter-spacing: 2.4px; color: #ffffff;"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">&nbsp;&nbsp;ADVENTURE</span></a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" class="introtextpadding" style="padding: 25px 0px 10px 0px;">
+                <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <td align="center">
+                            <table align="center" border="0" cellpadding="0" cellspacing="0" class="70responsivetable" style="width:300px;" width="300">
+                                <tr>
+                                    <td style="border-top: 1px solid #e6e6e6;"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" style="padding: 14px 0px 14px 0px;">
+                            <table align="center" border="0" cellpadding="0" cellspacing="0" class="90responsivetable" style="width: 450px;" width="450">
+                                <tr>
+                                    <td align="center" style="font-family:'Georgia','Times New Roman','Times', serif; font-size: 14px; line-height: 16px; font-weight:normal; color:#ffffff; font-style: italic;"><span style="font-family:'Georgia','Times New Roman','Times', serif !important;">We're glad so many of you enjoyed last week's all-animals edition!<br>Here are a few more of our favorite wildlife videos.</span></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <table align="center" border="0" cellpadding="0" cellspacing="0" class="70responsivetable" style="width:300px;" width="300">
+                                <tr>
+                                    <td style="border-top: 1px solid #e6e6e6;"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td align="right"><img align="absbottom" alt="" class="mappingwidthimg" src="https://static.cdn.responsys.net/i5/responsysimages/natgeo/contentlibrary/201707/watch_this_20170728/mapping-1.png" width="101"></td>
+        </tr>
+        <tr>
+            <td bgcolor="#FFFFFF">
+                <table valign="top" border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <td valign="top" align="right" class="mappingwidth" width="130"><img align="abstop" alt="" class="mappingwidthimg" src="https://static.cdn.responsys.net/i5/responsysimages/natgeo/contentlibrary/201707/watch_this_20170728/mapping-2.png" style="display: block;" width="130"></td>
+                        <td align="center"><img align="abstop" alt="" src="https://static.cdn.responsys.net/i5/responsysimages/natgeo/contentlibrary/201707/watch_this_20170728/notch.png" style="padding-bottom: 10px;" width="58"></td>
+                        <td align="right" class="mappingwidth" width="130"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table><!-- END HEADER -->
+    <!-- FEATURE 1 -->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="center" style="padding-bottom:12px;">
+                <table border="0" cellpadding="0" cellspacing="0" class="responsivetable" style="width: 640px;" width="640">
+                    <tr>
+                        <td align="center">
+                            <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUACB&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." target="_blank"><img alt="" class="full_img" src="https://static.cdn.responsys.net/i5/responsysimages/natgeo/contentlibrary/201707/watch_this_20170728/feature1.jpg" width="640"></a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" style="padding-bottom:50px;">
+                <table border="0" cellpadding="0" cellspacing="0" class="80responsivetable" style="width: 640px;" width="640">
+                    <tr>
+                        <td align="center" style="padding-bottom: 15px;">
+                            <table border="0" cellpadding="0" cellspacing="0" class="responsivetable" style="width: 615px;" width="615">
+                                <tr>
+                                    <td align="center" height="23" style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; font-size: 14px; line-height: 16px; font-weight: normal; color: #000000; padding-bottom: 5px;">
+                                        <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUACC&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; text-decoration: none; text-transform: uppercase; font-weight: 400; letter-spacing: 3.5px; color: #000000;" target="_blank"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1:01&nbsp;&nbsp;&nbsp;&nbsp;|</span></a><a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUACD&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; text-decoration: none; text-transform: uppercase; font-weight: 400; letter-spacing: 3.5px; color: #000000;" target="_blank"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANIMALS&nbsp;&nbsp;&nbsp;&nbsp;|</span></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="featurefont" style="font-family: Helvetica,Arial,'Nimbus Sans L',sans-serif; font-size: 32px; line-height: 33px; color: #000000;">
+                                        <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUACC&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-family: Helvetica, Arial,'Nimbus Sans L',sans-serif; text-decoration: none; font-weight: 500; color: #000000;" target="_blank"><span style="font-family: 'Helvetica Neue', Helvetica,Arial,sans-serif !important;">Adorable Bear Cubs Hitch a Ride on Mom's Back</span></a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" style="padding-bottom: 15px;">
+                            <table align="center" border="0" cellpadding="0" cellspacing="0" class="70responsivetable" style="width:250px;" width="250">
+                                <tr>
+                                    <td style="border-top: 2px solid #ffcc00;"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <table align="center" border="0" cellpadding="0" cellspacing="0" class="responsivetable" style="width: 550px;" width="550">
+                                <tr>
+                                    <td align="left" style="font-family:'Georgia','Times New Roman','Times', serif; font-size: 14px; line-height:24px; font-weight:normal; color:#333333;"><span style="font-family:'Georgia','Times New Roman','Times', serif !important;">There&rsquo;s nothing like a good piggyback ride when you&rsquo;re feeling worn out, as two bear cubs learn in this video. <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUADR&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-weight: 700; text-decoration: underline; color: #149581;" target="_blank">The grizzly bear cubs hitch a ride on their mom&rsquo;s back</a> as she swims across Lake Aleknagik in Wood-Tikchik State Park in Alaska. When she reaches dry land, the cubs tumble off and promptly follow her as she moves out of the camera&rsquo;s line of sight.<br></br>It&rsquo;s an adorable scene, but it&rsquo;s also fairly rare&mdash;neither park officials nor wildlife biologists said they had seen a bear ferry her cubs across water before. <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUADS&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-weight: 700; text-decoration: underline; color: #149581;" target="_blank">Click here to read more</a>.</span></td>
+                                </tr>
+                                <tr>
+                                    <td align="right" style="font-family:'Georgia','Times New Roman','Times', serif; font-size: 14px; line-height:16px; font-weight:bold; font-style: italic; color:#333333; padding-top: 12px;"><span style="font-family:'Georgia','Times New Roman','Times', serif !important;">&mdash;Hannah Lang, intern</span></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="centered" style="padding-top: 25px;">
+                            <table border="0" cellpadding="0" cellspacing="0" class="responsivetable" style="width: 550px;" width="550">
+                                <tr>
+                                    <td align="center" class="centered">
+                                        <table align="center" bgcolor="#FFCC00" border="0" cellpadding="0" cellspacing="0" style="width: 245px;" width="245">
+                                            <tr>
+                                                <td align="center" height="35" style="font-family: CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; font-size: 14px; line-height:13px; font-weight:normal; color:#000000; border: 0px #ffffff solid;" valign="center">
+                                                    <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUADT&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; color: #000000; font-size: 14px; text-decoration: none; display: block; width: 100%; padding-top: 14px; padding-bottom: 14px; text-transform: uppercase; font-weight: 700; letter-spacing: 2px;" target="_blank"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">WATCH NOW</span></a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="newrow centered" style="padding-top: 20px;">
+                                        <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 200px;" width="200">
+                                            <tr>
+                                                <td align="center" class="newrow centered" style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; font-size: 12px; line-height: 14px; font-weight: 400; color: #cccccc; text-transform: uppercase; letter-spacing: 2.8px; padding-left: 3px;"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">SHARE</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" class="newrow centereds" style="padding-top: 5px;" width="40">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td align="right">
+                                                                <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUADU&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZso9b1fZod-dpq6pDmvzt94Ndtg." target="_blank"><img alt="F" src="https://static.cdn.responsys.net/i5/responsysimages/natgeo/contentlibrary/201707/watch_this_20170728/share_fb.png" style="color: #000000; font-family:Helvetica,Arial,sans-serif;" width="35.5"></a>
+                                                            </td>
+                                                            <td align="right">
+                                                                <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUADW&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZso9b1fZod-dpq6pDmvzt94Ndtg." target="_blank"><img alt="T" src="https://static.cdn.responsys.net/i5/responsysimages/natgeo/contentlibrary/201707/watch_this_20170728/share_twitter.png" style="color: #000000; font-family:Helvetica,Arial,sans-serif;" width="36.5"></a>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table><!-- END FEATURE 1 -->
+    <!-- FEATURE 2 -->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="center" style="padding-bottom:12px;">
+                <table border="0" cellpadding="0" cellspacing="0" class="responsivetable" style="width: 640px;" width="640">
+                    <tr>
+                        <td align="center">
+                            <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUADY&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." target="_blank"><img alt="" class="full_img" src="https://static.cdn.responsys.net/i5/responsysimages/natgeo/contentlibrary/201707/watch_this_20170728/feature2.jpg" width="640"></a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    <tr>
+            <td align="center" style="padding-bottom:50px;">
+                <table border="0" cellpadding="0" cellspacing="0" class="80responsivetable" style="width: 640px;" width="640">
+                    <tr>
+                        <td align="center" style="padding-bottom: 15px;">
+                            <table border="0" cellpadding="0" cellspacing="0" class="responsivetable" style="width: 615px;" width="615">
+                                <tr>
+                                    <td align="center" height="23" style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; font-size: 14px; line-height: 16px; font-weight: normal; color: #000000; padding-bottom: 5px;">
+                                        <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUADA&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; text-decoration: none; text-transform: uppercase; font-weight: 400; letter-spacing: 3.5px; color: #000000;" target="_blank"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1:06&nbsp;&nbsp;&nbsp;&nbsp;|</span></a><a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUADB&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; text-decoration: none; text-transform: uppercase; font-weight: 400; letter-spacing: 3.5px; color: #000000;" target="_blank"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANIMALS&nbsp;&nbsp;&nbsp;&nbsp;|</span></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="featurefont" style="font-family: Helvetica,Arial,'Nimbus Sans L',sans-serif; font-size: 32px; line-height: 33px; color: #000000;">
+                                        <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUADA&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-family: Helvetica, Arial,'Nimbus Sans L',sans-serif; text-decoration: none; font-weight: 500; color: #000000;" target="_blank"><span style="font-family: 'Helvetica Neue', Helvetica,Arial,sans-serif !important;">Watch: Elephant Rescued After Being Swept 10 Miles Out to Sea</span></a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" style="padding-bottom: 15px;">
+                            <table align="center" border="0" cellpadding="0" cellspacing="0" class="70responsivetable" style="width:250px;" width="250">
+                                <tr>
+                                    <td style="border-top: 2px solid #ffcc00;"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <table align="center" border="0" cellpadding="0" cellspacing="0" class="responsivetable" style="width: 550px;" width="550">
+                                <tr>
+                                    <td align="left" style="font-family:'Georgia','Times New Roman','Times', serif; font-size: 14px; line-height:24px; font-weight:normal; color:#333333;"><span style="font-family:'Georgia','Times New Roman','Times', serif !important;">An elephant is one of the last things I would expect to find 10 miles away from the shore. But <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUADC&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-weight: 700; text-decoration: underline; color: #149581;" target="_blank">that&rsquo;s exactly what Sri Lankan navy officials spotted</a> during a routine patrol. Using ropes to guide it, the navy was able to successfully help the elephant to land after 12 long hours. Surprisingly, elephants are great swimmers, but it&rsquo;s likely this one could have succumbed to exhaustion without human intervention. <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUADD&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-weight: 700; text-decoration: underline; color: #149581;" target="_blank">Read more about the rescue here</a>.</span></td>
+                                </tr>
+                                <tr>
+                                    <td align="right" style="font-family:'Georgia','Times New Roman','Times', serif; font-size: 14px; line-height:16px; font-weight:bold; font-style: italic; color:#333333; padding-top: 12px;"><span style="font-family:'Georgia','Times New Roman','Times', serif !important;">&mdash;Sarah Gibbens, online writer</span></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="centered" style="padding-top: 25px;">
+                            <table border="0" cellpadding="0" cellspacing="0" class="responsivetable" style="width: 550px;" width="550">
+                                <tr>
+                                    <td align="center" class="centered">
+                                        <table align="center" bgcolor="#FFCC00" border="0" cellpadding="0" cellspacing="0" style="width: 245px;" width="245">
+                                            <tr>
+                                                <td align="center" height="35" style="font-family: CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; font-size: 14px; line-height:13px; font-weight:normal; color:#000000; border: 0px #ffffff solid;" valign="center">
+                                                    <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBRR&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; color: #000000; font-size: 14px; text-decoration: none; display: block; width: 100%; padding-top: 14px; padding-bottom: 14px; text-transform: uppercase; font-weight: 700; letter-spacing: 2px;" target="_blank"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">WATCH NOW</span></a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="newrow centered" style="padding-top: 20px;">
+                                        <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 200px;" width="200">
+                                            <tr>
+                                                <td align="center" class="newrow centered" style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; font-size: 12px; line-height: 14px; font-weight: 400; color: #cccccc; text-transform: uppercase; font-weight: 400; letter-spacing: 2.8px; padding-left: 3px;"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">SHARE</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" class="newrow centereds" style="padding-top: 5px;" width="40">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td align="right">
+                                                                <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBRS&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZso9b1fZod-dpq6pDmvzt94Ndtg." target="_blank"><img alt="F" src="https://static.cdn.responsys.net/i5/responsysimages/natgeo/contentlibrary/201707/watch_this_20170728/share_fb.png" style="color: #000000; font-family:Helvetica,Arial,sans-serif;" width="35.5"></a>
+                                                            </td>
+                                                            <td align="right">
+                                                                <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBRT&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZso9b1fZod-dpq6pDmvzt94Ndtg." target="_blank"><img alt="T" src="https://static.cdn.responsys.net/i5/responsysimages/natgeo/contentlibrary/201707/watch_this_20170728/share_twitter.png" style="color: #000000; font-family:Helvetica,Arial,sans-serif;" width="36.5"></a>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table><!-- END FEATURE 2 -->
+
+    <!-- FEATURE 3 -->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="center" style="padding-bottom:12px; padding-top: 70px;">
+                <table border="0" cellpadding="0" cellspacing="0" class="responsivetable" style="width: 640px;" width="640">
+                    <tr>
+                        <td align="center">
+                            <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBRU&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." target="_blank"><img alt="" class="full_img" src="https://static.cdn.responsys.net/i5/responsysimages/natgeo/contentlibrary/201707/watch_this_20170728/feature3.jpg" style="color: #000000; font-family:Helvetica,Arial,sans-serif;" width="640"></a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" style="padding-bottom:50px;">
+                <table border="0" cellpadding="0" cellspacing="0" class="80responsivetable" style="width: 640px;" width="640">
+                    <tr>
+                        <td align="center" style="padding-bottom: 15px;">
+                            <table border="0" cellpadding="0" cellspacing="0" class="responsivetable" style="width: 615px;" width="615">
+                                <tr>
+                                    <td align="center" height="23" style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; font-size: 14px; line-height: 16px; font-weight: normal; color: #000000; padding-bottom: 5px;">
+                                        <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBRW&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; text-decoration: none; text-transform: uppercase; font-weight: 400; letter-spacing: 3.5px; color: #000000;" target="_blank"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3:41&nbsp;&nbsp;&nbsp;&nbsp;|</span></a><a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBRY&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; text-decoration: none; text-transform: uppercase; font-weight: 400; letter-spacing: 3.5px; color: #000000;" target="_blank"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;101 Videos&nbsp;&nbsp;&nbsp;&nbsp;|</span></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="featurefont" style="font-family: Helvetica,Arial,'Nimbus Sans L',sans-serif; font-size: 32px; line-height: 33px; color: #000000; letter-spacing: 0px;">
+                                        <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBRW&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-family: Helvetica, Arial,'Nimbus Sans L',sans-serif; text-decoration: none; font-weight: 500; color: #000000;" target="_blank"><span style="font-family: 'Helvetica Neue', Helvetica,Arial,sans-serif !important;">Blue Whales 101</span></a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" style="padding-bottom: 15px;">
+                            <table align="center" border="0" cellpadding="0" cellspacing="0" class="70responsivetable" style="width:250px;" width="250">
+                                <tr>
+                                    <td style="border-top: 2px solid #ffcc00;"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <table align="center" border="0" cellpadding="0" cellspacing="0" class="responsivetable" style="width: 550px;" width="550">
+                                <tr>
+                                    <td align="left" style="font-family:'Georgia','Times New Roman','Times', serif; font-size: 14px; line-height:24px; font-weight:normal; color:#333333;"><span style="font-family:'Georgia','Times New Roman','Times', serif !important;"><a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBRA&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-weight: 700; text-decoration: underline; color: #149581;" target="_blank">Blue whales</a> are incredible creatures, which made this video a lot of fun to write and research. It features five of the most bizarre facts I came across, my favorite being about how you can tell a blue whale's age. (<a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBRB&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-weight: 700; text-decoration: underline; color: #149581;" target="_blank">It&rsquo;s surprising and utterly fascinating</a>.) I hope these facts will inspire others to learn more and care about these tremendous animals!</span></td>
+                                </tr>
+                                <tr>
+                                    <td align="right" style="font-family:'Georgia','Times New Roman','Times', serif; font-size: 14px; line-height:16px; font-weight:bold; font-style: italic; color:#333333; padding-top: 12px;"><span style="font-family:'Georgia','Times New Roman','Times', serif !important;">&mdash;Angeli Gabriel, writer/host</span></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="centered" style="padding-top: 25px;">
+                            <table border="0" cellpadding="0" cellspacing="0" class="responsivetable" style="width: 550px;" width="550">
+                                <tr>
+                                    <td align="center" class="centered">
+                                        <table align="center" bgcolor="#FFCC00" border="0" cellpadding="0" cellspacing="0" style="width: 245px;" width="245">
+                                            <tr>
+                                                <td align="center" height="35" style="font-family: CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; font-size: 14px; line-height:13px; font-weight:normal; color:#000000; border: 0px #ffffff solid;" valign="center">
+                                                    <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBRC&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; color: #000000; font-size: 14px; text-decoration: none; display: block; width: 100%; padding-top: 14px; padding-bottom: 14px; text-transform: uppercase; font-weight: 700; letter-spacing: 2px;" target="_blank"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">WATCH NOW</span></a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="newrow centered" style="padding-top: 20px;">
+                                        <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 200px;" width="200">
+                                            <tr>
+                                                <td align="center" class="newrow centered" style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; font-size: 12px; line-height: 14px; font-weight: 400; color: #cccccc; text-transform: uppercase; font-weight: 400; letter-spacing: 2.8px; padding-left: 3px;"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">SHARE</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" class="newrow centereds" style="padding-top: 5px;" width="40">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td align="right">
+                                                                <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBRD&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZso9b1fZod-dpq6pDmvzt94Ndtg." target="_blank"><img alt="F" src="https://static.cdn.responsys.net/i5/responsysimages/natgeo/contentlibrary/201707/watch_this_20170728/share_fb.png" style="color: #000000; font-family:Helvetica,Arial,sans-serif;" width="35.5"></a>
+                                                            </td>
+                                                            <td align="right">
+                                                                <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBSR&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZso9b1fZod-dpq6pDmvzt94Ndtg." target="_blank"><img alt="T" src="https://static.cdn.responsys.net/i5/responsysimages/natgeo/contentlibrary/201707/watch_this_20170728/share_twitter.png" style="color: #000000; font-family:Helvetica,Arial,sans-serif;" width="36.5"></a>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table><!-- END FEATURE 3 -->
+
+  
+    <!-- FEATURE 4 -->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="center" style="padding-bottom:12px; padding-top: 70px;">
+                <table border="0" cellpadding="0" cellspacing="0" class="responsivetable" style="width: 640px;" width="640">
+                    <tr>
+                        <td align="center">
+                            <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBSS&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." target="_blank"><img alt="" class="full_img" src="https://static.cdn.responsys.net/i5/responsysimages/natgeo/contentlibrary/201707/watch_this_20170728/feature4.jpg" style="color: #000000; font-family:Helvetica,Arial,sans-serif;" width="640"></a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" style="padding-bottom:50px;">
+                <table border="0" cellpadding="0" cellspacing="0" class="80responsivetable" style="width: 640px;" width="640">
+                    <tr>
+                        <td align="center" style="padding-bottom: 15px;">
+                            <table border="0" cellpadding="0" cellspacing="0" class="responsivetable" style="width: 615px;" width="615">
+                                <tr>
+                                    <td align="center" height="23" style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; font-size: 14px; line-height: 16px; font-weight: normal; color: #000000; padding-bottom: 5px;">
+                                        <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBST&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; text-decoration: none; text-transform: uppercase; font-weight: 400; letter-spacing: 3.5px; color: #000000;" target="_blank"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0:55&nbsp;&nbsp;&nbsp;&nbsp;|</span></a><a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBSU&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; text-decoration: none; text-transform: uppercase; font-weight: 400; letter-spacing: 3.5px; color: #000000;" target="_blank"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ANIMALS&nbsp;&nbsp;&nbsp;&nbsp;|</span></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="featurefont" style="font-family: Helvetica,Arial,'Nimbus Sans L',sans-serif; font-size: 32px; line-height: 33px; color: #000000; letter-spacing: 0px;">
+                                        <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBST&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-family: Helvetica, Arial,'Nimbus Sans L',sans-serif; text-decoration: none; font-weight: 500; color: #000000;" target="_blank"><span style="font-family: 'Helvetica Neue', Helvetica,Arial,sans-serif !important;">Watch: Curious Puffin Befriends a Tourist</span></a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" style="padding-bottom: 15px;">
+                            <table align="center" border="0" cellpadding="0" cellspacing="0" class="70responsivetable" style="width:250px;" width="250">
+                                <tr>
+                                    <td style="border-top: 2px solid #ffcc00;"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <table align="center" border="0" cellpadding="0" cellspacing="0" class="responsivetable" style="width: 550px;" width="550">
+                                <tr>
+                                    <td align="left" style="font-family:'Georgia','Times New Roman','Times', serif; font-size: 14px; line-height:24px; font-weight:normal; color:#333333;"><span style="font-family:'Georgia','Times New Roman','Times', serif !important;">I love that this tourist had the presence of mind to record <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBSW&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-weight: 700; text-decoration: underline; color: #149581;" target="_blank">this scene with a curious puffin</a>. The bird, probably on land to breed, waddles up to take stock of her and spends some time poking at her camera lens before continuing on its way (0:30).
+                                <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBSY&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-weight: 700; text-decoration: underline; color: #149581;" target="_blank">Click here</a> to read more about the charming encounter. Or <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBSA&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-weight: 700; text-decoration: underline; color: #149581;" target="_blank">watch a recent video</a> of ours in which some baby raccoons make a human friend.</span></td>
+                                </tr>
+                                <tr>
+                                    <td align="right" style="font-family:'Georgia','Times New Roman','Times', serif; font-size: 14px; line-height:16px; font-weight:bold; font-style: italic; color:#333333; padding-top: 12px;"><span style="font-family:'Georgia','Times New Roman','Times', serif !important;">&mdash;Will Halicks, senior producer</span></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="centered" style="padding-top: 25px;">
+                            <table border="0" cellpadding="0" cellspacing="0" class="responsivetable" style="width: 550px;" width="550">
+                                <tr>
+                                    <td align="center" class="centered">
+                                        <table align="center" bgcolor="#FFCC00" border="0" cellpadding="0" cellspacing="0" style="width: 245px;" width="245">
+                                            <tr>
+                                                <td align="center" height="35" style="font-family: CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; font-size: 14px; line-height:13px; font-weight:normal; color:#000000; border: 0px #ffffff solid;" valign="center">
+                                                    <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBSB&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; color: #000000; font-size: 14px; text-decoration: none; display: block; width: 100%; padding-top: 14px; padding-bottom: 14px; text-transform: uppercase; font-weight: 700; letter-spacing: 2px;" target="_blank"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">WATCH NOW</span></a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center" class="newrow centered" style="padding-top: 20px;">
+                                        <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 200px;" width="200">
+                                            <tr>
+                                                <td align="center" class="newrow centered" style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; font-size: 12px; line-height: 14px; font-weight: 400; color: #cccccc; text-transform: uppercase; font-weight: 400; letter-spacing: 2.8px; padding-left: 3px;"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">SHARE</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td align="center" class="newrow centereds" style="padding-top: 5px;" width="40">
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr>
+                                                            <td align="right">
+                                                                <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBSC&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZso9b1fZod-dpq6pDmvzt94Ndtg." target="_blank"><img alt="F" src="https://static.cdn.responsys.net/i5/responsysimages/natgeo/contentlibrary/201707/watch_this_20170728/share_fb.png" style="color: #000000; font-family:Helvetica,Arial,sans-serif;" width="35.5"></a>
+                                                            </td>
+                                                            <td align="right">
+                                                                <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBSD&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZso9b1fZod-dpq6pDmvzt94Ndtg." target="_blank"><img alt="T" src="https://static.cdn.responsys.net/i5/responsysimages/natgeo/contentlibrary/201707/watch_this_20170728/share_twitter.png" style="color: #000000; font-family:Helvetica,Arial,sans-serif;" width="36.5"></a>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table><!-- END FEATURE 4 -->
+    
+    
+    
+    
+    
+    <!-- FEEDBACK -->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="center" style="padding-bottom: 60px;">
+                <table align="center" border="0" cellpadding="0" cellspacing="0" class="80responsivetable" width="100%">
+                    <tr>
+                        <td align="center">
+                            <table align="center" border="0" cellpadding="0" cellspacing="0" class="70responsivetable" style="width:200px;" width="200">
+                                <tr>
+                                    <td style="border-top: 2px solid #ffcc00;"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td align="center" style="padding: 25px 0px 25px 0px;">
+                            <table align="center" bgcolor="#000000" border="0" cellpadding="0" cellspacing="0" class="responsivetable" style="width: 400px;" width="400">
+                                <tr>
+                                    <td align="center" style="font-family:'Georgia','Times New Roman','Times', serif; font-size: 16px; line-height: 24px; font-weight:normal; color:#ffffff; padding: 50px 20px 50px 20px;"><span style="font-family:'Georgia','Times New Roman','Times', serif !important;">What did you think of our picks this&nbsp;week?<br>
+                                    Let us know at <a href="mailto:watchthis@natgeo.com" style="font-weight: 700; text-decoration: underline; color: #ffcc00;" target="_blank">watchthis@natgeo.com</a>.</span></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <table align="center" border="0" cellpadding="0" cellspacing="0" class="70responsivetable" style="width:200px;" width="200">
+                                <tr>
+                                    <td style="border-top: 2px solid #ffcc00;"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table><!-- END FEEDBACK -->
+    <!-- DESKTOP  NAV -->
+    <table align="center" bgcolor="#E6E6E6" border="0" cellpadding="0" cellspacing="0" class="hide" width="100%">
+        <tr>
+            <td align="center">
+                <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 640px;" width="640">
+                    <tr>
+                        <th align="center" class="hide" style="padding-top: 30px;" width="400">
+                            <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 350px;" width="350">
+                                <tr>
+                                    <td align="center" class="hide" style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; font-size: 11px; line-height: 13px; font-weight: 700; color: #000000; padding: 0px 10px 0px 0px;">
+                                        <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBTR&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; text-decoration: none; text-transform: uppercase; font-weight: 700; letter-spacing: 2px; color: #000000;" target="_blank"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">Shop</span></a>
+                                    </td>
+                                    <td align="center" class="hide" style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; font-size: 11px; line-height: 13px; font-weight: 700; color: #000000; padding: 0px 8px 0px 10px; border-left: 1px #000000 solid;">
+                                        <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBTS&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; text-decoration: none; text-transform: uppercase; font-weight: 700; letter-spacing: 2px; color: #000000;" target="_blank"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">Donate</span></a>
+                                    </td>
+                                    <td align="center" class="hide" style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; font-size: 11px; line-height: 13px; font-weight: 700; color: #000000; padding: 0px 5px 0px 8px; border-left: 1px #000000 solid;">
+                                        <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBTT&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; text-decoration: none; text-transform: uppercase; font-weight: 700; letter-spacing: 2px; color: #000000;" target="_blank"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">Subscribe</span></a>
+                                    </td>
+                                    <td align="center" class="hide" style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; font-size: 11px; line-height: 13px; font-weight: 700; color: #000000; padding: 0px 0px 0px 10px; border-left: 1px #000000 solid;">
+                                        <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBTU&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="font-family:CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif; text-decoration: none; text-transform: uppercase; font-weight: 700; letter-spacing: 2px; color: #000000;" target="_blank"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">Travel</span></a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </th>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table><!-- END DESKTOP NAV -->
+    <!-- HIDDEN MOBILE NAVIGATION -->
+    <!--[if !mso]><!-->
+    <div class="mobile-only" style="font-size: 0; max-height: 0; overflow: hidden; display: none; mso-hide: all;">
+        <table bgcolor="#E6E6E6" border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tbody>
+                <tr>
+                    <th align="center" bgcolor="#FFCC00" style="font-family: CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif ; font-size: 14px; line-height:13px; font-weight:normal; color:#000000;" valign="middle">
+                        <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBTW&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="color: #000000; font-size: 14px; text-decoration: none; display: block; width: 100%; padding-top: 13px; padding-bottom: 13px; text-transform: uppercase; font-weight: 700; letter-spacing: 2px;" target="_blank"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">WATCH MORE VIDEOS</span></a>
+                    </th>
+                </tr>
+                <tr>
+                    <th align="center" style="font-family: CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif ; font-size: 14px; line-height:13px; font-weight:normal; color:#000000; border-bottom:2px solid #cccccc;" valign="middle">
+                        <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBTY&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="color: #000000; font-size: 14px; text-decoration: none; display: block; width: 100%; padding-top: 13px; padding-bottom: 13px; text-transform: uppercase; font-weight: 700; letter-spacing: 2px;" target="_blank"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">SHOP</span></a>
+                    </th>
+                </tr>
+                <tr>
+                    <th align="center" style="font-family: CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif ; font-size: 14px; line-height:13px; font-weight:normal; color:#000000; border-bottom:2px solid #ccc;" valign="middle">
+                        <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBTA&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="color: #000000; font-size: 14px; text-decoration: none; display: block; width: 100%; padding-top: 13px; padding-bottom: 13px; text-transform: uppercase; font-weight: 700; letter-spacing: 2px;" target="_blank"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">DONATE</span></a>
+                    </th>
+                </tr>
+                <tr>
+                    <th align="center" style="font-family: CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif ; font-size: 14px; line-height:13px; font-weight:normal; color:#000000; border-bottom:2px solid #cccccc;" valign="middle">
+                        <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBTB&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="color: #000000; font-size: 14px; text-decoration: none; display: block; width: 100%; padding-top: 13px; padding-bottom: 13px; text-transform: uppercase; font-weight: 700; letter-spacing: 2px;" target="_blank"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">SUBSCRIBE</span></a>
+                    </th>
+                </tr>
+                <tr>
+                    <th align="center" style="font-family: CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif ; font-size: 14px; line-height:13px; font-weight:normal; color:#000000; border-bottom:2px solid #cccccc;" valign="middle">
+                        <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUBTC&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="color: #000000; font-size: 14px; text-decoration: none; display: block; width: 100%; padding-top: 13px; padding-bottom: 13px; text-transform: uppercase; font-weight: 700; letter-spacing: 2px;" target="_blank"><span style="font-family: 'HCo Verlag', CenturyGothic, AppleGothic, Gill Sans, Gill Sans MT, sans-serif !important;">TRAVEL</span></a>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    </div><!--<![endif]-->
+    <!-- END HIDDEN MOBILE NAVIGATION -->
+    <!-- SOCIAL -->
+    <table align="center" bgcolor="#E6E6E6" border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="center" style="padding-bottom: 35px;">
+                <table align="center" border="0" cellpadding="0" cellspacing="0" class="80responsivetable" width="640">
+                    <tr>
+                        <th align="center" style="padding-top: 30px;" width="250">
+                            <table align="center" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td align="center" style="padding-right: 1px;">
+                                        <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUABR&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZso9b1fZod-dpq6pDmvzt94Ndtg." target="_blank"><img alt="FB" src="https://static.cdn.responsys.net/i5/responsysimages/natgeo/contentlibrary/201707/watch_this_20170728/social_fb.png" style="display: block; color: #000000; font-family:Helvetica,Arial,sans-serif; font-size: 9px;" width="30"></a>
+                                    </td>
+                                    <td align="center">
+                                        <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUABS&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZso9b1fZod-dpq6pDmvzt94Ndtg." target="_blank"><img alt="Twitter" src="https://static.cdn.responsys.net/i5/responsysimages/natgeo/contentlibrary/201707/watch_this_20170728/social_twitter.png" style="display: block; color: #000000; font-family:Helvetica,Arial,sans-serif;font-size: 9px;" width="30"></a>
+                                    </td>
+                                    <td align="center" style="padding-left: 4px;">
+                                        <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUABT&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZso9b1fZod-dpq6pDmvzt94Ndtg." target="_blank"><img alt="IG" src="https://static.cdn.responsys.net/i5/responsysimages/natgeo/contentlibrary/201707/watch_this_20170728/social_ig.png" style="display: block; color: #000000; font-family:Helvetica,Arial,sans-serif;font-size: 9px;" width="30"></a>
+                                    </td>
+                                    <td align="center" style="padding-left: 2px;">
+                                        <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUABU&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZso9b1fZod-dpq6pDmvzt94Ndtg." target="_blank"><img alt="YouTube" src="https://static.cdn.responsys.net/i5/responsysimages/natgeo/contentlibrary/201707/watch_this_20170728/social_youtube.png" style="display: block; color: #000000; font-family:Helvetica,Arial,sans-serif;font-size: 9px;" width="40"></a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </th>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table><!-- END SOCIAL -->
+    <!-- FOOTER -->
+    <table align="center" bgcolor="#E6E6E6" border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td align="center" style="padding-bottom: 35px;">
+                <table border="0" cellpadding="0" cellspacing="0" class="80responsivetable" style="width: 500px;" width="500">
+                    <tr>
+                        <td align="center" valign="top" width="640">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td align="center" style="font-family:'Georgia','Times New Roman','Times', serif; font-size: 10px; line-height: 16px; font-weight: normal; color: #808080;"><span style="font-family:'Georgia','Times New Roman','Times', serif !important;">You are receiving this email because <a href="mailto:sayde.gutierrez92@gmail.com" style="color: #808080; text-decoration: none; font-weight: bold;"><span class="linkDarkGrey">sayde.gutierrez92@gmail.com</span></a> is signed up to receive National Geographic communications. If you prefer not to receive emails from us, please <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUABW&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZj4RRCEJc4AtUUvGY099on1roK5cHAy03s_vilhOkgC_SkLnQdzI5zuk." style="color: #767676; text-decoration: none; font-weight: bold;" target="_blank"><span class="linkDarkGrey">unsubscribe</span></a>.<br>
+                                    <br>
+                                    <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUABY&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZso9b1fZod-dpq6pDmvzt94Ndtg." style="color: #808080; text-decoration: none; font-weight: bold;" target="_blank"><span class="linkDarkGrey">About Us</span></a> | <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUABA&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZso9b1fZod-dpq6pDmvzt94Ndtg." style="color: #808080; text-decoration: none; font-weight: bold;" target="_blank"><span class="linkDarkGrey">Contact Us</span></a> | <a class="linkDarkGrey" href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUABB&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZso9b1fZod-dpq6pDmvzt94Ndtg." style="color: #808080; text-decoration: none; font-weight: bold;" target="_blank"><span class="linkDarkGrey">Privacy Policy</span></a><br>
+                                    <br>
+                                    To ensure that you receive your National Geographic emails, please add <a href="mailto:ng@e.nationalgeographic.com" style="color: #808080; text-decoration: none; font-weight: bold;"><span class="linkDarkGrey">ng@e.nationalgeographic.com</span></a> to your address book now. <a href="https://e.nationalgeographic.com/pub/cc?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXtpKX%3DSRTUUABC&amp;_ei_=Eq2tf9zs59idfPO1Sc_9Bbnt2dnDPajrRqz-d3sZLUOZso9b1fZod-dpq6pDmvzt94Ndtg." style="color: #808080; text-decoration: none; font-weight: bold;" target="_blank"><span class="linkDarkGrey">Learn how</span></a>.<br>
+                                    <br>
+                                    National Geographic | 1&zwnj;145 1&zwnj;7th Street N.W. | Washington, D.C. 2&zwnj;0036<br>
+                                    Copyright &copy; 2017 National Geographic Partners, LLC. All rights reserved.</span></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table><!-- END FOOTER -->
+    <!-- NATIONAL GEOGRAPHIC   |   TO THE END OF THE EMAIL, THEN FURTHER -->
+    <!--<div class="hide" bgcolor="#e6e6e6" style="font-size: 0; max-height: 0; overflow: hidden; display: none; mso-hide: all;">
+       <style data-ignore-inlining>@media print{ #_t { background-image: url('https://92a1rtdi.emltrk.com/92a1rtdi?p&d=sayde.gutierrez92@gmail.com') div.OutlookMessageHeader {background-image:url('https://92a1rtdi.emltrk.com/92a1rtdi?f&d=$EMAIL_ADDRESS_$')} table.moz-email-headers-table {background-image:url('https://92a1rtdi.emltrk.com/92a1rtdi?f&d=$EMAIL_ADDRESS_$')} blockquote #_t {background-image:url('https://92a1rtdi.emltrk.com/92a1rtdi?f&d=sayde.gutierrez92@gmail.com') #MailContainerBody #_t {background-image:url('https://92a1rtdi.emltrk.com/92a1rtdi?f&d=sayde.gutierrez92@gmail.com')</style><div id="_t"></div>
+<img src="https://92a1rtdi.emltrk.com/92a1rtdi?d=sayde.gutierrez92@gmail.com" width="1" height="1" border="0" />
+--><br>&nbsp;<br>
+<table border="0" cellspacing="0" cellpadding="2" width="100%">
+<tr><td height="3" colspan="2">
+<hr noshade size="1" color="#095AA6">
+</td></tr>
+<tr>
+<td align="left" valign="top"><A HREF="http://www.responsys.com/?cid=6"><img border="0" src="http://static.cdn.responsys.net/i5/responsysimages/responsys_powered_25.gif" width="135" height="25"></A></td>
+<td align="right" valign="top"><font face="Arial, Helvetica, sans-serif" size="1">
+This message was sent by National Geographic using <a href="http://www.responsys.com/?cid=6">Responsys Interact</a>.<br>
+Safely <a href="https://e.nationalgeographic.com/pub/optout?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyD&_ei_=EolaGGF4SNMvxFF7KucKuWNfYkmHZKYlXizz6BGT1_MUsPkNGdryXFtXS9g" target="_blank">unsubscribe</a> from National Geographic email at any time.<br>
+<a href="https://e.nationalgeographic.com/pub/pp/1?u=https://e.nationalgeographic.com/pub/optout?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyD&_ei_=EolaGGF4SNMvxFF7KucKuWNfYkmHZKYlXizz6BGT1_MUsPkNGdryXFtXS9g" target="_blank">View</a> our permission marketing policy.
+</font></td>
+</tr>
+</table><table cellpadding="0" cellspacing="0" style="border: 0px; padding: 0px; margin: 0px; position: absolute; display: none; float: left">
+<tr>
+<td height="1" style="font-size: 1px; line-height: 1px; padding: 0px;">
+<br><img height="1" width="1" style= "padding: 0px 0px; !important; margin: 0px 0px; font-size: 1px; line-height: 1px;" src="http://e.nationalgeographic.com/pub/as?_ri_=X0Gzc2X%3DYQpglLjHJlYQGmLiL4mTzavm8ielzafBBzf7smncwXHzbu6NwwUJWlG8mCzg0OlzgwgzcyDVXHkMX%3Dw&_ei_=EolaGGF4SNMvxFF7KucKuWNfYkmHZKYlXizz6BGT1_MUsPkNGdryXFtXS9g."></img>
+</td>
+</tr>
+</table>
+</body>
+</html>
+
+------alt_border_vnll3316Pc_1--
+
+------msg_border_TqssFPYVvE--
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>color</key>
+	<string>000000</string>
+	<key>date-last-viewed</key>
+	<integer>0</integer>
+	<key>date-received</key>
+	<integer>1501254051</integer>
+	<key>flags</key>
+	<integer>8590195840</integer>
+	<key>gmail-label-ids</key>
+	<array>
+		<integer>3</integer>
+	</array>
+	<key>remote-id</key>
+	<string>10586</string>
+</dict>
+</plist>

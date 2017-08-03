@@ -1,0 +1,996 @@
+//$Id$
+//javascript functions used in the SoM definition page.
+
+/*
+ *funtions perfomed on the SoM definition page
+ */
+
+var selectedComputersCount;
+
+//Showing select computers screen,
+//while 'Select Computers' link on click
+function showComputersOfDomain(resource_id , domName,domContName)
+{
+	var urlToAddComputer = "/som.do?actionToCall=getAndShowComputersOfDomain&resourceID="+resource_id+"&domainName="+encodeURIComponent(domName)+"&dcName="+encodeURIComponent(domContName);//NO I18N
+
+	var popW =400, popH = 350;
+	var features = "position=absolute,modal=yes,width=400, scrollbars=no,title="+I18N.getMsg('desktopcentral.som.addDomain.Select_computers');//NO I18N
+
+	showPopupInScreenCenter( urlToAddComputer , features , popW , popH );
+}
+function processAndHideIDInParent(respJSON){
+    if(respJSON.respText.indexOf('Failed')==-1){
+        preInstallRespJSON.checkMacAgentSettings=respJSON.checkMac;
+        preInstallRespJSON.checkLinuxAgentSettings=respJSON.checkLinux;
+        osPlatformJSON.isLinux=respJSON.checkLinux;
+        osPlatformJSON.isMac=respJSON.checkMac;
+        if(respJSON.service=='install'){
+            installAgentFromDialog();
+        }else if(respJSON.service=='uninstall'){//No I18N
+            uninstallFromDialog();
+        }else if(respJSON.service=='addinstall'){//No I18N
+            
+        }
+        
+        closeDialog();
+        var idToHide=document.getElementById('agentSettingAlert');
+        if(idToHide){
+            idToHide.style.display='none'; 
+        }
+        idToHide=document.getElementById('installWarnMsg');
+        if(idToHide){
+            idToHide.style.display='none';
+            disableFinishButton(false);
+        }
+    }
+
+}
+function showSelectNonWinComputers(resource_id,domainName){
+    var urlToAddComputer = "/jsp/admin/selectComputers.jsp?resourceID="+resource_id+"&domainName="+encodeURIComponent(domainName);// No I18N
+    var popW =400, popH = 250;
+    var features = "position=absolute,modal=yes,width=400, height=250, scrollbars=no,title="+I18N.getMsg('desktopcentral.som.addDomain.Select_computers');//NO I18N
+    
+    showPopupInScreenCenter( urlToAddComputer , features , popW , popH );
+    //To hide the unwanted data
+   /* document.getElementById("DOMAIN_SELECTED_COMPUTER").style.display='none';
+    document.getElementById("manualCompTextBox").style.width='386px';
+    document.getElementById("manualCompTextBox").style.height='181px';*/
+    
+}
+
+function showPopupInScreenCenter(url , features , popW , popH )
+{
+	var leftPos, topPos, screenX, screenY;
+
+	if(navigator.appName == "Microsoft Internet Explorer")
+	{//IE
+		screenY = document.body.offsetHeight
+		screenX = window.screen.availWidth
+	}
+	else
+	{ //Netscape
+		screenY = screen.height;
+		screenX = screen.width;
+	}
+
+	var leftvar = (screenX - popW) / 2;
+	var rightvar = (screenY - popH) / 2;
+
+	if(navigator.appName == "Microsoft Internet Explorer")
+	{
+		leftPos = leftvar;
+		topPos = rightvar - 150;
+	}
+	else
+	{ // adjust Netscape coordinates for scrolling
+		leftPos = (leftvar - pageXOffset);
+		topPos = (rightvar - pageYOffset - 225);
+	}
+
+	window.scrollTo(0,0);
+
+	showURLInDialog(url , features+",modal=yes,left="+leftPos+",top="+topPos);//NO I18N
+}
+
+//Edit domain details from the left side table
+//function editDomainDetails(resID , domName , domContName)
+function editDomainDetails( resID , domParam)
+{
+	var getDomURL = "/som.do?actionToCall=getDomainDetails&resourceID="+resID;//NO I18N
+
+	if(typeof domParam != "undefined")
+	{
+		getDomURL += "&domParam="+domParam;//NO I18N
+	}
+
+	var popW = 350, popH = 250;
+	var features = "position=absolute,modal=no,width=400,scrollbars=no,title="+I18N.getMsg('dc.som.addDomain.Edit_Domain_details');//NO I18N
+
+	showPopupInScreenCenter( getDomURL , features , popW , popH );
+}
+
+
+//Saving the selected computers from the popup
+//in a temporary table.
+var osPlatformJSON='{"isMac":false,"isLinux":false}';//No I18N
+function saveInitialData( domName , domControllerName ,selectedComputer , manualComputers, selectedOU , selectedContainer , selectedDomain , selectedWorkGroup, hideManagedComputer)
+{
+	var params="";
+
+	//TO DO -> validation before submitting
+	//validate and construct the parameter to pass
+	//document.getElementById("validationErrMsgRow").className="hide";
+
+	params = "domainName="+encodeURIComponent(domName)+"&dcName="+encodeURIComponent(domControllerName)+"&selectedComputer="+encodeURIComponent(selectedComputer)+"&manualComputer="+encodeURIComponent(manualComputers)+"&selectedOU="+encodeURIComponent(selectedOU)+"&selectedContainer="+encodeURIComponent(selectedContainer)+"&selectedDomain="+encodeURIComponent(selectedDomain)+"&selectedWorkGroup="+encodeURIComponent(selectedWorkGroup)+"&hideManagedComputer="+hideManagedComputer;//NO I18N
+
+	var url = "/som.do?actionToCall=saveInitialData";//NO I18N
+
+	var req = AjaxAPI.getXMLHttpRequest();
+
+	req.open("POST", url, true);
+
+	//Send the proper header information along with the request
+	req.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
+	req.setRequestHeader("Content-length", params.length);
+	req.setRequestHeader("Connection", "close");
+	req.send(params);
+
+	req.onreadystatechange = function(){
+		if(req.readyState == 4)
+		{
+			if (req.status == 200)
+			{
+				var respText = req.responseText;
+                                var respJSON=JSON.parse('{"SELECTED_COMPUTERS_COUNT":0,"ADDED_COMPUTERS_COUNT":0,"osPlatform":{"isMac":false,"isLinux":false}}');//No I18N
+				if(respText)
+				{
+					document.getElementById("addComputerInProgTR").className ="hide";
+
+					document.SOM_DEFN_FORM.addComputerOKButton.disabled = false;
+					document.SOM_DEFN_FORM.addComputerOKButton.className = "primaryActionBtn";
+					document.SOM_DEFN_FORM.addComputerCancelButton.disabled = false;
+					document.SOM_DEFN_FORM.addComputerCancelButton.className = "secondaryActionBtn";
+
+
+					closeDialog();
+                                        respJSON=JSON.parse(respText);
+
+					var compCount = respJSON.SELECTED_COMPUTERS_COUNT;
+
+					setSelectedComputersCount(compCount);
+					refreshSubView("SelectedComputersView");//NO I18N
+					if(compCount > 0)
+					{
+						disableFinishButton(false);
+					}
+					else
+					{
+						disableFinishButton(true);
+					}
+
+					var currentCompCount = respJSON.ADDED_COMPUTERS_COUNT;
+
+					var addCompMsg = "";
+					if(currentCompCount == 0)
+					{
+						addCompMsg = I18N.getMsg('dc.som.addComputer.No_comp_sel');
+					}
+					else if(currentCompCount == 1)
+					{
+						addCompMsg = I18N.getMsg('dc.som.addComputer.1_comp_sel');
+					}
+					else
+					{
+						addCompMsg = I18N.getMsg('dc.som.addComputer.comp_sel_count', new Array(currentCompCount+""));
+					}
+					document.getElementById("messageInfoForDeleteDomain").style.display = "none";
+					document.getElementById("messageInfo").style.display = "block";
+					document.getElementById("messageInfoTDForSelectComputers").innerHTML = addCompMsg;
+                                        
+                                        osPlatformJSON=respJSON.osPlatform;
+                                        
+                                        var platformObj=getOSUrlStr();
+                                        if(platformObj.osUrlStr!=''&&platformObj.osInfoStr!=''){
+                                            var alertMsg=I18N.getMsg('dc.som.somDefn.non_windows_agent_config_alert',new Array(platformObj.osInfoStr,platformObj.osUrlStr));
+                                            document.getElementById("agentSettingAlert").style.display="block";
+                                            document.getElementById("agentSettingAlertMsg").innerHTML=alertMsg;
+                                        }
+				}
+			}
+		}
+		else
+		{
+			return ;
+		}
+	};
+}
+function getOSUrlStr(){
+        var platformObj={osUrlStr:"",osInfoStr:""};
+        if(osPlatformJSON.isMac&&osPlatformJSON.isLinux){
+                platformObj.osUrlStr="<a class=\"macAgent bluetxt\" href=\""+getStaticUrl(osPlatformJSON.macConfigUrl+'&osPlatform=Linux','Mac Agent Settings')+"\">Mac</a>&nbsp;/&nbsp;<a class=\"linuxAgent bluetxt\" href=\""+getStaticUrl(osPlatformJSON.linuxConfigUrl+'&osPlatform=Mac','Linux Agent Settings')+"\">Linux</a>";
+                platformObj.osInfoStr="<span class=\"macAgent\">Mac</span>/<span class=\"linuxAgent\">Linux</span>";
+        }else if(osPlatformJSON.isMac){
+                platformObj.osUrlStr="<a class=\"macAgent bluetxt\" href=\""+getStaticUrl(osPlatformJSON.macConfigUrl,'Mac Agent Settings')+"\">Mac</a>";
+                platformObj.osInfoStr="<span class=\"macAgent\">Mac</span>";
+        }else if(osPlatformJSON.isLinux){
+                platformObj.osUrlStr="<a class=\"linuxAgent bluetxt\" href=\""+getStaticUrl(osPlatformJSON.linuxConfigUrl,'Linux Agent Settings')+"\">Linux</a>";
+                platformObj.osInfoStr="<span class=\"linuxAgent\">Linux</span>";
+        }
+        return platformObj;
+}
+function getStaticUrl(url,header){
+    
+    var staticUrl="javascript:openWindowFromTab('"+url+"','"+header+"','resizable=yes,status=no,scrollbars=no,','810','500')";//No I18N
+    return staticUrl;
+}
+function disableFinishButton( value )
+{
+	if(value == true)
+	{
+		document.getElementById("FinishButton").disabled = true;
+		document.getElementById("FinishButton").className = "buttongrey";
+	}
+	else
+	{
+		document.getElementById("FinishButton").disabled = false;
+		document.getElementById("FinishButton").className = "primaryActionBtn";
+	}
+}
+
+function setSelectedComputersCount( count )
+{
+   selectedComputersCount = count;
+}
+
+var prodType;
+var macComputerInDefn="false";
+var macComputerCount=0;
+function showPortOpenDialog( productType)
+{
+	prodType = productType;
+
+	var installAgent = document.SOM_MAIN_FORM.installAgentImm.checked;
+	/*
+	var installAgent = document.SOM_MAIN_FORM.installAgentImm[0].checked;
+	var installAgent1 = document.SOM_MAIN_FORM.installAgentImm[1].checked;
+	if(installAgent == false)
+	{
+		installAgent = installAgent1;
+	}
+	*/
+	if(installAgent == true)
+	{
+
+
+	//var returnText = "";
+	var req = AjaxAPI.getXMLHttpRequest();
+	
+	if(!showInstallWarnMsg())
+	{
+		getFirewallAndDCOMStatus("somDefn");//No I18N
+	}
+        }else
+	{
+		showConfirmDialogForAgentInstall();
+	}
+        
+
+}
+function showInstallWarnMsg(){
+    
+    if(osPlatformJSON.isMac||osPlatformJSON.isLinux)
+    {
+            var platformObj=getOSUrlStr();
+            document.getElementById('installWarnMsg').innerHTML=I18N.getMsg('desktopcentral.admin.somList.agent_settings_alert',new Array(platformObj.osUrlStr));
+            document.getElementById('installWarnMsg').style.display='';
+            disableFinishButton(true);
+            return true;
+    }
+    var isWarnMsgShown  =   (document.getElementById('installWarnMsg').style.display=='');
+    if(isWarnMsgShown)
+    disableFinishButton(false);
+    return false;
+    
+}
+function onInstallCheck(thisObj){
+    if(typeof thisObj != "undefined" && thisObj.checked){
+        showInstallWarnMsg();
+    }else{
+        var isWarnMsgShown  =   (document.getElementById('installWarnMsg').style.display=='');
+        if(isWarnMsgShown)
+        disableFinishButton(false);
+        document.getElementById('installWarnMsg').style.display='none';
+    }
+    
+}
+
+function showConfirmDialogForAgentInstall( firewallAndDCOMStatus )
+{
+	var installAgent = document.SOM_MAIN_FORM.installAgentImm.checked;
+	/*
+	var installAgent = document.SOM_MAIN_FORM.installAgentImm[0].checked;
+	var installAgent1 = document.SOM_MAIN_FORM.installAgentImm[1].checked;
+	if(installAgent == false)
+	{
+		installAgent = installAgent1;
+	}
+	*/
+	var selectComputer=selectedComputersCount;
+	if(installAgent == true)
+	{
+		if(typeof firewallAndDCOMStatus != "undefined" && firewallAndDCOMStatus != "-1")
+		{
+			showURLInDialog("/dcDialog.do?actionToCall=showConfirmDialogForInstallInDefnPage&selectedCompCount="+selectComputer //No I18N
+                                +"&firewallAndDCOMStatus="+firewallAndDCOMStatus ,"modal=yes,height=100,width=420,scrollbars=no,title="+I18N.getMsg('dc.som.addComputer.Agent_install') );//No I18N
+		}
+		else
+		{
+			showURLInDialog("/dcDialog.do?actionToCall=showConfirmDialogForInstallInDefnPage&selectedCompCount=" //No I18N
+                                +selectComputer ,"modal=yes,height=100,width=420,scrollbars=no,title="+I18N.getMsg('dc.som.addComputer.Agent_install') );//No I18N
+		}
+	}
+	else
+	{
+		saveFinalData();
+	}
+}
+
+//On click of 'Finish' button.
+function saveFinalData( firewallAndDCOMStatus )
+{
+	disableFinishButton( true );
+	document.getElementById("CancelButton").disabled = true;
+	document.getElementById("CancelButton").className = "buttongrey";
+
+	document.getElementById("saveInProgTR").className = "bodytext";
+
+	var url = "/som.do?actionToCall=saveFinalData";//NO I18N
+
+	var installAgent = document.SOM_MAIN_FORM.installAgentImm.checked;
+
+	/*
+	var installAgent = document.SOM_MAIN_FORM.installAgentImm[0].checked;
+	var installAgent1 = document.SOM_MAIN_FORM.installAgentImm[1].checked;
+	if(installAgent == false)
+	{
+		installAgent = installAgent1;
+	}
+	*/
+	var params = "installAgentImmediately="+installAgent;//NO I18N
+
+	if(typeof firewallAndDCOMStatus != "undefined")
+	{
+		params += "&firewallAndDCOMStatus="+firewallAndDCOMStatus;//NO I18N
+	}
+        /*
+	var configureAgentSettings = document.SOM_MAIN_FORM.configureAgentSettings[0].checked;
+	params += "&configureAgentSettings="+configureAgentSettings;//NO I18N
+
+	if(configureAgentSettings == true)
+	{
+		params += "&ENABLE_HTTPS="+document.SOM_MAIN_FORM.ENABLE_HTTPS.checked+"&ENABLE_CHECKSUM="+document.SOM_MAIN_FORM.ENABLE_CHECKSUM.checked+"&ENABLE_REMOTE_ADMIN="+document.SOM_MAIN_FORM.ENABLE_REMOTE_ADMIN.checked+"&HIDE_UNINSTALL="+document.SOM_MAIN_FORM.HIDE_UNINSTALL.checked+"&SERVER_IPADDR="+document.SOM_MAIN_FORM.SERVER_IP_ADDRESS.value+"&AUTO_SAVE_IP_CHANGE="+document.SOM_MAIN_FORM.AUTO_SAVE_IP_CHANGE.checked+"&SERVICE_PROTECT="+document.SOM_MAIN_FORM.SERVICE_PROTECT.checked;//NO I18N
+        if(prodType == "true")
+		{
+			params += "&PATCH_SCAN="+document.SOM_MAIN_FORM.PATCH_SCAN.checked+"&INVENTORY_SCAN="+document.SOM_MAIN_FORM.INVENTORY_SCAN.checked;//NO I18N
+		}
+	}*/
+
+	var req = AjaxAPI.getXMLHttpRequest();
+
+	//Use post request, as 'GET' fails for more data.
+	req.open("POST", url, true);
+
+	//Send the proper header information along with the request
+	req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	req.setRequestHeader("Content-length", params.length);
+	req.setRequestHeader("Connection", "close");
+	req.send(params);
+	req.onreadystatechange = function(){
+		if(req.readyState == 4)
+		{
+			if (req.status == 200)
+			{
+				document.getElementById("saveInProgTR").className = "hide";
+
+				disableFinishButton(false);
+				document.getElementById("CancelButton").disabled = false;
+				document.getElementById("CancelButton").className = "secondaryActionBtn";
+
+				var responsetext;
+				if(req.responseText)
+				{
+					//if(failure)
+					responsetext = req.responseText;
+				}
+				if(responsetext)
+				{
+                                        var responseStateJSON=JSON.parse(responsetext);
+					if(responseStateJSON.isSuccess)
+					{
+						var responsesplit=responsetext.split(",");
+						location.href="/som.do?actionToCall=showManagedComputers&installAgentParam="+installAgent+"&src=addSoM";
+					}
+                                        else if(!responseStateJSON.isSuccess&&(responseStateJSON.errorCause.indexOf("Firewall")!=-1
+                                                ||responseStateJSON.errorCause.indexOf("Unknown")!=-1
+                                                ))
+					{
+						document.getElementById("errInfoTR").className = "bodyboldred";
+						document.getElementById("errInfo").innerHTML = responseStateJSON.errorMsg;
+					}
+					else if(!responseStateJSON.isSuccess&&responseStateJSON.errorCause.indexOf("Free")!=-1)
+					{
+						document.getElementById("errInfoTR").className = "bodyboldred";
+						document.getElementById("errInfo").innerHTML = responseStateJSON.errorMsg;
+					}
+					else  if(!responseStateJSON.isSuccess&&responseStateJSON.errorCause.indexOf("License")!=-1)
+                                        {
+                                                document.getElementById("licenseMismatchInfoTR").className = "txt";
+                                                document.getElementById("licenseMismatchInfo").innerHTML = responseStateJSON.errorMsg;
+                                        }
+				}
+			}
+		}
+		else
+		{
+			return ;
+		}
+	};
+}
+
+//This fn. removes selected computers
+//from the right side table
+function deleteSelectedComputer( selectedCompId )
+{
+	params = "selectedComputers="+selectedCompId;//NO I18N
+	var url = "/som.do?actionToCall=removeComputers";//NO I18N
+
+	var req = AjaxAPI.getXMLHttpRequest();
+	req.open("POST", url, true);
+	req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	req.setRequestHeader("Content-length", params.length);
+	req.setRequestHeader("Connection", "close");
+	req.send(params);
+	req.onreadystatechange = function(){
+		if(req.readyState == 4)
+		{
+			if (req.status == 200)
+			{
+				var respText = req.responseText;
+				var countIndex = respText.indexOf("SELECTED_COMPUTERS_COUNT=");
+				var compCount = respText.substring(25, respText.length);
+				setSelectedComputersCount(compCount);
+
+				//after delete, show the changes in the view
+
+				refreshSubView("SelectedComputersView");//NO I18N
+				if(compCount > 0)
+				{
+					disableFinishButton(false);
+				}
+				else
+				{
+					disableFinishButton(true);
+				}
+			}
+		}
+		else
+		{
+			return ;
+		}
+	};
+}
+
+//Cancel operation
+function cancelSelectedComputers()
+{
+	var url = "/som.do?actionToCall=deleteSelectedComputers";//NO I18N
+	var params = "";
+
+	var req = AjaxAPI.getXMLHttpRequest();
+	req.open("POST", url, true);
+	req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	req.setRequestHeader("Content-length", params.length);
+	req.setRequestHeader("Connection", "close");
+	req.send(params);
+	req.onreadystatechange = function(){
+		if(req.readyState == 4)
+		{
+			if (req.status == 200)
+			{
+				//after delete, forward to main page.
+				location.href="/som.do?actionToCall=showManagedComputers";
+			}
+		}
+		else
+		{
+			return ;
+		}
+	};
+}
+
+function refreshDomains()
+{
+	document.getElementById("messageInfo").style.display = "none";
+	document.getElementById("messageInfoForDeleteDomain").style.display = "none";
+
+	document.getElementById("DOMAIN_REFRESH_IN_PROGRESS_ROW").className = "";
+	document.getElementById("DOMAIN_REFRESH_SPAN_NO_LINK").className = "";
+	document.getElementById("DOMAIN_REFRESH_SPAN_LINK").className = "hide";
+
+	var url ='/som.do?actionToCall=refreshDomains';//NO I18N
+	var req = AjaxAPI.getXMLHttpRequest();
+	if(req)
+	{
+		req.open("GET", url, true);
+		if (window.XMLHttpRequest)
+		{
+			req.send(null);
+		}
+		else if (window.ActiveXObject)
+		{
+			req.send();
+		}
+		req.onreadystatechange = function(){
+			if (req.readyState == 4)
+			{
+				if (req.status == 200)
+				{
+					if(req.responseText)
+					{
+						if(req.responseText == "false")
+						{
+							document.getElementById("DOMAIN_REFRESH_IN_PROGRESS_ROW").className = "hide";
+							document.getElementById("DOMAIN_REFRESH_SPAN_NO_LINK").className = "hide";
+							document.getElementById("DOMAIN_REFRESH_SPAN_LINK").className = "";
+						}
+						else
+						{
+							getDomainRefreshStatusAndUpdate();
+						}
+					}
+				}
+			}
+		};
+	}
+}
+
+function getDomainRefreshStatusAndUpdate()
+{
+	var url ='/som.do?actionToCall=getDomainRefreshStatus';//NO I18N
+	var req = AjaxAPI.getXMLHttpRequest();
+	if(req)
+	{
+		req.open("GET", url, true);
+		if (window.XMLHttpRequest)
+		{
+			req.send(null);
+		}
+		else if (window.ActiveXObject)
+		{
+			req.send();
+		}
+		req.onreadystatechange = function(){
+			if (req.readyState == 4)
+			{
+				if (req.status == 200)
+				{
+					if(req.responseText)
+					{
+						//alert(req.responseText);
+						if(req.responseText == "false")
+						{
+							document.getElementById("DOMAIN_REFRESH_IN_PROGRESS_ROW").className = "hide";
+							document.getElementById("DOMAIN_REFRESH_SPAN_NO_LINK").className = "hide";
+							document.getElementById("DOMAIN_REFRESH_SPAN_LINK").className = "";
+							refreshSubView("AllDomainsView");//NO I18N
+						}
+						else
+						{
+							setTimeout( "getDomainRefreshStatusAndUpdate()", 2000);
+						}
+					}
+				}
+			}
+		};
+	}
+}
+
+function showManagedComputers( checked)
+{
+	if(checked == true)
+	{
+		setManagedStatusFilter("ManagedDomains");//NO I18N
+	}
+	else
+	{
+		setManagedStatusFilter("AllDomains");//NO I18N
+	}
+}
+
+function setManagedStatusFilter(domainType)
+{
+	var link = "domainType="+domainType;//NO I18N
+ 	stateData["AllDomainsView"]["_D_RP"] = link;
+	refreshSubView("AllDomainsView");//NO I18N
+}
+
+function closeInfo( elemid )
+{
+	document.getElementById(elemid).style.display = 'none';
+}
+
+var deleteDomainResId;
+var deleteDomainName;
+
+function deleteDomainFromDialog( domainNameToDelete )
+{
+	if(typeof domainNameToDelete != "undefined")
+	{
+		deleteDomainName = domainNameToDelete;
+	}
+
+	//show in progress
+	document.getElementById("messageInfo").style.display = "none";
+	document.getElementById("messageInfoForDeleteDomain").style.display = "block";
+	document.getElementById("messageInfoForDeleteDomainTable").className = "infoboard inProgress small";
+	document.getElementById("closeForDeleteDomain").className = "hide";
+	document.getElementById("messageInfoTDForDeleteDomain").innerHTML = I18N.getMsg('dc.som.addComputer.Delete_domain', new Array(domainNameToDelete));
+	//show in progress
+
+	var deleteDomURL = '/addDomain.do?actionToCall=deleteDomainDetails&resourceID='+deleteDomainResId+'&domainName='+domainNameToDelete;//NO I18N
+
+	//send req to server
+	//get the response
+	//show the result in the layer
+	//either successful deletion or
+	//not able to delete like
+	var req = AjaxAPI.getXMLHttpRequest();
+	if(req)
+	{
+		req.open("GET", deleteDomURL, true);
+		if (window.XMLHttpRequest)
+		{
+			req.send(null);
+		}
+		else if (window.ActiveXObject)
+		{
+			req.send();
+		}
+		req.onreadystatechange = function(){
+			if (req.readyState == 4)
+			{
+				if (req.status == 200)
+				{
+					var respText = req.responseText;
+					if(respText)
+					{
+						var msg = "";
+						if(respText == "true")
+						{
+							refreshSubView("AllDomainsView");//NO I18N
+							document.getElementById("messageInfoForDeleteDomain").style.display = "block";
+							document.getElementById("messageInfoForDeleteDomainTable").className = "sucessboard";
+
+							document.getElementById("closeForDeleteDomain").className = "bodytext";
+							document.getElementById("messageInfoTDForDeleteDomain").innerHTML = I18N.getMsg('dc.som.addComputer.domain_dele_success', new Array(domainNameToDelete));
+							window.setTimeout(function(){document.getElementById("messageInfoForDeleteDomain").style.display="none";},3000);//auto hide the message when shown..
+						}
+						else
+						{
+							msg = I18N.getMsg('dc.som.addComputer.Delete_dom_fail',new Array(domainNameToDelete));
+							document.getElementById("messageInfoForDeleteDomain").style.display = "block";
+							document.getElementById("messageInfoForDeleteDomainTable").className = "message alert";
+							document.getElementById("closeForDeleteDomain").className = "bodytext";
+							document.getElementById("messageInfoTDForDeleteDomain").innerHTML = msg;
+
+						}
+					}
+				}
+			}
+		};
+	}
+}
+
+//delete domain details from the left side table
+function deleteDomainDetails( resID , domName )
+{
+	deleteDomainResId = resID;
+
+	if(typeof domName != "undefined")
+	{
+		deleteDomainName = domName;
+	}
+
+            showURLInDialog("/dcDialog.do?actionToCall=deleteDomainCheck&resourceID="+deleteDomainResId , "position=relative,modal=no,height=100,width=350,scrollbars=no,title="+I18N.getMsg('dc.som.addComputer.delete_domain'));//NO I18N
+
+
+}
+
+/*For post agent installation settings
+*/
+
+function hideShow(chkBx)
+{
+	chked = chkBx.checked;
+	sectionName = chkBx.name;
+	if(chked)
+	{
+		document.getElementById(sectionName+"2").style.display="block";
+		document.getElementById(sectionName+"1").style.display="none";
+	}
+	else
+	{
+		document.getElementById(sectionName+"2").style.display="none";
+		document.getElementById(sectionName+"1").style.display="block";
+	}
+	document.getElementsByName(sectionName)[0].checked = chked;
+	document.getElementsByName(sectionName)[1].checked = chked;
+
+	loadSelectedValue();
+}
+
+
+/*For post agent installation settings
+*/
+
+
+
+function closeImportSummary( divid ,innerTab)
+{
+    var url;
+ 	var params = "";
+ 	if(innerTab=="branchOfficeboundary"){
+ 		url = "/branchOfficeConf.do?actionToCall=closeImportSummary&importFrom=ipScope";//NO I18N
+ 	}
+ 	else if(innerTab=="computers"){
+ 		url = "/som.do?actionToCall=closeImportSummary";//NO I18N
+ 	}else{
+ 		url = "/branchOfficeConf.do?actionToCall=closeImportSummary";//NO I18N
+ 	}
+	var divelem = document.getElementById(divid);
+    if (divelem)
+    {
+		divelem.style.display = "none";
+    }
+
+
+	var req = AjaxAPI.getXMLHttpRequest();
+
+    //Use post request, as 'GET' fails for more data.
+    req.open("POST", url, true);
+
+    //Send the proper header information along with the request
+    req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    req.setRequestHeader("Content-length", params.length);
+    req.setRequestHeader("Connection", "close");
+    req.send(params);
+
+	req.onreadystatechange = function()
+	{
+
+	};
+}
+
+var boImportTimeID,ipImportTimeID,computersImportTimeID;
+function getImportStatus()
+{
+    var url = "/branchOfficeConf.do?actionToCall=getImportROStatus";//NO I18N
+	var req = AjaxAPI.getXMLHttpRequest();
+	if(req)
+	{
+        req.open("GET", url, true);
+		if (window.XMLHttpRequest)
+		{
+			req.send(null);
+		}
+		else if (window.ActiveXObject)
+		{
+			req.send();
+		}
+		req.onreadystatechange = function(){
+			if (req.readyState == 4)
+			{
+				if (req.status == 200)
+				{
+					var respText = trimAll(req.responseText);
+                     window.clearInterval(boImportTimeID);
+                        if(respText == "STARTED")
+                        {
+                           boImportTimeID = window.setInterval("getImportStatus();",15000);
+                        }else
+                            {
+                                document.location.href = "/branchOfficeConf.do?actionToCall=showBranchList";
+                            }
+                }
+			}
+		};
+	}
+}
+function getIPScopeImportStatus()
+{
+    var url = "/branchOfficeConf.do?actionToCall=getIPScopeImportStatus";//NO I18N
+	var req = AjaxAPI.getXMLHttpRequest();
+	if(req)
+	{
+        req.open("GET", url, true);
+		if (window.XMLHttpRequest)
+		{
+			req.send(null);
+		}
+		else if (window.ActiveXObject)
+		{
+			req.send();
+		}
+		req.onreadystatechange = function(){
+			if (req.readyState == 4)
+			{
+				if (req.status == 200)
+				{
+					var respText = trimAll(req.responseText);
+                     window.clearInterval(ipImportTimeID);
+                        if(respText == "STARTED")
+                        {
+                           ipImportTimeID = window.setInterval("getIPScopeImportStatus();",15000);
+                        }else
+                            {
+                                document.location.href = "/branchOfficeConf.do?actionToCall=showRemoteOfficeBoundary";
+                            }
+                }
+			}
+		};
+	}
+}
+function getImportComputerStatus()
+{
+    var url = "/som.do?actionToCall=getImportComputerStatus";//NO I18N
+	var req = AjaxAPI.getXMLHttpRequest();
+	if(req)
+	{
+        req.open("GET", url, true);
+		if (window.XMLHttpRequest)
+		{
+			req.send(null);
+		}
+		else if (window.ActiveXObject)
+		{
+			req.send();
+		}
+		req.onreadystatechange = function(){
+			if (req.readyState == 4)
+			{
+				if (req.status == 200)
+				{
+					var respText = trimAll(req.responseText);
+                     window.clearInterval(computersImportTimeID);
+                        if(respText == "STARTED")
+                        {
+                           computersImportTimeID = window.setInterval("getImportComputerStatus();",15000);
+                        }else
+                            {
+                                document.location.href = "/som.do?actionToCall=showManagedComputers";
+                            }
+                }
+			}
+		};
+	}
+}
+function showMsiCreationFailure()
+{
+    var url = "/jsp/admin/som/recreateAgentMsi.jsp"; //No I18N
+    showURLInDialog(url , "position=relative,modal=yes,height=100,width=350,scrollbars=no,title="+I18N.getMsg('dc.som.msicreation_failed'));//NO I18N
+}
+function regenerateAgent()
+{
+    document.getElementById("messageInfoForActionInProgress").style.display = "block";
+    document.getElementById("messageInfoTDForActionInProgress").innerHTML = I18N.getMsg('dc.som.msi_failed.recreating_agent_progress_message');
+
+    var url = "/agentSettings.do?actionToCall=regenerateAgent";//NO I18N
+
+    var req = AjaxAPI.getXMLHttpRequest();
+
+    req.open("GET", url, true);
+
+    //Send the proper header information along with the request
+    req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    req.setRequestHeader("Connection", "close");
+    req.send();
+    req.onreadystatechange = function()
+    {
+        if (req.readyState == 4)
+        {
+                if (req.status == 200)
+                {
+                    setTimeout( "getMsiStatus()", 5000);
+                }
+        }
+    }
+}
+function getMsiStatus()
+{
+	disableActions(true);
+
+	var url ='/agentSettings.do?actionToCall=getMsiCreationStatus';//NO I18N
+	var req = AjaxAPI.getXMLHttpRequest();
+	if(req)
+	{
+		req.open("GET", url, true);
+		if (window.XMLHttpRequest)
+		{
+			req.send(null);
+		}
+		else if (window.ActiveXObject)
+		{
+			req.send();
+		}
+		req.onreadystatechange = function(){
+			if (req.readyState == 4)
+			{
+				if (req.status == 200)
+				{
+                                    var respText = req.responseText;
+					if(respText == false)
+					{
+                                            setTimeout( "getMsiStatus()", 5000);
+					}
+                                        else
+                                            {
+                                                window.location = "/som.do?actionToCall=showManagedComputers";
+                                            }
+				}
+			}
+		};
+	}
+}
+function finalDeleteBranchComputer(selectedCompID,compName,containerName) {
+	var myAnonFunction = function(response,reqOptions)
+	{
+		renderBranchMemberView("BranchSelectedComputers");//No I18N
+	};
+	if(compName && containerName){
+		var elem = document.getElementById("deletedBranchMembers");
+		compName = compName.replace(/^\s*/, "").replace(/\s*$/, "");
+		containerName = containerName.replace(/^\s*/, "").replace(/\s*$/, "");
+		if(elem){
+			var deletedObj = {};
+			if(elem.value.length==0){
+				elem.value = "{}";
+			}
+			deletedObj = JSON.parse(elem.value);
+			if(!deletedObj.hasOwnProperty(containerName)){
+				deletedObj[containerName] = [];
+			}
+			deletedObj[containerName].push(compName);
+			elem.value = JSON.stringify(deletedObj);
+		}
+	}
+	AjaxAPI.sendRequest({URL:"/branchOfficeConf.do?actionToCall=deleteBranchSelectedComputers",PARAMETERS:"&selectedCompID="+selectedCompID,ONSUCCESSFUNC:myAnonFunction});//No I18N
+}
+function deleteBranchSelectedComputer(menuItemName, refId, additionalParams, index){
+    var actUrl          = "/branchOfficeConf.do?actionToCall=preDeleteBranchSelectedComputer";//No I18N
+    var tblModel        = getTableModel(refId);
+    var colInd1         = tblModel.getColumnIndex("BranchSelectedComputer.SELECTED_COMPUTER_ID"); //No I18N
+    var selectedCompID  = tblModel.getValueAt(index, colInd1);
+    var colInd2         = tblModel.getColumnIndex("BranchSelectedComputer.COMPUTER_NAME");//No I18N
+	var compName        = tblModel.getValueAt(index, colInd2);
+	var colInd3         = tblModel.getColumnIndex("BranchSelectedComputer.CONTAINER_NAME");//No I18N
+	var containerName   = tblModel.getValueAt(index, colInd3);
+    actUrl              = actUrl+"&selectedCompID="+selectedCompID;//No I18N
+    jQuery.ajax({
+        url: actUrl, //No I18N
+        type: 'POST', //No I18N
+        dataType: 'json', //No I18N
+        success: function (response) {
+			if(!response.selectedCompManaged){
+				finalDeleteBranchComputer(response.selectedCompID);
+			}else{
+				var title=I18N.getMsg('dc.js.common.ALERT');
+				var confirmActionText = I18N.getMsg('dc.som.wan.agent_delete_alert',new Array(compName));
+				showDialog('<table class="bodytext" width="100%" height="100%"><tr><td width="50" rowspan="3">&nbsp;&nbsp;&nbsp;<img src="images/alerts.png"/></td><td></td><td></td></tr><tr ><td colspan="2" style="padding:3px;"><span class="bodytext">'+confirmActionText+'</span></td></tr> <tr><td></td><td></td></tr>' +
+					'<tr><td align="center" colspan="3"  class="formSubmitBg"><input type="button" value="'+I18N.getMsg('dc.common.ok')+'" class="primaryActionBtn" onclick="closeDialog(null,this);finalDeleteBranchComputer('+response.selectedCompID+',&quot;'+compName+'&quot;,&quot;'+containerName+'&quot;);">&nbsp;&nbsp;<input type="button" value="'+I18N.getMsg('dc.js.common.CANCEL')+'" class="secondaryActionBtn" onClick="closeDialog(null,this);"></td></tr></table>','width=500,height=130,modal=yes,title='+title);//NO I18N
+			}
+        },
+        error: function (response) {
+            
+        }
+    });
+}

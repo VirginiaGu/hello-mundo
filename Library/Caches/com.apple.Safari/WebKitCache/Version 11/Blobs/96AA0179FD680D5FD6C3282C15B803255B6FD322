@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="es-ES" class="no-js">
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="x-rim-auto-match" content="none">
+<meta name="robots" content="NOODP">
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="/images/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="/images/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/images/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/images/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/images/apple-touch-icon-152x152.png">
+<link rel="icon" type="image/png" href="/images/favicon-196x196.png" sizes="196x196">
+<link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/images/favicon-128.png" sizes="128x128">
+<meta name="application-name" content="Styde.net">
+<meta name="msapplication-TileColor" content="#D8574B">
+<meta name="msapplication-TileImage" content="/images/mstile-144x144.png">
+<meta name="msapplication-square70x70logo" content="/images/mstile-70x70.png">
+<meta name="msapplication-square150x150logo" content="/images/mstile-150x150.png">
+<meta name="msapplication-wide310x150logo" content="/images/mstile-310x150.png">
+<meta name="msapplication-square310x310logo" content="/images/mstile-310x310.png">
+<meta property="og:image" content="https://styde.net/images/StydeAvatar6.png">
+<meta name="twitter:image" content="https://styde.net/images/StydeAvatar6.png">
+<meta property="og:url" content="https://styde.net/primeros-pasos-con-git-y-github/">
+<meta property="og:title" content="Primeros pasos con git y GitHub">
+<meta name="description" content="Aprende sobre el funcionamiento de git mientras creas tu primer repositorio en GitHub, trabaja de forma colaborativa con grandes grupos de desarrollo como todo un profesional.">
+<meta property="og:description" content="Aprende sobre el funcionamiento de git mientras creas tu primer repositorio en GitHub, trabaja de forma colaborativa con grandes grupos de desarrollo como todo un profesional.">
+<script>(function(){document.documentElement.className='js'})();</script>
+<title>Primeros pasos con git y GitHub &#8211; Styde.net</title>
+<link rel='dns-prefetch' href='//s.w.org'/>
+<link rel="alternate" type="application/rss+xml" title="Styde.net &raquo; Feed" href="https://styde.net/feed/"/>
+<link rel="alternate" type="application/rss+xml" title="Styde.net &raquo; RSS de los comentarios" href="https://styde.net/comments/feed/"/>
+<link rel="alternate" type="application/rss+xml" title="Styde.net &raquo; Primeros pasos con git y GitHub RSS de los comentarios" href="https://styde.net/primeros-pasos-con-git-y-github/feed/"/>
+<link rel='stylesheet' id='pmpro_print-group-css' href='https://styde.net/wp-content/plugins/bwp-minify/min/?f=wp-content/plugins/paid-memberships-pro/css/print.css&#038;ver=1501741377' type='text/css' media='print'/>
+<link rel='stylesheet' id='theme-my-login-group-css' href='https://styde.net/wp-content/plugins/bwp-minify/min/?f=wp-content/plugins/theme-my-login/theme-my-login.css,wp-content/plugins/crayon-syntax-highlighter/themes/tomorrow-night/tomorrow-night.css,wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css,wp-content/plugins/invitations-for-slack/invitations-for-slack/assets/style.css,wp-content/plugins/wpcomplete/public/css/wpcomplete-public.css,wp-content/themes/styde/style.css,wp-content/themes/styde/css/styles.css,wp-content/plugins/authorsure/styles/public.css&#038;ver=1501741377' type='text/css' media='all'/>
+<script type='text/javascript' src='https://styde.net/wp-content/plugins/bwp-minify/min/?f=wp-includes/js/jquery/jquery.js,wp-includes/js/jquery/jquery-migrate.min.js&#038;ver=1501741377'></script>
+<link rel='https://api.w.org/' href='https://styde.net/wp-json/'/>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://styde.net/xmlrpc.php?rsd"/>
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://styde.net/wp-includes/wlwmanifest.xml"/>
+<link rel='prev' title='Múltiples bases de datos con Laravel 5 y Eloquent' href='https://styde.net/multiples-bases-de-datos-con-laravel-5-y-eloquent/'/>
+<link rel='next' title='Lumen, la versión micro framework de Laravel' href='https://styde.net/lumen-la-version-micro-framework-de-laravel-php/'/>
+<link rel="canonical" href="https://styde.net/primeros-pasos-con-git-y-github/"/>
+<link rel='shortlink' href='https://styde.net/?p=1679'/>
+<style type="text/css">a.wpc-complete{background:#217677;color:#ffffff;}a.wpc-completed{background:#1c1c33;color:#ffffff;}.wpc-radial-progress,.wpc-bar-progress .wpc-progress-track{background-color:#cac8c8;}.wpc-radial-progress .wpc-fill,.wpc-bar-progress .wpc-progress-fill{background-color:#217677;}.wpc-radial-progress .wpc-numbers,.wpc-bar-progress .wpc-numbers{color:#217677;}.wpc-bar-progress[data-progress="75"] .wpc-numbers,.wpc-bar-progress[data-progress="76"] .wpc-numbers,.wpc-bar-progress[data-progress="77"] .wpc-numbers,.wpc-bar-progress[data-progress="78"] .wpc-numbers,.wpc-bar-progress[data-progress="79"] .wpc-numbers,.wpc-bar-progress[data-progress="80"] .wpc-numbers,.wpc-bar-progress[data-progress="81"] .wpc-numbers,.wpc-bar-progress[data-progress="82"] .wpc-numbers,.wpc-bar-progress[data-progress="83"] .wpc-numbers,.wpc-bar-progress[data-progress="84"] .wpc-numbers,.wpc-bar-progress[data-progress="85"] .wpc-numbers,.wpc-bar-progress[data-progress="86"] .wpc-numbers,.wpc-bar-progress[data-progress="87"] .wpc-numbers,.wpc-bar-progress[data-progress="88"] .wpc-numbers,.wpc-bar-progress[data-progress="89"] .wpc-numbers,.wpc-bar-progress[data-progress="90"] .wpc-numbers,.wpc-bar-progress[data-progress="91"] .wpc-numbers,.wpc-bar-progress[data-progress="92"] .wpc-numbers,.wpc-bar-progress[data-progress="93"] .wpc-numbers,.wpc-bar-progress[data-progress="94"] .wpc-numbers,.wpc-bar-progress[data-progress="95"] .wpc-numbers,.wpc-bar-progress[data-progress="96"] .wpc-numbers,.wpc-bar-progress[data-progress="97"] .wpc-numbers,.wpc-bar-progress[data-progress="98"] .wpc-numbers,.wpc-bar-progress[data-progress="99"] .wpc-numbers,.wpc-bar-progress[data-progress="100"] .wpc-numbers{color:#cac8c8;}li .wpc-lesson{}li .wpc-lesson-complete{}li .wpc-lesson-completed{opacity:.5;}li .wpc-lesson-completed:after{content:"✔";margin-left:5px;}</style> <style type="text/css">.recentcomments a{display:inline!important;padding:0!important;margin:0!important;}</style>
+<script data-no-minify="1" data-cfasync="false">(function(w,d){function a(){var b=d.createElement("script");b.async=!0;b.src="https://styde.net/wp-content/plugins/wp-rocket/inc/front/js/lazyload.1.0.5.min.js";var a=d.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a)}w.attachEvent?w.attachEvent("onload",a):w.addEventListener("load",a,!1)})(window,document);</script> <script>dataLayer = [];</script>
+<style media="print">.box.widget{display:none;}.banner{color:black!important;}</style>
+</head>
+<body class="post-template-default single single-post postid-1679 single-format-standard pmpro-body-has-access">
+ 
+<noscript><iframe src="https://styde.net/wp-content/plugins/wp-rocket/inc/front/img/blank.gif" data-lazy-src="//www.googletagmanager.com/ns.html?id=GTM-5P8597" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5P8597');</script>
+ 
+<div class="wrap" itemscope itemtype="http://schema.org/WebPage">
+<header class="head" itemscope itemtype="http://schema.org/WPHEader">
+<div class="container">
+<div class="col12">
+<div class="logo" itemscope itemtype="http://schema.org/Organization">
+<a href="/" itemprop="name">Styde.net</a>
+</div>
+<nav class="main-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
+<a href="#menu-principal" class="btn-menu">Menu <i class="icon-menu"></i><i class="icon-cancel"></i></a>
+<div class="btn-nav-subs">
+<a href="/planes" class="btn btn-green-cta">¡Regístrate ahora!</a>
+</div>
+<ul id="menu-principal" class="main-menu">
+<li><a href="https://styde.net/cursos/">Cursos y Series</a></li>
+<li class="current"><a href="https://styde.net/blog/">Blog</a></li>
+<li><a href="https://styde.net/planes/">
+Regístrate </a></li>
+<li><a href="https://styde.net/login/">Inicia sesión</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</header>
+<section class="banner banner-post-serie">
+<div class="container">
+<div class="col10">
+<h1 itemprop="name"><a href="https://styde.net/primeros-pasos-con-git-y-github/">Primeros pasos con git y GitHub</a></h1>
+</div>
+</div>
+</section>
+<section class="curso-info">
+<div class="container">
+<div class="col9 m-2_3">
+<p>
+<i class="icon-graduation-cap"></i>
+<strong>Curso: <a href="https://styde.net/git/">Git</a></strong>
+</p>
+</div>
+<div class="col3 m-1_3">
+<p class="lesson-serie-lessons"><a href="https://styde.net/git/"><i class="icon-list"></i> Ver todas las lecciones</a></p>
+</div>
+</div>
+</section>
+<section>
+<div class="container">
+<div class="col8 post-content">
+<p class="post-meta">
+<span class="post-author"><i class="icon-user"></i> Jeff </span>
+<span class="post-date"><i class="icon-calendar"></i> 13/04/2015</span> <br>
+<span class="post-category"><i class="icon-folder-open"></i> <a href="https://styde.net/category/git/" rel="category tag">Git</a></span>
+<span class="post-comments"><i class="icon-chat"></i> <a href="https://styde.net/primeros-pasos-con-git-y-github/#comments"><span class="dsq-postid" data-dsqidentifier="1679 http://duilio.me/?p=1679">21 Comentarios</span></a></span>
+</p>
+<p class="post-share">
+Comparte en
+<a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fstyde.net%2Fprimeros-pasos-con-git-y-github%2F" class="btn btn-facebook btn-sm" target="_blank"><i class="icon-facebook"></i> Facebook</a>
+<a href="https://twitter.com/intent/tweet?text=Primeros pasos con git y GitHub https%3A%2F%2Fstyde.net%2Fprimeros-pasos-con-git-y-github%2F&via=Stydenet" class="btn btn-sm btn-twitter" target="_blank"><i class="icon-twitter"></i> Twitter</a>
+<a href="https://plus.google.com/share?url=https%3A%2F%2Fstyde.net%2Fprimeros-pasos-con-git-y-github%2F" class="btn btn-sm btn-google" target="_blank"><i class="icon-googleplus-rect"></i> Google+</a>
+</p>
+<p><a href="https://styde.net/wp-content/uploads/2015/04/git-hub.logo_.png"><img class="aligncenter size-full wp-image-1688" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="https://styde.net/wp-content/uploads/2015/04/git-hub.logo_.png" alt="git-hub.logo" width="650" height="171" data-lazy-srcset="https://styde.net/wp-content/uploads/2015/04/git-hub.logo_.png 650w, https://styde.net/wp-content/uploads/2015/04/git-hub.logo_-300x79.png 300w" data-lazy-sizes="(max-width: 650px) 100vw, 650px"/><noscript><img class="aligncenter size-full wp-image-1688" src="https://styde.net/wp-content/uploads/2015/04/git-hub.logo_.png" alt="git-hub.logo" width="650" height="171" srcset="https://styde.net/wp-content/uploads/2015/04/git-hub.logo_.png 650w, https://styde.net/wp-content/uploads/2015/04/git-hub.logo_-300x79.png 300w" sizes="(max-width: 650px) 100vw, 650px"/></noscript></a></p>
+<p>Git es un sistema de control de versiones muy potente y sin duda el más usado en la actualidad que nos permite llevar un registro histórico de todos los cambios realizados en cada uno de los archivos a lo largo del desarrollo de un proyecto. A su vez, git ofrece una gran solución a la hora de trabajar de forma colaborativa como parte de un equipo de desarrollo, permitiendo que cada persona escriba código de forma independiente que puede ser integrado y compartido de manera muy fácil y rápida.</p>
+<p><span id="more-1679"></span></p>
+<p><b>Git y GitHub</b></p>
+<p>GitHubes una plataforma web que nos permite alojar código fuente de forma gratuita en la nube haciendo uso del sistema de control de versiones Git. Funciona como una red social donde se pueden compartir proyectos con la idea de que otros usuarios colaboren con el desarrollo.</p>
+<p>El registro básico de GitHub es gratuito y nos da acceso a la creación de repositorios públicos de forma ilimitada, para repositorios privados se debe adquirir un plan de pago.</p>
+<p><b>Crear un repositorio en GitHub</b></p>
+<p>Lo primero que se debe hacer es crear una cuenta de usuario ingresando al siguiente enlace</p>
+<p><a href="https://github.com/"><b>https://github.com/</b></a></p>
+<p>y configurar las variables globales de git en local, como nombre de usuario.</p>
+<p></p> 
+<div id="crayon-598309bc6b0bf297295896" class="crayon-syntax crayon-theme-tomorrow-night crayon-font-monaco crayon-os-mac print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 24px; margin-bottom: 12px; font-size: 14px !important; line-height: 28px !important;">
+<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><span class="crayon-title"></span>
+<div class="crayon-tools" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><div class="crayon-button crayon-nums-button" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+<div class="crayon-info" style="min-height: 19.6px !important; line-height: 19.6px !important;"></div>
+<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 14px !important; line-height: 28px !important;">
+$ git config --global user.name "tu_usuario"
+
+$ git config --global user.email tu@email.com</textarea></div>
+<div class="crayon-main" style="">
+<table class="crayon-table">
+<tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 28px !important;"><div class="crayon-num" data-line="crayon-598309bc6b0bf297295896-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-598309bc6b0bf297295896-2">2</div><div class="crayon-num" data-line="crayon-598309bc6b0bf297295896-3">3</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 28px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-598309bc6b0bf297295896-1"><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-e">git </span><span class="crayon-v">config</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-e">global </span><span class="crayon-v">user</span><span class="crayon-e">.name</span><span class="crayon-h"> </span><span class="crayon-s">"tu_usuario"</span></div><div class="crayon-line crayon-striped-line" id="crayon-598309bc6b0bf297295896-2">&nbsp;</div><div class="crayon-line" id="crayon-598309bc6b0bf297295896-3"><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-e">git </span><span class="crayon-v">config</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-e">global </span><span class="crayon-v">user</span><span class="crayon-e">.email</span> <span class="crayon-v">tu</span><span class="crayon-sy">@</span><span class="crayon-v">email</span><span class="crayon-e">.com</span></div></div></td>
+</tr>
+</table>
+</div>
+</div>
+ 
+<p></p>
+<p>Una vez hecho esto podemos proceder a nuestro primer repositorio. Desde la barra de navegación hacemos click en enlace “New repository”</p>
+<p><strong><strong><a href="https://styde.net/wp-content/uploads/2015/04/menu-nuevo-repositorio.png"><img class="aligncenter wp-image-1684 size-full" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="https://styde.net/wp-content/uploads/2015/04/menu-nuevo-repositorio.png" alt="menu-nuevo-repositorio" width="354" height="185" data-lazy-srcset="https://styde.net/wp-content/uploads/2015/04/menu-nuevo-repositorio.png 354w, https://styde.net/wp-content/uploads/2015/04/menu-nuevo-repositorio-300x157.png 300w" data-lazy-sizes="(max-width: 354px) 100vw, 354px"/><noscript><img class="aligncenter wp-image-1684 size-full" src="https://styde.net/wp-content/uploads/2015/04/menu-nuevo-repositorio.png" alt="menu-nuevo-repositorio" width="354" height="185" srcset="https://styde.net/wp-content/uploads/2015/04/menu-nuevo-repositorio.png 354w, https://styde.net/wp-content/uploads/2015/04/menu-nuevo-repositorio-300x157.png 300w" sizes="(max-width: 354px) 100vw, 354px"/></noscript></a></strong></strong></p>
+<p>En el siguiente formulario especificamos los detalles del proyecto y es recomendable siempre incluir el archivo readme.md desde el inicio donde se escribirán las instrucciones de instalación, uso e información sobre la licencia del código que contiene el repositorio, solo debemos darle check en &#8220;Initialize this repository with a REDAME&#8221;.</p>
+<p><strong><strong><a href="https://styde.net/wp-content/uploads/2015/04/nuevo-repositorio-git.png"><img class="aligncenter wp-image-1685 size-large" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="https://styde.net/wp-content/uploads/2015/04/nuevo-repositorio-git-1024x630.png" alt="nuevo-repositorio-git" width="680" height="418" data-lazy-srcset="https://styde.net/wp-content/uploads/2015/04/nuevo-repositorio-git-1024x630.png 1024w, https://styde.net/wp-content/uploads/2015/04/nuevo-repositorio-git-300x185.png 300w, https://styde.net/wp-content/uploads/2015/04/nuevo-repositorio-git.png 1058w" data-lazy-sizes="(max-width: 680px) 100vw, 680px"/><noscript><img class="aligncenter wp-image-1685 size-large" src="https://styde.net/wp-content/uploads/2015/04/nuevo-repositorio-git-1024x630.png" alt="nuevo-repositorio-git" width="680" height="418" srcset="https://styde.net/wp-content/uploads/2015/04/nuevo-repositorio-git-1024x630.png 1024w, https://styde.net/wp-content/uploads/2015/04/nuevo-repositorio-git-300x185.png 300w, https://styde.net/wp-content/uploads/2015/04/nuevo-repositorio-git.png 1058w" sizes="(max-width: 680px) 100vw, 680px"/></noscript></a></strong></strong></p>
+<p>Luego de esto ya tendremos creado nuestro primer repositorio en GitHub, Buen trabajo!!!</p>
+<p><strong><strong><a href="https://styde.net/wp-content/uploads/2015/04/vista-repositorio-github.png"><img class="aligncenter wp-image-1686 size-large" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="https://styde.net/wp-content/uploads/2015/04/vista-repositorio-github-1024x756.png" alt="vista-repositorio-github" width="680" height="502" data-lazy-srcset="https://styde.net/wp-content/uploads/2015/04/vista-repositorio-github-1024x756.png 1024w, https://styde.net/wp-content/uploads/2015/04/vista-repositorio-github-300x221.png 300w, https://styde.net/wp-content/uploads/2015/04/vista-repositorio-github.png 1065w" data-lazy-sizes="(max-width: 680px) 100vw, 680px"/><noscript><img class="aligncenter wp-image-1686 size-large" src="https://styde.net/wp-content/uploads/2015/04/vista-repositorio-github-1024x756.png" alt="vista-repositorio-github" width="680" height="502" srcset="https://styde.net/wp-content/uploads/2015/04/vista-repositorio-github-1024x756.png 1024w, https://styde.net/wp-content/uploads/2015/04/vista-repositorio-github-300x221.png 300w, https://styde.net/wp-content/uploads/2015/04/vista-repositorio-github.png 1065w" sizes="(max-width: 680px) 100vw, 680px"/></noscript></a></strong></strong></p>
+<p>Desde esta pantalla podemos realizar varias acciones relacionadas al repo recién creado que iremos explicando en su momento a lo largo de esta serie.</p>
+<p><b>Clonar repositorio en local</b></p>
+<p>Debemos tener instalado Git en nuestra máquina local, si aun no lo tienes puedes descargarlo desde el siguiente enlace para Windows, linux o mac.</p>
+<p><strong><a href="http://git-scm.com/downloads">http://git-scm.com/downloads</a></strong></p>
+<p>Una vez instalado abrimos la consola de comandos (si estas en windows usa el Git Bash).</p>
+<p>Si usas la consola de git desde Windos puedes pegar código haciendo click derecho en la cabecera de la ventana.</p>
+<p>Creamos un directorio que contendrá el código del proyecto y nos posicionamos dentro de él y ejecutamos git init para trabajar con el control de versiones</p>
+<p></p> 
+<div id="crayon-598309bc6b0c7715514670" class="crayon-syntax crayon-theme-tomorrow-night crayon-font-monaco crayon-os-mac print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 24px; margin-bottom: 12px; font-size: 14px !important; line-height: 28px !important;">
+<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><span class="crayon-title"></span>
+<div class="crayon-tools" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><div class="crayon-button crayon-nums-button" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+<div class="crayon-info" style="min-height: 19.6px !important; line-height: 19.6px !important;"></div>
+<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 14px !important; line-height: 28px !important;">
+$ mkdir aprendelaravel
+
+$ cd aprendelaravel
+
+$ git init</textarea></div>
+<div class="crayon-main" style="">
+<table class="crayon-table">
+<tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 28px !important;"><div class="crayon-num" data-line="crayon-598309bc6b0c7715514670-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-598309bc6b0c7715514670-2">2</div><div class="crayon-num" data-line="crayon-598309bc6b0c7715514670-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-598309bc6b0c7715514670-4">4</div><div class="crayon-num" data-line="crayon-598309bc6b0c7715514670-5">5</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 28px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-598309bc6b0c7715514670-1"><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-r">mkdir</span><span class="crayon-h"> </span><span class="crayon-i">aprendelaravel</span></div><div class="crayon-line crayon-striped-line" id="crayon-598309bc6b0c7715514670-2">&nbsp;</div><div class="crayon-line" id="crayon-598309bc6b0c7715514670-3"><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-r">cd</span><span class="crayon-h"> </span><span class="crayon-i">aprendelaravel</span></div><div class="crayon-line crayon-striped-line" id="crayon-598309bc6b0c7715514670-4">&nbsp;</div><div class="crayon-line" id="crayon-598309bc6b0c7715514670-5"><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-e">git </span><span class="crayon-v">init</span></div></div></td>
+</tr>
+</table>
+</div>
+</div>
+ 
+<p></p>
+<p>para clonar el repo hacemos uso de la url que vemos resaltada en la imagen anterior y desde la consola le indicamos a git que ese es nuestro repo remoto.</p>
+<p></p> 
+<div id="crayon-598309bc6b0ca530721752" class="crayon-syntax crayon-theme-tomorrow-night crayon-font-monaco crayon-os-mac print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 24px; margin-bottom: 12px; font-size: 14px !important; line-height: 28px !important;">
+<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><span class="crayon-title"></span>
+<div class="crayon-tools" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><div class="crayon-button crayon-nums-button" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+<div class="crayon-info" style="min-height: 19.6px !important; line-height: 19.6px !important;"></div>
+<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 14px !important; line-height: 28px !important;">
+$ git remote add origin https://github.com/jeffer8a/aprendelaravel.git</textarea></div>
+<div class="crayon-main" style="">
+<table class="crayon-table">
+<tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 28px !important;"><div class="crayon-num" data-line="crayon-598309bc6b0ca530721752-1">1</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 28px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-598309bc6b0ca530721752-1"><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-e">git </span><span class="crayon-e">remote </span><span class="crayon-e">add </span><span class="crayon-e">origin </span><span class="crayon-v">https</span><span class="crayon-o">:</span><span class="crayon-o">/</span><span class="crayon-o">/</span><span class="crayon-v">github</span><span class="crayon-e">.com</span><span class="crayon-o">/</span><span class="crayon-v">jeffer8a</span><span class="crayon-o">/</span><span class="crayon-v">aprendelaravel</span><span class="crayon-e">.git</span></div></div></td>
+</tr>
+</table>
+</div>
+</div>
+ 
+<p></p>
+<p>ahora copiamos el código que tenemos en remoto (en este caso esta únicamente el archivo readme.md) a nuestra máquina</p>
+<p></p> 
+<div id="crayon-598309bc6b0cc614919303" class="crayon-syntax crayon-theme-tomorrow-night crayon-font-monaco crayon-os-mac print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 24px; margin-bottom: 12px; font-size: 14px !important; line-height: 28px !important;">
+<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><span class="crayon-title"></span>
+<div class="crayon-tools" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><div class="crayon-button crayon-nums-button" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+<div class="crayon-info" style="min-height: 19.6px !important; line-height: 19.6px !important;"></div>
+<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 14px !important; line-height: 28px !important;">
+$ git pull origin master</textarea></div>
+<div class="crayon-main" style="">
+<table class="crayon-table">
+<tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 28px !important;"><div class="crayon-num" data-line="crayon-598309bc6b0cc614919303-1">1</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 28px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-598309bc6b0cc614919303-1"><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-e">git </span><span class="crayon-e">pull </span><span class="crayon-e">origin </span><span class="crayon-v">master</span></div></div></td>
+</tr>
+</table>
+</div>
+</div>
+ 
+<p></p>
+<p>master es la rama principal de nuestro proyecto y es la rama en donde deben ir únicamente los cambios finales y versiones terminadas del código sin bugs. a nivel local también se crea por defecto una rama master. Hablaremos de esto con más detalle en otra publicación.</p>
+<p>Si todo sale bien podremos ver algo como esto en la carpeta del proyecto.</p>
+<p><strong><strong><br/>
+<a href="https://styde.net/wp-content/uploads/2015/04/ls-aprende-laravel-repo-git.png"><img class="aligncenter wp-image-1683 size-full" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="https://styde.net/wp-content/uploads/2015/04/ls-aprende-laravel-repo-git.png" alt="ls-aprende-laravel-repo-git" width="471" height="176" data-lazy-srcset="https://styde.net/wp-content/uploads/2015/04/ls-aprende-laravel-repo-git.png 471w, https://styde.net/wp-content/uploads/2015/04/ls-aprende-laravel-repo-git-300x112.png 300w" data-lazy-sizes="(max-width: 471px) 100vw, 471px"/><noscript><img class="aligncenter wp-image-1683 size-full" src="https://styde.net/wp-content/uploads/2015/04/ls-aprende-laravel-repo-git.png" alt="ls-aprende-laravel-repo-git" width="471" height="176" srcset="https://styde.net/wp-content/uploads/2015/04/ls-aprende-laravel-repo-git.png 471w, https://styde.net/wp-content/uploads/2015/04/ls-aprende-laravel-repo-git-300x112.png 300w" sizes="(max-width: 471px) 100vw, 471px"/></noscript></a></strong></strong></p>
+<h2></h2>
+<p><strong>Cambios y primer commit</strong></p>
+<p>Veamos un ejemplo rápido:</p>
+<p>Podemos crear un archivo index.html y escribir dentro de él algo simple como “Hola mundo” y ver que sucede con git.</p>
+<p></p> 
+<div id="crayon-598309bc6b0ce605349255" class="crayon-syntax crayon-theme-tomorrow-night crayon-font-monaco crayon-os-mac print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 24px; margin-bottom: 12px; font-size: 14px !important; line-height: 28px !important;">
+<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><span class="crayon-title"></span>
+<div class="crayon-tools" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><div class="crayon-button crayon-nums-button" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+<div class="crayon-info" style="min-height: 19.6px !important; line-height: 19.6px !important;"></div>
+<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 14px !important; line-height: 28px !important;">
+$ git status</textarea></div>
+<div class="crayon-main" style="">
+<table class="crayon-table">
+<tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 28px !important;"><div class="crayon-num" data-line="crayon-598309bc6b0ce605349255-1">1</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 28px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-598309bc6b0ce605349255-1"><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-e">git </span><span class="crayon-v">status</span></div></div></td>
+</tr>
+</table>
+</div>
+</div>
+ 
+<p></p>
+<p>&nbsp;</p>
+<blockquote><p><a href="https://styde.net/wp-content/uploads/2015/04/git-status.png"><img class="aligncenter wp-image-1682 size-full" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="https://styde.net/wp-content/uploads/2015/04/git-status.png" alt="git-status" width="667" height="227" data-lazy-srcset="https://styde.net/wp-content/uploads/2015/04/git-status.png 667w, https://styde.net/wp-content/uploads/2015/04/git-status-300x102.png 300w" data-lazy-sizes="(max-width: 667px) 100vw, 667px"/><noscript><img class="aligncenter wp-image-1682 size-full" src="https://styde.net/wp-content/uploads/2015/04/git-status.png" alt="git-status" width="667" height="227" srcset="https://styde.net/wp-content/uploads/2015/04/git-status.png 667w, https://styde.net/wp-content/uploads/2015/04/git-status-300x102.png 300w" sizes="(max-width: 667px) 100vw, 667px"/></noscript></a></p></blockquote>
+<p>Nos dice que tenemos un archivo sin seguimiento, debemos agregarlo a la lista de seguimiento para enviarlo posteriormente</p>
+<p></p> 
+<div id="crayon-598309bc6b0d0926393269" class="crayon-syntax crayon-theme-tomorrow-night crayon-font-monaco crayon-os-mac print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 24px; margin-bottom: 12px; font-size: 14px !important; line-height: 28px !important;">
+<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><span class="crayon-title"></span>
+<div class="crayon-tools" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><div class="crayon-button crayon-nums-button" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+<div class="crayon-info" style="min-height: 19.6px !important; line-height: 19.6px !important;"></div>
+<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 14px !important; line-height: 28px !important;">
+$ git add index.html</textarea></div>
+<div class="crayon-main" style="">
+<table class="crayon-table">
+<tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 28px !important;"><div class="crayon-num" data-line="crayon-598309bc6b0d0926393269-1">1</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 28px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-598309bc6b0d0926393269-1"><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-e">git </span><span class="crayon-e">add </span><span class="crayon-v">index</span><span class="crayon-e">.html</span></div></div></td>
+</tr>
+</table>
+</div>
+</div>
+ 
+<p></p>
+<p>si queremos agregar todos los archivos pendientes podemos usar</p>
+<p></p> 
+<div id="crayon-598309bc6b0d2923388048" class="crayon-syntax crayon-theme-tomorrow-night crayon-font-monaco crayon-os-mac print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 24px; margin-bottom: 12px; font-size: 14px !important; line-height: 28px !important;">
+<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><span class="crayon-title"></span>
+<div class="crayon-tools" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><div class="crayon-button crayon-nums-button" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+<div class="crayon-info" style="min-height: 19.6px !important; line-height: 19.6px !important;"></div>
+<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 14px !important; line-height: 28px !important;">
+$ git add -A</textarea></div>
+<div class="crayon-main" style="">
+<table class="crayon-table">
+<tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 28px !important;"><div class="crayon-num" data-line="crayon-598309bc6b0d2923388048-1">1</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 28px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-598309bc6b0d2923388048-1"><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-e">git </span><span class="crayon-v">add</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-v">A</span></div></div></td>
+</tr>
+</table>
+</div>
+</div>
+ 
+<p></p>
+<p>y verificamos nuevamente el status</p>
+<p><a href="https://styde.net/wp-content/uploads/2015/04/git-add-all-status.png"><img class="aligncenter wp-image-1680 size-full" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="https://styde.net/wp-content/uploads/2015/04/git-add-all-status.png" alt="git-add-all-status" width="637" height="238" data-lazy-srcset="https://styde.net/wp-content/uploads/2015/04/git-add-all-status.png 637w, https://styde.net/wp-content/uploads/2015/04/git-add-all-status-300x112.png 300w" data-lazy-sizes="(max-width: 637px) 100vw, 637px"/><noscript><img class="aligncenter wp-image-1680 size-full" src="https://styde.net/wp-content/uploads/2015/04/git-add-all-status.png" alt="git-add-all-status" width="637" height="238" srcset="https://styde.net/wp-content/uploads/2015/04/git-add-all-status.png 637w, https://styde.net/wp-content/uploads/2015/04/git-add-all-status-300x112.png 300w" sizes="(max-width: 637px) 100vw, 637px"/></noscript></a></p>
+<p>Los commit son básicamente los cambios que registramos a lo largo del desarrollo, cada commit debe ir acompañado de un mensaje, ya que tenemos listos nuestros cambios podemos registrar y enviar nuestro primer commit.</p>
+<p></p> 
+<div id="crayon-598309bc6b0d4786748096" class="crayon-syntax crayon-theme-tomorrow-night crayon-font-monaco crayon-os-mac print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 24px; margin-bottom: 12px; font-size: 14px !important; line-height: 28px !important;">
+<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><span class="crayon-title"></span>
+<div class="crayon-tools" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><div class="crayon-button crayon-nums-button" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+<div class="crayon-info" style="min-height: 19.6px !important; line-height: 19.6px !important;"></div>
+<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 14px !important; line-height: 28px !important;">
+$ git commit -m "este es mi primer comit sobre la creacion del archivo index.html"</textarea></div>
+<div class="crayon-main" style="">
+<table class="crayon-table">
+<tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 28px !important;"><div class="crayon-num" data-line="crayon-598309bc6b0d4786748096-1">1</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 28px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-598309bc6b0d4786748096-1"><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-e">git </span><span class="crayon-v">commit</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">m</span><span class="crayon-h"> </span><span class="crayon-s">"este es mi primer comit sobre la creacion del archivo index.html"</span></div></div></td>
+</tr>
+</table>
+</div>
+</div>
+ 
+<p></p>
+<p>y para enviarlo al repo remoto</p>
+<p></p> 
+<div id="crayon-598309bc6b0d6880991763" class="crayon-syntax crayon-theme-tomorrow-night crayon-font-monaco crayon-os-mac print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" margin-top: 24px; margin-bottom: 12px; font-size: 14px !important; line-height: 28px !important;">
+<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><span class="crayon-title"></span>
+<div class="crayon-tools" style="font-size: 14px !important;height: 21px !important; line-height: 21px !important;"><div class="crayon-button crayon-nums-button" title="Mostrar/ocultar números de línea"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="Cambiar a texto plano"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="Abrir el código en una nueva ventana"><div class="crayon-button-icon"></div></div><span class="crayon-language">Shell</span></div></div>
+<div class="crayon-info" style="min-height: 19.6px !important; line-height: 19.6px !important;"></div>
+<div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4; font-size: 14px !important; line-height: 28px !important;">
+$ git push origin master</textarea></div>
+<div class="crayon-main" style="">
+<table class="crayon-table">
+<tr class="crayon-row">
+<td class="crayon-nums " data-settings="show">
+<div class="crayon-nums-content" style="font-size: 14px !important; line-height: 28px !important;"><div class="crayon-num" data-line="crayon-598309bc6b0d6880991763-1">1</div></div>
+</td>
+<td class="crayon-code"><div class="crayon-pre" style="font-size: 14px !important; line-height: 28px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-598309bc6b0d6880991763-1"><span class="crayon-sy">$</span><span class="crayon-h"> </span><span class="crayon-e">git </span><span class="crayon-e">push </span><span class="crayon-e">origin </span><span class="crayon-v">master</span></div></div></td>
+</tr>
+</table>
+</div>
+</div>
+ 
+<p></p>
+<p>ahora podemos ingresar nuevamente a GitHub y ver los cambios</p>
+<p>Cada commit será un estado en la línea de tiempo del proyecto a la que podemos volver si algo sale mal, es recomendable trabajar en bloques pequeños de desarrollo y hacer commit sobre cada bloque terminado, por ejemplo puedes iniciar con “login de usuarios” y luego enviar “login terminado”.</p>
+<p>También es una buena práctica trabajar cada bloque en una rama independiente antes de fusionarlo con la rama master, hablaremos del uso de ramas más adelante.</p>
+<p>si deseas trabajar con repositorios privados pero no deseas pagar por una suscripción en GitHub puedes usar Bitbucket es muy recomendado, su funcionamiento es genial y permite crear repositorios privados de forma gratuita, el concepto es el mismo por lo que te será fácil aplicar lo que viste aquí sin ningún problema.</p>
+<p>Si tienes alguna duda no olvides dejar tus comentarios y opiniones, también te invito a seguir los próximos tutoriales donde explicaremos con más detalle el uso de git.</p>
+<p>
+Aprende PHP, Laravel y más por sólo 9<sup style="font-size: 0.65em">99</sup> al mes:
+<a href="https://styde.net/planes/">ver planes</a>.
+</p>
+<div class="box-post-author">
+<div class="author-avatar">
+<img alt='Jeff' src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src='https://secure.gravatar.com/avatar/3a3e853c84312d9ec5c6c7524296e99d?s=60&#038;d=Jeff&#038;r=g' data-lazy-srcset='https://secure.gravatar.com/avatar/3a3e853c84312d9ec5c6c7524296e99d?s=120&amp;d=Jeff&amp;r=g 2x' class='avatar avatar-60 photo' height='60' width='60'/><noscript><img alt='Jeff' src='https://secure.gravatar.com/avatar/3a3e853c84312d9ec5c6c7524296e99d?s=60&#038;d=Jeff&#038;r=g' srcset='https://secure.gravatar.com/avatar/3a3e853c84312d9ec5c6c7524296e99d?s=120&amp;d=Jeff&amp;r=g 2x' class='avatar avatar-60 photo' height='60' width='60'/></noscript>
+</div>
+<div class="author-details">
+<h4>Publicado por: <a href="https://styde.net/author/jeff/" title="Entradas de Jeff" rel="author">Jeff</a></h4>
+<p>Laravel developer</p>
+<ul class="author-links">
+<li><a href="https://www.facebook.com/jeffer.8a" target="_blank"><i class="icon-facebook"></i></a></li>
+<li><a href="https://twitter.com/jeffer_8a" target="_blank"><i class="icon-twitter"></i></a></li>
+<li><a href="https://www.linkedin.com/profile/view?id=aaiaaabelauby-_mrd_rzqrlr17ulih41kfrpk8" target="_blank"><i class="icon-linkedin"></i></a></li>
+<li><a href="https://plus.google.com/b/107368848175950174806/+jefferochoave" target="_blank"><i class="icon-google"></i></a></li>
+</ul>
+</div>
+</div>
+<p class="tags"></p>
+<p class="post-neighbours">
+<a href="https://styde.net/crear-alias-de-comandos-con-git/" class="lnk-next"><span class="neighbour-type">Lección siguiente <i class="icon-right-open-1"></i></span> <strong>Crear alias de comandos con git</strong></a>
+<div class="clear"></div>
+</p>
+</div>
+<div class="col4 m-full">
+<aside id="search" class="box widget widget_search">
+<form role="search" method="get" id="searchform" class="searchform" action="https://styde.net/">
+<div>
+<label class="screen-reader-text" for="s">Buscar:</label>
+<input type="text" value="" name="s" id="s"/>
+<input type="submit" id="searchsubmit" value="Buscar"/>
+</div>
+</form><i class="fa fa-search"></i>
+</aside>
+<aside class="txtc sidebar-banner">
+<a href="https://styde.net/planes/">
+<img src="https://styde.net/images/Banner_9_99_Sidebar.png" alt="¡Obtén acceso a más de 700 lecciones por sólo 9.99 al mes!">
+</a>
+</aside>
+<aside class="box widget">
+<h5>Cursos</h5>
+<ul>
+<li><strong>PHP y Laravel esenciales</strong></li>
+<li>
+<a href="https://styde.net/curso-de-programacion-orientada-a-objetos-con-php/">
+Programación orientada a objetos </a>
+</li>
+<li>
+<a href="https://styde.net/laravel-5/">
+Primeros pasos con Laravel 5.* </a>
+</li>
+<li>
+<a href="https://styde.net/curso-crea-una-aplicacion-con-laravel-5-3/">
+Crea una aplicación con Laravel 5.3 y 5.4 </a>
+</li>
+<li>
+<a href="https://styde.net/curso-introductorio-laravel-5-1/">
+Curso de Laravel 5.1 </a>
+</li>
+<li>
+<a href="https://styde.net/curso-crea-componentes-para-php-y-laravel/">
+Crea componentes para PHP </a>
+</li>
+</ul>
+<ul>
+<li><strong>PHP y Laravel adicionales</strong></li>
+<li>
+<a href="https://styde.net/curso-de-novedades-de-laravel-5-4/">
+Novedades de Laravel 5.4 </a>
+</li>
+<li>
+<a href="https://styde.net/curso-de-novedades-en-laravel-5-3/">
+Novedades en Laravel 5.3 </a>
+</li>
+<li>
+<a href="https://styde.net/curso-de-novedades-en-laravel-5-2/">
+Novedades en Laravel 5.2 </a>
+</li>
+<li>
+<a href="https://styde.net/curso-de-eventos-y-jobs-con-laravel/">
+Curso de eventos y jobs </a>
+</li>
+<li>
+<a href="https://styde.net/curso-basico-de-eloquent-orm-con-laravel-5-1/">
+Curso básico de Eloquent ORM </a>
+</li>
+<li>
+<a href="https://styde.net/curso-avanzado-de-eloquent-orm/">
+Curso avanzado de Eloquent ORM </a>
+</li>
+<li>
+<a href="https://styde.net/curso-configuracion-administracion-de-servidores-php-laravel/">
+Curso de administración de servidores </a>
+</li>
+<li>
+<a href="https://styde.net/curso-de-interfaces-dinamicas-con-laravel-y-jquery/">
+Interfaces dinámicas con Laravel y jQuery </a>
+</li>
+</ul>
+<ul>
+<li><strong>Otras tecnologías</strong></li>
+<li>
+<a href="https://styde.net/curso-basico-de-terminal/">
+Curso básico de Terminal </a>
+</li>
+<li>
+<a href="https://styde.net/curso-de-git/">
+Curso de Git </a>
+</li>
+<li>
+<a href="https://styde.net/curso-de-vue-2/">
+Curso de Vue 2 </a>
+</li>
+<li>
+<a href="https://styde.net/curso-de-sass/">
+Curso de Sass </a>
+</li>
+<li>
+<a href="https://styde.net/curso-gulp-y-herramientas-de-automatizacion/">
+Curso de Gulp </a>
+</li>
+<li>
+<a href="https://styde.net/curso-de-vue-js/">
+Curso de Vue.js (versión 1) </a>
+</li>
+</ul>
+<p><strong>
+<a href="https://styde.net/cursos/">Ver todos los cursos y series</a>
+</strong></p>
+</aside>
+<aside class="box widget widget_recent_comments">
+<h5>Comentarios recientes</h5>
+<ul id="recentcomments">
+<li class="recentcomments">
+<span class="comment-author-link">Marcos Villavicencio</span> en
+<a href="https://styde.net/validacion-con-laravel-5-form-requests/#comment-7837">
+Validación con Laravel 5 (Form Requests) </a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">Duilio Palacios</span> en
+<a href="https://styde.net/por-que-necesitamos-clases-y-objetos-php/#comment-7836">
+¿Por qué necesitamos clases y objetos? </a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">Duilio Palacios</span> en
+<a href="https://styde.net/por-que-necesitamos-clases-y-objetos-php/#comment-7835">
+¿Por qué necesitamos clases y objetos? </a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">Juan Diego Zambrano</span> en
+<a href="https://styde.net/por-que-necesitamos-clases-y-objetos-php/#comment-7834">
+¿Por qué necesitamos clases y objetos? </a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">Juan Miguel Paulino</span> en
+<a href="https://styde.net/formularios-y-rutas-post-put-y-delete-con-laravel/#comment-7833">
+Formularios y rutas POST, PUT y DELETE con Laravel </a>
+</li>
+</ul> </aside>
+</div>
+</div>
+</section>
+<section class="post-comments">
+<div class="container">
+<div class="col10 pre1">
+<div id="disqus_thread">
+<div id="dsq-content">
+<ul id="dsq-comments">
+<li class="comment even thread-even depth-1" id="dsq-comment-1123">
+<div id="dsq-comment-header-1123" class="dsq-comment-header">
+<cite id="dsq-cite-1123">
+<span id="dsq-author-user-1123">Daniel Saavedra</span>
+</cite>
+</div>
+<div id="dsq-comment-body-1123" class="dsq-comment-body">
+<div id="dsq-comment-message-1123" class="dsq-comment-message"><p>para que git recuerde la contraseña</p>
+<p>$ git config credential.helper store<br/>
+$ git push <a href="https://github.com/repo.git" rel="nofollow">https://github.com/repo.git</a></p>
+<p>Username for &#8216;https://github.com&#8217;:<br/>
+Password for &#8216;https:<a class="__cf_email__" href="/cdn-cgi/l/email-protection" data-cfemail="90bfbfc5c3d5c2ded1ddd5d0f7f9e4f8e5f2bef3fffd">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script>&#8217;: </p>
+</div>
+</div>
+<ul class="children">
+<li class="comment odd alt depth-2" id="dsq-comment-1132">
+<div id="dsq-comment-header-1132" class="dsq-comment-header">
+<cite id="dsq-cite-1132">
+<a id="dsq-author-user-1132" href="http://jefferochoa.com.ve" target="_blank" rel="nofollow">Jeffer Ochoa</a>
+</cite>
+</div>
+<div id="dsq-comment-body-1132" class="dsq-comment-body">
+<div id="dsq-comment-message-1132" class="dsq-comment-message"><p>Gracias por el dato daniel, de verdad que esta muy util.</p>
+</div>
+</div>
+</li> 
+<li class="comment even depth-2" id="dsq-comment-1146">
+<div id="dsq-comment-header-1146" class="dsq-comment-header">
+<cite id="dsq-cite-1146">
+<span id="dsq-author-user-1146">Juan Antonio Tubío</span>
+</cite>
+</div>
+<div id="dsq-comment-body-1146" class="dsq-comment-body">
+<div id="dsq-comment-message-1146" class="dsq-comment-message"><p>Gracias Daniel, muy buen apunte!!</p>
+<p>¿Alguien sabe cómo hacer lo mismo pero usando ssh? Es decir, el fichero de clave y así no tener que introducir la password</p>
+</div>
+</div>
+<ul class="children">
+<li class="comment odd alt depth-3" id="dsq-comment-1224">
+<div id="dsq-comment-header-1224" class="dsq-comment-header">
+<cite id="dsq-cite-1224">
+<span id="dsq-author-user-1224">River Martinez</span>
+</cite>
+</div>
+<div id="dsq-comment-body-1224" class="dsq-comment-body">
+<div id="dsq-comment-message-1224" class="dsq-comment-message"><p>Eso lo haces con llaves ssh, queca por acá <a href="https://help.github.com/articles/generating-ssh-keys/" rel="nofollow">https://help.github.com/articles/generating-ssh-keys/</a></p>
+</div>
+</div>
+<ul class="children">
+<li class="comment even depth-4" id="dsq-comment-1270">
+<div id="dsq-comment-header-1270" class="dsq-comment-header">
+<cite id="dsq-cite-1270">
+<span id="dsq-author-user-1270">Juan Antonio Tubío</span>
+</cite>
+</div>
+<div id="dsq-comment-body-1270" class="dsq-comment-body">
+<div id="dsq-comment-message-1270" class="dsq-comment-message"><p>Gracias River. Efectivamente estoy usando ssh, pero estoy en Windows con git Bash y desde la línea de comandos no he conseguido que me funcione correctamente :(</p>
+</div>
+</div>
+<ul class="children">
+<li class="comment odd alt depth-5" id="dsq-comment-1271">
+<div id="dsq-comment-header-1271" class="dsq-comment-header">
+<cite id="dsq-cite-1271">
+<span id="dsq-author-user-1271">River Martinez</span>
+</cite>
+</div>
+<div id="dsq-comment-body-1271" class="dsq-comment-body">
+<div id="dsq-comment-message-1271" class="dsq-comment-message"><p>Seguiste la guia de Windows? <a href="https://help.github.com/articles/generating-ssh-keys/#platform-windows" rel="nofollow">https://help.github.com/articles/generating-ssh-keys/#platform-windows</a> si es así que error te da?, tal vez te podemos ayudar.</p>
+</div>
+</div>
+</li> 
+<li class="comment even depth-5" id="dsq-comment-1274">
+<div id="dsq-comment-header-1274" class="dsq-comment-header">
+<cite id="dsq-cite-1274">
+<span id="dsq-author-user-1274">Juan Antonio Tubío</span>
+</cite>
+</div>
+<div id="dsq-comment-body-1274" class="dsq-comment-body">
+<div id="dsq-comment-message-1274" class="dsq-comment-message"><p>Gracias por el ofrecimiento :)</p>
+<p>Por ahora no ha vuelto a darme error, toqué algunas cosas a partir de la guía de github y algunos comentarios en stackoverflow y parece que me está funcionando.</p>
+<p>Mi problema era que cuando uso SourceTree con PuTTy, todo funcionaba bien. Pero si usaba SmartGit, me daba error de autentificación o algo así. Tanto desde la línea de comandos como desde el propio SmartGit. Así que los &#8216;push&#8217; los hacía desde SourceTree :)</p>
+<p>Después de buscar soluciones, configuré la variable de entorno GIT_SSH apuntando al fichero plink.exe de la instalación de PuTTy y creo que es eso lo que me ha resuelto todos los problemas.</p>
+<p>Si vuelve a darme errores, los comentaré aquí para que me eches una mano ;)</p>
+</div>
+</div>
+</li> 
+</ul> 
+</li> 
+</ul> 
+</li> 
+</ul> 
+</li> 
+<li class="comment odd alt depth-2" id="dsq-comment-1332">
+<div id="dsq-comment-header-1332" class="dsq-comment-header">
+<cite id="dsq-cite-1332">
+<span id="dsq-author-user-1332">anvarstudios</span>
+</cite>
+</div>
+<div id="dsq-comment-body-1332" class="dsq-comment-body">
+<div id="dsq-comment-message-1332" class="dsq-comment-message"><p>Y en caso de hacerlo global, es decir no por repositorios sino a nivel general de mi cuenta de github, un tiempo me funciono y ya siempre me pide la clave</p>
+</div>
+</div>
+</li> 
+</ul> 
+</li> 
+<li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-1218">
+<div id="dsq-comment-header-1218" class="dsq-comment-header">
+<cite id="dsq-cite-1218">
+<span id="dsq-author-user-1218">RD</span>
+</cite>
+</div>
+<div id="dsq-comment-body-1218" class="dsq-comment-body">
+<div id="dsq-comment-message-1218" class="dsq-comment-message"><p>Que buen artículo Jeffer, ya lo comparto en las redes con gente que se lo necesita para ir aprendiendo a usar esta poderosa herramienta</p>
+</div>
+</div>
+<ul class="children">
+<li class="comment odd alt depth-2" id="dsq-comment-1222">
+<div id="dsq-comment-header-1222" class="dsq-comment-header">
+<cite id="dsq-cite-1222">
+<a id="dsq-author-user-1222" href="http://jefferochoa.com.ve" target="_blank" rel="nofollow">Jeffer Ochoa</a>
+</cite>
+</div>
+<div id="dsq-comment-body-1222" class="dsq-comment-body">
+<div id="dsq-comment-message-1222" class="dsq-comment-message"><p>Gracias! espero que le saques provecho, y sigue la serie, pronto vendrán mas tutoriales sobre el tema en <a href="https://styde.net/primeros-pasos-con-git-y-github/" rel="nofollow">https://styde.net/primeros-pasos-con-git-y-github/</a></p>
+</div>
+</div>
+</li> 
+</ul> 
+</li> 
+<li class="comment even thread-even depth-1" id="dsq-comment-1244">
+<div id="dsq-comment-header-1244" class="dsq-comment-header">
+<cite id="dsq-cite-1244">
+<span id="dsq-author-user-1244">Andres Riveros Düllmann</span>
+</cite>
+</div>
+<div id="dsq-comment-body-1244" class="dsq-comment-body">
+<div id="dsq-comment-message-1244" class="dsq-comment-message"><p>Saludos Jeffer, si muy buen articulo ya logre subir el ejemplo del curso básico de laravel de duilio.me estamos en contacto por el slack o styde.net gracias!!!</p>
+</div>
+</div>
+<ul class="children">
+<li class="comment odd alt depth-2" id="dsq-comment-1277">
+<div id="dsq-comment-header-1277" class="dsq-comment-header">
+<cite id="dsq-cite-1277">
+<a id="dsq-author-user-1277" href="http://jefferochoa.com.ve" target="_blank" rel="nofollow">Jeffer Ochoa</a>
+</cite>
+</div>
+<div id="dsq-comment-body-1277" class="dsq-comment-body">
+<div id="dsq-comment-message-1277" class="dsq-comment-message"><p>Gracias Andres, te invito a seguir la serie, hay mas tutoriales nuevos sobre git.</p>
+</div>
+</div>
+</li> 
+</ul> 
+</li> 
+<li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-1310">
+<div id="dsq-comment-header-1310" class="dsq-comment-header">
+<cite id="dsq-cite-1310">
+<span id="dsq-author-user-1310">Andrés Alarcón</span>
+</cite>
+</div>
+<div id="dsq-comment-body-1310" class="dsq-comment-body">
+<div id="dsq-comment-message-1310" class="dsq-comment-message"><p>Gracias, pero cabe destacar que tambien se puede usar GitLab para projectos privados ya sea a nivel personal o profesional.</p>
+</div>
+</div>
+<ul class="children">
+<li class="comment odd alt depth-2" id="dsq-comment-1333">
+<div id="dsq-comment-header-1333" class="dsq-comment-header">
+<cite id="dsq-cite-1333">
+<a id="dsq-author-user-1333" href="http://jefferochoa.com.ve" target="_blank" rel="nofollow">Jeffer Ochoa</a>
+</cite>
+</div>
+<div id="dsq-comment-body-1333" class="dsq-comment-body">
+<div id="dsq-comment-message-1333" class="dsq-comment-message"><p>Gracias por el aporte Andrés, no he usado GitLab pero tendre que probarlo.</p>
+</div>
+</div>
+</li> 
+</ul> 
+</li> 
+<li class="post pingback">
+<p>Pingback: <a href='https://styde.net/flujos-y-zonas-por-las-que-pasa-un-fichero-en-un-repositorio-git/' rel='external nofollow' class='url'>Flujos y zonas por las que pasa un fichero en un repositorio Git | styde.net</a>()</p>
+</li>
+</li> 
+<li class="comment even thread-even depth-1" id="dsq-comment-1450">
+<div id="dsq-comment-header-1450" class="dsq-comment-header">
+<cite id="dsq-cite-1450">
+<span id="dsq-author-user-1450">Erick Pac</span>
+</cite>
+</div>
+<div id="dsq-comment-body-1450" class="dsq-comment-body">
+<div id="dsq-comment-message-1450" class="dsq-comment-message"><p>@Jeffer8a:disqus gracias por el post, está demasiado bueno! Solo tengo una duda, cómo veo reflejados los cambios de otros desarrolladores de mi equipo, en mi carpeta local?</p>
+</div>
+</div>
+</li> 
+<li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-2616">
+<div id="dsq-comment-header-2616" class="dsq-comment-header">
+<cite id="dsq-cite-2616">
+<span id="dsq-author-user-2616">Wilmer Hurtado</span>
+</cite>
+</div>
+<div id="dsq-comment-body-2616" class="dsq-comment-body">
+<div id="dsq-comment-message-2616" class="dsq-comment-message"><p>Hola que tal? Gracias por este tutorial esta muy bien.</p>
+<p>Una pregunta, como haces para volver al proyecto en esa linea de tiempo? Es decir a una version del proyecto anterior, una vez que esta en Bitbucket por ejemplo.</p>
+<p>Gracias</p>
+</div>
+</div>
+</li> 
+<li class="comment even thread-even depth-1" id="dsq-comment-3450">
+<div id="dsq-comment-header-3450" class="dsq-comment-header">
+<cite id="dsq-cite-3450">
+<span id="dsq-author-user-3450">Ascari Romo</span>
+</cite>
+</div>
+<div id="dsq-comment-body-3450" class="dsq-comment-body">
+<div id="dsq-comment-message-3450" class="dsq-comment-message"><p>Felicidades, la didáctica en verdad es excelente! En hora buena, excelente tutorial!!</p>
+</div>
+</div>
+</li> 
+<li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-3728">
+<div id="dsq-comment-header-3728" class="dsq-comment-header">
+<cite id="dsq-cite-3728">
+<span id="dsq-author-user-3728">Rafael Perez Gonzalez</span>
+</cite>
+</div>
+<div id="dsq-comment-body-3728" class="dsq-comment-body">
+<div id="dsq-comment-message-3728" class="dsq-comment-message"><p>Yo uso Bitbuket y me funciona muy bien, aunque de git uso solo lo basico, tomare todos estos tutoriales para fortalecer un poco mas mis conocimientos sobre git.</p>
+<p>Saludos y gracias por compartir sus conocimientos.</p>
+</div>
+</div>
+</li> 
+<li class="comment even thread-even depth-1" id="dsq-comment-4481">
+<div id="dsq-comment-header-4481" class="dsq-comment-header">
+<cite id="dsq-cite-4481">
+<span id="dsq-author-user-4481">Gonzalo Burgos</span>
+</cite>
+</div>
+<div id="dsq-comment-body-4481" class="dsq-comment-body">
+<div id="dsq-comment-message-4481" class="dsq-comment-message"><p>Gracias muy util :D</p>
+</div>
+</div>
+</li> 
+<li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-4850">
+<div id="dsq-comment-header-4850" class="dsq-comment-header">
+<cite id="dsq-cite-4850">
+<span id="dsq-author-user-4850">Ger Bless</span>
+</cite>
+</div>
+<div id="dsq-comment-body-4850" class="dsq-comment-body">
+<div id="dsq-comment-message-4850" class="dsq-comment-message"><p>Hola, no se como hacer esta parte &#8220;y configurar las variables globales de git en local, como nombre de usuario.&#8221; estoy en windows</p>
+</div>
+</div>
+</li> 
+</ul>
+</div>
+</div>
+<script type="text/javascript">
+var disqus_url = 'https://styde.net/primeros-pasos-con-git-y-github/';
+var disqus_identifier = '1679 http://duilio.me/?p=1679';
+var disqus_container_id = 'disqus_thread';
+var disqus_shortname = 'duilio';
+var disqus_title = "Primeros pasos con git y GitHub";
+var disqus_config_custom = window.disqus_config;
+var disqus_config = function () {
+    /*
+    All currently supported events:
+    onReady: fires when everything is ready,
+    onNewComment: fires when a new comment is posted,
+    onIdentify: fires when user is authenticated
+    */
+    
+    
+    this.language = '';
+        this.callbacks.onReady.push(function () {
+
+        // sync comments in the background so we don't block the page
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = '?cf_action=sync_comments&post_id=1679';
+
+        var firstScript = document.getElementsByTagName('script')[0];
+        firstScript.parentNode.insertBefore(script, firstScript);
+    });
+    
+    if (disqus_config_custom) {
+        disqus_config_custom.call(this);
+    }
+};
+
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+</div>
+</div>
+</section>
+<br>
+<section class="subscribe">
+<div class="container">
+<div class="col12">
+<form class="form" action="https://duilio.us10.list-manage.com/subscribe/post?u=48f2082df849a26cc23d85517&amp;id=c6fa450847" data-id="0" method="post" target="_blank">
+<h3><img src="https://styde.net/wp-content/themes/styde/img/icon-email.svg" alt="Email icon" width="39" height="40" class="form-email-icon"> Suscríbete a nuestro boletín</h3>
+<p>Te enviaremos publicaciones con consejos útiles y múltiples recursos para que sigas aprendiendo.</p>
+<input id="mce-EMAIL" name="EMAIL" type="email" required placeholder="Tu correo electrónico">
+<input id="mce-NAME" name="NAME" type="hidden" value="Suscriptor">
+<input class="btn btn-yellow-cta" name="subscribe" type="submit" value="Suscríbete">
+<div class="hon">
+<input tabindex="-1" name="b_48f2082df849a26cc23d85517_c6fa450847" type="text" value=""/>
+</div>
+</form>
+<ul class="social">
+<li class="social-twitter"><a href="https://twitter.com/Stydenet" target="_blank"><i class="icon-twitter"></i></a></li>
+<li class="social-facebook"><a href="https://www.facebook.com/Stydenet" target="_blank"><i class="icon-facebook"></i></a></li>
+<li class="social-youtube"><a href="https://www.youtube.com/user/silencedsg/videos" target="_blank"><i class="icon-youtube-play"></i></a></li>
+<li class="social-disqus"><a href="https://disqus.com/home/forum/duilio/" target="_blank"><i class="icon-disqus"></i></a></li>
+<li class="social-feed"><a href="https://styde.net/feed/" target="_blank"><i class="icon-rss"></i></a></li>
+<li class="social-github"><a href="https://www.github.com/Stydenet" target="_blank"><i class="icon-github"></i></a></li>
+</ul>
+</div>
+</div>
+</section>
+<footer class="foot" itemscope itemtype="http://schema.org/WPFooter">
+<div class="container">
+<div class="col12">
+<p><a href="/"><img src="https://styde.net/wp-content/themes/styde/img/styde-w-o.png" alt="Styde.net logo" width="100" height="30"></a></p>
+</div>
+<div class="col6">
+<p>En Styde nos dedicamos a enseñarte tecnologías actuales de desarrollo web para ayudarte a crear tus proyectos de una forma más eficiente.</p>
+</div>
+<div class="col6">
+<p class="txtr foot-links">
+<a href="https://styde.net/planes/">Ver Planes</a> • <a href="https://styde.net/cursos/">Series y cursos</a> • <a href="https://styde.net/blog/">Ver últimas lecciones</a> <br>
+<a href="https://styde.net/terminos-y-condiciones-de-uso/">Términos y condiciones de uso</a> • <a href="https://styde.net/politica-de-privacidad/">Política de privacidad</a>
+</p>
+</div>
+</div>
+<div class="end">
+<div class="container">
+<div class="col12 txtc">
+<p class="copyright">&copy; 2017 Derechos Reservados - Styde Limited</p>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<script type="text/javascript">
+        // <![CDATA[
+        var disqus_shortname = 'duilio';
+        (function () {
+            var nodes = document.getElementsByTagName('span');
+            for (var i = 0, url; i < nodes.length; i++) {
+                if (nodes[i].className.indexOf('dsq-postid') != -1 && nodes[i].parentNode.tagName == 'A') {
+                    nodes[i].parentNode.setAttribute('data-disqus-identifier', nodes[i].getAttribute('data-dsqidentifier'));
+                    url = nodes[i].parentNode.href.split('#', 1);
+                    if (url.length == 1) { url = url[0]; }
+                    else { url = url[1]; }
+                    nodes[i].parentNode.href = url + '#disqus_thread';
+                }
+            }
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+        // ]]>
+        </script>
+ 
+<link rel='stylesheet' id='crayon-group-css' href='https://styde.net/wp-content/plugins/bwp-minify/min/?f=wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css&#038;ver=1501741377' type='text/css' media='all'/>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var InvitationsForSlack = {"endpoints":{"invite.send":"https:\/\/styde.net\/wp-json\/invitations-for-slack\/v1\/invite.send","team.stats":"https:\/\/styde.net\/wp-json\/invitations-for-slack\/v1\/team.stats"},"teamInfo":{"id":"T03DXUE17","name":"Styde","domain":"styde","email_domain":"","icon":{"image_34":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_34.png","image_44":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_44.png","image_68":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_68.png","image_88":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_88.png","image_102":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_102.png","image_132":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_132.png","image_original":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_original.png","image_230":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_230.png"}},"userIsMember":"","template":"    <div class=\"invite-box-wrapper hidden\">        <div class=\"invite-box\">             <div class=\"no-access-message\">[LOGGED_IN_MESSAGE]<\/div>             <div class=\"team-stats\"><strong class=\"online\">[STATS_ONLINE]<\/strong> usuarios en l\u00ednea. <strong class=\"registered\">[STATS_TOTAL]<\/strong> usuarios registrados.<\/div>        <\/div>    <\/div>","data":{"team":{"id":"T03DXUE17","name":"Styde","domain":"styde","email_domain":"","icon":{"image_34":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_34.png","image_44":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_44.png","image_68":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_68.png","image_88":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_88.png","image_102":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_102.png","image_132":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_132.png","image_original":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_original.png","image_230":"https:\/\/s3-us-west-2.amazonaws.com\/slack-files2\/avatars\/2016-06-19\/52277841345_b2912be07574abb98942_230.png"}},"stats":{"total":1243,"online":16},"only_logged_in":"1","allow_different_email":false,"logged_in_message":"Reg\u00edstrate en Styde para obtener la invitaci\u00f3n a Slack","user_allowed":true,"is_logged_in":false,"is_registered":false,"user":false},"processing_text":"Enviando invitaci\u00f3n..."};
+/* ]]> */
+</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpcompletable = {"ajax_url":"https:\/\/styde.net\/wp-admin\/admin-ajax.php","nonce":"1c92a0e05f"};
+/* ]]> */
+</script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"https:\/\/styde.net\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"Presiona %s para copiar y %s para pegar","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://styde.net/wp-content/plugins/bwp-minify/min/?f=wp-content/plugins/invitations-for-slack/invitations-for-slack/scripts/script.js,wp-content/plugins/wpcomplete/public/js/wpcomplete-public.js,wp-content/themes/styde/js/min/scripts.js,wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.min.js&#038;ver=1501741377'></script>
+<script type="application/ld+json">
+{
+    "@context" : "http://schema.org",
+    "@type" : "WebSite",
+    "name" : "Styde Limited",
+    "email" : "info@styde.net",
+    "url" : "https://styde.net",
+    "logo" : "https://styde.net/images/StydeAvatar6.png",
+    "sameAs" : [
+        "https://twitter.com/Stydenet",
+        "https://www.facebook.com/Stydenet",
+        "https://www.youtube.com/user/silencedsg/videos"
+    ],
+    "contactPoint" : [
+        {
+            "@type" : "ContactPoint",
+            "email" : "admin@styde.net",
+            "contactType" : "customer service"
+        }
+    ],
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://styde.net?s={search_term_string}",
+        "query-input": "required s=search_term_string"
+    }
+}
+</script>
+</body>
+</html>
+ 

@@ -1,0 +1,396 @@
+16503     
+Delivered-To: sayde.gutierrez92@gmail.com
+Received: by 10.79.165.91 with SMTP id v27csp246312ivh;
+        Fri, 26 May 2017 01:14:52 -0700 (PDT)
+X-Received: by 10.84.137.1 with SMTP id 1mr57653872plm.128.1495786492669;
+        Fri, 26 May 2017 01:14:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1495786492; cv=none;
+        d=google.com; s=arc-20160816;
+        b=EnUBPFJCmzd/A7oM4aprhDcknkgNHtisOOHfOGcsK4fhC2NNTX3wcBtMBAU/2nBodz
+         +GrcrotKxpXzoTJj40aIo7kHrZC6PKgpgonx8ATPdN7mOxwVEc30Men0JMofvs55wYY1
+         ypF6fAVQVHk1X2V10GZl9SuaFn24pqzzksgXSkglJ/IYFaundyCyVMYXGUcGYWNog9fE
+         wAbURv7S14oS39UZf7QfoWGKNYTJvs4cAAFqut/g+EuY4C+y8PGsvVoS0P6q0yME45UX
+         hjgEQs0Ihhku1bhulPDhHy6lKp0srMiTWNkOr7vOTNOvpWrNgqs8ehuWEQU4xBP6hfZD
+         7J0w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:subject:message-id:to:reply-to:from:date
+         :dkim-signature:arc-authentication-results;
+        bh=0eA5Qcv2Y6XA6SiXzgMZEuXqZtVy1lKHY0wI1daUGKI=;
+        b=esyTm+tvcPKFYQ9m+LPD3Pw8zVbHhwiqDa8p2whJI3L+kUKCT6wXevfZdlRQZZtFN5
+         JFWp6Wd7GttVrVG/B+FDIu1te1IjUuxsgiILdaBGRUvl/BkrRCmb2GITAZ9Wu1u4/sSq
+         /YRTbZWon0Fv2rOuZV9Q+gVlQLNgQD1O/mVzm1IcztRb0yCntVGxHpOYOYyTniEbrtad
+         TDZjZKNya7tea1Z1IRpm1X2Uk1Jew/2fzGKONAa5A1FT/sauzAqxquPu+2PT9hTP9Nyt
+         ieTaH+xlOKOMG6xcLnTF8ZLUHboNbYDaogw3niugPwAKek65sveunl0IgEt9NblBeHQV
+         ixxg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@mktdns.com;
+       spf=pass (google.com: domain of 059-vfz-834.0.15626.0.0.7886.9.37856707@em-sj-77.mktomail.com designates 199.15.215.34 as permitted sender) smtp.mailfrom=059-VFZ-834.0.15626.0.0.7886.9.37856707@em-sj-77.mktomail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=cisco.com
+Return-Path: <059-VFZ-834.0.15626.0.0.7886.9.37856707@em-sj-77.mktomail.com>
+Received: from dragonfly.mktdns.com (dragonfly.mktdns.com. [199.15.215.34])
+        by mx.google.com with ESMTPS id u140si103404pgb.25.2017.05.26.01.14.52
+        for <sayde.gutierrez92@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 26 May 2017 01:14:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 059-vfz-834.0.15626.0.0.7886.9.37856707@em-sj-77.mktomail.com designates 199.15.215.34 as permitted sender) client-ip=199.15.215.34;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mktdns.com;
+       spf=pass (google.com: domain of 059-vfz-834.0.15626.0.0.7886.9.37856707@em-sj-77.mktomail.com designates 199.15.215.34 as permitted sender) smtp.mailfrom=059-VFZ-834.0.15626.0.0.7886.9.37856707@em-sj-77.mktomail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=cisco.com
+Return-Path: <netacademail@external.cisco.com>
+X-MSFBL: c2F5ZGUuZ3V0aWVycmV6OTJAZ21haWwuY29tQGR2cC0xOTItMjgtMTQ2LTExOEBi
+	Zy1zamQtMzVAMDU5LVZGWi04MzQ6NzYzNTo0NjkyOjEyNjA4OjA6Nzg4Njo5OjE1
+	NjI2OjM3ODU2NzA3
+Received: from [10.0.87.249] ([10.0.87.249:40621] helo=sjmas01.marketo.org)
+	by sjmta03.marketo.org (envelope-from <netacademail@external.cisco.com>)
+	(ecelerity 3.6.8.47404 r(Core:3.6.8.0)) with ESMTP
+	id 93/8E-24127-5F3E7295; Fri, 26 May 2017 03:14:45 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1495786485;
+	s=m1; d=mktdns.com; i=@mktdns.com;
+	h=Date:From:To:Subject:MIME-Version:Content-Type;
+	bh=0eA5Qcv2Y6XA6SiXzgMZEuXqZtVy1lKHY0wI1daUGKI=;
+	b=ejVXP9st1T2/1GoEd2xCF2PgxB1TLz5tADlLjQKp9cxgWCNWWJExuc8PXDgK0lQs
+	+JXsUE8bwzFH2xHA6ZQpLIeZCtwN5TDyNSh4aYdCrLP/sXLlZAGRAgMtAWHF8/DNzSr
+	Xmt55lMSxFpvtY5RKwXssNH11jrLwABjR2t4GK28=
+Date: Fri, 26 May 2017 03:14:45 -0500 (CDT)
+From: Cisco Networking Academy <netacademail@external.cisco.com>
+Reply-To: netacademail@external.cisco.com
+To: sayde.gutierrez92@gmail.com
+Message-ID: <343952434.757697369.1495786485823.JavaMail.root@sjmas01.marketo.org>
+Subject: NetAcad.com Scheduled Maintenance June 24
+MIME-Version: 1.0
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_757697368_1787950415.1495786485823"
+X-PVIQ: mkto-059VFZ834-000001-000000-015626
+X-Binding: bg-sjd-35
+X-MarketoID: 059-VFZ-834:7635:4692:12608:0:7886:9:15626:37856707
+X-MktArchive: false
+X-Mailfrom: 059-VFZ-834.0.15626.0.0.7886.9.37856707@em-sj-77.mktomail.com
+X-MSYS-API: {"options":{"open_tracking":false,"click_tracking":false}}
+X-MktMailDKIM: true
+
+------=_Part_757697368_1787950415.1495786485823
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+NetAcad.com Scheduled Maintenance
+
+On Saturday 17 December 2016, the Networking Academy post-login site will b=
+e unavailable due to scheduled maintenance of 6 hours.  Dates and times are=
+ listed below for your location:
+
+
+ - San Francisco: 17 Dec, 5 p.m. to 18 Dec, 11 p.m. (PST, UTC-8)
+ - New York: 17 Dec, 8 p.m. to 18 Dec, 2 a.m. (EST, UTC-5)
+ - London:  18 Dec, 1 a.m. to 7 a.m. (GMT, UTC)
+
+ - Hong Kong: 18 Dec, 9 a.m. to 3 p.m. (HKT, UTC+8)
+
+ - Sydney: 18 Dec noon  to 6 p.m. (AEDT, UTC+11)
+
+
+
+Additionally, assessments along with some courses will be unavailable for a=
+ 16 hour period.  Please plan your learning activities to avoid the times l=
+isted below for your location. We apologize for any inconvenience and will =
+be back online as soon as our work is complete.
+
+
+ - San Francisco: 17 Dec, 5 p.m. to 18  Dec, 9 a.m. (PST, UTC-8)
+ - New York: 17 Dec, 8 p.m. to 18 Dec, noon (EST, UTC-5)
+ - London:  18 Dec  1 a.m. =E2=80=93 5 p.m. (GMT, UTC)
+ - Hong Kong: 18 Dec, 9 a.m. =E2=80=93  Dec 19  1 a.m.  (HKT, UTC+8)
+ - Sydney: 18 Dec, noon. =E2=80=93 19 Dec 4 a.m. (AEDT, UTC+11)
+Join our feeds to be the first to hear about updates and opportunities, and=
+ share your own innovative ideas.
+
+ <[[http://nsmail.cisconetspace.com/v/CF30080w426V0zfg0Q0mZ0y]]>
+ <http://nsmail.cisconetspace.com/tfZ30Q26Vg04500zFy000mt>
+ <http://nsmail.cisconetspace.com/CF300W0k426V0zfg0Q0mZ0y>
+ <http://nsmail.cisconetspace.com/l6FQ60004mg30Z0fy0z0u2V>
+ <http://nsmail.cisconetspace.com/TYzV6030m000gFm024yQfZ0>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Please do not reply to this email. For help, log in to Cisco Networking Aca=
+demy <http://nsmail.cisconetspace.com/JF04VQ0vmZ0z76g0f3002y0>, go to Suppo=
+rt and Training, or post a question on Facebook. <http://nsmail.cisconetspa=
+ce.com/tfZ30Q26Vg04500zFy000mt>
+
+To unsubscribe, log in to Cisco Networking Academy <http://nsmail.cisconets=
+pace.com/JF04VQ0vmZ0z76g0f3002y0>, click on your name (top right corner), a=
+nd update your Notification and Email Preferences. If you are no longer par=
+t of the Networking Academy program and need to have your account deleted, =
+log in, go to help, and submit a request for deletion.
+
+
+
+=C2=A92016 Cisco Systems, Inc. and/or its affiliates. All rights reserved. =
+170 W Tasman, San Jose, CA 95134
+
+
+
+Cisco.com <http://nsmail.cisconetspace.com/l6FQ10004mg30Z0fy0z0p2V> | Priva=
+cy Statement <http://nsmail.cisconetspace.com/wFgZzyfV400003m220Q0q06> | Tr=
+ademarks <http://nsmail.cisconetspace.com/kV2340z006300FfQgm0ry0Z>
+
+------=_Part_757697368_1787950415.1495786485823
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml">
+<head>=20
+<meta name=3D"HandheldFriendly" content=3D"true" />=20
+<meta name=3D"viewport" content=3D"width=3D640, user-scalable=3Dno" />=20
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8" />=
+=20
+<title>Networking Academy</title>=20
+<style type=3D"text/css">
+table
+{
+    border-collapse:collapse !important;
+}
+@media only screen and (max-width: 640px)
+{
+    *[class].table_responsive{width:100% !important;}
+    *[class].deviceWidth{width:440px !important;}
+   =20
+    *[class].iphone_left_pad{padding-left:15px !important;}
+    *[class].iphone_top_pad{padding-top:20px;}
+    *[class].banner_pad{padding-top:34px;text-align:center !important;}
+    *[class].iphone_img{max-width:100%;}
+    *[class].iphone_pad{padding:0px 15px;}
+    *[class].title_detail{padding:0 15px;font-size:23px !important;}
+    *[class].no_right_pad{padding-right:0px !important;}
+    *[class].iphone_bullet_align{ padding-top: 7px !important;vertical-alig=
+n: top !important;}
+    *[class].footer_align{text-align:left !important;padding-bottom:0px !im=
+portant;padding-top:13px !important;}
+    *[class].foot_font{font-size:11px !important;padding-bottom:13px !impor=
+tant;}
+    *[class].events_table{width:100% !important;text-align:left !important;=
+}
+    *[class].text-center{text-align:center; margin:0 auto;}
+}
+@media only screen and (max-width: 475px)
+{   =20
+    *[class].table_responsive{width:100% !important;}
+    *[class].deviceWidth{width:280px !important;}
+}
+</style>=20
+</head>=20
+<body style=3D"-webkit-text-size-adjust:none; margin:0 auto; background:#ff=
+ffff; ">
+<table cellpadding=3D"0" cellspacing=3D"0" style=3D"width:600px; margin:0 a=
+uto; font-family:Arial, Helvetica, sans-serif; border:0px solid #F3F3F3; " =
+class=3D"deviceWidth" width=3D"100%" align=3D"center">
+<!--1st Row-->=20
+<tbody>
+<tr style=3D"">
+<td style=3D"">
+<center style=3D"">
+<div id=3D"social-icons" class=3D"mktEditable" style=3D"">
+<img style=3D"text-align: right; width: 100%; display: flex; valign:bottom;=
+ color:#ffffff;" alt=3D"Cisco Networking Academy Student" src=3D"http://csr=
+info.cisconetspace.com/rs/ciscoacademy/images/netacad-email-banner 600px.pn=
+g" />
+</div>
+</center></td>
+</tr>
+</tbody>
+</table>
+<!--/1st Row End-->=20
+<!--2nd Row-->=20
+<table width=3D"585" cellpadding=3D"0" cellspacing=3D"0" style=3D"width:585=
+px; margin:0 auto; font-family:Arial, Helvetica, sans-serif; border:0px sol=
+id #F3F3F3; " class=3D"deviceWidth" align=3D"center">
+<!--2nd Row End-->=20
+<!--3rd Row-->=20
+<tbody>
+<tr>=20
+<td style=3D"font-size:1px;line-height:1px;height:10px;" height=3D"10">&nbs=
+p;</td>=20
+</tr>=20
+<tr style=3D"">
+<td class=3D"iphone_pad" style=3D"">
+<table width=3D"600" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=
+=3D"width:600px; margin:0 auto; font-family:Arial, Helvetica, sans-serif; "=
+ class=3D"table_responsive" align=3D"center">
+<tbody>
+<tr style=3D"">
+<td style=3D"">
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"width:100%; font-family:Arial, Helvetica, sans-serif; font-size:14px; =
+" class=3D"table_responsive" align=3D"left">
+<tbody>
+<tr style=3D"">
+<td style=3D"color:#333333; font-size:14px; line-height:23px; font-family:A=
+rial, Helvetica, sans-serif; ">
+<div class=3D"mktEditable" id=3D"body_top_text" style=3D"">
+<p style=3D"text-align: center;"><span style=3D"font-size: 18px;">NetAcad.c=
+om Scheduled Maintenance June 24 Affecting All Exams</span></p>=20
+<p>Beginning Saturday June 24, Networking Academy exam delivery will be una=
+vailable for 20 hours affecting chapter exams, Packet Tracer Skills Assessm=
+ent (PTSA)&nbsp; and final exams. Please plan your learning activities to a=
+void the maintenance period listed below for your location.</p>=20
+<ul>=20
+<li>&nbsp;&nbsp;&nbsp; San Francisco: 24 June, 5 a.m. =E2=80=93 25 June 1 a=
+.m.&nbsp; (PDT, UTC-8)</li>=20
+<li>&nbsp;&nbsp;&nbsp; New York: 24 June, 8 a.m. =E2=80=93 25 June 4 a.m. (=
+EDT, UTC-5)</li>=20
+<li>&nbsp;&nbsp;&nbsp; London:&nbsp; 24 June, 1 p.m. =E2=80=93 25 June 9 a.=
+m. (BST, UTC)</li>=20
+<li>&nbsp;&nbsp;&nbsp; Hong Kong: 24 June, 8 p.m. =E2=80=93 25 June 4 p.m. =
+(HKT, UTC+8)</li>=20
+<li>&nbsp;&nbsp;&nbsp; Sydney: 24 June 10 p.m. =E2=80=93 25 June 6 p.m. (AE=
+ST, UTC+11)</li>=20
+</ul>=20
+<p>&nbsp;Thank you for your patience and understanding during the outage pe=
+riod.</p>
+</div></td>
+</tr>
+</tbody>
+</table>
+<!--4th Row footer--></td>
+</tr>
+<tr style=3D"">
+<td style=3D"background-color:#ffffff; padding:5px 0px 0px 0px; " bgcolor=
+=3D"#FFFFFF">
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" class=3D"table_re=
+sponsive" style=3D"width:100%; " align=3D"right">
+<tbody>
+<tr style=3D"">
+<td style=3D"text-align:right; padding:0px; " class=3D"footer_align">
+<div class=3D"mktEditable" id=3D"Footer" style=3D"">
+<table style=3D"text-align: left; border-collapse: collapse; mso-table-lspa=
+ce: 0pt; mso-table-rspace: 0pt;" width=3D"100%" cellspacing=3D"0" cellpaddi=
+ng=3D"0" border=3D"0" bgcolor=3D"#6D6E72">=20
+<tbody>=20
+<tr>=20
+<td colspan=3D"8" height=3D"4" bgcolor=3D"#6D6E72"><br /></td>=20
+</tr>=20
+<tr>=20
+<td style=3D"border-collapse: collapse;" width=3D"10%" valign=3D"top" bgcol=
+or=3D"#6D6E72"><br /></td>=20
+<td style=3D"font-family: Arial,Helvetica,sans-serif; color: #ffffff; font-=
+size: 10px; line-height: 14px; border-collapse: collapse;" width=3D" 60%" v=
+align=3D"top" bgcolor=3D"#6D6E72"></td>=20
+<td style=3D"border-collapse: collapse;" valign=3D"top" bgcolor=3D"#6D6E72"=
+><a target=3D"_blank" href=3D
+"http://nsmail.cisconetspace.com/CF300W0k426V0zfg0Q0mZ0y"
+><img style=3D"display: block; outline: none; text-decoration: none; border=
+: none;" src=3D"http://www.cisco.com/web/learning/le31/le46/cln/images/news=
+letter/green/twitter.jpg" alt=3D"" border=3D"0" /></a></td>=20
+<td style=3D"border-collapse: collapse;" valign=3D"top" bgcolor=3D"#6D6E72"=
+><a target=3D"_blank" href=3D
+"http://nsmail.cisconetspace.com/JF04VQ0lmZ0zX6g0f3002y0"
+><img style=3D"display: block; outline: none; text-decoration: none; border=
+: none;" src=3D"http://www.cisco.com/web/learning/le31/le46/cln/images/news=
+letter/green/facebook.jpg" alt=3D"" border=3D"0" /></a></td>=20
+<td style=3D"border-collapse: collapse;" valign=3D"top" bgcolor=3D"#6D6E72"=
+><a target=3D"_blank" href=3D
+"http://nsmail.cisconetspace.com/TYzV6030m000gFm024yQfZ0"
+><img style=3D"display: block; outline: none; text-decoration: none; border=
+: none;" src=3D"http://csrinfo.cisconetspace.com/rs/ciscoacademy/images/you=
+tube-logo-white-on-grey-50x26.png" alt=3D"" border=3D"0" /></a></td>=20
+<td style=3D"border-collapse: collapse;" valign=3D"top" bgcolor=3D"#6D6E72"=
+><a target=3D"_blank" href=3D
+"http://nsmail.cisconetspace.com/ym6VgQ3z0f04ZFn0yZ00200"
+><img imagepreview=3D"false" constrain=3D"true" src=3D"http://www.cisco.com=
+/web/learning/le31/le46/cln/images/newsletter/green/linkedin.jpg" alt=3D"li=
+nked in" /></a></td>=20
+<td style=3D"border-collapse: collapse;" valign=3D"top" bgcolor=3D"#6D6E72"=
+><br /></td>=20
+<td style=3D"border-collapse: collapse;" valign=3D"top" bgcolor=3D"#6D6E72"=
+><br /></td>=20
+</tr>=20
+<tr>=20
+<td colspan=3D"8" height=3D"4" bgcolor=3D"#6D6E72"><br /></td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+<table style=3D"font-family: Arial, Helvetica, sans-serif; color: #666666; =
+font-size: 11px; line-height: 14px; text-align: left; border-collapse: coll=
+apse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width=3D"100%" cellspa=
+cing=3D"0" cellpadding=3D"0" border=3D"0">=20
+<tbody>=20
+<tr>=20
+<td style=3D"font-family: Arial, Helvetica, sans-serif; color: #666666; fon=
+t-size: 11px; line-height: 14px; padding: 0px 20px;" valign=3D"top"> <p><br=
+ />You are receiving this notification due to its business critical nature.=
+ If you are no longer part of the Networking Academy program, or if you hav=
+e multiple accounts and need to have an account deleted or merged, navigate=
+ to <a href=3D
+"http://nsmail.cisconetspace.com/wFgZzyfV400003m020Q0o06" target=3D"_blank"=
+ id=3D""
+>Submit Global support Desk Ticket</a>, provide the account deletion detail=
+s.<br /> <br /> =C2=A92017 Cisco Systems, Inc. and/or its affiliates. All r=
+ights reserved. 170 W Tasman Dr., San Jose, CA 95134.<br /> <br /> <a style=
+=3D"color: #0088c2; text-decoration: none;" href=3D
+"http://nsmail.cisconetspace.com/l6FQ10004mg30Z0fy0z0p2V" target=3D"_blank"
+>Cisco.com</a> | <a style=3D"color: #0088c2; text-decoration: none;" href=
+=3D
+"http://nsmail.cisconetspace.com/wFgZzyfV400003m220Q0q06" target=3D"_blank"
+>Privacy Statement</a> | <a style=3D"color: #0088c2; text-decoration: none;=
+" href=3D
+"http://nsmail.cisconetspace.com/kV2340z006300FfQgm0ry0Z" target=3D"_blank"
+>Trademarks</a></p> </td>=20
+</tr>=20
+</tbody>=20
+</table>=20
+<p></p>
+</div></td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+<!--/4th Row End-->
+</tbody>
+</table></td>
+</tr>
+</tbody>
+</table>
+<a href=3D
+"http://nsmail.cisconetspace.com/JF04VQ0smZ0z46g0f3002y0"
+></a>
+<img src=3D"http://nsmail.cisconetspace.com/trk?t=3D1&mid=3DMDU5LVZGWi04MzQ=
+6NzYzNTo0NjkyOjEyNjA4OjA6Nzg4Njo5OjE1NjI2OjM3ODU2NzA3OnNheWRlLmd1dGllcnJlej=
+kyQGdtYWlsLmNvbQ%3D%3D" width=3D"1" height=3D"1" style=3D"display:none !imp=
+ortant;" alt=3D"" />
+</body>
+</html>
+------=_Part_757697368_1787950415.1495786485823--
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>color</key>
+	<string>000000</string>
+	<key>date-last-viewed</key>
+	<integer>0</integer>
+	<key>date-received</key>
+	<integer>1495786492</integer>
+	<key>flags</key>
+	<integer>8590195840</integer>
+	<key>gmail-label-ids</key>
+	<array>
+		<integer>3</integer>
+	</array>
+	<key>remote-id</key>
+	<string>9894</string>
+</dict>
+</plist>

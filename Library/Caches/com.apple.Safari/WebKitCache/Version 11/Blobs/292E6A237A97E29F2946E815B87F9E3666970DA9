@@ -1,0 +1,1607 @@
+//$Id$
+//javascript functions used in the SoM Managed Computers List page.
+
+var formVar;
+var installInProg;
+var uninstallInProg;
+var removeInProg;
+
+var resourceIDGlob;
+var oldusername;
+var oldpassword;
+var editCredParams = "";
+
+
+var totalCompCount = 0;
+var completedCompCount = 0;
+
+function trimString(str) {
+            str = this != window? this : str;
+            return str.replace(/^\s+/g, '').replace(/\s+$/g, '');
+}
+function performDemoOperation( val )
+{
+	if(val == "uninstall" || val == "remove" || val == "install" || val == "movero" || val=="import")
+	{
+		alert(I18N.getMsg('dc.common.Running_in_restricted_mode'));
+	}
+}
+
+function performOperation( val )
+{
+	if(val == "install")
+	{
+		installAgentInSelectedComputers();
+	}
+	else if(val == "uninstall")
+	{
+		var selectedCompu = getSelectedComputers();
+		//nonWindowsOSSelected(selectedCompu,val);
+                setTimeout("uninstallAgentInSelectedComputers()", 50);
+	}
+	else if(val == "remove")
+	{
+		//uninstallAgentInSelectedComputers('true');
+		preRemoveSelectedComputers('true');
+	}
+	else if(val == "edit")
+	{
+		//Have to add functions supporting edit operation
+		editDomainCredential();
+	}
+
+}
+
+function syncLiveStatusNow()
+    {
+        var url="/som.do?actionToCall=syncLiveStatusNow";//NO I18N
+        //document.getElementById("syncInProgress").style.visibility='visible';
+        document.getElementById("sync_button").style.backgroundImage="url('/images/s_progressbar.gif')";//NO I18N
+        document.getElementById("sync_button").value=I18N.getMsg('dc.som.somList.in_progress');
+        document.getElementById("sync_button").disabled = true;
+        constructXmlHttpRequest(url,"","updateSyncStatus");//NO I18N
+    }
+
+function updateSyncStatus()
+{
+    if(typeof showSyncStatusInProgress == "function")
+    {
+        showSyncStatusInProgress();
+    }
+}
+function editDomainCredential()
+{
+	var getDomURL = '/addDomain.do?actionToCall=editDomainCredential';//NO I18N
+	showURLInDialog( getDomURL , 'position=relative,modal=no,width=350,scrollbars=no,title='+I18N.getMsg('dc.som.somList.Edit_credential'));//NO I18N
+}
+
+function refreshSoMView()
+{
+	refreshSubView("SoMManagedComputers");//NO I18N
+}
+
+//Checkbox selections
+function selectObject(form,check)
+{
+	formVar = form;
+}
+
+function selectAllObjects(form,check)
+{
+	formVar = form;
+	var len = form.elements.length;
+	for(var i=0; i<len; i++)
+	{
+		var e = form.elements[i];
+		if(e.name == 'object_list')
+		{
+			if(check)
+			{
+				e.checked = true;
+			}
+			else
+			{
+				e.checked =false;
+			}
+		}
+	}
+}
+
+function clearSelection(form)
+{
+	var chk_bx_elem = document.getElementsByName('object_list');
+	for(var i=0; i<chk_bx_elem.length; i++)
+	{
+		var e = chk_bx_elem[i];
+		if(e)
+		{
+			e.checked =false;
+		}
+	}
+}
+
+
+function getSelectedComputers()
+{
+	var message = "dc.som.som_policy.Select_computer";//No I18N
+
+	var selectedComp = "";
+	if(typeof formVar == "undefined")
+	{
+		showURLInDialog("/dcDialog.do?actionToCall=showDCAlertDialog&message="+message , "modal=yes,height=100,width=350,scrollbars=no,title="+I18N.getMsg('desktopcentral.som.addDomain.Select_computers'));//NO I18N
+	}
+	else
+	{
+		var len = formVar.elements.length;
+
+		for( var i = 0 ; i < len ; i ++)
+		{
+			var e = formVar.elements[i];
+			if(e.name == "object_list")
+			{
+				if(e.checked)
+				{
+					if(selectedComp == "")
+					{
+						selectedComp = e.value;
+					}
+					else
+					{
+						selectedComp += "," + e.value;
+					}
+				}
+			}
+		}
+		if(selectedComp == "")
+		{
+			showURLInDialog("/dcDialog.do?actionToCall=showDCAlertDialog&message="+message , "modal=yes,height=100,width=350,scrollbars=no,title="+I18N.getMsg('desktopcentral.som.addDomain.Select_computers'));//NO I18N
+		}
+	}
+
+	return selectedComp;
+}
+var selectedInstallComputers = "";//selected computers for installation
+var preInstallRespJSON=JSON.parse('{"preInstallRespText":0,"checkMacAgentSettings":false,"macComputerCount":0,"checkLinuxAgentSettings":false,"linuxComputerCount":0,"totalComputerCount":0}');//No I18N
+function getInstallServiceResponse(selectedComp,callBackFunc){
+    if(selectedComp != "")
+        {
+            //nonWindowsOSSelected(selectedComp,"install");//No I18N
+            var url = "/som.do?actionToCall=preInstallAgent";//No I18N
+            var params = "selectedComputer="+encodeURIComponent(selectedComp);//No I18N
+            var req = AjaxAPI.getXMLHttpRequest();
+            //Use post request, as 'GET' fails for more data.
+            req.open("POST", url, true);
+
+            //Send the proper header information along with the request
+            req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            req.setRequestHeader("Content-length", params.length);
+            req.setRequestHeader("Connection", "close");
+            req.send(params);
+
+            req.onreadystatechange = function(){
+                if (req.readyState == 4)
+                {
+                    if (req.status == 200)
+                    {
+                        var res = req.responseText;
+                        if(res)
+                        {
+                            preInstallRespJSON=JSON.parse(res);
+                            //var res_list=res.split(",");
+                            //preInstallRespText = res_list[0];
+                            //checkMacAgentSettings=res_list[1];//boolean for mac computer selected or not
+                            //macComputerCount=res_list[2];//Count of number of mac computers selected
+                            callBackFunc(preInstallRespJSON);
+                        }
+                    }
+                }
+            };
+        }
+    
+}
+function showAlert(req){
+            var res = req.responseText;
+            macpresent ="false";
+            if(res =="true")
+            {
+		macpresent ="true";
+		alert(macpresent);
+					//showURLInDialog("/dcDialog.do?actionToCall=showDCAlertDialog&message=mac machine selected.select windows machine." , "position=relative,modal=no,height=100,width=350,scrollbars=no,title=Select Computers");
+            }
+}
+
+
+//To install agent in selected computers
+function installAgentInSelectedComputers()
+{
+    document.getElementById("messageInfoForActionPerformed").style.display = "none";
+    var msiCreated = isMsiCreationFailed();
+    if(msiCreated != null && msiCreated)
+    {
+        var selectedComp = getSelectedComputers();
+
+        selectedInstallComputers = selectedComp;
+
+        getInstallServiceResponse(selectedInstallComputers,function(data){
+                if(!showMacAndLinAgentSettingsAlert('install')){
+                    getFirewallAndDCOMStatus("somList");//No I18N
+                }
+        });
+    }
+}
+
+function showMacAndLinAgentSettingsAlert(installServiceType){
+        var message="";
+        var winOnly=preInstallRespJSON.totalComputerCount-preInstallRespJSON.macComputerCount-preInstallRespJSON.linuxComputerCount;
+        winOnly=winOnly>0;
+        if(preInstallRespJSON.checkMacAgentSettings&&preInstallRespJSON.checkLinuxAgentSettings&&!winOnly){
+            var nonWinUrl="<a class=\"macAgent bluetxt\" href=\""+getStaticUrl('/agentSettings.do?actionToCall=showMacAgentSettings&osPlatform=Linux&service='+installServiceType,'Mac Agent Settings')+"\">Mac</a>&nbsp;/&nbsp;<a class=\"linuxAgent bluetxt\" href=\""+getStaticUrl('/agentSettings.do?actionToCall=showLinuxAgentSettings&osPlatform=Mac&service='+installServiceType,'Linux Agent Settings')+"\">Linux</a>"
+            message=I18N.getMsg('desktopcentral.admin.somList.agent_settings_alert',new Array(nonWinUrl));//No I18N
+        }
+	else if(preInstallRespJSON.checkMacAgentSettings&&!winOnly)//mac agent settings alert to be shown
+        {
+            var macUrl="<a class=\"bluetxt\" href=\""+getStaticUrl('/agentSettings.do?actionToCall=showMacAgentSettings&service='+installServiceType,'Mac Agent Settings')+"\">Mac</a>";
+            message=I18N.getMsg('desktopcentral.admin.somList.agent_settings_alert',new Array(macUrl));//No I18N
+        }
+        else if(preInstallRespJSON.checkLinuxAgentSettings&&!winOnly){
+            var linUrl="<a class=\"bluetxt\" href=\""+getStaticUrl('/agentSettings.do?actionToCall=showLinuxAgentSettings&service='+installServiceType,'Linux Agent Settings')+"\">Linux</a>";
+            message+=I18N.getMsg('desktopcentral.admin.somList.agent_settings_alert',new Array(linUrl));//No I18N
+        }
+        if(message.length>1){
+            var title=I18N.getMsg('dc.js.common.ALERT');
+            showDialog('<table class="bodytext" width="100%" height="100%"><tr><td width="50" rowspan="3">&nbsp;&nbsp;&nbsp;<img src="images/alerts.png"/></td><td></td><td></td></tr><tr ><td colspan="2" style="padding:4px;"><span class="bodytext">'+message+'</span></td></tr> <tr><td></td><td></td></tr> <tr><td align="center" colspan="3" class="formSubmitBg"><input type="button" value="'+I18N.getMsg('dc.common.ok')+'" class="primaryActionBtn" onclick="javascript:closeDialog(null,this);"></td></tr></table>','width=400,height=110,modal=yes,title='+title);//No I18N
+            return true;
+        }
+        return false;
+        
+}
+
+function handleInstallation( resptext)
+{//respText containts the firewall and dcom status
+	if(resptext != "-1" )
+	{//firewall and dcom perfectly disabled
+		if(preInstallRespJSON.preInstallRespText > 0)
+		{//installed computers present
+			//we need to show 2 msgs here.
+			//1. port
+			//2. dcom setting
+			//2. abt installed computers
+			showURLInDialog("/dcDialog.do?actionToCall=showConfirmDialogForInstallInListPage&installedComputersPresent=true&checkMacSettings="+preInstallRespJSON.checkMacAgentSettings+"&checkLinuxSettings="+preInstallRespJSON.checkLinuxAgentSettings+"&firewallAndDCOMStatus="+resptext+"&selectedCompCount="+preInstallRespJSON.totalComputerCount+"&wanCompCount="+preInstallRespJSON.wanComputerCount , "modal=yes,height=125,width=450,scrollbars=no,title="+I18N.getMsg('dc.som.somList.Install_Agent'));//No I18N
+
+		}
+		else
+		{//installed computers not present
+			//we need to show 1 msg here.
+			//1. port
+			showURLInDialog("/dcDialog.do?actionToCall=showConfirmDialogForInstallInListPage&installedComputersPresent=false&checkMacSettings="+preInstallRespJSON.checkMacAgentSettings+"&checkLinuxSettings="+preInstallRespJSON.checkLinuxAgentSettings+"&firewallAndDCOMStatus="+resptext+"&selectedCompCount="+preInstallRespJSON.totalComputerCount+"&wanCompCount="+preInstallRespJSON.wanComputerCount , "modal=yes,height=125,width=450,scrollbars=no,title="+I18N.getMsg('dc.som.somList.Install_Agent'));//No I18N
+		}
+	}
+	else
+	{
+
+		if(preInstallRespJSON.preInstallRespText > 0)
+		{
+			//we need to show 1 msg here.
+			//1. abt installed computers
+			showURLInDialog("/dcDialog.do?actionToCall=showConfirmDialogForInstallInListPage&installedComputersPresent=true&checkMacSettings="+preInstallRespJSON.checkMacAgentSettings+"&checkLinuxSettings="+preInstallRespJSON.checkLinuxAgentSettings+"&firewallAndDCOMStatus="+resptext+"&selectedCompCount="+preInstallRespJSON.totalComputerCount+"&wanCompCount="+preInstallRespJSON.wanComputerCount , "modal=yes,height=125,width=450,scrollbars=no,title="+I18N.getMsg('dc.som.somList.Install_Agent'));//No I18N
+
+		}
+		else
+		{
+			//installAgent(selectedInstallComputers);
+			showURLInDialog("/dcDialog.do?actionToCall=showConfirmDialogForInstallInListPage&installedComputersPresent=false&checkMacSettings="+preInstallRespJSON.checkMacAgentSettings+"&checkLinuxSettings="+preInstallRespJSON.checkLinuxAgentSettings+"&firewallAndDCOMStatus="+resptext+"&selectedCompCount="+preInstallRespJSON.totalComputerCount+"&wanCompCount="+preInstallRespJSON.wanComputerCount , "modal=yes,height=125,width=450,scrollbars=no,title="+I18N.getMsg('dc.som.somList.Install_Agent'));//No I18N
+		}
+	}
+}
+
+function installAgentFromDialog( firewallAndDCOMStatus , fixAgentInstlnProblem)
+{
+	installAgent(selectedInstallComputers , firewallAndDCOMStatus , fixAgentInstlnProblem);
+}
+
+function installAgent( selectedComp , firewallAndDCOMStatus , fixAgentInstlnProblem)
+{
+//	document.getElementById("messageInfoForRetryAgentInstall").style.display="none";
+//	document.getElementById("messageInfoForRetryInstFailed").style.display="none";
+
+	//Show installation in progress
+	//document.getElementById("installInProgLabel").className = "";
+	
+	//TO DO: set className also.
+	
+
+	var compArr = selectedComp.split(",");
+        var installReq = AjaxAPI.getXMLHttpRequest();
+        installReq.onreadystatechange = function(){
+	//get the response
+	//if yes -> refresh the subview
+	//if no -> don't refresh
+	//if installation is in progress -> proceed
+		if (installReq.readyState == 4)
+		{
+			if (installReq.status == 200)
+			{
+				if(installReq.responseXML != null)
+				{
+					checkAndProcessOutput(installReq);
+                                }
+				else
+				{
+					if(installReq.responseText)
+					{
+						document.getElementById("messageInfoForActionInProgress").style.display = "none";
+						document.getElementById("messageInfoOpenPortFailed").style.display = "block";
+						document.getElementById("messageInfoTDForOpenPortFailed").innerHTML = installReq.responseText;
+					}
+				}
+			}
+		}
+	};
+	var complength = compArr.length;
+        if(preInstallRespJSON.checkMacAgentSettings){
+            complength=complength-preInstallRespJSON.macComputerCount;
+        }
+        if(preInstallRespJSON.checkLinuxAgentSettings){
+            complength=complength-preInstallRespJSON.linuxComputerCount;
+        }
+	if(eval(complength) > 0){
+        disableActions(true); //only for installation
+	if(complength != "" && complength != 0 && complength != null)
+	{
+                document.getElementById("messageInfoForActionInProgress").style.display = "block";
+                document.getElementById("stop_agent_uninstln_button").className = "hide";
+                document.getElementById("stop_agent_instln_button").className = "";
+                document.SoMManagedComputersForm.stop_agent_instln.disabled = false;
+                document.SoMManagedComputersForm.stop_agent_instln.className = "buttonnew1";
+                
+				var installCompMsg = I18N.getMsg('dc.som.somList.Agent_install_initiated');
+                //if( preInstallRespJSON.wanComputerCount && parseInt(complength) > preInstallRespJSON.wanComputerCount){
+                //    complength = complength - preInstallRespJSON.wanComputerCount;
+                //}
+		installCompMsg += computerCountString( complength+"");
+//                installCompMsg = getInstallCompMsg(installCompMsg);
+
+		document.getElementById("messageInfoForActionInProgress").style.display = "block";
+		document.getElementById("messageInfoTDForActionInProgress").innerHTML = installCompMsg;
+
+	}
+
+	//send the request
+	var url = "/som.do?actionToCall=installAgent";//NO I18N
+
+	var params = "selectedComputer="+encodeURIComponent(selectedComp);//NO I18N
+	if(typeof firewallAndDCOMStatus != "undefined" )
+	{
+		params += "&firewallAndDCOMStatus="+firewallAndDCOMStatus;//NO I18N
+	}
+	if(typeof fixAgentInstlnProblem != "undefined" )
+	{
+		params += "&fixAgentInstlnProblem="+fixAgentInstlnProblem;//NO I18N
+	}
+	
+	//Use post request, as 'GET' fails for more data.
+	installReq.open("POST", url, true);
+
+	//Send the proper header information along with the request
+	installReq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	installReq.setRequestHeader("Content-length", params.length);
+	installReq.setRequestHeader("Connection", "close");
+	installReq.send(params);
+
+	
+				}else{
+                                    
+                                    document.getElementById("messageInfoForActionInProgress").style.display = "none";
+                                }
+	//Hide installation in progress
+}
+
+function checkAndProcessOutput(installRes)
+{
+	disableActions(true);
+	if(installRes.responseXML != null )
+	{
+		var res = installRes.responseXML.getElementsByTagName("InstallParams");
+		if(res.length > 0)
+		{
+			var	inprog = res[0].getAttribute("agent_installation_inprogress");
+			totalCompCount = res[0].getAttribute("total_count");
+			completedCompCount = res[0].getAttribute("completed_count");
+			var retryInstFailedTotCnt = res[0].getAttribute("retry_install_failed_total_count");
+			var installFailedComputersCountinSoM = res[0].getAttribute("installFailedComputersCountNow");
+			var installationWFStopped = res[0].getAttribute("INSTALL_WORKFLOW_STOPPED");
+			var wanComputerCount = res[0].getAttribute("wan_computer_count");
+                        
+                        //if(totalCompCount != "" && totalCompCount != 0 && totalCompCount != null && preInstallRespJSON.wanComputerCount && preInstallRespJSON.wanComputerCount > 0){
+						//	completedCompCount = parseInt(completedCompCount) + preInstallRespJSON.wanComputerCount +"";
+						//	totalCompCount = parseInt(totalCompCount) + preInstallRespJSON.wanComputerCount +"";
+                        //}else if(inprog=="false" && totalCompCount==0 && preInstallRespJSON.wanComputerCount && preInstallRespJSON.wanComputerCount > 0){
+						//	totalCompCount     = preInstallRespJSON.wanComputerCount +"";
+						//	completedCompCount = preInstallRespJSON.wanComputerCount +"";
+						//}
+                        
+			installInProg = inprog;
+			var statusChanged = res[0].getAttribute("status_changed");
+			if( inprog == "true")
+			{
+				document.getElementById("messageInfoForActionInProgress").style.display = "block";
+				document.getElementById("stop_agent_instln_button").className = "";
+
+				if( statusChanged == "true")
+				{
+					refreshSoMView();
+				}
+				disableActions(true);
+				//Call the method to get params
+
+				if(totalCompCount != "" && totalCompCount != 0 && totalCompCount != null && completedCompCount != null && completedCompCount != "" && completedCompCount != 0)
+				{
+					var installCompMsg = I18N.getMsg('dc.som.somList.Agent_install_initiated_out_of', new Array(computerCountString( completedCompCount), computerCountString(totalCompCount)));
+                                        installCompMsg = getInstallCompMsg(installCompMsg);
+
+					document.getElementById("messageInfoForActionInProgress").style.display = "block";
+					document.getElementById("messageInfoTDForActionInProgress").innerHTML = installCompMsg;
+				}
+				else if(totalCompCount != "" && totalCompCount != 0 && totalCompCount != null && completedCompCount != null && completedCompCount != "" && completedCompCount == 0)
+				{
+					var installCompMsg = I18N.getMsg('dc.som.somList.Agent_install_initiated');
+					installCompMsg += computerCountString( totalCompCount);
+                                        installCompMsg = getInstallCompMsg(installCompMsg);
+
+					document.getElementById("messageInfoForActionInProgress").style.display = "block";
+					document.getElementById("messageInfoTDForActionInProgress").innerHTML = installCompMsg;
+				}
+
+				disableActions(true);
+
+				setTimeout( "getInstallParams()", 5000);
+			}
+			else
+			{
+				refreshSoMView();
+
+				disableActions(false);
+
+				selectedInstallComputers = "";
+
+				/*var selectedDomName = document.SoMManagedComputersForm.domainName.value;
+				updateSoMComputersCount("install" , selectedDomName);//NO I18N*/
+
+				if(installationWFStopped != null && installationWFStopped != "" && installationWFStopped == "true")
+				{
+					var installCompMsg = I18N.getMsg('dc.som.somList.Agent_install_stopped');
+
+					document.getElementById("messageInfoForActionInProgress").style.display = "none";
+					document.getElementById("messageInfoForActionPerformed").style.display = "block";
+					document.getElementById("messageInfoTDForActionPerformed").innerHTML = installCompMsg;
+					document.SoMManagedComputersForm.remove_computers_button.disabled = false;
+				}
+				else
+				{
+					/*if(installFailedComputersCountinSoM != null && installFailedComputersCountinSoM != "" && installFailedComputersCountinSoM != 0)
+					{
+						var installCompMsg = I18N.getMsg('dc.som.somList.How_to_install_in_failed');
+
+						var installCompMsg1 = I18N.getMsg('dc.som.somList.Agent_install_failed',new Array(computerCountString( installFailedComputersCountinSoM+""),trackingcode));
+						document.getElementById("messageInfoForActionInProgress").style.display = "none";
+						document.getElementById("messageInfoForActionPerformed").style.display = "none";
+//						document.getElementById("messageInfoForRetryInstFailed").style.display = "block";
+//						document.getElementById("messageInfoForRetryInstFailed").className = "msgboard";
+//						document.getElementById("messageInfoTDForRetryInstFailed").innerHTML = installCompMsg;
+//						document.getElementById("messageInfoTD1ForRetryInstFailed").innerHTML = installCompMsg1;
+					}
+					else*/
+					if(totalCompCount != "" && totalCompCount != 0 && totalCompCount != null)
+					{
+						var installCompMsg = I18N.getMsg('dc.som.somList.Agent_install_completed');
+						if(wanComputerCount && wanComputerCount > 0){
+							installCompMsg =  I18N.getMsg('dc.som.somList.Agent_install_initiate_completed');
+						}
+						installCompMsg += computerCountString( totalCompCount);
+                                                installCompMsg  = getInstallCompMsg(installCompMsg);
+						document.getElementById("messageInfoForActionInProgress").style.display = "none";
+						document.getElementById("messageInfoForActionPerformed").style.display = "block";
+						document.getElementById("messageInfoTDForActionPerformed").innerHTML = installCompMsg;
+					}
+				}
+				document.getElementById("stop_agent_instln_button").className = "hide";
+
+				totalCompCount = 0;
+				completedCompCount = 0;
+			}
+		}
+	}
+
+}
+
+function closeInfo( elemid )
+{
+	document.getElementById(elemid).style.display = 'none';
+}
+function getInstallCompMsg(installCompMsg){
+    //if(preInstallRespJSON.wanComputerCount && preInstallRespJSON.wanComputerCount > 0){
+    //    return installCompMsg + " Requires DS Replication for " + preInstallRespJSON.wanComputerCount + " computer(s)";// No I18N
+    //}
+    return installCompMsg ;
+}
+
+/*function updateSoMComputersCount( actionPerformed , domainName,customGroupId,osName,liveStatusId,disableAction)
+{
+	var url ='/som.do?actionToCall=getSoMComputersCountByStatus';//NO I18N
+	if(typeof domainName != "undefined" || domainName!='')
+	{
+		url += "&domainName="+encodeURIComponent(domainName);//NO I18N
+	}
+	if(typeof osName != "undefined" &&  osName!='' )
+	{
+
+		url += "&osName="+encodeURIComponent(osName);//No i18n
+	}
+        if(typeof customGroupId != "undefined" && customGroupId!='')
+        {
+            url += "&customGroupId="+encodeURIComponent(customGroupId);// No I18N
+        }
+        if(typeof liveStatusId !="undefined" && liveStatusId!=''){
+            url += "&liveStatus="+encodeURIComponent(liveStatusId);//No I18N
+        }
+	var req = AjaxAPI.getXMLHttpRequest();
+	if(req)
+	{
+		req.open("GET", url, true);
+		if (window.XMLHttpRequest)
+		{
+			req.send(null);
+		}
+		else if (window.ActiveXObject)
+		{
+			req.send();
+		}
+		req.onreadystatechange = function(){
+			if (req.readyState == 4)
+			{
+				if (req.status == 200)
+				{
+					if(req.responseXML != null)
+					{
+						var res = req.responseXML.getElementsByTagName("SoMComputersCount");
+						if(res.length > 0)
+						{
+							var	totalcount = res[0].getAttribute("total");
+							var YetToInstallCount = res[0].getAttribute("YetToInstall");
+							var InstalledCount = res[0].getAttribute("Installed");
+							var UnInstalledCount = res[0].getAttribute("UnInstalled");
+							var InstallFailedCount = res[0].getAttribute("InstallFailed");
+							var UnInstallFailedCount = res[0].getAttribute("UnInstallFailed");
+
+							showHideCountElems("TotalComputers" , totalcount);//NO I18N
+							showHideCountElems("YetToInstallComputers" , YetToInstallCount);//NO I18N
+							showHideCountElems("InstalledComputers" , InstalledCount);//NO I18N
+							showHideCountElems("InstallFailedComputers" , InstallFailedCount);//NO I18N
+							showHideCountElems("UnInstalledComputers" , UnInstalledCount);//NO I18N
+							showHideCountElems("UnInstallFailedComputers" , UnInstallFailedCount);//NO I18N
+						}
+						if(actionPerformed == "install")
+						{
+							document.getElementById("stop_agent_instln_button").className = "hide";
+						}
+						else if(actionPerformed == "uninstall")
+						{
+							document.getElementById("stop_agent_uninstln_button").className = "hide";
+							if(document.SoMManagedComputersForm.ChooseSoMAction)
+							{
+								document.SoMManagedComputersForm.ChooseSoMAction.selectedIndex = 0;
+							}
+
+						}
+						else if(actionPerformed == "remove")
+						{
+							document.getElementById("stop_remove_button").className = "hide";
+
+							if(document.SoMManagedComputersForm.ChooseSoMAction)
+							{
+								document.SoMManagedComputersForm.ChooseSoMAction.selectedIndex = 0;
+							}
+						}
+						if(!disableAction){
+						    disableActions(false);
+						}
+					}
+				}
+			}
+		};
+	}
+}*/
+
+function getInstallParams()
+{
+//	document.getElementById("messageInfoForRetryAgentInstall").style.display="none";
+//	document.getElementById("messageInfoForRetryInstFailed").style.display="none";
+
+	disableActions(true);
+
+	var url ='/som.do?actionToCall=getInstallResult&completedCount='+completedCompCount+'&totalCount='+totalCompCount;//NO I18N
+	var req = AjaxAPI.getXMLHttpRequest();
+	if(req)
+	{
+		req.open("GET", url, true);
+		if (window.XMLHttpRequest)
+		{
+			req.send(null);
+		}
+		else if (window.ActiveXObject)
+		{
+			req.send();
+		}
+		req.onreadystatechange = function(){
+			if (req.readyState == 4)
+			{
+				if (req.status == 200)
+				{
+					if(req.responseXML != null)
+					{
+						checkAndProcessOutput(req);
+					}
+				}
+			}
+		};
+	}
+}
+
+function preRemoveSelectedComputers ()
+{
+	document.getElementById("messageInfoForActionPerformed").style.display = "none";
+//	document.getElementById("messageInfoForRetryAgentInstall").style.display = "none";
+//	document.getElementById("messageInfoForRetryInstFailed").style.display="none";
+
+	selectedComputers = getSelectedComputers();
+	if(selectedComputers != "")
+	{
+		disableActions(true);
+
+		var url = "/som.do?actionToCall=preRemoveSoMComputers";//NO I18N
+		var params = "selectedComputer="+encodeURIComponent(selectedComputers);//NO I18N
+		var req = AjaxAPI.getXMLHttpRequest();
+
+		//Use post request, as 'GET' fails for more data.
+		req.open("POST", url, true);
+
+		//Send the proper header information along with the request
+		req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		req.setRequestHeader("Content-length", params.length);
+		req.setRequestHeader("Connection", "close");
+		req.send(params);
+
+		req.onreadystatechange = function(){
+
+			if (req.readyState == 4)
+			{
+				if (req.status == 200)
+				{
+					var respText = req.responseText;
+					if( respText == "false" )
+					{
+						document.getElementById("messageInfoForActionInProgress").style.display = "none";
+						showURLInDialog("/jsp/admin/som/removeErrorMsgDialog.jsp" , "modal=yes,height=100,width=420,scrollbars=no,title="+I18N.getMsg('dc.som.somList.Remove_comp'));//NO I18N
+					}
+					else
+					{
+						removeSelectedComputers();
+					}
+				}
+			}
+		};
+	}
+}
+
+function removeSelectedComputers ()
+{
+	document.getElementById("messageInfoForActionPerformed").style.display = "none";
+//	document.getElementById("messageInfoForRetryAgentInstall").style.display = "none";
+//	document.getElementById("messageInfoForRetryInstFailed").style.display="none";
+
+	selectedComputers = getSelectedComputers();
+	if(selectedComputers != "")
+	{
+		disableActions(true);
+
+		var compArr = selectedComputers.split(",");
+		var complength = compArr.length;
+                var cl = complength + "";
+
+		if(complength != "" && complength != 0 && complength != null)
+		{
+                    	document.getElementById("messageInfoForActionInProgress").style.display = "block";
+			document.getElementById("stop_agent_instln_button").className = "hide";
+			document.getElementById("stop_agent_uninstln_button").className = "hide";
+			document.getElementById("messageInfoTDForActionInProgress").innerHTML = I18N.getMsg('dc.som.somList.Started_Removing' ,new Array(cl));
+		}
+
+		var url = "/som.do?actionToCall=removeSoMComputers";//NO I18N
+		var params = "selectedComputer="+encodeURIComponent(selectedComputers);//NO I18N
+		var req = AjaxAPI.getXMLHttpRequest();
+
+		//Use post request, as 'GET' fails for more data.
+		req.open("POST", url, true);
+
+		//Send the proper header information along with the request
+		req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		req.setRequestHeader("Content-length", params.length);
+		req.setRequestHeader("Connection", "close");
+		req.send(params);
+
+		req.onreadystatechange = function(){
+
+			if (req.readyState == 4)
+			{
+				if (req.status == 200)
+				{
+					var respText = req.responseText;
+
+					if(respText)
+					{
+                        var resValues = respText.split(":");
+						document.getElementById("messageInfoForActionInProgress").style.display = "none";
+						disableActions(false);
+						refreshSoMView();
+
+						/*var selectedDomName = document.SoMManagedComputersForm.domainName.value;
+						updateSoMComputersCount( "remove" , selectedDomName);//NO I18N*/
+
+						var removeMsg = I18N.getMsg('dc.som.somList.Success_removed', new Array(computerCountString(resValues[0])));
+						document.getElementById("messageInfoForActionPerformed").style.display = "block";
+						document.getElementById("messageInfoTDForActionPerformed").innerHTML = removeMsg;
+                        if(resValues[1] && resValues[1] == "false")
+                        {
+								if(document.SoMManagedComputersForm.add_computers)
+								{
+                                	document.SoMManagedComputersForm.add_computers.disabled = false;
+                                	document.SoMManagedComputersForm.add_computers.className = "button addicon";
+								}
+
+                        }
+                        if(resValues[2] && resValues[2] == "false"){
+							var underLicenseMsgObj = document.getElementById("UNDER_LICENSE_MSG");
+							if(underLicenseMsgObj)
+							{
+                            	underLicenseMsgObj.style.display = "none";
+							}
+                        }
+					}
+				}
+			}
+		};
+	}
+}
+
+function enableElements()
+{
+	document.getElementById("messageInfoForActionPerformed").style.display = "none";
+	document.getElementById("messageInfoForActionInProgress").style.display = "none";
+	disableActions(false);
+}
+
+function disableElements()
+{
+	disableActions(true);
+}
+
+
+var selectedComputers = "";
+//Uninstall agent in selected computers
+function uninstallAgentInSelectedComputers (isRemove)
+{
+	document.getElementById("messageInfoForActionPerformed").style.display = "none";
+
+	selectedComputers = getSelectedComputers();
+	if(selectedComputers != "")
+	{
+                getInstallServiceResponse(selectedComputers,function(data){
+                    if(!showMacAndLinAgentSettingsAlert('uninstall')){
+                        if(isRemove == "true")
+                        {
+                            showURLInDialog('/jsp/admin/som/confirmRemoveComputersDialog.jsp?&checkMacConfigured='+preInstallRespJSON.checkMacAgentSettings+'&checkLinuxConfigured='+preInstallRespJSON.checkLinuxAgentSettings+"&wanCompCount="+preInstallRespJSON.wanComputerCount, "modal=yes,height=100,width=450,scrollbars=no,title="+I18N.getMsg('dc.som.somList.Remove_comp'));//No I18N
+                        }
+                        else
+                        {
+                            showURLInDialog('/jsp/admin/som/confirmRemoveComputersDialog.jsp?&checkMacConfigured='+preInstallRespJSON.checkMacAgentSettings+'&checkLinuxConfigured='+preInstallRespJSON.checkLinuxAgentSettings+"&wanCompCount="+preInstallRespJSON.wanComputerCount, "modal=yes,height=100,width=450,scrollbars=no,title="+I18N.getMsg('dc.som.somList.Uninstall_Agent'));//No I18N
+                        }
+                    }
+                });
+                
+	}
+}
+
+function uninstallAndRemoveComputers()
+{
+	uninstallAgent(selectedComputers , "true");
+}
+
+function uninstallFromDialog()
+{
+	uninstallAgent(selectedComputers);
+}
+
+function uninstallAgent( selectedComp , isRemove)
+{
+//	document.getElementById("messageInfoForRetryAgentInstall").style.display="none";
+//	document.getElementById("messageInfoForRetryInstFailed").style.display="none";
+	document.getElementById("messageInfoForNonWindows").style.display = "none";
+
+//        disableActions(true);
+
+	document.getElementById("messageInfoForActionInProgress").style.display = "block";
+	//Show uninstallation in progress
+	if(isRemove == "true")
+	{
+		document.getElementById("stop_remove_button").className = "";
+		document.SoMManagedComputersForm.stop_remove_computers.disabled = false;
+		document.SoMManagedComputersForm.stop_remove_computers.className = "buttonnew1";
+	}
+	else
+	{
+		document.getElementById("stop_agent_uninstln_button").className = "";
+		document.SoMManagedComputersForm.stop_agent_uninstln.disabled = false;
+		document.SoMManagedComputersForm.stop_agent_uninstln.className = "buttonnew1";
+	}
+
+	var compArr = selectedComp.split(",");
+	var complength = compArr.length;
+        if(preInstallRespJSON.checkLinuxAgentSettings){
+            complength=complength-preInstallRespJSON.linuxComputerCount;
+        }
+        if(preInstallRespJSON.checkMacAgentSettings){
+            complength=complength-preInstallRespJSON.macComputerCount;
+        }
+	if(complength != "" && complength != 0 && complength != null)
+	{   
+                disableActions(true);
+		var installCompMsg = I18N.getMsg('dc.som.somList.Agent_uninstall_initiated');
+		installCompMsg += computerCountString( complength+"");
+
+		document.getElementById("messageInfoForActionInProgress").style.display = "block";
+		document.getElementById("messageInfoTDForActionInProgress").innerHTML = installCompMsg;
+
+	}else{
+            
+                document.getElementById("messageInfoForActionInProgress").style.display = "none";
+        }
+
+	//send the request
+	var url = "/som.do?actionToCall=uninstallAgent";//NO I18N
+	var params = "selectedComputer="+encodeURIComponent(selectedComp);//NO I18N
+	var req = AjaxAPI.getXMLHttpRequest();
+
+	//Use post request, as 'GET' fails for more data.
+	req.open("POST", url, true);
+
+	//Send the proper header information along with the request
+	req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	req.setRequestHeader("Content-length", params.length);
+	req.setRequestHeader("Connection", "close");
+	req.send(params);
+
+	req.onreadystatechange = function(){
+	//get the response
+	//if yes -> refresh the subview
+	//if no -> don't refresh
+	//if installation is in progress -> proceed
+		if (req.readyState == 4)
+		{
+			if (req.status == 200)
+			{
+				if(req.responseXML != null)
+				{
+					checkAndContinueUninstall(req , isRemove);
+				}
+			}
+		}
+	};
+	//Hide uninstallation in progress
+}
+
+function checkAndContinueUninstall( req , isRemove)
+{
+	disableActions(true);
+	if(req.responseXML != null )
+	{
+		var res = req.responseXML.getElementsByTagName("InstallParams");
+		if(res.length > 0)
+		{
+			var	inprog = res[0].getAttribute("agent_uninstallation_inprogress");
+			var statusChanged = res[0].getAttribute("status_changed");
+			totalCompCount = res[0].getAttribute("total_count");
+			completedCompCount = res[0].getAttribute("completed_count");
+			var wanComputerCount = res[0].getAttribute("wan_computer_count");
+
+			var uninstallationWFStopped = res[0].getAttribute("UNINSTALL_WORKFLOW_STOPPED");
+
+			if( inprog == "true")
+			{
+				document.getElementById("messageInfoForActionInProgress").style.display = "block";
+				if(isRemove == "true")
+				{
+					removeInProg = inprog;
+					document.getElementById("stop_remove_button").className = "";
+				}
+				else
+				{
+					uninstallInProg = inprog;
+					document.getElementById("stop_agent_uninstln_button").className = "";
+				}
+				if( statusChanged == "true")
+				{
+					//refresh the subview
+					refreshSoMView();
+					disableActions(true);
+				}
+
+				if(totalCompCount != "" && totalCompCount != 0 && totalCompCount != null && completedCompCount != null && completedCompCount != "" && completedCompCount != 0)
+				{
+					var installCompMsg = I18N.getMsg('dc.som.somList.Agent_uninstall_initiated_out_of',new Array(computerCountString( completedCompCount),computerCountString(totalCompCount)));
+                                        installCompMsg = getInstallCompMsg(installCompMsg);
+
+					document.getElementById("messageInfoForActionInProgress").style.display = "block";
+					document.getElementById("messageInfoTDForActionInProgress").innerHTML = installCompMsg;
+				}
+				else if(totalCompCount != "" && totalCompCount != 0 && totalCompCount != null&& completedCompCount != null && completedCompCount != "" && completedCompCount == 0)
+				{
+					var installCompMsg = I18N.getMsg('dc.som.somList.Agent_uninstall_initiated');
+					installCompMsg += computerCountString( totalCompCount);
+                                        installCompMsg = getInstallCompMsg(installCompMsg);
+					document.getElementById("messageInfoForActionInProgress").style.display = "block";
+					document.getElementById("messageInfoTDForActionInProgress").innerHTML = installCompMsg;
+				}else if(totalCompCount==0){
+                                        document.getElementById("messageInfoForActionInProgress").style.display = "none";
+                                        return ;
+                                }
+
+				//Call the method to get params
+				setTimeout( "getUninstallParams('"+isRemove+"')", 5000);
+			}
+			else
+			{
+				refreshSoMView();
+
+				selectedComputers = "";
+
+				disableActions(false);
+				if(uninstallationWFStopped != null && uninstallationWFStopped != "" && uninstallationWFStopped == "true")
+				{
+					var installCompMsg = I18N.getMsg('dc.som.somList.Agent_uninstall_stopped');
+
+					document.getElementById("messageInfoForActionInProgress").style.display = "none";
+					document.getElementById("messageInfoForActionPerformed").style.display = "block";
+					document.getElementById("messageInfoTDForActionPerformed").innerHTML = installCompMsg;
+					document.SoMManagedComputersForm.remove_computers_button.disabled = false;
+				}
+				else
+				{
+					if(isRemove == "true")
+					{
+						if(totalCompCount != "" && totalCompCount != 0 && totalCompCount != null)
+						{
+
+							var installCompMsg = I18N.getMsg('dc.som.somList.Agent_uninstall_completed');
+							if(wanComputerCount && wanComputerCount > 0){
+								installCompMsg =  I18N.getMsg('dc.som.somList.Agent_uninstall_initiate_completed');
+							}
+							installCompMsg += computerCountString( totalCompCount);
+                                                        installCompMsg = getInstallCompMsg(installCompMsg);
+
+							document.getElementById("messageInfoForActionInProgress").style.display = "block";
+							document.getElementById("messageInfoTDForActionInProgress").innerHTML = installCompMsg;
+						}
+
+						removeComputers( totalCompCount );
+					}
+					else
+					{
+						/*var selectedDomName = document.SoMManagedComputersForm.domainName.value;
+						updateSoMComputersCount( "uninstall" , selectedDomName);//NO I18N*/
+
+						if(totalCompCount != "" && totalCompCount != 0 && totalCompCount != null)
+						{
+							var installCompMsg = I18N.getMsg('dc.som.somList.Agent_uninstall_completed');
+							if(wanComputerCount && wanComputerCount > 0){
+								installCompMsg =  I18N.getMsg('dc.som.somList.Agent_uninstall_initiate_completed');
+							}
+							installCompMsg += computerCountString( totalCompCount);
+                                                        installCompMsg = getInstallCompMsg(installCompMsg);
+							document.getElementById("messageInfoForActionInProgress").style.display = "none";
+							document.getElementById("messageInfoForActionPerformed").style.display = "block";
+							document.getElementById("messageInfoTDForActionPerformed").innerHTML = installCompMsg;
+						}
+					}
+				}
+				totalCompCount = 0;
+				completedCompCount = 0;
+			}
+		}
+	}
+}
+
+function getUninstallParams(isRemove)
+{
+//	document.getElementById("messageInfoForRetryAgentInstall").style.display="none";
+//	document.getElementById("messageInfoForRetryInstFailed").style.display="none";
+
+	var url ='/som.do?actionToCall=getUnInstallResult&completedCount='+completedCompCount+'&totalCount='+totalCompCount;//NO I18N
+	var req = AjaxAPI.getXMLHttpRequest();
+	if(req)
+	{
+		req.onreadystatechange = function(){
+			if (req.readyState == 4)
+			{
+				if (req.status == 200)
+				{
+					if(req.responseXML != null)
+					{
+						checkAndContinueUninstall(req,isRemove);
+					}
+				}
+			}
+		};
+		req.open("GET", url, true);
+		if (window.XMLHttpRequest)
+		{
+			req.send(null);
+		}
+		else if (window.ActiveXObject)
+		{
+			req.send();
+		}
+	}
+}
+
+
+function removeComputers( uninstallCompCount )
+{
+	var url ='/som.do?actionToCall=removeComputersFromScope';//NO I18N
+	var req = AjaxAPI.getXMLHttpRequest();
+	if(req)
+	{
+		req.onreadystatechange = function(){
+
+			if (req.readyState == 4)
+			{
+				if (req.status == 200)
+				{
+					var res = req.responseText;
+					if(res)
+					{
+						if( res == "true")
+						{
+							//refresh the subview
+							refreshSoMView();
+							/*var selectedDomName = document.SoMManagedComputersForm.domainName.value;
+							updateSoMComputersCount("remove" , selectedDomName);//NO I18N*/
+
+							if(uninstallCompCount != "" && uninstallCompCount != 0 && uninstallCompCount != null)
+							{
+								var uninstallCompMsg = I18N.getMsg('dc.som.somList.Success_removed', new Array(computerCountString(uninstallCompCount+"")));
+						        document.getElementById("messageInfoForActionInProgress").style.display = "none";
+
+
+								document.getElementById("messageInfoForActionPerformed").style.display = "block";
+								document.getElementById("messageInfoTDForActionPerformed").innerHTML = uninstallCompMsg;
+								disableActions(false);
+							}
+						}
+
+					}
+
+				}
+			}
+		};
+
+		req.open("GET", url, true);
+		if (window.XMLHttpRequest)
+		{
+			req.send(null);
+		}
+		else if (window.ActiveXObject)
+		{
+			req.send();
+		}
+
+	}
+}
+
+function stopAgentWorkFlow( buttonObj)
+{
+	buttonObj.disabled = true;
+	buttonObj.className = "buttonnew1grey";
+	var url ='/som.do?actionToCall=stopAgentWorkFlow';//NO I18N
+	var req = AjaxAPI.getXMLHttpRequest();
+	if(req)
+	{
+		req.open("GET", url, true);
+		if (window.XMLHttpRequest)
+		{
+			req.send(null);
+		}
+		else if (window.ActiveXObject)
+		{
+			req.send();
+		}
+		req.onreadystatechange = function(){
+			//do nothing
+
+
+		};
+	}
+}
+
+/*
+function showHideCountElems(elemID , compcount )
+{
+	var elem = document.getElementById(elemID);
+	if(elem)
+	{
+		if(compcount == 0)
+		{
+			elem.className = "bodytext";
+			elem.innerHTML = compcount;
+			document.getElementById(elemID+"WithLink").className = "hide";
+		}
+		else
+		{
+			elem.className = "hide";
+			document.getElementById(elemID+"WithLink").className = "bodytext";
+			document.getElementById(elemID+"WithLink").innerHTML = compcount;
+		}
+	}
+}
+*/
+
+function computerCountString( compCnt)
+{
+	var compCountStr = "";
+	if(compCnt == 0)
+	{
+		compCountStr = I18N.getMsg('dc.som.somList.No_comp');
+	}
+	else if(compCnt == 1)
+	{
+		compCountStr = I18N.getMsg('dc.som.somList.1_comp');
+	}
+	else
+	{
+		compCountStr = I18N.getMsg('dc.som.somList.n_comp', new Array(compCnt));
+	}
+
+	return compCountStr;
+}
+
+function showEditServerIPDialog( detectedIP)
+{
+    var theURL = "/som.do?actionToCall=showEditServerIPPage&DETECTED_IP="+detectedIP;//NO I18N
+	var title = I18N.getMsg('dc.som.somList.change_server_ip') ;
+	var winParams='position=relative,modal=yes,height=80,width=500,scrollbars=no,title='+title;//NO I18N
+	showURLInDialog(theURL,winParams);
+}
+
+
+function saveServerIP()
+{
+    var serverIP = document.getElementById("SERVER_IP_TO_CHANGE").value;
+    if (serverIP == "")
+    {
+		//put this in the dialog itself
+        alert(I18N.getMsg('dc.som.somList.Enter_ip'));
+        return;
+    }
+
+    var url = "/som.do?actionToCall=saveServerIP";//NO I18N
+	var params = "SERVER_IPADDR="+serverIP;//NO I18N
+
+	var req = AjaxAPI.getXMLHttpRequest();
+
+    //Use post request, as 'GET' fails for more data.
+    req.open("POST", url, true);
+
+    //Send the proper header information along with the request
+    req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    req.setRequestHeader("Content-length", params.length);
+    req.setRequestHeader("Connection", "close");
+    req.send(params);
+
+	req.onreadystatechange = function()
+	{
+		closeDialog();
+
+		var somDiv = document.getElementById("SERVER_IP_CHANGED_MSG");
+		if(somDiv != null)
+		{
+			somDiv.style.display = "none";
+		}
+
+	};
+}
+
+function closeServerIPChangeMsg( divid )
+{
+    var divelem = document.getElementById(divid);
+    if (divelem)
+    {
+		divelem.style.display = "none";
+    }
+
+    var url = "/configUtilAction.do?actionToCall=closeServerIPChangeMsg";//NO I18N
+	var params = "";
+
+	var req = AjaxAPI.getXMLHttpRequest();
+
+    //Use post request, as 'GET' fails for more data.
+    req.open("POST", url, true);
+
+    //Send the proper header information along with the request
+    req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    req.setRequestHeader("Content-length", params.length);
+    req.setRequestHeader("Connection", "close");
+    req.send(params);
+
+	req.onreadystatechange = function()
+	{
+	};
+
+}
+
+function closeServerOSMsgForVista( divid )
+{
+	var divelem = document.getElementById(divid);
+    if (divelem)
+    {
+		divelem.style.display = "none";
+    }
+
+    var url = "/configUtilAction.do?actionToCall=closeServerOSMsgForVista";//NO I18N
+	var params = "";
+
+	var req = AjaxAPI.getXMLHttpRequest();
+
+    //Use post request, as 'GET' fails for more data.
+    req.open("POST", url, true);
+
+    //Send the proper header information along with the request
+    req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    req.setRequestHeader("Content-length", params.length);
+    req.setRequestHeader("Connection", "close");
+    req.send(params);
+
+	req.onreadystatechange = function()
+	{
+	};
+}
+
+function markAgentToSelectedRemoteOffoce(id, selectedComputer)
+{
+    if(id == -1)
+    {
+        return;
+    }
+    document.getElementById("messageInfoForActionPerformed").style.display = "none";
+    var selectedComp = "";
+    if(selectedComputer){
+        selectedComp = selectedComputer;
+    }else{
+        selectedComp = getSelectedComputers();
+    }
+    selectedInstallComputers = selectedComp;
+
+    if(selectedComp != "")
+    {
+        startValidationTargetRO(selectedComp,id);
+    }else
+    {
+        document.getElementById("targetRemoteOffice").selectedIndex = "0"
+    }
+
+}
+function startValidationTargetRO(selectedComp,id)
+{
+     var url = "/som.do?actionToCall=validateTargetRomoteOffice";//NO I18N
+        var params = "selectedComputer="+encodeURIComponent(selectedComp)+"&targetRemoteOffice="+encodeURIComponent(id);//NO I18N
+
+        var req = AjaxAPI.getXMLHttpRequest();
+        req.open("POST", url, true);
+
+        //Send the proper header information along with the request
+        req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        req.setRequestHeader("Content-length", params.length);
+        req.setRequestHeader("Connection", "close");
+        req.send(params);
+
+        req.onreadystatechange = function(){
+            if (req.readyState == 4)
+            {
+                if (req.status == 200)
+                {
+                    var res = JSON.parse(req.responseText);
+                    var count = parseInt(res.targetBranchCompCount);
+                    var title=I18N.getMsg('dc.js.common.ALERT');
+                    if(count > 0)
+                    {
+                        var compArr = selectedComp.split(",");
+                        var selCount = compArr.length;
+                        if(parseInt(selCount) == count)
+                        {
+                            var title=I18N.getMsg('dc.js.common.ALERT');
+                            var confirmActionText = I18N.getMsg('desktopcentral.som.agent_move.all_agents_same_target');
+                            showDialog('<table class="bodytext" width="100%" height="100%"><tr><td width="50" rowspan="3">&nbsp;&nbsp;&nbsp;<img src="images/alerts.png"/></td><td></td><td></td></tr><tr ><td colspan="2" style="padding:4px;"><span class="bodytext">'+confirmActionText+'</span></td></tr> <tr><td></td><td></td></tr> <tr><td align="center" colspan="3" class="formSubmitBg"><input type="button" value="'+I18N.getMsg('dc.common.ok')+'" class="primaryActionBtn" onclick="javascript:closeDialog(null,this);"></td></tr></table>','width=500,height=130,modal=yes,title='+title);//No I18N
+
+                        }else
+                        {
+                              if(res.notInstalledCompCount && res.notInstalledCompCount>0){
+                                var confirmActionText = I18N.getMsg('dc.som.agent.not_install_move_alert');
+                                showDialog('<table class="bodytext" width="100%" height="100%"><tr><td width="50" rowspan="3">&nbsp;&nbsp;&nbsp;<img src="images/alerts.png"/></td><td></td><td></td></tr><tr ><td colspan="2" style="padding:3px;"><span class="bodytext">'+confirmActionText+'</span></td></tr> <tr><td></td><td></td></tr><tr><td align="center" colspan="3" class="formSubmitBg"><input type="button" value="'+I18N.getMsg('dc.common.ok')+'" class="primaryActionBtn" onclick="closeDialog(null,this);startMoveAgent(\''+selectedComp+'\',\''+id+'\',\''+0+'\',\'install\');">&nbsp;&nbsp;<input type="button" value="'+I18N.getMsg('dc.js.common.CANCEL')+'" class="secondaryActionBtn" onClick="javascript:closeDialogMoveAgent(null,this)" ></td></tr></table>','width=500,height=130,modal=yes,title='+title);//NO I18N
+                              }else{
+                                startMoveAgent(selectedComp, id, 0);
+                              }//since no need to show some agents need to be moved.
+//                            
+//                            var confirmActionText = I18N.getMsg('desktopcentral.som.agent_move.agents_same_target',res);
+//                            showDialog('<table class="bodytext" width="100%" height="100%"><tr><td rowspan="3">&nbsp;&nbsp;&nbsp;<img src="images/confirmation.gif"/></td><td></td><td></td></tr><tr ><td colspan="2"><span class="bodytext">'+confirmActionText+'</span></td></tr> <tr><td></td><td></td></tr> <tr><td align="center" colspan="3"><input type="button" value="'+I18N.getMsg('dc.common.ok')+'" class="buttonnew" style="width:80;" onclick="closeDialog(null,this);startMoveAgent(\''+selectedComp+'\',\''+id+'\',\''+res+'\');">&nbsp;&nbsp;<input type="button" value="'+I18N.getMsg('dc.js.common.CANCEL')+'" class="buttonnew" onClick="javascript:closeDialogMoveAgent(null,this)" style="width:80;"></td></tr></table>','width=500,height=130,title='+confirmAction);//NO I18N
+                        }
+
+                    }else if (res.notInstalledCompCount && res.notInstalledCompCount > 0) {
+                        var confirmActionText = I18N.getMsg('dc.som.agent.not_install_move_alert');
+                        showDialog('<table class="bodytext" width="100%" height="100%"><tr><td width="50" rowspan="3">&nbsp;&nbsp;&nbsp;<img src="images/alerts.png"/></td><td></td><td></td></tr><tr ><td colspan="2" style="padding:3px;"><span class="bodytext">'+confirmActionText+'</span></td></tr> <tr><td></td><td></td></tr><tr><td align="center" colspan="3" class="formSubmitBg"><input type="button" value="' + I18N.getMsg('dc.common.ok') + '" class="primaryActionBtn" onclick="closeDialog(null,this);startMoveAgent(\'' + selectedComp + '\',\'' + id + '\',\'' + 0 + '\',\'install\');">&nbsp;&nbsp;<input type="button" value="' + I18N.getMsg('dc.js.common.CANCEL') + '" class="secondaryActionBtn" onClick="javascript:closeDialogMoveAgent(null,this)"></td></tr></table>', 'width=500,height=130,modal=yes,title=' + title);//NO I18N
+                    }else
+                    {//all installed computers.. then move agent.
+                        startMoveAgent(selectedComp,id,0);
+                    }
+
+                }
+            }
+        };
+
+}
+function startMoveAgent(selectedComp,id,failedCount,installReq)
+{
+    var url = "/som.do?actionToCall=MoveAgentToRemoteOffice";//NO I18N
+    var params = "selectedComputer="+encodeURIComponent(selectedComp)+"&targetRemoteOffice="+encodeURIComponent(id);//NO I18N
+    var req = AjaxAPI.getXMLHttpRequest();
+    req.open("POST", url, true);
+
+    //Send the proper header information along with the request
+    req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    req.setRequestHeader("Content-length", params.length);
+    req.setRequestHeader("Connection", "close");
+    req.send(params);
+
+    req.onreadystatechange = function(){
+        if (req.readyState == 4)
+        {
+            if (req.status == 200)
+            {
+                var res = trimAll(req.responseText).toLowerCase();
+                if(res)
+                {
+                    preInstallRespJSON.preInstallRespText = res ;
+                    var interval = (res.indexOf("yettoinstall")==-1)?5000:1000;
+                    moveAgent(selectedComp,failedCount,interval);
+                    if (installReq && installReq.indexOf("install") != -1) {
+                        setTimeout(function(){getInstallParams();}, interval);
+                    }
+                }
+            }
+        }
+    };
+}
+function moveAgent(selectedComp,failedCount, interval)
+{
+
+    //Show installation in progress
+    document.getElementById("messageInfoMoveFailed").style.display = "none";
+    document.getElementById("messageInfoForActionPerformed").style.display = "none";
+    document.getElementById("messageInfoForActionInProgress").style.display = "block";
+
+    var compArr = selectedComp.split(",");
+    var complength = compArr.length - failedCount;
+
+    if(complength != "" && complength != 0 && complength != null)
+    {
+        var installCompMsg = I18N.getMsg('desktopcentral.admin.som.move_to.remote_office.inprogress');
+		document.getElementById("move_agent_instln_button").className = "";
+        disableActions(true);
+        document.getElementById("messageInfoForActionInProgress").style.display = "block";
+        document.getElementById("messageInfoTDForActionInProgress").innerHTML = installCompMsg;
+
+        moveAgentIntervalID =   window.setInterval( "checkMoveAgentStatus()", interval);
+    }
+
+
+}
+function stopMoveWorkFlow(buttonObj)
+{
+    buttonObj.disabled = true;
+    buttonObj.className = "buttonnew1grey";
+    var url ='/som.do?actionToCall=stopMoveAgent';//NO I18N
+    var req = AjaxAPI.getXMLHttpRequest();
+    if(req)
+    {
+        req.open("POST", url, true);
+        if (window.XMLHttpRequest)
+        {
+            req.send(null);
+        }
+        else if (window.ActiveXObject)
+        {
+            req.send();
+        }
+        req.onreadystatechange = function(){
+                        document.getElementById("messageInfoForActionInProgress").style.display = "none";
+                        document.getElementById("move_agent_instln_button").className = "hide";
+                        document.getElementById("messageInfoForActionPerformed").style.display = "block";
+                        document.getElementById("messageInfoTDForActionPerformed").innerHTML = I18N.getMsg('dc.som.somList.Agent_move_stopped');
+                        disableActions(false);
+						buttonObj.disabled = false;
+						buttonObj.className = "buttonnew1";
+                        refreshSoMView();
+        };
+    }
+}
+var moveAgentIntervalID = "";
+function checkMoveAgentStatus()
+{
+    window.clearInterval(moveAgentIntervalID);
+    var url = "/som.do?actionToCall=checkMoveAgentStatus";//NO I18N
+    var params = "";
+    var req = AjaxAPI.getXMLHttpRequest();
+    req.open("POST", url, true);
+
+    //Send the proper header information along with the request
+    req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    req.setRequestHeader("Content-length", params.length);
+    req.setRequestHeader("Connection", "close");
+    req.send(params);
+
+    req.onreadystatechange = function(){
+        if (req.readyState == 4)
+        {
+            if (req.status == 200)
+            {
+                var res = trimAll(req.responseText);
+
+                if(res == 'true')
+                {
+                   disableActions(true);
+                    if(document.getElementById("messageInfoForActionInProgress").style.display == "none")
+                    {
+                        var installCompMsg = I18N.getMsg('desktopcentral.admin.som.move_to.remote_office.inprogress');
+                        document.getElementById("messageInfoForActionInProgress").style.display = "block";
+                        document.getElementById("move_agent_instln_button").className = "";
+                        document.getElementById("messageInfoTDForActionInProgress").innerHTML = installCompMsg;
+                    }
+                    moveAgentIntervalID =   window.setInterval( "checkMoveAgentStatus()", 5000);
+                }else
+                {
+                    document.getElementById("messageInfoForActionInProgress").style.display = "none";
+                    document.getElementById("move_agent_instln_button").className = "hide";
+                    var resArr = res.split(":::");
+                    res1 = resArr[0];
+                    if(res1 == '4')
+                    {
+                        return;
+                    }
+                    if(res1 == '1')
+                    {
+                        document.getElementById("messageInfoForActionPerformed").style.display = "block";
+                        document.getElementById("messageInfoTDForActionPerformed").innerHTML = resArr[1];
+						closeMsgIdAfterTimer("messageInfoForActionPerformed");//No I18N
+                    }else
+                    {
+                        document.getElementById("messageInfoMoveFailed").style.display = "block";
+                        document.getElementById("messageInfoTDForMoveFailed").innerHTML = resArr[1];
+                    }
+                    disableActions(false);
+                    refreshSoMView();
+                    document.getElementById("targetRemoteOffice").selectedIndex = "0"
+                }
+            }
+        }
+    };
+}
+function closeMsgIdAfterTimer(msgId)
+{
+	setTimeout(function () {
+		document.getElementById(msgId).style.display = 'none';
+	}, 3000);
+}
+function disableActions(status)
+{
+    if(document.SoMManagedComputersForm.install_agent_button_in_navigator)
+    {
+        document.SoMManagedComputersForm.install_agent_button_in_navigator.disabled = status;
+    }
+    if(document.SoMManagedComputersForm.uninstall_agent_button_in_navigator)
+    {
+        document.SoMManagedComputersForm.uninstall_agent_button_in_navigator.disabled = status;
+    }
+    if(document.SoMManagedComputersForm.remove_computers_button)
+    {
+        document.SoMManagedComputersForm.remove_computers_button.disabled = status;
+    }
+    if(document.SoMManagedComputersForm.importOptionID)
+    {
+        document.SoMManagedComputersForm.importOptionID.disabled = status;
+    }
+    if(document.SoMManagedComputersForm.add_computers)
+    {
+        document.SoMManagedComputersForm.add_computers.disabled = status;
+        document.SoMManagedComputersForm.add_computers.className = "button addicon";
+    }
+    if(document.SoMManagedComputersForm.targetRemoteOffice)
+    {
+        var obj = document.getElementById('dc_customerid');
+        var isAllCustomer=false;
+        if(obj){
+             isAllCustomer = (obj.options[obj.selectedIndex].value.toLowerCase()=="All".toLowerCase());
+        }
+        if(isAllCustomer){
+           document.SoMManagedComputersForm.targetRemoteOffice.disabled = true;
+        }else{
+           document.SoMManagedComputersForm.targetRemoteOffice.disabled = status;   
+        }
+   }
+
+
+}
+    
+function closeDialogMoveAgent(var1,var2)
+{
+    closeDialog(var1,var2);
+    document.getElementById("targetRemoteOffice").selectedIndex = "0";
+    //refreshSoMView();
+}
+function isMsiCreationFailed()
+{
+    var mstModifiedId = document.getElementById("mstModifiedSuccess");
+    var status;
+    if(mstModifiedId!=null){
+        status=mstModifiedId.value;
+        
+    }else{
+        status='true';
+    }
+    if(status!=null&&status == 'false')
+        {
+            showMsiCreationFailure();
+        }else{
+            
+            status='true';
+        }
+        return status;
+}
+
+function selectAllObjectsList(form,check)
+{
+    	formVar = form;
+	var len = form.elements.length;
+	for(var i=0; i<len; i++)
+	{
+		var e = form.elements[i];
+		if(e.name == 'object_list')
+		{
+			if(check)
+			{
+				e.checked = true;
+			}
+			else
+			{
+				e.checked =false;
+			}
+		}
+	}
+}
+function isAllCustomersSelected(){
+    
+   var obj = document.getElementById('dc_customerid');
+   var isAllCustomer=false;
+   if(obj){
+     isAllCustomer = (obj.options[obj.selectedIndex].value.toLowerCase()=="All".toLowerCase());
+   }
+   return isAllCustomer;
+   
+}
+

@@ -1,0 +1,1511 @@
+113677    
+Delivered-To: sayde.gutierrez92@gmail.com
+Received: by 10.79.165.91 with SMTP id v27csp1401041ivh;
+        Sun, 7 May 2017 08:02:33 -0700 (PDT)
+X-Received: by 10.84.218.71 with SMTP id f7mr53606286plm.135.1494169353887;
+        Sun, 07 May 2017 08:02:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1494169353; cv=none;
+        d=google.com; s=arc-20160816;
+        b=lyZXCzfGWuGXXf1/3YzmWOcMxc506w+1MGwvC/JT3J4BLBSKbV/3QdZj4SXbgRkfWj
+         Sd1cMf2xQvkVz4ZUrXuJbRB6bo0+k7YD8wDX/A8WqKxbY7+KUhxjp/kMzPHv2u9QXZdf
+         shvR9SrXw/hv4Vo/GgGYRiEeCcme4p3EIBMOkXuHhkucSaOXr9/5DKkPjCjOIecuYV+n
+         m4rrE2Hif1SNFmcfMNsX2ufJOMNTh/q8mwXw7cuiRrcu37BYp+mo2QsgAtb/0rqXD2rz
+         9ff3RZNg/eIJXcp5pdQDAz+Zt1ypna1y4imD9+DkTtRqYFesobruQ4+NrPJdG1cRgG1Y
+         YhoA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-id:list-unsubscribe:mime-version:subject:message-id:to:from
+         :date:dkim-signature:arc-authentication-results;
+        bh=MztWVwqwH651P3uA1LJCvr2dTOiSyckC6vj8V9SPvyg=;
+        b=u97TWjRzxGaApMsAJT5NVl6JWsEAvJMQA9ze7VRbype61Ikp8n4ei9oAnFOJk6uX/0
+         xUa4cpRSGAJ4PE55F6rK/11jBLYYXKvK/WT2aPfld4d1O275iLFiZ5Yjxbsz5QihOPG1
+         gnr0ftSXwn5POMWLFXwPLV5WU8uEmvaSNujQVGTlnPHSIrPYWFGJ0vhJMbw7mk2w6nSj
+         fw47u7FbFhhTgoKW9iRsVRSG5TRxR0KJC95sKWuWQIKUfiRU/Xzhun+0yNyQl0hNlaDn
+         oFl/T5dXYRgjnPsM/2MUk0Hdg5VuJgIY1RSSEWG6q6PeavV9ionIkpC9z/sFO0zFQWD4
+         J05Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@r.grouponmail.com.mx;
+       spf=pass (google.com: domain of 2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6@bounce.r.grouponmail.com.mx designates 50.115.208.155 as permitted sender) smtp.mailfrom=2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6@bounce.r.grouponmail.com.mx;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=grouponmail.com.mx
+Return-Path: <2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6@bounce.r.grouponmail.com.mx>
+Received: from mta155s1.r.grouponmail.com.mx (mta155s1.r.grouponmail.com.mx. [50.115.208.155])
+        by mx.google.com with ESMTPS id p9si7239205pgf.317.2017.05.07.08.02.33
+        for <sayde.gutierrez92@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 07 May 2017 08:02:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6@bounce.r.grouponmail.com.mx designates 50.115.208.155 as permitted sender) client-ip=50.115.208.155;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@r.grouponmail.com.mx;
+       spf=pass (google.com: domain of 2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6@bounce.r.grouponmail.com.mx designates 50.115.208.155 as permitted sender) smtp.mailfrom=2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6@bounce.r.grouponmail.com.mx;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=grouponmail.com.mx
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=r.grouponmail.com.mx; s=s2048d20160829; t=1494169255;
+	bh=MztWVwqwH651P3uA1LJCvr2dTOiSyckC6vj8V9SPvyg=;
+	h=Date:From:To:Message-ID:Subject:Content-Type;
+	b=ctVLqjminKzEI7L6m5v/QYycs00aSihZ41oMlvKxPskH82VvSfmHfK5C0KBQwdktX
+	 dHdm15PgFxPwlBJb61c1aCt5Sr9NlLwrcdpYrmQodDCV29b5cWw7Yi5Q+M8+Ffc9M0
+	 s/UhRJA1nck7uhMBxxwb0PLayuMZYbcjKaRAS6OZWTPeSZLkn3b5duaBD5j9Olg2dF
+	 aJCgYfcJJZO62SwVqjukfF+UeD/iSDDwdlbcfy0OVdiaUcI6Y+c16AAzgsT8L7p8Gh
+	 TVX8itfoZPPInFc5xHt7ALN8jfzaZIl5mfGF7VQSAswnnGFRRcQxuu41rA55qGCFIq
+	 l1U83eeGPVNpw==
+Date: Sun, 7 May 2017 15:00:55 +0000 (UTC)
+From: Groupon Productos <noreply@r.grouponmail.com.mx>
+To: sayde.gutierrez92@gmail.com
+Message-ID: <2072152188.158118914.1494169255495.JavaMail.rocketman@rocketman1.snc1>
+Subject: =?UTF-8?Q?iMac_20_Core_2_Duo_320_GB,_Reloj_+_brazaletes_D?=
+ =?UTF-8?Q?KNY,_Dobladores_de_Ropa,_Perfume_Bebe_Gold_y_M=C3=A1s?=
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_158118894_1255586349.1494169255479"
+X-RM-SendId: 4b29c77e-aae3-4e7b-8547-b51fc1bd6344
+X-RM-EmailName: channel-goods_mx-shopping_rm
+X-RM-UserHash: 2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6
+X-RM-Engaged: false
+X-MSFBL: c2F5ZGUuZ3V0aWVycmV6OTJAZ21haWwuY29tOmJhdGNoOjRiMjljNzdlLWFhZTMtNGU3Yi04NTQ3LWI1MWZjMWJkNjM0NDpybTpNWA==
+List-Unsubscribe: <mailto:2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6@unsub.r.grouponmail.com.mx?subject=c2F5ZGUuZ3V0aWVycmV6OTJAZ21haWwuY29tOmJhdGNoOjRiMjljNzdlLWFhZTMtNGU3Yi04NTQ3LWI1MWZjMWJkNjM0NDpybTpNWA==>
+X-RPCampaign: Grouponchannelgoodsmxshoppingrm20170507
+X-RPTags: channel-goods_mx-shopping_rm
+X-Recruiting: Interested in headers? Join us: www.groupon.com/techjobs/
+List-Id: <channel-goods_mx-shopping_rm.groupon>
+X-Feedback-ID: r.grouponmail.com.mx:channel-goods_mx-shopping_rm:4b29c77e-aae3-4e7b-8547-b51fc1bd6344:groupon
+
+------=_Part_158118894_1255586349.1494169255479
+Content-Type: multipart/related; 
+	boundary="----=_Part_158118895_1465452221.1494169255479"
+
+------=_Part_158118895_1465452221.1494169255479
+Content-Type: text/html;charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns:v=3D"urn:schemas=
+-microsoft-com:vml"> <head> <meta http-equiv=3D"Content-Type" content=3D"te=
+xt/html; charset=3DUTF-8"> <meta name=3D"viewport" content=3D"initial-scale=
+=3D1.0"> <!-- So that mobile webkit will display zoomed in --> <meta name=
+=3D"format-detection" content=3D"telephone=3Dno"> <!-- disable auto telepho=
+ne linking in iOS --> <title>Groupon</title> <style type=3D"text/css"> @med=
+ia only screen and (max-width: 480px) { td[class=3D"100"]{ width: 100% !imp=
+ortant; } td[class=3D"mobile-padding-container"]{ padding: 10px !important;=
+ } td[class=3D"mobile-padding"]{ padding: 0 0 0 0 !important; } td[class=3D=
+"mobile-padding-logo"]{ padding: 0 0 0 0 !important; width: 195px !importan=
+t; } img[class=3D"188"]{ width: 188px !important; } td[class=3D"td_featured=
+"]{ width: 80% !important; height: 150px !important; background-size: 100% =
+!important; background-position: 100% 50%; background-repeat: no-repeat; ma=
+rgin-top: 0 !important; margin-bottom: 0 !important; margin-left: auto !imp=
+ortant; margin-right: auto !important; padding: 0 0 0 0 !important; } td[cl=
+ass=3D"topheaderpadding"]{ padding-left: 10px !important; } img[class=3D"10=
+0"]{ width: 100% !important; } td[class=3D"100"]{ width: 100% !important; }=
+ table[class=3D"container"]{ width: 100% !important; float: none !important=
+; } td[class=3D"border-off"]{ border-left: none !important; border-right: n=
+one !important; border-top: 20px solid #ffffff; } td[class=3D"188"]{ width:=
+ 48% !important; } table[class=3D"outer_container"]{ width: 100% !important=
+; min-width:100% !important; border-spacing: 0 !important; border-collapse:=
+ collapse !important; padding: 0 0 0 0 !important; margin-top: 0 !important=
+; margin-bottom: 0 !important; margin-left: auto !important; margin-right: =
+auto !important; } td[class=3D"outer_container"]{ width: 100% !important; m=
+in-width:100% !important; border-spacing: 0 !important; border-collapse: co=
+llapse !important; padding: 0 0 0 0 !important; margin-top: 0 !important; m=
+argin-bottom: 0 !important; margin-left: auto !important; margin-right: aut=
+o !important; } table[class=3D"inner_container"]{ width: 100% !important; m=
+in-width: 100% !important; margin-top: 0 !important; margin-bottom: 0 !impo=
+rtant; margin-left: auto !important; margin-right: auto !important; border-=
+spacing: 0 !important; border-collapse: collapse !important; padding: 0 0 0=
+ 0 !important; } table[class=3D"inner_container_deal"]{ width: 100% !import=
+ant; margin-top: 0 !important; margin-bottom: 20px !important; margin-left:=
+ auto !important; margin-right: auto !important; border-spacing: 0 !importa=
+nt; border-collapse: collapse !important; padding: 0 0 0 0 !important; } td=
+[class=3D"inner_container"]{ width: 100% !important; min-width: 100% !impor=
+tant; margin-top: 0 !important; margin-bottom: 0 !important; margin-left: a=
+uto !important; margin-right: auto !important; background-size: 100% !impor=
+tant; } img[class=3D"secondary-100"]{ min-width: 0 !important; width: 100% =
+!important; padding: 0 0 0 0 !important; margin-top: 0 !important; margin-b=
+ottom: 0 !important; margin-left: auto !important; margin-right: auto !impo=
+rtant;} td[class=3D"nameFont"]{ font-size: 18px !important; line-height: 22=
+px !important; } span[class=3D"nameFont"]{ font-size: 18px !important; line=
+-height: 22px !important; } td[class=3D"heroNameFont"]{ font-size: 18px !im=
+portant; line-height: 22px !important; } table[class=3D"heroButton"]{ width=
+: 120px !important; } *[class=3D"mobile-banner"]{ width: 100% !important; m=
+ax-height: none !important; height: auto !important; display: block !import=
+ant; } *[class].banner_mobile { width: 100% !important; max-height: none !i=
+mportant; height: auto !important; display: block !important; } *[class].ba=
+nner_mobile.banner_mobile_pad { width: 100% !important; max-height: none !i=
+mportant; height: auto !important; display: block !important; padding: 10px=
+ 0 0 0 !important; } *[class].img_mobile{ width: 100% !important; max-heigh=
+t: none !important; height: auto !important; display:block !important; } ta=
+ble[class=3D"display-off"]{ display: none !important; } td[class=3D"display=
+-off"]{ display: none !important; } } </style> </head> <body style=3D"margi=
+n:0 !important; padding:0!important;"> <div style=3D"display:none; white-sp=
+ace:nowrap; font:15px courier; color:#ffffff; line-height:0; width:600px !i=
+mportant; min-width:600px !important; max-width:600px !important;">&nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
+p; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div> <img src=3D"http:=
+//www.groupon.com.mx/analytic/trackintl.gif?p=3D1&utm_domain=3Dgmail.com&nl=
+p=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b=
+29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcp=
+Aj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd1297=
+54225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dtrack=
+ing_pixel&d=3Dnone" height=3D"1" width=3D"1" style=3D"display:none !importa=
+nt;" /> <table cellpadding=3D"0" cellspacing=3D"0" style=3D"border: 0 none;=
+ border-spacing:0; font-family: Helvetica, Arial, sans-serif; color:#000000=
+ !important; font-weight: 100; width: 100%; background: #ececec;" width=3D"=
+100%" align=3D"center"> <tr> <td> <span style=3D"font-size: 0px; color: #ec=
+ecec;" align=3D"center"> Ap=C3=BArate: estos productos tienen stock limitad=
+o!</span> </td> </tr> <tr> <td align=3D"center" valign=3D"top" style=3D"fon=
+t-size:12px; font-family: Arial, Verdana, sans-serif; line-height:14px; pad=
+ding: 10px 0 10px 0;">Agrega "<a href=3D"http://www.groupon.com" style=3D"c=
+olor:#0185C6; text-decoration:none;">noreply@r.grouponmail.com.mx</a>" a tu=
+ lista de direcciones.&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href=3D"http:=
+//www.groupon.com.mx/subscription_center/29d0591d-f82a-4de5-ad15-c8a5219ed1=
+4a?iscId=3Dtrue&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_mediu=
+m=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shoppi=
+ng&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef48=
+9eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&=
+s=3Dfooter&c=3Dlink&d=3Dsubscription_center" style=3D"color:#0185C6; text-d=
+ecoration:none;">Desuscribir</a></td> </tr> <tr> <td align=3D"center" style=
+=3D"width:100%;" width=3D"100%"> <table cellpadding=3D"0" cellspacing=3D"0"=
+ style=3D"border: 0 none; border-spacing:0; font-family: Helvetica, Arial, =
+sans-serif; color:#000000 !important; font-weight: 100; width: 700px; min-w=
+idth:700px; background: #ffffff;" width=3D"700" align=3D"center" class=3D"i=
+nner_container"> <tr> <td style=3D"width:700px;" width=3D"700" align=3D"cen=
+ter" class=3D"mobile-padding-container"> <table cellpadding=3D"0" cellspaci=
+ng=3D"0" style=3D"border: 0 none; border-spacing:0; font-family: Helvetica,=
+ Arial, sans-serif; color:#000000 !important; font-weight: 100; width: 600p=
+x; background: #ffffff;" width=3D"600" align=3D"center" class=3D"inner_cont=
+ainer"> <tr> <td align=3D"center"> <table cellpadding=3D"0" cellspacing=3D"=
+0" style=3D"border: 0 none; border-spacing:0; font-family: Helvetica, Arial=
+, sans-serif; color:#000000 !important; font-weight: 100; width: 600px; min=
+-width:290px;" width=3D"600" align=3D"center" class=3D"inner_container"> <t=
+r> <td align=3D"center" width=3D"600" style=3D"width:600px; min-width:290px=
+; padding:0 0 10px 0;"> <table cellpadding=3D"0" cellspacing=3D"0" style=3D=
+"border: 0 none; border-spacing:0; font-family: Helvetica, Arial, sans-seri=
+f; color:#000000 !important; font-weight: 100; width: 100%; border-bottom: =
+1px solid #cccccc;" align=3D"center"> <tr> <td align=3D"left" style=3D"min-=
+width:http://s3.grouponcdn.com/email/images/global_images/groupon_goods_ar_=
+logo.pngpx;"> <table width=3D"301" valign=3D"top" cellpadding=3D"0" cellspa=
+cing=3D"0" border=3D"0" style=3D"border: 0 none; border-spacing:0; font-fam=
+ily: Helvetica, Arial, sans-serif; color:#000000 !important; font-weight: 1=
+00; mso-table-lspace:0;mso-table-rspace:0; width:301px; min-width:http://s3=
+.grouponcdn.com/email/images/global_images/groupon_goods_ar_logo.pngpx;" al=
+ign=3D"left" class=3D"inner_container"> <tr> <td width=3D"100%" align=3D"le=
+ft" valign=3D"top" style=3D"padding: 10px 0 10px 0; width:100%;"><a href=3D=
+"http://www.groupon.com.mx/goods?nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchanne=
+l_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_div=
+ision=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2=
+be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D2017=
+0705&sender=3Drm&s=3Dheader&c=3Dimage&d=3DGroupon" target=3D"_blank"><img s=
+rc=3D"http://s3.grouponcdn.com/email/images/global_images/groupon_goods_ar_=
+logo.png" width=3D"100%" style=3D"display: block; border: none !important; =
+width:100%; min-width:http://s3.grouponcdn.com/email/images/global_images/g=
+roupon_goods_ar_logo.pngpx;" alt=3D"GROUPON Goods&reg;" title=3D"GROUPON Go=
+ods&reg;" class=3D"188" /></a> </td> </tr> </table> </td> <td align=3D"righ=
+t"> <table valign=3D"top" width=3D"55" cellpadding=3D"0" cellspacing=3D"0" =
+border=3D"0" style=3D"border: 0 none; border-spacing:0; font-family: Helvet=
+ica, Arial, sans-serif; color:#000000 !important; font-weight: 100; width:5=
+5px; mso-table-lspace:0;mso-table-rspace:0;" align=3D"right"> <tr> <td clas=
+s=3D"topheaderpadding" width=3D"55" align=3D"right" valign=3D"top" style=3D=
+"padding: 5px 0 0 20px;white-space:nowrap; width:55px;"><a href=3D"http://w=
+ww.facebook.com/groupon.mx?" style=3D"color:#0185C6; text-decoration:none;"=
+ target=3D"_blank"><img src=3D"http://s3.grouponcdn.com/email/images/mindst=
+orm/social/icon-facebook-white.png" style=3D"display: block; border: none !=
+important; display: inline-block;"></a>&nbsp;<a href=3D"http://twitter.com/=
+groupon_df" style=3D"color:#0185C6; text-decoration:none;" target=3D"_blank=
+"><img src=3D"http://s3.grouponcdn.com/email/images/mindstorm/social/icon-t=
+witter-white.png" style=3D"display: block; border: none !important; display=
+: inline-block;"></a> </td> </tr> </table> </td> </tr> <tr> <td class=3D"to=
+pheaderpadding" colspan=3D"2" style=3D"padding: 0 0 10px 0; font-size: 13px=
+; color: #6d6d6d;" align=3D"right"> Mira lo que tenemos hoy para ti | 07.05=
+.2017</td> </tr> </table> </td> </tr> </table> <table cellpadding=3D"0" cel=
+lspacing=3D"0" style=3D"border: 0 none; border-spacing:0; font-family: Helv=
+etica, Arial, sans-serif; color:#000000 !important; font-weight: 100; width=
+: 600px; min-width:600px;" align=3D"center" class=3D"outer_container"> <tr>=
+ <td align=3D"center" class=3D"heroPadding"> <table cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"border: 0 none; border-spacing:0; font-family: Helvet=
+ica, Arial, sans-serif; color:#000000 !important; font-weight: 100; width: =
+600px;" align=3D"center" class=3D"inner_container"> <tr> <td style=3D"paddi=
+ng:10px 0 10px 0;"> <table cellpadding=3D"0" cellspacing=3D"0" style=3D"bor=
+der: 0 none; border-spacing:0; font-family: Helvetica, Arial, sans-serif; c=
+olor:#000000 !important; font-weight: 100; width: 100%;" align=3D"center" c=
+lass=3D"inner_container"> <tr> <td colspan=3D"2" align=3D"center"> <a name=
+=3D"test" href=3D"https://www.groupon.com.mx/deals/imac-20-core-2-duo-320-g=
+b-computadores-y-softwares-1-4?p=3D1&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dch=
+annel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t=
+_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=
+=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D=
+20170705&sender=3Drm&s=3Dbody&c=3Dimage&d=3Ddeal-page&utm_campaign=3D100490=
+8356" target=3D"_blank" style=3D"display: block; border: none !important;">=
+ <table cellpadding=3D"0" cellspacing=3D"0" style=3D"border: 0 none; border=
+-spacing:0; font-family: Helvetica, Arial, sans-serif; color:#000000 !impor=
+tant; font-weight: 100; width: 600px;" align=3D"center" class=3D"inner_cont=
+ainer"> <tr> <td class=3D"td_featured" align=3D"center" height=3D"240" back=
+ground=3D"https://img.grouponcdn.com/needish/3xTszfxoCv3gVnb4PHtFB7URegeH/3=
+x-960x576/v1/c600x320.jpg" background-image: url('https://img.grouponcdn.co=
+m/needish/3xTszfxoCv3gVnb4PHtFB7URegeH/3x-960x576/v1/c600x320.jpg'); backgr=
+ound-repeat=3D"no-repeat" background-position=3D"middle center" style=3D"wi=
+dth: 100%; min-width: 288px; background-position: middle center; background=
+-repeat: no-repeat"> <!--[if gte mso 9]> <v:rect style=3D"width:600px; heig=
+ht:240px; background-repeat: no-repeat; " href=3D"https://www.groupon.com.m=
+x/deals/imac-20-core-2-duo-320-gb-computadores-y-softwares-1-4?p=3D1&nlp=3D=
+&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c7=
+7e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m=
+3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd12975422=
+5e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dbutton&d=
+=3DGoods-PN-Hero&utm_campaign=3D1004908356"target=3D"_self" strokecolor=3D"=
+none"> <v:fill type=3D"tile" src=3D"https://img.grouponcdn.com/needish/3xTs=
+zfxoCv3gVnb4PHtFB7URegeH/3x-960x576/v1/c600x320.jpg" /></v:fill> </v:rect> =
+<v:shape id=3D"theText" style=3D"position:absolute;width:600px;height:240px=
+; background-repeat: no-repeat;"> <![endif]--> <!--[if gte mso 9]> </v:shap=
+e> <![endif]--> </td> </tr> </table> </a> </td> </tr> <tr> <td align=3D"lef=
+t" style=3D"background: #282828; padding: 15px;"> <table cellpadding=3D"0" =
+cellspacing=3D"0" style=3D"border: 0 none; border-spacing:0; font-family: H=
+elvetica, Arial, sans-serif; color:#000000 !important; font-weight: 100; wi=
+dth: 100%; background: #282828;" align=3D"center"> <tr> <td align=3D'left' =
+class=3D"heroNameFont" style=3D"font-size: 18px; line-height: 22px; text-de=
+coration: none; color: #ffffff;"> <a href=3D"https://www.groupon.com.mx/dea=
+ls/imac-20-core-2-duo-320-gb-computadores-y-softwares-1-4?p=3D1&nlp=3D&CID=
+=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-a=
+ae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI=
+/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f=
+43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dtitle&d=3Ddea=
+l-page&utm_campaign=3D1004908356" target=3D"_blank" style=3D"font-size: 16p=
+x; line-height: 20px; color:#000000; text-decoration: none; color: #ffffff;=
+"> iMac 20 Core 2 Duo 320 GB </a> </td> </tr> <tr> <td style=3D"padding-top=
+: 3px; background: #282828;" align=3D'left'> <table cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"border: 0 none; border-spacing:0; font-family: Helvet=
+ica, Arial, sans-serif; color:#000000 !important; font-weight: 100;"> <tr> =
+<td class=3D"nameFont" align=3D'left' valign=3D"top" style=3D"font-size: 16=
+px; line-height: 20px; color:#53A318; font-weight: 300; text-decoration: no=
+ne !important;"> <a href=3D"https://www.groupon.com.mx/deals/imac-20-core-2=
+-duo-320-gb-computadores-y-softwares-1-4?p=3D1&nlp=3D&CID=3DMX&tx=3D0&utm_s=
+ource=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51f=
+c1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPz=
+HjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0=
+b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dtitle&d=3Ddeal-page&utm_campaig=
+n=3D1004908356" target=3D"_blank" style=3D"text-decoration: none; font-size=
+: 14px; line-height: 18px; font-weight: 100; color: #939393; text-decoratio=
+n: none !important;"><font color=3D"#88b74f">$7,999</font></a> </td> </tr> =
+</table> </td> </tr> </table> </td> <td align=3D"right" style=3D"padding: 1=
+5px 15px 15px 0; background: #282828;" valign=3D"middle"><a href=3D"https:/=
+/www.groupon.com.mx/deals/imac-20-core-2-duo-320-gb-computadores-y-software=
+s-1-4?p=3D1&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3D=
+email&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&u=
+h=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eed=
+e74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3D=
+body&c=3Dlink&d=3DGoods-PN-Hero&utm_campaign=3D1004908356" target=3D"_blank=
+" style=3D"font-size: 18px; line-height: 22px; color:#000000; text-decorati=
+on: none;"> <table cellpadding=3D"0" cellspacing=3D"0" style=3D"font-family=
+: Arial, Helvetica, sans-serif; font-size:14px; line-height:19px; color:#33=
+3; width:180px; background: #282828;" class=3D"heroButton" align=3D"right" =
+valign=3D"bottom"> <tr> <td height=3D"45" bgcolor=3D"#53A318" background=3D=
+"http://s3.grouponcdn.com/email/images/global_buttons/pn-gradient-green.jpg=
+" background-repeat=3D"repeat-x" style=3D"height: 45px; text-align: center;=
+"><a href=3D"https://www.groupon.com.mx/deals/imac-20-core-2-duo-320-gb-com=
+putadores-y-softwares-1-4?p=3D1&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel=
+_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_divi=
+sion=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2b=
+e44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170=
+705&sender=3Drm&s=3Dbody&c=3Dbutton&d=3Ddeal-page&utm_campaign=3D1004908356=
+" style=3D"padding: 10px; color:#ffffff; font-size:16px; font-weight: 500; =
+text-decoration:none;">Ver</a></td> </tr> </table></a> </td> </tr> </table>=
+ </td> </tr> </table> <table cellpadding=3D"0" cellspacing=3D"0" style=3D"b=
+order: 0 none; border-spacing:0; font-family: Helvetica, Arial, sans-serif;=
+ color:#000000 !important; font-weight: 100; width: 600px; background: #FFF=
+FFF;" align=3D"center" class=3D"inner_container"> <tr> <td align=3D"left"> =
+<!--[if (gte mso 9)|(IE)]> <table cellpadding=3D"0" cellspacing=3D"0" borde=
+r=3D"0" width=3D"600" align=3D"center" cellpadding=3D"0" cellspacing=3D"0" =
+border=3D"0"> <tr> <![endif]--> <!--[if (gte mso 9)|(IE)]> <td valign=3D"to=
+p"> <![endif]--> <table valign=3D"top" cellpadding=3D"0" cellspacing=3D"0" =
+border=3D"0" style=3D"border: 0 none; border-spacing:0; font-family: Helvet=
+ica, Arial, sans-serif; color:#000000 !important; font-weight: 100; backgro=
+und: #ffffff; width:288px; mso-table-lspace:0;mso-table-rspace:0;" width=3D=
+"288" align=3D"left" class=3D"inner_container"> <tr> <td align=3D"center" v=
+align=3D"top" style=3D"padding:20px 0 0 0;"> <table cellpadding=3D"0" cells=
+pacing=3D"0" border=3D"0" style=3D"border: 0 none; border-spacing:0; font-f=
+amily: Helvetica, Arial, sans-serif; color:#000000 !important; font-weight:=
+ 100; width:100%; mso-table-lspace:0;mso-table-rspace:0;" width=3D"100%"> <=
+tr> <td valign=3D"top" align=3D"center"> <a href=3D"https://www.groupon.com=
+.mx/deals/reloj-brazaletes-dkny-relojes-1-1?p=3D2&nlp=3D&CID=3DMX&tx=3D0&ut=
+m_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b=
+51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6E=
+SPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c9=
+2b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dimage&d=3Ddeal-page&utm_camp=
+aign=3D1004910620" style=3D"display: block; border: none !important;" targe=
+t=3D"_blank"> <img src=3D"https://img.grouponcdn.com/needish/4VhHohJt1iaCX5=
+kuyTvfaqFfnJfk/4V-960x576/v1/t300x182.jpg" width=3D"288" style=3D"display: =
+block; border: none !important; width: 288px;" class=3D"secondary-100" alt=
+=3D" Reloj + brazaletes DKNY "> </a> </td> </tr> <tr> <td valign=3D"top"> <=
+table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border: 0 n=
+one; border-spacing:0; font-family: Helvetica, Arial, sans-serif; color:#00=
+0000 !important; font-weight: 100; background: #f2f2f2; width:100%; mso-tab=
+le-lspace:0;mso-table-rspace:0;" width=3D"100%"> <tr> <td class=3D"nameFont=
+" style=3D"padding: 16px 16px 0 16px; font-size: 16px; line-height: 20px; c=
+olor:#000000; text-decoration: none; color: #000000;" align=3D'left'> <a hr=
+ef=3D"https://www.groupon.com.mx/deals/reloj-brazaletes-dkny-relojes-1-1?p=
+=3D2&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&s=
+id=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0=
+G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d=
+7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=
+=3Dtitle&d=3Ddeal-page&utm_campaign=3D1004910620" target=3D"_blank" style=
+=3D"font-size: 16px; line-height: 20px; color:#000000; text-decoration: non=
+e;"> Reloj + brazaletes DKNY </a> </td> </tr> <tr> <td style=3D"background:=
+ #f2f2f2;" valign=3D"top"> <a href=3D"https://www.groupon.com.mx/deals/relo=
+j-brazaletes-dkny-relojes-1-1?p=3D2&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dcha=
+nnel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_=
+division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=
+=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D=
+20170705&sender=3Drm&s=3Dbody&c=3Dtitle&d=3Ddeal-page&utm_campaign=3D100491=
+0620" target=3D"_blank" style=3D"font-size: 16px; line-height: 20px; color:=
+#000000; text-decoration: none;">&nbsp;</a> </td> </tr> <tr> <td align=3D"l=
+eft" valign=3D"top" style=3D"padding-bottom: 16px;"> <table cellpadding=3D"=
+0" cellspacing=3D"0" border=3D"0" style=3D"background: #f2f2f2;" valign=3D"=
+top" width=3D"100%" align=3D"left"> <tr> <td style=3D"font-size: 14px; line=
+-height: 18px; font-weight: 100; color:#e35205; text-decoration: none !impo=
+rtant; padding: 0 16px 0 16px; " class=3D"nameFont" align=3D'left'><a href=
+=3D"https://www.groupon.com.mx/deals/reloj-brazaletes-dkny-relojes-1-1?p=3D=
+2&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=
+=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+=
+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7b=
+d129754225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3D=
+title&d=3Ddeal-page&utm_campaign=3D1004910620" target=3D"_blank" style=3D"f=
+ont-size: 16px; line-height: 20px; color:#000000; text-decoration: none;"> =
+<span valign=3D"top" style=3D"padding-right: 5px; font-family: Arial, Helve=
+tica, sans-serif; font-size: 16px; line-height: 20px; text-decoration: line=
+-through; color:#848484; font-weight: 100;" class=3D"nameFont"> <font color=
+=3D"#848484">$4,969</font> </span> <span align=3D"left" valign=3D"top" styl=
+e=3D"font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-heigh=
+t: 20px; color:#53A318; font-weight: 300; text-decoration: none !important;=
+" class=3D"nameFont"> <font color=3D"#88b74f">$3,299</font> </span> </a> </=
+td> <td width=3D"30%" class=3D"nameFont" align=3D"right" valign=3D"top" sty=
+le=3D"font-family: Arial, Helvetica, sans-serif; padding: 0 16px 0 0; font-=
+size: 13px; line-height: 17px; font-weight: normal; font-weight: 600; color=
+: #0185c6; text-decoration: none !important; white-space:nowrap;"><a href=
+=3D"https://www.groupon.com.mx/deals/reloj-brazaletes-dkny-relojes-1-1?p=3D=
+2&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=
+=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+=
+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7b=
+d129754225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3D=
+link&d=3Ddeal-page&utm_campaign=3D1004910620" target=3D"_blank" style=3D"fo=
+nt-size: 16px; line-height: 20px; color:#000000; text-decoration: none; whi=
+te-space:nowrap;"> <font color=3D"#0185c6" style=3D"white-space:nowrap;"><s=
+pan class=3D"nameFont">Ver</span></font></a> </td> </tr> </table> </td> </t=
+r> </table> </td> </tr> </table> </td> </tr> </table> <!--[if (gte mso 9)|(=
+IE)]> </td> <![endif]--> <!--[if (gte mso 9)|(IE)]> <td valign=3D"top"> <![=
+endif]--> <table valign=3D"top" cellpadding=3D"0" cellspacing=3D"0" border=
+=3D"0" style=3D"border: 0 none; border-spacing:0; font-family: Helvetica, A=
+rial, sans-serif; color:#000000 !important; font-weight: 100; background: #=
+ffffff; width:288px; mso-table-lspace:0;mso-table-rspace:0;" width=3D"288" =
+align=3D"right" class=3D"inner_container"> <tr> <td align=3D"center" valign=
+=3D"top" style=3D"padding:20px 0 0 0;"> <table cellpadding=3D"0" cellspacin=
+g=3D"0" border=3D"0" style=3D"border: 0 none; border-spacing:0; font-family=
+: Helvetica, Arial, sans-serif; color:#000000 !important; font-weight: 100;=
+ width:100%; mso-table-lspace:0;mso-table-rspace:0;" width=3D"100%"> <tr> <=
+td valign=3D"top" align=3D"center"> <a href=3D"https://www.groupon.com.mx/d=
+eals/dobladores-de-ropa-accesorios-para-el-hogar-2-1?p=3D3&nlp=3D&CID=3DMX&=
+tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e=
+7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7d=
+Y9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d9=
+23ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dimage&d=3Ddeal-page=
+&utm_campaign=3D1004971471" style=3D"display: block; border: none !importan=
+t;" target=3D"_blank"> <img src=3D"https://img.grouponcdn.com/needish/1FuYA=
+qBwfxFo9ocm2bCccoUwbM8/1F-960x576/v1/t300x182.jpg" width=3D"288" style=3D"d=
+isplay: block; border: none !important; width: 288px;" class=3D"secondary-1=
+00" alt=3D" Dobladores de Ropa "> </a> </td> </tr> <tr> <td valign=3D"top">=
+ <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border: 0=
+ none; border-spacing:0; font-family: Helvetica, Arial, sans-serif; color:#=
+000000 !important; font-weight: 100; background: #f2f2f2; width:100%; mso-t=
+able-lspace:0;mso-table-rspace:0;" width=3D"100%"> <tr> <td class=3D"nameFo=
+nt" style=3D"padding: 16px 16px 0 16px; font-size: 16px; line-height: 20px;=
+ color:#000000; text-decoration: none; color: #000000;" align=3D'left'> <a =
+href=3D"https://www.groupon.com.mx/deals/dobladores-de-ropa-accesorios-para=
+-el-hogar-2-1?p=3D3&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_m=
+edium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_sh=
+opping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156=
+ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=
+=3Drm&s=3Dbody&c=3Dtitle&d=3Ddeal-page&utm_campaign=3D1004971471" target=3D=
+"_blank" style=3D"font-size: 16px; line-height: 20px; color:#000000; text-d=
+ecoration: none;"> Dobladores de Ropa </a> </td> </tr> <tr> <td style=3D"ba=
+ckground: #f2f2f2;" valign=3D"top"> <a href=3D"https://www.groupon.com.mx/d=
+eals/dobladores-de-ropa-accesorios-para-el-hogar-2-1?p=3D3&nlp=3D&CID=3DMX&=
+tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e=
+7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7d=
+Y9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d9=
+23ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dtitle&d=3Ddeal-page=
+&utm_campaign=3D1004971471" target=3D"_blank" style=3D"font-size: 16px; lin=
+e-height: 20px; color:#000000; text-decoration: none;">&nbsp;</a> </td> </t=
+r> <tr> <td align=3D"left" valign=3D"top" style=3D"padding-bottom: 16px;"> =
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"background=
+: #f2f2f2;" valign=3D"top" width=3D"100%" align=3D"left"> <tr> <td style=3D=
+"font-size: 14px; line-height: 18px; font-weight: 100; color:#e35205; text-=
+decoration: none !important; padding: 0 16px 0 16px; " class=3D"nameFont" a=
+lign=3D'left'><a href=3D"https://www.groupon.com.mx/deals/dobladores-de-rop=
+a-accesorios-para-el-hogar-2-1?p=3D3&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dch=
+annel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t=
+_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=
+=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D=
+20170705&sender=3Drm&s=3Dbody&c=3Dtitle&d=3Ddeal-page&utm_campaign=3D100497=
+1471" target=3D"_blank" style=3D"font-size: 16px; line-height: 20px; color:=
+#000000; text-decoration: none;"> <span align=3D"left" valign=3D"top" style=
+=3D"font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height=
+: 20px; color:#53A318; font-weight: 300; text-decoration: none !important;"=
+ class=3D"nameFont"> <font color=3D"#88b74f">$179</font> </span> </a> </td>=
+ <td width=3D"30%" class=3D"nameFont" align=3D"right" valign=3D"top" style=
+=3D"font-family: Arial, Helvetica, sans-serif; padding: 0 16px 0 0; font-si=
+ze: 13px; line-height: 17px; font-weight: normal; font-weight: 600; color: =
+#0185c6; text-decoration: none !important; white-space:nowrap;"><a href=3D"=
+https://www.groupon.com.mx/deals/dobladores-de-ropa-accesorios-para-el-hoga=
+r-2-1?p=3D3&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3D=
+email&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&u=
+h=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eed=
+e74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3D=
+body&c=3Dlink&d=3Ddeal-page&utm_campaign=3D1004971471" target=3D"_blank" st=
+yle=3D"font-size: 16px; line-height: 20px; color:#000000; text-decoration: =
+none; white-space:nowrap;"> <font color=3D"#0185c6" style=3D"white-space:no=
+wrap;"><span class=3D"nameFont">Ver</span></font></a> </td> </tr> </table> =
+</td> </tr> </table> </td> </tr> </table> </td> </tr> </table> <!--[if (gte=
+ mso 9)|(IE)]> </td> <![endif]--> <!--[if (gte mso 9)|(IE)]> </td> <![endif=
+]--> <!--[if (gte mso 9)|(IE)]> </tr> </table> <![endif]--> </td> </tr> <tr=
+> <td align=3D"left"> <!--[if (gte mso 9)|(IE)]> <table cellpadding=3D"0" c=
+ellspacing=3D"0" border=3D"0" width=3D"600" align=3D"center" cellpadding=3D=
+"0" cellspacing=3D"0" border=3D"0"> <tr> <![endif]--> <!--[if (gte mso 9)|(=
+IE)]> <td valign=3D"top"> <![endif]--> <table valign=3D"top" cellpadding=3D=
+"0" cellspacing=3D"0" border=3D"0" style=3D"border: 0 none; border-spacing:=
+0; font-family: Helvetica, Arial, sans-serif; color:#000000 !important; fon=
+t-weight: 100; background: #ffffff; width:288px; mso-table-lspace:0;mso-tab=
+le-rspace:0;" width=3D"288" align=3D"left" class=3D"inner_container"> <tr> =
+<td align=3D"center" valign=3D"top" style=3D"padding:20px 0 0 0;"> <table c=
+ellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border: 0 none; bo=
+rder-spacing:0; font-family: Helvetica, Arial, sans-serif; color:#000000 !i=
+mportant; font-weight: 100; width:100%; mso-table-lspace:0;mso-table-rspace=
+:0;" width=3D"100%"> <tr> <td valign=3D"top" align=3D"center"> <a href=3D"h=
+ttps://www.groupon.com.mx/deals/perfume-bebe-gold-perfumes-1-5?p=3D4&nlp=3D=
+&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c7=
+7e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m=
+3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd12975422=
+5e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dimage&d=
+=3Ddeal-page&utm_campaign=3D1004908283" style=3D"display: block; border: no=
+ne !important;" target=3D"_blank"> <img src=3D"https://img.grouponcdn.com/n=
+eedish/3jurmoTHGDyX3aZDrTHcswz3Kdjo/3j-960x576/v1/t300x182.jpg" width=3D"28=
+8" style=3D"display: block; border: none !important; width: 288px;" class=
+=3D"secondary-100" alt=3D" Perfume Bebe Gold "> </a> </td> </tr> <tr> <td v=
+align=3D"top"> <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"border: 0 none; border-spacing:0; font-family: Helvetica, Arial, sans-=
+serif; color:#000000 !important; font-weight: 100; background: #f2f2f2; wid=
+th:100%; mso-table-lspace:0;mso-table-rspace:0;" width=3D"100%"> <tr> <td c=
+lass=3D"nameFont" style=3D"padding: 16px 16px 0 16px; font-size: 16px; line=
+-height: 20px; color:#000000; text-decoration: none; color: #000000;" align=
+=3D'left'> <a href=3D"https://www.groupon.com.mx/deals/perfume-bebe-gold-pe=
+rfumes-1-5?p=3D4&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medi=
+um=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopp=
+ing&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef4=
+89eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm=
+&s=3Dbody&c=3Dtitle&d=3Ddeal-page&utm_campaign=3D1004908283" target=3D"_bla=
+nk" style=3D"font-size: 16px; line-height: 20px; color:#000000; text-decora=
+tion: none;"> Perfume Bebe Gold </a> </td> </tr> <tr> <td style=3D"font-siz=
+e: 14px; line-height: 18px; font-weight: 100; color:#e35205; text-decoratio=
+n: none !important; padding: 0 16px 0 16px;" class=3D"nameFont" align=3D'le=
+ft'> <a href=3D"https://www.groupon.com.mx/deals/perfume-bebe-gold-perfumes=
+-1-5?p=3D4&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3De=
+mail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=
+=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede=
+74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Db=
+ody&c=3Dtitle&d=3Ddeal-page&utm_campaign=3D1004908283" target=3D"_blank" st=
+yle=3D"font-size: 16px; line-height: 20px; color:#000000; text-decoration: =
+none;"> <font color=3D"#e35205"><span class=3D"nameFont">Mas de 50 comprado=
+s</span></font></a> </td> </tr> <tr> <td align=3D"left" valign=3D"top" styl=
+e=3D"padding-bottom: 16px;"> <table cellpadding=3D"0" cellspacing=3D"0" bor=
+der=3D"0" style=3D"background: #f2f2f2;" valign=3D"top" width=3D"100%" alig=
+n=3D"left"> <tr> <td style=3D"font-size: 14px; line-height: 18px; font-weig=
+ht: 100; color:#e35205; text-decoration: none !important; padding: 0 16px 0=
+ 16px; " class=3D"nameFont" align=3D'left'><a href=3D"https://www.groupon.c=
+om.mx/deals/perfume-bebe-gold-perfumes-1-5?p=3D4&nlp=3D&CID=3DMX&tx=3D0&utm=
+_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b5=
+1fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ES=
+PzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92=
+b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dtitle&d=3Ddeal-page&utm_campa=
+ign=3D1004908283" target=3D"_blank" style=3D"font-size: 16px; line-height: =
+20px; color:#000000; text-decoration: none;"> <span valign=3D"top" style=3D=
+"padding-right: 5px; font-family: Arial, Helvetica, sans-serif; font-size: =
+16px; line-height: 20px; text-decoration: line-through; color:#848484; font=
+-weight: 100;" class=3D"nameFont"> <font color=3D"#848484">$1,200</font> </=
+span> <span align=3D"left" valign=3D"top" style=3D"font-family: Arial, Helv=
+etica, sans-serif; font-size: 16px; line-height: 20px; color:#53A318; font-=
+weight: 300; text-decoration: none !important;" class=3D"nameFont"> <font c=
+olor=3D"#88b74f">$499</font> </span> </a> </td> <td width=3D"30%" class=3D"=
+nameFont" align=3D"right" valign=3D"top" style=3D"font-family: Arial, Helve=
+tica, sans-serif; padding: 0 16px 0 0; font-size: 13px; line-height: 17px; =
+font-weight: normal; font-weight: 600; color: #0185c6; text-decoration: non=
+e !important; white-space:nowrap;"><a href=3D"https://www.groupon.com.mx/de=
+als/perfume-bebe-gold-perfumes-1-5?p=3D4&nlp=3D&CID=3DMX&tx=3D0&utm_source=
+=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6=
+344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgK=
+rE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&da=
+te=3D20170705&sender=3Drm&s=3Dbody&c=3Dlink&d=3Ddeal-page&utm_campaign=3D10=
+04908283" target=3D"_blank" style=3D"font-size: 16px; line-height: 20px; co=
+lor:#000000; text-decoration: none; white-space:nowrap;"> <font color=3D"#0=
+185c6" style=3D"white-space:nowrap;"><span class=3D"nameFont">Ver</span></f=
+ont></a> </td> </tr> </table> </td> </tr> </table> </td> </tr> </table> </t=
+d> </tr> </table> <!--[if (gte mso 9)|(IE)]> </td> <![endif]--> <!--[if (gt=
+e mso 9)|(IE)]> <td valign=3D"top"> <![endif]--> <table valign=3D"top" cell=
+padding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border: 0 none; borde=
+r-spacing:0; font-family: Helvetica, Arial, sans-serif; color:#000000 !impo=
+rtant; font-weight: 100; background: #ffffff; width:288px; mso-table-lspace=
+:0;mso-table-rspace:0;" width=3D"288" align=3D"right" class=3D"inner_contai=
+ner"> <tr> <td align=3D"center" valign=3D"top" style=3D"padding:20px 0 0 0;=
+"> <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border:=
+ 0 none; border-spacing:0; font-family: Helvetica, Arial, sans-serif; color=
+:#000000 !important; font-weight: 100; width:100%; mso-table-lspace:0;mso-t=
+able-rspace:0;" width=3D"100%"> <tr> <td valign=3D"top" align=3D"center"> <=
+a href=3D"https://www.groupon.com.mx/deals/tapetes-para-auto-o-camioneta-ac=
+cesorios-para-automoviles-2-1?p=3D5&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dcha=
+nnel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_=
+division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=
+=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D=
+20170705&sender=3Drm&s=3Dbody&c=3Dimage&d=3Ddeal-page&utm_campaign=3D100465=
+7538" style=3D"display: block; border: none !important;" target=3D"_blank">=
+ <img src=3D"https://img.grouponcdn.com/needish/sCfvigaekRX8tM1NPjcLZwmEuwZ=
+/sC-960x576/v1/t300x182.jpg" width=3D"288" style=3D"display: block; border:=
+ none !important; width: 288px;" class=3D"secondary-100" alt=3D" Tapetes pa=
+ra Auto o Cami... "> </a> </td> </tr> <tr> <td valign=3D"top"> <table cellp=
+adding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border: 0 none; border=
+-spacing:0; font-family: Helvetica, Arial, sans-serif; color:#000000 !impor=
+tant; font-weight: 100; background: #f2f2f2; width:100%; mso-table-lspace:0=
+;mso-table-rspace:0;" width=3D"100%"> <tr> <td class=3D"nameFont" style=3D"=
+padding: 16px 16px 0 16px; font-size: 16px; line-height: 20px; color:#00000=
+0; text-decoration: none; color: #000000;" align=3D'left'> <a href=3D"https=
+://www.groupon.com.mx/deals/tapetes-para-auto-o-camioneta-accesorios-para-a=
+utomoviles-2-1?p=3D5&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_=
+medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_s=
+hopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e15=
+6ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=
+=3Drm&s=3Dbody&c=3Dtitle&d=3Ddeal-page&utm_campaign=3D1004657538" target=3D=
+"_blank" style=3D"font-size: 16px; line-height: 20px; color:#000000; text-d=
+ecoration: none;"> Tapetes para Auto o Cami... </a> </td> </tr> <tr> <td st=
+yle=3D"font-size: 14px; line-height: 18px; font-weight: 100; color:#e35205;=
+ text-decoration: none !important; padding: 0 16px 0 16px;" class=3D"nameFo=
+nt" align=3D'left'> <a href=3D"https://www.groupon.com.mx/deals/tapetes-par=
+a-auto-o-camioneta-accesorios-para-automoviles-2-1?p=3D5&nlp=3D&CID=3DMX&tx=
+=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b=
+-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9=
+gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923=
+ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dtitle&d=3Ddeal-page&u=
+tm_campaign=3D1004657538" target=3D"_blank" style=3D"font-size: 16px; line-=
+height: 20px; color:#000000; text-decoration: none;"> <font color=3D"#e3520=
+5"><span class=3D"nameFont">Mas de 50 comprados</span></font></a> </td> </t=
+r> <tr> <td align=3D"left" valign=3D"top" style=3D"padding-bottom: 16px;"> =
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"background=
+: #f2f2f2;" valign=3D"top" width=3D"100%" align=3D"left"> <tr> <td style=3D=
+"font-size: 14px; line-height: 18px; font-weight: 100; color:#e35205; text-=
+decoration: none !important; padding: 0 16px 0 16px; " class=3D"nameFont" a=
+lign=3D'left'><a href=3D"https://www.groupon.com.mx/deals/tapetes-para-auto=
+-o-camioneta-accesorios-para-automoviles-2-1?p=3D5&nlp=3D&CID=3DMX&tx=3D0&u=
+tm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-=
+b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6=
+ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c=
+92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dtitle&d=3Ddeal-page&utm_cam=
+paign=3D1004657538" target=3D"_blank" style=3D"font-size: 16px; line-height=
+: 20px; color:#000000; text-decoration: none;"> <span align=3D"left" valign=
+=3D"top" style=3D"font-family: Arial, Helvetica, sans-serif; font-size: 16p=
+x; line-height: 20px; color:#53A318; font-weight: 300; text-decoration: non=
+e !important;" class=3D"nameFont"> <font color=3D"#88b74f">$299</font> </sp=
+an> </a> </td> <td width=3D"30%" class=3D"nameFont" align=3D"right" valign=
+=3D"top" style=3D"font-family: Arial, Helvetica, sans-serif; padding: 0 16p=
+x 0 0; font-size: 13px; line-height: 17px; font-weight: normal; font-weight=
+: 600; color: #0185c6; text-decoration: none !important; white-space:nowrap=
+;"><a href=3D"https://www.groupon.com.mx/deals/tapetes-para-auto-o-camionet=
+a-accesorios-para-automoviles-2-1?p=3D5&nlp=3D&CID=3DMX&tx=3D0&utm_source=
+=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6=
+344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgK=
+rE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&da=
+te=3D20170705&sender=3Drm&s=3Dbody&c=3Dlink&d=3Ddeal-page&utm_campaign=3D10=
+04657538" target=3D"_blank" style=3D"font-size: 16px; line-height: 20px; co=
+lor:#000000; text-decoration: none; white-space:nowrap;"> <font color=3D"#0=
+185c6" style=3D"white-space:nowrap;"><span class=3D"nameFont">Ver</span></f=
+ont></a> </td> </tr> </table> </td> </tr> </table> </td> </tr> </table> </t=
+d> </tr> </table> <!--[if (gte mso 9)|(IE)]> </td> <![endif]--> <!--[if (gt=
+e mso 9)|(IE)]> </td> <![endif]--> <!--[if (gte mso 9)|(IE)]> </tr> </table=
+> <![endif]--> </td> </tr> <tr> <td align=3D"left"> <!--[if (gte mso 9)|(IE=
+)]> <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"600" a=
+lign=3D"center" cellpadding=3D"0" cellspacing=3D"0" border=3D"0"> <tr> <![e=
+ndif]--> <!--[if (gte mso 9)|(IE)]> <td valign=3D"top"> <![endif]--> <table=
+ valign=3D"top" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"b=
+order: 0 none; border-spacing:0; font-family: Helvetica, Arial, sans-serif;=
+ color:#000000 !important; font-weight: 100; background: #ffffff; width:288=
+px; mso-table-lspace:0;mso-table-rspace:0;" width=3D"288" align=3D"left" cl=
+ass=3D"inner_container"> <tr> <td align=3D"center" valign=3D"top" style=3D"=
+padding:20px 0 0 0;"> <table cellpadding=3D"0" cellspacing=3D"0" border=3D"=
+0" style=3D"border: 0 none; border-spacing:0; font-family: Helvetica, Arial=
+, sans-serif; color:#000000 !important; font-weight: 100; width:100%; mso-t=
+able-lspace:0;mso-table-rspace:0;" width=3D"100%"> <tr> <td valign=3D"top" =
+align=3D"center"> <a href=3D"https://www.groupon.com.mx/deals/lentes-de-sol=
+-rayban-lentes-de-sol-2-1?p=3D6&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel=
+_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_divi=
+sion=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2b=
+e44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170=
+705&sender=3Drm&s=3Dbody&c=3Dimage&d=3Ddeal-page&utm_campaign=3D1004938327"=
+ style=3D"display: block; border: none !important;" target=3D"_blank"> <img=
+ src=3D"https://img.grouponcdn.com/needish/2XbwGVK1Us4Z6t9mt9q2jQTArDxt/2X-=
+960x576/v1/t300x182.jpg" width=3D"288" style=3D"display: block; border: non=
+e !important; width: 288px;" class=3D"secondary-100" alt=3D" Lentes de sol =
+Ray-Ban "> </a> </td> </tr> <tr> <td valign=3D"top"> <table cellpadding=3D"=
+0" cellspacing=3D"0" border=3D"0" style=3D"border: 0 none; border-spacing:0=
+; font-family: Helvetica, Arial, sans-serif; color:#000000 !important; font=
+-weight: 100; background: #f2f2f2; width:100%; mso-table-lspace:0;mso-table=
+-rspace:0;" width=3D"100%"> <tr> <td class=3D"nameFont" style=3D"padding: 1=
+6px 16px 0 16px; font-size: 16px; line-height: 20px; color:#000000; text-de=
+coration: none; color: #000000;" align=3D'left'> <a href=3D"https://www.gro=
+upon.com.mx/deals/lentes-de-sol-rayban-lentes-de-sol-2-1?p=3D6&nlp=3D&CID=
+=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-a=
+ae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI=
+/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f=
+43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dtitle&d=3Ddea=
+l-page&utm_campaign=3D1004938327" target=3D"_blank" style=3D"font-size: 16p=
+x; line-height: 20px; color:#000000; text-decoration: none;"> Lentes de sol=
+ Ray-Ban </a> </td> </tr> <tr> <td style=3D"background: #f2f2f2;" valign=3D=
+"top"> <a href=3D"https://www.groupon.com.mx/deals/lentes-de-sol-rayban-len=
+tes-de-sol-2-1?p=3D6&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_=
+medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_s=
+hopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e15=
+6ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=
+=3Drm&s=3Dbody&c=3Dtitle&d=3Ddeal-page&utm_campaign=3D1004938327" target=3D=
+"_blank" style=3D"font-size: 16px; line-height: 20px; color:#000000; text-d=
+ecoration: none;">&nbsp;</a> </td> </tr> <tr> <td align=3D"left" valign=3D"=
+top" style=3D"padding-bottom: 16px;"> <table cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0" style=3D"background: #f2f2f2;" valign=3D"top" width=3D"=
+100%" align=3D"left"> <tr> <td style=3D"font-size: 14px; line-height: 18px;=
+ font-weight: 100; color:#e35205; text-decoration: none !important; padding=
+: 0 16px 0 16px; " class=3D"nameFont" align=3D'left'><a href=3D"https://www=
+.groupon.com.mx/deals/lentes-de-sol-rayban-lentes-de-sol-2-1?p=3D6&nlp=3D&C=
+ID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e=
+-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/=
+iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e=
+4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dtitle&d=3Dd=
+eal-page&utm_campaign=3D1004938327" target=3D"_blank" style=3D"font-size: 1=
+6px; line-height: 20px; color:#000000; text-decoration: none;"> <span valig=
+n=3D"top" style=3D"padding-right: 5px; font-family: Arial, Helvetica, sans-=
+serif; font-size: 16px; line-height: 20px; text-decoration: line-through; c=
+olor:#848484; font-weight: 100;" class=3D"nameFont"> <font color=3D"#848484=
+">$2,890</font> </span> <span align=3D"left" valign=3D"top" style=3D"font-f=
+amily: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 20px; co=
+lor:#53A318; font-weight: 300; text-decoration: none !important;" class=3D"=
+nameFont"> <font color=3D"#88b74f">$1,699</font> </span> </a> </td> <td wid=
+th=3D"30%" class=3D"nameFont" align=3D"right" valign=3D"top" style=3D"font-=
+family: Arial, Helvetica, sans-serif; padding: 0 16px 0 0; font-size: 13px;=
+ line-height: 17px; font-weight: normal; font-weight: 600; color: #0185c6; =
+text-decoration: none !important; white-space:nowrap;"><a href=3D"https://w=
+ww.groupon.com.mx/deals/lentes-de-sol-rayban-lentes-de-sol-2-1?p=3D6&nlp=3D=
+&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c7=
+7e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m=
+3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd12975422=
+5e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dlink&d=3D=
+deal-page&utm_campaign=3D1004938327" target=3D"_blank" style=3D"font-size: =
+16px; line-height: 20px; color:#000000; text-decoration: none; white-space:=
+nowrap;"> <font color=3D"#0185c6" style=3D"white-space:nowrap;"><span class=
+=3D"nameFont">Ver</span></font></a> </td> </tr> </table> </td> </tr> </tabl=
+e> </td> </tr> </table> </td> </tr> </table> <!--[if (gte mso 9)|(IE)]> </t=
+d> <![endif]--> <!--[if (gte mso 9)|(IE)]> <td valign=3D"top"> <![endif]-->=
+ <table valign=3D"top" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" sty=
+le=3D"border: 0 none; border-spacing:0; font-family: Helvetica, Arial, sans=
+-serif; color:#000000 !important; font-weight: 100; background: #ffffff; wi=
+dth:288px; mso-table-lspace:0;mso-table-rspace:0;" width=3D"288" align=3D"r=
+ight" class=3D"inner_container"> <tr> <td align=3D"center" valign=3D"top" s=
+tyle=3D"padding:20px 0 0 0;"> <table cellpadding=3D"0" cellspacing=3D"0" bo=
+rder=3D"0" style=3D"border: 0 none; border-spacing:0; font-family: Helvetic=
+a, Arial, sans-serif; color:#000000 !important; font-weight: 100; width:100=
+%; mso-table-lspace:0;mso-table-rspace:0;" width=3D"100%"> <tr> <td valign=
+=3D"top" align=3D"center"> <a href=3D"https://www.groupon.com.mx/deals/seca=
+dora-y-slice-plus-accesorios-para-el-hogar-1-6?p=3D7&nlp=3D&CID=3DMX&tx=3D0=
+&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-854=
+7-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySX=
+v6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae05=
+9c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dimage&d=3Ddeal-page&utm_c=
+ampaign=3D1004860313" style=3D"display: block; border: none !important;" ta=
+rget=3D"_blank"> <img src=3D"https://img.grouponcdn.com/needish/2zzxY6dBmA5=
+GsG3JtjsX2M4oFpp6/2z-960x576/v1/t300x182.jpg" width=3D"288" style=3D"displa=
+y: block; border: none !important; width: 288px;" class=3D"secondary-100" a=
+lt=3D" Secadora y Slice Plus "> </a> </td> </tr> <tr> <td valign=3D"top"> <=
+table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border: 0 n=
+one; border-spacing:0; font-family: Helvetica, Arial, sans-serif; color:#00=
+0000 !important; font-weight: 100; background: #f2f2f2; width:100%; mso-tab=
+le-lspace:0;mso-table-rspace:0;" width=3D"100%"> <tr> <td class=3D"nameFont=
+" style=3D"padding: 16px 16px 0 16px; font-size: 16px; line-height: 20px; c=
+olor:#000000; text-decoration: none; color: #000000;" align=3D'left'> <a hr=
+ef=3D"https://www.groupon.com.mx/deals/secadora-y-slice-plus-accesorios-par=
+a-el-hogar-1-6?p=3D7&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_=
+medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_s=
+hopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e15=
+6ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=
+=3Drm&s=3Dbody&c=3Dtitle&d=3Ddeal-page&utm_campaign=3D1004860313" target=3D=
+"_blank" style=3D"font-size: 16px; line-height: 20px; color:#000000; text-d=
+ecoration: none;"> Secadora y Slice Plus </a> </td> </tr> <tr> <td style=3D=
+"font-size: 14px; line-height: 18px; font-weight: 100; color:#e35205; text-=
+decoration: none !important; padding: 0 16px 0 16px;" class=3D"nameFont" al=
+ign=3D'left'> <a href=3D"https://www.groupon.com.mx/deals/secadora-y-slice-=
+plus-accesorios-para-el-hogar-1-6?p=3D7&nlp=3D&CID=3DMX&tx=3D0&utm_source=
+=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6=
+344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgK=
+rE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&da=
+te=3D20170705&sender=3Drm&s=3Dbody&c=3Dtitle&d=3Ddeal-page&utm_campaign=3D1=
+004860313" target=3D"_blank" style=3D"font-size: 16px; line-height: 20px; c=
+olor:#000000; text-decoration: none;"> <font color=3D"#e35205"><span class=
+=3D"nameFont">Mas de 50 comprados</span></font></a> </td> </tr> <tr> <td al=
+ign=3D"left" valign=3D"top" style=3D"padding-bottom: 16px;"> <table cellpad=
+ding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"background: #f2f2f2;" va=
+lign=3D"top" width=3D"100%" align=3D"left"> <tr> <td style=3D"font-size: 14=
+px; line-height: 18px; font-weight: 100; color:#e35205; text-decoration: no=
+ne !important; padding: 0 16px 0 16px; " class=3D"nameFont" align=3D'left'>=
+<a href=3D"https://www.groupon.com.mx/deals/secadora-y-slice-plus-accesorio=
+s-para-el-hogar-1-6?p=3D7&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods=
+&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=
+=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d=
+0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170705&=
+sender=3Drm&s=3Dbody&c=3Dtitle&d=3Ddeal-page&utm_campaign=3D1004860313" tar=
+get=3D"_blank" style=3D"font-size: 16px; line-height: 20px; color:#000000; =
+text-decoration: none;"> <span valign=3D"top" style=3D"padding-right: 5px; =
+font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 20=
+px; text-decoration: line-through; color:#848484; font-weight: 100;" class=
+=3D"nameFont"> <font color=3D"#848484">$2,799</font> </span> <span align=3D=
+"left" valign=3D"top" style=3D"font-family: Arial, Helvetica, sans-serif; f=
+ont-size: 16px; line-height: 20px; color:#53A318; font-weight: 300; text-de=
+coration: none !important;" class=3D"nameFont"> <font color=3D"#88b74f">$1,=
+299</font> </span> </a> </td> <td width=3D"30%" class=3D"nameFont" align=3D=
+"right" valign=3D"top" style=3D"font-family: Arial, Helvetica, sans-serif; =
+padding: 0 16px 0 0; font-size: 13px; line-height: 17px; font-weight: norma=
+l; font-weight: 600; color: #0185c6; text-decoration: none !important; whit=
+e-space:nowrap;"><a href=3D"https://www.groupon.com.mx/deals/secadora-y-sli=
+ce-plus-accesorios-para-el-hogar-1-6?p=3D7&nlp=3D&CID=3DMX&tx=3D0&utm_sourc=
+e=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd=
+6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGg=
+KrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&d=
+ate=3D20170705&sender=3Drm&s=3Dbody&c=3Dlink&d=3Ddeal-page&utm_campaign=3D1=
+004860313" target=3D"_blank" style=3D"font-size: 16px; line-height: 20px; c=
+olor:#000000; text-decoration: none; white-space:nowrap;"> <font color=3D"#=
+0185c6" style=3D"white-space:nowrap;"><span class=3D"nameFont">Ver</span></=
+font></a> </td> </tr> </table> </td> </tr> </table> </td> </tr> </table> </=
+td> </tr> </table> <!--[if (gte mso 9)|(IE)]> </td> <![endif]--> <!--[if (g=
+te mso 9)|(IE)]> </td> <![endif]--> <!--[if (gte mso 9)|(IE)]> </tr> </tabl=
+e> <![endif]--> </td> </tr> <tr> <td align=3D"left"> <!--[if (gte mso 9)|(I=
+E)]> <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"600" =
+align=3D"center" cellpadding=3D"0" cellspacing=3D"0" border=3D"0"> <tr> <![=
+endif]--> <!--[if (gte mso 9)|(IE)]> <td valign=3D"top"> <![endif]--> <tabl=
+e valign=3D"top" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"=
+border: 0 none; border-spacing:0; font-family: Helvetica, Arial, sans-serif=
+; color:#000000 !important; font-weight: 100; background: #ffffff; width:28=
+8px; mso-table-lspace:0;mso-table-rspace:0;" width=3D"288" align=3D"left" c=
+lass=3D"inner_container"> <tr> <td align=3D"center" valign=3D"top" style=3D=
+"padding:20px 0 0 0;"> <table cellpadding=3D"0" cellspacing=3D"0" border=3D=
+"0" style=3D"border: 0 none; border-spacing:0; font-family: Helvetica, Aria=
+l, sans-serif; color:#000000 !important; font-weight: 100; width:100%; mso-=
+table-lspace:0;mso-table-rspace:0;" width=3D"100%"> <tr> <td valign=3D"top"=
+ align=3D"center"> <a href=3D"https://www.groupon.com.mx/deals/soporte-para=
+-ciatica-salud-y-bienestar-1-1?p=3D8&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dch=
+annel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t=
+_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=
+=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D=
+20170705&sender=3Drm&s=3Dbody&c=3Dimage&d=3Ddeal-page&utm_campaign=3D100462=
+8162" style=3D"display: block; border: none !important;" target=3D"_blank">=
+ <img src=3D"https://img.grouponcdn.com/needish/8FeR9Lux9Knbouu7UBNt6U1TZxt=
+/8F-960x576/v1/t300x182.jpg" width=3D"288" style=3D"display: block; border:=
+ none !important; width: 288px;" class=3D"secondary-100" alt=3D" Soporte pa=
+ra Ci=C3=A1tica "> </a> </td> </tr> <tr> <td valign=3D"top"> <table cellpad=
+ding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border: 0 none; border-s=
+pacing:0; font-family: Helvetica, Arial, sans-serif; color:#000000 !importa=
+nt; font-weight: 100; background: #f2f2f2; width:100%; mso-table-lspace:0;m=
+so-table-rspace:0;" width=3D"100%"> <tr> <td class=3D"nameFont" style=3D"pa=
+dding: 16px 16px 0 16px; font-size: 16px; line-height: 20px; color:#000000;=
+ text-decoration: none; color: #000000;" align=3D'left'> <a href=3D"https:/=
+/www.groupon.com.mx/deals/soporte-para-ciatica-salud-y-bienestar-1-1?p=3D8&=
+nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D=
+4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGk=
+cpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd12=
+9754225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dtit=
+le&d=3Ddeal-page&utm_campaign=3D1004628162" target=3D"_blank" style=3D"font=
+-size: 16px; line-height: 20px; color:#000000; text-decoration: none;"> Sop=
+orte para Ci=C3=A1tica </a> </td> </tr> <tr> <td style=3D"font-size: 14px; =
+line-height: 18px; font-weight: 100; color:#e35205; text-decoration: none !=
+important; padding: 0 16px 0 16px;" class=3D"nameFont" align=3D'left'> <a h=
+ref=3D"https://www.groupon.com.mx/deals/soporte-para-ciatica-salud-y-bienes=
+tar-1-1?p=3D8&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=
+=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shoppin=
+g&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489=
+eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=
+=3Dbody&c=3Dtitle&d=3Ddeal-page&utm_campaign=3D1004628162" target=3D"_blank=
+" style=3D"font-size: 16px; line-height: 20px; color:#000000; text-decorati=
+on: none;"> <font color=3D"#e35205"><span class=3D"nameFont">Mas de 250 com=
+prados</span></font></a> </td> </tr> <tr> <td align=3D"left" valign=3D"top"=
+ style=3D"padding-bottom: 16px;"> <table cellpadding=3D"0" cellspacing=3D"0=
+" border=3D"0" style=3D"background: #f2f2f2;" valign=3D"top" width=3D"100%"=
+ align=3D"left"> <tr> <td style=3D"font-size: 14px; line-height: 18px; font=
+-weight: 100; color:#e35205; text-decoration: none !important; padding: 0 1=
+6px 0 16px; " class=3D"nameFont" align=3D'left'><a href=3D"https://www.grou=
+pon.com.mx/deals/soporte-para-ciatica-salud-y-bienestar-1-1?p=3D8&nlp=3D&CI=
+D=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-=
+aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/i=
+I/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4=
+f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dtitle&d=3Dde=
+al-page&utm_campaign=3D1004628162" target=3D"_blank" style=3D"font-size: 16=
+px; line-height: 20px; color:#000000; text-decoration: none;"> <span valign=
+=3D"top" style=3D"padding-right: 5px; font-family: Arial, Helvetica, sans-s=
+erif; font-size: 16px; line-height: 20px; text-decoration: line-through; co=
+lor:#848484; font-weight: 100;" class=3D"nameFont"> <font color=3D"#848484"=
+>$820</font> </span> <span align=3D"left" valign=3D"top" style=3D"font-fami=
+ly: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 20px; color=
+:#53A318; font-weight: 300; text-decoration: none !important;" class=3D"nam=
+eFont"> <font color=3D"#88b74f">$249</font> </span> </a> </td> <td width=3D=
+"30%" class=3D"nameFont" align=3D"right" valign=3D"top" style=3D"font-famil=
+y: Arial, Helvetica, sans-serif; padding: 0 16px 0 0; font-size: 13px; line=
+-height: 17px; font-weight: normal; font-weight: 600; color: #0185c6; text-=
+decoration: none !important; white-space:nowrap;"><a href=3D"https://www.gr=
+oupon.com.mx/deals/soporte-para-ciatica-salud-y-bienestar-1-1?p=3D8&nlp=3D&=
+CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77=
+e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3=
+/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225=
+e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dlink&d=3Dd=
+eal-page&utm_campaign=3D1004628162" target=3D"_blank" style=3D"font-size: 1=
+6px; line-height: 20px; color:#000000; text-decoration: none; white-space:n=
+owrap;"> <font color=3D"#0185c6" style=3D"white-space:nowrap;"><span class=
+=3D"nameFont">Ver</span></font></a> </td> </tr> </table> </td> </tr> </tabl=
+e> </td> </tr> </table> </td> </tr> </table> <!--[if (gte mso 9)|(IE)]> </t=
+d> <![endif]--> <!--[if (gte mso 9)|(IE)]> <td valign=3D"top"> <![endif]-->=
+ <table valign=3D"top" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" sty=
+le=3D"border: 0 none; border-spacing:0; font-family: Helvetica, Arial, sans=
+-serif; color:#000000 !important; font-weight: 100; background: #ffffff; wi=
+dth:288px; mso-table-lspace:0;mso-table-rspace:0;" width=3D"288" align=3D"r=
+ight" class=3D"inner_container"> <tr> <td align=3D"center" valign=3D"top" s=
+tyle=3D"padding:20px 0 0 0;"> <table cellpadding=3D"0" cellspacing=3D"0" bo=
+rder=3D"0" style=3D"border: 0 none; border-spacing:0; font-family: Helvetic=
+a, Arial, sans-serif; color:#000000 !important; font-weight: 100; width:100=
+%; mso-table-lspace:0;mso-table-rspace:0;" width=3D"100%"> <tr> <td valign=
+=3D"top" align=3D"center"> <a href=3D"https://www.groupon.com.mx/deals/relo=
+j-luxury-gold-leather-relojes-1-1?p=3D9&nlp=3D&CID=3DMX&tx=3D0&utm_source=
+=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6=
+344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgK=
+rE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&da=
+te=3D20170705&sender=3Drm&s=3Dbody&c=3Dimage&d=3Ddeal-page&utm_campaign=3D1=
+004640139" style=3D"display: block; border: none !important;" target=3D"_bl=
+ank"> <img src=3D"https://img.grouponcdn.com/needish/pAHv7ihHhy62yi8Gc1hteR=
+NPzX7/pA-960x576/v1/t300x182.jpg" width=3D"288" style=3D"display: block; bo=
+rder: none !important; width: 288px;" class=3D"secondary-100" alt=3D" Reloj=
+ Luxury Gold Leathe... "> </a> </td> </tr> <tr> <td valign=3D"top"> <table =
+cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border: 0 none; b=
+order-spacing:0; font-family: Helvetica, Arial, sans-serif; color:#000000 !=
+important; font-weight: 100; background: #f2f2f2; width:100%; mso-table-lsp=
+ace:0;mso-table-rspace:0;" width=3D"100%"> <tr> <td class=3D"nameFont" styl=
+e=3D"padding: 16px 16px 0 16px; font-size: 16px; line-height: 20px; color:#=
+000000; text-decoration: none; color: #000000;" align=3D'left'> <a href=3D"=
+https://www.groupon.com.mx/deals/reloj-luxury-gold-leather-relojes-1-1?p=3D=
+9&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=
+=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+=
+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7b=
+d129754225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3D=
+title&d=3Ddeal-page&utm_campaign=3D1004640139" target=3D"_blank" style=3D"f=
+ont-size: 16px; line-height: 20px; color:#000000; text-decoration: none;"> =
+Reloj Luxury Gold Leathe... </a> </td> </tr> <tr> <td style=3D"background: =
+#f2f2f2;" valign=3D"top"> <a href=3D"https://www.groupon.com.mx/deals/reloj=
+-luxury-gold-leather-relojes-1-1?p=3D9&nlp=3D&CID=3DMX&tx=3D0&utm_source=3D=
+channel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344=
+&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&=
+eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=
+=3D20170705&sender=3Drm&s=3Dbody&c=3Dtitle&d=3Ddeal-page&utm_campaign=3D100=
+4640139" target=3D"_blank" style=3D"font-size: 16px; line-height: 20px; col=
+or:#000000; text-decoration: none;">&nbsp;</a> </td> </tr> <tr> <td align=
+=3D"left" valign=3D"top" style=3D"padding-bottom: 16px;"> <table cellpaddin=
+g=3D"0" cellspacing=3D"0" border=3D"0" style=3D"background: #f2f2f2;" valig=
+n=3D"top" width=3D"100%" align=3D"left"> <tr> <td style=3D"font-size: 14px;=
+ line-height: 18px; font-weight: 100; color:#e35205; text-decoration: none =
+!important; padding: 0 16px 0 16px; " class=3D"nameFont" align=3D'left'><a =
+href=3D"https://www.groupon.com.mx/deals/reloj-luxury-gold-leather-relojes-=
+1-1?p=3D9&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Dem=
+ail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=
+=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede=
+74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Db=
+ody&c=3Dtitle&d=3Ddeal-page&utm_campaign=3D1004640139" target=3D"_blank" st=
+yle=3D"font-size: 16px; line-height: 20px; color:#000000; text-decoration: =
+none;"> <span valign=3D"top" style=3D"padding-right: 5px; font-family: Aria=
+l, Helvetica, sans-serif; font-size: 16px; line-height: 20px; text-decorati=
+on: line-through; color:#848484; font-weight: 100;" class=3D"nameFont"> <fo=
+nt color=3D"#848484">$1,290</font> </span> <span align=3D"left" valign=3D"t=
+op" style=3D"font-family: Arial, Helvetica, sans-serif; font-size: 16px; li=
+ne-height: 20px; color:#53A318; font-weight: 300; text-decoration: none !im=
+portant;" class=3D"nameFont"> <font color=3D"#88b74f">$299</font> </span> <=
+/a> </td> <td width=3D"30%" class=3D"nameFont" align=3D"right" valign=3D"to=
+p" style=3D"font-family: Arial, Helvetica, sans-serif; padding: 0 16px 0 0;=
+ font-size: 13px; line-height: 17px; font-weight: normal; font-weight: 600;=
+ color: #0185c6; text-decoration: none !important; white-space:nowrap;"><a =
+href=3D"https://www.groupon.com.mx/deals/reloj-luxury-gold-leather-relojes-=
+1-1?p=3D9&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Dem=
+ail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=
+=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede=
+74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Db=
+ody&c=3Dlink&d=3Ddeal-page&utm_campaign=3D1004640139" target=3D"_blank" sty=
+le=3D"font-size: 16px; line-height: 20px; color:#000000; text-decoration: n=
+one; white-space:nowrap;"> <font color=3D"#0185c6" style=3D"white-space:now=
+rap;"><span class=3D"nameFont">Ver</span></font></a> </td> </tr> </table> <=
+/td> </tr> </table> </td> </tr> </table> </td> </tr> </table> <!--[if (gte =
+mso 9)|(IE)]> </td> <![endif]--> <!--[if (gte mso 9)|(IE)]> </td> <![endif]=
+--> <!--[if (gte mso 9)|(IE)]> </tr> </table> <![endif]--> </td> </tr> <tr>=
+ <td align=3D"left"> <!--[if (gte mso 9)|(IE)]> <table cellpadding=3D"0" ce=
+llspacing=3D"0" border=3D"0" width=3D"600" align=3D"center" cellpadding=3D"=
+0" cellspacing=3D"0" border=3D"0"> <tr> <![endif]--> <!--[if (gte mso 9)|(I=
+E)]> <td valign=3D"top"> <![endif]--> <table valign=3D"top" cellpadding=3D"=
+0" cellspacing=3D"0" border=3D"0" style=3D"border: 0 none; border-spacing:0=
+; font-family: Helvetica, Arial, sans-serif; color:#000000 !important; font=
+-weight: 100; background: #ffffff; width:288px; mso-table-lspace:0;mso-tabl=
+e-rspace:0;" width=3D"288" align=3D"left" class=3D"inner_container"> <tr> <=
+td align=3D"center" valign=3D"top" style=3D"padding:20px 0 0 0;"> <table ce=
+llpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border: 0 none; bor=
+der-spacing:0; font-family: Helvetica, Arial, sans-serif; color:#000000 !im=
+portant; font-weight: 100; width:100%; mso-table-lspace:0;mso-table-rspace:=
+0;" width=3D"100%"> <tr> <td valign=3D"top" align=3D"center"> <a href=3D"ht=
+tps://www.groupon.com.mx/deals/tapete-decorativo-shaggy-textil-hogar-3-1?p=
+=3D10&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&=
+sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C=
+0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88=
+d7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=
+=3Dimage&d=3Ddeal-page&utm_campaign=3D1004788978" style=3D"display: block; =
+border: none !important;" target=3D"_blank"> <img src=3D"https://img.groupo=
+ncdn.com/needish/33v8MkRbogWWkr3LiGB5nK7fCHpk/33-960x576/v1/t300x182.jpg" w=
+idth=3D"288" style=3D"display: block; border: none !important; width: 288px=
+;" class=3D"secondary-100" alt=3D" Tapete Decorativo Shaggy "> </a> </td> <=
+/tr> <tr> <td valign=3D"top"> <table cellpadding=3D"0" cellspacing=3D"0" bo=
+rder=3D"0" style=3D"border: 0 none; border-spacing:0; font-family: Helvetic=
+a, Arial, sans-serif; color:#000000 !important; font-weight: 100; backgroun=
+d: #f2f2f2; width:100%; mso-table-lspace:0;mso-table-rspace:0;" width=3D"10=
+0%"> <tr> <td class=3D"nameFont" style=3D"padding: 16px 16px 0 16px; font-s=
+ize: 16px; line-height: 20px; color:#000000; text-decoration: none; color: =
+#000000;" align=3D'left'> <a href=3D"https://www.groupon.com.mx/deals/tapet=
+e-decorativo-shaggy-textil-hogar-3-1?p=3D10&nlp=3D&CID=3DMX&tx=3D0&utm_sour=
+ce=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1b=
+d6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjG=
+gKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&=
+date=3D20170705&sender=3Drm&s=3Dbody&c=3Dtitle&d=3Ddeal-page&utm_campaign=
+=3D1004788978" target=3D"_blank" style=3D"font-size: 16px; line-height: 20p=
+x; color:#000000; text-decoration: none;"> Tapete Decorativo Shaggy </a> </=
+td> </tr> <tr> <td style=3D"background: #f2f2f2;" valign=3D"top"> <a href=
+=3D"https://www.groupon.com.mx/deals/tapete-decorativo-shaggy-textil-hogar-=
+3-1?p=3D10&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3De=
+mail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=
+=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede=
+74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Db=
+ody&c=3Dtitle&d=3Ddeal-page&utm_campaign=3D1004788978" target=3D"_blank" st=
+yle=3D"font-size: 16px; line-height: 20px; color:#000000; text-decoration: =
+none;">&nbsp;</a> </td> </tr> <tr> <td align=3D"left" valign=3D"top" style=
+=3D"padding-bottom: 16px;"> <table cellpadding=3D"0" cellspacing=3D"0" bord=
+er=3D"0" style=3D"background: #f2f2f2;" valign=3D"top" width=3D"100%" align=
+=3D"left"> <tr> <td style=3D"font-size: 14px; line-height: 18px; font-weigh=
+t: 100; color:#e35205; text-decoration: none !important; padding: 0 16px 0 =
+16px; " class=3D"nameFont" align=3D'left'><a href=3D"https://www.groupon.co=
+m.mx/deals/tapete-decorativo-shaggy-textil-hogar-3-1?p=3D10&nlp=3D&CID=3DMX=
+&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4=
+e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7=
+dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d=
+923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dtitle&d=3Ddeal-pag=
+e&utm_campaign=3D1004788978" target=3D"_blank" style=3D"font-size: 16px; li=
+ne-height: 20px; color:#000000; text-decoration: none;"> <span align=3D"lef=
+t" valign=3D"top" style=3D"font-family: Arial, Helvetica, sans-serif; font-=
+size: 16px; line-height: 20px; color:#53A318; font-weight: 300; text-decora=
+tion: none !important;" class=3D"nameFont"> <font color=3D"#88b74f">$449</f=
+ont> </span> </a> </td> <td width=3D"30%" class=3D"nameFont" align=3D"right=
+" valign=3D"top" style=3D"font-family: Arial, Helvetica, sans-serif; paddin=
+g: 0 16px 0 0; font-size: 13px; line-height: 17px; font-weight: normal; fon=
+t-weight: 600; color: #0185c6; text-decoration: none !important; white-spac=
+e:nowrap;"><a href=3D"https://www.groupon.com.mx/deals/tapete-decorativo-sh=
+aggy-textil-hogar-3-1?p=3D10&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_go=
+ods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_divisio=
+n=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44=
+d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170705=
+&sender=3Drm&s=3Dbody&c=3Dlink&d=3Ddeal-page&utm_campaign=3D1004788978" tar=
+get=3D"_blank" style=3D"font-size: 16px; line-height: 20px; color:#000000; =
+text-decoration: none; white-space:nowrap;"> <font color=3D"#0185c6" style=
+=3D"white-space:nowrap;"><span class=3D"nameFont">Ver</span></font></a> </t=
+d> </tr> </table> </td> </tr> </table> </td> </tr> </table> </td> </tr> </t=
+able> <!--[if (gte mso 9)|(IE)]> </td> <![endif]--> <!--[if (gte mso 9)|(IE=
+)]> <td valign=3D"top"> <![endif]--> <table valign=3D"top" cellpadding=3D"0=
+" cellspacing=3D"0" border=3D"0" style=3D"border: 0 none; border-spacing:0;=
+ font-family: Helvetica, Arial, sans-serif; color:#000000 !important; font-=
+weight: 100; background: #ffffff; width:288px; mso-table-lspace:0;mso-table=
+-rspace:0;" width=3D"288" align=3D"right" class=3D"inner_container"> <tr> <=
+td align=3D"center" valign=3D"top" style=3D"padding:20px 0 0 0;"> <table ce=
+llpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border: 0 none; bor=
+der-spacing:0; font-family: Helvetica, Arial, sans-serif; color:#000000 !im=
+portant; font-weight: 100; width:100%; mso-table-lspace:0;mso-table-rspace:=
+0;" width=3D"100%"> <tr> <td valign=3D"top" align=3D"center"> <a href=3D"ht=
+tps://www.groupon.com.mx/deals/mini-humidificador-accesorios-1-8?p=3D11&nlp=
+=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b2=
+9c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpA=
+j5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd12975=
+4225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dimage&=
+d=3Ddeal-page&utm_campaign=3D1004882500" style=3D"display: block; border: n=
+one !important;" target=3D"_blank"> <img src=3D"https://img.grouponcdn.com/=
+needish/s8T22P84JcEqnqoSNDH78NUQKZx/s8-960x576/v1/t300x182.jpg" width=3D"28=
+8" style=3D"display: block; border: none !important; width: 288px;" class=
+=3D"secondary-100" alt=3D" Mini Humidificador "> </a> </td> </tr> <tr> <td =
+valign=3D"top"> <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" sty=
+le=3D"border: 0 none; border-spacing:0; font-family: Helvetica, Arial, sans=
+-serif; color:#000000 !important; font-weight: 100; background: #f2f2f2; wi=
+dth:100%; mso-table-lspace:0;mso-table-rspace:0;" width=3D"100%"> <tr> <td =
+class=3D"nameFont" style=3D"padding: 16px 16px 0 16px; font-size: 16px; lin=
+e-height: 20px; color:#000000; text-decoration: none; color: #000000;" alig=
+n=3D'left'> <a href=3D"https://www.groupon.com.mx/deals/mini-humidificador-=
+accesorios-1-8?p=3D11&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm=
+_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_=
+shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e1=
+56ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=
+=3Drm&s=3Dbody&c=3Dtitle&d=3Ddeal-page&utm_campaign=3D1004882500" target=3D=
+"_blank" style=3D"font-size: 16px; line-height: 20px; color:#000000; text-d=
+ecoration: none;"> Mini Humidificador </a> </td> </tr> <tr> <td style=3D"fo=
+nt-size: 14px; line-height: 18px; font-weight: 100; color:#e35205; text-dec=
+oration: none !important; padding: 0 16px 0 16px;" class=3D"nameFont" align=
+=3D'left'> <a href=3D"https://www.groupon.com.mx/deals/mini-humidificador-a=
+ccesorios-1-8?p=3D11&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_=
+medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_s=
+hopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e15=
+6ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=
+=3Drm&s=3Dbody&c=3Dtitle&d=3Ddeal-page&utm_campaign=3D1004882500" target=3D=
+"_blank" style=3D"font-size: 16px; line-height: 20px; color:#000000; text-d=
+ecoration: none;"> <font color=3D"#e35205"><span class=3D"nameFont">Mas de =
+250 comprados</span></font></a> </td> </tr> <tr> <td align=3D"left" valign=
+=3D"top" style=3D"padding-bottom: 16px;"> <table cellpadding=3D"0" cellspac=
+ing=3D"0" border=3D"0" style=3D"background: #f2f2f2;" valign=3D"top" width=
+=3D"100%" align=3D"left"> <tr> <td style=3D"font-size: 14px; line-height: 1=
+8px; font-weight: 100; color:#e35205; text-decoration: none !important; pad=
+ding: 0 16px 0 16px; " class=3D"nameFont" align=3D'left'><a href=3D"https:/=
+/www.groupon.com.mx/deals/mini-humidificador-accesorios-1-8?p=3D11&nlp=3D&C=
+ID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e=
+-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/=
+iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e=
+4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dtitle&d=3Dd=
+eal-page&utm_campaign=3D1004882500" target=3D"_blank" style=3D"font-size: 1=
+6px; line-height: 20px; color:#000000; text-decoration: none;"> <span valig=
+n=3D"top" style=3D"padding-right: 5px; font-family: Arial, Helvetica, sans-=
+serif; font-size: 16px; line-height: 20px; text-decoration: line-through; c=
+olor:#848484; font-weight: 100;" class=3D"nameFont"> <font color=3D"#848484=
+">$699</font> </span> <span align=3D"left" valign=3D"top" style=3D"font-fam=
+ily: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 20px; colo=
+r:#53A318; font-weight: 300; text-decoration: none !important;" class=3D"na=
+meFont"> <font color=3D"#88b74f">$499</font> </span> </a> </td> <td width=
+=3D"30%" class=3D"nameFont" align=3D"right" valign=3D"top" style=3D"font-fa=
+mily: Arial, Helvetica, sans-serif; padding: 0 16px 0 0; font-size: 13px; l=
+ine-height: 17px; font-weight: normal; font-weight: 600; color: #0185c6; te=
+xt-decoration: none !important; white-space:nowrap;"><a href=3D"https://www=
+.groupon.com.mx/deals/mini-humidificador-accesorios-1-8?p=3D11&nlp=3D&CID=
+=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-a=
+ae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI=
+/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f=
+43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dlink&d=3Ddeal=
+-page&utm_campaign=3D1004882500" target=3D"_blank" style=3D"font-size: 16px=
+; line-height: 20px; color:#000000; text-decoration: none; white-space:nowr=
+ap;"> <font color=3D"#0185c6" style=3D"white-space:nowrap;"><span class=3D"=
+nameFont">Ver</span></font></a> </td> </tr> </table> </td> </tr> </table> <=
+/td> </tr> </table> </td> </tr> </table> <!--[if (gte mso 9)|(IE)]> </td> <=
+![endif]--> <!--[if (gte mso 9)|(IE)]> </td> <![endif]--> <!--[if (gte mso =
+9)|(IE)]> </tr> </table> <![endif]--> </td> </tr> <tr> <td align=3D"left"> =
+<!--[if (gte mso 9)|(IE)]> <table cellpadding=3D"0" cellspacing=3D"0" borde=
+r=3D"0" width=3D"600" align=3D"center" cellpadding=3D"0" cellspacing=3D"0" =
+border=3D"0"> <tr> <![endif]--> <!--[if (gte mso 9)|(IE)]> <td valign=3D"to=
+p"> <![endif]--> <table valign=3D"top" cellpadding=3D"0" cellspacing=3D"0" =
+border=3D"0" style=3D"border: 0 none; border-spacing:0; font-family: Helvet=
+ica, Arial, sans-serif; color:#000000 !important; font-weight: 100; backgro=
+und: #ffffff; width:288px; mso-table-lspace:0;mso-table-rspace:0;" width=3D=
+"288" align=3D"left" class=3D"inner_container"> <tr> <td align=3D"center" v=
+align=3D"top" style=3D"padding:20px 0 0 0;"> <table cellpadding=3D"0" cells=
+pacing=3D"0" border=3D"0" style=3D"border: 0 none; border-spacing:0; font-f=
+amily: Helvetica, Arial, sans-serif; color:#000000 !important; font-weight:=
+ 100; width:100%; mso-table-lspace:0;mso-table-rspace:0;" width=3D"100%"> <=
+tr> <td valign=3D"top" align=3D"center"> <a href=3D"https://www.groupon.com=
+.mx/deals/banador-para-mascotas-mascotas-1-1?p=3D12&nlp=3D&CID=3DMX&tx=3D0&=
+utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547=
+-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv=
+6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059=
+c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dimage&d=3Ddeal-page&utm_ca=
+mpaign=3D1004690511" style=3D"display: block; border: none !important;" tar=
+get=3D"_blank"> <img src=3D"https://img.grouponcdn.com/needish/2GBQ1mA31hMe=
+3onvAHhFqCuwgfY7/2G-960x576/v1/t300x182.jpg" width=3D"288" style=3D"display=
+: block; border: none !important; width: 288px;" class=3D"secondary-100" al=
+t=3D" Ba=C3=B1ador para Mascotas "> </a> </td> </tr> <tr> <td valign=3D"top=
+"> <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border:=
+ 0 none; border-spacing:0; font-family: Helvetica, Arial, sans-serif; color=
+:#000000 !important; font-weight: 100; background: #f2f2f2; width:100%; mso=
+-table-lspace:0;mso-table-rspace:0;" width=3D"100%"> <tr> <td class=3D"name=
+Font" style=3D"padding: 16px 16px 0 16px; font-size: 16px; line-height: 20p=
+x; color:#000000; text-decoration: none; color: #000000;" align=3D'left'> <=
+a href=3D"https://www.groupon.com.mx/deals/banador-para-mascotas-mascotas-1=
+-1?p=3D12&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Dem=
+ail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=
+=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede=
+74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Db=
+ody&c=3Dtitle&d=3Ddeal-page&utm_campaign=3D1004690511" target=3D"_blank" st=
+yle=3D"font-size: 16px; line-height: 20px; color:#000000; text-decoration: =
+none;"> Ba=C3=B1ador para Mascotas </a> </td> </tr> <tr> <td style=3D"font-=
+size: 14px; line-height: 18px; font-weight: 100; color:#e35205; text-decora=
+tion: none !important; padding: 0 16px 0 16px;" class=3D"nameFont" align=3D=
+'left'> <a href=3D"https://www.groupon.com.mx/deals/banador-para-mascotas-m=
+ascotas-1-1?p=3D12&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_me=
+dium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_sho=
+pping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156e=
+f489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3D=
+rm&s=3Dbody&c=3Dtitle&d=3Ddeal-page&utm_campaign=3D1004690511" target=3D"_b=
+lank" style=3D"font-size: 16px; line-height: 20px; color:#000000; text-deco=
+ration: none;"> <font color=3D"#e35205"><span class=3D"nameFont">Mas de 50 =
+comprados</span></font></a> </td> </tr> <tr> <td align=3D"left" valign=3D"t=
+op" style=3D"padding-bottom: 16px;"> <table cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0" style=3D"background: #f2f2f2;" valign=3D"top" width=3D"=
+100%" align=3D"left"> <tr> <td style=3D"font-size: 14px; line-height: 18px;=
+ font-weight: 100; color:#e35205; text-decoration: none !important; padding=
+: 0 16px 0 16px; " class=3D"nameFont" align=3D'left'><a href=3D"https://www=
+.groupon.com.mx/deals/banador-para-mascotas-mascotas-1-1?p=3D12&nlp=3D&CID=
+=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-a=
+ae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI=
+/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f=
+43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dtitle&d=3Ddea=
+l-page&utm_campaign=3D1004690511" target=3D"_blank" style=3D"font-size: 16p=
+x; line-height: 20px; color:#000000; text-decoration: none;"> <span valign=
+=3D"top" style=3D"padding-right: 5px; font-family: Arial, Helvetica, sans-s=
+erif; font-size: 16px; line-height: 20px; text-decoration: line-through; co=
+lor:#848484; font-weight: 100;" class=3D"nameFont"> <font color=3D"#848484"=
+>$1,200</font> </span> <span align=3D"left" valign=3D"top" style=3D"font-fa=
+mily: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 20px; col=
+or:#53A318; font-weight: 300; text-decoration: none !important;" class=3D"n=
+ameFont"> <font color=3D"#88b74f">$449</font> </span> </a> </td> <td width=
+=3D"30%" class=3D"nameFont" align=3D"right" valign=3D"top" style=3D"font-fa=
+mily: Arial, Helvetica, sans-serif; padding: 0 16px 0 0; font-size: 13px; l=
+ine-height: 17px; font-weight: normal; font-weight: 600; color: #0185c6; te=
+xt-decoration: none !important; white-space:nowrap;"><a href=3D"https://www=
+.groupon.com.mx/deals/banador-para-mascotas-mascotas-1-1?p=3D12&nlp=3D&CID=
+=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-a=
+ae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI=
+/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f=
+43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dlink&d=3Ddeal=
+-page&utm_campaign=3D1004690511" target=3D"_blank" style=3D"font-size: 16px=
+; line-height: 20px; color:#000000; text-decoration: none; white-space:nowr=
+ap;"> <font color=3D"#0185c6" style=3D"white-space:nowrap;"><span class=3D"=
+nameFont">Ver</span></font></a> </td> </tr> </table> </td> </tr> </table> <=
+/td> </tr> </table> </td> </tr> </table> <!--[if (gte mso 9)|(IE)]> </td> <=
+![endif]--> <!--[if (gte mso 9)|(IE)]> <td valign=3D"top"> <![endif]--> <ta=
+ble valign=3D"top" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=
+=3D"border: 0 none; border-spacing:0; font-family: Helvetica, Arial, sans-s=
+erif; color:#000000 !important; font-weight: 100; background: #ffffff; widt=
+h:288px; mso-table-lspace:0;mso-table-rspace:0;" width=3D"288" align=3D"rig=
+ht" class=3D"inner_container"> <tr> <td align=3D"center" valign=3D"top" sty=
+le=3D"padding:20px 0 0 0;"> <table cellpadding=3D"0" cellspacing=3D"0" bord=
+er=3D"0" style=3D"border: 0 none; border-spacing:0; font-family: Helvetica,=
+ Arial, sans-serif; color:#000000 !important; font-weight: 100; width:100%;=
+ mso-table-lspace:0;mso-table-rspace:0;" width=3D"100%"> <tr> <td valign=3D=
+"top" align=3D"center"> <a href=3D"https://www.groupon.com.mx/deals/kit-de-=
+accesorios-6-en-1-para-tablet-accesorios-1-2?p=3D13&nlp=3D&CID=3DMX&tx=3D0&=
+utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547=
+-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv=
+6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059=
+c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dimage&d=3Ddeal-page&utm_ca=
+mpaign=3D1004908343" style=3D"display: block; border: none !important;" tar=
+get=3D"_blank"> <img src=3D"https://img.grouponcdn.com/needish/2fH54aLBXmTy=
+MZnKHFxUHrF47FAr/2f-960x576/v1/t300x182.jpg" width=3D"288" style=3D"display=
+: block; border: none !important; width: 288px;" class=3D"secondary-100" al=
+t=3D" Kit de accesorios 6 en 1... "> </a> </td> </tr> <tr> <td valign=3D"to=
+p"> <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border=
+: 0 none; border-spacing:0; font-family: Helvetica, Arial, sans-serif; colo=
+r:#000000 !important; font-weight: 100; background: #f2f2f2; width:100%; ms=
+o-table-lspace:0;mso-table-rspace:0;" width=3D"100%"> <tr> <td class=3D"nam=
+eFont" style=3D"padding: 16px 16px 0 16px; font-size: 16px; line-height: 20=
+px; color:#000000; text-decoration: none; color: #000000;" align=3D'left'> =
+<a href=3D"https://www.groupon.com.mx/deals/kit-de-accesorios-6-en-1-para-t=
+ablet-accesorios-1-2?p=3D13&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goo=
+ds&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=
+=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d=
+0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170705&=
+sender=3Drm&s=3Dbody&c=3Dtitle&d=3Ddeal-page&utm_campaign=3D1004908343" tar=
+get=3D"_blank" style=3D"font-size: 16px; line-height: 20px; color:#000000; =
+text-decoration: none;"> Kit de accesorios 6 en 1... </a> </td> </tr> <tr> =
+<td style=3D"background: #f2f2f2;" valign=3D"top"> <a href=3D"https://www.g=
+roupon.com.mx/deals/kit-de-accesorios-6-en-1-para-tablet-accesorios-1-2?p=
+=3D13&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&=
+sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C=
+0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88=
+d7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=
+=3Dtitle&d=3Ddeal-page&utm_campaign=3D1004908343" target=3D"_blank" style=
+=3D"font-size: 16px; line-height: 20px; color:#000000; text-decoration: non=
+e;">&nbsp;</a> </td> </tr> <tr> <td align=3D"left" valign=3D"top" style=3D"=
+padding-bottom: 16px;"> <table cellpadding=3D"0" cellspacing=3D"0" border=
+=3D"0" style=3D"background: #f2f2f2;" valign=3D"top" width=3D"100%" align=
+=3D"left"> <tr> <td style=3D"font-size: 14px; line-height: 18px; font-weigh=
+t: 100; color:#e35205; text-decoration: none !important; padding: 0 16px 0 =
+16px; " class=3D"nameFont" align=3D'left'><a href=3D"https://www.groupon.co=
+m.mx/deals/kit-de-accesorios-6-en-1-para-tablet-accesorios-1-2?p=3D13&nlp=
+=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b2=
+9c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpA=
+j5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd12975=
+4225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dtitle&=
+d=3Ddeal-page&utm_campaign=3D1004908343" target=3D"_blank" style=3D"font-si=
+ze: 16px; line-height: 20px; color:#000000; text-decoration: none;"> <span =
+align=3D"left" valign=3D"top" style=3D"font-family: Arial, Helvetica, sans-=
+serif; font-size: 16px; line-height: 20px; color:#53A318; font-weight: 300;=
+ text-decoration: none !important;" class=3D"nameFont"> <font color=3D"#88b=
+74f">$249</font> </span> </a> </td> <td width=3D"30%" class=3D"nameFont" al=
+ign=3D"right" valign=3D"top" style=3D"font-family: Arial, Helvetica, sans-s=
+erif; padding: 0 16px 0 0; font-size: 13px; line-height: 17px; font-weight:=
+ normal; font-weight: 600; color: #0185c6; text-decoration: none !important=
+; white-space:nowrap;"><a href=3D"https://www.groupon.com.mx/deals/kit-de-a=
+ccesorios-6-en-1-para-tablet-accesorios-1-2?p=3D13&nlp=3D&CID=3DMX&tx=3D0&u=
+tm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-=
+b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6=
+ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c=
+92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dlink&d=3Ddeal-page&utm_camp=
+aign=3D1004908343" target=3D"_blank" style=3D"font-size: 16px; line-height:=
+ 20px; color:#000000; text-decoration: none; white-space:nowrap;"> <font co=
+lor=3D"#0185c6" style=3D"white-space:nowrap;"><span class=3D"nameFont">Ver<=
+/span></font></a> </td> </tr> </table> </td> </tr> </table> </td> </tr> </t=
+able> </td> </tr> </table> <!--[if (gte mso 9)|(IE)]> </td> <![endif]--> <!=
+--[if (gte mso 9)|(IE)]> </td> <![endif]--> <!--[if (gte mso 9)|(IE)]> </tr=
+> </table> <![endif]--> </td> </tr> <tr> <td align=3D"left"> <!--[if (gte m=
+so 9)|(IE)]> <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=
+=3D"600" align=3D"center" cellpadding=3D"0" cellspacing=3D"0" border=3D"0">=
+ <tr> <![endif]--> <!--[if (gte mso 9)|(IE)]> <td valign=3D"top"> <![endif]=
+--> <table valign=3D"top" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" =
+style=3D"border: 0 none; border-spacing:0; font-family: Helvetica, Arial, s=
+ans-serif; color:#000000 !important; font-weight: 100; background: #ffffff;=
+ width:288px; mso-table-lspace:0;mso-table-rspace:0;" width=3D"288" align=
+=3D"left" class=3D"inner_container"> <tr> <td align=3D"center" valign=3D"to=
+p" style=3D"padding:20px 0 0 0;"> <table cellpadding=3D"0" cellspacing=3D"0=
+" border=3D"0" style=3D"border: 0 none; border-spacing:0; font-family: Helv=
+etica, Arial, sans-serif; color:#000000 !important; font-weight: 100; width=
+:100%; mso-table-lspace:0;mso-table-rspace:0;" width=3D"100%"> <tr> <td val=
+ign=3D"top" align=3D"center"> <a href=3D"https://www.groupon.com.mx/deals/s=
+et-de-edredon-mosley-croacia-textil-hogar-1-3?p=3D14&nlp=3D&CID=3DMX&tx=3D0=
+&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-854=
+7-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySX=
+v6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae05=
+9c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dimage&d=3Ddeal-page&utm_c=
+ampaign=3D1004908413" style=3D"display: block; border: none !important;" ta=
+rget=3D"_blank"> <img src=3D"https://img.grouponcdn.com/needish/2UW8ZykyuAi=
+BumxvoWjCj7PbT9LE/2U-960x576/v1/t300x182.jpg" width=3D"288" style=3D"displa=
+y: block; border: none !important; width: 288px;" class=3D"secondary-100" a=
+lt=3D" Set de edred=C3=B3n Mosley Cr... "> </a> </td> </tr> <tr> <td valign=
+=3D"top"> <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"=
+border: 0 none; border-spacing:0; font-family: Helvetica, Arial, sans-serif=
+; color:#000000 !important; font-weight: 100; background: #f2f2f2; width:10=
+0%; mso-table-lspace:0;mso-table-rspace:0;" width=3D"100%"> <tr> <td class=
+=3D"nameFont" style=3D"padding: 16px 16px 0 16px; font-size: 16px; line-hei=
+ght: 20px; color:#000000; text-decoration: none; color: #000000;" align=3D'=
+left'> <a href=3D"https://www.groupon.com.mx/deals/set-de-edredon-mosley-cr=
+oacia-textil-hogar-1-3?p=3D14&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_g=
+oods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_divisi=
+on=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be4=
+4d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D2017070=
+5&sender=3Drm&s=3Dbody&c=3Dtitle&d=3Ddeal-page&utm_campaign=3D1004908413" t=
+arget=3D"_blank" style=3D"font-size: 16px; line-height: 20px; color:#000000=
+; text-decoration: none;"> Set de edred=C3=B3n Mosley Cr... </a> </td> </tr=
+> <tr> <td style=3D"background: #f2f2f2;" valign=3D"top"> <a href=3D"https:=
+//www.groupon.com.mx/deals/set-de-edredon-mosley-croacia-textil-hogar-1-3?p=
+=3D14&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&=
+sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C=
+0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88=
+d7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=
+=3Dtitle&d=3Ddeal-page&utm_campaign=3D1004908413" target=3D"_blank" style=
+=3D"font-size: 16px; line-height: 20px; color:#000000; text-decoration: non=
+e;">&nbsp;</a> </td> </tr> <tr> <td align=3D"left" valign=3D"top" style=3D"=
+padding-bottom: 16px;"> <table cellpadding=3D"0" cellspacing=3D"0" border=
+=3D"0" style=3D"background: #f2f2f2;" valign=3D"top" width=3D"100%" align=
+=3D"left"> <tr> <td style=3D"font-size: 14px; line-height: 18px; font-weigh=
+t: 100; color:#e35205; text-decoration: none !important; padding: 0 16px 0 =
+16px; " class=3D"nameFont" align=3D'left'><a href=3D"https://www.groupon.co=
+m.mx/deals/set-de-edredon-mosley-croacia-textil-hogar-1-3?p=3D14&nlp=3D&CID=
+=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-a=
+ae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI=
+/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f=
+43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dtitle&d=3Ddea=
+l-page&utm_campaign=3D1004908413" target=3D"_blank" style=3D"font-size: 16p=
+x; line-height: 20px; color:#000000; text-decoration: none;"> <span align=
+=3D"left" valign=3D"top" style=3D"font-family: Arial, Helvetica, sans-serif=
+; font-size: 16px; line-height: 20px; color:#53A318; font-weight: 300; text=
+-decoration: none !important;" class=3D"nameFont"> <font color=3D"#88b74f">=
+$499</font> </span> </a> </td> <td width=3D"30%" class=3D"nameFont" align=
+=3D"right" valign=3D"top" style=3D"font-family: Arial, Helvetica, sans-seri=
+f; padding: 0 16px 0 0; font-size: 13px; line-height: 17px; font-weight: no=
+rmal; font-weight: 600; color: #0185c6; text-decoration: none !important; w=
+hite-space:nowrap;"><a href=3D"https://www.groupon.com.mx/deals/set-de-edre=
+don-mosley-croacia-textil-hogar-1-3?p=3D14&nlp=3D&CID=3DMX&tx=3D0&utm_sourc=
+e=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd=
+6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGg=
+KrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&d=
+ate=3D20170705&sender=3Drm&s=3Dbody&c=3Dlink&d=3Ddeal-page&utm_campaign=3D1=
+004908413" target=3D"_blank" style=3D"font-size: 16px; line-height: 20px; c=
+olor:#000000; text-decoration: none; white-space:nowrap;"> <font color=3D"#=
+0185c6" style=3D"white-space:nowrap;"><span class=3D"nameFont">Ver</span></=
+font></a> </td> </tr> </table> </td> </tr> </table> </td> </tr> </table> </=
+td> </tr> </table> <!--[if (gte mso 9)|(IE)]> </td> <![endif]--> <!--[if (g=
+te mso 9)|(IE)]> <td valign=3D"top"> <![endif]--> <table valign=3D"top" cel=
+lpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border: 0 none; bord=
+er-spacing:0; font-family: Helvetica, Arial, sans-serif; color:#000000 !imp=
+ortant; font-weight: 100; background: #ffffff; width:288px; mso-table-lspac=
+e:0;mso-table-rspace:0;" width=3D"288" align=3D"right" class=3D"inner_conta=
+iner"> <tr> <td align=3D"center" valign=3D"top" style=3D"padding:20px 0 0 0=
+;"> <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" style=3D"border=
+: 0 none; border-spacing:0; font-family: Helvetica, Arial, sans-serif; colo=
+r:#000000 !important; font-weight: 100; width:100%; mso-table-lspace:0;mso-=
+table-rspace:0;" width=3D"100%"> <tr> <td valign=3D"top" align=3D"center"> =
+<a href=3D"https://www.groupon.com.mx/deals/aretes-pastel-en-oro-l18k-joyer=
+ia-1-1?p=3D15&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=
+=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shoppin=
+g&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489=
+eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=
+=3Dbody&c=3Dimage&d=3Ddeal-page&utm_campaign=3D1004956801" style=3D"display=
+: block; border: none !important;" target=3D"_blank"> <img src=3D"https://i=
+mg.grouponcdn.com/needish/soNypovtHiAZXL5e6DB65w6tSNB/so-960x576/v1/t300x18=
+2.jpg" width=3D"288" style=3D"display: block; border: none !important; widt=
+h: 288px;" class=3D"secondary-100" alt=3D" Aretes pastel en oro L-1... "> <=
+/a> </td> </tr> <tr> <td valign=3D"top"> <table cellpadding=3D"0" cellspaci=
+ng=3D"0" border=3D"0" style=3D"border: 0 none; border-spacing:0; font-famil=
+y: Helvetica, Arial, sans-serif; color:#000000 !important; font-weight: 100=
+; background: #f2f2f2; width:100%; mso-table-lspace:0;mso-table-rspace:0;" =
+width=3D"100%"> <tr> <td class=3D"nameFont" style=3D"padding: 16px 16px 0 1=
+6px; font-size: 16px; line-height: 20px; color:#000000; text-decoration: no=
+ne; color: #000000;" align=3D'left'> <a href=3D"https://www.groupon.com.mx/=
+deals/aretes-pastel-en-oro-l18k-joyeria-1-1?p=3D15&nlp=3D&CID=3DMX&tx=3D0&u=
+tm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-=
+b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6=
+ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c=
+92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dtitle&d=3Ddeal-page&utm_cam=
+paign=3D1004956801" target=3D"_blank" style=3D"font-size: 16px; line-height=
+: 20px; color:#000000; text-decoration: none;"> Aretes pastel en oro L-1...=
+ </a> </td> </tr> <tr> <td style=3D"background: #f2f2f2;" valign=3D"top"> <=
+a href=3D"https://www.groupon.com.mx/deals/aretes-pastel-en-oro-l18k-joyeri=
+a-1-1?p=3D15&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=
+=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shoppin=
+g&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489=
+eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=
+=3Dbody&c=3Dtitle&d=3Ddeal-page&utm_campaign=3D1004956801" target=3D"_blank=
+" style=3D"font-size: 16px; line-height: 20px; color:#000000; text-decorati=
+on: none;">&nbsp;</a> </td> </tr> <tr> <td align=3D"left" valign=3D"top" st=
+yle=3D"padding-bottom: 16px;"> <table cellpadding=3D"0" cellspacing=3D"0" b=
+order=3D"0" style=3D"background: #f2f2f2;" valign=3D"top" width=3D"100%" al=
+ign=3D"left"> <tr> <td style=3D"font-size: 14px; line-height: 18px; font-we=
+ight: 100; color:#e35205; text-decoration: none !important; padding: 0 16px=
+ 0 16px; " class=3D"nameFont" align=3D'left'><a href=3D"https://www.groupon=
+.com.mx/deals/aretes-pastel-en-oro-l18k-joyeria-1-1?p=3D15&nlp=3D&CID=3DMX&=
+tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e=
+7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7d=
+Y9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d9=
+23ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dtitle&d=3Ddeal-page=
+&utm_campaign=3D1004956801" target=3D"_blank" style=3D"font-size: 16px; lin=
+e-height: 20px; color:#000000; text-decoration: none;"> <span valign=3D"top=
+" style=3D"padding-right: 5px; font-family: Arial, Helvetica, sans-serif; f=
+ont-size: 16px; line-height: 20px; text-decoration: line-through; color:#84=
+8484; font-weight: 100;" class=3D"nameFont"> <font color=3D"#848484">$499</=
+font> </span> <span align=3D"left" valign=3D"top" style=3D"font-family: Ari=
+al, Helvetica, sans-serif; font-size: 16px; line-height: 20px; color:#53A31=
+8; font-weight: 300; text-decoration: none !important;" class=3D"nameFont">=
+ <font color=3D"#88b74f">$229</font> </span> </a> </td> <td width=3D"30%" c=
+lass=3D"nameFont" align=3D"right" valign=3D"top" style=3D"font-family: Aria=
+l, Helvetica, sans-serif; padding: 0 16px 0 0; font-size: 13px; line-height=
+: 17px; font-weight: normal; font-weight: 600; color: #0185c6; text-decorat=
+ion: none !important; white-space:nowrap;"><a href=3D"https://www.groupon.c=
+om.mx/deals/aretes-pastel-en-oro-l18k-joyeria-1-1?p=3D15&nlp=3D&CID=3DMX&tx=
+=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b=
+-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9=
+gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923=
+ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dlink&d=3Ddeal-page&ut=
+m_campaign=3D1004956801" target=3D"_blank" style=3D"font-size: 16px; line-h=
+eight: 20px; color:#000000; text-decoration: none; white-space:nowrap;"> <f=
+ont color=3D"#0185c6" style=3D"white-space:nowrap;"><span class=3D"nameFont=
+">Ver</span></font></a> </td> </tr> </table> </td> </tr> </table> </td> </t=
+r> </table> </td> </tr> </table> <!--[if (gte mso 9)|(IE)]> </td> <![endif]=
+--> <!--[if (gte mso 9)|(IE)]> </td> <![endif]--> <!--[if (gte mso 9)|(IE)]=
+> </tr> </table> <![endif]--> </td> </tr> </table> </td> </tr> </table> <ta=
+ble cellpadding=3D"0" cellspacing=3D"0" style=3D"border: 0 none; border-spa=
+cing:0; font-family: Helvetica, Arial, sans-serif; color:#000000 !important=
+; font-weight: 100; width: 600px;" align=3D"center" class=3D"inner_containe=
+r"> <tr> <td style=3D"padding: 30px;" align=3D"center"> <table cellpadding=
+=3D"0" cellspacing=3D"0" style=3D"font-family: Arial, Helvetica, sans-serif=
+; font-size:14px; line-height:19px; color:#333;" align=3D"center"> <tr> <td=
+ height=3D"45" bgcolor=3D"#3ebddc" background=3D"http://s3.grouponcdn.com/e=
+mail/images/prom_night/global_buttons/pn-btn-gradient-blue.gif" background-=
+repeat=3D"repeat-x" style=3D"height:45px; text-align:center;"><a href=3D"ht=
+tp://www.groupon.com.mx/goods?nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_g=
+oods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_divisi=
+on=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be4=
+4d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D2017070=
+5&sender=3Drm&s=3Dbody&c=3Dbutton&d=3Dall-deals-page" style=3D"padding: 12p=
+x; color:#ffffff; font-size:16px; font-weight: 500; text-decoration:none;">=
+ Ver todos los productos </a></td> </tr> </table> </td> </tr> </table> </td=
+> </tr> </table> </td> </tr> </table> </td> </tr> </table> <!-- Footer --> =
+<table cellpadding=3D"0" cellspacing=3D"0" style=3D"border: 0 none; border-=
+spacing:0; font-family: Helvetica, Arial, sans-serif; color:#000000 !import=
+ant; font-weight: 100; width: 100%; background: #ececec;" width=3D"100%" al=
+ign=3D"center" bgcolor=3D"#ececec"> <tr> <td style=3D"width:100%; padding: =
+0 0 20px 0; background: #ececec;" width=3D"100%" align=3D"center" bgcolor=
+=3D"#ececec"> <table cellpadding=3D"0" cellspacing=3D"0" style=3D"border: 0=
+ none; border-spacing:0; font-family: Helvetica, Arial, sans-serif; color:#=
+000000 !important; font-weight: 100; width: 700px; background: #ececec;" wi=
+dth=3D"700" align=3D"center" class=3D"outer_container"> <tr> <td align=3D"c=
+enter" style=3D"width:700px;" width=3D"700" class=3D"outer_container"> <tab=
+le cellpadding=3D"0" cellspacing=3D"0" style=3D"border: 0 none; border-spac=
+ing:0; font-family: Helvetica, Arial, sans-serif; color:#000000 !important;=
+ font-weight: 100; width: 100%; background: #ececec;" width=3D"100%" align=
+=3D"center"> <tr> <td align=3D'center' style=3D"font-size: 10px !important;=
+ line-height: 12px !important; color:#666666 !important; text-decoration: n=
+one; padding: 10px 20px 0 20px;"></td> </tr> <tr> <td align=3D'center' styl=
+e=3D"font-size: 10px !important; line-height: 12px !important; color:#66666=
+6 !important; text-decoration: none; padding: 10px 20px 0 20px;"> Est=C3=A1=
+s recibiendo este email porque sayde.gutierrez92@gmail.com se suscribi=C3=
+=B3 al newsletter de Groupon. <br /> Si quieres cancelar tus suscripciones,=
+ <a href=3D"http://www.groupon.com.mx/subscription_center/29d0591d-f82a-4de=
+5-ad15-c8a5219ed14a?iscId=3Dtrue&nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchanne=
+l_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_div=
+ision=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2=
+be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae059c92b0b6&date=3D2017=
+0705&sender=3Drm&s=3Dfooter&c=3Dlink&d=3Dunsub" style=3D"color:#0185C6; tex=
+t-decoration:none;">haz click aqui</a>. </td> </tr> <tr> <td align=3D'cente=
+r' style=3D"font-size: 10px !important; line-height: 12px !important; color=
+:#666666 !important; text-decoration: none; padding: 10px 20px 0 20px;"> &c=
+opy; www.groupon.com.mx es un servicio de Groupon Mexico &nbsp;|&nbsp; <a h=
+ref=3D"http://www.groupon.com.mx/terms_and_conditions?nlp=3D&CID=3DMX&tx=3D=
+0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3-4e7b-85=
+47-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lcz7dY9gyS=
+Xv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c2d923ae0=
+59c92b0b6&date=3D20170705&sender=3Drm&s=3Dfooter&c=3Dlink&d=3Dterms_and_con=
+ditions" style=3D"color:#0185C6; text-decoration:none;">T=C3=A9rminos y Con=
+diciones</a> &nbsp;|&nbsp; <a href=3D"http://www.groupon.com.mx/about-us?nl=
+p=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b=
+29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcp=
+Aj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd1297=
+54225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dfooter&c=3Dlin=
+k&d=3Dabout_groupon" style=3D"color:#0185C6; text-decoration:none;">Acerca =
+de Groupon</a> </td> </tr> <tr> <td align=3D'center' style=3D"font-size: 10=
+px !important; line-height: 12px !important; color:#666666 !important; text=
+-decoration: none; padding: 10px 20px 10px 20px;">=C2=BFNecesitas ayuda? =
+=C2=BFTienes comentarios? <a href=3D"http://www.groupon.com.mx/customer_sup=
+port?nlp=3D&CID=3DMX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&s=
+id=3D4b29c77e-aae3-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0=
+G+XGkcpAj5m3/iI/lcz7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d=
+7bd129754225e4f43c2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dfooter&=
+c=3Dlink&d=3Dcontact" style=3D"color:#0185C6; text-decoration:none;" target=
+=3D"_blank">No dudes en contactarnos</a>.</td> </tr> </table> </td> </tr> <=
+/table> </td> </tr> </table> <!-- //Footer --> <img src=3D"http://www.group=
+on.com.mx/analytic/trackintl.gif?p=3D2&utm_domain=3Dgmail.com&nlp=3D&CID=3D=
+MX&tx=3D0&utm_source=3Dchannel_goods&utm_medium=3Demail&sid=3D4b29c77e-aae3=
+-4e7b-8547-b51fc1bd6344&t_division=3DMX_shopping&uh=3D8C0G+XGkcpAj5m3/iI/lc=
+z7dY9gySXv6ESPzHjGgKrE&eh=3D2be44d0b16e156ef489eede74f88d7bd129754225e4f43c=
+2d923ae059c92b0b6&date=3D20170705&sender=3Drm&s=3Dbody&c=3Dtracking_pixel&d=
+=3Dnone" height=3D"1" width=3D"1" style=3D"display:none !important;" /></bo=
+dy> </html>
+------=_Part_158118895_1465452221.1494169255479--
+
+------=_Part_158118894_1255586349.1494169255479--
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>color</key>
+	<string>000000</string>
+	<key>date-last-viewed</key>
+	<integer>0</integer>
+	<key>date-received</key>
+	<integer>1494169353</integer>
+	<key>flags</key>
+	<integer>8590195840</integer>
+	<key>gmail-label-ids</key>
+	<array>
+		<integer>3</integer>
+	</array>
+	<key>remote-id</key>
+	<string>9632</string>
+</dict>
+</plist>

@@ -1,0 +1,1279 @@
+//$Id$ 
+var elementName;
+
+
+function openWindow(eName,theURL,winName,features,center) 
+{
+	var widthVal = 552;
+	var heightVal = 350;
+	elementName = eName;
+	var selectedValue = "";
+	selectedValue = getValue(elementName);
+	
+	theURL = theURL + "&textboxVal="+selectedValue;//No I18N
+	if(theURL.search("showNetworkBrowser") == -1) {
+		widthVal = 650;
+		heightVal = 500;
+	}
+	 
+	if(center == 1)
+	{
+		//New code for calculating window height/width and place the window at the center
+		  var myWidth = 0, myHeight = 0;
+		  if( typeof( window.innerWidth ) == 'number' ) {
+			//Non-IE
+			myWidth = window.innerWidth;
+			myHeight = window.innerHeight;
+		  } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+			//IE 6+ in 'standards compliant mode'
+			myWidth = document.documentElement.clientWidth;
+			myHeight = document.documentElement.clientHeight;
+		  } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+			//IE 4 compatible
+			myWidth = document.body.clientWidth;
+			myHeight = document.body.clientHeight;
+		  }
+		win_left = (myWidth/2) - 275;
+		win_top = (myHeight/2) - 200;
+		features = 'width='+widthVal+',height='+heightVal+',left='+win_left+',top='+win_top+',scrollbars=no, titlebar=yes';//No I18N
+	}
+	var win2 = window.open(theURL,winName,features);
+	win2.focus();
+}
+
+function setSelectedValue(selectedValue)
+{
+	var elem = document.getElementsByName(elementName);
+	var e = elem[0];
+        e.value = selectedValue;
+	
+	//Check to fill the values in default printer in Shared printer configuration.
+        if(elementName == "SHARED_PRINTER[0].SHARE_PATH"){
+            fillDefaultPrinterValues();
+        }
+}
+//Function setKey(Event) used to close the popup 
+//window when 'esc' key is pressed
+function setKey(ev)
+{    
+    if( ev.keyCode == 27 )
+    {
+	     window.close();	
+    }    
+}
+
+//Function focusElement( ElementName) used to focus 
+//on the first element of the form.
+function focusElement(elemName)
+{
+	var elem = document.getElementsByName(elemName);
+	var e = elem[0];
+	if(e)
+	{
+		try{
+			e.focus();
+		}
+		catch(err)
+		{
+
+		}
+
+	}
+	return false;
+}
+
+function resetElementValue(elemName)
+{
+	var elem = document.getElementsByName(elemName);
+	var e = elem[0];
+	if(e)
+	{
+		try{
+			e.value="";
+		}
+		catch(err)
+		{
+
+		}
+
+	}
+	return false;
+}
+
+var macrosField = '';
+function showMacros(ev, fieldName)
+{
+	if( ev.keyCode == 113 )
+    {
+		macrosField = fieldName;
+//New code for calculating window height/width and place the window at the center
+		  var myWidth = 0, myHeight = 0;
+		  if( typeof( window.innerWidth ) == 'number' ) {
+			//Non-IE
+			myWidth = window.innerWidth;
+			myHeight = window.innerHeight;
+		  } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+			//IE 6+ in 'standards compliant mode'
+			myWidth = document.documentElement.clientWidth;
+			myHeight = document.documentElement.clientHeight;
+		  } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+			//IE 4 compatible
+			myWidth = document.body.clientWidth;
+			myHeight = document.body.clientHeight;
+		  }
+		win_left = (myWidth/2) - 350;
+		win_top = (myHeight/2) - 240;
+		window.open('/jsp/util/dynvarLayout.jsp','DynamicVariables', 'width=700,height=480,left='+win_left+',top='+win_top+',scrollbars=yes').focus();
+    }
+}
+
+function macrosOnClick(fieldName)
+{
+	macrosField = fieldName;
+//New code for calculating window height/width and place the window at the center
+		  var myWidth = 0, myHeight = 0;
+		  if( typeof( window.innerWidth ) == 'number' ) {
+			//Non-IE
+			myWidth = window.innerWidth;
+			myHeight = window.innerHeight;
+		  } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+			//IE 6+ in 'standards compliant mode'
+			myWidth = document.documentElement.clientWidth;
+			myHeight = document.documentElement.clientHeight;
+		  } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+			//IE 4 compatible
+			myWidth = document.body.clientWidth;
+			myHeight = document.body.clientHeight;
+		  }
+		win_left = (myWidth/2) - 350;
+		win_top = (myHeight/2) - 240;
+	window.open('/jsp/util/dynvarLayout.jsp','DynamicVariables', 'width=725,height=420,left='+win_left+',top='+win_top+',scrollbars=yes').focus();
+}
+
+function setMacrosValue(macroValue)
+{
+	var oldValue = getValue(macrosField);
+	if(oldValue != "")
+	{
+		setValue(macrosField , oldValue+macroValue);
+	}	
+	else
+	{
+		setValue(macrosField , macroValue);
+	}
+}
+
+function toggleGraph( value )
+{
+	if( value == 'pie3D' )
+	{
+		document.getElementById("barChart").style.display="none";
+		document.getElementById("pieChart").style.display="block";
+	}
+	else if( value == 'verticalBar3D' )
+	{
+		document.getElementById("barChart").style.display="block";
+		document.getElementById("pieChart").style.display="none";
+	}
+}
+
+//APPLY ALWAYS METHODS
+function initApplyAlways( applyAlways)
+{
+	//var applyAlwaysElem = document.MULTIPLE_CONFIG.applyAlways;
+	var applyAlwaysElem = getElement("applyAlways");//No I18N
+	
+	if(applyAlwaysElem)
+	{
+		if(applyAlways == '2')
+		{
+			applyAlwaysElem.checked = true;
+		}
+		else
+		{
+			applyAlwaysElem.checked = false;
+		}
+	}
+	
+}
+
+function setApplyAlways(applyAlways , configType)
+{
+	var enableRetryChecked = getCheckedStatus("enableRetry"); //No I18N
+	var noOfRetries = getValue("NO_OF_RETRIES"); //No I18N
+	
+	if(applyAlways ==  true)
+	{
+		setValue("APPLY_ALWAYS",2);//No I18N
+
+		if(enableRetryChecked == true)
+		{
+			setValueInMinRetryCombo("LOGON_STARTUP_MIN_RETRY" , "minimumLogonOrStartupRetry", 0); //No I18N
+			disableMinRetryCombo("ENABLE_LOGON_STARTUP_MIN_RETRY" , "minimumLogonOrStartupRetry"); //No I18N
+
+			setValueInMinRetryCombo("REFRESH_MIN_RETRY" , "minimumRefreshRetry", noOfRetries); //No I18N
+			disableMinRetryCombo("ENABLE_REFRESH_MIN_RETRY" , "minimumRefreshRetry"); //No I18N
+		}
+	}
+	else
+	{
+		setValue("APPLY_ALWAYS",1); //No I18N
+		if(enableRetryChecked == true)
+		{
+			enableMinRetryCombo("ENABLE_LOGON_STARTUP_MIN_RETRY" , "minimumLogonOrStartupRetry"); //No I18N
+			enableMinRetryCombo("ENABLE_REFRESH_MIN_RETRY" , "minimumRefreshRetry"); //No I18N
+			var tmpRefreshVal = getValue("REFRESH_MIN_RETRY"); //No I18N
+			var tmpLogonVal = getValue("LOGON_STARTUP_MIN_RETRY"); //No I18N
+
+			setCombo("minimumRefreshRetry" , noOfRetries); //No I18N
+			setCombo("minimumLogonOrStartupRetry" , noOfRetries); //No I18N
+			setValue("LOGON_STARTUP_MIN_RETRY" , tmpLogonVal); //No I18N
+			setValue("minimumLogonOrStartupRetry", tmpLogonVal); //No I18N
+			
+			setValue("REFRESH_MIN_RETRY" , tmpRefreshVal); //No I18N
+			setValue("minimumRefreshRetry", tmpRefreshVal); //No I18N
+		}
+	}
+
+	changeRetryConfigMsg(configType);
+}
+//APPLY ALWAYS METHODS
+
+function getElement(elemName)
+{
+	if(document.getElementsByName(elemName))
+	{
+		var elem = document.getElementsByName(elemName);
+		var e = elem[0];
+		return e;
+	}
+
+    var idRef = document.getElementById(elemName)
+    if (idRef) {
+        return idRef;
+}
+}
+
+function getElementForRadio(elemName)
+{
+	if(document.getElementsByName(elemName))
+	{
+		var elem = document.getElementsByName(elemName);
+		return elem;
+	}
+}
+
+function getValueForRadio(elemName)
+{
+	var e = getElementForRadio(elemName);
+	var value = "";
+	if(e)
+	{
+		var arrLen = e.length;
+		for(i = 0 ; i < arrLen ; i ++)
+		{
+			var arrElem = e[i];
+			if(arrElem.checked)
+			{
+				value = arrElem.value;
+				break;
+			}
+		}
+	}
+	return value;
+}
+
+function getValue(elemName)
+{
+	var value = "";
+
+	var e = getElement(elemName);
+
+	if(e)
+	{
+		value = e.value;
+	}
+	return value;
+}
+
+function setValue(elemName,value)
+{
+	var e = getElement(elemName);
+	if(e)
+	{
+		e.value = value;
+	}
+}
+
+function getCheckedStatusForScheduler(elemName)
+{
+	var e = getElementForRadio(elemName);
+	var value = "";
+	if(e)
+	{
+		var arrLen = e.length;
+		for(i = 0 ; i < arrLen ; i ++)
+		{
+			var arrElem = e[i];
+			if(arrElem.checked)
+			{
+				value = arrElem.checked;
+				break;
+			}
+		}
+	}
+	return value;
+}
+
+function getCheckedStatus(elemName)
+{
+	var e = getElement(elemName);
+	var value = "";
+	if(e)
+	{
+		value = e.checked;
+	}
+	return value;
+}
+
+function setCheckedStatus(elemName,value)
+{
+	var e = getElement(elemName);
+	if(e)
+	{
+		e.value = value;
+		e.checked = value;
+	}
+}
+
+function setGroupCheckedStatus(elemName,checkVal)
+{
+	var elem = document.getElementsByName(elemName);
+
+	if(elem)
+	{
+		for(i = 0 ; i < elem.length ; i++)
+		{
+			var e = elem[i];
+			e.checked = checkVal;
+		}
+	}
+}
+
+function setCheckedStatusForRadio(elemName,value)
+{
+	var e = getElementForRadio(elemName);
+	if(e)
+	{
+		var arrLen = e.length;
+		for(i = 0 ; i < arrLen ; i ++)
+		{
+			var elem = e[i];
+			if(elem.value == value)
+			{
+				elem.checked = true;
+			}
+		}
+	}
+}
+
+function setDisableStatusForRadio(elemName,value, disablestate)
+{
+	var e = getElementForRadio(elemName);
+	if(e)
+	{
+		var arrLen = e.length;
+		for(i = 0 ; i < arrLen ; i ++)
+		{
+			var elem = e[i];
+			if(elem.value == value)
+			{
+				elem.disabled = disablestate;
+			}
+		}
+	
+	}
+}
+
+function getDisableStatus(elemName,value)
+{
+	var e = getElement(elemName);
+	var value = "";
+	if(e)
+	{
+		value = e.disabled;
+	}
+	return value;
+}
+
+function setDisableStatus(elemName,value)
+{
+	var e = getElement(elemName);
+	if(e)
+	{
+		e.disabled = value;
+	}
+}
+
+function getClassName(elemName)
+{
+	var e = getElement(elemName);
+	var value = "";
+	if(e)
+	{
+		value = e.className;
+	}
+	return value;
+}
+
+function setClassName(elemName,value)
+{
+	var e = getElement(elemName);
+	if(e)
+	{
+		e.className = value;
+	}
+}
+
+function disableElement(elemName,status,style)
+{
+	setDisableStatus(elemName,status);
+	setClassName(elemName,style);
+}
+
+function getBooleanValForString(strVal)
+{
+	if(strVal == "true")
+	{
+		return true;
+	}
+	else if(strVal == "false")
+	{
+		return false;
+	}
+
+	return strVal;
+}
+
+function enableRetryCheckBox(val)
+{
+	val = getBooleanValForString(val);
+
+	setCheckedStatus( "enableRetry" , val ); //No I18N
+
+	var retryCombo = document.getElementById("noOfRetries");
+
+	if(retryCombo)
+	{
+		if(val == true)
+		{
+			retryCombo.disabled = false;
+		}
+		else
+		{
+			retryCombo.disabled = true;
+		}
+	}
+}
+
+function setRetryCombo(val , defVal)
+{
+	if(val == null || val == '')
+	{
+		val = defVal;
+	}
+	setValue( "noOfRetries" , val );  //No I18N
+	//Set the refresh_retry_min and logon_retry_min select box values here based on the count
+	
+	setCombo("minimumRefreshRetry" , val); //No I18N
+	setCombo("minimumLogonOrStartupRetry" , val); //No I18N
+}
+
+var initialRefreshRetry;
+var initialLogonStartupRetryCnt;
+var prevRefreshRetry;
+var prevLogonStartupRetryCnt;
+
+function variousConfigHandlingForLogonOrStartup()
+{
+	var normalFlow = true;
+	var noOfRetries = getValue("NO_OF_RETRIES"); //No I18N
+
+	var executionOption = getValueForRadio("EXECUTION_OPTION"); //No I18N
+	if(typeof executionOption == "undefined" || executionOption == null || executionOption == "")
+	{
+		executionOption = getValue("EXECUTION_OPTION"); //No I18N
+	}
+
+	var elemId = "LOGON_STARTUP_MIN_RETRY"; //No I18N
+	var elemId1 = "ENABLE_LOGON_STARTUP_MIN_RETRY"; //No I18N
+	var comboId = "minimumLogonOrStartupRetry"; //No I18N
+
+	 if(executionOption == "1" || executionOption == "2" || executionOption == "3" )
+	{
+		if(executionOption == "2")
+		{
+			normalFlow = false;
+			//during startup
+			setValueInMinRetryCombo(elemId , comboId, 0);
+			disableMinRetryCombo(elemId1 , comboId);
+		}
+		else if(executionOption == "1")
+		{
+			normalFlow = false;
+			//during startup
+			setValueInMinRetryCombo(elemId , comboId, noOfRetries);
+			disableMinRetryCombo(elemId1 , comboId);
+		}
+		else
+		{
+			enableMinRetryCombo(elemId1 , comboId);
+		}
+	
+	}
+
+	return normalFlow;
+}
+
+
+function disableMinRetryCombo(elemId , comboId)
+{
+	setValue(elemId , false); //No I18N	
+	document.getElementById(comboId).disabled=true;
+}
+
+function enableMinRetryCombo(elemId , comboId)
+{
+	setValue(elemId , true); //No I18N
+	document.getElementById(comboId).disabled=false;
+}
+
+function setValueInMinRetryCombo(elemId , comboId, noOfRetries)
+{
+	setCombo(comboId , noOfRetries);
+	setValue(elemId , noOfRetries); 
+	setValue(comboId , noOfRetries); 
+}
+
+function variousConfigHandlingForRefresh()
+{
+	var normalFlow = true;
+	var noOfRetries = getValue("NO_OF_RETRIES"); //No I18N
+
+	var executionOption = getValueForRadio("EXECUTION_OPTION"); //No I18N
+	if(typeof executionOption == "undefined" || executionOption == null || executionOption == "")
+	{
+		executionOption = getValue("EXECUTION_OPTION"); //No I18N
+	}
+
+	var elemId = "REFRESH_MIN_RETRY"; //No I18N
+	var elemId1 = "ENABLE_REFRESH_MIN_RETRY"; //No I18N
+	var comboId = "minimumRefreshRetry"; //No I18N
+
+	if(executionOption == "1" || executionOption == "2" || executionOption == "3")
+	{
+		if(executionOption == "2" )
+		{
+                   
+			normalFlow = false;
+			//during startup
+			setValueInMinRetryCombo(elemId , comboId, noOfRetries);
+			disableMinRetryCombo(elemId1 , comboId);
+		}
+		else if(executionOption == "1")
+		{
+			normalFlow = false;
+			//during startup
+			setValueInMinRetryCombo(elemId , comboId, 0);
+			disableMinRetryCombo(elemId1 , comboId);
+		}
+		else
+		{
+			enableMinRetryCombo(elemId1 , comboId);
+		}
+
+
+		
+	
+	}
+
+	return normalFlow;
+}
+
+
+function setInitialValues(refreshMinRetry , startupMinRetry)
+{
+	initialRefreshRetry = refreshMinRetry;
+	initialLogonStartupRetryCnt = startupMinRetry;
+
+}
+
+function setRefreshRetry(enableVal , minVal)
+{
+	var normalflow = variousConfigHandlingForRefresh();
+
+	if(normalflow == true)
+	{
+		val = getBooleanValForString(enableVal);
+
+		setValue( "minimumRefreshRetry" , minVal ); //No I18N
+
+		if(val == true)
+		{
+			document.getElementById("minimumRefreshRetry").disabled = false;
+		}
+		else
+		{
+			document.getElementById("minimumRefreshRetry").disabled = true;
+		}
+	}
+}	
+
+function setLogonOrStartupRetry(enableVal , minVal)
+{
+	var normalflow = variousConfigHandlingForLogonOrStartup();
+
+	if(normalflow == true)
+	{
+
+		val = getBooleanValForString(enableVal);
+
+		setValue( "minimumLogonOrStartupRetry" , minVal ); //No I18N
+
+		if(val == true)
+		{
+			document.getElementById("minimumLogonOrStartupRetry").disabled = false;
+		}
+		else
+		{
+			document.getElementById("minimumLogonOrStartupRetry").disabled = true;
+		}
+
+	}
+}
+
+function setCombo(comboId , noOfRetries)
+{
+	var retryCombo = getElement(comboId);
+	retryCombo.options.length = 0;
+
+
+	for(i = 0 ; i <= noOfRetries ; i++)
+	{
+		var optn = document.createElement("option");
+		optn.text = i;
+		optn.value = i;
+		try {
+			retryCombo.add(optn, null);
+		}catch(error) {
+			retryCombo.add(optn); // IE only
+		}
+	}
+}
+
+function setSelectedComboValue(comboId , retryCnt)
+{
+	var retryCombo = getElement(comboId);
+
+	var len = retryCombo.options.length;
+
+	for(i = 0 ; i <len ; i++)
+	{
+		var optn = retryCombo.options[i];
+		var optnVal = optn.value;
+		if(optnVal == retryCnt)
+		{
+		}
+	}		
+}
+
+function enableRetryValue(val , configType)
+{
+	var minRetryWarnSpan = document.getElementById("MINIMUM_RETRY_WARNING_MESSAGE_SPAN");
+	if(minRetryWarnSpan)
+	{
+		minRetryWarnSpan.innerHTML = "";
+	}
+
+	var minRetryWarnTr = document.getElementById("MINIMUM_RETRY_WARNING_MESSAGE_TR");
+	if(minRetryWarnTr)
+	{
+		minRetryWarnTr.className = "hide";
+	}
+	val = getBooleanValForString(val);
+	setValue( "ENABLE_RETRY" , val ); //No I18N
+	enableMinRetryCombo("ENABLE_LOGON_STARTUP_MIN_RETRY" , "minimumLogonOrStartupRetry");  //No I18N
+	enableMinRetryCombo("ENABLE_REFRESH_MIN_RETRY" , "minimumRefreshRetry");  //No I18N
+	var noOfRetries = getValue("NO_OF_RETRIES"); //No I18N
+	
+	if(val == true)
+	{
+		document.getElementById("noOfRetries").disabled = false;
+
+		var normalFlow = handleConfigurationsOnChange();
+
+		if(normalFlow == true)
+		{
+			setValue( "ENABLE_REFRESH_MIN_RETRY" , val ); //No I18N
+			document.getElementById("minimumRefreshRetry").disabled = false;
+
+			var applyAlways = getValue("APPLY_ALWAYS"); //No I18N
+			if(applyAlways == 2)
+			{
+				setValueInMinRetryCombo("LOGON_STARTUP_MIN_RETRY" , "minimumLogonOrStartupRetry", 0); //No I18N
+				disableMinRetryCombo("ENABLE_LOGON_STARTUP_MIN_RETRY" , "minimumLogonOrStartupRetry"); //No I18N
+
+				setValueInMinRetryCombo("REFRESH_MIN_RETRY" , "minimumRefreshRetry", noOfRetries); //No I18N
+				disableMinRetryCombo("ENABLE_REFRESH_MIN_RETRY" , "minimumRefreshRetry"); //No I18N
+			}
+			else
+			{
+				enableMinRetryCombo("ENABLE_LOGON_STARTUP_MIN_RETRY" , "minimumLogonOrStartupRetry");  //No I18N
+				enableMinRetryCombo("ENABLE_REFRESH_MIN_RETRY" , "minimumRefreshRetry");  //No I18N
+			}
+		}
+	}
+	else
+	{
+		setValue( "ENABLE_REFRESH_MIN_RETRY" , val ); //No I18N
+		setValue( "ENABLE_LOGON_STARTUP_MIN_RETRY" , val ); //No I18N
+
+		document.getElementById("noOfRetries").disabled = true;
+		document.getElementById("minimumRefreshRetry").disabled = true;
+		document.getElementById("minimumLogonOrStartupRetry").disabled = true;
+	}
+
+	changeRetryConfigMsg(configType);
+}
+
+function setRetryValue(val)
+{
+
+	var minRetryWarnSpan = document.getElementById("MINIMUM_RETRY_WARNING_MESSAGE_SPAN");
+	if(minRetryWarnSpan)
+	{
+		minRetryWarnSpan.innerHTML = "";
+	}
+
+	var minRetryWarnTr = document.getElementById("MINIMUM_RETRY_WARNING_MESSAGE_TR");
+	if(minRetryWarnTr)
+	{
+		minRetryWarnTr.className = "hide";
+	}
+	setValue( "NO_OF_RETRIES" , val );  //No I18N	
+
+	var normalFlow = handleConfigurationsOnChange();
+
+	if(normalFlow == true)
+	{
+		var logonStartupMinRetry =getValue("minimumLogonOrStartupRetry") ; //No I18N
+
+		var refreshMinRetry = getValue("minimumRefreshRetry"); //No I18N
+
+		var sumOfRetries = parseInt(logonStartupMinRetry)+parseInt(refreshMinRetry);
+
+		prevRefreshRetry = getValue("REFRESH_MIN_RETRY"); //No I18N
+
+		prevLogonStartupRetryCnt = getValue("LOGON_STARTUP_MIN_RETRY"); //No I18N
+
+		setCombo("minimumRefreshRetry" , val); //No I18N
+
+		setCombo("minimumLogonOrStartupRetry" , val); //No I18N
+
+		if(parseInt(val) < sumOfRetries)
+		{
+			if(val == 1)
+			{
+				initialLogonStartupRetryCnt = 0;
+				initialRefreshRetry = 1;
+			}
+
+			setValue("minimumRefreshRetry" , initialRefreshRetry); //No I18N	
+			setValue("minimumLogonOrStartupRetry" , initialLogonStartupRetryCnt); //No I18N
+			setValue("REFRESH_MIN_RETRY" , initialRefreshRetry); //No I18N
+			setValue("LOGON_STARTUP_MIN_RETRY" , initialLogonStartupRetryCnt); //No I18N
+
+		}
+		else
+		{
+			setValue("minimumRefreshRetry" , prevRefreshRetry); //No I18N
+			setValue("minimumLogonOrStartupRetry" , prevLogonStartupRetryCnt); //No I18N
+			
+			setValue("REFRESH_MIN_RETRY" , prevRefreshRetry); //No I18N
+			setValue("LOGON_STARTUP_MIN_RETRY" , prevLogonStartupRetryCnt); //No I18N
+		}
+	}
+
+	//Insert logic here 
+
+	var logonStartupMinRetry1 =getValue("minimumLogonOrStartupRetry"); //No I18N
+
+	var refreshMinRetry1 = getValue("minimumRefreshRetry"); //No I18N
+
+        setRemainingRetries(val , logonStartupMinRetry1 , refreshMinRetry1 );
+}
+
+
+function setMinimumLogonOrStartupRetryValue(val , cfgType , fromPage)
+{
+	
+	var minRetryWarnSpan = document.getElementById("MINIMUM_RETRY_WARNING_MESSAGE_SPAN");
+	if(minRetryWarnSpan)
+	{
+		minRetryWarnSpan.innerHTML = "";
+	}
+
+	var minRetryWarnTr = document.getElementById("MINIMUM_RETRY_WARNING_MESSAGE_TR");
+	if(minRetryWarnTr)
+	{
+		minRetryWarnTr.className = "hide";
+	}
+	var totalRetries = parseInt(getValue("NO_OF_RETRIES")); //No I18N
+	var logonStartupMinRetry = parseInt(getValue("minimumLogonOrStartupRetry")); //No I18N
+	var refreshMinRetry = parseInt(getValue("REFRESH_MIN_RETRY")); //No I18N
+
+	if((logonStartupMinRetry+refreshMinRetry) <= totalRetries)
+	{
+		setValue( "LOGON_STARTUP_MIN_RETRY" , val );  //No I18N	
+	}
+	else
+	{
+		var prevLogonStartupMinRetry = getValue("LOGON_STARTUP_MIN_RETRY"); //No I18N
+		setValue( "minimumLogonOrStartupRetry" , prevLogonStartupMinRetry ); //No I18N
+
+		var minRetryMsgTitle = I18N.getMsg('desktopcentral.configurations.common.Configure_Retry_Warning');
+		
+		var noOfRetries = getValue("NO_OF_RETRIES"); //No I18N
+
+		var cfgApplyType = I18N.getMsg('desktopcentral.configurations.common.logon');
+		if(cfgType == "Computer" || cfgType == "1")
+		{
+			cfgApplyType = I18N.getMsg('desktopcentral.configurations.common.startup');
+		}
+		
+		var currentType = cfgApplyType;
+		var valArr = new Array(2);
+		valArr[0] = cfgApplyType;
+		valArr[1] = noOfRetries;
+		var minRetryMessage = I18N.getMsg('desktopcentral.configurations.common.Minimum_Retry_Value_Error' , valArr);
+		if(typeof fromPage != "undefined" && fromPage == "CFG_DETAILS")
+		{
+			var minRetryWarnTr = document.getElementById("MINIMUM_RETRY_WARNING_MESSAGE_TR");
+			if(minRetryWarnTr)
+			{
+				minRetryWarnTr.className = "bodytext";
+				var minRetryWarnSpan = document.getElementById("MINIMUM_RETRY_WARNING_MESSAGE_SPAN");
+				if(minRetryWarnSpan)
+				{
+					minRetryWarnSpan.innerHTML = minRetryMessage;
+				}
+			}
+		}
+		else
+		{
+			showURLInDialog("/jsp/configurations/common/configureMinRetryWarning.jsp?minRetryMessage="+minRetryMessage , "position=relative,method=POST,modal=no,height=100,width=400,scrollbars=no,title="+minRetryMsgTitle); //No I18N
+		}
+	}
+
+	//Insert logic here 
+
+	//Set the refresh_retry_min and logon_retry_min select box values here based on the count
+	
+	var logonStartupMinRetry1 =getValue("minimumLogonOrStartupRetry"); //No I18N
+
+	var refreshMinRetry1 = getValue("minimumRefreshRetry"); //No I18N
+
+        setRemainingRetries(totalRetries , logonStartupMinRetry1 , refreshMinRetry1 );
+}
+
+
+
+function setMinimumRefreshRetryValue(val , cfgType , fromPage)
+{
+	var minRetryWarnSpan = document.getElementById("MINIMUM_RETRY_WARNING_MESSAGE_SPAN");
+	if(minRetryWarnSpan)
+	{
+		minRetryWarnSpan.innerHTML = "";
+	}
+
+	var minRetryWarnTr = document.getElementById("MINIMUM_RETRY_WARNING_MESSAGE_TR");
+	if(minRetryWarnTr)
+	{
+		minRetryWarnTr.className = "hide";
+	}
+	var totalRetries = parseInt(getValue("NO_OF_RETRIES")); //No I18N
+	var logonStartupMinRetry = parseInt(getValue("LOGON_STARTUP_MIN_RETRY")); //No I18N
+	var refreshMinRetry = parseInt(getValue("minimumRefreshRetry")); //No I18N
+	if((logonStartupMinRetry+refreshMinRetry) <= totalRetries)
+	{
+		setValue( "REFRESH_MIN_RETRY" , val );  //No I18N	
+	}
+	else
+	{
+		var prevRefreshMinRetry = getValue("REFRESH_MIN_RETRY"); //No I18N
+		setValue( "minimumRefreshRetry" , prevRefreshMinRetry ); //No I18N
+
+		var minRetryMsgTitle = I18N.getMsg('desktopcentral.configurations.common.Configure_Retry_Warning');
+		var noOfRetries = getValue("NO_OF_RETRIES"); //No I18N
+
+		var cfgApplyType = I18N.getMsg('desktopcentral.configurations.common.logon');
+		if(cfgType == "Computer" || cfgType == "1")
+		{
+			cfgApplyType = I18N.getMsg('desktopcentral.configurations.common.startup');
+		}
+
+		var currentType = I18N.getMsg('desktopcentral.configurations.common.Refresh_Apply_Type'); 
+		var valArr = new Array(2);
+		valArr[0] = cfgApplyType;
+		valArr[1] = noOfRetries;
+		var minRetryMessage = I18N.getMsg('desktopcentral.configurations.common.Minimum_Retry_Value_Error' , valArr);
+		if(typeof fromPage != "undefined" && fromPage == "CFG_DETAILS")
+		{
+			var minRetryWarnTr = document.getElementById("MINIMUM_RETRY_WARNING_MESSAGE_TR");
+			if(minRetryWarnTr)
+			{
+				minRetryWarnTr.className = "bodytext";
+				var minRetryWarnSpan = document.getElementById("MINIMUM_RETRY_WARNING_MESSAGE_SPAN");
+				if(minRetryWarnSpan)
+				{
+					minRetryWarnSpan.innerHTML = minRetryMessage;
+				}
+			}
+		}
+		else
+		{
+			
+			showURLInDialog("/jsp/configurations/common/configureMinRetryWarning.jsp?minRetryMessage="+minRetryMessage , "position=relative,method=POST,modal=no,height=100,width=400,scrollbars=no,title="+minRetryMsgTitle); //No I18N
+		}
+	}
+
+	//Insert logic here 
+
+	//Set the refresh_retry_min and logon_retry_min select box values here based on the count
+	
+	var logonStartupMinRetry =getValue("minimumLogonOrStartupRetry"); //No I18N
+
+	var refreshMinRetry = getValue("minimumRefreshRetry"); //No I18N
+
+        setRemainingRetries(totalRetries , logonStartupMinRetry , refreshMinRetry );
+	
+}
+
+/*
+ * In Software Deployment Configuration when changing the installation option
+ * this will be called
+ */
+
+function changeSWMinRetryValues(executionOption , configType)
+{
+	var returnVal = false;
+	var enableRetry = getValue("ENABLE_RETRY");  //No I18N
+	if(enableRetry == "true")
+	{
+		var noOfRetries = getValue("NO_OF_RETRIES"); //No I18N
+		
+		if(executionOption == "1")
+		{
+			normalFlow = false;
+			setValueInMinRetryCombo("LOGON_STARTUP_MIN_RETRY" , "minimumLogonOrStartupRetry", noOfRetries); //No I18N
+			disableMinRetryCombo("ENABLE_LOGON_STARTUP_MIN_RETRY" , "minimumLogonOrStartupRetry"); //No I18N
+			setValueInMinRetryCombo("REFRESH_MIN_RETRY" , "minimumRefreshRetry", 0); //No I18N
+			disableMinRetryCombo("ENABLE_REFRESH_MIN_RETRY" , "minimumRefreshRetry"); //No I18N
+
+			var applyAlways = getValue("APPLY_ALWAYS"); //No I18N
+			if(applyAlways == 2)
+			{
+				setValue( "ENABLE_LOGON_STARTUP_MIN_RETRY" , false ); //No I18N
+				document.getElementById("minimumLogonOrStartupRetry").disabled = true;
+			}
+			returnVal = true;
+		}
+		else if(executionOption == "2")
+		{
+			normalFlow = false;
+			setValueInMinRetryCombo("LOGON_STARTUP_MIN_RETRY" , "minimumLogonOrStartupRetry", 0); //No I18N
+			disableMinRetryCombo("ENABLE_LOGON_STARTUP_MIN_RETRY" , "minimumLogonOrStartupRetry"); //No I18N
+			setValueInMinRetryCombo("REFRESH_MIN_RETRY" , "minimumRefreshRetry", noOfRetries); //No I18N
+			disableMinRetryCombo("ENABLE_REFRESH_MIN_RETRY" , "minimumRefreshRetry"); //No I18N
+
+			returnVal = true;
+		}
+		else
+		{
+			enableMinRetryCombo("ENABLE_REFRESH_MIN_RETRY" , "minimumRefreshRetry"); //No I18N
+			enableMinRetryCombo("ENABLE_LOGON_STARTUP_MIN_RETRY" , "minimumLogonOrStartupRetry"); //No I18N
+			var tmpRefreshVal = getValue("REFRESH_MIN_RETRY"); //No I18N
+			var tmpLogonVal = getValue("LOGON_STARTUP_MIN_RETRY"); //No I18N
+			
+			setCombo("minimumRefreshRetry" , noOfRetries); //No I18N
+			setCombo("minimumLogonOrStartupRetry" , noOfRetries); //No I18N
+			
+			var sumOfRetries = parseInt(tmpRefreshVal)+parseInt(tmpLogonVal);
+
+			if(noOfRetries < sumOfRetries)
+			{
+				if(noOfRetries == 1)
+				{
+					tmpLogonVal = 0;
+					tmpRefreshVal = 1;
+				}
+				else
+				{
+					tmpLogonVal = initialLogonStartupRetryCnt;
+					tmpRefreshVal = initialRefreshRetry;
+				}
+			}
+			
+			setValue("LOGON_STARTUP_MIN_RETRY" , tmpLogonVal); //No I18N
+			setValue("minimumLogonOrStartupRetry", tmpLogonVal); //No I18N
+			
+			setValue("REFRESH_MIN_RETRY" , tmpRefreshVal); //No I18N
+			setValue("minimumRefreshRetry", tmpRefreshVal); //No I18N
+
+			returnVal = true;
+			
+		}
+	}
+
+	if(typeof configType != "undefined" && configType != null && configType !="" )
+	{
+		changeRetryConfigMsg(configType);
+	}
+	return returnVal;
+
+}
+
+
+function changePatchOrSPMinRetryValues(installOption , configType)
+{
+	var returnVal = false;
+	var noOfRetries = getValue("NO_OF_RETRIES"); //No I18N
+	
+	var enableRetry = getValue("ENABLE_RETRY"); //No I18N
+	if(enableRetry == "true")
+	{
+		
+		if(typeof installOption != "undefined" && installOption != "")
+		{ 
+			if(installOption == "0")
+			{
+				//during startup					
+
+				setValueInMinRetryCombo("LOGON_STARTUP_MIN_RETRY" , "minimumLogonOrStartupRetry", noOfRetries); //No I18N
+				disableMinRetryCombo("ENABLE_LOGON_STARTUP_MIN_RETRY" , "minimumLogonOrStartupRetry"); //No I18N
+				setValueInMinRetryCombo("REFRESH_MIN_RETRY" , "minimumRefreshRetry", 0); //No I18N
+				disableMinRetryCombo("ENABLE_REFRESH_MIN_RETRY" , "minimumRefreshRetry"); //No I18N
+			returnVal = true;
+				
+			}
+			else if(installOption == "1")
+			{
+				//during refresh
+
+				setValueInMinRetryCombo("LOGON_STARTUP_MIN_RETRY" , "minimumLogonOrStartupRetry", 0); //No I18N
+				disableMinRetryCombo("ENABLE_LOGON_STARTUP_MIN_RETRY" , "minimumLogonOrStartupRetry"); //No I18N
+				setValueInMinRetryCombo("REFRESH_MIN_RETRY" , "minimumRefreshRetry", noOfRetries); //No I18N
+				disableMinRetryCombo("ENABLE_REFRESH_MIN_RETRY" , "minimumRefreshRetry"); //No I18N
+			returnVal = true;
+				
+			}
+			else
+			{
+				enableMinRetryCombo("ENABLE_LOGON_STARTUP_MIN_RETRY" , "minimumLogonOrStartupRetry"); //No I18N
+				enableMinRetryCombo("ENABLE_REFRESH_MIN_RETRY" , "minimumRefreshRetry"); //No I18N
+
+				var tmpRefreshVal = getValue("REFRESH_MIN_RETRY"); //No I18N
+				var tmpLogonVal = getValue("LOGON_STARTUP_MIN_RETRY"); //No I18N
+
+				setCombo("minimumRefreshRetry" , noOfRetries); //No I18N
+				setCombo("minimumLogonOrStartupRetry" , noOfRetries); //No I18N
+
+				var sumOfRetries = parseInt(tmpRefreshVal)+parseInt(tmpLogonVal);
+
+				if(noOfRetries < sumOfRetries)
+				{
+					if(noOfRetries == 1)
+					{
+						tmpLogonVal = 0;
+						tmpRefreshVal = 1;
+					}
+					else
+					{
+						tmpLogonVal = initialLogonStartupRetryCnt;
+						tmpRefreshVal = initialRefreshRetry;
+					}
+				}
+
+
+				setValue("LOGON_STARTUP_MIN_RETRY" , tmpLogonVal); //No I18N
+				setValue("minimumLogonOrStartupRetry", tmpLogonVal); //No I18N
+				
+				setValue("REFRESH_MIN_RETRY" , tmpRefreshVal); //No I18N
+				setValue("minimumRefreshRetry", tmpRefreshVal); //No I18N
+					returnVal = true;
+			}
+
+		}
+
+	}
+
+	if(typeof configType != "undefined" && configType != null && configType !="" )
+	{
+		changeRetryConfigMsg(configType);
+	}
+	return returnVal;
+
+}
+
+function handleConfigurationsOnChange()
+{
+	var normalFlow = true;
+	var noOfRetries = getValue("NO_OF_RETRIES");  //No I18N
+	var executionOption = getValueForRadio("EXECUTION_OPTION"); //No I18N
+	if(typeof executionOption == "undefined" || executionOption == null || executionOption == "")
+	{
+		executionOption = getValue("EXECUTION_OPTION"); //No I18N
+	}
+		
+	var applyAlways = getValue("APPLY_ALWAYS"); //No I18N
+
+	if(executionOption == "3" || executionOption == "1" || executionOption == "2")
+	{
+		 var changed = changeSWMinRetryValues(executionOption);
+		 if(changed == true)
+		 {
+			normalFlow = false;
+		 }
+	}
+	else if(applyAlways == 2)
+	{
+		setValueInMinRetryCombo("LOGON_STARTUP_MIN_RETRY" , "minimumLogonOrStartupRetry", 0); //No I18N
+		disableMinRetryCombo("ENABLE_LOGON_STARTUP_MIN_RETRY" , "minimumLogonOrStartupRetry"); //No I18N
+
+		setValueInMinRetryCombo("REFRESH_MIN_RETRY" , "minimumRefreshRetry", noOfRetries); //No I18N
+		disableMinRetryCombo("ENABLE_REFRESH_MIN_RETRY" , "minimumRefreshRetry"); //No I18N
+	}
+			
+	return normalFlow;
+}
+
+
+function changeRetryConfigMsg(configType , fromPage)
+{
+	var retryConfigHelpSpan = document.getElementById("retryConfigHelpSpan");
+	var retryConfigHelpDiv = document.getElementById("retryConfigHelpDiv");
+	if(typeof fromPage !="undefined")
+	{
+		if(retryConfigHelpSpan)
+		{
+			retryConfigHelpSpan.innerHTML = "";
+		}
+		if(retryConfigHelpDiv)
+		{
+			retryConfigHelpDiv.style.display = "none";
+		}
+
+		return;
+	}
+
+	
+	var enableRetry = getValue("ENABLE_RETRY");  //No I18N
+	var retryConfigHelpDefaultText = I18N.getMsg("desktopcentral.configurations.common.Retry_User_Config_Help_Text");
+	if(configType == "Computer")
+	{
+		retryConfigHelpDefaultText = I18N.getMsg("desktopcentral.configurations.common.Retry_Computer_Config_Help_Text");
+	}
+	
+	var retryConfigHelpText = retryConfigHelpDefaultText;
+
+	if(enableRetry == "true")
+	{
+		var applyAlways = getValue("APPLY_ALWAYS"); //No I18N
+		if(applyAlways != 2)
+		{
+			var executionOption = getValueForRadio("EXECUTION_OPTION"); //No I18N
+			if(typeof executionOption == "undefined" || executionOption == null || executionOption == "")
+			{
+				executionOption = getValue("EXECUTION_OPTION"); //No I18N
+			}
+			if( executionOption == "1" || executionOption == "2")
+			{
+				if(executionOption == "1" || executionOption == "2")
+				{
+					if(configType == "Computer")
+					{
+						//during startup
+						retryConfigHelpText = I18N.getMsg("desktopcentral.configurations.common.Retry_Config_Only_Startup_Help_Text");
+					}
+					else
+					{
+						//during logon
+						retryConfigHelpText = I18N.getMsg("desktopcentral.configurations.common.Retry_Config_Only_Logon_Help_Text");
+					}
+				}
+			}
+			else
+			{
+				retryConfigHelpText = retryConfigHelpDefaultText;
+			}
+		}
+		else
+		{
+			retryConfigHelpText = I18N.getMsg("desktopcentral.configurations.common.Retry_Config_Only_Refresh_Help_Text");
+		}
+	}
+
+	if(retryConfigHelpDiv)
+	{
+		retryConfigHelpDiv.style.display = "block";
+	}	
+
+	if(retryConfigHelpSpan)
+	{
+		retryConfigHelpSpan.innerHTML = retryConfigHelpText;
+	}
+}
+
+function setRemainingRetries(totalRetries , logonStartupRetries , refreshRetries , elemId)
+{
+	var remainingRetries = parseInt(totalRetries) - (parseInt(logonStartupRetries) + parseInt(refreshRetries)) ;
+
+	var elem = document.getElementById("REMAINING_RETRIES_SPAN");
+	if(elem)
+	{
+		if(remainingRetries > 0)
+		{
+			document.getElementById("REMAINING_RETRIES_TR").className = "bodytext";
+
+			elem.innerHTML = remainingRetries;
+		}
+		else
+		{
+			document.getElementById("REMAINING_RETRIES_TR").className = "hide";
+			elem.innerHTML = "";
+		}
+	}
+	
+}	
+
+
+function allowOnlyNumbers(id, event) {
+    if (event && ((event.keyCode > 36 && event.keyCode < 41) || (event.keyCode > 47 && event.keyCode < 58) || (event.keyCode > 95 && event.keyCode < 106))) {
+        return;
+    }
+    var is_int = true;
+    var value = (id.value).trim();
+    if (!is_intFunction(value)) {
+        is_int = false;
+        while (value != "" && !is_intFunction(value)) {
+            value = value.slice(0, value.length - 1);
+        }
+    }
+    id.value = value;
+    return is_int;
+    
+    function is_intFunction(value) {
+        return !isNaN(value) && (parseFloat(value) == parseInt(value));
+    }
+}
+

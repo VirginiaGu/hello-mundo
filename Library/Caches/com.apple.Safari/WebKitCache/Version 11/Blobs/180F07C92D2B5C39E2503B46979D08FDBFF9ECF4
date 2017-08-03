@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/> 
+<title>My account - MMP tracker</title>
+<meta name="description" content="Redmine" />
+<meta name="keywords" content="issue,bug,tracker" />
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="gJ8zvt4uEfobbBTDXHrSIjBzHy5Ckcv4ZYxmQP0K5LS8BOvWuILEzPNwpm0HwEUctFQdl0Wabqa0ZAmvVSO5BA==" />
+<link rel='shortcut icon' href='/themes/mp_redmine/favicon/favicon.png' />
+<link rel="stylesheet" media="all" href="/stylesheets/jquery/jquery-ui-1.11.0.css" />
+<link rel="stylesheet" media="all" href="/themes/mp_redmine/stylesheets/application.css" />
+
+<script src="/javascripts/jquery-1.11.1-ui-1.11.0-ujs-3.1.4.js"></script>
+<script src="/javascripts/application.js"></script>
+<script>
+//<![CDATA[
+$(window).load(function(){ warnLeavingUnsaved('The current page contains unsaved text that will be lost if you leave this page.'); });
+//]]>
+</script>
+
+<style type="text/css">/* Generic */
+a, a:link, a:visited {
+  color: #5e7440;
+}
+
+#sidebar a.selected {
+  background-color: #5e7440;
+}
+
+.next-prev-links.contextual { /* to be removed from theme */
+  margin-top: 0;
+  margin-right: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+div.issue .next-prev-links {
+  color: #505143;
+}
+
+.details p.author {
+    padding-bottom: 18px;
+}
+
+table.progress td.closed {
+  background-color: darkGreen;
+}
+
+/* Issue colors */
+
+/* Immediate (priority-10) */
+.details.priority-10 .subject,
+.details.priority-10 p.author {
+  background-color: #ff6666;
+}
+table.list tr.priority-10.odd,
+table.list tr.priority-10.even {
+  color: #333333;
+  background-color: #ff6666;
+  border-bottom: 1px solid white;
+}
+table.list tr.priority-10 a {
+  color: black;
+}
+
+/* Urgent (priority-1) */
+.details.priority-1 .subject,
+.details.priority-1 p.author {
+  background-color: #f5f068;
+}
+table.list tr.priority-1.odd,
+table.list tr.priority-1.even {
+  color: #333333;
+  background-color: #f5f068;
+  border-bottom: 1px solid white;
+}
+table.list tr.priority-1 a {
+  color: black;
+}
+
+/* High (priority-5) */
+.details.priority-5 .subject,
+.details.priority-5 p.author {
+  background-color: #fbbf4e;
+}
+table.list tr.priority-5.odd,
+table.list tr.priority-5.even {
+  color: #333333;
+  background-color: #fbbf4e;
+  border-bottom: 1px solid white;
+}
+table.list tr.priority-5 a {
+  color: black;
+}
+
+/* Normal (priority-2) */
+.details.priority-2 .subject,
+.details.priority-2 p.author {
+  background-color: #aae6bf;
+}
+table.list tr.priority-2.odd,
+table.list tr.priority-2.even {
+  color: #333333;
+  background-color: #aae6bf;
+  border-bottom: 1px solid white;
+}
+table.list tr.priority-2 a {
+  color: black;
+}
+
+/* Low (priority-3) */
+.details.priority-3 .subject,
+.details.priority-3 p.author {
+  background-color: #ececec;
+}
+table.list tr.priority-3.odd,
+table.list tr.priority-3.even {
+  color: #333333;
+  background-color: #ececec;
+  border-bottom: 1px solid white;
+}
+table.list tr.priority-3 a {
+  color: black;
+}
+
+/* For Later (priority-9) */
+.details.priority-9 .subject,
+.details.priority-9 p.author {
+  background-color: #f7f7f7;
+}
+table.list tr.priority-9.odd,
+table.list tr.priority-9.even {
+  color: #333333;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid white;
+}
+table.list tr.priority-9 a {
+  color: black;
+}
+
+/* Patch style */
+.details.tracker-11 .subject,
+.details.tracker-11 p.author {
+  background-color: #f07d59;
+}
+table.list tr.tracker-11.odd,
+table.list tr.tracker-11.even {
+  color: #333333;
+  background-color: #f07d59;
+  border-bottom: 1px solid white;
+}
+table.list tr.tracker-11 a {
+  color: black;
+}</style> <script src="/plugin_assets/redmine_open_links_in_new_window/javascripts/redmine_open_links_in_new_window.js"></script> <script src="/plugin_assets/redmine_checklists/javascripts/checklists.js"></script><link rel="stylesheet" media="screen" href="/plugin_assets/redmine_checklists/stylesheets/checklists.css" />
+<!-- page specific tags -->
+</head>
+<body class="theme-Mp redmine controller-my action-account">
+<div id="wrapper">
+<div id="wrapper2">
+<div id="wrapper3">
+<div id="top-menu">
+    <div id="account">
+        <ul><li><a class="my-account" href="/my/account">My account</a></li>
+<li><a class="logout" rel="nofollow" data-method="post" href="/logout">Sign out</a></li></ul>    </div>
+    <div id="loggedas">Logged in as <a class="user active" href="/users/95">virginia.kehl</a></div>
+    <ul><li><a class="home" href="/">Home</a></li>
+<li><a class="my-page" href="/my/page">My page</a></li>
+<li><a class="projects" href="/projects">Projects</a></li>
+<li><a class="help" href="http://www.redmine.org/guide">Help</a></li></ul></div>
+
+<div id="header">
+    <div id="quick-search">
+        <form action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+        
+        <label for='q'>
+          <a accesskey="4" href="/search">Search</a>:
+        </label>
+        <input type="text" name="q" id="q" size="20" class="small" accesskey="f" />
+</form>        <select name="project_quick_jump_box" id="project_quick_jump_box" onchange="if (this.value != &#39;&#39;) { window.location = this.value; }"><option value=''>Jump to a project...</option><option value="" disabled="disabled">---</option><option value="/projects/mmp?jump=my">MMP</option><option value="/projects/mmp-frontend?jump=my">&nbsp;&nbsp;&#187; MMP Frontend</option><option value="/projects/mmp-landingpages?jump=my">&nbsp;&nbsp;&#187; MMP Landingpages</option><option value="/projects/mmp-tech-debt?jump=my">&nbsp;&nbsp;&#187; MMP Technical debt</option><option value="/projects/mmp-test-coverage?jump=my">&nbsp;&nbsp;&#187; MMP Test Coverage</option><option value="/projects/mmp_langusta?jump=my">&nbsp;&nbsp;&#187; mmp_langusta</option></select>
+    </div>
+
+    <h1>MMP tracker</h1>
+
+</div>
+
+<div id="main" class="">
+    <div id="sidebar">
+        <h3>My account</h3>
+
+<p>Login: <strong><a class="user active" href="/users/95">virginia.kehl</a></strong><br />
+Created: 08/02/2017 09:18 AM</p>
+
+
+<h4>Atom access key</h4>
+
+<p>
+Atom access key created about 7 hours ago
+(<a rel="nofollow" data-method="post" href="/my/reset_rss_key">Reset</a>)
+</p>
+
+<h4>API access key</h4>
+<div>
+  <a href="#" onclick="$(&#39;#api-access-key&#39;).toggle();; return false;">Show</a>
+  <pre id='api-access-key' class='autoscroll'>73dad3ffeace754d8c69a2b640325c1ebed9cc6e</pre>
+</div>
+<script>
+//<![CDATA[
+$('#api-access-key').hide();
+//]]>
+</script>
+<p>
+API access key created less than a minute ago
+(<a rel="nofollow" data-method="post" href="/my/reset_api_key">Reset</a>)
+</p>
+
+
+        
+    </div>
+
+    <div id="content">
+        
+        <div class="contextual">
+<a class="icon icon-email-add" data-remote="true" href="/users/95/email_addresses">Emails</a>
+<a class="icon icon-passwd" href="/my/password">Change password</a>
+
+</div>
+
+<h2>My account</h2>
+
+
+<form id="my_account_form" class="edit_user" action="/my/account" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="nD3850NcNUdmdLz8RsQQ8ueuXiNeBAQkphV1jns276GgpiSPJfDgcY5oDlIdfofMY4lcmlkPoXp3/Rph0x+yEQ==" />
+<div class="splitcontentleft">
+<fieldset class="box tabular">
+  <legend>Information</legend>
+  <p><label for="user_firstname">First name<span class="required"> *</span></label><input type="text" value="Virginia" name="user[firstname]" id="user_firstname" /></p>
+  <p><label for="user_lastname">Last name<span class="required"> *</span></label><input type="text" value="Kehl" name="user[lastname]" id="user_lastname" /></p>
+  <p><label for="user_mail">Email<span class="required"> *</span></label><input type="text" value="virginia.kehl@moneypark.ch" name="user[mail]" id="user_mail" /></p>
+  <p><label for="user_language">Language</label><select name="user[language]" id="user_language"><option value="">(auto)</option>
+<option value="sq">Albanian (Shqip)</option>
+<option value="ar">Arabic (عربي)</option>
+<option value="az">Azerbaijanian (Azeri)</option>
+<option value="eu">Basque (Euskara)</option>
+<option value="bs">Bosnian (Bosanski)</option>
+<option value="bg">Bulgarian (Български)</option>
+<option value="ca">Catalan (Català)</option>
+<option value="hr">Croatian (Hrvatski)</option>
+<option value="cs">Czech (Čeština)</option>
+<option value="da">Danish (Dansk)</option>
+<option value="nl">Dutch (Nederlands)</option>
+<option selected="selected" value="en">English</option>
+<option value="en-GB">English (British)</option>
+<option value="et">Estonian (Eesti)</option>
+<option value="fi">Finnish (Suomi)</option>
+<option value="fr">French (Français)</option>
+<option value="gl">Galician (Galego)</option>
+<option value="de">German (Deutsch)</option>
+<option value="el">Greek (Ελληνικά)</option>
+<option value="he">Hebrew (עברית)</option>
+<option value="hu">Hungarian (Magyar)</option>
+<option value="id">Indonesian (Bahasa Indonesia)</option>
+<option value="it">Italian (Italiano)</option>
+<option value="ja">Japanese (日本語)</option>
+<option value="ko">Korean (한국어)</option>
+<option value="lv">Latvian (Latviešu)</option>
+<option value="lt">Lithuanian (lietuvių)</option>
+<option value="mk">Macedonian (Македонски)</option>
+<option value="mn">Mongolian (Монгол)</option>
+<option value="no">Norwegian (Norsk bokmål)</option>
+<option value="fa">Persian (پارسی)</option>
+<option value="pl">Polish (Polski)</option>
+<option value="pt">Portuguese (Português)</option>
+<option value="pt-BR">Portuguese/Brasil (Português/Brasil)</option>
+<option value="ro">Romanian (Română)</option>
+<option value="ru">Russian (Русский)</option>
+<option value="sr-YU">Serbian (Srpski)</option>
+<option value="sr">Serbian Cyrillic (Српски)</option>
+<option value="zh">Simplified Chinese (简体中文)</option>
+<option value="sk">Slovak (Slovenčina)</option>
+<option value="sl">Slovene (Slovenščina)</option>
+<option value="es">Spanish (Español)</option>
+<option value="es-PA">Spanish/Panama (Español/Panamá)</option>
+<option value="sv">Swedish (Svenska)</option>
+<option value="th">Thai (ไทย)</option>
+<option value="zh-TW">Traditional Chinese (繁體中文)</option>
+<option value="tr">Turkish (Türkçe)</option>
+<option value="uk">Ukrainian (Українська)</option>
+<option value="vi">Vietnamese (Tiếng Việt)</option></select></p>
+
+  
+</fieldset>
+
+<input type="submit" name="commit" value="Save" />
+</div>
+
+<div class="splitcontentright">
+<fieldset class="box">
+  <legend>Email notifications</legend>
+  <p>
+<label class="hidden-for-sighted" for="user_mail_notification">Mail notification settings</label>
+<select name="user[mail_notification]" id="user_mail_notification" onchange="if (this.value == &quot;selected&quot;) {$(&quot;#notified-projects&quot;).show();} else {$(&quot;#notified-projects&quot;).hide();}"><option value="all">For any event on all my projects</option>
+<option value="selected">For any event on the selected projects only...</option>
+<option selected="selected" value="only_my_events">Only for things I watch or I&#39;m involved in</option>
+<option value="only_assigned">Only for things I am assigned to</option>
+<option value="only_owner">Only for things I am the owner of</option>
+<option value="none">No events</option></select>
+</p>
+<div id="notified-projects" style="display:none;">
+  <ul class='projects root'>
+<li class='root'><div class='root'><label><input type="checkbox" name="user[notified_project_ids][]" value="1" /> MMP</label></div>
+<ul class='projects '>
+<li class='child'><div class='child'><label><input type="checkbox" name="user[notified_project_ids][]" value="14" /> MMP Frontend</label></div>
+</li><li class='child'><div class='child'><label><input type="checkbox" name="user[notified_project_ids][]" value="13" /> MMP Landingpages</label></div>
+</li><li class='child'><div class='child'><label><input type="checkbox" name="user[notified_project_ids][]" value="7" /> MMP Technical debt</label></div>
+</li><li class='child'><div class='child'><label><input type="checkbox" name="user[notified_project_ids][]" value="12" /> MMP Test Coverage</label></div>
+</li><li class='child'><div class='child'><label><input type="checkbox" name="user[notified_project_ids][]" value="17" /> mmp_langusta</label></div>
+</li></ul>
+</li></ul>
+
+  <input type="hidden" name="user[notified_project_ids][]" id="user_notified_project_ids_" value="" />
+  <p><em class="info">For unselected projects, you will only receive notifications about things you watch or you&#39;re involved in (eg. issues you&#39;re the author or assignee).</em></p>
+</div>
+
+<p>
+  <input name="pref[no_self_notified]" type="hidden" value="0" /><input type="checkbox" value="1" checked="checked" name="pref[no_self_notified]" id="pref_no_self_notified" />
+  <label for="pref_no_self_notified">I don&#39;t want to be notified of changes that I make myself</label>
+</p>
+
+</fieldset>
+
+<fieldset class="box tabular">
+  <legend>Preferences</legend>
+  
+<p><label for="pref_hide_mail">Hide my email address</label><input name="pref[hide_mail]" type="hidden" value="0" /><input type="checkbox" value="1" name="pref[hide_mail]" id="pref_hide_mail" /></p>
+<p><label for="pref_time_zone">Time zone</label><select name="pref[time_zone]" id="pref_time_zone"><option value="">&nbsp;</option>
+<option value="American Samoa">(GMT-11:00) American Samoa</option>
+<option value="International Date Line West">(GMT-11:00) International Date Line West</option>
+<option value="Midway Island">(GMT-11:00) Midway Island</option>
+<option value="Hawaii">(GMT-10:00) Hawaii</option>
+<option value="Alaska">(GMT-09:00) Alaska</option>
+<option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+<option value="Tijuana">(GMT-08:00) Tijuana</option>
+<option value="Arizona">(GMT-07:00) Arizona</option>
+<option value="Chihuahua">(GMT-07:00) Chihuahua</option>
+<option value="Mazatlan">(GMT-07:00) Mazatlan</option>
+<option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
+<option value="Central America">(GMT-06:00) Central America</option>
+<option value="Central Time (US &amp; Canada)">(GMT-06:00) Central Time (US &amp; Canada)</option>
+<option value="Guadalajara">(GMT-06:00) Guadalajara</option>
+<option value="Mexico City">(GMT-06:00) Mexico City</option>
+<option value="Monterrey">(GMT-06:00) Monterrey</option>
+<option value="Saskatchewan">(GMT-06:00) Saskatchewan</option>
+<option value="Bogota">(GMT-05:00) Bogota</option>
+<option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+<option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
+<option value="Lima">(GMT-05:00) Lima</option>
+<option value="Quito">(GMT-05:00) Quito</option>
+<option value="Atlantic Time (Canada)">(GMT-04:00) Atlantic Time (Canada)</option>
+<option value="Caracas">(GMT-04:00) Caracas</option>
+<option value="Georgetown">(GMT-04:00) Georgetown</option>
+<option value="La Paz">(GMT-04:00) La Paz</option>
+<option value="Santiago">(GMT-04:00) Santiago</option>
+<option value="Newfoundland">(GMT-03:30) Newfoundland</option>
+<option value="Brasilia">(GMT-03:00) Brasilia</option>
+<option value="Buenos Aires">(GMT-03:00) Buenos Aires</option>
+<option value="Greenland">(GMT-03:00) Greenland</option>
+<option value="Montevideo">(GMT-03:00) Montevideo</option>
+<option value="Mid-Atlantic">(GMT-02:00) Mid-Atlantic</option>
+<option value="Azores">(GMT-01:00) Azores</option>
+<option value="Cape Verde Is.">(GMT-01:00) Cape Verde Is.</option>
+<option value="Casablanca">(GMT+00:00) Casablanca</option>
+<option value="Dublin">(GMT+00:00) Dublin</option>
+<option value="Edinburgh">(GMT+00:00) Edinburgh</option>
+<option value="Lisbon">(GMT+00:00) Lisbon</option>
+<option value="London">(GMT+00:00) London</option>
+<option value="Monrovia">(GMT+00:00) Monrovia</option>
+<option value="UTC">(GMT+00:00) UTC</option>
+<option value="Amsterdam">(GMT+01:00) Amsterdam</option>
+<option value="Belgrade">(GMT+01:00) Belgrade</option>
+<option value="Berlin">(GMT+01:00) Berlin</option>
+<option selected="selected" value="Bern">(GMT+01:00) Bern</option>
+<option value="Bratislava">(GMT+01:00) Bratislava</option>
+<option value="Brussels">(GMT+01:00) Brussels</option>
+<option value="Budapest">(GMT+01:00) Budapest</option>
+<option value="Copenhagen">(GMT+01:00) Copenhagen</option>
+<option value="Ljubljana">(GMT+01:00) Ljubljana</option>
+<option value="Madrid">(GMT+01:00) Madrid</option>
+<option value="Paris">(GMT+01:00) Paris</option>
+<option value="Prague">(GMT+01:00) Prague</option>
+<option value="Rome">(GMT+01:00) Rome</option>
+<option value="Sarajevo">(GMT+01:00) Sarajevo</option>
+<option value="Skopje">(GMT+01:00) Skopje</option>
+<option value="Stockholm">(GMT+01:00) Stockholm</option>
+<option value="Vienna">(GMT+01:00) Vienna</option>
+<option value="Warsaw">(GMT+01:00) Warsaw</option>
+<option value="West Central Africa">(GMT+01:00) West Central Africa</option>
+<option value="Zagreb">(GMT+01:00) Zagreb</option>
+<option value="Athens">(GMT+02:00) Athens</option>
+<option value="Bucharest">(GMT+02:00) Bucharest</option>
+<option value="Cairo">(GMT+02:00) Cairo</option>
+<option value="Harare">(GMT+02:00) Harare</option>
+<option value="Helsinki">(GMT+02:00) Helsinki</option>
+<option value="Jerusalem">(GMT+02:00) Jerusalem</option>
+<option value="Kaliningrad">(GMT+02:00) Kaliningrad</option>
+<option value="Kyiv">(GMT+02:00) Kyiv</option>
+<option value="Pretoria">(GMT+02:00) Pretoria</option>
+<option value="Riga">(GMT+02:00) Riga</option>
+<option value="Sofia">(GMT+02:00) Sofia</option>
+<option value="Tallinn">(GMT+02:00) Tallinn</option>
+<option value="Vilnius">(GMT+02:00) Vilnius</option>
+<option value="Baghdad">(GMT+03:00) Baghdad</option>
+<option value="Istanbul">(GMT+03:00) Istanbul</option>
+<option value="Kuwait">(GMT+03:00) Kuwait</option>
+<option value="Minsk">(GMT+03:00) Minsk</option>
+<option value="Moscow">(GMT+03:00) Moscow</option>
+<option value="Nairobi">(GMT+03:00) Nairobi</option>
+<option value="Riyadh">(GMT+03:00) Riyadh</option>
+<option value="St. Petersburg">(GMT+03:00) St. Petersburg</option>
+<option value="Volgograd">(GMT+03:00) Volgograd</option>
+<option value="Tehran">(GMT+03:30) Tehran</option>
+<option value="Abu Dhabi">(GMT+04:00) Abu Dhabi</option>
+<option value="Baku">(GMT+04:00) Baku</option>
+<option value="Muscat">(GMT+04:00) Muscat</option>
+<option value="Samara">(GMT+04:00) Samara</option>
+<option value="Tbilisi">(GMT+04:00) Tbilisi</option>
+<option value="Yerevan">(GMT+04:00) Yerevan</option>
+<option value="Kabul">(GMT+04:30) Kabul</option>
+<option value="Ekaterinburg">(GMT+05:00) Ekaterinburg</option>
+<option value="Islamabad">(GMT+05:00) Islamabad</option>
+<option value="Karachi">(GMT+05:00) Karachi</option>
+<option value="Tashkent">(GMT+05:00) Tashkent</option>
+<option value="Chennai">(GMT+05:30) Chennai</option>
+<option value="Kolkata">(GMT+05:30) Kolkata</option>
+<option value="Mumbai">(GMT+05:30) Mumbai</option>
+<option value="New Delhi">(GMT+05:30) New Delhi</option>
+<option value="Sri Jayawardenepura">(GMT+05:30) Sri Jayawardenepura</option>
+<option value="Kathmandu">(GMT+05:45) Kathmandu</option>
+<option value="Almaty">(GMT+06:00) Almaty</option>
+<option value="Astana">(GMT+06:00) Astana</option>
+<option value="Dhaka">(GMT+06:00) Dhaka</option>
+<option value="Urumqi">(GMT+06:00) Urumqi</option>
+<option value="Rangoon">(GMT+06:30) Rangoon</option>
+<option value="Bangkok">(GMT+07:00) Bangkok</option>
+<option value="Hanoi">(GMT+07:00) Hanoi</option>
+<option value="Jakarta">(GMT+07:00) Jakarta</option>
+<option value="Krasnoyarsk">(GMT+07:00) Krasnoyarsk</option>
+<option value="Novosibirsk">(GMT+07:00) Novosibirsk</option>
+<option value="Beijing">(GMT+08:00) Beijing</option>
+<option value="Chongqing">(GMT+08:00) Chongqing</option>
+<option value="Hong Kong">(GMT+08:00) Hong Kong</option>
+<option value="Irkutsk">(GMT+08:00) Irkutsk</option>
+<option value="Kuala Lumpur">(GMT+08:00) Kuala Lumpur</option>
+<option value="Perth">(GMT+08:00) Perth</option>
+<option value="Singapore">(GMT+08:00) Singapore</option>
+<option value="Taipei">(GMT+08:00) Taipei</option>
+<option value="Ulaanbaatar">(GMT+08:00) Ulaanbaatar</option>
+<option value="Osaka">(GMT+09:00) Osaka</option>
+<option value="Sapporo">(GMT+09:00) Sapporo</option>
+<option value="Seoul">(GMT+09:00) Seoul</option>
+<option value="Tokyo">(GMT+09:00) Tokyo</option>
+<option value="Yakutsk">(GMT+09:00) Yakutsk</option>
+<option value="Adelaide">(GMT+09:30) Adelaide</option>
+<option value="Darwin">(GMT+09:30) Darwin</option>
+<option value="Brisbane">(GMT+10:00) Brisbane</option>
+<option value="Canberra">(GMT+10:00) Canberra</option>
+<option value="Guam">(GMT+10:00) Guam</option>
+<option value="Hobart">(GMT+10:00) Hobart</option>
+<option value="Melbourne">(GMT+10:00) Melbourne</option>
+<option value="Port Moresby">(GMT+10:00) Port Moresby</option>
+<option value="Sydney">(GMT+10:00) Sydney</option>
+<option value="Vladivostok">(GMT+10:00) Vladivostok</option>
+<option value="Magadan">(GMT+11:00) Magadan</option>
+<option value="New Caledonia">(GMT+11:00) New Caledonia</option>
+<option value="Solomon Is.">(GMT+11:00) Solomon Is.</option>
+<option value="Srednekolymsk">(GMT+11:00) Srednekolymsk</option>
+<option value="Auckland">(GMT+12:00) Auckland</option>
+<option value="Fiji">(GMT+12:00) Fiji</option>
+<option value="Kamchatka">(GMT+12:00) Kamchatka</option>
+<option value="Marshall Is.">(GMT+12:00) Marshall Is.</option>
+<option value="Wellington">(GMT+12:00) Wellington</option>
+<option value="Chatham Is.">(GMT+12:45) Chatham Is.</option>
+<option value="Nuku&#39;alofa">(GMT+13:00) Nuku&#39;alofa</option>
+<option value="Samoa">(GMT+13:00) Samoa</option>
+<option value="Tokelau Is.">(GMT+13:00) Tokelau Is.</option></select></p>
+<p><label for="pref_comments_sorting">Display comments</label><select name="pref[comments_sorting]" id="pref_comments_sorting"><option selected="selected" value="asc">In chronological order</option>
+<option value="desc">In reverse chronological order</option></select></p>
+<p><label for="pref_warn_on_leaving_unsaved">Warn me when leaving a page with unsaved text</label><input name="pref[warn_on_leaving_unsaved]" type="hidden" value="0" /><input type="checkbox" value="1" checked="checked" name="pref[warn_on_leaving_unsaved]" id="pref_warn_on_leaving_unsaved" /></p>
+
+  
+</fieldset>
+
+</div>
+</form>
+
+
+        
+        <div style="clear:both;"></div>
+    </div>
+</div>
+</div>
+
+<div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+<div id="ajax-modal" style="display:none;"></div>
+
+<div id="footer">
+  <div class="bgl"><div class="bgr">
+    Powered by <a href="http://www.redmine.org/">Redmine</a> &copy; 2006-2015 Jean-Philippe Lang
+  </div></div>
+</div>
+</div>
+</div>
+
+</body>
+</html>
